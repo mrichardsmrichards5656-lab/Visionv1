@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Vision Hub UK — Free UK resource for people living with sight conditions. Information on Stargardt, AMD, Glaucoma, Retinitis Pigmentosa and more. Benefits, assistive technology, research and support.">
+<meta name="description" content="Vision Hub — Free UK resource for people living with sight conditions. Information on Stargardt, AMD, Glaucoma, Retinitis Pigmentosa and more. Benefits, assistive technology, research and support.">
 <meta name="theme-color" content="#f5b800">
 <title>Vision Hub — Your Complete UK Sight Loss Resource</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,18 +112,14 @@ body {
 .ab-yb { background: #000 !important; color: #ff0 !important; border-color: #ff0 !important; }
 .ab-yb.on { background: #ff0 !important; color: #000 !important; }
 
-/* helpline-pill removed */
 .helpline-pill {
-  width: 100%;
+  margin-left: auto;
   background: var(--yellow); color: #000; border: none;
   padding: 0 20px; min-height: 44px; border-radius: 50px;
   font-family: var(--font); font-size: 0.88rem; font-weight: 900;
   cursor: pointer; text-decoration: none;
-  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  white-space: nowrap;
-}
-@media(min-width: 560px){
-  .helpline-pill { width: auto; margin-left: auto; justify-content: flex-start; }
+  display: inline-flex; align-items: center; gap: 6px;
+  white-space: nowrap; flex-shrink: 0;
 }
 .helpline-pill:hover        { background: var(--yellow2); }
 .helpline-pill:focus-visible{ outline: 3px solid var(--text); outline-offset: 3px; }
@@ -386,7 +382,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
     <button class="ab ab-yb" id="col-yb" onclick="setColour('yb')" aria-pressed="false" aria-label="Yellow on black">🟡 Yellow</button>
   </div>
   <a href="tel:03031239999" class="helpline-pill" aria-label="RNIB helpline, phone 0303 123 9999">
-    📞 <span>RNIB: 0303 123 9999</span>
+    📞 <span>0303 123 9999</span>
   </a>
 </div>
 
@@ -406,7 +402,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
       <span class="hero-eyebrow">Free · Independent · UK</span>
       <h1>Everything you need,<br>in one place.</h1>
       <p class="hero-desc">Clear, accessible information for people living with sight conditions — and the people who support them.</p>
-      <p class="last-updated">Last updated: <time datetime="2026-04-25">April 2026</time> · <a href="mailto:mrichardsmrichards5656@gmail.com" style="color:var(--yellow)">Suggest a correction</a></p>
+      <p class="last-updated">Last updated: <time datetime="2026-04-25">April 2026</time> · <a href="mailto:hello@visionhub.org.uk" style="color:var(--yellow)">Suggest a correction</a></p>
 
       <div class="share-bar" role="group" aria-label="Share this page">
         <button class="share-btn" onclick="sharePage()" aria-label="Share Vision Hub">📤 Share this page</button>
@@ -526,7 +522,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 
     <div class="wb"><strong>Plain English summary:</strong> Vision Hub does not sell your data. We do not collect personal information unless you choose to contact us by email. We do not use advertising trackers.</div>
 
-    <div class="lc"><h2>👤 Who we are</h2><p>Vision Hub is a free, independent UK resource for people living with partial sight and sight loss. We can be contacted at <a href="mailto:mrichardsmrichards5656@gmail.com">mrichardsmrichards5656@gmail.com</a>.</p></div>
+    <div class="lc"><h2>👤 Who we are</h2><p>Vision Hub is a free, independent UK resource for people living with partial sight and sight loss. We can be contacted at <a href="mailto:hello@visionhub.org.uk">hello@visionhub.org.uk</a>.</p></div>
 
     <div class="lc"><h2>📋 What information we collect</h2><p>We collect the minimum information needed to run this website:</p><ul><li><strong>Email contact:</strong> If you email us, we receive your email address and message content. We use this only to respond to you.</li><li><strong>Accessibility preferences:</strong> If you change text size or colour scheme, this is stored in your browser's local storage. This data never leaves your device.</li><li><strong>Feedback votes:</strong> If you click "Yes" or "No" on a helpful page rating, this is stored locally in your browser only. We do not collect this centrally.</li></ul></div>
 
@@ -540,11 +536,11 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 
     <div class="lc"><h2>🗂️ How long we keep your data</h2><p>Email correspondence is retained for up to 12 months and then deleted, unless there is an ongoing matter requiring us to keep it longer.</p></div>
 
-    <div class="lc"><h2>🔒 Your rights under UK GDPR</h2><p>You have the right to:</p><ul><li>Access the personal data we hold about you</li><li>Request correction of inaccurate data</li><li>Request deletion of your data</li><li>Object to our processing of your data</li><li>Lodge a complaint with the ICO (Information Commissioner's Office)</li></ul><p>To exercise any of these rights, email <a href="mailto:mrichardsmrichards5656@gmail.com">mrichardsmrichards5656@gmail.com</a>.</p><p>You can contact the ICO at <a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a> or by calling 0303 123 1113.</p></div>
+    <div class="lc"><h2>🔒 Your rights under UK GDPR</h2><p>You have the right to:</p><ul><li>Access the personal data we hold about you</li><li>Request correction of inaccurate data</li><li>Request deletion of your data</li><li>Object to our processing of your data</li><li>Lodge a complaint with the ICO (Information Commissioner's Office)</li></ul><p>To exercise any of these rights, email <a href="mailto:hello@visionhub.org.uk">hello@visionhub.org.uk</a>.</p><p>You can contact the ICO at <a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a> or by calling 0303 123 1113.</p></div>
 
     <div class="lc"><h2>📝 Changes to this policy</h2><p>We may update this policy from time to time. The date at the top of this page will always reflect when it was last changed.</p></div>
 
-    <div class="lc"><h2>✉️ Contact</h2><p>Questions about this Privacy Policy? Email <a href="mailto:mrichardsmrichards5656@gmail.com">mrichardsmrichards5656@gmail.com</a>.</p></div>
+    <div class="lc"><h2>✉️ Contact</h2><p>Questions about this Privacy Policy? Email <a href="mailto:hello@visionhub.org.uk">hello@visionhub.org.uk</a>.</p></div>
 
     <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
   </div>
@@ -562,7 +558,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 
     <div class="wb"><strong>Our commitment:</strong> Vision Hub exists to serve people living with sight loss. Accessibility is not an afterthought — it is the core purpose of this website.</div>
 
-    <div class="lc"><h2>About this website</h2><p>Vision Hub (visionhubuk.co.uk) is a free, independent UK resource for people living with partial sight, sight loss, and inherited eye conditions. This statement explains how accessible our website is and what we are doing to improve it.</p></div>
+    <div class="lc"><h2>About this website</h2><p>Vision Hub (visionhub.org.uk) is a free, independent UK resource for people living with partial sight, sight loss, and inherited eye conditions. This statement explains how accessible our website is and what we are doing to improve it.</p></div>
 
     <div class="lc"><h2>Conformance status</h2><p>We aim to meet the <strong>Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong> standard, as required under the Equality Act 2010.</p><p>We believe this website is <strong>substantially conformant</strong> with WCAG 2.1 AA. This means most — but not all — of the criteria are fully met.</p></div>
 
@@ -584,7 +580,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 
     <div class="lc"><h2>How to use accessibility features on your device</h2><p><strong>iPhone:</strong> Settings → Accessibility → Display &amp; Text Size. Enable Larger Text, Bold Text, and Increase Contrast.</p><p><strong>Android:</strong> Settings → Accessibility → Vision. Enable large text and high contrast text.</p><p><strong>Screen readers:</strong> VoiceOver is built into iPhone. TalkBack is built into Android via Settings → Accessibility → TalkBack.</p></div>
 
-    <div class="lc"><h2>Reporting accessibility problems</h2><p>We want to hear from you if you experience any accessibility barriers on this website. Email: <a href="mailto:mrichardsmrichards5656@gmail.com">mrichardsmrichards5656@gmail.com</a></p><p>We aim to respond within 5 working days.</p></div>
+    <div class="lc"><h2>Reporting accessibility problems</h2><p>We want to hear from you if you experience any accessibility barriers on this website. Email: <a href="mailto:hello@visionhub.org.uk">hello@visionhub.org.uk</a></p><p>We aim to respond within 5 working days.</p></div>
 
     <div class="lc"><h2>Enforcement</h2><p>If you are not satisfied with our response to an accessibility complaint, you can contact the <strong>Equality Advisory and Support Service (EASS)</strong>:</p><ul><li>Website: <a href="https://www.equalityadvisoryservice.com" target="_blank" rel="noopener">equalityadvisoryservice.com</a></li><li>Phone: 0808 800 0082</li></ul></div>
 
@@ -598,7 +594,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">◈ Vision Hub</div>
-    <p class="footer-desc">A free, independent UK resource for people living with partial sight and sight loss.</p>
+    <p class="footer-desc">A free, independent UK resource for people living with partial sight and sight loss. Verified by medical professionals and people with lived experience.</p>
     <nav aria-label="Useful external links">
       <div class="footer-links">
         <a href="https://www.rnib.org.uk"           target="_blank" rel="noopener">RNIB</a>
@@ -612,7 +608,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
     </nav>
     <div class="footer-bottom">
       © 2026 Vision Hub &nbsp;·&nbsp; Not a medical provider &nbsp;·&nbsp; Always consult your ophthalmologist &nbsp;·&nbsp;
-      <a href="mailto:mrichardsmrichards5656@gmail.com">Contact</a> &nbsp;·&nbsp;
+      <a href="mailto:hello@visionhub.org.uk">Contact</a> &nbsp;·&nbsp;
       <a onclick="showPage('a11y')" role="button" tabindex="0">Accessibility Statement</a> &nbsp;·&nbsp;
       <a onclick="showPage('privacy')" role="button" tabindex="0">Privacy Policy</a>
     </div>
