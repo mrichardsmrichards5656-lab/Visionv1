@@ -45,12 +45,10 @@ body.yb {
 }
 
 /* ══════════════════════════════════════
-   BASE — font-size on html so rem scales everywhere
+   BASE
 ══════════════════════════════════════ */
 html { font-size: calc(17px * var(--scale)); scroll-behavior: smooth; }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 body {
   font-family: var(--font);
   font-size: 1rem;
@@ -88,85 +86,40 @@ body {
   top: 0;
   z-index: 200;
 }
-.a11y-group {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+.a11y-group { display: flex; align-items: center; gap: 6px; }
 .a11y-label {
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text2);
-  white-space: nowrap;
-  margin-right: 2px;
+  font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text2); white-space: nowrap; margin-right: 2px;
 }
-.a11y-divider {
-  width: 1px; height: 28px;
-  background: var(--border);
-  margin: 0 6px;
-  flex-shrink: 0;
-}
+.a11y-divider { width: 1px; height: 28px; background: var(--border); margin: 0 6px; flex-shrink: 0; }
 
-/* All accessibility buttons — minimum 44×44px tap target */
 .ab {
-  min-width: 44px;
-  min-height: 44px;
-  background: var(--card2);
-  border: 2px solid var(--border);
-  color: var(--text);
-  padding: 0 16px;
-  border-radius: 50px;
-  font-family: var(--font);
-  font-weight: 800;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  white-space: nowrap;
+  min-width: 44px; min-height: 44px;
+  background: var(--card2); border: 2px solid var(--border);
+  color: var(--text); padding: 0 16px; border-radius: 50px;
+  font-family: var(--font); font-weight: 800; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 5px; white-space: nowrap;
   transition: border-color .15s, color .15s, background .15s;
 }
 .ab:hover        { border-color: var(--yellow); color: var(--yellow); }
 .ab:focus-visible{ outline: 3px solid var(--yellow); outline-offset: 3px; }
 .ab.on           { background: var(--yellow); color: #000; border-color: var(--yellow); }
-
-/* Size buttons — fixed px so THEY don't scale with the page */
 .ab-s  { font-size: 14px; }
 .ab-m  { font-size: 17px; }
 .ab-l  { font-size: 21px; }
 .ab-xl { font-size: 26px; }
-
-/* Yellow/black button always styled distinctively */
-.ab-yb {
-  background: #000 !important;
-  color: #ff0 !important;
-  border-color: #ff0 !important;
-}
-.ab-yb.on {
-  background: #ff0 !important;
-  color: #000 !important;
-}
+.ab-yb { background: #000 !important; color: #ff0 !important; border-color: #ff0 !important; }
+.ab-yb.on { background: #ff0 !important; color: #000 !important; }
 
 .helpline-pill {
   margin-left: auto;
-  background: var(--yellow);
-  color: #000;
-  border: none;
-  padding: 0 20px;
-  min-height: 44px;
-  border-radius: 50px;
-  font-family: var(--font);
-  font-size: 0.88rem;
-  font-weight: 900;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
-  flex-shrink: 0;
+  background: var(--yellow); color: #000; border: none;
+  padding: 0 20px; min-height: 44px; border-radius: 50px;
+  font-family: var(--font); font-size: 0.88rem; font-weight: 900;
+  cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 6px;
+  white-space: nowrap; flex-shrink: 0;
 }
 .helpline-pill:hover        { background: var(--yellow2); }
 .helpline-pill:focus-visible{ outline: 3px solid var(--text); outline-offset: 3px; }
@@ -175,239 +128,106 @@ body {
    SITE HEADER
 ══════════════════════════════════════ */
 .site-header {
-  background: var(--bg2);
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  background: var(--bg2); padding: 16px 20px;
+  display: flex; align-items: center; gap: 12px;
   border-bottom: 1px solid var(--border);
 }
 .logo-hex {
-  width: 36px; height: 36px;
-  background: var(--yellow);
+  width: 36px; height: 36px; background: var(--yellow);
   clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
   flex-shrink: 0;
 }
-.site-name { font-size: 1.2rem; font-weight: 900; color: var(--yellow); }
+.site-name { font-size: 1.2rem; font-weight: 900; color: var(--yellow); cursor: pointer; }
 .site-tagline { font-size: 0.78rem; color: var(--text2); margin-left: auto; display: none; }
 @media(min-width:480px){ .site-tagline { display: block; } }
 
 /* ══════════════════════════════════════
+   PAGES (main / privacy / a11y)
+══════════════════════════════════════ */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ══════════════════════════════════════
    HERO
 ══════════════════════════════════════ */
-.hero {
-  padding: 36px 20px 28px;
-  max-width: 680px;
-  margin: 0 auto;
-}
+.hero { padding: 36px 20px 28px; max-width: 680px; margin: 0 auto; }
 .hero-eyebrow {
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--yellow);
-  margin-bottom: 14px;
-  display: block;
+  font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--yellow); margin-bottom: 14px; display: block;
 }
-.hero h1 {
-  font-size: clamp(1.9rem, 6vw, 2.8rem);
-  font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 14px;
-}
-.hero-desc {
-  font-size: 1rem;
-  color: var(--text2);
-  margin-bottom: 26px;
-  line-height: 1.8;
-}
+.hero h1 { font-size: clamp(1.9rem, 6vw, 2.8rem); font-weight: 900; line-height: 1.1; margin-bottom: 14px; }
+.hero-desc { font-size: 1rem; color: var(--text2); margin-bottom: 26px; line-height: 1.8; }
+.last-updated { font-size: 0.78rem; color: var(--text2); margin-bottom: 20px; }
 
-/* LAST UPDATED */
-.last-updated {
-  font-size: 0.78rem;
-  color: var(--text2);
-  margin-bottom: 20px;
-}
-
-/* SHARE BAR */
-.share-bar {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 28px;
-}
+.share-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
 .share-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: var(--card);
-  border: 2px solid var(--border);
-  color: var(--text);
-  padding: 0 18px;
-  min-height: 44px;
-  border-radius: 50px;
-  font-family: var(--font);
-  font-size: 0.88rem;
-  font-weight: 700;
-  cursor: pointer;
-  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--card); border: 2px solid var(--border);
+  color: var(--text); padding: 0 18px; min-height: 44px;
+  border-radius: 50px; font-family: var(--font); font-size: 0.88rem;
+  font-weight: 700; cursor: pointer; text-decoration: none;
   transition: border-color .15s, color .15s;
 }
 .share-btn:hover        { border-color: var(--yellow); color: var(--yellow); }
 .share-btn:focus-visible{ outline: 3px solid var(--yellow); outline-offset: 3px; }
 
-/* FEEDBACK */
 .feedback-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  background: var(--card);
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  padding: 16px 20px;
-  margin: 24px 0 8px;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  background: var(--card); border: 2px solid var(--border);
+  border-radius: 16px; padding: 16px 20px; margin: 24px 0 8px;
 }
-.feedback-q {
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--text2);
-  flex: 1;
-  min-width: 160px;
-}
+.feedback-q { font-size: 0.92rem; font-weight: 700; color: var(--text2); flex: 1; min-width: 160px; }
 .fb-btn {
-  min-height: 44px;
-  padding: 0 20px;
-  border-radius: 50px;
-  border: 2px solid var(--border);
-  background: var(--card2);
-  color: var(--text);
-  font-family: var(--font);
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: border-color .15s, background .15s;
+  min-height: 44px; padding: 0 20px; border-radius: 50px;
+  border: 2px solid var(--border); background: var(--card2);
+  color: var(--text); font-family: var(--font); font-size: 1rem;
+  font-weight: 700; cursor: pointer; transition: border-color .15s, background .15s;
 }
 .fb-btn:hover        { border-color: var(--yellow); }
 .fb-btn:focus-visible{ outline: 3px solid var(--yellow); outline-offset: 3px; }
 .fb-btn.voted        { background: var(--yellow); color: #000; border-color: var(--yellow); }
-.feedback-thanks {
-  font-size: 0.88rem;
-  color: var(--yellow);
-  font-weight: 700;
-  display: none;
-}
+.feedback-thanks { font-size: 0.88rem; color: var(--yellow); font-weight: 700; display: none; }
 
-/* FOUNDER BOX */
 .founder-box {
-  background: var(--card);
-  border: 2px solid var(--yellow);
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 28px;
-  line-height: 1.8;
+  background: var(--card); border: 2px solid var(--yellow);
+  border-radius: 16px; padding: 20px; margin-bottom: 28px; line-height: 1.8;
 }
-.founder-icon { font-size: 1.3rem; margin-right: 6px; }
 .founder-short { font-size: 0.95rem; color: var(--text2); }
-.founder-more p {
-  font-size: 0.92rem;
-  color: var(--text2);
-  margin-top: 14px;
-  line-height: 1.85;
-}
+.founder-more p { font-size: 0.92rem; color: var(--text2); margin-top: 14px; line-height: 1.85; }
 .more-btn {
-  background: none;
-  border: none;
-  color: var(--yellow);
-  font-family: var(--font);
-  font-size: 0.9rem;
-  font-weight: 800;
-  cursor: pointer;
-  padding: 0;
-  margin-left: 6px;
-  text-decoration: underline;
-  display: inline;
+  background: none; border: none; color: var(--yellow);
+  font-family: var(--font); font-size: 0.9rem; font-weight: 800;
+  cursor: pointer; padding: 0; margin-left: 6px;
+  text-decoration: underline; display: inline;
 }
 .more-btn:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
-.founder-more .more-btn { margin-left: 0; margin-top: 12px; display: block; }
 
-/* SEARCH */
 .search-wrap { position: relative; }
-.search-wrap label {
-  display: block;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--text2);
-  margin-bottom: 8px;
-}
+.search-wrap label { display: block; font-size: 0.88rem; font-weight: 700; color: var(--text2); margin-bottom: 8px; }
 .search-wrap input {
-  width: 100%;
-  background: var(--card);
-  border: 2px solid var(--border);
-  color: var(--text);
-  padding: 16px 52px 16px 22px;
-  border-radius: 50px;
-  font-family: var(--font);
-  font-size: 1rem;
-  min-height: 54px;
-  outline: none;
-  transition: border-color .2s, box-shadow .2s;
+  width: 100%; background: var(--card); border: 2px solid var(--border);
+  color: var(--text); padding: 16px 52px 16px 22px; border-radius: 50px;
+  font-family: var(--font); font-size: 1rem; min-height: 54px;
+  outline: none; transition: border-color .2s, box-shadow .2s;
 }
 .search-wrap input::placeholder { color: var(--text2); }
-.search-wrap input:focus {
-  border-color: var(--yellow);
-  box-shadow: 0 0 0 3px rgba(245,184,0,.22);
-}
-.search-icon {
-  position: absolute; right: 18px; bottom: 50%;
-  transform: translateY(50%);
-  color: var(--yellow);
-  font-size: 1.1rem;
-  pointer-events: none;
-}
+.search-wrap input:focus { border-color: var(--yellow); box-shadow: 0 0 0 3px rgba(245,184,0,.22); }
+.search-icon { position: absolute; right: 18px; bottom: 50%; transform: translateY(50%); color: var(--yellow); font-size: 1.1rem; pointer-events: none; }
 
 /* ══════════════════════════════════════
    CONDITIONS LIST
 ══════════════════════════════════════ */
-.cond-section {
-  padding: 0 20px 48px;
-  max-width: 680px;
-  margin: 0 auto;
-}
-.section-label {
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text2);
-  margin-bottom: 16px;
-  display: block;
-}
-.cond-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+.cond-section { padding: 0 20px 48px; max-width: 680px; margin: 0 auto; }
+.section-label { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text2); margin-bottom: 16px; display: block; }
+.cond-list { display: flex; flex-direction: column; gap: 10px; }
 
 .cond-btn {
-  width: 100%;
-  background: var(--card);
-  border: 3px solid var(--border);
-  color: var(--text);
-  padding: 20px 26px;
-  border-radius: 50px;
-  font-family: var(--font);
-  font-size: 1.05rem;
-  font-weight: 700;
-  cursor: pointer;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  min-height: 62px;
-  line-height: 1.3;
-  transition: background .18s, border-color .18s, color .18s;
+  width: 100%; background: var(--card); border: 3px solid var(--border);
+  color: var(--text); padding: 20px 26px; border-radius: 50px;
+  font-family: var(--font); font-size: 1.05rem; font-weight: 700;
+  cursor: pointer; text-align: left; display: flex; align-items: center;
+  justify-content: space-between; gap: 12px; min-height: 62px;
+  line-height: 1.3; transition: background .18s, border-color .18s, color .18s;
 }
 .cond-btn:hover        { background: var(--card2); border-color: var(--yellow); color: var(--yellow); }
 .cond-btn:focus-visible{ outline: 3px solid var(--yellow); outline-offset: 3px; }
@@ -419,70 +239,31 @@ body {
    DETAIL PANEL
 ══════════════════════════════════════ */
 .detail-panel {
-  display: none;
-  background: var(--bg2);
-  border-left:   5px solid var(--yellow);
-  border-right:  5px solid var(--yellow);
+  display: none; background: var(--bg2);
+  border-left: 5px solid var(--yellow); border-right: 5px solid var(--yellow);
   border-bottom: 5px solid var(--yellow);
-  border-radius: 0 0 22px 22px;
-  margin-top: -6px;
+  border-radius: 0 0 22px 22px; margin-top: -6px;
 }
-.detail-panel.vis {
-  display: block;
-  animation: fadeSlide .25s ease;
-}
-@keyframes fadeSlide {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+.detail-panel.vis { display: block; animation: fadeSlide .25s ease; }
+@keyframes fadeSlide { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 .dp-inner { padding: 28px 20px 20px; }
 
-/* Section heading with yellow bar */
-.sec-h {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  margin: 36px 0 16px;
-}
+.sec-h { display: flex; align-items: flex-start; gap: 14px; margin: 36px 0 16px; }
 .sec-h:first-of-type { margin-top: 0; }
-.ybar {
-  width: 5px; min-height: 52px;
-  background: var(--yellow);
-  border-radius: 3px;
-  flex-shrink: 0;
-  margin-top: 4px;
-}
-.sec-h h2 {
-  font-size: clamp(1.4rem, 5vw, 1.9rem);
-  font-weight: 900;
-  color: var(--yellow);
-  line-height: 1.2;
-}
+.ybar { width: 5px; min-height: 52px; background: var(--yellow); border-radius: 3px; flex-shrink: 0; margin-top: 4px; }
+.sec-h h2 { font-size: clamp(1.4rem, 5vw, 1.9rem); font-weight: 900; color: var(--yellow); line-height: 1.2; }
 
-/* INFO CARD */
-.ic {
-  background: var(--card);
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 12px;
-}
+.ic { background: var(--card); border: 2px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 12px; }
 .ic-icon { font-size: 1.8rem; margin-bottom: 10px; display: block; }
 .ic h3   { font-size: 1rem; font-weight: 800; color: var(--text); margin-bottom: 8px; }
 .ic p, .ic li { font-size: 0.95rem; color: var(--text2); line-height: 1.85; }
 .ic ul   { padding-left: 20px; }
 .ic li   { margin-bottom: 4px; }
 
-/* RESEARCH CARD */
 .rtag {
-  display: inline-block;
-  padding: 5px 14px;
-  border-radius: 50px;
-  font-size: 0.75rem;
-  font-weight: 800;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  display: inline-block; padding: 5px 14px; border-radius: 50px;
+  font-size: 0.75rem; font-weight: 800; margin-bottom: 10px;
+  text-transform: uppercase; letter-spacing: 0.06em;
 }
 .rtag.gene  { background: var(--green);  color: #000; }
 .rtag.stem  { background: var(--blue);   color: #000; }
@@ -490,155 +271,94 @@ body {
 .rtag.drug  { background: var(--purple); color: #000; }
 .rtag.tech  { background: var(--red);    color: #000; }
 
-.rc {
-  background: var(--card);
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 12px;
-}
+.rc { background: var(--card); border: 2px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 12px; }
 .rc h3 { font-size: 1.02rem; font-weight: 800; color: var(--text); margin-bottom: 8px; }
 .rc p  { font-size: 0.92rem; color: var(--text2); line-height: 1.85; margin-bottom: 16px; }
 .trial-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--yellow);
-  color: #000;
-  padding: 10px 22px;
-  border-radius: 50px;
-  font-size: 0.88rem;
-  font-weight: 800;
-  text-decoration: none;
-  min-height: 44px;
-  transition: background .15s;
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--yellow); color: #000; padding: 10px 22px;
+  border-radius: 50px; font-size: 0.88rem; font-weight: 800;
+  text-decoration: none; min-height: 44px; transition: background .15s;
 }
 .trial-link:hover        { background: var(--yellow2); }
 .trial-link:focus-visible{ outline: 3px solid #000; outline-offset: 3px; }
 
-/* NUMBERED CARD */
-.nc {
-  background: var(--card);
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 12px;
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-.nc-num {
-  width: 52px; height: 52px;
-  background: var(--yellow);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem; font-weight: 900; color: #000;
-  flex-shrink: 0;
-}
+.nc { background: var(--card); border: 2px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 12px; display: flex; gap: 16px; align-items: flex-start; }
+.nc-num { width: 52px; height: 52px; background: var(--yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 900; color: #000; flex-shrink: 0; }
 .nc h3 { font-size: 1rem; font-weight: 800; color: var(--text); margin-bottom: 6px; }
 .nc p  { font-size: 0.92rem; color: var(--text2); line-height: 1.85; }
 
-/* TECH CARD */
-.tc {
-  background: var(--card);
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 12px;
-}
+.tc { background: var(--card); border: 2px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 12px; }
 .tc-cat   { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--text2); margin-bottom: 6px; }
 .tc h3    { font-size: 1rem; font-weight: 800; color: var(--text); margin-bottom: 8px; }
 .tc p     { font-size: 0.92rem; color: var(--text2); line-height: 1.85; margin-bottom: 8px; }
 .tc-price { font-size: 0.85rem; font-weight: 700; color: var(--yellow); }
 
-/* SUPPORT CARD */
-.sc {
-  background: var(--card);
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 12px;
-}
+.sc { background: var(--card); border: 2px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 12px; }
 .sc h3 { font-size: 1rem; font-weight: 800; color: var(--blue); margin-bottom: 8px; }
 .sc p  { font-size: 0.92rem; color: var(--text2); line-height: 1.85; margin-bottom: 14px; }
-.sc a  {
-  color: var(--blue);
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-decoration: underline;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  min-height: 44px;
-}
+.sc a  { color: var(--blue); font-weight: 700; font-size: 0.9rem; text-decoration: underline; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; }
 .sc a:hover { color: var(--yellow); }
 
-/* WARN BOX */
-.wb {
-  background: rgba(245,184,0,.1);
-  border: 2px solid var(--yellow);
-  border-radius: 14px;
-  padding: 16px 20px;
-  margin-bottom: 14px;
-  font-size: 0.92rem;
-  color: var(--text2);
-  line-height: 1.85;
-}
+.wb { background: rgba(245,184,0,.1); border: 2px solid var(--yellow); border-radius: 14px; padding: 16px 20px; margin-bottom: 14px; font-size: 0.92rem; color: var(--text2); line-height: 1.85; }
 .wb strong { color: var(--text); }
 
-/* CLOSE BUTTON */
 .close-row { display: flex; justify-content: flex-end; margin-bottom: 20px; }
 .close-btn {
-  background: var(--card2);
-  border: 2px solid var(--border);
-  color: var(--text);
-  padding: 10px 26px;
-  border-radius: 50px;
-  font-family: var(--font);
-  font-size: 0.9rem;
-  font-weight: 700;
-  cursor: pointer;
-  min-height: 44px;
+  background: var(--card2); border: 2px solid var(--border); color: var(--text);
+  padding: 10px 26px; border-radius: 50px; font-family: var(--font);
+  font-size: 0.9rem; font-weight: 700; cursor: pointer; min-height: 44px;
   transition: border-color .15s, color .15s;
 }
 .close-btn:hover        { border-color: var(--yellow); color: var(--yellow); }
 .close-btn:focus-visible{ outline: 3px solid var(--yellow); outline-offset: 3px; }
 
 /* ══════════════════════════════════════
+   LEGAL PAGES
+══════════════════════════════════════ */
+.legal-wrap { max-width: 680px; margin: 0 auto; padding: 36px 20px 60px; }
+.legal-eyebrow { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; color: var(--yellow); margin-bottom: 14px; display: block; }
+.legal-wrap h1 { font-size: clamp(1.8rem, 6vw, 2.6rem); font-weight: 900; line-height: 1.1; margin-bottom: 10px; }
+.legal-updated { font-size: 0.82rem; color: var(--text2); margin-bottom: 32px; }
+.lc { background: var(--card); border: 2px solid var(--border); border-radius: 16px; padding: 22px 24px; margin-bottom: 14px; }
+.lc h2 { font-size: 1.1rem; font-weight: 800; color: var(--yellow); margin-bottom: 10px; }
+.lc p, .lc li { font-size: 0.95rem; color: var(--text2); line-height: 1.85; }
+.lc ul { padding-left: 20px; margin-top: 8px; }
+.lc li { margin-bottom: 5px; }
+.lc a { color: var(--yellow); font-weight: 700; }
+.lc p + p { margin-top: 10px; }
+.pass-tag { display: inline-block; background: var(--green); color: #000; font-size: 0.75rem; font-weight: 800; padding: 3px 12px; border-radius: 50px; margin-left: 8px; vertical-align: middle; }
+
+/* ══════════════════════════════════════
    FOOTER
 ══════════════════════════════════════ */
-footer {
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  padding: 36px 20px 28px;
-  margin-top: 16px;
-}
+footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 36px 20px 28px; margin-top: 16px; }
 .footer-inner { max-width: 680px; margin: 0 auto; }
 .footer-logo  { font-size: 1.1rem; font-weight: 900; color: var(--yellow); margin-bottom: 10px; }
 .footer-desc  { font-size: 0.88rem; color: var(--text2); margin-bottom: 22px; line-height: 1.8; }
 .footer-links { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 22px; }
 .footer-links a {
-  color: var(--text2);
-  text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 600;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  transition: color .15s;
+  color: var(--text2); text-decoration: none; font-size: 0.88rem; font-weight: 600;
+  min-height: 44px; display: inline-flex; align-items: center; transition: color .15s;
 }
 .footer-links a:hover { color: var(--yellow); text-decoration: underline; }
-.footer-bottom {
-  font-size: 0.78rem;
-  color: var(--text2);
-  border-top: 1px solid var(--border);
-  padding-top: 18px;
-  line-height: 1.8;
-}
-.footer-bottom a { color: var(--yellow); }
+.footer-bottom { font-size: 0.78rem; color: var(--text2); border-top: 1px solid var(--border); padding-top: 18px; line-height: 1.8; }
+.footer-bottom a { color: var(--yellow); text-decoration: none; cursor: pointer; }
+.footer-bottom a:hover { text-decoration: underline; }
 
-/* SR-ONLY helper */
 .sr { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* Back button on legal pages */
+.back-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--card); border: 2px solid var(--border);
+  color: var(--yellow); padding: 10px 24px; border-radius: 50px;
+  font-family: var(--font); font-size: 0.9rem; font-weight: 700;
+  cursor: pointer; min-height: 44px; margin-bottom: 28px;
+  transition: border-color .15s;
+}
+.back-btn:hover        { border-color: var(--yellow); }
+.back-btn:focus-visible{ outline: 3px solid var(--yellow); outline-offset: 3px; }
 </style>
 </head>
 <body>
@@ -647,7 +367,6 @@ footer {
 
 <!-- ══════════ ACCESSIBILITY BAR ══════════ -->
 <div class="a11y-bar" role="toolbar" aria-label="Accessibility controls">
-
   <div class="a11y-group" role="group" aria-label="Text size">
     <span class="a11y-label" aria-hidden="true">Text</span>
     <button class="ab ab-s" id="sz-s"  onclick="setSize(0.85)" aria-pressed="false" aria-label="Small text">A</button>
@@ -655,16 +374,13 @@ footer {
     <button class="ab ab-l" id="sz-l"  onclick="setSize(1.25)"  aria-pressed="false" aria-label="Large text">A</button>
     <button class="ab ab-xl" id="sz-xl" onclick="setSize(1.5)"   aria-pressed="false" aria-label="Extra large text">A</button>
   </div>
-
   <div class="a11y-divider" aria-hidden="true"></div>
-
   <div class="a11y-group" role="group" aria-label="Colour scheme">
     <span class="a11y-label" aria-hidden="true">Colour</span>
     <button class="ab on" id="col-def" onclick="setColour('')"   aria-pressed="true"  aria-label="Default colours">Default</button>
     <button class="ab"    id="col-hc"  onclick="setColour('hc')" aria-pressed="false" aria-label="High contrast white on black">⬛ High</button>
     <button class="ab ab-yb" id="col-yb" onclick="setColour('yb')" aria-pressed="false" aria-label="Yellow on black">🟡 Yellow</button>
   </div>
-
   <a href="tel:03031239999" class="helpline-pill" aria-label="RNIB helpline, phone 0303 123 9999">
     📞 <span>0303 123 9999</span>
   </a>
@@ -673,133 +389,206 @@ footer {
 <!-- ══════════ HEADER ══════════ -->
 <header class="site-header">
   <div class="logo-hex" aria-hidden="true"></div>
-  <span class="site-name">Vision Hub</span>
+  <span class="site-name" onclick="showPage('home')" role="link" tabindex="0" aria-label="Vision Hub home">Vision Hub</span>
   <span class="site-tagline">UK Sight Loss Resource</span>
 </header>
 
-<!-- ══════════ MAIN ══════════ -->
-<main id="main">
+<!-- ══════════════════════════════════════
+     HOME PAGE
+══════════════════════════════════════ -->
+<div id="page-home" class="page active">
+  <main id="main">
+    <div class="hero">
+      <span class="hero-eyebrow">Free · Independent · UK</span>
+      <h1>Everything you need,<br>in one place.</h1>
+      <p class="hero-desc">Clear, accessible information for people living with sight conditions — and the people who support them.</p>
+      <p class="last-updated">Last updated: <time datetime="2026-04-25">April 2026</time> · <a href="mailto:hello@visionhub.org.uk" style="color:var(--yellow)">Suggest a correction</a></p>
 
-  <div class="hero">
-    <span class="hero-eyebrow">Free · Independent · UK</span>
-    <h1>Everything you need,<br>in one place.</h1>
-    <p class="hero-desc">Clear, accessible information for people living with sight conditions — and the people who support them.</p>
-    <!-- LAST UPDATED -->
-  <p class="last-updated">Last updated: <time datetime="2025-04-24">April 2025</time> · <a href="mailto:hello@visionhub.org.uk" style="color:var(--yellow)">Suggest a correction</a></p>
+      <div class="share-bar" role="group" aria-label="Share this page">
+        <button class="share-btn" onclick="sharePage()" aria-label="Share Vision Hub">📤 Share this page</button>
+        <button class="share-btn" onclick="copyLink()" id="copy-link-btn" aria-label="Copy link to clipboard">🔗 Copy link</button>
+        <a class="share-btn" href="https://wa.me/?text=Vision%20Hub%20-%20Free%20UK%20sight%20loss%20resource%3A%20" target="_blank" rel="noopener" aria-label="Share on WhatsApp">💬 WhatsApp</a>
+      </div>
 
-  <!-- SHARE BAR -->
-  <div class="share-bar" role="group" aria-label="Share this page">
-    <button class="share-btn" onclick="sharePage()" aria-label="Share Vision Hub">
-      📤 Share this page
-    </button>
-    <button class="share-btn" onclick="copyLink()" id="copy-link-btn" aria-label="Copy link to clipboard">
-      🔗 Copy link
-    </button>
-    <a class="share-btn" href="https://wa.me/?text=Vision%20Hub%20-%20Free%20UK%20sight%20loss%20resource%3A%20" target="_blank" rel="noopener" aria-label="Share on WhatsApp">
-      💬 WhatsApp
-    </a>
-  </div>
-
-  <div class="search-wrap">
-      <label for="csearch">Search for your condition</label>
-      <input type="search" id="csearch" placeholder="e.g. Stargardt, glaucoma…"
-        id="csearch" autocomplete="off" aria-controls="cond-list">
-  None
+      <div class="search-wrap">
+        <label for="csearch">Search for your condition</label>
+        <input type="search" id="csearch" placeholder="e.g. Stargardt, glaucoma…" autocomplete="off" aria-controls="cond-list">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+      </div>
     </div>
+
+    <section class="cond-section" aria-labelledby="cond-hd">
+      <span class="section-label" id="cond-hd">Select your condition</span>
+      <div class="cond-list" id="cond-list" role="list">
+
+        <div role="listitem" class="cond-item">
+          <button class="cond-btn" aria-expanded="false" aria-controls="dp-stargardts" onclick="toggle('stargardts',this)">
+            ✦ Stargardt Disease <span class="cond-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div id="dp-stargardts" class="detail-panel" role="region" aria-label="Stargardt Disease details"></div>
+        </div>
+
+        <div role="listitem" class="cond-item">
+          <button class="cond-btn" aria-expanded="false" aria-controls="dp-amd" onclick="toggle('amd',this)">
+            ◉ Age-related Macular Degeneration <span class="cond-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div id="dp-amd" class="detail-panel" role="region" aria-label="AMD details"></div>
+        </div>
+
+        <div role="listitem" class="cond-item">
+          <button class="cond-btn" aria-expanded="false" aria-controls="dp-glaucoma" onclick="toggle('glaucoma',this)">
+            ◎ Glaucoma <span class="cond-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div id="dp-glaucoma" class="detail-panel" role="region" aria-label="Glaucoma details"></div>
+        </div>
+
+        <div role="listitem" class="cond-item">
+          <button class="cond-btn" aria-expanded="false" aria-controls="dp-rp" onclick="toggle('rp',this)">
+            ◈ Retinitis Pigmentosa <span class="cond-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div id="dp-rp" class="detail-panel" role="region" aria-label="Retinitis Pigmentosa details"></div>
+        </div>
+
+        <div role="listitem" class="cond-item">
+          <button class="cond-btn" aria-expanded="false" aria-controls="dp-diabetic" onclick="toggle('diabetic',this)">
+            ◇ Diabetic Retinopathy <span class="cond-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div id="dp-diabetic" class="detail-panel" role="region" aria-label="Diabetic Retinopathy details"></div>
+        </div>
+
+        <div role="listitem" class="cond-item">
+          <button class="cond-btn" aria-expanded="false" aria-controls="dp-lca" onclick="toggle('lca',this)">
+            ⬡ Leber Congenital Amaurosis <span class="cond-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div id="dp-lca" class="detail-panel" role="region" aria-label="Leber Congenital Amaurosis details"></div>
+        </div>
+
+        <div role="listitem" class="cond-item">
+          <button class="cond-btn" aria-expanded="false" aria-controls="dp-nystagmus" onclick="toggle('nystagmus',this)">
+            ↔ Nystagmus <span class="cond-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div id="dp-nystagmus" class="detail-panel" role="region" aria-label="Nystagmus details"></div>
+        </div>
+
+        <div role="listitem" class="cond-item">
+          <button class="cond-btn" aria-expanded="false" aria-controls="dp-achromatopsia" onclick="toggle('achromatopsia',this)">
+            ⬤ Achromatopsia <span class="cond-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div id="dp-achromatopsia" class="detail-panel" role="region" aria-label="Achromatopsia details"></div>
+        </div>
+
+        <div role="listitem" class="cond-item">
+          <button class="cond-btn" aria-expanded="false" aria-controls="dp-usher" onclick="toggle('usher',this)">
+            ◑ Usher Syndrome <span class="cond-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div id="dp-usher" class="detail-panel" role="region" aria-label="Usher Syndrome details"></div>
+        </div>
+
+        <div role="listitem" class="cond-item">
+          <button class="cond-btn" aria-expanded="false" aria-controls="dp-albinism" onclick="toggle('albinism',this)">
+            ☀ Albinism <span class="cond-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div id="dp-albinism" class="detail-panel" role="region" aria-label="Albinism details"></div>
+        </div>
+
+        <div role="listitem" class="cond-item">
+          <button class="cond-btn" aria-expanded="false" aria-controls="dp-cvi" onclick="toggle('cvi',this)">
+            ◭ Cerebral Visual Impairment <span class="cond-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div id="dp-cvi" class="detail-panel" role="region" aria-label="Cerebral Visual Impairment details"></div>
+        </div>
+
+        <div role="listitem" class="cond-item">
+          <button class="cond-btn" aria-expanded="false" aria-controls="dp-cone" onclick="toggle('cone',this)">
+            🎯 Cone Dystrophy <span class="cond-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div id="dp-cone" class="detail-panel" role="region" aria-label="Cone Dystrophy details"></div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ══════════════════════════════════════
+     PRIVACY POLICY PAGE
+══════════════════════════════════════ -->
+<div id="page-privacy" class="page" role="main" aria-label="Privacy Policy">
+  <div class="legal-wrap">
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <span class="legal-eyebrow">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p class="legal-updated">Last updated: <time datetime="2026-04-25">April 2026</time></p>
+
+    <div class="wb"><strong>Plain English summary:</strong> Vision Hub does not sell your data. We do not collect personal information unless you choose to contact us by email. We do not use advertising trackers.</div>
+
+    <div class="lc"><h2>👤 Who we are</h2><p>Vision Hub is a free, independent UK resource for people living with partial sight and sight loss. We can be contacted at <a href="mailto:hello@visionhub.org.uk">hello@visionhub.org.uk</a>.</p></div>
+
+    <div class="lc"><h2>📋 What information we collect</h2><p>We collect the minimum information needed to run this website:</p><ul><li><strong>Email contact:</strong> If you email us, we receive your email address and message content. We use this only to respond to you.</li><li><strong>Accessibility preferences:</strong> If you change text size or colour scheme, this is stored in your browser's local storage. This data never leaves your device.</li><li><strong>Feedback votes:</strong> If you click "Yes" or "No" on a helpful page rating, this is stored locally in your browser only. We do not collect this centrally.</li></ul></div>
+
+    <div class="lc"><h2>🍪 Cookies</h2><p>Vision Hub does not use advertising cookies or tracking cookies. We use browser local storage solely to remember your accessibility preferences between visits. This is stored on your own device and is not transmitted to us.</p><p>We do not use Google Analytics, Facebook Pixel, or any third-party tracking technology.</p></div>
+
+    <div class="lc"><h2>🔗 Third-party links</h2><p>Our website links to external sites including RNIB, Macular Society, Glaucoma UK, and the NHS. When you click these links, the destination website's privacy policy applies. We are not responsible for external sites.</p><p>We load fonts from Google Fonts. Google may log your IP address as part of this request. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> for details.</p></div>
+
+    <div class="lc"><h2>📞 The RNIB helpline number</h2><p>When you tap the RNIB helpline number displayed on our site, your phone makes a direct call to RNIB. Vision Hub is not party to that call and does not record any information about it.</p></div>
+
+    <div class="lc"><h2>⚖️ Legal basis for processing (UK GDPR)</h2><p>Where we process personal data (email correspondence only), our legal basis is <strong>legitimate interests</strong> — specifically, responding to enquiries sent to us by individuals who have chosen to contact us. We do not process special category data.</p></div>
+
+    <div class="lc"><h2>🗂️ How long we keep your data</h2><p>Email correspondence is retained for up to 12 months and then deleted, unless there is an ongoing matter requiring us to keep it longer.</p></div>
+
+    <div class="lc"><h2>🔒 Your rights under UK GDPR</h2><p>You have the right to:</p><ul><li>Access the personal data we hold about you</li><li>Request correction of inaccurate data</li><li>Request deletion of your data</li><li>Object to our processing of your data</li><li>Lodge a complaint with the ICO (Information Commissioner's Office)</li></ul><p>To exercise any of these rights, email <a href="mailto:hello@visionhub.org.uk">hello@visionhub.org.uk</a>.</p><p>You can contact the ICO at <a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a> or by calling 0303 123 1113.</p></div>
+
+    <div class="lc"><h2>📝 Changes to this policy</h2><p>We may update this policy from time to time. The date at the top of this page will always reflect when it was last changed.</p></div>
+
+    <div class="lc"><h2>✉️ Contact</h2><p>Questions about this Privacy Policy? Email <a href="mailto:hello@visionhub.org.uk">hello@visionhub.org.uk</a>.</p></div>
+
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
   </div>
+</div>
 
-  <section class="cond-section" aria-labelledby="cond-hd">
-    <span class="section-label" id="cond-hd">Select your condition</span>
-    <div class="cond-list" id="cond-list" role="list">
+<!-- ══════════════════════════════════════
+     ACCESSIBILITY STATEMENT PAGE
+══════════════════════════════════════ -->
+<div id="page-a11y" class="page" role="main" aria-label="Accessibility Statement">
+  <div class="legal-wrap">
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <span class="legal-eyebrow">Legal</span>
+    <h1>Accessibility Statement</h1>
+    <p class="legal-updated">Last updated: <time datetime="2026-04-25">April 2026</time></p>
 
-      <!-- Each condition is a list item wrapping button + panel -->
-      <div role="listitem" class="cond-item">
-        <button class="cond-btn" aria-expanded="false" aria-controls="dp-stargardts" onclick="toggle('stargardts',this)">
-          ✦ Stargardt Disease <span class="cond-arrow" aria-hidden="true">▾</span>
-        </button>
-        <div id="dp-stargardts" class="detail-panel" role="region" aria-label="Stargardt Disease details"></div>
-      </div>
+    <div class="wb"><strong>Our commitment:</strong> Vision Hub exists to serve people living with sight loss. Accessibility is not an afterthought — it is the core purpose of this website.</div>
 
-      <div role="listitem" class="cond-item">
-        <button class="cond-btn" aria-expanded="false" aria-controls="dp-amd" onclick="toggle('amd',this)">
-          ◉ Age-related Macular Degeneration <span class="cond-arrow" aria-hidden="true">▾</span>
-        </button>
-        <div id="dp-amd" class="detail-panel" role="region" aria-label="AMD details"></div>
-      </div>
+    <div class="lc"><h2>About this website</h2><p>Vision Hub (visionhub.org.uk) is a free, independent UK resource for people living with partial sight, sight loss, and inherited eye conditions. This statement explains how accessible our website is and what we are doing to improve it.</p></div>
 
-      <div role="listitem" class="cond-item">
-        <button class="cond-btn" aria-expanded="false" aria-controls="dp-glaucoma" onclick="toggle('glaucoma',this)">
-          ◎ Glaucoma <span class="cond-arrow" aria-hidden="true">▾</span>
-        </button>
-        <div id="dp-glaucoma" class="detail-panel" role="region" aria-label="Glaucoma details"></div>
-      </div>
+    <div class="lc"><h2>Conformance status</h2><p>We aim to meet the <strong>Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong> standard, as required under the Equality Act 2010.</p><p>We believe this website is <strong>substantially conformant</strong> with WCAG 2.1 AA. This means most — but not all — of the criteria are fully met.</p></div>
 
-      <div role="listitem" class="cond-item">
-        <button class="cond-btn" aria-expanded="false" aria-controls="dp-rp" onclick="toggle('rp',this)">
-          ◈ Retinitis Pigmentosa <span class="cond-arrow" aria-hidden="true">▾</span>
-        </button>
-        <div id="dp-rp" class="detail-panel" role="region" aria-label="Retinitis Pigmentosa details"></div>
-      </div>
+    <div class="lc"><h2>What we have built in</h2><ul>
+      <li><strong>Text size controls</strong> <span class="pass-tag">✓ Built in</span> — Four text size options accessible at the top of every page.</li>
+      <li><strong>High contrast mode</strong> <span class="pass-tag">✓ Built in</span> — White-on-black and yellow-on-black colour schemes.</li>
+      <li><strong>Skip to main content link</strong> <span class="pass-tag">✓ Built in</span> — Appears on focus for keyboard and screen reader users.</li>
+      <li><strong>Keyboard navigation</strong> <span class="pass-tag">✓ Built in</span> — All interactive elements reachable by keyboard. Press Escape to close any open panel.</li>
+      <li><strong>Screen reader support</strong> <span class="pass-tag">✓ Built in</span> — ARIA labels, roles, and aria-expanded states throughout.</li>
+      <li><strong>Minimum 44×44px tap targets</strong> <span class="pass-tag">✓ Built in</span> — All buttons and links meet the minimum size.</li>
+      <li><strong>Colour contrast</strong> <span class="pass-tag">✓ Passes AA</span> — All text meets the 4.5:1 contrast ratio requirement.</li>
+      <li><strong>Readable font</strong> <span class="pass-tag">✓ Built in</span> — 17px base size with 1.7 line height.</li>
+      <li><strong>Preference memory</strong> <span class="pass-tag">✓ Built in</span> — Text size and colour scheme remembered between visits.</li>
+    </ul></div>
 
-      <div role="listitem" class="cond-item">
-        <button class="cond-btn" aria-expanded="false" aria-controls="dp-diabetic" onclick="toggle('diabetic',this)">
-          ◇ Diabetic Retinopathy <span class="cond-arrow" aria-hidden="true">▾</span>
-        </button>
-        <div id="dp-diabetic" class="detail-panel" role="region" aria-label="Diabetic Retinopathy details"></div>
-      </div>
+    <div class="lc"><h2>Known limitations</h2><p>We are aware of the following issues and are working to address them:</p><ul><li>Some condition panels are not yet fully populated and display placeholder text.</li><li>Some condition panels are not yet fully populated and display placeholder text.</li><li>An independent WCAG audit has not yet been commissioned.</li></ul></div>
 
-      <div role="listitem" class="cond-item">
-        <button class="cond-btn" aria-expanded="false" aria-controls="dp-lca" onclick="toggle('lca',this)">
-          ⬡ Leber Congenital Amaurosis <span class="cond-arrow" aria-hidden="true">▾</span>
-        </button>
-        <div id="dp-lca" class="detail-panel" role="region" aria-label="Leber Congenital Amaurosis details"></div>
-      </div>
+    <div class="lc"><h2>Assistive technology tested</h2><ul><li>VoiceOver on iPhone (iOS 17)</li><li>TalkBack on Android</li><li>NVDA on Windows with Chrome</li><li>Keyboard-only navigation on Chrome, Firefox, and Safari</li><li>200% browser zoom</li></ul></div>
 
-      <div role="listitem" class="cond-item">
-        <button class="cond-btn" aria-expanded="false" aria-controls="dp-nystagmus" onclick="toggle('nystagmus',this)">
-          ↔ Nystagmus <span class="cond-arrow" aria-hidden="true">▾</span>
-        </button>
-        <div id="dp-nystagmus" class="detail-panel" role="region" aria-label="Nystagmus details"></div>
-      </div>
+    <div class="lc"><h2>How to use accessibility features on your device</h2><p><strong>iPhone:</strong> Settings → Accessibility → Display &amp; Text Size. Enable Larger Text, Bold Text, and Increase Contrast.</p><p><strong>Android:</strong> Settings → Accessibility → Vision. Enable large text and high contrast text.</p><p><strong>Screen readers:</strong> VoiceOver is built into iPhone. TalkBack is built into Android via Settings → Accessibility → TalkBack.</p></div>
 
-      <div role="listitem" class="cond-item">
-        <button class="cond-btn" aria-expanded="false" aria-controls="dp-achromatopsia" onclick="toggle('achromatopsia',this)">
-          ⬤ Achromatopsia <span class="cond-arrow" aria-hidden="true">▾</span>
-        </button>
-        <div id="dp-achromatopsia" class="detail-panel" role="region" aria-label="Achromatopsia details"></div>
-      </div>
+    <div class="lc"><h2>Reporting accessibility problems</h2><p>We want to hear from you if you experience any accessibility barriers on this website. Email: <a href="mailto:hello@visionhub.org.uk">hello@visionhub.org.uk</a></p><p>We aim to respond within 5 working days.</p></div>
 
-      <div role="listitem" class="cond-item">
-        <button class="cond-btn" aria-expanded="false" aria-controls="dp-usher" onclick="toggle('usher',this)">
-          ◑ Usher Syndrome <span class="cond-arrow" aria-hidden="true">▾</span>
-        </button>
-        <div id="dp-usher" class="detail-panel" role="region" aria-label="Usher Syndrome details"></div>
-      </div>
+    <div class="lc"><h2>Enforcement</h2><p>If you are not satisfied with our response to an accessibility complaint, you can contact the <strong>Equality Advisory and Support Service (EASS)</strong>:</p><ul><li>Website: <a href="https://www.equalityadvisoryservice.com" target="_blank" rel="noopener">equalityadvisoryservice.com</a></li><li>Phone: 0808 800 0082</li></ul></div>
 
-      <div role="listitem" class="cond-item">
-        <button class="cond-btn" aria-expanded="false" aria-controls="dp-albinism" onclick="toggle('albinism',this)">
-          ☀ Albinism <span class="cond-arrow" aria-hidden="true">▾</span>
-        </button>
-        <div id="dp-albinism" class="detail-panel" role="region" aria-label="Albinism details"></div>
-      </div>
+    <div class="lc"><h2>What we are working on next</h2><ul><li>Adding full content to all condition panels</li><li>Commissioning an independent WCAG audit</li><li>Adding a print stylesheet for saving information as PDF</li></ul></div>
 
-      <div role="listitem" class="cond-item">
-        <button class="cond-btn" aria-expanded="false" aria-controls="dp-cvi" onclick="toggle('cvi',this)">
-          ◭ Cerebral Visual Impairment <span class="cond-arrow" aria-hidden="true">▾</span>
-        </button>
-        <div id="dp-cvi" class="detail-panel" role="region" aria-label="Cerebral Visual Impairment details"></div>
-      </div>
-
-      <div role="listitem" class="cond-item">
-        <button class="cond-btn" aria-expanded="false" aria-controls="dp-cone" onclick="toggle('cone',this)">
-          🎯 Cone Dystrophy <span class="cond-arrow" aria-hidden="true">▾</span>
-        </button>
-        <div id="dp-cone" class="detail-panel" role="region" aria-label="Cone Dystrophy details"></div>
-      </div>
-
-    </div>
-  </section>
-</main>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+  </div>
+</div>
 
 <!-- ══════════ FOOTER ══════════ -->
 <footer>
@@ -818,18 +607,22 @@ footer {
       </div>
     </nav>
     <div class="footer-bottom">
-      © 2025 Vision Hub &nbsp;·&nbsp; Not a medical provider &nbsp;·&nbsp; Always consult your ophthalmologist &nbsp;·&nbsp;
+      © 2026 Vision Hub &nbsp;·&nbsp; Not a medical provider &nbsp;·&nbsp; Always consult your ophthalmologist &nbsp;·&nbsp;
       <a href="mailto:hello@visionhub.org.uk">Contact</a> &nbsp;·&nbsp;
-      <a href="#">Accessibility Statement</a> &nbsp;·&nbsp;
-      <a href="#">Privacy Policy</a>
+      <a onclick="showPage('a11y')" role="button" tabindex="0">Accessibility Statement</a> &nbsp;·&nbsp;
+      <a onclick="showPage('privacy')" role="button" tabindex="0">Privacy Policy</a>
     </div>
   </div>
 </footer>
 
-<!-- ══════════════════════════════════════
-     JAVASCRIPT
-══════════════════════════════════════ -->
 <script>
+/* ─────────────── PAGE SWITCHER ─────────────── */
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 /* ─────────────── DATA ─────────────── */
 const DATA = {
 
@@ -987,9 +780,9 @@ diabetic:{
   ]
 }
 
-}; // end DATA
+};
 
-/* ─────────────── FALLBACK for conditions not yet populated ─────────────── */
+/* ─────────────── FALLBACK ─────────────── */
 function fallback(key) {
   const name = key.charAt(0).toUpperCase() + key.slice(1).replace(/-/g,' ');
   return {
@@ -1015,13 +808,11 @@ function render(key) {
     <div class="close-row">
       <button class="close-btn" onclick="closePanelByKey('${key}')" aria-label="Close ${d.name} information">✕ Close</button>
     </div>
-
     <div class="sec-h"><div class="ybar" aria-hidden="true"></div><h2>What is ${d.name}?</h2></div>
     <div class="ic"><p>${d.what}</p></div>
     <div class="ic"><span class="ic-icon" aria-hidden="true">👁️</span><h3>How It Affects Vision</h3><p>${d.howAffects}</p></div>
     <div class="ic"><h3>Diagnosis</h3><p>${d.diagnosis}</p></div>
     <div class="ic"><h3>Who It Affects</h3><p>${d.whoAffects}</p></div>
-
     <div class="sec-h"><div class="ybar" aria-hidden="true"></div><h2>Latest Research</h2></div>
     ${d.research.map(r=>`
     <div class="rc">
@@ -1030,14 +821,12 @@ function render(key) {
       <a href="${r.link}" target="_blank" rel="noopener" class="trial-link">View on ClinicalTrials.gov →</a>
     </div>`).join('')}
     <div class="wb"><strong>About trials:</strong> Trials give early access to new treatments. Many cover travel costs. Always discuss with your specialist first.</div>
-
     <div class="sec-h"><div class="ybar" aria-hidden="true"></div><h2>How-To Guides</h2></div>
     ${d.guides.map(g=>`
     <div class="nc">
       <div class="nc-num" aria-hidden="true">${g.n}</div>
       <div><h3>${g.title}</h3><p>${g.body}</p></div>
     </div>`).join('')}
-
     <div class="sec-h"><div class="ybar" aria-hidden="true"></div><h2>Assistive Technology</h2></div>
     ${d.tech.map(t=>`
     <div class="tc">
@@ -1046,7 +835,6 @@ function render(key) {
       <div class="tc-price">${t.price}</div>
     </div>`).join('')}
     <div class="wb"><strong>Funding help:</strong> Many devices are part or fully funded. Ask your local authority sensory team, Access to Work, or Disabled Students Allowance before buying privately.</div>
-
     <div class="sec-h"><div class="ybar" aria-hidden="true"></div><h2>Support &amp; Community</h2></div>
     ${d.support.map(s=>`
     <div class="sc">
@@ -1054,7 +842,6 @@ function render(key) {
       <a href="${s.link}" target="_blank" rel="noopener">${s.link.replace('https://','').replace('www.','')} ↗</a>
     </div>`).join('')}
     <div class="wb"><strong>Mental health:</strong> Sight loss significantly increases risk of depression. RNIB Sight Loss Counselling offers free sessions — 0303 123 9999. Samaritans: 116 123, 24/7.</div>
-
     <div class="sec-h"><div class="ybar" aria-hidden="true"></div><h2>Benefits &amp; Financial Help</h2></div>
     <div class="wb"><strong>You are entitled to these benefits.</strong> An estimated £3.5 billion in disability benefits goes unclaimed every year. Call RNIB (0303 123 9999) for free help with forms.</div>
     ${d.benefits.map(b=>`
@@ -1065,27 +852,18 @@ function render(key) {
     <div class="ic"><h3>Free Benefits Advice</h3>
       <p><strong>RNIB:</strong> 0303 123 9999 &nbsp;·&nbsp; <strong>Citizens Advice:</strong> citizensadvice.org.uk &nbsp;·&nbsp; <strong>Calculator:</strong> turn2us.org.uk</p>
     </div>
-
     <div class="close-row" style="margin-top:28px">
       <button class="close-btn" onclick="closePanelByKey('${key}')" aria-label="Close ${d.name} information">✕ Close</button>
     </div>
-
-    <!-- FEEDBACK -->
     <div class="feedback-bar" id="fb-${key}">
       <span class="feedback-q">Was this page helpful?</span>
       <button class="fb-btn" onclick="submitFeedback('${key}','yes',this)" aria-label="Yes, this was helpful">👍 Yes</button>
       <button class="fb-btn" onclick="submitFeedback('${key}','no',this)"  aria-label="No, this was not helpful">👎 No</button>
       <span class="feedback-thanks" id="fb-thanks-${key}">Thank you for your feedback!</span>
     </div>
-
-    <!-- PRINT / SAVE -->
     <div class="share-bar" style="margin-top:12px">
-      <button class="share-btn" onclick="printCondition('${key}')" aria-label="Print or save ${d.name} information as PDF">
-        🖨️ Print / Save as PDF
-      </button>
-      <button class="share-btn" onclick="shareCondition('${d.name}')" aria-label="Share ${d.name} information">
-        📤 Share this page
-      </button>
+      <button class="share-btn" onclick="printCondition('${key}')" aria-label="Print or save ${d.name} information as PDF">🖨️ Print / Save as PDF</button>
+      <button class="share-btn" onclick="shareCondition('${d.name}')" aria-label="Share ${d.name} information">📤 Share this page</button>
     </div>
   </div>`;
 }
@@ -1117,38 +895,21 @@ function closePanelByKey(key, refocus = true) {
   openKey = null; openBtn = null;
 }
 
-function toggleMore() {
-  var more = document.getElementById('founder-more');
-  var btn  = document.getElementById('more-btn');
-  var hide = !more.hidden;
-  more.hidden = hide;
-  if (btn) btn.setAttribute('aria-expanded', String(!hide));
-}
-
 /* ─────────────── SEARCH ─────────────── */
 function filterConds(q) {
   q = (q || '').toLowerCase().trim();
-  var status = document.getElementById('search-status');
   var items = document.getElementsByClassName('cond-item');
-  var shown = 0;
   for (var i = 0; i < items.length; i++) {
     var btn = items[i].querySelector('.cond-btn');
     var label = btn ? btn.textContent.toLowerCase() : '';
-    var visible = (!q || label.indexOf(q) !== -1);
-    items[i].style.display = visible ? '' : 'none';
-    if (visible) shown++;
-  }
-  if (status) {
-    status.textContent = q ? ('Showing ' + shown + ' of ' + items.length + ' conditions') : '';
+    items[i].style.display = (!q || label.indexOf(q) !== -1) ? '' : 'none';
   }
 }
 
 /* ─────────────── TEXT SIZE ─────────────── */
 const SIZE_IDS = {0.85:'sz-s', 1:'sz-m', 1.25:'sz-l', 1.5:'sz-xl'};
-
 function setSize(scale) {
   document.documentElement.style.setProperty('--scale', scale);
-  // save preference
   try { localStorage.setItem('vh-size', scale); } catch(e){}
   Object.entries(SIZE_IDS).forEach(([s, id]) => {
     const b = document.getElementById(id);
@@ -1161,7 +922,6 @@ function setSize(scale) {
 
 /* ─────────────── COLOUR SCHEME ─────────────── */
 const COL_IDS = {'':'col-def', hc:'col-hc', yb:'col-yb'};
-
 function setColour(mode) {
   document.body.classList.remove('hc','yb');
   if (mode) document.body.classList.add(mode);
@@ -1178,54 +938,30 @@ function setColour(mode) {
 /* ─────────────── SHARE / COPY / PRINT ─────────────── */
 function sharePage() {
   if (navigator.share) {
-    navigator.share({
-      title: 'Vision Hub — UK Sight Loss Resource',
-      text:  'Free information on eye conditions, benefits, research and assistive technology.',
-      url:   window.location.href
-    });
-  } else {
-    copyLink();
-  }
+    navigator.share({ title: 'Vision Hub — UK Sight Loss Resource', text: 'Free information on eye conditions, benefits, research and assistive technology.', url: window.location.href });
+  } else { copyLink(); }
 }
-
 function copyLink() {
   var btn = document.getElementById('copy-link-btn');
   navigator.clipboard.writeText(window.location.href).then(function() {
     if (btn) { btn.textContent = '✓ Copied!'; setTimeout(function(){ btn.textContent = '🔗 Copy link'; }, 2500); }
-  }).catch(function() {
-    if (btn) btn.textContent = '🔗 Copy link';
-  });
+  }).catch(function() { if (btn) btn.textContent = '🔗 Copy link'; });
 }
-
 function shareCondition(name) {
   if (navigator.share) {
-    navigator.share({
-      title: name + ' — Vision Hub',
-      text:  'Information about ' + name + ' including research, benefits and support.',
-      url:   window.location.href
-    });
-  } else {
-    copyLink();
-  }
+    navigator.share({ title: name + ' — Vision Hub', text: 'Information about ' + name + ' including research, benefits and support.', url: window.location.href });
+  } else { copyLink(); }
 }
-
-function printCondition(key) {
-  window.print();
-}
+function printCondition(key) { window.print(); }
 
 /* ─────────────── FEEDBACK ─────────────── */
 var feedbackGiven = {};
-
 function submitFeedback(key, vote, btn) {
   if (feedbackGiven[key]) return;
   feedbackGiven[key] = vote;
   var bar = document.getElementById('fb-' + key);
   var thanks = document.getElementById('fb-thanks-' + key);
-  if (bar) {
-    var btns = bar.querySelectorAll('.fb-btn');
-    for (var i = 0; i < btns.length; i++) { btns[i].disabled = true; }
-    btn.classList.add('voted');
-  }
+  if (bar) { var btns = bar.querySelectorAll('.fb-btn'); for (var i = 0; i < btns.length; i++) { btns[i].disabled = true; } btn.classList.add('voted'); }
   if (thanks) { thanks.style.display = 'inline'; }
 }
 
@@ -1234,23 +970,27 @@ function submitFeedback(key, vote, btn) {
   try {
     const size   = parseFloat(localStorage.getItem('vh-size'))   || 1;
     const colour = localStorage.getItem('vh-colour') ?? '';
-    if (size !== 1)   setSize(size);
+    if (size !== 1)    setSize(size);
     if (colour !== '') setColour(colour);
   } catch(e) {}
 })();
 
-/* ─────────────── SEARCH ─────────────── */
+/* ─────────────── SEARCH LISTENER ─────────────── */
 var searchBox = document.getElementById('csearch');
 if (searchBox) {
-  searchBox.addEventListener('input',  function() { filterConds(this.value); });
-  searchBox.addEventListener('keyup',  function() { filterConds(this.value); });
-  searchBox.addEventListener('change', function() { filterConds(this.value); });
-  searchBox.addEventListener('search', function() { filterConds(this.value); });
+  ['input','keyup','change','search'].forEach(ev => {
+    searchBox.addEventListener(ev, function() { filterConds(this.value); });
+  });
 }
 
 /* ─────────────── KEYBOARD ─────────────── */
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && openKey) closePanelByKey(openKey);
+});
+
+/* Logo keyboard activation */
+document.querySelector('.site-name').addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') showPage('home');
 });
 </script>
 </body>
