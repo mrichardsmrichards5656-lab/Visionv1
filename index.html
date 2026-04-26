@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Vision Hub UK — Free UK resource for people living with sight conditions. Information on Stargardt, AMD, Glaucoma, Retinitis Pigmentosa and more. Benefits, assistive technology, research and support.">
 <meta name="theme-color" content="#f5b800">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Vision Hub">
+<link rel="manifest" href="data:application/json,%7B%22name%22%3A%22Vision%20Hub%20%E2%80%94%20UK%20Sight%20Loss%20Resource%22%2C%22short_name%22%3A%22Vision%20Hub%22%2C%22description%22%3A%22Free%20UK%20resource%20for%20people%20living%20with%20sight%20conditions%22%2C%22start_url%22%3A%22%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230f1320%22%2C%22theme_color%22%3A%22%23f5b800%22%2C%22orientation%22%3A%22portrait-primary%22%7D">
 <title>Vision Hub — Your Complete UK Sight Loss Resource</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -388,6 +392,14 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
   <a href="tel:03031239999" class="helpline-pill" aria-label="RNIB helpline, phone 0303 123 9999">
     📞 RNIB Helpline: 0303 123 9999
   </a>
+</div>
+
+<!-- ══════════ iOS INSTALL BANNER ══════════ -->
+<div id="ios-banner" style="display:none;background:var(--yellow);color:#000;padding:12px 16px;text-align:center;font-family:var(--font);font-size:0.88rem;font-weight:700;line-height:1.6;position:relative">
+  📱 <strong>iPhone users:</strong> Tap the Share button <span style="font-size:1.1rem">⎙</span> then "Add to Home Screen" to install Vision Hub as a free app.
+  <button onclick="document.getElementById('ios-banner').style.display='none';localStorage.setItem('ios-banner-dismissed','1')"
+    style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:1.3rem;cursor:pointer;color:#000;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center"
+    aria-label="Dismiss install banner">✕</button>
 </div>
 
 <!-- ══════════ HEADER ══════════ -->
@@ -1070,6 +1082,40 @@ document.addEventListener('keydown', e => {
 document.querySelector('.site-name').addEventListener('keydown', e => {
   if (e.key === 'Enter' || e.key === ' ') showPage('home');
 });
+
+/* ─────────────── iOS INSTALL BANNER ─────────────── */
+(function() {
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isStandalone = window.navigator.standalone === true;
+  const dismissed = localStorage.getItem('ios-banner-dismissed');
+  if (isIOS && !isStandalone && !dismissed) {
+    document.getElementById('ios-banner').style.display = 'block';
+  }
+})();
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    const CACHE_NAME = 'visionhub-v1';
+    const ASSETS = ['/', '/index.html'];
+    self.addEventListener('install', event => {
+      event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
+      self.skipWaiting();
+    });
+    self.addEventListener('activate', event => {
+      event.waitUntil(caches.keys().then(keys =>
+        Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+      ));
+      self.clients.claim();
+    });
+    self.addEventListener('fetch', event => {
+      event.respondWith(
+        caches.match(event.request).then(cached => cached || fetch(event.request).catch(() => caches.match('/index.html')))
+      );
+    });
+  `;
+  const blob = new Blob([swCode], {type: 'application/javascript'});
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(err => console.log('SW failed:', err));
+}
 </script>
 </body>
 </html>
