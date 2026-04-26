@@ -56,6 +56,14 @@ body.yb {
   --text:#ff0; --text2:#cc0; --border:rgba(255,255,0,0.35);
   --yellow:#ff0; --yellow2:#ff0; --shadow:none;
 }
+/* LOW LIGHT — soft on sensitive eyes */
+body.ll {
+  --bg:#1a1a1a; --bg2:#222222; --card:#2a2a2a; --card2:#333333;
+  --text:#f0e6d3; --text2:#c4b49a; --border:rgba(255,255,255,0.12);
+  --yellow:#e8a020; --yellow2:#f0b030;
+  --green:#5dbf7a; --blue:#5aafe0; --purple:#b07ae8; --red:#e87070;
+  --shadow:0 2px 12px rgba(0,0,0,0.4);
+}
 
 /* ══════════════════════════════════════
    BASE
@@ -99,12 +107,15 @@ body {
   top: 0;
   z-index: 200;
 }
-.a11y-group { display: flex; align-items: center; gap: 6px; }
+.a11y-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .a11y-label {
   font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
   letter-spacing: 0.08em; color: var(--text2); white-space: nowrap; margin-right: 2px;
 }
-.a11y-divider { width: 1px; height: 28px; background: var(--border); margin: 0 6px; flex-shrink: 0; }
+.a11y-divider { width: 100%; height: 1px; background: var(--border); margin: 4px 0; }
+@media(min-width:560px){
+  .a11y-divider { width: 1px; height: 28px; margin: 0 6px; }
+}
 
 .ab {
   min-width: 44px; min-height: 44px;
@@ -128,7 +139,7 @@ body {
 /* helpline-pill removed */
 .helpline-pill {
   width: 100%;
-  background: var(--yellow); color: #000; border: none;
+  background: var(--yellow); color: #fff; border: none;
   padding: 0 20px; min-height: 44px; border-radius: 50px;
   font-family: var(--font); font-size: 0.88rem; font-weight: 900;
   cursor: pointer; text-decoration: none;
@@ -404,6 +415,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
     <span class="a11y-label" aria-hidden="true">Colour</span>
     <button class="ab on" id="col-def" onclick="setColour('')"     aria-pressed="true"  aria-label="Light default colours">☀️ Light</button>
     <button class="ab"    id="col-dark" onclick="setColour('dark')" aria-pressed="false" aria-label="Dark mode">🌙 Dark</button>
+    <button class="ab"    id="col-ll"  onclick="setColour('ll')"   aria-pressed="false" aria-label="Low light, soft on sensitive eyes">👁️ Low Light</button>
     <button class="ab"    id="col-hc"  onclick="setColour('hc')"   aria-pressed="false" aria-label="High contrast white on black">⬛ High</button>
     <button class="ab ab-yb" id="col-yb" onclick="setColour('yb')" aria-pressed="false" aria-label="Yellow on black">🟡 Yellow</button>
   </div>
@@ -433,6 +445,45 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 <div id="page-home" class="page active">
   <main id="main">
     <div class="hero">
+
+      <!-- HERO SVG ART -->
+      <div aria-hidden="true" style="text-align:center;margin-bottom:28px;opacity:0.85">
+        <svg viewBox="0 0 320 180" width="100%" style="max-width:380px;display:inline-block" xmlns="http://www.w3.org/2000/svg">
+          <!-- Soft background circle -->
+          <circle cx="160" cy="90" r="85" fill="var(--yellow)" opacity="0.08"/>
+          <!-- Outer eye shape -->
+          <ellipse cx="160" cy="90" rx="110" ry="58" fill="none" stroke="var(--yellow)" stroke-width="3" opacity="0.3"/>
+          <!-- Eye lid curves -->
+          <path d="M50,90 Q100,30 160,30 Q220,30 270,90" fill="none" stroke="var(--yellow)" stroke-width="2.5" opacity="0.5" stroke-linecap="round"/>
+          <path d="M50,90 Q100,150 160,150 Q220,150 270,90" fill="none" stroke="var(--yellow)" stroke-width="2.5" opacity="0.5" stroke-linecap="round"/>
+          <!-- Iris -->
+          <circle cx="160" cy="90" r="38" fill="none" stroke="var(--yellow)" stroke-width="3" opacity="0.6"/>
+          <!-- Iris detail rings -->
+          <circle cx="160" cy="90" r="28" fill="none" stroke="var(--yellow)" stroke-width="1.5" opacity="0.4"/>
+          <circle cx="160" cy="90" r="18" fill="none" stroke="var(--yellow)" stroke-width="1.5" opacity="0.3"/>
+          <!-- Pupil -->
+          <circle cx="160" cy="90" r="12" fill="var(--yellow)" opacity="0.7"/>
+          <!-- Light reflection -->
+          <circle cx="166" cy="84" r="4" fill="var(--card)" opacity="0.8"/>
+          <!-- Radiating lines from iris -->
+          <line x1="160" y1="52" x2="160" y2="42" stroke="var(--yellow)" stroke-width="1.5" opacity="0.35" stroke-linecap="round"/>
+          <line x1="160" y1="128" x2="160" y2="138" stroke="var(--yellow)" stroke-width="1.5" opacity="0.35" stroke-linecap="round"/>
+          <line x1="122" y1="90" x2="112" y2="90" stroke="var(--yellow)" stroke-width="1.5" opacity="0.35" stroke-linecap="round"/>
+          <line x1="198" y1="90" x2="208" y2="90" stroke="var(--yellow)" stroke-width="1.5" opacity="0.35" stroke-linecap="round"/>
+          <line x1="133" y1="63" x2="126" y2="56" stroke="var(--yellow)" stroke-width="1.5" opacity="0.25" stroke-linecap="round"/>
+          <line x1="187" y1="63" x2="194" y2="56" stroke="var(--yellow)" stroke-width="1.5" opacity="0.25" stroke-linecap="round"/>
+          <line x1="133" y1="117" x2="126" y2="124" stroke="var(--yellow)" stroke-width="1.5" opacity="0.25" stroke-linecap="round"/>
+          <line x1="187" y1="117" x2="194" y2="124" stroke="var(--yellow)" stroke-width="1.5" opacity="0.25" stroke-linecap="round"/>
+          <!-- Small stars/dots for visual interest -->
+          <circle cx="60" cy="45" r="3" fill="var(--yellow)" opacity="0.3"/>
+          <circle cx="275" cy="50" r="2" fill="var(--yellow)" opacity="0.25"/>
+          <circle cx="40" cy="120" r="2" fill="var(--yellow)" opacity="0.2"/>
+          <circle cx="290" cy="130" r="3" fill="var(--yellow)" opacity="0.25"/>
+          <circle cx="80" cy="155" r="2" fill="var(--yellow)" opacity="0.2"/>
+          <circle cx="240" cy="20" r="2" fill="var(--yellow)" opacity="0.2"/>
+        </svg>
+      </div>
+
       <span class="hero-eyebrow">Free · Independent · UK</span>
       <h1>Everything you need,<br>in one place.</h1>
       <p class="hero-desc">Clear, accessible information for people living with sight conditions — and the people who support them.</p>
@@ -629,6 +680,16 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 
     <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
   </div>
+</div>
+
+<!-- ══════════ DECORATIVE DIVIDER ══════════ -->
+<div aria-hidden="true" style="max-width:680px;margin:0 auto;padding:0 20px;text-align:center;opacity:0.4">
+  <svg viewBox="0 0 400 40" width="100%" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,20 Q50,5 100,20 Q150,35 200,20 Q250,5 300,20 Q350,35 400,20" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="200" cy="20" r="4" fill="var(--yellow)"/>
+    <circle cx="100" cy="20" r="2.5" fill="var(--yellow)"/>
+    <circle cx="300" cy="20" r="2.5" fill="var(--yellow)"/>
+  </svg>
 </div>
 
 <!-- ══════════ VIDEO RESOURCES ══════════ -->
@@ -1029,9 +1090,9 @@ function setSize(scale) {
 }
 
 /* ─────────────── COLOUR SCHEME ─────────────── */
-const COL_IDS = {'':'col-def', dark:'col-dark', hc:'col-hc', yb:'col-yb'};
+const COL_IDS = {'':'col-def', dark:'col-dark', ll:'col-ll', hc:'col-hc', yb:'col-yb'};
 function setColour(mode) {
-  document.body.classList.remove('dark','hc','yb');
+  document.body.classList.remove('dark','ll','hc','yb');
   if (mode) document.body.classList.add(mode);
   try { localStorage.setItem('vh-colour', mode); } catch(e){}
   Object.entries(COL_IDS).forEach(([m, id]) => {
