@@ -414,6 +414,86 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 
 .sr { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
+/* ══════════════════════════════════════
+   BACK TO TOP
+══════════════════════════════════════ */
+.back-top {
+  position: fixed; bottom: 24px; right: 20px; z-index: 300;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--yellow); color: #000; border: none;
+  font-size: 1.3rem; font-weight: 900; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s, transform .25s;
+  transform: translateY(8px);
+}
+.back-top.vis { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.back-top:hover { background: var(--yellow2); transform: translateY(-2px); }
+.back-top:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+
+/* ══════════════════════════════════════
+   PRINT STYLESHEET
+══════════════════════════════════════ */
+@media print {
+  /* Hide everything except the open condition panel */
+  .a11y-bar, #ios-banner, .site-header, .hero, .search-wrap,
+  .share-bar, .founder-box, .cond-btn, .close-row, .feedback-bar,
+  footer, .back-top, #video-hd, .ic + .share-bar,
+  [aria-hidden="true"] { display: none !important; }
+
+  /* Show only the open panel content */
+  body { background: #fff !important; color: #000 !important; font-size: 12pt; }
+  .cond-section { padding: 0 !important; max-width: 100% !important; }
+  .detail-panel.vis { display: block !important; border: none !important;
+    border-radius: 0 !important; background: #fff !important; }
+  .dp-inner { padding: 0 !important; }
+
+  /* Section headings */
+  .sec-h { margin: 18pt 0 8pt !important; break-after: avoid; }
+  .sec-h h2 { color: #000 !important; font-size: 14pt !important; }
+  .ybar { background: #000 !important; }
+
+  /* Cards */
+  .ic, .rc, .nc, .tc, .sc, .wb, .lc {
+    border: 1pt solid #ccc !important; border-radius: 4pt !important;
+    box-shadow: none !important; background: #fff !important;
+    margin-bottom: 8pt !important; padding: 10pt !important;
+    break-inside: avoid;
+  }
+  .ic p, .ic li, .rc p, .nc p, .tc p, .sc p, .wb, .lc p, .lc li {
+    color: #222 !important; font-size: 10pt !important; line-height: 1.5 !important;
+  }
+  .ic h3, .nc h3, .tc h3, .sc h3, .rc h3, .lc h2 {
+    color: #000 !important; font-size: 11pt !important;
+  }
+  .nc-num { background: #000 !important; color: #fff !important; print-color-adjust: exact; }
+  .rtag { border: 1pt solid #000 !important; background: #fff !important;
+    color: #000 !important; print-color-adjust: exact; }
+  .trial-link { color: #000 !important; text-decoration: underline !important;
+    background: none !important; border: 1pt solid #000 !important; }
+  .sc a { color: #000 !important; }
+  .tc-price { color: #000 !important; font-weight: 700; }
+  .wb { border-color: #000 !important; background: #f5f5f5 !important;
+    print-color-adjust: exact; }
+
+  /* Print header */
+  .cond-section::before {
+    content: "Vision Hub — visionhubuk.co.uk — Free UK Sight Loss Resource";
+    display: block; font-size: 8pt; color: #666;
+    border-bottom: 1pt solid #ccc; padding-bottom: 6pt; margin-bottom: 14pt;
+  }
+  .cond-section::after {
+    content: "This information is for guidance only. Always consult your ophthalmologist. Vision Hub is not a medical provider.";
+    display: block; font-size: 8pt; color: #666;
+    border-top: 1pt solid #ccc; padding-top: 6pt; margin-top: 14pt;
+  }
+
+  /* Page breaks */
+  .sec-h { page-break-before: auto; }
+  @page { margin: 15mm 20mm; }
+}
+
 .back-btn {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--card); border: 2px solid var(--border);
@@ -503,7 +583,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       <span class="hero-eyebrow">Free · Independent · UK</span>
       <h1>Everything you need,<br>in one place.</h1>
       <p class="hero-desc">Clear, accessible information for people living with sight conditions — and the people who support them.</p>
-      <p class="last-updated">Last updated: <time datetime="2026-04-25">April 2026</time> · <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0">Suggest a correction</button></p>
+      <p class="last-updated">Last updated: <time datetime="2026-04-25">April 2026</time> · <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0">Contact us</button></p>
 
       <div class="founder-box">
         <p class="founder-short">My daughter was diagnosed with Stargardt disease. When I started looking for help, I couldn't find one place that had everything — clear information, benefits guidance, research, and support — all in one place.</p>
@@ -782,6 +862,9 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
   </div>
   <div class="wb"><strong>Note:</strong> These links go to external websites and YouTube channels. Vision Hub is not responsible for their content. Always discuss medical information with your ophthalmologist.</div>
 </section>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <!-- FOOTER -->
 <footer>
@@ -1345,14 +1428,33 @@ function closePanelByKey(key, refocus = true) {
   openKey = null; openBtn = null;
 }
 
-/* ─────────────── SEARCH ─────────────── */
+/* ─────────────── SEARCH (with symptom keywords) ─────────────── */
+const COND_KEYWORDS = {
+  stargardts: ['stargardt','stargardts','macular','central vision','blurry','reading','abca4','juvenile macular','inherited','flecks','lipofuscin','light sensitivity','photophobia','young','child','teenage'],
+  amd:        ['amd','macular degeneration','age related','age-related','central vision','wavy lines','amsler','drusen','anti-vegf','injection','wet amd','dry amd','geographic atrophy','over 50','older','floaters'],
+  glaucoma:   ['glaucoma','optic nerve','pressure','eye pressure','peripheral vision','tunnel vision','side vision','eye drops','tonometry','visual field','iop','blindness','silent','painless'],
+  rp:         ['retinitis pigmentosa','rp','night blindness','tunnel vision','peripheral','rod','rod photoreceptor','inherited','genetic','cane','guide dog','dark','darkness'],
+  diabetic:   ['diabetic','diabetes','retinopathy','blood sugar','hba1c','screening','floaters','type 1','type 2','insulin','vegf','macular oedema','swelling'],
+  lca:        ['leber','lca','congenital amaurosis','born blind','baby','infant','childhood','cep290','rpe65','nystagmus','oculodigital','pressing eyes','gene therapy','luxturna'],
+  nystagmus:  ['nystagmus','wobbly eyes','involuntary','eye movement','null zone','head turn','oscillopsia','shaking','jiggling','school','driving','dvla'],
+  achromatopsia:['achromatopsia','colour blind','color blind','total colour blindness','monochromacy','no colour','no color','cones absent','bright light','photophobia','sun sensitive','rod monochromacy','cngb3','cnga3'],
+  usher:      ['usher','deaf','hearing loss','deafblind','deaf-blind','dual sensory','balance','vestibular','communication','interpreter','intervenor','sense charity','myo7a','ush2a'],
+  albinism:   ['albinism','albino','melanin','pigmentation','pale','white hair','skin','uv','sun','foveal hypoplasia','oculocutaneous','ocular albinism','oca'],
+  cvi:        ['cerebral visual impairment','cvi','brain','neurological','cortical','premature','prematurity','hypoxia','clutter','visual processing','processing','eeg','complex needs','cerebral palsy','stroke'],
+  cone:       ['cone dystrophy','cone rod','colour vision','color vision','central vision','photophobia','light sensitive','reading','driving','rpgr','cngb3','progressive','fovea']
+};
+
 function filterConds(q) {
   q = (q || '').toLowerCase().trim();
   var items = document.getElementsByClassName('cond-item');
   for (var i = 0; i < items.length; i++) {
     var btn = items[i].querySelector('.cond-btn');
-    var label = btn ? btn.textContent.toLowerCase() : '';
-    items[i].style.display = (!q || label.indexOf(q) !== -1) ? '' : 'none';
+    if (!btn) continue;
+    var condKey = (btn.getAttribute('onclick') || '').replace(/toggle\('(\w+)'.*/,'$1');
+    var label   = btn.textContent.toLowerCase();
+    var keywords = (COND_KEYWORDS[condKey] || []).join(' ');
+    var match   = !q || label.indexOf(q) !== -1 || keywords.indexOf(q) !== -1;
+    items[i].style.display = match ? '' : 'none';
   }
 }
 
@@ -1437,6 +1539,15 @@ document.addEventListener('keydown', e => {
 document.querySelector('.site-name').addEventListener('keydown', e => {
   if (e.key === 'Enter' || e.key === ' ') showPage('home');
 });
+
+/* ─────────────── BACK TO TOP ─────────────── */
+(function() {
+  var btn = document.getElementById('back-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('vis', window.scrollY > 400);
+  }, { passive: true });
+})();
 
 /* ─────────────── iOS INSTALL BANNER ─────────────── */
 (function() {
