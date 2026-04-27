@@ -74,18 +74,7 @@ body {
   line-height: 1.7;
 }
 
-/* A11y bar is exempt from scaling — always fixed px so it never gets covered */
-.a11y-bar, .a11y-bar * {
-  font-size: 14px !important;
-}
-.a11y-bar .a11y-label { font-size: 11px !important; }
-.a11y-bar .ab { width: 36px !important; height: 36px !important; font-size: inherit !important; }
-.a11y-bar .ab-s  { font-size: 11px !important; }
-.a11y-bar .ab-m  { font-size: 14px !important; }
-.a11y-bar .ab-l  { font-size: 18px !important; }
-.a11y-bar .ab-xl { font-size: 22px !important; }
-.a11y-bar .helpline-pill { font-size: 13px !important; min-height: 36px !important; }
-.a11y-bar select { font-size: 13px !important; height: 36px !important; }
+/* A11y bar uses fixed px via CSS classes above - immune to scaling */
 
 .skip {
   position: absolute; top: -80px; left: 12px;
@@ -103,52 +92,55 @@ body {
 .a11y-bar {
   background: var(--bg2);
   border-bottom: 3px solid var(--yellow);
-  padding: 8px 12px;
+  padding: 6px 10px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
+  gap: 6px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
   position: sticky;
   top: 0;
   z-index: 200;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  min-height: 50px;
 }
-.a11y-group { display: flex; align-items: center; gap: 5px; }
+.a11y-bar::-webkit-scrollbar { display: none; }
+.a11y-bar .site-name {
+  font-size: 13px !important; font-weight: 900;
+  color: var(--yellow); cursor: pointer;
+  white-space: nowrap; flex-shrink: 0;
+}
+.a11y-divider { width: 1px; height: 24px; background: var(--border); flex-shrink: 0; }
 .a11y-label {
-  font-size: 0.68rem; font-weight: 800; text-transform: uppercase;
-  letter-spacing: 0.08em; color: var(--text2); white-space: nowrap; margin-right: 3px;
+  font-size: 10px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text2); white-space: nowrap; flex-shrink: 0;
 }
-.a11y-divider { width: 1px; height: 28px; background: var(--border); margin: 0 4px; flex-shrink: 0; }
 .ab {
-  width: 36px; height: 36px;
+  width: 32px; height: 32px;
   background: var(--card2); border: 2px solid var(--border);
   color: var(--text); padding: 0; border-radius: 50%;
   font-family: var(--font); font-weight: 800; cursor: pointer;
   display: inline-flex; align-items: center; justify-content: center;
-  white-space: nowrap; flex-shrink: 0;
+  flex-shrink: 0;
   transition: border-color .15s, color .15s, background .15s;
 }
 .ab:hover        { border-color: var(--yellow); color: var(--yellow); }
 .ab:focus-visible{ outline: 3px solid var(--yellow); outline-offset: 3px; }
 .ab.on           { background: var(--yellow); color: #000; border-color: var(--yellow); }
-.ab-s  { font-size: 11px; }
-.ab-m  { font-size: 14px; }
-.ab-l  { font-size: 18px; }
-.ab-xl { font-size: 22px; }
-.ab-xxl { font-size: 20px; }
-.ab-xxxl { font-size: 18px; }
-.helpline-pill {
-  width: 100%;
-  background: var(--yellow); color: #fff; border: none;
-  padding: 0 16px; min-height: 36px; border-radius: 50px;
-  font-family: var(--font); font-size: 0.82rem; font-weight: 900;
-  cursor: pointer; text-decoration: none;
-  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  white-space: nowrap;
+.ab-s  { font-size: 10px; }
+.ab-m  { font-size: 13px; }
+.ab-l  { font-size: 16px; }
+.ab-xl { font-size: 19px; }
+.theme-select {
+  height: 32px; padding: 0 8px; border-radius: 50px;
+  border: 2px solid var(--border); background: var(--card2);
+  color: var(--text); font-family: var(--font);
+  font-size: 12px; font-weight: 700; cursor: pointer;
+  outline: none; flex-shrink: 0; max-width: 110px;
 }
-@media(min-width: 560px){ .helpline-pill { width: auto; margin-left: auto; } }
-.helpline-pill:hover        { background: var(--yellow2); }
-.helpline-pill:focus-visible{ outline: 3px solid var(--text); outline-offset: 3px; }
-
+.theme-select:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
 /* ══════════════════════════════════════
    PAGES
 ══════════════════════════════════════ */
@@ -582,32 +574,22 @@ body.yb .news-tag.tech, body.yb .news-tag.general { background: #ff0; color: #00
 
 <!-- ACCESSIBILITY BAR -->
 <div class="a11y-bar" role="toolbar" aria-label="Accessibility controls">
-  <!-- Logo inline in bar -->
-  <div class="logo-hex" aria-hidden="true" style="width:24px;height:24px;flex-shrink:0"></div>
-  <span class="site-name" onclick="showPage('home')" role="link" tabindex="0" aria-label="Vision Hub home" style="font-size:14px;font-weight:900;color:var(--yellow);cursor:pointer;white-space:nowrap;margin-right:4px">Vision Hub</span>
-  <div style="width:1px;height:28px;background:var(--border);flex-shrink:0;margin:0 4px"></div>
-  <div class="a11y-group" role="group" aria-label="Text size">
-    <span class="a11y-label" aria-hidden="true">Text</span>
-    <button class="ab ab-s on" id="sz-s"  onclick="setSize(1)"    aria-pressed="true"  aria-label="Small text">A</button>
-    <button class="ab ab-m"    id="sz-m"  onclick="setSize(1.35)" aria-pressed="false" aria-label="Medium text">A</button>
-    <button class="ab ab-l"    id="sz-l"  onclick="setSize(1.7)"  aria-pressed="false" aria-label="Large text">A</button>
-    <button class="ab ab-xl"   id="sz-xl" onclick="setSize(2.2)"  aria-pressed="false" aria-label="Extra large text">A</button>
-  </div>
-  <div class="a11y-group" role="group" aria-label="Theme">
-    <span class="a11y-label" aria-hidden="true">Theme</span>
-    <select id="col-select" onchange="setColour(this.value)"
-      aria-label="Choose colour theme"
-      style="height:36px;padding:0 10px;border-radius:50px;border:2px solid var(--border);background:var(--card2);color:var(--text);font-family:var(--font);font-size:0.82rem;font-weight:700;cursor:pointer;outline:none;max-width:160px">
-      <option value="">☀️ Light</option>
-      <option value="dark">🌙 Dark</option>
-      <option value="ll">👁️ Low Light</option>
-      <option value="hc">⬛ High Contrast</option>
-      <option value="yb">🟡 Yellow on Black</option>
-    </select>
-  </div>
-  <a href="tel:03031239999" class="helpline-pill" aria-label="RNIB helpline, phone 0303 123 9999">
-    📞 RNIB Helpline: 0303 123 9999
-  </a>
+  <div class="logo-hex" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0"></div>
+  <span class="site-name" onclick="showPage('home')" role="link" tabindex="0" aria-label="Vision Hub home">Vision Hub</span>
+  <div class="a11y-divider"></div>
+  <span class="a11y-label" aria-hidden="true">Text</span>
+  <button class="ab ab-s on" id="sz-s"  onclick="setSize(1)"    aria-pressed="true"  aria-label="Small text">A</button>
+  <button class="ab ab-m"    id="sz-m"  onclick="setSize(1.35)" aria-pressed="false" aria-label="Medium text">A</button>
+  <button class="ab ab-l"    id="sz-l"  onclick="setSize(1.7)"  aria-pressed="false" aria-label="Large text">A</button>
+  <button class="ab ab-xl"   id="sz-xl" onclick="setSize(2.2)"  aria-pressed="false" aria-label="Extra large text">A</button>
+  <div class="a11y-divider"></div>
+  <select id="col-select" onchange="setColour(this.value)" aria-label="Choose colour theme" class="theme-select">
+    <option value="">☀️ Light</option>
+    <option value="dark">🌙 Dark</option>
+    <option value="ll">👁️ Low Light</option>
+    <option value="hc">⬛ Hi-Con</option>
+    <option value="yb">🟡 Yel/Blk</option>
+  </select>
 </div>
 
 <!-- iOS INSTALL BANNER -->
@@ -701,8 +683,9 @@ body.yb .news-tag.tech, body.yb .news-tag.general { background: #ff0; color: #00
         <p class="news-footer">Updates are verified and added each quarter. Information is for guidance only — always discuss research and treatment options with your ophthalmologist. <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:0.78rem;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Spotted something missing? Let us know.</button></p>
       </section>
 
-      <div class="share-bar" role="group" aria-label="Share this page">
-        <button class="share-btn" onclick="sharePage()" aria-label="Share Vision Hub">📤 Share this page</button>
+      <div class="share-bar" role="group" aria-label="Share and contact">
+        <a href="tel:03031239999" class="share-btn" aria-label="RNIB helpline 0303 123 9999">📞 RNIB: 0303 123 9999</a>
+        <button class="share-btn" onclick="sharePage()" aria-label="Share Vision Hub">📤 Share</button>
         <button class="share-btn" onclick="copyLink()" id="copy-link-btn" aria-label="Copy link to clipboard">🔗 Copy link</button>
         <a class="share-btn" href="https://wa.me/?text=Vision%20Hub%20-%20Free%20UK%20sight%20loss%20resource%3A%20" target="_blank" rel="noopener" aria-label="Share on WhatsApp">💬 WhatsApp</a>
       </div>
