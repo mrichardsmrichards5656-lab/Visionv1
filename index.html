@@ -121,6 +121,8 @@ body {
 .ab-m  { font-size: 14px; }
 .ab-l  { font-size: 18px; }
 .ab-xl { font-size: 22px; }
+.ab-xxl { font-size: 20px; }
+.ab-xxxl { font-size: 18px; }
 .helpline-pill {
   width: 100%;
   background: var(--yellow); color: #fff; border: none;
@@ -216,9 +218,24 @@ body {
 }
 .cond-btn:hover        { background: var(--card2); border-color: var(--yellow); color: var(--yellow); }
 .cond-btn:focus-visible{ outline: 3px solid var(--yellow); outline-offset: 3px; }
-.cond-btn.on           { background: var(--yellow); color: #000; border-color: var(--yellow); font-weight: 900; }
+.cond-btn.on           { background: var(--yellow); color: #000; border-color: var(--yellow); font-weight: 900; border-left: 6px solid #9a5e00; }
 .cond-arrow { font-size: 1.1rem; flex-shrink: 0; transition: transform .25s; }
 .cond-btn.on .cond-arrow { transform: rotate(180deg); }
+
+/* Divider between founder box and news box */
+.section-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 4px 0 20px;
+  opacity: 0.45;
+}
+.section-divider::before,
+.section-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--yellow);
+}
+.section-divider-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--yellow); flex-shrink: 0;
+}
 
 /* ══════════════════════════════════════
    DETAIL PANEL
@@ -297,13 +314,14 @@ body.yb .rtag.gene, body.yb .rtag.stem, body.yb .rtag.trial, body.yb .rtag.drug,
 
 .close-row { display: flex; justify-content: flex-end; margin-bottom: 20px; }
 .close-btn {
-  background: var(--card2); border: 2px solid var(--border); color: var(--text);
-  padding: 10px 26px; border-radius: 50px; font-family: var(--font);
-  font-size: 0.9rem; font-weight: 700; cursor: pointer; min-height: 44px;
-  transition: border-color .15s, color .15s;
+  background: var(--yellow); border: 2px solid var(--yellow); color: #000;
+  padding: 12px 28px; border-radius: 50px; font-family: var(--font);
+  font-size: 0.95rem; font-weight: 800; cursor: pointer; min-height: 52px;
+  transition: background .15s, border-color .15s;
+  letter-spacing: 0.02em;
 }
-.close-btn:hover        { border-color: var(--yellow); color: var(--yellow); }
-.close-btn:focus-visible{ outline: 3px solid var(--yellow); outline-offset: 3px; }
+.close-btn:hover        { background: var(--yellow2); border-color: var(--yellow2); }
+.close-btn:focus-visible{ outline: 3px solid var(--text); outline-offset: 3px; }
 
 .feedback-bar {
   display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
@@ -419,11 +437,11 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 ══════════════════════════════════════ */
 .back-top {
   position: fixed; bottom: 24px; right: 20px; z-index: 300;
-  width: 48px; height: 48px; border-radius: 50%;
+  width: 56px; height: 56px; border-radius: 50%;
   background: var(--yellow); color: #000; border: none;
-  font-size: 1.3rem; font-weight: 900; cursor: pointer;
+  font-size: 1.4rem; font-weight: 900; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.28);
   opacity: 0; pointer-events: none;
   transition: opacity .25s, transform .25s;
   transform: translateY(8px);
@@ -565,10 +583,9 @@ body.yb .news-tag.tech, body.yb .news-tag.general { background: #ff0; color: #00
 <div class="a11y-bar" role="toolbar" aria-label="Accessibility controls">
   <div class="a11y-group" role="group" aria-label="Text size">
     <span class="a11y-label" aria-hidden="true">Text</span>
-    <button class="ab ab-s" id="sz-s"  onclick="setSize(0.85)" aria-pressed="false" aria-label="Small text">A</button>
-    <button class="ab ab-m on" id="sz-m" onclick="setSize(1)"    aria-pressed="true"  aria-label="Default text size">A</button>
-    <button class="ab ab-l" id="sz-l"  onclick="setSize(1.25)"  aria-pressed="false" aria-label="Large text">A</button>
-    <button class="ab ab-xl" id="sz-xl" onclick="setSize(1.5)"   aria-pressed="false" aria-label="Extra large text">A</button>
+    <button class="ab ab-s on" id="sz-s"  onclick="setSize(0.85)" aria-pressed="true"  aria-label="Small text">A</button>
+    <button class="ab ab-m"    id="sz-m"  onclick="setSize(1)"    aria-pressed="false" aria-label="Default text size">A</button>
+    <button class="ab ab-xxxl" id="sz-xxxl" onclick="setSize(2.5)" aria-pressed="false" aria-label="Maximum text size">A</button>
   </div>
   <div class="a11y-group" role="group" aria-label="Theme">
     <span class="a11y-label" aria-hidden="true">Theme</span>
@@ -640,6 +657,13 @@ body.yb .news-tag.tech, body.yb .news-tag.general { background: #ff0; color: #00
         <p class="founder-short">My daughter was diagnosed with Stargardt disease. When I started looking for help, I couldn't find one place that had everything — clear information, benefits guidance, research, and support — all in one place.</p>
         <p class="founder-short" style="margin-top:12px">So I built it. And because sight loss affects so many people in so many different ways, I built it for everyone — not just for Stargardt, but for every eye condition.</p>
         <p class="founder-short" style="margin-top:12px; color:var(--yellow); font-weight:700;">This site is free, independent, and always will be.</p>
+      </div>
+
+      <!-- divider -->
+      <div class="section-divider" aria-hidden="true">
+        <div class="section-divider-dot"></div>
+        <div class="section-divider-dot"></div>
+        <div class="section-divider-dot"></div>
       </div>
 
       <!-- ══════ RECENT UPDATES ══════ -->
@@ -1546,7 +1570,7 @@ function filterConds(q) {
 }
 
 /* ─────────────── TEXT SIZE ─────────────── */
-const SIZE_IDS = {0.85:'sz-s', 1:'sz-m', 1.25:'sz-l', 1.5:'sz-xl'};
+const SIZE_IDS = {0.85:'sz-s', 1:'sz-m', 2.5:'sz-xxxl'};
 function setSize(scale) {
   document.documentElement.style.setProperty('--scale', scale);
   try { localStorage.setItem('vh-size', scale); } catch(e){}
@@ -1601,9 +1625,10 @@ function submitFeedback(key, vote, btn) {
 /* ─────────────── RESTORE SAVED PREFERENCES ─────────────── */
 (function restorePrefs() {
   try {
-    const size   = parseFloat(localStorage.getItem('vh-size'))   || 1;
+    const saved  = localStorage.getItem('vh-size');
+    const size   = saved ? parseFloat(saved) : 0.85;
     const colour = localStorage.getItem('vh-colour') ?? '';
-    if (size !== 1)    setSize(size);
+    setSize(size);
     if (colour !== '') setColour(colour);
     const sel = document.getElementById('col-select');
     if (sel) sel.value = colour;
