@@ -77,14 +77,13 @@ body {
 /* A11y bar uses fixed px via CSS classes above - immune to scaling */
 
 .skip {
-  position: absolute; top: -80px; left: 12px;
+  position: absolute; top: -999px; left: -999px;
   background: var(--yellow); color: #000;
   padding: 14px 28px; border-radius: 50px;
-  font-weight: 800; font-size: 1rem;
+  font-weight: 800; font-size: 16px;
   text-decoration: none; z-index: 9999;
-  transition: top .2s;
 }
-.skip:focus { top: 12px; }
+.skip:focus { top: 12px; left: 12px; }
 
 /* ══════════════════════════════════════
    ACCESSIBILITY BAR
