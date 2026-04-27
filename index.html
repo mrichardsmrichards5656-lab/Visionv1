@@ -150,25 +150,13 @@ body {
 .helpline-pill:focus-visible{ outline: 3px solid var(--text); outline-offset: 3px; }
 
 /* ══════════════════════════════════════
-   SITE HEADER
+   PAGES
 ══════════════════════════════════════ */
-.site-header {
-  background: var(--bg2); padding: 16px 20px;
-  display: flex; align-items: center; gap: 12px;
-  border-bottom: 1px solid var(--border);
-}
 .logo-hex {
-  width: 36px; height: 36px; background: var(--yellow);
+  background: var(--yellow);
   clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
   flex-shrink: 0;
 }
-.site-name { font-size: 1.2rem; font-weight: 900; color: var(--yellow); cursor: pointer; }
-.site-tagline { font-size: 0.78rem; color: var(--text2); margin-left: auto; display: none; }
-@media(min-width:480px){ .site-tagline { display: block; } }
-
-/* ══════════════════════════════════════
-   PAGES
-══════════════════════════════════════ */
 .page { display: none; }
 .page.active { display: block; }
 
@@ -468,7 +456,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 ══════════════════════════════════════ */
 @media print {
   /* Hide everything except the open condition panel */
-  .a11y-bar, #ios-banner, .site-header, .hero, .search-wrap,
+  .a11y-bar, #ios-banner, .hero, .search-wrap,
   .share-bar, .founder-box, .cond-btn, .close-row, .feedback-bar,
   footer, .back-top, #video-hd, .ic + .share-bar,
   [aria-hidden="true"] { display: none !important; }
@@ -594,6 +582,10 @@ body.yb .news-tag.tech, body.yb .news-tag.general { background: #ff0; color: #00
 
 <!-- ACCESSIBILITY BAR -->
 <div class="a11y-bar" role="toolbar" aria-label="Accessibility controls">
+  <!-- Logo inline in bar -->
+  <div class="logo-hex" aria-hidden="true" style="width:24px;height:24px;flex-shrink:0"></div>
+  <span class="site-name" onclick="showPage('home')" role="link" tabindex="0" aria-label="Vision Hub home" style="font-size:14px;font-weight:900;color:var(--yellow);cursor:pointer;white-space:nowrap;margin-right:4px">Vision Hub</span>
+  <div style="width:1px;height:28px;background:var(--border);flex-shrink:0;margin:0 4px"></div>
   <div class="a11y-group" role="group" aria-label="Text size">
     <span class="a11y-label" aria-hidden="true">Text</span>
     <button class="ab ab-s on" id="sz-s"  onclick="setSize(1)"    aria-pressed="true"  aria-label="Small text">A</button>
@@ -625,13 +617,6 @@ body.yb .news-tag.tech, body.yb .news-tag.general { background: #ff0; color: #00
     style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:1.3rem;cursor:pointer;color:#000;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center"
     aria-label="Dismiss install banner">✕</button>
 </div>
-
-<!-- HEADER -->
-<header class="site-header">
-  <div class="logo-hex" aria-hidden="true"></div>
-  <span class="site-name" onclick="showPage('home')" role="link" tabindex="0" aria-label="Vision Hub home">Vision Hub</span>
-  <span class="site-tagline">UK Sight Loss Resource</span>
-</header>
 
 <!-- ══════════════════════════════════════
      HOME PAGE
