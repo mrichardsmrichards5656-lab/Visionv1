@@ -523,12 +523,12 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
   word-wrap: break-word;
 }
 .news-box-header {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;
 }
 .news-box-icon { font-size: 1.2rem; flex-shrink: 0; }
 .news-box-title {
   font-size: 0.95rem; font-weight: 900; color: var(--yellow);
-  text-transform: uppercase; letter-spacing: 0.06em;
+  text-transform: uppercase; letter-spacing: 0.06em; flex: 1; min-width: 0;
 }
 .news-box-date {
   font-size: 0.75rem; font-weight: 700; color: var(--text2);
@@ -539,6 +539,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
   padding: 10px 0; border-top: 1px solid var(--border);
 }
 .news-item:first-of-type { border-top: none; padding-top: 0; }
+.news-item .news-text { min-width: 0; flex: 1; }
 .news-tag {
   display: inline-block; padding: 3px 10px; border-radius: 50px;
   font-size: 0.68rem; font-weight: 800; text-transform: uppercase;
