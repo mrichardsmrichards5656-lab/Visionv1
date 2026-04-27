@@ -74,6 +74,19 @@ body {
   line-height: 1.7;
 }
 
+/* A11y bar is exempt from scaling — always fixed px so it never gets covered */
+.a11y-bar, .a11y-bar * {
+  font-size: 14px !important;
+}
+.a11y-bar .a11y-label { font-size: 11px !important; }
+.a11y-bar .ab { width: 36px !important; height: 36px !important; font-size: inherit !important; }
+.a11y-bar .ab-s  { font-size: 11px !important; }
+.a11y-bar .ab-m  { font-size: 14px !important; }
+.a11y-bar .ab-l  { font-size: 18px !important; }
+.a11y-bar .ab-xl { font-size: 22px !important; }
+.a11y-bar .helpline-pill { font-size: 13px !important; min-height: 36px !important; }
+.a11y-bar select { font-size: 13px !important; height: 36px !important; }
+
 .skip {
   position: absolute; top: -80px; left: 12px;
   background: var(--yellow); color: #000;
@@ -583,9 +596,10 @@ body.yb .news-tag.tech, body.yb .news-tag.general { background: #ff0; color: #00
 <div class="a11y-bar" role="toolbar" aria-label="Accessibility controls">
   <div class="a11y-group" role="group" aria-label="Text size">
     <span class="a11y-label" aria-hidden="true">Text</span>
-    <button class="ab ab-s on" id="sz-s"  onclick="setSize(0.85)" aria-pressed="true"  aria-label="Small text">A</button>
-    <button class="ab ab-m"    id="sz-m"  onclick="setSize(1)"    aria-pressed="false" aria-label="Default text size">A</button>
-    <button class="ab ab-xxxl" id="sz-xxxl" onclick="setSize(2.5)" aria-pressed="false" aria-label="Maximum text size">A</button>
+    <button class="ab ab-s on" id="sz-s"  onclick="setSize(1)"    aria-pressed="true"  aria-label="Small text">A</button>
+    <button class="ab ab-m"    id="sz-m"  onclick="setSize(1.35)" aria-pressed="false" aria-label="Medium text">A</button>
+    <button class="ab ab-l"    id="sz-l"  onclick="setSize(1.7)"  aria-pressed="false" aria-label="Large text">A</button>
+    <button class="ab ab-xl"   id="sz-xl" onclick="setSize(2.2)"  aria-pressed="false" aria-label="Extra large text">A</button>
   </div>
   <div class="a11y-group" role="group" aria-label="Theme">
     <span class="a11y-label" aria-hidden="true">Theme</span>
@@ -1570,14 +1584,14 @@ function filterConds(q) {
 }
 
 /* ─────────────── TEXT SIZE ─────────────── */
-const SIZE_IDS = {0.85:'sz-s', 1:'sz-m', 2.5:'sz-xxxl'};
+const SIZE_IDS = {1:'sz-s', 1.35:'sz-m', 1.7:'sz-l', 2.2:'sz-xl'};
 function setSize(scale) {
   document.documentElement.style.setProperty('--scale', scale);
   try { localStorage.setItem('vh-size', scale); } catch(e){}
   Object.entries(SIZE_IDS).forEach(([s, id]) => {
     const b = document.getElementById(id);
     if (!b) return;
-    const active = parseFloat(s) === scale;
+    const active = Math.abs(parseFloat(s) - scale) < 0.01;
     b.classList.toggle('on', active);
     b.setAttribute('aria-pressed', String(active));
   });
@@ -1626,7 +1640,7 @@ function submitFeedback(key, vote, btn) {
 (function restorePrefs() {
   try {
     const saved  = localStorage.getItem('vh-size');
-    const size   = saved ? parseFloat(saved) : 0.85;
+    const size   = saved ? parseFloat(saved) : 1;
     const colour = localStorage.getItem('vh-colour') ?? '';
     setSize(size);
     if (colour !== '') setColour(colour);
