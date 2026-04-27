@@ -494,6 +494,57 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
   @page { margin: 15mm 20mm; }
 }
 
+/* ══════════════════════════════════════
+   RECENT UPDATES BOX
+══════════════════════════════════════ */
+.news-box {
+  background: var(--card);
+  border: 2px solid var(--yellow);
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin-bottom: 28px;
+}
+.news-box-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+}
+.news-box-icon { font-size: 1.2rem; flex-shrink: 0; }
+.news-box-title {
+  font-size: 0.95rem; font-weight: 900; color: var(--yellow);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.news-box-date {
+  font-size: 0.75rem; font-weight: 700; color: var(--text2);
+  margin-left: auto; white-space: nowrap;
+}
+.news-item {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 10px 0; border-top: 1px solid var(--border);
+}
+.news-item:first-of-type { border-top: none; padding-top: 0; }
+.news-tag {
+  display: inline-block; padding: 3px 10px; border-radius: 50px;
+  font-size: 0.68rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.06em; white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+}
+.news-tag.research { background: #dcfce7; color: #166534; }
+.news-tag.benefits { background: #dbeafe; color: #1e40af; }
+.news-tag.tech     { background: #f3e8ff; color: #6b21a8; }
+.news-tag.general  { background: #fef9c3; color: #854d0e; }
+body.dark .news-tag.research { background: var(--green);  color: #000; }
+body.dark .news-tag.benefits { background: var(--blue);   color: #000; }
+body.dark .news-tag.tech     { background: var(--purple); color: #000; }
+body.dark .news-tag.general  { background: var(--yellow); color: #000; }
+body.hc .news-tag.research, body.hc .news-tag.benefits,
+body.hc .news-tag.tech, body.hc .news-tag.general { background: var(--yellow); color: #000; }
+body.yb .news-tag.research, body.yb .news-tag.benefits,
+body.yb .news-tag.tech, body.yb .news-tag.general { background: #ff0; color: #000; }
+.news-text { font-size: 0.9rem; color: var(--text2); line-height: 1.6; }
+.news-text strong { color: var(--text); font-weight: 700; }
+.news-footer {
+  margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border);
+  font-size: 0.78rem; color: var(--text2); line-height: 1.6;
+}
+
 .back-btn {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--card); border: 2px solid var(--border);
@@ -583,13 +634,49 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       <span class="hero-eyebrow">Free · Independent · UK</span>
       <h1>Everything you need,<br>in one place.</h1>
       <p class="hero-desc">Clear, accessible information for people living with sight conditions — and the people who support them.</p>
-      <p class="last-updated">Last updated: <time datetime="2026-04-25">April 2026</time> · <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0">Contact us</button></p>
+      <p class="last-updated">Last updated: <time datetime="2026-04-25">April 2026</time> · Reviewed quarterly · <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0">Contact us</button></p>
 
       <div class="founder-box">
         <p class="founder-short">My daughter was diagnosed with Stargardt disease. When I started looking for help, I couldn't find one place that had everything — clear information, benefits guidance, research, and support — all in one place.</p>
         <p class="founder-short" style="margin-top:12px">So I built it. And because sight loss affects so many people in so many different ways, I built it for everyone — not just for Stargardt, but for every eye condition.</p>
         <p class="founder-short" style="margin-top:12px; color:var(--yellow); font-weight:700;">This site is free, independent, and always will be.</p>
       </div>
+
+      <!-- ══════ RECENT UPDATES ══════ -->
+      <section class="news-box" aria-labelledby="news-hd">
+        <div class="news-box-header">
+          <span class="news-box-icon" aria-hidden="true">📰</span>
+          <span class="news-box-title" id="news-hd">Recent Updates</span>
+          <span class="news-box-date">April 2026</span>
+        </div>
+
+        <div class="news-item">
+          <span class="news-tag research">Research</span>
+          <p class="news-text"><strong>Stargardt:</strong> REGENXBIO reports encouraging Phase 2 interim data for RGX-314 dual-vector ABCA4 gene therapy — safety profile confirmed, efficacy readout expected later in 2026.</p>
+        </div>
+
+        <div class="news-item">
+          <span class="news-tag research">Research</span>
+          <p class="news-text"><strong>Retinitis Pigmentosa:</strong> MeiraGTx RPGR gene therapy Phase 2/3 trial reports significant preservation of visual field in X-linked RP patients at 12-month follow-up.</p>
+        </div>
+
+        <div class="news-item">
+          <span class="news-tag research">Research</span>
+          <p class="news-text"><strong>Usher Syndrome:</strong> ProQR's antisense oligonucleotide therapy for USH2A (QR-421a) shows continued visual function preservation at 24 months in ongoing trial.</p>
+        </div>
+
+        <div class="news-item">
+          <span class="news-tag benefits">Benefits</span>
+          <p class="news-text"><strong>PIP &amp; DLA rates updated April 2026 (3.8% rise):</strong> Daily Living enhanced rate £114.60/week. Mobility enhanced rate £80.00/week. Attendance Allowance higher rate £114.60/week. Carer's Allowance £86.45/week.</p>
+        </div>
+
+        <div class="news-item">
+          <span class="news-tag tech">Technology</span>
+          <p class="news-text"><strong>All conditions:</strong> Apple iOS 18 introduced significant VoiceOver improvements including enhanced image descriptions and improved braille display support.</p>
+        </div>
+
+        <p class="news-footer">Updates are verified and added each quarter. Information is for guidance only — always discuss research and treatment options with your ophthalmologist. <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:0.78rem;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Spotted something missing? Let us know.</button></p>
+      </section>
 
       <div class="share-bar" role="group" aria-label="Share this page">
         <button class="share-btn" onclick="sharePage()" aria-label="Share Vision Hub">📤 Share this page</button>
@@ -883,7 +970,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       </div>
     </nav>
     <div class="footer-bottom">
-      © 2026 Vision Hub &nbsp;·&nbsp; Not a medical provider &nbsp;·&nbsp; Always consult your ophthalmologist &nbsp;·&nbsp;
+      © 2026 Vision Hub &nbsp;·&nbsp; Not a medical provider &nbsp;·&nbsp; Always consult your ophthalmologist &nbsp;·&nbsp; Content reviewed quarterly — last reviewed April 2026 &nbsp;·&nbsp;
       <a onclick="showPage('contact')" role="button" tabindex="0">Contact</a> &nbsp;·&nbsp;
       <a onclick="showPage('a11y')" role="button" tabindex="0">Accessibility Statement</a> &nbsp;·&nbsp;
       <a onclick="showPage('privacy')" role="button" tabindex="0">Privacy Policy</a>
@@ -1001,7 +1088,7 @@ amd:{
   ],
   benefits:[
     {n:1,title:"Certificate of Vision Impairment (CVI)",body:"Request from your ophthalmologist. Free. Unlocks local authority rehabilitation and council tax reduction."},
-    {n:2,title:"Attendance Allowance",body:"If over state pension age, Attendance Allowance pays up to £101.75/week. Age UK can help complete the form."},
+    {n:2,title:"Attendance Allowance",body:"If over state pension age, Attendance Allowance pays £114.60/week (higher rate) or £76.70/week (lower rate) from April 2026. Age UK can help complete the form."},
     {n:3,title:"Blue Badge",body:"People with severe visual impairment automatically qualify for a Blue Badge parking permit. Apply via your local council."}
   ]
 },
@@ -1277,7 +1364,7 @@ cvi:{
   benefits:[
     {n:1,title:"Education, Health and Care (EHC) Plan",body:"Children with CVI are entitled to an EHC plan from their local authority. This legally binding plan funds specialist education, a QTVI, and specialist technology."},
     {n:2,title:"DLA for Children / PIP for Adults",body:"The visual and neurological impact of CVI supports a claim at the higher rates of DLA (children) and PIP (adults). RNIB can help with the application — call 0303 123 9999."},
-    {n:3,title:"Carer's Allowance",body:"If a parent or carer spends at least 35 hours per week caring for a child or adult with CVI, they may be entitled to Carer's Allowance (currently £81.90/week)."}
+    {n:3,title:"Carer's Allowance",body:"If a parent or carer spends at least 35 hours per week caring for a child or adult with CVI, they may be entitled to Carer's Allowance (£86.45/week from April 2026)."}
   ]
 },
 
