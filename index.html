@@ -742,11 +742,16 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
         </div>
       </div>
 
-      <!-- Living Well prompt -->
+      <!-- Everyday Guide prompt -->
       <div style="margin-top:28px;padding-top:24px;border-top:2px solid var(--border)">
-        <span class="section-label">Daily life with sight loss</span>
-        <button class="cond-btn" onclick="showPage('livingwell')" aria-label="Open Living Well with Sight Loss guide" style="border-color:var(--yellow);background:rgba(245,184,0,0.06)">
-          🌟 Living Well — Cooking, Parenting, Sport &amp; More <span class="cond-arrow" aria-hidden="true">→</span>
+        <span class="section-label">Daily life</span>
+        <button class="cond-btn" onclick="showPage('livingwell')" aria-label="Open Everyday Guide" style="height:auto;flex-direction:column;align-items:flex-start;gap:8px;padding:20px 26px">
+          <span style="display:flex;align-items:center;justify-content:space-between;width:100%;gap:12px">
+            <span style="font-size:1.05rem;font-weight:800">🌟 Everyday Guide</span>
+            <span class="cond-arrow" aria-hidden="true" style="flex-shrink:0">→</span>
+          </span>
+          <span style="font-size:0.85rem;font-weight:600;color:var(--text2);line-height:1.5">Practical tips to make daily life easier</span>
+          <span style="font-size:0.78rem;font-weight:700;color:var(--yellow);line-height:1.7">Cooking &nbsp;·&nbsp; Parenting &nbsp;·&nbsp; Sport &amp; Fitness &nbsp;·&nbsp; Makeup &amp; Grooming &nbsp;·&nbsp; Listening &amp; Audiobooks &nbsp;·&nbsp; Travel &nbsp;·&nbsp; Work &nbsp;·&nbsp; Mental Health</span>
         </button>
       </div>
     </section>
@@ -763,12 +768,12 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 <!-- ══════════════════════════════════════
      LIVING WELL PAGE
 ══════════════════════════════════════ -->
-<div id="page-livingwell" class="page" role="main" aria-label="Living Well with Sight Loss">
+<div id="page-livingwell" class="page" role="main" aria-label="Everyday Guide">
   <div class="legal-wrap">
     <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
     <span class="legal-eyebrow">Daily Life</span>
-    <h1>Living Well<br>with Sight Loss</h1>
-    <p style="font-size:0.95rem;color:var(--text2);margin-bottom:32px;line-height:1.8;">Sight loss touches every part of life — not just medical appointments. This section covers the practical, everyday things that matter: cooking, parenting, sport, makeup, listening, travel, and work. Tap any topic to expand it.</p>
+    <h1>Everyday Guide</h1>
+    <p style="font-size:0.95rem;color:var(--text2);margin-bottom:32px;line-height:1.8;">Practical tips to make daily life easier — covering the things that matter beyond the clinic. Tap any topic to expand it.</p>
 
     <div class="wb"><strong>You are not alone.</strong> Every tip here comes from the community — people with sight conditions who have found what works. If you have something to add, <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">get in touch</button>.</div>
 
@@ -1127,7 +1132,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 
     </div><!-- end lw-grid -->
 
-    <div class="wb" style="margin-top:8px"><strong>Something missing?</strong> This section grows based on what people tell us they need. <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Suggest a topic →</button></div>
+    <div class="wb" style="margin-top:8px"><strong>Something missing?</strong> This guide grows based on what people tell us they need. <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Suggest a topic →</button></div>
 
     <button class="back-btn" onclick="showPage('home')" style="margin-top:20px" aria-label="Back to home">← Back to home</button>
   </div>
@@ -1274,12 +1279,12 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
         <a href="https://clinicaltrials.gov"        target="_blank" rel="noopener">Clinical Trials</a>
         <a href="https://www.gov.uk/pip"            target="_blank" rel="noopener">PIP Benefits</a>
         <a href="https://www.guidedogs.org.uk"      target="_blank" rel="noopener">Guide Dogs</a>
-        <a onclick="showPage('livingwell')" role="button" tabindex="0" style="cursor:pointer">Living Well</a>
+        <a onclick="showPage('livingwell')" role="button" tabindex="0" style="cursor:pointer">Everyday Guide</a>
       </div>
     </nav>
     <div class="footer-bottom">
       © 2026 Vision Hub &nbsp;·&nbsp; Not a medical provider &nbsp;·&nbsp; Always consult your ophthalmologist &nbsp;·&nbsp; Reviewed April 2026 &nbsp;·&nbsp;
-      <a onclick="showPage('livingwell')" role="button" tabindex="0">Living Well</a> &nbsp;·&nbsp;
+      <a onclick="showPage('livingwell')" role="button" tabindex="0">Everyday Guide</a> &nbsp;·&nbsp;
       <a onclick="showPage('contact')" role="button" tabindex="0">Contact</a> &nbsp;·&nbsp;
       <a onclick="showPage('a11y')" role="button" tabindex="0">Accessibility</a> &nbsp;·&nbsp;
       <a onclick="showPage('privacy')" role="button" tabindex="0">Privacy Policy</a>
@@ -1914,6 +1919,44 @@ const COND_KEYWORDS = {
   cvi:        ['cerebral visual impairment','cvi','brain','neurological','cortical','premature','prematurity','hypoxia','clutter','visual processing','processing','eeg','complex needs','cerebral palsy','stroke'],
   cone:       ['cone dystrophy','cone rod','colour vision','color vision','central vision','photophobia','light sensitive','reading','driving','rpgr','cngb3','progressive','fovea']
 };
+
+/* Levenshtein distance — counts single-character edits between two strings */
+function levenshtein(a, b) {
+  var m = a.length, n = b.length;
+  var dp = [];
+  for (var i = 0; i <= m; i++) {
+    dp[i] = [i];
+    for (var j = 1; j <= n; j++) {
+      dp[i][j] = i === 0 ? j
+        : j === 0 ? i
+        : a[i-1] === b[j-1] ? dp[i-1][j-1]
+        : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
+    }
+  }
+  return dp[m][n];
+}
+
+/* Fuzzy match: does query approximately match any word in the target string?
+   Tolerance scales with word length — short words need exact match,
+   longer words allow 1–2 character differences. */
+function fuzzyMatch(query, target) {
+  if (!query) return true;
+  if (target.indexOf(query) !== -1) return true; // exact substring first
+
+  var qWords = query.split(/\s+/).filter(Boolean);
+  var tWords = target.split(/\s+/).filter(Boolean);
+
+  return qWords.every(function(qw) {
+    // Each query word must match at least one target word
+    return tWords.some(function(tw) {
+      if (tw.indexOf(qw) !== -1) return true; // substring match
+      if (qw.length < 4) return qw === tw;    // short words: exact only
+      var tolerance = qw.length < 7 ? 1 : 2;  // 1 typo for medium words, 2 for long
+      return levenshtein(qw, tw) <= tolerance;
+    });
+  });
+}
+
 function filterConds(q) {
   q = (q || '').toLowerCase().trim();
   var items = document.getElementsByClassName('cond-item');
@@ -1922,9 +1965,10 @@ function filterConds(q) {
     if (!btn) continue;
     var onclick = btn.getAttribute('onclick') || '';
     var condKey = (onclick.match(/showCondition\('(\w+)'\)/) || [])[1] || '';
-    var label   = btn.textContent.toLowerCase();
+    var label    = btn.textContent.toLowerCase();
     var keywords = (COND_KEYWORDS[condKey] || []).join(' ');
-    var match   = !q || label.indexOf(q) !== -1 || keywords.indexOf(q) !== -1;
+    var haystack = label + ' ' + keywords;
+    var match    = !q || fuzzyMatch(q, haystack);
     items[i].style.display = match ? '' : 'none';
   }
 }
