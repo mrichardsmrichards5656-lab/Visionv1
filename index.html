@@ -279,9 +279,9 @@ body.yb .rtag.gene, body.yb .rtag.stem, body.yb .rtag.trial, body.yb .rtag.drug,
 .trial-link:hover        { background: var(--yellow2); }
 .trial-link:focus-visible{ outline: 3px solid var(--text); outline-offset: 3px; }
 
-.nc { background: var(--card); border: 2px solid var(--border); border-radius: 16px; padding: 16px; margin-bottom: 12px; display: flex; gap: 12px; align-items: flex-start; box-shadow: var(--shadow); }
-.nc-num { width: 36px; height: 36px; min-width: 36px; background: var(--yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 900; color: #fff; flex-shrink: 0; margin-top: 2px; }
-.nc > div { min-width: 0; flex: 1; overflow: hidden; }
+.nc { background: var(--card); border: 2px solid var(--border); border-radius: 16px; padding: 18px; margin-bottom: 12px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--shadow); }
+.nc-num { width: 32px; height: 32px; min-width: 32px; background: var(--yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.88rem; font-weight: 900; color: #fff; flex-shrink: 0; }
+.nc > div { min-width: 0; width: 100%; }
 .nc h3 { font-size: 0.95rem; font-weight: 800; color: var(--text); margin-bottom: 6px; overflow-wrap: break-word; word-wrap: break-word; }
 .nc p  { font-size: 0.88rem; color: var(--text2); line-height: 1.8; overflow-wrap: break-word; word-wrap: break-word; }
 
@@ -359,16 +359,22 @@ body.yb .rtag.gene, body.yb .rtag.stem, body.yb .rtag.trial, body.yb .rtag.drug,
 }
 .lw-card {
   background: var(--card); border: 2px solid var(--border);
-  border-radius: 16px; padding: 22px; box-shadow: var(--shadow);
+  border-radius: 16px; padding: 20px 20px 16px; box-shadow: var(--shadow);
   cursor: pointer; transition: border-color .18s, background .18s;
   text-align: left; width: 100%;
   font-family: var(--font);
 }
 .lw-card:hover        { border-color: var(--yellow); background: var(--card2); }
+.lw-card[aria-expanded="true"] { border-color: var(--yellow); background: var(--card2); }
 .lw-card:focus-visible{ outline: 3px solid var(--yellow); outline-offset: 3px; }
-.lw-card-icon  { font-size: 2rem; margin-bottom: 10px; display: block; }
-.lw-card-title { font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 6px; display: block; }
-.lw-card-desc  { font-size: 0.88rem; color: var(--text2); line-height: 1.7; display: block; }
+.lw-card-top   { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+.lw-card-icon  { font-size: 1.6rem; flex-shrink: 0; }
+.lw-card-arrow { font-size: 1rem; color: var(--yellow); flex-shrink: 0; transition: transform .25s; margin-top: 2px; }
+.lw-card[aria-expanded="true"] .lw-card-arrow { transform: rotate(180deg); }
+.lw-card-title { font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 4px; display: block; flex: 1; }
+.lw-card-desc  { font-size: 0.85rem; color: var(--text2); line-height: 1.7; display: block; margin-bottom: 8px; }
+.lw-card-hint  { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--yellow); display: block; }
+.lw-card[aria-expanded="true"] .lw-card-hint { display: none; }
 
 /* Expanded LW section */
 .lw-section {
@@ -893,9 +899,13 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       <!-- COOKING -->
       <div>
         <button class="lw-card" onclick="toggleLW('cooking',this)" aria-expanded="false" aria-controls="lw-cooking">
-          <span class="lw-card-icon" aria-hidden="true">🍳</span>
+          <div class="lw-card-top">
+            <span class="lw-card-icon" aria-hidden="true">🍳</span>
+            <span class="lw-card-arrow" aria-hidden="true">▾</span>
+          </div>
           <span class="lw-card-title">Cooking &amp; Kitchen</span>
           <span class="lw-card-desc">Safe, independent cooking with low or no vision — tools, techniques, and organisation tips.</span>
+          <span class="lw-card-hint">Tap to expand</span>
         </button>
         <div id="lw-cooking" class="lw-section" role="region" aria-label="Cooking and Kitchen tips">
           <div class="lw-tip">
@@ -942,9 +952,13 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       <!-- PARENTING -->
       <div>
         <button class="lw-card" onclick="toggleLW('parenting',this)" aria-expanded="false" aria-controls="lw-parenting">
-          <span class="lw-card-icon" aria-hidden="true">👨‍👩‍👧</span>
+          <div class="lw-card-top">
+            <span class="lw-card-icon" aria-hidden="true">👨‍👩‍👧</span>
+            <span class="lw-card-arrow" aria-hidden="true">▾</span>
+          </div>
           <span class="lw-card-title">Parenting with Sight Loss</span>
           <span class="lw-card-desc">Being a brilliant parent with low or no vision — practical strategies, equipment, and emotional support.</span>
+          <span class="lw-card-hint">Tap to expand</span>
         </button>
         <div id="lw-parenting" class="lw-section" role="region" aria-label="Parenting with sight loss tips">
           <div class="lw-tip">
@@ -985,9 +999,13 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       <!-- SPORT & FITNESS -->
       <div>
         <button class="lw-card" onclick="toggleLW('sport',this)" aria-expanded="false" aria-controls="lw-sport">
-          <span class="lw-card-icon" aria-hidden="true">🏃</span>
+          <div class="lw-card-top">
+            <span class="lw-card-icon" aria-hidden="true">🏃</span>
+            <span class="lw-card-arrow" aria-hidden="true">▾</span>
+          </div>
           <span class="lw-card-title">Sport &amp; Fitness</span>
           <span class="lw-card-desc">Staying active with sight loss — from gym to goalball, running to yoga.</span>
+          <span class="lw-card-hint">Tap to expand</span>
         </button>
         <div id="lw-sport" class="lw-section" role="region" aria-label="Sport and fitness tips">
           <div class="lw-tip">
@@ -1028,9 +1046,13 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       <!-- MAKEUP & GROOMING -->
       <div>
         <button class="lw-card" onclick="toggleLW('makeup',this)" aria-expanded="false" aria-controls="lw-makeup">
-          <span class="lw-card-icon" aria-hidden="true">💄</span>
+          <div class="lw-card-top">
+            <span class="lw-card-icon" aria-hidden="true">💄</span>
+            <span class="lw-card-arrow" aria-hidden="true">▾</span>
+          </div>
           <span class="lw-card-title">Makeup &amp; Grooming</span>
           <span class="lw-card-desc">Looking and feeling great with low or no vision — practical techniques and trusted tools.</span>
+          <span class="lw-card-hint">Tap to expand</span>
         </button>
         <div id="lw-makeup" class="lw-section" role="region" aria-label="Makeup and grooming tips">
           <div class="lw-tip">
@@ -1076,9 +1098,13 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       <!-- LISTENING & AUDIOBOOKS -->
       <div>
         <button class="lw-card" onclick="toggleLW('listening',this)" aria-expanded="false" aria-controls="lw-listening">
-          <span class="lw-card-icon" aria-hidden="true">🎧</span>
+          <div class="lw-card-top">
+            <span class="lw-card-icon" aria-hidden="true">🎧</span>
+            <span class="lw-card-arrow" aria-hidden="true">▾</span>
+          </div>
           <span class="lw-card-title">Listening &amp; Audiobooks</span>
           <span class="lw-card-desc">Books, radio, podcasts and audio — the best free and paid services for people with sight loss.</span>
+          <span class="lw-card-hint">Tap to expand</span>
         </button>
         <div id="lw-listening" class="lw-section" role="region" aria-label="Listening and audiobooks tips">
           <div class="lw-tip">
@@ -1122,9 +1148,13 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       <!-- TRAVEL & GETTING AROUND -->
       <div>
         <button class="lw-card" onclick="toggleLW('travel',this)" aria-expanded="false" aria-controls="lw-travel">
-          <span class="lw-card-icon" aria-hidden="true">🚆</span>
+          <div class="lw-card-top">
+            <span class="lw-card-icon" aria-hidden="true">🚆</span>
+            <span class="lw-card-arrow" aria-hidden="true">▾</span>
+          </div>
           <span class="lw-card-title">Travel &amp; Getting Around</span>
           <span class="lw-card-desc">Trains, buses, taxis, and travelling independently with sight loss.</span>
+          <span class="lw-card-hint">Tap to expand</span>
         </button>
         <div id="lw-travel" class="lw-section" role="region" aria-label="Travel and getting around tips">
           <div class="lw-tip">
@@ -1164,9 +1194,13 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       <!-- WORK & EMPLOYMENT -->
       <div>
         <button class="lw-card" onclick="toggleLW('work',this)" aria-expanded="false" aria-controls="lw-work">
-          <span class="lw-card-icon" aria-hidden="true">💼</span>
+          <div class="lw-card-top">
+            <span class="lw-card-icon" aria-hidden="true">💼</span>
+            <span class="lw-card-arrow" aria-hidden="true">▾</span>
+          </div>
           <span class="lw-card-title">Work &amp; Employment</span>
           <span class="lw-card-desc">Your rights, available support, and how to thrive professionally with sight loss.</span>
+          <span class="lw-card-hint">Tap to expand</span>
         </button>
         <div id="lw-work" class="lw-section" role="region" aria-label="Work and employment tips">
           <div class="lw-tip">
@@ -1207,9 +1241,13 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       <!-- MENTAL HEALTH -->
       <div>
         <button class="lw-card" onclick="toggleLW('mentalhealth',this)" aria-expanded="false" aria-controls="lw-mentalhealth">
-          <span class="lw-card-icon" aria-hidden="true">💛</span>
+          <div class="lw-card-top">
+            <span class="lw-card-icon" aria-hidden="true">💛</span>
+            <span class="lw-card-arrow" aria-hidden="true">▾</span>
+          </div>
           <span class="lw-card-title">Mental Health &amp; Wellbeing</span>
           <span class="lw-card-desc">Emotional support, coping with diagnosis, and finding your community.</span>
+          <span class="lw-card-hint">Tap to expand</span>
         </button>
         <div id="lw-mentalhealth" class="lw-section" role="region" aria-label="Mental health and wellbeing tips">
           <div class="lw-tip">
