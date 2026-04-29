@@ -632,6 +632,15 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
   footer, .back-top, .feedback-bar { display: none !important; }
   body { background: #fff !important; color: #000 !important; font-size: 12pt; }
   .cond-page-inner { padding: 0 !important; max-width: 100% !important; }
+
+  /* Force all accordion panels open when printing */
+  .acc-body { display: block !important; padding: 0 0 12pt !important; }
+  .acc-btn { display: flex !important; border-bottom: 1pt solid #ccc !important; margin-bottom: 6pt; }
+  .acc-arrow { display: none !important; }
+  .acc-item { border: none !important; box-shadow: none !important; margin-bottom: 0 !important; break-inside: avoid; }
+  .acc-num { background: #000 !important; color: #fff !important; print-color-adjust: exact; }
+  .acc-label { color: #000 !important; font-size: 12pt !important; }
+
   .ic, .rc, .nc, .tc, .sc, .wb, .lc {
     border: 1pt solid #ccc !important; border-radius: 4pt !important;
     box-shadow: none !important; background: #fff !important;
@@ -640,8 +649,20 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
   .nc-num { background: #000 !important; color: #fff !important; print-color-adjust: exact; }
   .rtag { border: 1pt solid #000 !important; background: #fff !important; color: #000 !important; }
   .trial-link { color: #000 !important; text-decoration: underline !important; background: none !important; border: 1pt solid #000 !important; }
-  .sec-h h2 { color: #000 !important; font-size: 14pt !important; }
-  .ybar { background: #000 !important; }
+  .cond-sec-heading h2 { color: #000 !important; font-size: 14pt !important; }
+  .otp-box { display: none !important; }
+
+  /* Print header */
+  .cond-page-inner::before {
+    content: "Vision Hub — visionhubuk.co.uk — Free UK Sight Loss Resource";
+    display: block; font-size: 8pt; color: #666;
+    border-bottom: 1pt solid #ccc; padding-bottom: 6pt; margin-bottom: 14pt;
+  }
+  .cond-page-inner::after {
+    content: "This information is for guidance only. Always consult your ophthalmologist.";
+    display: block; font-size: 8pt; color: #666;
+    border-top: 1pt solid #ccc; padding-top: 6pt; margin-top: 14pt;
+  }
   @page { margin: 15mm 20mm; }
 }
 </style>
@@ -2330,10 +2351,22 @@ function initScrollSpy(key) {
 function toggleAcc(section, key) {
   var item = document.getElementById('acc-' + section + '-' + key);
   if (!item) return;
-  var btn  = item.querySelector('.acc-btn');
+  var btn    = item.querySelector('.acc-btn');
+  var body   = item.querySelector('.acc-body');
   var isOpen = item.classList.contains('open');
+
   item.classList.toggle('open', !isOpen);
   btn.setAttribute('aria-expanded', String(!isOpen));
+
+  // Move focus into the opened panel so screen readers land in the content
+  if (!isOpen && body) {
+    // Make body temporarily focusable, focus it, then remove tabindex
+    body.setAttribute('tabindex', '-1');
+    setTimeout(function() {
+      body.focus({ preventScroll: false });
+      body.removeAttribute('tabindex');
+    }, 50);
+  }
 }
 
 /* ─────────────── JUST DIAGNOSED TOGGLE ─────────────── */
