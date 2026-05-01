@@ -77,79 +77,64 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
 /* ══════════════════════════════════════
    DESKTOP LAYOUT
 ══════════════════════════════════════ */
-/* Hide sidebar on mobile by default */
 .desktop-sidebar { display: none; }
 .desktop-wrap { display: block; }
 
 @media (min-width: 1024px) {
   .desktop-wrap {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: 240px 1fr;
     gap: 0;
-    min-height: 100vh;
     align-items: start;
   }
   .desktop-sidebar {
+    display: block;
     position: sticky;
     top: 50px;
-    padding: 32px 24px;
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+    padding: 28px 20px;
     border-right: 2px solid var(--border);
-    min-height: calc(100vh - 50px);
     background: var(--bg2);
+    scrollbar-width: thin;
   }
   .desktop-sidebar .sidebar-logo {
-    font-size: 1.2rem; font-weight: 900; color: var(--yellow);
-    margin-bottom: 8px; display: block;
+    font-size: 1.1rem; font-weight: 900; color: var(--yellow);
+    margin-bottom: 6px; display: block;
   }
   .desktop-sidebar .sidebar-tagline {
-    font-size: 0.78rem; color: var(--text2); margin-bottom: 28px;
-    line-height: 1.6; display: block;
+    font-size: 0.75rem; color: var(--text2); margin-bottom: 20px;
+    line-height: 1.5; display: block;
   }
   .sidebar-section {
-    font-size: 0.68rem; font-weight: 800; text-transform: uppercase;
-    letter-spacing: 0.12em; color: var(--text2); margin-bottom: 10px;
-    margin-top: 20px; display: block;
+    font-size: 0.65rem; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--text2); margin-bottom: 6px;
+    margin-top: 16px; display: block;
   }
   .sidebar-link {
-    display: block; padding: 8px 12px; border-radius: 10px;
-    font-size: 0.88rem; font-weight: 600; color: var(--text2);
-    text-decoration: none; cursor: pointer; margin-bottom: 2px;
+    display: block; padding: 7px 10px; border-radius: 8px;
+    font-size: 0.82rem; font-weight: 600; color: var(--text2);
+    cursor: pointer; margin-bottom: 1px;
     background: none; border: none; font-family: var(--font);
     text-align: left; width: 100%;
     transition: background .15s, color .15s;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   .sidebar-link:hover { background: var(--card); color: var(--yellow); }
   .sidebar-link:focus-visible { outline: 3px solid var(--yellow); }
-  .sidebar-link.active { background: var(--yellow); color: #000; font-weight: 800; }
-  .sidebar-divider {
-    height: 1px; background: var(--border); margin: 16px 0;
+  .sidebar-divider { height: 1px; background: var(--border); margin: 12px 0; }
+  .desktop-main { min-width: 0; overflow: hidden; }
+  .hero, .cond-section, .legal-wrap, .cond-page-inner, .cond-hero {
+    max-width: 860px !important;
+    margin-left: 0 !important;
+    padding-left: 36px !important;
+    padding-right: 36px !important;
   }
-  .desktop-main {
-    min-width: 0;
-  }
-  /* Widen content areas on desktop */
-  .hero,
-  .cond-section,
-  .legal-wrap,
-  .cond-page-inner,
-  .cond-hero {
-    max-width: 100% !important;
-    padding-left: 40px !important;
-    padding-right: 40px !important;
-  }
-  /* Video and decorative divider */
-  #video-resources-wrap section,
-  #video-resources-wrap + div {
-    max-width: 100%;
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-  /* Footer full width */
-  .footer-inner { max-width: 100%; padding: 0 40px; }
-  /* Recent updates and news section */
-  .cond-section > div[style*="margin:0 auto"] { max-width: 100% !important; }
+  .footer-inner { max-width: 100%; padding: 0 36px; }
+  /* News box and video on desktop */
+  .news-box, #video-resources-wrap section { max-width: 860px; margin-left: 0; }
 }
 
 .skip {
@@ -1857,7 +1842,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
     <div class="lc">
       <h2>🎓 Henshaws Knowledge Village — Free Tech Training</h2>
       <p>Free video guides teaching people with sight loss how to use technology — iPhones, Android phones, screen readers, and accessibility features — in plain, practical language. The best free tech training resource in the UK for people with sight loss.</p>
-      <p style="margin-top:12px"><a href="https://knowledgevillage.henshaws.org.uk" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700;font-size:1rem">Visit Henshaws Knowledge Village ↗</a></p>
+      <p style="margin-top:12px"><a href="https://www.henshaws.org.uk/knowledge-village/" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700;font-size:1rem">Visit Henshaws Knowledge Village ↗</a></p>
     </div>
 
     <div class="lc">
@@ -2008,7 +1993,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       <p style="margin-top:10px"><strong>Dragon NaturallySpeaking</strong> — voice dictation software replacing or reducing the need for typing.</p>
       <p style="margin-top:10px"><strong>Large print keyboard</strong> — high contrast keys significantly help partially sighted users.</p>
       <p style="margin-top:10px"><strong>OrCam MyEye</strong> — clips to glasses and reads documents, screens, and faces aloud. Useful in meetings and for reading printed materials.</p>
-      <p style="margin-top:12px"><strong>Need training on workplace technology?</strong> <a href="https://knowledgevillage.henshaws.org.uk" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700">Henshaws Knowledge Village ↗</a> provides free video guides on using accessibility technology — including screen readers and phone accessibility — specifically for people with sight loss.</p>
+      <p style="margin-top:12px"><strong>Need training on workplace technology?</strong> <a href="https://www.henshaws.org.uk/knowledge-village/" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700">Henshaws Knowledge Village ↗</a> provides free video guides on using accessibility technology — including screen readers and phone accessibility — specifically for people with sight loss.</p>
     </div>
 
     <div class="lc">
@@ -2164,7 +2149,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
     <span class="ic-icon" aria-hidden="true">🎓</span>
     <h3>Henshaws Knowledge Village — Featured Resource</h3>
     <p style="color:var(--text2);font-size:0.9rem;margin-bottom:12px;line-height:1.7">Free video training specifically for people with sight loss — how to use an iPhone if you can't see the screen, Android accessibility, screen readers, and practical technology skills. The best free tech training resource in the UK for people with sight loss.</p>
-    <a href="https://knowledgevillage.henshaws.org.uk" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700;font-size:0.95rem">Visit Henshaws Knowledge Village ↗</a>
+    <a href="https://www.henshaws.org.uk/knowledge-village/" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700;font-size:0.95rem">Visit Henshaws Knowledge Village ↗</a>
   </div>
 
   <div class="ic" style="margin-bottom:12px">
@@ -2935,6 +2920,7 @@ function renderCondition(key) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
       </button>
       <div class="acc-body">
+        <h2 class="sr" id="about-heading-${key}">About ${d.name}</h2>
         <div class="ic"><p>${d.what}</p></div>
         <div class="ic"><span class="ic-icon" aria-hidden="true">👁️</span><h3>How It Affects Vision</h3><p>${d.howAffects}</p></div>
         <div class="ic"><h3>Diagnosis</h3><p>${d.diagnosis}</p></div>
@@ -3015,7 +3001,7 @@ function renderCondition(key) {
           <div class="nc-num" aria-hidden="true">${b.n}</div>
           <div><h3>${b.title}</h3><p>${b.body}</p></div>
         </div>`).join('')}
-        <div class="ic"><h3>Free Benefits Advice</h3>
+        <div class="ic"><h3 id="benefits-advice-${key}">Free Benefits Advice</h3>
           <p><strong>RNIB:</strong> 0303 123 9999 &nbsp;·&nbsp; <strong>Citizens Advice:</strong> citizensadvice.org.uk &nbsp;·&nbsp; <strong>Calculator:</strong> turn2us.org.uk</p>
         </div>
       </div>
