@@ -74,6 +74,80 @@ body {
 }
 p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: break-word; }
 
+/* ══════════════════════════════════════
+   DESKTOP LAYOUT
+══════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .desktop-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 0;
+    min-height: 100vh;
+    align-items: start;
+  }
+  .desktop-sidebar {
+    position: sticky;
+    top: 50px;
+    padding: 32px 24px;
+    border-right: 2px solid var(--border);
+    min-height: calc(100vh - 50px);
+    background: var(--bg2);
+  }
+  .desktop-sidebar .sidebar-logo {
+    font-size: 1.2rem; font-weight: 900; color: var(--yellow);
+    margin-bottom: 8px; display: block;
+  }
+  .desktop-sidebar .sidebar-tagline {
+    font-size: 0.78rem; color: var(--text2); margin-bottom: 28px;
+    line-height: 1.6; display: block;
+  }
+  .sidebar-section {
+    font-size: 0.68rem; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--text2); margin-bottom: 10px;
+    margin-top: 20px; display: block;
+  }
+  .sidebar-link {
+    display: block; padding: 8px 12px; border-radius: 10px;
+    font-size: 0.88rem; font-weight: 600; color: var(--text2);
+    text-decoration: none; cursor: pointer; margin-bottom: 2px;
+    background: none; border: none; font-family: var(--font);
+    text-align: left; width: 100%;
+    transition: background .15s, color .15s;
+  }
+  .sidebar-link:hover { background: var(--card); color: var(--yellow); }
+  .sidebar-link:focus-visible { outline: 3px solid var(--yellow); }
+  .sidebar-link.active { background: var(--yellow); color: #000; font-weight: 800; }
+  .sidebar-divider {
+    height: 1px; background: var(--border); margin: 16px 0;
+  }
+  .desktop-main {
+    min-width: 0;
+  }
+  /* Widen content areas on desktop */
+  .hero,
+  .cond-section,
+  .legal-wrap,
+  .cond-page-inner,
+  .cond-hero {
+    max-width: 100% !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+  /* Video and decorative divider */
+  #video-resources-wrap section,
+  #video-resources-wrap + div {
+    max-width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  /* Footer full width */
+  .footer-inner { max-width: 100%; padding: 0 40px; }
+  /* Recent updates and news section */
+  .cond-section > div[style*="margin:0 auto"] { max-width: 100% !important; }
+}
+
 .skip {
   position: absolute; top: -999px; left: -999px;
   background: var(--yellow); color: #000;
@@ -704,6 +778,48 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 ══════════════════════════════════════ -->
 <div id="page-home" class="page active">
   <main id="main">
+    <div class="desktop-wrap">
+
+    <!-- DESKTOP SIDEBAR -->
+    <aside class="desktop-sidebar" aria-label="Site navigation">
+      <span class="sidebar-logo">◈ Vision Hub</span>
+      <span class="sidebar-tagline">Free UK sight loss resource</span>
+
+      <span class="sidebar-section">Conditions</span>
+      <button class="sidebar-link" onclick="showCondition('stargardts')">✦ Stargardt Disease</button>
+      <button class="sidebar-link" onclick="showCondition('amd')">◉ Age-related MD</button>
+      <button class="sidebar-link" onclick="showCondition('glaucoma')">◎ Glaucoma</button>
+      <button class="sidebar-link" onclick="showCondition('diabetic')">◇ Diabetic Retinopathy</button>
+      <button class="sidebar-link" onclick="showCondition('rp')">◈ Retinitis Pigmentosa</button>
+      <button class="sidebar-link" onclick="showCondition('cvi')">◭ Cerebral Visual Impairment</button>
+      <button class="sidebar-link" onclick="showCondition('nystagmus')">↔ Nystagmus</button>
+      <button class="sidebar-link" onclick="showCondition('albinism')">☀ Albinism</button>
+      <button class="sidebar-link" onclick="showCondition('usher')">◑ Usher Syndrome</button>
+      <button class="sidebar-link" onclick="showCondition('lca')">⬡ Leber Congenital Amaurosis</button>
+      <button class="sidebar-link" onclick="showCondition('cone')">🎯 Cone Dystrophy</button>
+      <button class="sidebar-link" onclick="showCondition('achromatopsia')">⬤ Achromatopsia</button>
+      <button class="sidebar-link" onclick="showCondition('dmo')">💧 Diabetic Macular Oedema</button>
+      <button class="sidebar-link" onclick="showCondition('myopic')">👓 Myopic MD</button>
+      <button class="sidebar-link" onclick="showCondition('charlesbonnet')">🧠 Charles Bonnet Syndrome</button>
+      <button class="sidebar-link" onclick="showCondition('opticneuritis')">⚡ Optic Neuritis</button>
+      <button class="sidebar-link" onclick="showCondition('blepharitis')">👁 Blepharitis</button>
+
+      <div class="sidebar-divider"></div>
+      <span class="sidebar-section">Guides &amp; Resources</span>
+      <button class="sidebar-link" onclick="showPage('livingwell')">🌟 Everyday Guide</button>
+      <button class="sidebar-link" onclick="showPage('eyehealth')">👁️ Eye Health Basics</button>
+      <button class="sidebar-link" onclick="showPage('employment')">💼 Employment</button>
+      <button class="sidebar-link" onclick="showPage('glossary')">📖 Glossary</button>
+      <button class="sidebar-link" onclick="showPage('questions')">❓ Questions to Ask</button>
+      <button class="sidebar-link" onclick="showPage('localsupport')">📍 Local Support</button>
+      <button class="sidebar-link" onclick="showPage('children')">👶 For Parents</button>
+
+      <div class="sidebar-divider"></div>
+      <button class="sidebar-link" onclick="showPage('contact')">✉️ Contact</button>
+    </aside>
+
+    <!-- DESKTOP MAIN CONTENT -->
+    <div class="desktop-main">
     <div class="hero">
       <div aria-hidden="true" style="text-align:center;margin-bottom:28px;opacity:0.85">
         <svg viewBox="0 0 320 180" width="100%" style="max-width:380px;display:inline-block" xmlns="http://www.w3.org/2000/svg">
@@ -790,6 +906,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
               <div style="padding-top:4px">
                 <span style="font-size:0.95rem;font-weight:800;color:var(--text)">Call RNIB</span>
                 <p style="font-size:0.88rem;color:var(--text2);margin-top:3px;line-height:1.7">Call <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a> and tell them your condition. They will tell you exactly what you are entitled to. Most people are surprised by how much support is available.</p>
+                <p style="font-size:0.88rem;color:var(--text2);margin-top:6px;line-height:1.7">Is this for your child? <button onclick="showPage('children')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">See our For Parents guide →</button></p>
               </div>
             </div>
 
@@ -819,9 +936,10 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
         <button onclick="showPage('glossary')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Glossary">📖 Glossary</button>
         <button onclick="showPage('localsupport')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Local Support">📍 Local Support</button>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px" role="group" aria-label="More resources">
-        <button onclick="showPage('eyehealth')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Eye Health Basics">👁️ Eye Health Basics</button>
-        <button onclick="showPage('employment')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Employment guide">💼 Employment</button>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px" role="group" aria-label="More resources">
+        <button onclick="showPage('eyehealth')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Eye Health Basics">👁️ Eye Health</button>
+        <button onclick="showPage('employment')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Employment guide">💼 Employment</button>
+        <button onclick="showPage('children')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open For Parents guide">👶 For Parents</button>
       </div>
 
       <div class="search-wrap" style="margin-bottom:16px">
@@ -976,6 +1094,8 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       </section>
     </div>
 
+  </div><!-- end desktop-main -->
+  </div><!-- end desktop-wrap -->
   </main>
 </div>
 
@@ -1919,6 +2039,95 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
   </div>
 </div>
 
+<!-- ══════════════════════════════════════
+     CHILDREN & PARENTS PAGE
+══════════════════════════════════════ -->
+<div id="page-children" class="page" role="main" aria-label="For Parents">
+  <div class="legal-wrap">
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <span class="legal-eyebrow">For Parents</span>
+    <h1>When Your Child<br>Has a Sight Condition</h1>
+    <p style="font-size:0.95rem;color:var(--text2);margin-bottom:28px;line-height:1.8">Finding out your child has a sight condition is one of the hardest things a parent can face. This page is for you — practical, honest, and written with the understanding that you are doing an extraordinary job.</p>
+
+    <div class="wb"><strong>You are not alone.</strong> Thousands of families in the UK are living full, rich, happy lives with a child who has a sight condition. This is the beginning of a journey, not the end of one.</div>
+
+    <div class="lc">
+      <h2>💛 First — How You Are Feeling</h2>
+      <p>Shock. Fear. Grief. Guilt. Anger. These are all completely normal responses to a diagnosis. You may feel all of them at once, or in waves over weeks and months. There is no right way to feel and no timeline for feeling better.</p>
+      <p style="margin-top:10px">What parents consistently say, looking back, is that the fear of the diagnosis was worse than the reality of living with it. Children are extraordinarily adaptable. They do not mourn the vision they have never had — they grow up knowing their world, mastering it, and thriving in it.</p>
+      <p style="margin-top:10px">Give yourself permission to feel whatever you feel. And when you are ready, the practical steps below are here.</p>
+    </div>
+
+    <div class="lc">
+      <h2>📋 The First Steps</h2>
+      <ul>
+        <li><strong>Get a genetic diagnosis</strong> — where relevant, knowing the specific gene mutation determines treatment eligibility. Free on the NHS — ask for a referral to a paediatric inherited retinal disease clinic.</li>
+        <li><strong>Ask for a CVI</strong> — the Certificate of Visual Impairment is free and issued by your ophthalmologist. It unlocks local authority support, DLA, and educational provision.</li>
+        <li><strong>Contact RNIB</strong> — call 0303 123 9999. Tell them your child's diagnosis. They have specialist advisors for families of children with sight conditions.</li>
+        <li><strong>Request a QTVI</strong> — a Qualified Teacher of Visual Impairment is entitled to work with your child from the earliest age. Contact your local authority's sensory support service.</li>
+        <li><strong>Apply for DLA</strong> — Disability Living Allowance for children under 16 can be worth over £600/month. RNIB can help with the form — it is complex but you are entitled to it.</li>
+        <li><strong>Connect with other families</strong> — this is consistently described as the single most helpful thing parents do. Every specialist charity listed on this site has a family community.</li>
+      </ul>
+    </div>
+
+    <div class="lc">
+      <h2>🏫 Education</h2>
+      <p>Your child is entitled to an <strong>Education, Health and Care (EHC) Plan</strong> — a legally binding document that sets out the specialist support your child must receive at school. This can fund a QTVI, specialist technology, braille resources, large print materials, and a teaching assistant.</p>
+      <p style="margin-top:10px">Request an EHC needs assessment from your local authority as early as possible — ideally before your child starts school. The process takes up to 20 weeks.</p>
+      <p style="margin-top:10px"><strong>At school, your child is entitled to:</strong></p>
+      <ul style="margin-top:8px">
+        <li>Regular visits from a QTVI</li>
+        <li>Large print or braille materials</li>
+        <li>Preferential seating</li>
+        <li>A tablet or laptop for close-up work</li>
+        <li>Extra time in exams</li>
+        <li>Adjusted lighting where needed</li>
+        <li>A reader or scribe if required</li>
+      </ul>
+      <p style="margin-top:10px">If the school does not know about your child's condition, tell them in writing and follow up. Ask for a meeting with the SENCo (Special Educational Needs Coordinator) at the start of every school year.</p>
+    </div>
+
+    <div class="lc">
+      <h2>💰 Financial Support</h2>
+      <p><strong>Disability Living Allowance (DLA)</strong> — for children under 16. Both Care and Mobility components may apply. Can be worth £600+ per month at higher rates. This is one of the most important financial supports available — do not delay applying.</p>
+      <p style="margin-top:10px"><strong>Carer's Allowance</strong> — if you spend 35+ hours per week caring for your child, you may be entitled to £86.45/week (April 2026 rate).</p>
+      <p style="margin-top:10px"><strong>Carer's Credit</strong> — protects your National Insurance record if you are not working due to caring responsibilities.</p>
+      <p style="margin-top:10px"><strong>Council Tax reduction</strong> — available once your child has a CVI.</p>
+      <p style="margin-top:10px">Call RNIB (0303 123 9999) for free help with all benefit applications. Do not try to navigate the forms alone — applications made with support succeed far more often.</p>
+    </div>
+
+    <div class="lc">
+      <h2>🌱 Your Child's Future</h2>
+      <p>Children with sight conditions go to university, have careers, travel independently, play sport, fall in love, and live full and extraordinary lives. The technology available today — and the gene therapies in development — make the outlook for many conditions better than it has ever been.</p>
+      <p style="margin-top:10px">The most important things you can give your child are high expectations, the right practical support, and the confidence that their sight condition is part of who they are — not a limit on what they can become.</p>
+      <p style="margin-top:10px">Your instinct to seek information, to advocate, and to understand — the instinct that brought you to this page — is already making a difference.</p>
+    </div>
+
+    <div class="lc">
+      <h2>💛 Support for You</h2>
+      <p>Parents of children with sight conditions experience real stress, grief, and exhaustion. Your wellbeing matters too.</p>
+      <ul style="margin-top:8px">
+        <li><strong>RNIB Sight Loss Counselling</strong> — free sessions for parents as well as people with sight conditions. Call 0303 123 9999.</li>
+        <li><strong>Carers UK</strong> — free support specifically for carers. carersuk.org</li>
+        <li><strong>Parent carer forums</strong> — local networks of parents of disabled children, run by and for parents. Find yours at nnpcf.org.uk</li>
+        <li><strong>Retina UK family weekends</strong> — residential events for families affected by inherited retinal conditions. retina-uk.org.uk</li>
+      </ul>
+    </div>
+
+    <div class="lc">
+      <h2>📞 Key Contacts for Families</h2>
+      <p><strong>RNIB:</strong> <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a></p>
+      <p style="margin-top:8px"><strong>Retina UK:</strong> <a href="tel:01280860363" style="color:var(--yellow);font-weight:700">01280 860363</a></p>
+      <p style="margin-top:8px"><strong>Sense (deaf-blind):</strong> <a href="tel:03003309256" style="color:var(--yellow);font-weight:700">0300 330 9256</a></p>
+      <p style="margin-top:8px"><strong>NDCS (deaf children):</strong> <a href="tel:08088008880" style="color:var(--yellow);font-weight:700">0808 800 8880</a></p>
+      <p style="margin-top:8px"><strong>Contact (families of disabled children):</strong> <a href="tel:08088083555" style="color:var(--yellow);font-weight:700">0808 808 3555</a></p>
+      <p style="margin-top:8px"><strong>DLA helpline:</strong> <a href="tel:08001214600" style="color:var(--yellow);font-weight:700">0800 121 4600</a></p>
+    </div>
+
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to home">← Back to home</button>
+  </div>
+</div>
+
 <!-- DECORATIVE DIVIDER -->
 <div aria-hidden="true" style="max-width:680px;margin:0 auto;padding:0 20px;text-align:center;opacity:0.4">
   <svg viewBox="0 0 400 40" width="100%" xmlns="http://www.w3.org/2000/svg">
@@ -1968,6 +2177,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
         <a onclick="showPage('localsupport')" role="button" tabindex="0" style="cursor:pointer">Local Support</a>
         <a onclick="showPage('eyehealth')" role="button" tabindex="0" style="cursor:pointer">Eye Health Basics</a>
         <a onclick="showPage('employment')" role="button" tabindex="0" style="cursor:pointer">Employment</a>
+        <a onclick="showPage('children')" role="button" tabindex="0" style="cursor:pointer">For Parents</a>
       </div>
     </nav>
     <div class="footer-bottom">
@@ -1978,6 +2188,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       <a onclick="showPage('localsupport')" role="button" tabindex="0">Local Support</a> &nbsp;·&nbsp;
       <a onclick="showPage('eyehealth')" role="button" tabindex="0">Eye Health Basics</a> &nbsp;·&nbsp;
       <a onclick="showPage('employment')" role="button" tabindex="0">Employment</a> &nbsp;·&nbsp;
+      <a onclick="showPage('children')" role="button" tabindex="0">For Parents</a> &nbsp;·&nbsp;
       <a onclick="showPage('contact')" role="button" tabindex="0">Contact</a> &nbsp;·&nbsp;
       <a onclick="showPage('a11y')" role="button" tabindex="0">Accessibility</a> &nbsp;·&nbsp;
       <a onclick="showPage('privacy')" role="button" tabindex="0">Privacy Policy</a>
@@ -2027,7 +2238,18 @@ stargardts:{
     {title:"Driving",body:"Many people with Stargardt's cannot meet the legal visual standard for driving and must inform the DVLA. This is one of the most emotionally significant losses — RNIB's emotional support line (0303 123 9999) and peer groups understand this specifically. Mobility alternatives including Motability and taxi schemes are worth exploring immediately."},
     {title:"At Work",body:"Request a workplace needs assessment. Screen magnification software (ZoomText), adjusted monitor positioning, and good task lighting are all reasonable adjustments under the Equality Act. Access to Work funds specialist equipment — apply before buying anything privately."},
     {title:"Sun Sensitivity",body:"Wraparound UV-blocking sunglasses are essential outdoors. Some people with Stargardt's find light sensitivity significantly affects daily life — tinted lenses (amber or plum) reduce glare and improve comfort in bright conditions."}
-  ]
+  ],
+  forParents:{
+    heading:"For Parents — Stargardt Disease",
+    intro:"Stargardt disease is often diagnosed in childhood or teenage years. If your child has just been diagnosed, this section is for you.",
+    tips:[
+      {title:"Understanding the Diagnosis",body:"Stargardt disease affects central vision but peripheral vision is usually preserved. Your child will be able to see — they will navigate the world using their peripheral vision, and with the right support, they will adapt remarkably well."},
+      {title:"Getting the Right Support at School",body:"Your child is entitled to large print materials, preferential seating, a tablet or laptop, and extra time in exams. Request a QTVI (Qualified Teacher of Visual Impairment) from your local authority immediately. The earlier the support is in place, the better."},
+      {title:"Genetic Testing",body:"Ask for a referral to an inherited retinal disease clinic for genetic testing. This is free on the NHS and determines eligibility for clinical trials — including gene therapy — which are progressing rapidly for Stargardt disease."},
+      {title:"DLA — Apply Now",body:"Your child is eligible for Disability Living Allowance. Call RNIB (0303 123 9999) for free help with the form. Do not delay — the application takes time and backdating is not available."},
+      {title:"The Macular Society",body:"The Macular Society has a dedicated service for children and young people with Stargardt disease and their families. Peer support from other families is invaluable — macularsociety.org or 0300 3030 111."}
+    ]
+  }
 },
 amd:{
   name:"Age-Related Macular Degeneration",
@@ -2211,7 +2433,18 @@ lca:{
     {title:"Education and the EHC Plan",body:"An Education, Health and Care plan is a legal document that must reflect your child's actual needs. Review it every year and challenge any reductions in support. The RNIB and VIEW charity can advise on what to request and how to challenge decisions."},
     {title:"Independence and Travel",body:"Orientation and mobility training — learning to navigate safely with a cane or guide dog — is transformative for independence. This is free via your local authority. Guide dog applications can be made from age 16 — guidedogs.org.uk."},
     {title:"Connecting with Others",body:"The LCA community is small but active and connected. Foundation Fighting Blindness and Retina UK both have family networks. Meeting other families living well with LCA is one of the most powerful things newly diagnosed families describe."}
-  ]
+  ],
+  forParents:{
+    heading:"For Parents — Leber Congenital Amaurosis",
+    intro:"LCA is present from birth. If your baby or young child has been diagnosed, you are in the right place. Here is what matters most right now.",
+    tips:[
+      {title:"You Will Find Your Way",body:"Parenting a child with LCA is different — but it is not lesser. Children born with LCA grow up knowing their world through touch, sound, and the vision they have. They develop independence, confidence, and resilience in ways that will continually surprise you."},
+      {title:"Genetic Testing is Urgent",body:"Different LCA genes respond to different treatments. Luxturna — an NHS-approved gene therapy — is available for RPE65 mutations and has produced life-changing results. Getting a genetic diagnosis as early as possible determines what treatments your child may be eligible for. Ask for urgent referral to a paediatric inherited retinal disease clinic."},
+      {title:"Early Habilitation",body:"Request a QTVI from your local authority immediately — from the first months of life. Early specialist support for a child with LCA is not just helpful, it is transformative. The earlier it starts, the better the outcomes."},
+      {title:"EHC Plan",body:"Apply for an Education, Health and Care plan from your local authority before your child starts any formal education. This legally binding document funds specialist support, technology, and teaching assistance throughout their education."},
+      {title:"DLA",body:"Your child is entitled to Disability Living Allowance at the higher rate for both Care and Mobility. This can be worth over £600/month. Call RNIB (0303 123 9999) for free help with the form — it is complex but you are fully entitled to it."}
+    ]
+  }
 },
 nystagmus:{
   name:"Nystagmus",
@@ -2247,7 +2480,18 @@ nystagmus:{
     {title:"Driving",body:"Many people with nystagmus cannot meet the visual standard for driving. Inform the DVLA honestly. If you cannot drive, explore Motability alternatives — wheelchair taxis, community transport, and local authority travel schemes — as early as possible."},
     {title:"Screen and Reading Strategies",body:"Increase font size significantly and use high contrast mode on all devices. Screen magnification software (ZoomText) helps for computer work. Reading stands and book holders allow you to position text in your null zone without holding it."},
     {title:"Explaining to Others",body:"Nystagmus is often invisible to others — people may not understand why vision is affected. A brief, clear explanation helps in social and work situations. The Nystagmus Network has printable information cards worth carrying."}
-  ]
+  ],
+  forParents:{
+    heading:"For Parents — Nystagmus",
+    intro:"Nystagmus is usually identified in the first few months of life. Here is what you need to know to support your child.",
+    tips:[
+      {title:"Your Child Will Adapt",body:"Children born with nystagmus adapt to their vision from the start. They learn to use their null zone naturally, develop strategies for focusing, and in most cases attend mainstream school and live fully independent lives."},
+      {title:"Finding the Null Zone",body:"Your child's null zone — the head or eye position where the movements slow and vision is clearest — is important for school. An orthoptist can identify it precisely. Ensure teachers understand it and arrange seating accordingly."},
+      {title:"School Adjustments",body:"Your child is entitled to preferential seating, large print, extra time in exams, and reduced copying from the board. The Nystagmus Network (nystagmusnet.org) has specific guidance packs for schools and parents."},
+      {title:"DVLA and Driving",body:"Your child will need to inform the DVLA about their nystagmus when they reach driving age. Many people with nystagmus cannot drive — prepare your child for this and explore independence alternatives early."},
+      {title:"Nystagmus Network",body:"The UK's dedicated nystagmus charity provides helpline support, school guidance packs, and a community of families. Connecting with other families is consistently the most helpful thing parents describe — nystagmusnet.org."}
+    ]
+  }
 },
 achromatopsia:{
   name:"Achromatopsia",
@@ -2284,7 +2528,18 @@ achromatopsia:{
     {title:"School and Work Adjustments",body:"Shaded seating away from windows, permission to wear tinted lenses indoors, and reduced overhead lighting are all reasonable adjustments. The earlier these are established — ideally from the start of school — the better the experience for the child."},
     {title:"The Social Side",body:"Achromatopsia is rare and often misunderstood. People may not understand why you struggle in bright light or why you cannot see colour. Online communities — particularly the Achromatopsia Network — provide peer support from people who understand the specific daily experience."},
     {title:"Research and Trials",body:"Gene therapy trials for CNGB3 and CNGA3 are the most active research area for achromatopsia. Getting a genetic diagnosis is essential for trial eligibility. Register with Foundation Fighting Blindness patient registry to be notified of relevant trials."}
-  ]
+  ],
+  forParents:{
+    heading:"For Parents — Achromatopsia",
+    intro:"Achromatopsia is usually identified in early infancy due to light sensitivity and nystagmus. Here is what matters most for your child.",
+    tips:[
+      {title:"Managing Light Sensitivity",body:"Light sensitivity (photophobia) is often the most immediately challenging aspect of achromatopsia for a young child. Red or plum tinted lenses — prescribed by your low vision clinic — dramatically reduce discomfort. Your child should wear these outdoors from the earliest age and be permitted to wear them indoors at school."},
+      {title:"Your Child Sees a Full World",body:"Achromatopsia means no colour vision and reduced acuity, but your child will navigate their world with confidence. Many adults with achromatopsia describe seeing in greyscale as simply the way they have always seen — not as a loss. They see a rich, detailed world, just differently."},
+      {title:"Genetic Testing for Trials",body:"Gene therapy trials for CNGB3 and CNGA3 — the two most common achromatopsia genes — are progressing. Getting a genetic diagnosis now ensures your child is positioned for trial eligibility. Free on the NHS — ask your ophthalmologist."},
+      {title:"School Adjustments",body:"Shaded seating away from windows, permission to wear tinted lenses indoors, reduced overhead lighting, and a tablet for close-up work are all reasonable adjustments. Establish these from the start of school."},
+      {title:"Achromatopsia Network",body:"The UK peer support community for families affected by achromatopsia. Connecting with other families — particularly those with older children living well — is enormously helpful. achromat.org"}
+    ]
+  }
 },
 usher:{
   name:"Usher Syndrome",
@@ -2321,7 +2576,18 @@ usher:{
     {title:"Technology for Dual Sensory Loss",body:"A refreshable braille display paired with VoiceOver or TalkBack provides silent, tactile access to all phone content — messages, calls, apps — when both sight and hearing are significantly affected. Vibrating alert systems replace auditory signals for doorbells, alarms, and phones."},
     {title:"Emotional and Social Impact",body:"The combination of hearing and vision loss creates a profound sense of isolation that others often find hard to understand. Sense runs social groups and residential events specifically for deafblind people — connecting with others who share your experience is invaluable."},
     {title:"Planning Ahead",body:"Usher syndrome is progressive — planning for future needs while function is good is much easier than planning in a crisis. Review your communication strategies, home adaptations, and support arrangements at each major change in vision or hearing."}
-  ]
+  ],
+  forParents:{
+    heading:"For Parents — Usher Syndrome",
+    intro:"Usher syndrome combines hearing loss with progressive vision loss. If your child has been diagnosed, this section addresses the specific challenges and opportunities of this combination.",
+    tips:[
+      {title:"The Hearing Loss Comes First",body:"Most children with Usher syndrome are identified through their hearing loss — often at birth screening. The vision loss (retinitis pigmentosa pattern) typically begins in the teenage years. This gives you time to prepare, build communication strategies, and ensure your child is connected to the right support."},
+      {title:"Communication Planning is Essential",body:"As vision declines alongside hearing, communication needs will change. Establish connections with Sense (the deafblind charity) early — they can help you plan communication strategies before they are urgently needed, rather than during a crisis."},
+      {title:"Genetic Testing",body:"Usher syndrome has multiple genetic types, each with different trial eligibility. USH2A trials (the most common form) are progressing rapidly. Genetic testing is free on the NHS — essential for trial access."},
+      {title:"Connecting with Sense",body:"Sense (sense.org.uk) is the UK's leading deafblind charity and has specialist services specifically for children and young people with Usher syndrome and their families. Their support can be life-changing."},
+      {title:"Your Child's Social World",body:"Usher syndrome can lead to social isolation as vision and hearing both decline. Building a strong social network, ensuring friends and school understand the condition, and connecting with other young people with Usher syndrome are all important. Retina UK and Sense both have youth communities."}
+    ]
+  }
 },
 albinism:{
   name:"Albinism",
@@ -2394,7 +2660,18 @@ cvi:{
     {title:"Managing Visual Fatigue",body:"Visual processing is effortful for people with CVI — far more so than for those with eye-based conditions. Build in rest breaks from visually demanding tasks. Recognise when vision 'switches off' — this is not laziness, it is neurological fatigue requiring rest."},
     {title:"Technology and Screens",body:"High contrast display settings, large text, and simplified screen layouts help significantly. iPads with high contrast mode are commonly used by children with CVI. Apps should be simple, uncluttered, and use high contrast — many standard apps are too visually complex."},
     {title:"Working with Schools",body:"CVI is still widely misunderstood in mainstream education. Many teachers have never heard of it. CVI Scotland (cviscotland.org) provides free training resources for teachers. The EHC plan should specify CVI explicitly and list concrete environmental modifications as legal requirements."}
-  ]
+  ],
+  forParents:{
+    heading:"For Parents — Cerebral Visual Impairment",
+    intro:"CVI is the most common cause of childhood visual impairment in the UK. It is widely misunderstood — even by schools and some professionals. This section gives you the key information.",
+    tips:[
+      {title:"CVI is a Brain Condition, Not an Eye Condition",body:"The eyes in CVI are often completely healthy. The difficulty is in how the brain processes visual information. This means standard eye tests significantly underestimate your child's visual difficulties — and it means that with the right stimulation and environment, vision can improve over time as the brain adapts."},
+      {title:"Get a Specialist CVI Assessment",body:"Ask for a functional vision assessment using the CVI Range (Roman-Lantzy) tool — not just a standard eye test. This tells you and the school exactly how your child sees and what environments and approaches help most."},
+      {title:"Schools Often Don't Know About CVI",body:"Many mainstream teachers have never heard of CVI. CVI Scotland (cviscotland.org) provides free training resources for schools. Your child's EHC plan should name CVI explicitly and list specific environmental modifications as legal requirements."},
+      {title:"Simple Changes Make a Big Difference",body:"Reducing visual clutter, using high contrast materials, presenting one object at a time, and using bright colours (especially yellow and red) can dramatically improve what your child can see and engage with. A QTVI experienced in CVI can advise specifically for your child."},
+      {title:"Your Child Can Improve",body:"Unlike many eye conditions, CVI has the potential to improve — particularly in young children — because the developing brain is highly adaptable. Early, consistent, appropriate visual stimulation supports this. High expectations and the right environment matter enormously."}
+    ]
+  }
 },
 cone:{
   name:"Cone Dystrophy",
@@ -2732,6 +3009,23 @@ function renderCondition(key) {
           <div><h3>${l.title}</h3><p>${l.body}</p></div>
         </div>`).join('')}
         <div class="wb"><strong>More daily life tips:</strong> Visit our <button onclick="showPage('livingwell')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Everyday Guide →</button></div>
+      </div>
+    </div>` : ''}
+
+    ${d.forParents ? `
+    <div class="acc-item" id="acc-parents-${key}">
+      <button class="acc-btn" onclick="toggleAcc('parents','${key}')" aria-expanded="false">
+        <span class="acc-left"><span class="acc-num">👶</span><span class="acc-label">For Parents</span></span>
+        <span class="acc-arrow" aria-hidden="true">▾</span>
+      </button>
+      <div class="acc-body">
+        <div class="wb"><strong>${d.forParents.intro}</strong></div>
+        ${d.forParents.tips.map(t=>`
+        <div class="nc">
+          <div class="nc-num" aria-hidden="true" style="background:var(--green);font-size:0.7rem">💛</div>
+          <div><h3>${t.title}</h3><p>${t.body}</p></div>
+        </div>`).join('')}
+        <div class="wb">For more detailed guidance, visit our <button onclick="showPage('children')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">For Parents page →</button></div>
       </div>
     </div>` : ''}
 
