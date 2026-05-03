@@ -202,6 +202,15 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
   box-shadow: 0 0 0 1px rgba(245,184,0,0.2);
 }
 .theme-select:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.lang-btn {
+  height: 32px; padding: 0 10px; border-radius: 50px;
+  border: 2px solid var(--border); background: var(--card2);
+  color: var(--text2); font-family: var(--font);
+  font-size: 11px; font-weight: 800; cursor: pointer;
+  flex-shrink: 0; transition: all .15s; letter-spacing: 0.05em;
+}
+.lang-btn.active { border-color: #00b140; background: #00b140; color: #fff; }
+.lang-btn:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
 
 .logo-hex {
   background: var(--yellow);
@@ -752,6 +761,8 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
     <option value="hc">⬛ Hi-Con</option>
     <option value="yb">🟡 Yel/Blk</option>
   </select>
+  <div class="a11y-divider"></div>
+  <button class="lang-btn" id="welsh-toggle" onclick="toggleWelsh()" aria-label="Switch to Welsh / Cymraeg">CY</button>
 </div>
 
 <!-- iOS INSTALL BANNER -->
@@ -832,10 +843,25 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
         </svg>
       </div>
 
-      <span class="hero-eyebrow">Free · Independent · UK</span>
-      <h1>Everything you need,<br>in one place.</h1>
+      <span class="hero-eyebrow" data-cy="Free · Independent · UK">Free · Independent · UK</span>
+      <h1 data-cy="Everything you need,">Everything you need,<br data-cy="in one place.">in one place.</h1>
       <p class="hero-desc">Clear, accessible information for people living with sight conditions — and the people who support them.</p>
-      <p class="last-updated">Last updated: <time datetime="2026-04-25">April 2026</time> · Reviewed quarterly · <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0">Contact us</button></p>
+      <!-- BSL VIDEO INTRO -->
+      <div id="bsl-intro" style="margin-bottom:20px">
+        <div style="background:var(--card);border:2px solid var(--border);border-radius:16px;padding:16px 18px;display:flex;align-items:flex-start;gap:14px">
+          <span style="font-size:1.6rem;flex-shrink:0" aria-hidden="true">🤟</span>
+          <div>
+            <div style="font-size:0.82rem;font-weight:800;color:var(--text);margin-bottom:4px">British Sign Language Introduction</div>
+            <p style="font-size:0.82rem;color:var(--text2);line-height:1.6;margin-bottom:10px">A BSL-interpreted video guide to Vision Hub — what this site offers and how to use it.</p>
+            <a href="https://www.youtube.com/results?search_query=vision+hub+UK+BSL" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:var(--yellow);color:#000;font-family:var(--font);font-size:0.78rem;font-weight:800;padding:8px 14px;border-radius:50px;text-decoration:none">
+              ▶ Watch BSL Introduction
+            </a>
+            <p style="font-size:0.72rem;color:var(--text2);margin-top:8px;line-height:1.5">BSL video coming soon — we are working with a qualified BSL interpreter to produce this. If you would like to help, please <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">contact us</button>.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="last-updated">Last updated: <time datetime="2026-04-25">April 2026</time> · Reviewed monthly · <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0">Contact us</button></p>
 
       <div class="founder-box">
         <p class="founder-short">When my daughter was diagnosed with Stargardts, I had so many questions. I couldn't find anywhere that had everything in one place — clear guidance, the latest research, benefits advice, and real support, all together.</p>
@@ -922,13 +948,13 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 
       <!-- USEFUL RESOURCES ROW -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px" role="group" aria-label="Useful resources">
-        <button onclick="showPage('glossary')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Glossary">📖 Glossary</button>
-        <button onclick="showPage('localsupport')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Local Support">📍 Local Support</button>
+        <button onclick="showPage('glossary')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Glossary" data-cy="Glossary">📖 Glossary</button>
+        <button onclick="showPage('localsupport')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Local Support" data-cy="Local Support">📍 Local Support</button>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px" role="group" aria-label="More resources">
-        <button onclick="showPage('eyehealth')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Eye Health Basics">👁️ Eye Health</button>
-        <button onclick="showPage('employment')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Employment guide">💼 Employment</button>
-        <button onclick="showPage('children')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open For Parents guide">👶 For Parents</button>
+        <button onclick="showPage('eyehealth')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Eye Health Basics" data-cy="Eye Health Basics">👁️ Eye Health</button>
+        <button onclick="showPage('employment')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Employment guide" data-cy="Employment">💼 Employment</button>
+        <button onclick="showPage('children')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open For Parents guide" data-cy="For Parents">👶 For Parents</button>
       </div>
 
       <div class="search-wrap" style="margin-bottom:16px">
@@ -1079,7 +1105,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
           <span class="news-tag tech">Technology</span>
           <p class="news-text"><strong>All conditions:</strong> Apple iOS 18 introduced significant VoiceOver improvements including enhanced image descriptions and improved braille display support.</p>
         </div>
-        <p class="news-footer">Updates are verified and added each quarter. Information is for guidance only — always discuss research and treatment options with your ophthalmologist. <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:0.78rem;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Spotted something missing? Let us know.</button></p>
+        <p class="news-footer">Updates are verified and added each month. Information is for guidance only — always discuss research and treatment options with your ophthalmologist. <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:0.78rem;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Spotted something missing? Let us know.</button></p>
       </section>
     </div>
 
@@ -2181,7 +2207,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
     <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
     <span class="legal-eyebrow">Transparency</span>
     <h1>How We Write<br>Our Content</h1>
-    <p class="legal-updated">Last updated: <time datetime="2026-04">April 2026</time></p>
+    <p class="legal-updated">Last updated: <time datetime="2026-05">April 2026</time></p>
 
     <div class="wb"><strong>Important:</strong> Vision Hub provides information for guidance only. It is not a substitute for professional medical advice. Always discuss your condition, treatment options, and any research with your own ophthalmologist or specialist.</div>
 
@@ -2211,7 +2237,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 
     <div class="lc">
       <h2>🔄 How often content is reviewed</h2>
-      <p>All content is reviewed quarterly — in January, April, July, and October each year. The date of the most recent review is shown on every condition page and in the site footer.</p>
+      <p>All content is reviewed monthly — in the first week of every month. The date of the most recent review is shown on every condition page and in the site footer.</p>
       <p style="margin-top:10px">Research and clinical trial information changes rapidly in some conditions. We do our best to keep this current but strongly recommend checking directly with specialist charities and your clinical team for the most up-to-date trial information.</p>
     </div>
 
@@ -2296,7 +2322,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       </div>
     </nav>
     <div class="footer-bottom">
-      © 2026 Vision Hub &nbsp;·&nbsp; <strong>Not a medical provider</strong> &nbsp;·&nbsp; Information is for guidance only — always consult your ophthalmologist &nbsp;·&nbsp; Content reviewed April 2026 &nbsp;·&nbsp;
+      © 2026 Vision Hub &nbsp;·&nbsp; <strong>Not a medical provider</strong> &nbsp;·&nbsp; Information is for guidance only — always consult your ophthalmologist &nbsp;·&nbsp; Content reviewed May 2026 &nbsp;·&nbsp;
       <a onclick="showPage('livingwell')" role="button" tabindex="0">Everyday Guide</a> &nbsp;·&nbsp;
       <a onclick="showPage('glossary')" role="button" tabindex="0">Glossary</a> &nbsp;·&nbsp;
       <a onclick="showPage('questions')" role="button" tabindex="0">Questions to Ask</a> &nbsp;·&nbsp;
@@ -2316,6 +2342,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 /* ─────────────── CONDITION DATA ─────────────── */
 const DATA = {
 stargardts:{
+    helpline:{org:"Retina UK Helpline",number:"01280 860363",hours:"Mon–Fri 9am–5pm",link:"https://retinauk.org.uk"},
   name:"Stargardt Disease",
   what:"Stargardt disease is the most common inherited macular dystrophy, affecting around 1 in 8,000–10,000 people. It is caused by mutations in the ABCA4 gene, leading to a toxic build-up of lipofuscin in the retinal pigment epithelium. Central vision progressively deteriorates, often starting in childhood or young adulthood. Peripheral vision is usually retained.",
   howAffects:"Central vision progressively deteriorates, often starting in childhood or young adulthood. Peripheral vision is usually retained. Common symptoms include blurry central vision, difficulty reading, and sensitivity to bright light.",
@@ -2372,6 +2399,7 @@ stargardts:{
   }
 },
 amd:{
+    helpline:{org:"Macular Society Helpline",number:"0300 3030 111",hours:"Mon–Fri 9am–5pm",link:"https://www.macularsociety.org"},
   name:"Age-Related Macular Degeneration",
   what:"AMD is the leading cause of vision loss in people over 50 in the UK, affecting over 600,000 people. It damages the macula — the central part of the retina. Dry AMD progresses slowly; Wet AMD is less common but more rapid and is a medical emergency requiring urgent treatment.",
   howAffects:"Central vision becomes blurred or distorted. Straight lines may appear wavy — test with an Amsler grid daily. A dark or empty patch may develop in the centre of vision. Peripheral vision is usually preserved.",
@@ -2414,6 +2442,7 @@ amd:{
   ]
 },
 glaucoma:{
+    helpline:{org:"Glaucoma UK Helpline",number:"01233 648170",hours:"Mon–Fri 9am–5pm",link:"https://glaucoma.uk"},
   name:"Glaucoma",
   what:"Glaucoma is a group of eye conditions that damage the optic nerve, usually caused by elevated pressure inside the eye. It is the second most common cause of blindness in the UK, affecting over 700,000 people. Half of those affected don't know they have it — making regular eye tests essential.",
   howAffects:"Peripheral vision is gradually lost, often without symptoms until significant damage has occurred. In advanced stages, tunnel vision develops. Acute angle-closure glaucoma causes sudden severe eye pain, headache, and nausea — a medical emergency.",
@@ -2453,6 +2482,7 @@ glaucoma:{
   ]
 },
 rp:{
+    helpline:{org:"Retina UK Helpline",number:"01280 860363",hours:"Mon–Fri 9am–5pm",link:"https://retinauk.org.uk"},
   name:"Retinitis Pigmentosa",
   what:"Retinitis Pigmentosa (RP) covers over 100 inherited retinal dystrophies affecting around 1 in 4,000 people. Rod photoreceptors are damaged first, affecting peripheral and night vision. It is the most common inherited cause of visual disability in working-age adults in the UK.",
   howAffects:"Night blindness is usually the first symptom. Peripheral vision gradually narrows, creating tunnel vision. In later stages, central vision may also be affected. The rate of progression varies enormously between individuals.",
@@ -2492,6 +2522,7 @@ rp:{
   ]
 },
 diabetic:{
+    helpline:{org:"Diabetes UK Helpline",number:"0345 123 2399",hours:"Mon–Fri 9am–6pm",link:"https://www.diabetes.org.uk"},
   name:"Diabetic Retinopathy",
   what:"Diabetic retinopathy is the most common cause of preventable blindness in working-age adults in the UK, affecting over 1.7 million people. It is caused by high blood sugar damaging the retinal blood vessels. Anyone with Type 1 or Type 2 diabetes is at risk.",
   howAffects:"In early stages there are often no symptoms — making annual screening critical. As it progresses: floaters, blurred vision, fluctuating vision, and washed-out colours. Sudden vision loss is a medical emergency.",
@@ -2529,6 +2560,7 @@ diabetic:{
   ]
 },
 lca:{
+    helpline:{org:"Retina UK Helpline",number:"01280 860363",hours:"Mon–Fri 9am–5pm",link:"https://retinauk.org.uk"},
   name:"Leber Congenital Amaurosis",
   what:"Leber Congenital Amaurosis (LCA) is a group of severe inherited retinal dystrophies and the most common cause of inherited blindness in childhood, affecting around 1 in 50,000 births. Multiple genes can cause LCA — the most significant being CEP290, GUCY2D, and RPE65.",
   howAffects:"Babies typically show rapid involuntary eye movements (nystagmus), lack of visual responsiveness, and may press on their eyes. Visual acuity is severely reduced from the first months of life. Photophobia and extreme farsightedness are common.",
@@ -2583,6 +2615,7 @@ lca:{
   }
 },
 nystagmus:{
+    helpline:{org:"Nystagmus Network",number:"07470 363 138",hours:"Leave a message — they will call back",link:"https://www.nystagmusnet.org"},
   name:"Nystagmus",
   what:"Nystagmus is a condition causing involuntary, repetitive eye movements — most commonly side-to-side. These movements reduce visual acuity because the eyes cannot fix steadily on a target. It affects approximately 1 in 1,000 people in the UK.",
   howAffects:"The involuntary movements make it difficult to focus on small or distant objects. Most people have reduced visual acuity but not complete blindness. Many find a 'null zone' — a head position where movements slow and vision is clearest.",
@@ -2632,6 +2665,7 @@ nystagmus:{
   }
 },
 achromatopsia:{
+    helpline:{org:"Retina UK Helpline",number:"01280 860363",hours:"Mon–Fri 9am–5pm",link:"https://retinauk.org.uk"},
   name:"Achromatopsia",
   what:"Achromatopsia (rod monochromacy) is a rare inherited retinal condition affecting around 1 in 30,000 people. It is caused by non-functioning cone photoreceptors, meaning people see only in black, white, and grey and have severe light sensitivity.",
   howAffects:"Colour vision is completely absent. Visual acuity is typically 6/60 or worse. Intense photophobia severely reduces vision in normal lighting. Nystagmus is present in most cases. Dark-adapted vision is normal — people often see better in dim light than bright daylight.",
@@ -2682,6 +2716,7 @@ achromatopsia:{
   }
 },
 usher:{
+    helpline:{org:"Sense Helpline",number:"0300 330 9256",hours:"Mon–Fri 9am–5pm",link:"https://www.sense.org.uk"},
   name:"Usher Syndrome",
   what:"Usher syndrome is the most common condition involving both hearing loss and vision loss, affecting approximately 1 in 6,000 people. It combines sensorineural hearing loss with retinitis pigmentosa. There are three types. Usher syndrome accounts for around 50% of all deaf-blind individuals.",
   howAffects:"The vision component follows a typical RP pattern: night blindness first, then progressive narrowing of peripheral vision, then central vision loss. The combination of vision and hearing loss creates a profound challenge to communication, navigation, and independence.",
@@ -2732,6 +2767,7 @@ usher:{
   }
 },
 albinism:{
+    helpline:{org:"Albinism Fellowship",number:"01282 771900",hours:"Mon–Fri 9am–5pm",link:"https://www.albinism.org.uk"},
   name:"Albinism",
   what:"Albinism is a group of inherited conditions affecting melanin production, causing reduced pigmentation of the skin, hair, and eyes and — crucially — affecting the development of the visual system. Almost all forms cause visual impairment. Affects approximately 1 in 17,000 people in the UK.",
   howAffects:"Visual impairment is caused by foveal hypoplasia, nystagmus, high refractive errors, photophobia, and misrouting of optic nerve fibres. Visual acuity typically ranges from 6/18 to 6/60. Stereoscopic (3D) vision is often absent or reduced.",
@@ -2770,6 +2806,7 @@ albinism:{
   ]
 },
 cvi:{
+    helpline:{org:"RNIB Helpline",number:"0303 123 9999",hours:"Mon–Fri 8am–8pm, Sat 9am–1pm",link:"https://www.rnib.org.uk"},
   name:"Cerebral Visual Impairment",
   what:"Cerebral Visual Impairment (CVI) is the most common cause of visual impairment in children in the developed world, caused by damage to the visual processing parts of the brain — not the eyes themselves. The eyes are often healthy. CVI typically results from brain injury around birth, stroke, or brain malformation.",
   howAffects:"CVI presents very differently from eye-based conditions. A child may appear to 'look through' objects, have better peripheral than central vision, or seem visually inattentive. Visual fatigue is common. Features include difficulty with visual clutter, better vision for familiar objects, light-gazing, and better responses to bright colours.",
@@ -2821,6 +2858,7 @@ cvi:{
   }
 },
 cone:{
+    helpline:{org:"Retina UK Helpline",number:"01280 860363",hours:"Mon–Fri 9am–5pm",link:"https://retinauk.org.uk"},
   name:"Cone Dystrophy",
   what:"Cone dystrophy is a group of inherited retinal conditions in which cone photoreceptors degenerate progressively over time. Unlike achromatopsia, cone dystrophies typically begin with normal or near-normal vision that deteriorates. Affects approximately 1 in 30,000–40,000 people.",
   howAffects:"Progressive loss of central vision and colour discrimination is the hallmark. Bright light sensitivity (photophobia) is prominent. Reading, recognising faces, and driving become increasingly difficult. In cone-rod dystrophy, peripheral vision and night vision are also progressively lost.",
@@ -2862,6 +2900,7 @@ cone:{
 },
 
 dmo:{
+    helpline:{org:"Diabetes UK Helpline",number:"0345 123 2399",hours:"Mon–Fri 9am–6pm",link:"https://www.diabetes.org.uk"},
   name:"Diabetic Macular Oedema",
   what:"Diabetic Macular Oedema (DMO) is a complication of diabetic retinopathy in which fluid leaks from damaged blood vessels into the macula — the central part of the retina responsible for sharp, detailed vision. It is the most common cause of vision loss in people with diabetes and affects approximately 1 in 10 people with diabetic retinopathy. DMO can occur at any stage of diabetic retinopathy.",
   howAffects:"Central vision becomes blurred or distorted. Reading, recognising faces, and seeing fine detail become increasingly difficult. Vision may fluctuate — better on some days than others — due to changes in fluid levels. Unlike diabetic retinopathy itself, DMO directly and rapidly affects the vision used for everyday tasks.",
@@ -2898,6 +2937,7 @@ dmo:{
 },
 
 myopic:{
+    helpline:{org:"Macular Society Helpline",number:"0300 3030 111",hours:"Mon–Fri 9am–5pm",link:"https://www.macularsociety.org"},
   name:"Myopic Macular Degeneration",
   what:"Myopic Macular Degeneration (MMD) is a serious complication of high myopia (severe short-sightedness, typically -6 dioptres or more) in which the elongated eyeball causes progressive damage to the macula. It is the leading cause of vision impairment in young and middle-aged adults in East Asia and is increasingly common in the UK. Unlike age-related AMD, MMD affects younger people and is directly caused by the physical stretching of the eye.",
   howAffects:"Central vision progressively deteriorates. Straight lines may appear distorted or wavy. A blind spot may develop in the centre of vision. In some cases, abnormal blood vessels grow under the macula (myopic CNV — choroidal neovascularisation), causing rapid vision loss requiring urgent treatment. Peripheral vision is usually preserved.",
@@ -2931,6 +2971,7 @@ myopic:{
 },
 
 charlesbonnet:{
+    helpline:{org:"Macular Society CBS Support",number:"0300 3030 111",hours:"Mon–Fri 9am–5pm",link:"https://www.macularsociety.org"},
   name:"Charles Bonnet Syndrome",
   what:"Charles Bonnet Syndrome (CBS) is a condition in which people with significant sight loss experience vivid visual hallucinations — seeing things that are not there. It affects an estimated 1 in 2 people with significant vision loss, including those with AMD, glaucoma, diabetic retinopathy, and other conditions. Despite the alarming nature of the hallucinations, CBS is not a mental health condition and does not indicate dementia or psychosis. It is caused by the brain generating its own images when deprived of normal visual input.",
   howAffects:"Hallucinations vary widely — from simple patterns, grids, and flashing lights to detailed images of people, animals, buildings, and landscapes. They are always silent and usually recognised as not real by the person experiencing them. They can last seconds or hours and may occur daily or occasionally. They are often triggered by low light, tiredness, or stress. CBS can cause significant distress and anxiety, particularly if the person does not know what is happening to them.",
@@ -2965,6 +3006,7 @@ charlesbonnet:{
 },
 
 opticneuritis:{
+    helpline:{org:"MS Society Helpline",number:"0808 800 8000",hours:"Mon–Fri 9am–7pm",link:"https://www.mssociety.org.uk"},
   name:"Optic Neuritis",
   what:"Optic Neuritis is inflammation of the optic nerve — the nerve that carries visual information from the eye to the brain. It causes sudden vision loss, usually in one eye, often accompanied by pain on eye movement. It is strongly associated with multiple sclerosis (MS) — approximately 50% of people with optic neuritis will go on to develop MS. It can also occur in isolation or in association with other conditions including neuromyelitis optica spectrum disorder (NMOSD).",
   howAffects:"Sudden blurring or loss of vision in one eye, typically developing over hours to days. Pain behind the eye, worsened by eye movement. Reduced colour vision — red colours appear washed out or faded. In most cases, vision recovers significantly within weeks to months, though some permanent reduction may remain. The Uhthoff phenomenon — temporary worsening of vision with heat or exercise — is common.",
@@ -2999,6 +3041,7 @@ opticneuritis:{
 },
 
 blepharitis:{
+    helpline:{org:"RNIB Helpline",number:"0303 123 9999",hours:"Mon–Fri 8am–8pm, Sat 9am–1pm",link:"https://www.rnib.org.uk"},
   name:"Blepharitis",
   what:"Blepharitis is a common chronic inflammation of the eyelids, affecting the eyelid margins where the eyelashes grow. It is one of the most common eye conditions in the UK, affecting people of all ages. There are two main types: anterior blepharitis (affecting the outer eyelid margin, often associated with bacteria or skin conditions such as seborrhoeic dermatitis or rosacea) and posterior blepharitis (affecting the inner eyelid margin, caused by dysfunction of the meibomian glands which produce the oily layer of the tear film). Many people have both types.",
   howAffects:"Sore, red, itchy, and swollen eyelids. Crusty or sticky eyelashes, particularly in the morning. Burning or gritty sensation in the eyes. Dry eyes caused by disruption of the tear film. Sensitivity to light. Blurred vision that improves with blinking. In most cases blepharitis does not permanently damage vision, but it can cause significant discomfort and affect quality of life. In severe cases it can lead to corneal damage.",
@@ -3059,7 +3102,7 @@ function renderCondition(key) {
     <button class="back-btn" onclick="showPage('home')" aria-label="Back to conditions list">← All Conditions</button>
     <span class="cond-hero-eyebrow">Eye Condition Guide</span>
     <h1>${d.name}</h1>
-    <p style="font-size:0.75rem;color:var(--text2);margin-bottom:16px">Last reviewed: <time datetime="2026-04">April 2026</time> &nbsp;·&nbsp; <button onclick="showPage('disclaimer')" style="background:none;border:none;color:var(--text2);font-family:var(--font);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0">How we write our content</button></p>
+    <p style="font-size:0.75rem;color:var(--text2);margin-bottom:16px">Last reviewed: <time datetime="2026-05">May 2026</time> &nbsp;·&nbsp; <button onclick="showPage('disclaimer')" style="background:none;border:none;color:var(--text2);font-family:var(--font);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0">How we write our content</button></p>
   </div>
   <div class="cond-page-inner">
 
@@ -3129,6 +3172,14 @@ function renderCondition(key) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
       </button>
       <div class="acc-body">
+        ${d.helpline ? `<div style="background:var(--yellow);border-radius:14px;padding:16px 18px;margin-bottom:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+          <span style="font-size:1.4rem" aria-hidden="true">📞</span>
+          <div>
+            <div style="font-size:0.78rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#000;margin-bottom:2px">${d.helpline.org}</div>
+            <a href="tel:${d.helpline.number.replace(/\s/g,'')}" style="font-size:1.3rem;font-weight:900;color:#000;text-decoration:none">${d.helpline.number}</a>
+            <div style="font-size:0.75rem;color:#333;margin-top:2px">${d.helpline.hours}</div>
+          </div>
+        </div>` : ''}
         ${d.support.map(s=>`
         <div class="sc">
           <h3>${s.title}</h3><p>${s.body}</p>
@@ -3271,6 +3322,108 @@ function toggleAcc(section, key) {
     }, 50);
   }
 }
+
+
+/* ─────────────── WELSH LANGUAGE TOGGLE ─────────────── */
+var _isWelsh = false;
+
+var WELSH = {
+  /* Navigation & UI */
+  'All Conditions': 'Pob Cyflwr',
+  'Back to home': 'Yn ôl i'r hafan',
+  'Back to conditions list': 'Yn ôl i'r rhestr cyflyrau',
+  'Eye Condition Guide': 'Canllaw Cyflyrau'r Llygad',
+  'Last reviewed:': 'Adolygwyd diwethaf:',
+  'On this page': 'Ar y dudalen hon',
+  'Find out more': 'Dysgu rhagor',
+
+  /* Home page */
+  'Everything you need,': 'Popeth sydd ei angen arnoch,',
+  'in one place.': 'mewn un lle.',
+  'Free · Independent · UK': 'Am Ddim · Annibynnol · DU',
+  'Clear, accessible information for people living with sight conditions — and the people who support them.': 'Gwybodaeth glir, hygyrch i bobl sy'n byw gyda chyflyrau golwg — a'r bobl sy'n eu cefnogi.',
+  'Just Diagnosed?': 'Newydd gael diagnosis?',
+  'Your Condition': 'Eich Cyflwr',
+  'Everyday Guide': 'Canllaw Beunyddiol',
+  'Local Support': 'Cymorth Lleol',
+  'Glossary': 'Geirfa',
+  'Employment': 'Cyflogaeth',
+  'For Parents': 'I Rieni',
+  'Eye Health Basics': 'Hanfodion Iechyd Llygaid',
+  'Recent Updates': 'Diweddariadau Diweddar',
+  'Video Resources': 'Adnoddau Fideo',
+  'Contact': 'Cysylltu',
+
+  /* Condition sections */
+  'What is': 'Beth yw',
+  'Latest Research & Clinical Trials': 'Ymchwil Diweddaraf a Threialon Clinigol',
+  'Practical How-To Guides': 'Canllawiau Ymarferol',
+  'Assistive Technology': 'Technoleg Gynorthwyol',
+  'Support & Community': 'Cymorth a Chymuned',
+  'Benefits & Financial Help': 'Budd-daliadau a Chymorth Ariannol',
+  'Living with': 'Byw gyda',
+  'For Parents': 'I Rieni',
+
+  /* Pages */
+  'Glossary': 'Geirfa',
+  'Questions to Ask': 'Cwestiynau i'w Gofyn',
+  'Privacy Policy': 'Polisi Preifatrwydd',
+  'Accessibility Statement': 'Datganiad Hygyrchedd',
+  'How We Write Our Content': 'Sut Rydym yn Ysgrifennu Ein Cynnwys',
+
+  /* Footer */
+  'Free, independent, and built for people with sight loss.': 'Am ddim, annibynnol, a'i adeiladu ar gyfer pobl â cholled golwg.',
+  'Not a medical provider': 'Nid darparwr meddygol',
+  'Always consult your ophthalmologist': 'Ymgynghorwch â'ch offthalmolegydd bob amser',
+
+  /* Welsh site notice */
+  '__welsh_notice__': '<div style="background:#00b140;color:#fff;padding:10px 16px;font-size:0.82rem;font-weight:700;text-align:center">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg — Mae'r tudalennau cyflwr yn Saesneg ar hyn o bryd. Rydym yn gweithio ar gyfieithiad llawn. / Condition pages currently in English. Full Welsh translation in progress.</div>'
+};
+
+function toggleWelsh() {
+  _isWelsh = !_isWelsh;
+  var btn = document.getElementById('welsh-toggle');
+  if (btn) {
+    btn.classList.toggle('active', _isWelsh);
+    btn.setAttribute('aria-label', _isWelsh ? 'Switch to English' : 'Switch to Welsh / Cymraeg');
+    btn.textContent = _isWelsh ? 'EN' : 'CY';
+  }
+
+  // Show/hide Welsh notice
+  var existing = document.getElementById('welsh-notice');
+  if (_isWelsh && !existing) {
+    var notice = document.createElement('div');
+    notice.id = 'welsh-notice';
+    notice.innerHTML = WELSH['__welsh_notice__'];
+    var a11y = document.querySelector('.a11y-bar');
+    if (a11y && a11y.nextSibling) {
+      a11y.parentNode.insertBefore(notice, a11y.nextSibling);
+    }
+  } else if (!_isWelsh && existing) {
+    existing.remove();
+  }
+
+  // Translate all data-cy elements
+  document.querySelectorAll('[data-cy]').forEach(function(el) {
+    var key = el.getAttribute('data-cy');
+    if (_isWelsh && WELSH[key]) {
+      el.setAttribute('data-en', el.textContent);
+      el.textContent = WELSH[key];
+    } else if (!_isWelsh) {
+      var en = el.getAttribute('data-en');
+      if (en) el.textContent = en;
+    }
+  });
+
+  localStorage.setItem('vh-lang', _isWelsh ? 'cy' : 'en');
+}
+
+// Restore Welsh preference
+(function() {
+  if (localStorage.getItem('vh-lang') === 'cy') {
+    setTimeout(toggleWelsh, 300);
+  }
+})();
 
 /* ─────────────── JUST DIAGNOSED TOGGLE ─────────────── */
 function toggleJD() {
