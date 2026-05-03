@@ -776,7 +776,128 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 <!-- ══════════════════════════════════════
      HOME PAGE
 ══════════════════════════════════════ -->
-<div id="page-home" class="page active">
+<!-- Welsh notice banner -->
+<div id="welsh-notice" style="display:none;background:#00b140;color:#fff;padding:12px 20px;font-size:0.85rem;font-weight:600;text-align:center;line-height:1.6">
+  🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁿 <strong>Cymraeg</strong> — Mae'r cynnwys cyflyrau yn Saesneg ar hyn o bryd. Rydym yn gweithio ar gyfieithiad llawn o'r holl gynnwys meddygol.
+  <br><span style="font-size:0.75rem;opacity:0.9">Condition content currently in English. Full medical translation in progress — reviewed by Welsh-speaking health professionals.</span>
+</div>
+
+<!-- Welsh home page -->
+<div id="page-home-welsh" class="welsh-page" style="display:none">
+  <main>
+    <div class="desktop-wrap">
+    <aside class="desktop-sidebar" aria-label="Llywio'r wefan">
+      <span class="sidebar-logo">◈ Hwb Golwg</span>
+      <span class="sidebar-tagline">Adnodd golwg DU am ddim</span>
+      <span class="sidebar-section">Cyflyrau</span>
+      <button class="sidebar-link" onclick="showCondition('stargardts');toggleWelsh()">✦ Clefyd Stargardt</button>
+      <button class="sidebar-link" onclick="showCondition('amd');toggleWelsh()">◉ Dirywiad Macular AMD</button>
+      <button class="sidebar-link" onclick="showCondition('glaucoma');toggleWelsh()">◎ Glawcoma</button>
+      <button class="sidebar-link" onclick="showCondition('diabetic');toggleWelsh()">◇ Retinopathi Diabetig</button>
+      <button class="sidebar-link" onclick="showCondition('rp');toggleWelsh()">◈ Retinitis Pigmentosa</button>
+      <button class="sidebar-link" onclick="showCondition('cvi');toggleWelsh()">◭ Nam Gweledol yr Ymennydd</button>
+      <button class="sidebar-link" onclick="showCondition('nystagmus');toggleWelsh()">↔ Nystagmus</button>
+      <button class="sidebar-link" onclick="showCondition('albinism');toggleWelsh()">☀ Albiniaeth</button>
+      <button class="sidebar-link" onclick="showCondition('usher');toggleWelsh()">◑ Syndrom Usher</button>
+      <button class="sidebar-link" onclick="showCondition('lca');toggleWelsh()">⬡ Amawrosis Cynhenid Leber</button>
+      <button class="sidebar-link" onclick="showCondition('cone');toggleWelsh()">🎯 Dystroffi Côn</button>
+      <button class="sidebar-link" onclick="showCondition('achromatopsia');toggleWelsh()">⬤ Achromatopsia</button>
+      <button class="sidebar-link" onclick="showCondition('dmo');toggleWelsh()">💧 Oedema Macular Diabetig</button>
+      <button class="sidebar-link" onclick="showCondition('myopic');toggleWelsh()">👓 Dirywiad Macular Myopig</button>
+      <button class="sidebar-link" onclick="showCondition('charlesbonnet');toggleWelsh()">🧠 Syndrom Charles Bonnet</button>
+      <button class="sidebar-link" onclick="showCondition('opticneuritis');toggleWelsh()">⚡ Niwritis Optig</button>
+      <button class="sidebar-link" onclick="showCondition('blepharitis');toggleWelsh()">👁 Blepharaidd</button>
+      <div class="sidebar-divider"></div>
+      <span class="sidebar-section">Canllawiau ac Adnoddau</span>
+      <button class="sidebar-link" onclick="showPage('livingwell');if(_isWelsh)toggleWelsh()">🌟 Canllaw Beunyddiol</button>
+      <button class="sidebar-link" onclick="showPage('eyehealth');if(_isWelsh)toggleWelsh()">👁️ Hanfodion Iechyd Llygaid</button>
+      <button class="sidebar-link" onclick="showPage('employment');if(_isWelsh)toggleWelsh()">💼 Cyflogaeth</button>
+      <button class="sidebar-link" onclick="showPage('glossary');if(_isWelsh)toggleWelsh()">📖 Geirfa</button>
+      <button class="sidebar-link" onclick="showPage('questions');if(_isWelsh)toggleWelsh()">❓ Cwestiynau i'w Gofyn</button>
+      <button class="sidebar-link" onclick="showPage('localsupport');if(_isWelsh)toggleWelsh()">📍 Cymorth Lleol</button>
+      <button class="sidebar-link" onclick="showPage('children');if(_isWelsh)toggleWelsh()">👶 I Rieni</button>
+      <div class="sidebar-divider"></div>
+      <button class="sidebar-link" onclick="showPage('contact');if(_isWelsh)toggleWelsh()">✉️ Cysylltu</button>
+    </aside>
+    <div class="desktop-main">
+    <div class="hero">
+      <div class="hero-eye" aria-hidden="true"><svg viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="60" cy="30" rx="55" ry="28" stroke="var(--yellow)" stroke-width="2"/><circle cx="60" cy="30" r="18" stroke="var(--yellow)" stroke-width="2"/><circle cx="60" cy="30" r="8" fill="var(--yellow)" opacity="0.7"/><circle cx="60" cy="30" r="3" fill="var(--yellow)"/></svg></div>
+      <span class="hero-eyebrow">AM DDIM · ANNIBYNNOL · DU</span>
+      <h1 class="hero-h1">Popeth sydd ei angen arnoch, mewn un lle.</h1>
+      <p class="hero-sub">Gwybodaeth glir, hygyrch i bobl sy'n byw gyda chyflyrau golwg — a'r bobl sy'n eu cefnogi.</p>
+      <p class="last-updated">Diweddarwyd diwethaf: Mai 2026 · Adolygir yn fisol · <button onclick="showPage('contact');if(_isWelsh)toggleWelsh()" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Cysylltwch â ni</button></p>
+    </div>
+
+    <div class="cond-section" style="max-width:680px;margin:0 auto;padding:0 20px">
+
+      <!-- Newydd Gael Diagnosis -->
+      <div class="founder-box" style="margin-bottom:24px">
+        <p>Pan gafodd fy merch ddiagnosis o Glefyd Stargardt, roedd gen i gymaint o gwestiynau. Ni allwn ddod o hyd i unrhyw le oedd â phopeth mewn un lle — canllawiau clir, yr ymchwil ddiweddaraf, cyngor budd-daliadau, a chymorth go iawn, gyda'i gilydd.</p>
+        <p style="margin-top:10px">Felly fe'i hadeiladais. Mae'r wefan hon yma i helpu unrhyw un sy'n byw gyda cholled golwg, a'r rhai sydd agosaf atynt.</p>
+        <p style="margin-top:10px">Os nad yw eich cyflwr wedi'i restru, <button onclick="showPage('contact');if(_isWelsh)toggleWelsh()" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">cysylltwch â ni</button> a byddaf yn edrych ar ei ychwanegu.</p>
+        <p style="margin-top:10px;font-style:italic;color:var(--yellow);font-weight:700">Am ddim, annibynnol, a'i adeiladu ar gyfer pobl â cholled golwg.</p>
+      </div>
+
+      <!-- Adnoddau -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+        <button onclick="showPage('glossary');if(_isWelsh)toggleWelsh()" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px">📖 Geirfa</button>
+        <button onclick="showPage('localsupport');if(_isWelsh)toggleWelsh()" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px">📍 Cymorth Lleol</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px">
+        <button onclick="showPage('eyehealth');if(_isWelsh)toggleWelsh()" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px">👁️ Iechyd Llygaid</button>
+        <button onclick="showPage('employment');if(_isWelsh)toggleWelsh()" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px">💼 Cyflogaeth</button>
+        <button onclick="showPage('children');if(_isWelsh)toggleWelsh()" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px">👶 I Rieni</button>
+      </div>
+
+      <!-- Chwilio -->
+      <div class="search-wrap" style="margin-bottom:20px">
+        <label class="search-label" for="search-cy">Eich cyflwr</label>
+        <div class="search-row">
+          <input class="search-input" id="search-cy" type="search" placeholder="Chwilio am gyflyrau..." autocomplete="off" oninput="doSearch(this.value)" aria-label="Chwilio am gyflyrau">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+        </div>
+        <div id="search-results-cy" class="search-results" role="listbox" aria-label="Canlyniadau chwilio"></div>
+      </div>
+
+      <!-- Rhestr Cyflyrau -->
+      <div role="list" aria-label="Cyflyrau llygaid">
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('stargardts');if(_isWelsh)toggleWelsh()">✦ Clefyd Stargardt <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('amd');if(_isWelsh)toggleWelsh()">◉ Dirywiad Macular AMD <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('glaucoma');if(_isWelsh)toggleWelsh()">◎ Glawcoma <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('diabetic');if(_isWelsh)toggleWelsh()">◇ Retinopathi Diabetig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('rp');if(_isWelsh)toggleWelsh()">◈ Retinitis Pigmentosa <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('cvi');if(_isWelsh)toggleWelsh()">◭ Nam Gweledol yr Ymennydd <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('nystagmus');if(_isWelsh)toggleWelsh()">↔ Nystagmus <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('albinism');if(_isWelsh)toggleWelsh()">☀ Albiniaeth <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('usher');if(_isWelsh)toggleWelsh()">◑ Syndrom Usher <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('lca');if(_isWelsh)toggleWelsh()">⬡ Amawrosis Cynhenid Leber <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('cone');if(_isWelsh)toggleWelsh()">🎯 Dystroffi Côn <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('achromatopsia');if(_isWelsh)toggleWelsh()">⬤ Achromatopsia <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('dmo');if(_isWelsh)toggleWelsh()">💧 Oedema Macular Diabetig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('myopic');if(_isWelsh)toggleWelsh()">👓 Dirywiad Macular Myopig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('charlesbonnet');if(_isWelsh)toggleWelsh()">🧠 Syndrom Charles Bonnet <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('opticneuritis');if(_isWelsh)toggleWelsh()">⚡ Niwritis Optig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('blepharitis');if(_isWelsh)toggleWelsh()">👁 Blepharaidd <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+      </div>
+
+      <!-- Canllaw Beunyddiol -->
+      <div style="margin:28px 0 20px">
+        <button onclick="showPage('livingwell');if(_isWelsh)toggleWelsh()" class="lw-hero-btn" aria-label="Agor Canllaw Beunyddiol">
+          <span style="font-size:1.4rem" aria-hidden="true">🌟</span>
+          <span>
+            <span style="display:block;font-size:1rem;font-weight:900">Canllaw Beunyddiol</span>
+            <span style="display:block;font-size:0.8rem;color:var(--text2);margin-top:3px">Cymorth ymarferol ar gyfer bywyd bob dydd gyda cholled golwg</span>
+          </span>
+        </button>
+      </div>
+
+    </div>
+    </div><!-- end desktop-main -->
+    </div><!-- end desktop-wrap -->
+  </main>
+</div>
+
+<div id="page-home" class="page active english-only">
   <main id="main">
     <div class="desktop-wrap">
 
@@ -843,24 +964,9 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
         </svg>
       </div>
 
-      <span class="hero-eyebrow" data-cy="Free · Independent · UK">Free · Independent · UK</span>
-      <h1 data-cy="Everything you need,">Everything you need,<br data-cy="in one place.">in one place.</h1>
+      <span class="hero-eyebrow">Free · Independent · UK</span>
+      <h1>Everything you need,<br>in one place.</h1>
       <p class="hero-desc">Clear, accessible information for people living with sight conditions — and the people who support them.</p>
-      <!-- BSL VIDEO INTRO -->
-      <div id="bsl-intro" style="margin-bottom:20px">
-        <div style="background:var(--card);border:2px solid var(--border);border-radius:16px;padding:16px 18px;display:flex;align-items:flex-start;gap:14px">
-          <span style="font-size:1.6rem;flex-shrink:0" aria-hidden="true">🤟</span>
-          <div>
-            <div style="font-size:0.82rem;font-weight:800;color:var(--text);margin-bottom:4px">British Sign Language Introduction</div>
-            <p style="font-size:0.82rem;color:var(--text2);line-height:1.6;margin-bottom:10px">A BSL-interpreted video guide to Vision Hub — what this site offers and how to use it.</p>
-            <a href="https://www.youtube.com/results?search_query=vision+hub+UK+BSL" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:var(--yellow);color:#000;font-family:var(--font);font-size:0.78rem;font-weight:800;padding:8px 14px;border-radius:50px;text-decoration:none">
-              ▶ Watch BSL Introduction
-            </a>
-            <p style="font-size:0.72rem;color:var(--text2);margin-top:8px;line-height:1.5">BSL video coming soon — we are working with a qualified BSL interpreter to produce this. If you would like to help, please <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">contact us</button>.</p>
-          </div>
-        </div>
-      </div>
-
       <p class="last-updated">Last updated: <time datetime="2026-04-25">April 2026</time> · Reviewed monthly · <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0">Contact us</button></p>
 
       <div class="founder-box">
@@ -948,13 +1054,13 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 
       <!-- USEFUL RESOURCES ROW -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px" role="group" aria-label="Useful resources">
-        <button onclick="showPage('glossary')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Glossary" data-cy="Glossary">📖 Glossary</button>
-        <button onclick="showPage('localsupport')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Local Support" data-cy="Local Support">📍 Local Support</button>
+        <button onclick="showPage('glossary')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Glossary">📖 Glossary</button>
+        <button onclick="showPage('localsupport')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Local Support">📍 Local Support</button>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px" role="group" aria-label="More resources">
-        <button onclick="showPage('eyehealth')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Eye Health Basics" data-cy="Eye Health Basics">👁️ Eye Health</button>
-        <button onclick="showPage('employment')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Employment guide" data-cy="Employment">💼 Employment</button>
-        <button onclick="showPage('children')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open For Parents guide" data-cy="For Parents">👶 For Parents</button>
+        <button onclick="showPage('eyehealth')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Eye Health Basics">👁️ Eye Health</button>
+        <button onclick="showPage('employment')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Employment guide">💼 Employment</button>
+        <button onclick="showPage('children')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open For Parents guide">👶 For Parents</button>
       </div>
 
       <div class="search-wrap" style="margin-bottom:16px">
@@ -3100,7 +3206,7 @@ function renderCondition(key) {
   return `
   <div class="cond-hero">
     <button class="back-btn" onclick="showPage('home')" aria-label="Back to conditions list">← All Conditions</button>
-    <span class="cond-hero-eyebrow">Eye Condition Guide</span>
+    <span class="cond-hero-eyebrow">${_isWelsh ? 'Canllaw Cyflyrau\'r Llygad' : 'Eye Condition Guide'}</span>
     <h1>${d.name}</h1>
     <p style="font-size:0.75rem;color:var(--text2);margin-bottom:16px">Last reviewed: <time datetime="2026-05">May 2026</time> &nbsp;·&nbsp; <button onclick="showPage('disclaimer')" style="background:none;border:none;color:var(--text2);font-family:var(--font);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0">How we write our content</button></p>
   </div>
@@ -3327,98 +3433,45 @@ function toggleAcc(section, key) {
 /* ─────────────── WELSH LANGUAGE TOGGLE ─────────────── */
 var _isWelsh = false;
 
-var WELSH = {
-  /* Navigation & UI */
-  'All Conditions': 'Pob Cyflwr',
-  'Back to home': 'Yn ôl i'r hafan',
-  'Back to conditions list': 'Yn ôl i'r rhestr cyflyrau',
-  'Eye Condition Guide': 'Canllaw Cyflyrau'r Llygad',
-  'Last reviewed:': 'Adolygwyd diwethaf:',
-  'On this page': 'Ar y dudalen hon',
-  'Find out more': 'Dysgu rhagor',
-
-  /* Home page */
-  'Everything you need,': 'Popeth sydd ei angen arnoch,',
-  'in one place.': 'mewn un lle.',
-  'Free · Independent · UK': 'Am Ddim · Annibynnol · DU',
-  'Clear, accessible information for people living with sight conditions — and the people who support them.': 'Gwybodaeth glir, hygyrch i bobl sy'n byw gyda chyflyrau golwg — a'r bobl sy'n eu cefnogi.',
-  'Just Diagnosed?': 'Newydd gael diagnosis?',
-  'Your Condition': 'Eich Cyflwr',
-  'Everyday Guide': 'Canllaw Beunyddiol',
-  'Local Support': 'Cymorth Lleol',
-  'Glossary': 'Geirfa',
-  'Employment': 'Cyflogaeth',
-  'For Parents': 'I Rieni',
-  'Eye Health Basics': 'Hanfodion Iechyd Llygaid',
-  'Recent Updates': 'Diweddariadau Diweddar',
-  'Video Resources': 'Adnoddau Fideo',
-  'Contact': 'Cysylltu',
-
-  /* Condition sections */
-  'What is': 'Beth yw',
-  'Latest Research & Clinical Trials': 'Ymchwil Diweddaraf a Threialon Clinigol',
-  'Practical How-To Guides': 'Canllawiau Ymarferol',
-  'Assistive Technology': 'Technoleg Gynorthwyol',
-  'Support & Community': 'Cymorth a Chymuned',
-  'Benefits & Financial Help': 'Budd-daliadau a Chymorth Ariannol',
-  'Living with': 'Byw gyda',
-  'For Parents': 'I Rieni',
-
-  /* Pages */
-  'Glossary': 'Geirfa',
-  'Questions to Ask': 'Cwestiynau i'w Gofyn',
-  'Privacy Policy': 'Polisi Preifatrwydd',
-  'Accessibility Statement': 'Datganiad Hygyrchedd',
-  'How We Write Our Content': 'Sut Rydym yn Ysgrifennu Ein Cynnwys',
-
-  /* Footer */
-  'Free, independent, and built for people with sight loss.': 'Am ddim, annibynnol, a'i adeiladu ar gyfer pobl â cholled golwg.',
-  'Not a medical provider': 'Nid darparwr meddygol',
-  'Always consult your ophthalmologist': 'Ymgynghorwch â'ch offthalmolegydd bob amser',
-
-  /* Welsh site notice */
-  '__welsh_notice__': '<div style="background:#00b140;color:#fff;padding:10px 16px;font-size:0.82rem;font-weight:700;text-align:center">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg — Mae'r tudalennau cyflwr yn Saesneg ar hyn o bryd. Rydym yn gweithio ar gyfieithiad llawn. / Condition pages currently in English. Full Welsh translation in progress.</div>'
-};
-
 function toggleWelsh() {
   _isWelsh = !_isWelsh;
   var btn = document.getElementById('welsh-toggle');
   if (btn) {
     btn.classList.toggle('active', _isWelsh);
-    btn.setAttribute('aria-label', _isWelsh ? 'Switch to English' : 'Switch to Welsh / Cymraeg');
+    btn.setAttribute('aria-label', _isWelsh ? 'Newid i Saesneg' : 'Newid i Gymraeg');
     btn.textContent = _isWelsh ? 'EN' : 'CY';
   }
 
-  // Show/hide Welsh notice
-  var existing = document.getElementById('welsh-notice');
-  if (_isWelsh && !existing) {
-    var notice = document.createElement('div');
-    notice.id = 'welsh-notice';
-    notice.innerHTML = WELSH['__welsh_notice__'];
-    var a11y = document.querySelector('.a11y-bar');
-    if (a11y && a11y.nextSibling) {
-      a11y.parentNode.insertBefore(notice, a11y.nextSibling);
+  // Show/hide Welsh home page and notice
+  var welshHome = document.getElementById('page-home-welsh');
+  var engHome = document.getElementById('page-home');
+  var notice = document.getElementById('welsh-notice');
+
+  if (welshHome) welshHome.style.display = _isWelsh ? '' : 'none';
+  if (notice) notice.style.display = _isWelsh ? '' : 'none';
+
+  // If switching to Welsh, activate Welsh home
+  if (_isWelsh) {
+    document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+    if (welshHome) {
+      welshHome.style.display = '';
+      welshHome.classList.add('active');
     }
-  } else if (!_isWelsh && existing) {
-    existing.remove();
+  } else {
+    // Switch back to English home
+    document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+    if (engHome) {
+      engHome.style.display = '';
+      engHome.classList.add('active');
+    }
   }
 
-  // Translate all data-cy elements
-  document.querySelectorAll('[data-cy]').forEach(function(el) {
-    var key = el.getAttribute('data-cy');
-    if (_isWelsh && WELSH[key]) {
-      el.setAttribute('data-en', el.textContent);
-      el.textContent = WELSH[key];
-    } else if (!_isWelsh) {
-      var en = el.getAttribute('data-en');
-      if (en) el.textContent = en;
-    }
-  });
-
+  document.documentElement.setAttribute('lang', _isWelsh ? 'cy' : 'en');
   localStorage.setItem('vh-lang', _isWelsh ? 'cy' : 'en');
+  window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
-// Restore Welsh preference
+// Restore preference
 (function() {
   if (localStorage.getItem('vh-lang') === 'cy') {
     setTimeout(toggleWelsh, 300);
