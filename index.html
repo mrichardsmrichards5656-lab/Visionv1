@@ -203,10 +203,10 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
 }
 .theme-select:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
 .lang-btn {
-  height: 32px; padding: 0 10px; border-radius: 50px;
-  border: 2px solid var(--border); background: var(--card2);
-  color: var(--text2); font-family: var(--font);
-  font-size: 11px; font-weight: 800; cursor: pointer;
+  height: 36px; padding: 0 12px; border-radius: 50px;
+  border: 2px solid #00b140; background: var(--card2);
+  color: #00b140; font-family: var(--font);
+  font-size: 11px; font-weight: 900; cursor: pointer;
   flex-shrink: 0; transition: all .15s; letter-spacing: 0.05em;
 }
 .lang-btn.active { border-color: #00b140; background: #00b140; color: #fff; }
@@ -756,6 +756,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
   <button class="ab ab-l"    id="sz-l"  onclick="setSize(1.7)"  aria-pressed="false" aria-label="Large text">A</button>
   <button class="ab ab-xl"   id="sz-xl" onclick="setSize(2.2)"  aria-pressed="false" aria-label="Extra large text">A</button>
   <div class="a11y-divider"></div>
+  <span class="a11y-label" aria-hidden="true" style="margin-left:4px">THEME</span>
   <select id="col-select" onchange="setColour(this.value)" aria-label="Choose colour theme" class="theme-select">
     <option value="">☀️ Light</option>
     <option value="dark">🌙 Dark</option>
@@ -792,23 +793,23 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       <span class="sidebar-logo">◈ Hwb Golwg</span>
       <span class="sidebar-tagline">Adnodd golwg DU am ddim</span>
       <span class="sidebar-section">Cyflyrau</span>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('stargardts')\">✦ Clefyd Stargardt</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('amd')\">◉ Dirywiad Macular AMD</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('glaucoma')\">◎ Glawcoma</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('diabetic')\">◇ Retinopathi Diabetig</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('rp')\">◈ Retinitis Pigmentosa</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('cvi')\">◭ Nam Gweledol yr Ymennydd</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('nystagmus')\">↔ Nystagmus</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('albinism')\">☀ Albiniaeth</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('usher')\">◑ Syndrom Usher</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('lca')\">⬡ Amawrosis Cynhenid Leber</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('cone')\">🎯 Dystroffi Côn</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('achromatopsia')\">⬤ Achromatopsia</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('dmo')\">💧 Oedema Macular Diabetig</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('myopic')\">👓 Dirywiad Macular Myopig</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('charlesbonnet')\">🧠 Syndrom Charles Bonnet</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('opticneuritis')\">⚡ Niwritis Optig</button>
-      <button class="sidebar-link" onclick=\"showConditionWelsh('blepharitis')\">👁 Blepharaidd</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('stargardts')">✦ Clefyd Stargardt</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('amd')">◉ Dirywiad Macular AMD</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('glaucoma')">◎ Glawcoma</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('diabetic')">◇ Retinopathi Diabetig</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('rp')">◈ Retinitis Pigmentosa</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('cvi')">◭ Nam Gweledol yr Ymennydd</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('nystagmus')">↔ Nystagmus</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('albinism')">☀ Albiniaeth</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('usher')">◑ Syndrom Usher</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('lca')">⬡ Amawrosis Cynhenid Leber</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('cone')">🎯 Dystroffi Côn</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('achromatopsia')">⬤ Achromatopsia</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('dmo')">💧 Oedema Macular Diabetig</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('myopic')">👓 Dirywiad Macular Myopig</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('charlesbonnet')">🧠 Syndrom Charles Bonnet</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('opticneuritis')">⚡ Niwritis Optig</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('blepharitis')">👁 Blepharaidd</button>
       <div class="sidebar-divider"></div>
       <span class="sidebar-section">Canllawiau ac Adnoddau</span>
       <button class="sidebar-link" onclick="showPage('livingwell')">🌟 Canllaw Beunyddiol</button>
@@ -863,23 +864,23 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 
       <!-- Rhestr Cyflyrau -->
       <div role="list" aria-label="Cyflyrau llygaid">
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('stargardts') : showCondition('stargardts')\">✦ Clefyd Stargardt <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('amd') : showCondition('amd')\">◉ Dirywiad Macular AMD <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('glaucoma') : showCondition('glaucoma')\">◎ Glawcoma <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('diabetic') : showCondition('diabetic')\">◇ Retinopathi Diabetig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('rp') : showCondition('rp')\">◈ Retinitis Pigmentosa <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('cvi') : showCondition('cvi')\">◭ Nam Gweledol yr Ymennydd <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('nystagmus') : showCondition('nystagmus')\">↔ Nystagmus <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('albinism') : showCondition('albinism')\">☀ Albiniaeth <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('usher') : showCondition('usher')\">◑ Syndrom Usher <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('lca') : showCondition('lca')\">⬡ Amawrosis Cynhenid Leber <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('cone') : showCondition('cone')\">🎯 Dystroffi Côn <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('achromatopsia') : showCondition('achromatopsia')\">⬤ Achromatopsia <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('dmo') : showCondition('dmo')\">💧 Oedema Macular Diabetig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('myopic') : showCondition('myopic')\">👓 Dirywiad Macular Myopig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('charlesbonnet') : showCondition('charlesbonnet')\">🧠 Syndrom Charles Bonnet <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('opticneuritis') : showCondition('opticneuritis')\">⚡ Niwritis Optig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('blepharitis') : showCondition('blepharitis')\">👁 Blepharaidd <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('stargardts') : showCondition('stargardts')">✦ Clefyd Stargardt <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('amd') : showCondition('amd')">◉ Dirywiad Macular AMD <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('glaucoma') : showCondition('glaucoma')">◎ Glawcoma <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('diabetic') : showCondition('diabetic')">◇ Retinopathi Diabetig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('rp') : showCondition('rp')">◈ Retinitis Pigmentosa <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('cvi') : showCondition('cvi')">◭ Nam Gweledol yr Ymennydd <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('nystagmus') : showCondition('nystagmus')">↔ Nystagmus <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('albinism') : showCondition('albinism')">☀ Albiniaeth <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('usher') : showCondition('usher')">◑ Syndrom Usher <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('lca') : showCondition('lca')">⬡ Amawrosis Cynhenid Leber <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('cone') : showCondition('cone')">🎯 Dystroffi Côn <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('achromatopsia') : showCondition('achromatopsia')">⬤ Achromatopsia <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('dmo') : showCondition('dmo')">💧 Oedema Macular Diabetig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('myopic') : showCondition('myopic')">👓 Dirywiad Macular Myopig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('charlesbonnet') : showCondition('charlesbonnet')">🧠 Syndrom Charles Bonnet <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('opticneuritis') : showCondition('opticneuritis')">⚡ Niwritis Optig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('blepharitis') : showCondition('blepharitis')">👁 Blepharaidd <span class="cond-arrow" aria-hidden="true">→</span></button></div>
       </div>
 
       <!-- Canllaw Beunyddiol -->
