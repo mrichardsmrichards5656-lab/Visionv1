@@ -792,23 +792,23 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
       <span class="sidebar-logo">◈ Hwb Golwg</span>
       <span class="sidebar-tagline">Adnodd golwg DU am ddim</span>
       <span class="sidebar-section">Cyflyrau</span>
-      <button class="sidebar-link" onclick="showCondition('stargardts');toggleWelsh()">✦ Clefyd Stargardt</button>
-      <button class="sidebar-link" onclick="showCondition('amd');toggleWelsh()">◉ Dirywiad Macular AMD</button>
-      <button class="sidebar-link" onclick="showCondition('glaucoma');toggleWelsh()">◎ Glawcoma</button>
-      <button class="sidebar-link" onclick="showCondition('diabetic');toggleWelsh()">◇ Retinopathi Diabetig</button>
-      <button class="sidebar-link" onclick="showCondition('rp');toggleWelsh()">◈ Retinitis Pigmentosa</button>
-      <button class="sidebar-link" onclick="showCondition('cvi');toggleWelsh()">◭ Nam Gweledol yr Ymennydd</button>
-      <button class="sidebar-link" onclick="showCondition('nystagmus');toggleWelsh()">↔ Nystagmus</button>
-      <button class="sidebar-link" onclick="showCondition('albinism');toggleWelsh()">☀ Albiniaeth</button>
-      <button class="sidebar-link" onclick="showCondition('usher');toggleWelsh()">◑ Syndrom Usher</button>
-      <button class="sidebar-link" onclick="showCondition('lca');toggleWelsh()">⬡ Amawrosis Cynhenid Leber</button>
-      <button class="sidebar-link" onclick="showCondition('cone');toggleWelsh()">🎯 Dystroffi Côn</button>
-      <button class="sidebar-link" onclick="showCondition('achromatopsia');toggleWelsh()">⬤ Achromatopsia</button>
-      <button class="sidebar-link" onclick="showCondition('dmo');toggleWelsh()">💧 Oedema Macular Diabetig</button>
-      <button class="sidebar-link" onclick="showCondition('myopic');toggleWelsh()">👓 Dirywiad Macular Myopig</button>
-      <button class="sidebar-link" onclick="showCondition('charlesbonnet');toggleWelsh()">🧠 Syndrom Charles Bonnet</button>
-      <button class="sidebar-link" onclick="showCondition('opticneuritis');toggleWelsh()">⚡ Niwritis Optig</button>
-      <button class="sidebar-link" onclick="showCondition('blepharitis');toggleWelsh()">👁 Blepharaidd</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('stargardts')\">✦ Clefyd Stargardt</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('amd')\">◉ Dirywiad Macular AMD</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('glaucoma')\">◎ Glawcoma</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('diabetic')\">◇ Retinopathi Diabetig</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('rp')\">◈ Retinitis Pigmentosa</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('cvi')\">◭ Nam Gweledol yr Ymennydd</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('nystagmus')\">↔ Nystagmus</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('albinism')\">☀ Albiniaeth</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('usher')\">◑ Syndrom Usher</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('lca')\">⬡ Amawrosis Cynhenid Leber</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('cone')\">🎯 Dystroffi Côn</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('achromatopsia')\">⬤ Achromatopsia</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('dmo')\">💧 Oedema Macular Diabetig</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('myopic')\">👓 Dirywiad Macular Myopig</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('charlesbonnet')\">🧠 Syndrom Charles Bonnet</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('opticneuritis')\">⚡ Niwritis Optig</button>
+      <button class="sidebar-link" onclick=\"showConditionWelsh('blepharitis')\">👁 Blepharaidd</button>
       <div class="sidebar-divider"></div>
       <span class="sidebar-section">Canllawiau ac Adnoddau</span>
       <button class="sidebar-link" onclick="showPage('livingwell')">🌟 Canllaw Beunyddiol</button>
@@ -863,23 +863,23 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 
       <!-- Rhestr Cyflyrau -->
       <div role="list" aria-label="Cyflyrau llygaid">
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('stargardts');if(_isWelsh)toggleWelsh()">✦ Clefyd Stargardt <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('amd');if(_isWelsh)toggleWelsh()">◉ Dirywiad Macular AMD <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('glaucoma');if(_isWelsh)toggleWelsh()">◎ Glawcoma <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('diabetic');if(_isWelsh)toggleWelsh()">◇ Retinopathi Diabetig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('rp');if(_isWelsh)toggleWelsh()">◈ Retinitis Pigmentosa <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('cvi');if(_isWelsh)toggleWelsh()">◭ Nam Gweledol yr Ymennydd <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('nystagmus');if(_isWelsh)toggleWelsh()">↔ Nystagmus <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('albinism');if(_isWelsh)toggleWelsh()">☀ Albiniaeth <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('usher');if(_isWelsh)toggleWelsh()">◑ Syndrom Usher <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('lca');if(_isWelsh)toggleWelsh()">⬡ Amawrosis Cynhenid Leber <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('cone');if(_isWelsh)toggleWelsh()">🎯 Dystroffi Côn <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('achromatopsia');if(_isWelsh)toggleWelsh()">⬤ Achromatopsia <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('dmo');if(_isWelsh)toggleWelsh()">💧 Oedema Macular Diabetig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('myopic');if(_isWelsh)toggleWelsh()">👓 Dirywiad Macular Myopig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('charlesbonnet');if(_isWelsh)toggleWelsh()">🧠 Syndrom Charles Bonnet <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('opticneuritis');if(_isWelsh)toggleWelsh()">⚡ Niwritis Optig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('blepharitis');if(_isWelsh)toggleWelsh()">👁 Blepharaidd <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('stargardts') : showCondition('stargardts')\">✦ Clefyd Stargardt <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('amd') : showCondition('amd')\">◉ Dirywiad Macular AMD <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('glaucoma') : showCondition('glaucoma')\">◎ Glawcoma <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('diabetic') : showCondition('diabetic')\">◇ Retinopathi Diabetig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('rp') : showCondition('rp')\">◈ Retinitis Pigmentosa <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('cvi') : showCondition('cvi')\">◭ Nam Gweledol yr Ymennydd <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('nystagmus') : showCondition('nystagmus')\">↔ Nystagmus <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('albinism') : showCondition('albinism')\">☀ Albiniaeth <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('usher') : showCondition('usher')\">◑ Syndrom Usher <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('lca') : showCondition('lca')\">⬡ Amawrosis Cynhenid Leber <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('cone') : showCondition('cone')\">🎯 Dystroffi Côn <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('achromatopsia') : showCondition('achromatopsia')\">⬤ Achromatopsia <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('dmo') : showCondition('dmo')\">💧 Oedema Macular Diabetig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('myopic') : showCondition('myopic')\">👓 Dirywiad Macular Myopig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('charlesbonnet') : showCondition('charlesbonnet')\">🧠 Syndrom Charles Bonnet <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('opticneuritis') : showCondition('opticneuritis')\">⚡ Niwritis Optig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick=\"_isWelsh ? showConditionWelsh('blepharitis') : showCondition('blepharitis')\">👁 Blepharaidd <span class="cond-arrow" aria-hidden="true">→</span></button></div>
       </div>
 
       <!-- Canllaw Beunyddiol -->
@@ -2457,7 +2457,8 @@ stargardts:{
     what:"Mae Clefyd Stargardt yn gyflwr etifeddol sy'n effeithio ar y macula — rhan ganolog y retina sy'n gyfrifol am weledigaeth fanwl, darllen, adnabod wynebau, a gweld lliw. Fe'i hachosir gan fwtaniadau yn y genyn ABCA4, sy'n achosi i brotein niweidiol gronni yn y retina ac yn dinistrio celloedd ffotodderbynnydd (celloedd côn) yn raddol. Mae'n effeithio ar tua 1 ym mhob 8,000-10,000 o bobl yn y DU.",
     howAffects:"Mae golwg canolog yn pylu'n raddol, tra bod golwg ymylol fel arfer yn cael ei gadw. Mae pobl yn aml yn disgrifio smotyn dall canolog neu ardal niwlog. Mae darllen, adnabod wynebau, a gweld manylion mân yn dod yn anoddach cynyddol. Mae sensitifrwydd i olau (ffotsoffobia) yn gyffredin. Mae'r cynnydd yn amrywio o berson i berson — gall rai bobl gynnal lefelau golwg da am flynyddoedd lawer.",
     diagnosis:"Mae Clefyd Stargardt yn cael ei ddiagnosis fel arfer rhwng 6 a 20 oed, er y gall fersiwn oedolion ymddangos yn hwyrach. Mae offer arbenigol yn cael eu defnyddio gan offthalmolegwyr: sgan OCT (tomograffi cydlyniant optegol), angiograffi fflworescein, ac electrophysioleg. Mae profion geneteg DNA yn cadarnhau mwtaniadau ABCA4 — mae hyn yn bwysig iawn ar gyfer cymhwysedd treialon clinigol.",
-    whoAffects:"Mae Clefyd Stargardt yn effeithio ar fechgyn a merched yn gyfartal. Mae'n gyflwr awtosomaidd adweithiol — rhaid i'r ddau riant fod yn gludyddion o'r genyn diffygiol. Mae risg o 1 mewn 4 o'i etifeddu os yw'r ddau riant yn gludyddion. Gall hefyd effeithio ar oedolion hŷn — mae Clefyd Stargardt oedolion (ABCA4) weithiau'n cael ei gamdiagnosis fel AMD."
+    whoAffects:"Mae Clefyd Stargardt yn effeithio ar fechgyn a merched yn gyfartal. Mae'n gyflwr awtosomaidd adweithiol — rhaid i'r ddau riant fod yn gludyddion o'r genyn diffygiol. Mae risg o 1 mewn 4 o'i etifeddu os yw'r ddau riant yn gludyddion. Gall hefyd effeithio ar oedolion hŷn — mae Clefyd Stargardt oedolion (ABCA4) weithiau'n cael ei gamdiagnosis fel AMD.",
+    researchSummary:"Mae sawl triniaeth addawol ar wahanol gamau. Mae Tinlarebant wedi cwblhau Cam 3 — nid yw ar gael eto. Mae therapi genynnau ABCA4 mewn treialon yn y DU (ASTRA, CELESTE). Trafodwch opsiynau gyda'ch offthalmolegydd."
   },
   what:"Stargardt disease is the most common inherited macular dystrophy, affecting around 1 in 8,000–10,000 people. It is caused by mutations in the ABCA4 gene, leading to a toxic build-up of lipofuscin in the retinal pigment epithelium. Central vision progressively deteriorates, often starting in childhood or young adulthood. Peripheral vision is usually retained.",
   howAffects:"Central vision progressively deteriorates, often starting in childhood or young adulthood. Peripheral vision is usually retained. Common symptoms include blurry central vision, difficulty reading, and sensitivity to bright light.",
@@ -2521,7 +2522,8 @@ amd:{
     what:"AMD yw achos mwyaf cyffredin colli golwg mewn pobl dros 50 oed yn y DU, gan effeithio ar dros 600,000 o bobl. Mae'n niweidio'r macula — rhan ganolog y retina. Mae AMD sych yn datblygu'n araf; mae AMD gwlyb yn llai cyffredin ond yn gyflymach ac yn argyfwng meddygol sy'n gofyn am driniaeth frys.",
     howAffects:"Mae golwg canolog yn mynd yn aneglur neu'n ystumio. Gall llinellau syth ymddangos yn gam — defnyddiwch grid Amsler bob dydd i brofi. Gall smotyn tywyll neu wag ymddangos yng nghanol y golwg. Mae golwg ymylol fel arfer yn cael ei gadw.",
     diagnosis:"Canfyddir trwy sganiau OCT, ffotograffiaeth fwndws, ac angiograffi fflworescein. Gall profion llygaid blynyddol gyda'ch optometrydd ganfod AMD cynnar cyn i symptomau ymddangos.",
-    whoAffects:"Mae'n effeithio'n bennaf ar bobl dros 50 oed. Mae risg yn dyblu os ydych chi'n ysmygu. Mae hanes teuluol yn cynyddu'r risg yn sylweddol. Achos mwyaf cyffredin colli golwg difrifol yn y byd datblygedig."
+    whoAffects:"Mae'n effeithio'n bennaf ar bobl dros 50 oed. Mae risg yn dyblu os ydych chi'n ysmygu. Mae hanes teuluol yn cynyddu'r risg yn sylweddol. Achos mwyaf cyffredin colli golwg difrifol yn y byd datblygedig.",
+    researchSummary:"Mae Faricimab (Vabysmo) a Pegcetacoplan (Syfovre) ar gael ar y GIG. Mae therapi genynnau ar gyfer AMD Gwlyb mewn Cam 3 — gallai newid triniaeth cyn 2030."
   },
   what:"AMD is the leading cause of vision loss in people over 50 in the UK, affecting over 600,000 people. It damages the macula — the central part of the retina. Dry AMD progresses slowly; Wet AMD is less common but more rapid and is a medical emergency requiring urgent treatment.",
   howAffects:"Central vision becomes blurred or distorted. Straight lines may appear wavy — test with an Amsler grid daily. A dark or empty patch may develop in the centre of vision. Peripheral vision is usually preserved.",
@@ -2571,7 +2573,8 @@ glaucoma:{
     what:"Mae Glawcoma yn gyflwr lle mae'r nerf optig — sy'n cario gwybodaeth weledol o'r llygad i'r ymennydd — yn cael ei niweidio'n raddol, yn aml o ganlyniad i bwysedd uchel yn y llygad. Mae'n achos mwyaf cyffredin dallineb y gellir ei atal yn y byd. Mae'n effeithio ar dros 700,000 o bobl yn y DU, a hanner ohonynt heb wybod am eu cyflwr.",
     howAffects:"Mae Glawcoma yn dinistrio golwg ymylol yn raddol cyn effeithio ar olwg canolog. Oherwydd bod y newid yn araf, nid yw llawer o bobl yn sylwi ar unrhyw symptomau hyd nes bod colled sylweddol wedi digwydd. Unwaith y caiff celloedd nerfau eu colli, ni ellir eu hadfer.",
     diagnosis:"Prawf gweld meysydd gweledol i fesur golwg ymylol. Mesur pwysedd y llygad (IOP). Sgan OCT i asesu iechyd y nerf optig. Mae sganiau dilynol rheolaidd yn hanfodol i fonitro cynnydd.",
-    whoAffects:"Mae risg uwch gydag oedran, hanes teuluol o lawcoma, pwysedd uchel yn y llygad, a thras Affricanaidd neu Caribïaidd. Mae perthnasau agosaf pobl â glawcoma yn gymwys am brofion llygaid NHS am ddim."
+    whoAffects:"Mae risg uwch gydag oedran, hanes teuluol o lawcoma, pwysedd uchel yn y llygad, a thras Affricanaidd neu Caribïaidd. Mae perthnasau agosaf pobl â glawcoma yn gymwys am brofion llygaid NHS am ddim.",
+    researchSummary:"Mae mewnblaniad iDose TR (meddyginiaeth barhaus yn y llygad) ar y gorwel ar gyfer y DU. Mae AI Moorfields eisoes yn cael ei ddefnyddio. Mae ymchwil niwroamddiffynnol yn datblygu."
   },
   what:"Glaucoma is a group of eye conditions that damage the optic nerve, usually caused by elevated pressure inside the eye. It is the second most common cause of blindness in the UK, affecting over 700,000 people. Half of those affected don't know they have it — making regular eye tests essential.",
   howAffects:"Peripheral vision is gradually lost, often without symptoms until significant damage has occurred. In advanced stages, tunnel vision develops. Acute angle-closure glaucoma causes sudden severe eye pain, headache, and nausea — a medical emergency.",
@@ -2618,7 +2621,8 @@ rp:{
     what:"Mae Retinitis Pigmentosa (RP) yn grŵp o gyflyrau etifeddol sy'n achosi dirywiad cynyddol y retina. Mae'n effeithio ar tua 1 ym mhob 4,000 o bobl yn y DU — tua 16,000 o bobl i gyd. Mae'n dechrau fel arfer drwy effeithio ar weledigaeth nos a golwg ymylol, gyda'r golwg canolog yn cael ei effeithio yn ddiweddarach.",
     howAffects:"Golwg nos gwael yw'r symptom cyntaf fel arfer. Mae'r maes gweledol yn crebachu'n raddol — yn aml yn cael ei ddisgrifio fel 'golwg twnnel'. Gall sensitifrwydd i olau fod yn broblem. Mae'r cynnydd yn amrywio'n fawr rhwng unigolion — mae rhai pobl yn cynnal golwg da am ddegawdau.",
     diagnosis:"Mae RP yn cael ei ddiagnosis drwy brawf maes gweledol, electrophysioleg (ERG), ac OCT. Mae profion geneteg yn bwysig i adnabod y genyn penodol — mae hyn yn hanfodol ar gyfer cymhwysedd therapi genynnau.",
-    whoAffects:"Mae RP yn effeithio ar ddynion a menywod. Gall gael ei etifeddu mewn sawl ffordd wahanol — awtosomaidd adweithiol, awtosomaidd trechol, neu gysylltiedig â'r X. Mae 50 o enynnau gwahanol yn gallu achosi RP."
+    whoAffects:"Mae RP yn effeithio ar ddynion a menywod. Gall gael ei etifeddu mewn sawl ffordd wahanol — awtosomaidd adweithiol, awtosomaidd trechol, neu gysylltiedig â'r X. Mae 50 o enynnau gwahanol yn gallu achosi RP.",
+    researchSummary:"Mae Luxturna ar gael ar y GIG ar gyfer mwtaniadau RPE65. Mae therapi genynnau RPGR mewn Cam 2/3. Mae optogeneteg mewn treialon cynnar ar gyfer RP datblygedig."
   },
   what:"Retinitis Pigmentosa (RP) covers over 100 inherited retinal dystrophies affecting around 1 in 4,000 people. Rod photoreceptors are damaged first, affecting peripheral and night vision. It is the most common inherited cause of visual disability in working-age adults in the UK.",
   howAffects:"Night blindness is usually the first symptom. Peripheral vision gradually narrows, creating tunnel vision. In later stages, central vision may also be affected. The rate of progression varies enormously between individuals.",
@@ -2665,7 +2669,8 @@ diabetic:{
     what:"Mae Retinopathi Diabetig yn gymhlethdod cyffredin diabetes sy'n digwydd pan fydd lefelau siwgr gwaed uchel yn niweidio pibellau gwaed y retina. Mae'n achos mwyaf cyffredin dallineb ymhlith pobl oedran gweithio yn y DU. Mae'n effeithio ar tua 1 ym mhob 3 o bobl sydd â diabetes.",
     howAffects:"Gall golwg fod yn aneglur neu'n amrywio. Gall lliwiau ymddangos yn llai llachar. Gall fflachiadau golau neu floaters ymddangos. Yn yr achosion mwyaf difrifol, gall gwaedlif y retina neu ddatgysylltiad y retina achosi colli golwg sydyn a difrifol.",
     diagnosis:"Mae Sgrinio Llygaid Diabetig y GIG — am ddim ac ar gael bob blwyddyn — yn canfod newidiadau cyn i symptomau ymddangos. Hwn yw'r offer diagnostig pwysicaf ar gyfer Retinopathi Diabetig. Peidiwch byth â'i golli.",
-    whoAffects:"Mae'n effeithio ar unrhyw un â Diabetes Math 1 neu Math 2. Mae risg yn cynyddu gydag hyd y diabetes, rheolaeth wael ar siwgr gwaed, pwysedd gwaed uchel, a chlefyd yr arennau."
+    whoAffects:"Mae'n effeithio ar unrhyw un â Diabetes Math 1 neu Math 2. Mae risg yn cynyddu gydag hyd y diabetes, rheolaeth wael ar siwgr gwaed, pwysedd gwaed uchel, a chlefyd yr arennau.",
+    researchSummary:"Mae sgrinio llygaid diabetig am ddim bob blwyddyn — y cam pwysicaf. Mae Faricimab wedi'i gymeradwyo gan NICE ar gyfer DMO gyda llai o bigiadau. Mae therapi genynnau mewn datblygiad."
   },
   what:"Diabetic retinopathy is the most common cause of preventable blindness in working-age adults in the UK, affecting over 1.7 million people. It is caused by high blood sugar damaging the retinal blood vessels. Anyone with Type 1 or Type 2 diabetes is at risk.",
   howAffects:"In early stages there are often no symptoms — making annual screening critical. As it progresses: floaters, blurred vision, fluctuating vision, and washed-out colours. Sudden vision loss is a medical emergency.",
@@ -2710,7 +2715,8 @@ lca:{
     what:"Mae Amawrosis Cynhenid Leber (LCA) yn grŵp o gyflyrau retinal etifeddol difrifol sy'n bresennol o enedigaeth neu'r misoedd cyntaf o fywyd. Mae'n achos mwyaf cyffredin dallineb etifeddol mewn plant. Mae LCA yn effeithio ar tua 1 ym mhob 80,000 o bobl. Mae mwy na 20 o enynnau gwahanol yn gallu achosi LCA — mae adnabod y genyn penodol yn hanfodol bwysig ar gyfer triniaeth.",
     howAffects:"Mae nam gweledol difrifol yn bresennol o enedigaeth. Gall nystagmus (symudiad llygaid) ac ateb gwan i olau fod yn arwyddion cynnar. Mae golwg yn amrywio — gall rhai plant weld siapiau neu olau, tra bod eraill â nam gweledol dwysach.",
     diagnosis:"Mae LCA yn cael ei amau pan fo baban yn ymateb yn wael i olau neu'n arddangos nystagmus. Mae profion arbenigol gan offthalmolegydd pediatrig, yn cynnwys electroretinogram (ERG), yn cadarnhau'r diagnosis. Mae profion geneteg yn hanfodol.",
-    whoAffects:"Mae LCA yn effeithio ar fechgyn a merched yn gyfartal. Mae'n gyflwr awtosomaidd adweithiol yn y mwyafrif o achosion — rhaid i'r ddau riant fod yn gludyddion."
+    whoAffects:"Mae LCA yn effeithio ar fechgyn a merched yn gyfartal. Mae'n gyflwr awtosomaidd adweithiol yn y mwyafrif o achosion — rhaid i'r ddau riant fod yn gludyddion.",
+    researchSummary:"Mae Luxturna ar gael ar y GIG ar gyfer mwtaniadau RPE65. Mae therapi CRISPR ar gyfer CEP290 mewn Cam 1/2. Mae profion geneteg yn hanfodol."
   },
   what:"Leber Congenital Amaurosis (LCA) is a group of severe inherited retinal dystrophies and the most common cause of inherited blindness in childhood, affecting around 1 in 50,000 births. Multiple genes can cause LCA — the most significant being CEP290, GUCY2D, and RPE65.",
   howAffects:"Babies typically show rapid involuntary eye movements (nystagmus), lack of visual responsiveness, and may press on their eyes. Visual acuity is severely reduced from the first months of life. Photophobia and extreme farsightedness are common.",
@@ -2772,7 +2778,8 @@ nystagmus:{
     what:"Mae Nystagmus yn gyflwr lle mae'r llygaid yn symud yn gyflym ac yn afreolaidd — yn ôl a blaen, i fyny ac i lawr, neu mewn cylchoedd. Nid yw'r symudiad hwn dan reolaeth ymwybodol y person. Mae'n effeithio ar tua 1 ym mhob 1,000 o bobl yn y DU. Gall fod yn bresennol o enedigaeth (nystagmus cynhenid) neu ddatblygu yn ddiweddarach mewn bywyd.",
     howAffects:"Gall nystagmus achosi golwg aneglur, anhawster canolbwyntio, a sensitifrwydd i olau. Mae gan y rhan fwyaf o bobl â nystagmus 'barth niwl' — safle o'r pen lle mae'r symudiadau llygaid yn arafu a golwg yn gwella. Gall ymwybyddiaeth o'r barth niwl hwn wella ansawdd bywyd yn sylweddol.",
     diagnosis:"Diagnosis gan offthalmolegydd neu orthoptydd drwy arsylwi symudiadau llygaid. Gellir mesur y barth niwl yn fanwl. Profion pellach i nodi achosion sylfaenol lle bo angen.",
-    whoAffects:"Mae Nystagmus yn aml yn cyd-fynd â chyflyrau eraill fel albiniaeth, achromatopsia, ac LCA. Gall hefyd ddigwydd ar ei ben ei hun. Mae rhai mathau yn etifeddol."
+    whoAffects:"Mae Nystagmus yn aml yn cyd-fynd â chyflyrau eraill fel albiniaeth, achromatopsia, ac LCA. Gall hefyd ddigwydd ar ei ben ei hun. Mae rhai mathau yn etifeddol.",
+    researchSummary:"Mae llawdriniaeth tenotomi (Anderson) ar gael yn y DU. Mae treialon memantine wedi dangos gwelliannau mesuriadwy. Mae ymchwil i driniaethau ar gyfer achosion sylfaenol (albiniaeth, achromatopsia) hefyd yn berthnasol."
   },
   what:"Nystagmus is a condition causing involuntary, repetitive eye movements — most commonly side-to-side. These movements reduce visual acuity because the eyes cannot fix steadily on a target. It affects approximately 1 in 1,000 people in the UK.",
   howAffects:"The involuntary movements make it difficult to focus on small or distant objects. Most people have reduced visual acuity but not complete blindness. Many find a 'null zone' — a head position where movements slow and vision is clearest.",
@@ -2829,7 +2836,8 @@ achromatopsia:{
     what:"Mae Achromatopsia yn gyflwr genetig prin sy'n achosi absenoldeb llwyr neu rannol o weledigaeth lliw, ynghyd â sensitifrwydd eithafol i olau a golwg gostyngol. Fe'i hachosir gan fwtaniadau mewn genynnau sy'n effeithio ar gelloedd côn y retina. Mae'n effeithio ar tua 1 ym mhob 30,000-50,000 o bobl.",
     howAffects:"Mae'r byd yn ymddangos mewn lliwiau llwyd neu washed-out (nid bob amser yn hollol ddu a gwyn). Mae sensitifrwydd eithafol i olau llachar (ffotsoffobia) yn aml yn broblem fwy sylweddol na'r absenoldeb lliw. Mae golwg yn wan mewn goleuni da ond gall wella mewn golau isel. Mae nystagmus yn gyffredin.",
     diagnosis:"Profion gweld lliw arbenigol. Electroretinogram (ERG) i fesur ymateb y côn. Sgan OCT. Profion geneteg i gadarnhau'r mwtaniad (CNGB3 neu CNGA3 yw'r mwyaf cyffredin).",
-    whoAffects:"Mae Achromatopsia yn effeithio ar fechgyn a merched yn gyfartal. Mae'n awtosomaidd adweithiol — rhaid i'r ddau riant fod yn gludyddion."
+    whoAffects:"Mae Achromatopsia yn effeithio ar fechgyn a merched yn gyfartal. Mae'n awtosomaidd adweithiol — rhaid i'r ddau riant fod yn gludyddion.",
+    researchSummary:"Mae therapi genynnau ar gyfer CNGB3 a CNGA3 mewn treialon Cam 1/2 gyda data diogelwch addawol. Mae profion geneteg yn hanfodol i bennu cymhwysedd treial."
   },
   what:"Achromatopsia (rod monochromacy) is a rare inherited retinal condition affecting around 1 in 30,000 people. It is caused by non-functioning cone photoreceptors, meaning people see only in black, white, and grey and have severe light sensitivity.",
   howAffects:"Colour vision is completely absent. Visual acuity is typically 6/60 or worse. Intense photophobia severely reduces vision in normal lighting. Nystagmus is present in most cases. Dark-adapted vision is normal — people often see better in dim light than bright daylight.",
@@ -2887,7 +2895,8 @@ usher:{
     what:"Mae Syndrom Usher yn gyflwr etifeddol sy'n cyfuno colli clyw â nam gweledol cynyddol (patrwm Retinitis Pigmentosa). Dyma achos mwyaf cyffredin byddar-ddall etifeddol. Mae tri phrif fath: Math 1 (colli clyw dwys/profond o enedigaeth, colled gwybodaeth vestibular), Math 2 (colli clyw cymhedrol i ddifrifol, golwg yn dechrau dirywio yn yr arddegau), a Math 3 (colli clyw cynyddol, golwg yn dirywio yn ddiweddarach).",
     howAffects:"Mae'r cyfuniad o golli clyw a cholli golwg yn creu heriau cymhleth ar gyfer cyfathrebu, symudedd, a chyfranogi cymdeithasol. Mae'r golwg yn dirywio yn yr un modd â RP — golwg nos gwael yn gyntaf, yna maes gweledol yn crebachu.",
     diagnosis:"Diagnosis drwy brofion clyw a phrofion llygaid arbenigol. Mae profion geneteg yn adnabod y math penodol — mae hyn yn hanfodol ar gyfer cymhwysedd treialon.",
-    whoAffects:"Mae Syndrom Usher yn effeithio ar tua 1 ym mhob 6,000-10,000 o bobl. Mae Math 2 yn fwyaf cyffredin yn y DU. Mae'n effeithio ar fechgyn a merched yn gyfartal."
+    whoAffects:"Mae Syndrom Usher yn effeithio ar tua 1 ym mhob 6,000-10,000 o bobl. Mae Math 2 yn fwyaf cyffredin yn y DU. Mae'n effeithio ar fechgyn a merched yn gyfartal.",
+    researchSummary:"Mae QR-421a (Stellar) ar gyfer USH2A mewn Cam 2 gyda data 24 mis addawol — y rhaglen Usher fwyaf datblygedig. Mae therapi genynnau MYO7A ar gyfer Math 1 mewn datblygiad."
   },
   what:"Usher syndrome is the most common condition involving both hearing loss and vision loss, affecting approximately 1 in 6,000 people. It combines sensorineural hearing loss with retinitis pigmentosa. There are three types. Usher syndrome accounts for around 50% of all deaf-blind individuals.",
   howAffects:"The vision component follows a typical RP pattern: night blindness first, then progressive narrowing of peripheral vision, then central vision loss. The combination of vision and hearing loss creates a profound challenge to communication, navigation, and independence.",
@@ -2945,7 +2954,8 @@ albinism:{
     what:"Mae Albiniaeth yn gyflwr genetig sy'n achosi diffyg pigment melanin yn y croen, gwallt, a llygaid. Yn ogystal ag effeithiau ar ymddangosiad, mae albiniaeth bob amser yn effeithio ar ddatblygiad y retina a'r llwybrau gweledol, gan achosi nam gweledol. Mae'n effeithio ar tua 1 ym mhob 17,000-20,000 o bobl yn y DU.",
     howAffects:"Mae golwg wael o'r pellter fel arfer (gwelededd lleihau), nystagmus (symudiad llygaid afreolaidd), a sensitifrwydd eithriadol i olau (ffotsoffobia). Nid yw'r retina'n datblygu'n normal oherwydd diffyg melanin yn ystod datblygiad y ffetws. Nid yw sbectol yn gallu cywiro'r nam gweledol yn llawn.",
     diagnosis:"Diagnosis clinigol yn seiliedig ar ymddangosiad a phrofion llygaid arbenigol. Gall profion geneteg gadarnhau'r math o albiniaeth — mae hyn yn berthnasol i gymhwysedd treialon yn y dyfodol.",
-    whoAffects:"Mae Albiniaeth yn effeithio ar bobl o bob cefndir ethnig, er ei fod yn fwy cyffredin mewn cymunedau penodol. Mae'r math mwyaf cyffredin yn y DU (OCA1) yn effeithio ar bob ethnigrwydd."
+    whoAffects:"Mae Albiniaeth yn effeithio ar bobl o bob cefndir ethnig, er ei fod yn fwy cyffredin mewn cymunedau penodol. Mae'r math mwyaf cyffredin yn y DU (OCA1) yn effeithio ar bob ethnigrwydd.",
+    researchSummary:"Mae ymchwil therapi genynnau OCA1/OCA2 yn gynnar iawn — 5-10 mlynedd i ffwrdd. Mae triniaethau nystagmus (tenotomi, memantine) eisoes ar gael ac yn berthnasol i lawer â albiniaeth."
   },
   what:"Albinism is a group of inherited conditions affecting melanin production, causing reduced pigmentation of the skin, hair, and eyes and — crucially — affecting the development of the visual system. Almost all forms cause visual impairment. Affects approximately 1 in 17,000 people in the UK.",
   howAffects:"Visual impairment is caused by foveal hypoplasia, nystagmus, high refractive errors, photophobia, and misrouting of optic nerve fibres. Visual acuity typically ranges from 6/18 to 6/60. Stereoscopic (3D) vision is often absent or reduced.",
@@ -2991,7 +3001,8 @@ cvi:{
     what:"Mae Nam Gweledol yr Ymennydd (CVI) yn gyflwr lle mae'r ymennydd yn cael anhawster prosesu gwybodaeth weledol, er bod y llygaid eu hunain yn iach. Dyma achos mwyaf cyffredin nam gweledol ymhlith plant yn y DU. Fe'i hachosir fel arfer gan niwed i rannau gweledol yr ymennydd — yn aml o ganlyniad i enedigaeth gynnar, diffyg ocsigen adeg geni, neu strôc.",
     howAffects:"Mae CVI yn wahanol i gyflyrau llygaid eraill — gall y llygaid fod yn iach ond mae'r ymennydd yn methu prosesu'r hyn a welir yn effeithiol. Mae'r symptomau'n cynnwys anhawster gyda symudiad, cymhlethdod gweledol, problemau sylw gweledol, a binder gweledol (mynd yn ddall dros dro). Mae CVI yn newid o ddydd i ddydd ac yn dibynnu ar flinder a lefelau ysgogiad.",
     diagnosis:"Mae diagnosis CVI yn gymhleth ac yn gofyn am asesiad arbenigol. Nid yw profion llygaid safonol yn ddigon — mae angen asesiad swyddogaethol o sut mae'r plentyn yn defnyddio'i olwg mewn bywyd go iawn. Mae CVI Scotland yn cynnig adnoddau asesu ardderchog.",
-    whoAffects:"Mae CVI yn effeithio ar blant yn bennaf, er y gall effeithio ar oedolion hefyd yn dilyn strôc neu anaf i'r ymennydd. Mae'n gysylltiedig â genedigaeth gynnar, anemia cerebral, meningitis, ac epilepsi."
+    whoAffects:"Mae CVI yn effeithio ar blant yn bennaf, er y gall effeithio ar oedolion hefyd yn dilyn strôc neu anaf i'r ymennydd. Mae'n gysylltiedig â genedigaeth gynnar, anemia cerebral, meningitis, ac epilepsi.",
+    researchSummary:"Mae rhaglenni dysgu gweithredol (fframwaith Little Bear Sees CVI Scotland) yn cael eu cefnogi gan dystiolaeth gadarn. Mae offer asesu gwell ar sail AI mewn datblygiad."
   },
   what:"Cerebral Visual Impairment (CVI) is the most common cause of visual impairment in children in the developed world, caused by damage to the visual processing parts of the brain — not the eyes themselves. The eyes are often healthy. CVI typically results from brain injury around birth, stroke, or brain malformation.",
   howAffects:"CVI presents very differently from eye-based conditions. A child may appear to 'look through' objects, have better peripheral than central vision, or seem visually inattentive. Visual fatigue is common. Features include difficulty with visual clutter, better vision for familiar objects, light-gazing, and better responses to bright colours.",
@@ -3050,7 +3061,8 @@ cone:{
     what:"Mae Dystroffi Côn yn gyflwr etifeddol sy'n effeithio'n benodol ar gelloedd côn y retina — y celloedd sy'n gyfrifol am weledigaeth fanwl, lliw, a golwg mewn goleuni da. Mae'n wahanol i Retinitis Pigmentosa, sy'n effeithio ar gelloedd rhodenni yn gyntaf. Mae Dystroffi Côn yn effeithio ar tua 1 ym mhob 30,000 o bobl yn y DU.",
     howAffects:"Mae golwg canolog yn pylu'n raddol. Mae gweld lliw yn dirywio. Mae sensitifrwydd eithriadol i olau llachar (ffotsoffobia) yn gyffredin. Mae darllen, adnabod wynebau, a gweithgareddau mewn goleuni llachar yn dod yn anoddach. Gall golwg ymylol aros yn eithaf da am amser hir.",
     diagnosis:"Diagnosis drwy electroretinogram (ERG) sy'n mesur ymateb celloedd côn i oleuni. Sgan OCT i asesu strwythur y retina. Profion geneteg i adnabod y mwtaniad penodol.",
-    whoAffects:"Mae Dystroffi Côn yn effeithio ar fechgyn a merched. Gall ddigwydd mewn sawl ffordd etifeddol — awtosomaidd adweithiol, awtosomaidd trechol, neu gysylltiedig â'r X (RPGR)."
+    whoAffects:"Mae Dystroffi Côn yn effeithio ar fechgyn a merched. Gall ddigwydd mewn sawl ffordd etifeddol — awtosomaidd adweithiol, awtosomaidd trechol, neu gysylltiedig â'r X (RPGR).",
+    researchSummary:"Mae therapi genynnau RPGR mewn Cam 2/3 — un o'r rhaglenni mwyaf datblygedig ar gyfer Dystroffi Côn. Mae profion geneteg yn pennu pa dreial sy'n berthnasol."
   },
   what:"Cone dystrophy is a group of inherited retinal conditions in which cone photoreceptors degenerate progressively over time. Unlike achromatopsia, cone dystrophies typically begin with normal or near-normal vision that deteriorates. Affects approximately 1 in 30,000–40,000 people.",
   howAffects:"Progressive loss of central vision and colour discrimination is the hallmark. Bright light sensitivity (photophobia) is prominent. Reading, recognising faces, and driving become increasingly difficult. In cone-rod dystrophy, peripheral vision and night vision are also progressively lost.",
@@ -3099,7 +3111,8 @@ dmo:{
     what:"Mae Oedema Macular Diabetig (DMO) yn gymhlethdod o Retinopathi Diabetig lle mae hylif yn gollwng o bibellau gwaed difrodus i mewn i'r macula. Dyma achos mwyaf cyffredin colli golwg mewn pobl â diabetes ac mae'n effeithio ar tua 1 ym mhob 10 o bobl â retinopathi diabetig.",
     howAffects:"Mae golwg canolog yn dod yn aneglur neu'n ystumio. Mae darllen, adnabod wynebau, a gweld manylion mân yn mynd yn gynyddol anodd. Gall golwg amrywio — yn well ar rai dyddiau nag eraill oherwydd newidiadau yn lefelau'r hylif.",
     diagnosis:"Canfyddir gan sgan OCT sy'n dangos hylif yn haenau'r macula. Mae angiograffi fflworescein yn adnabod pibellau gwaed sy'n gollwng. Mae Sgrinio Llygaid Diabetig y GIG yn canfod newidiadau cynnar.",
-    whoAffects:"Mae'n effeithio ar unrhyw un â Diabetes Math 1 neu Math 2. Mae risg yn cynyddu gyda hyd y diabetes, rheolaeth wael ar siwgr gwaed, pwysedd gwaed uchel, colesterol uchel, a chlefyd yr arennau."
+    whoAffects:"Mae'n effeithio ar unrhyw un â Diabetes Math 1 neu Math 2. Mae risg yn cynyddu gyda hyd y diabetes, rheolaeth wael ar siwgr gwaed, pwysedd gwaed uchel, colesterol uchel, a chlefyd yr arennau.",
+    researchSummary:"Mae Faricimab (Vabysmo) ac Aflibercept HD wedi'u cymeradwyo gan NICE. Mae mewnblaniadau rhyddhau parhaus mewn Cam 2/3 — gallai dynnu'r angen am bigiadau reolaidd."
   },
   what:"Diabetic Macular Oedema (DMO) is a complication of diabetic retinopathy in which fluid leaks from damaged blood vessels into the macula — the central part of the retina responsible for sharp, detailed vision. It is the most common cause of vision loss in people with diabetes and affects approximately 1 in 10 people with diabetic retinopathy. DMO can occur at any stage of diabetic retinopathy.",
   howAffects:"Central vision becomes blurred or distorted. Reading, recognising faces, and seeing fine detail become increasingly difficult. Vision may fluctuate — better on some days than others — due to changes in fluid levels. Unlike diabetic retinopathy itself, DMO directly and rapidly affects the vision used for everyday tasks.",
@@ -3143,7 +3156,8 @@ myopic:{
     what:"Mae Dirywiad Macular Myopig (MMD) yn gymhlethdod difrifol o fypeia uchel (byrdra golwg difrifol, fel arfer -6 dioptri neu fwy). Mae'r llygad hirgul yn achosi niwed cynyddol i'r macula. Hwn yw achos blaenllaw nam gweledol mewn oedolion ifanc a chanol oed yn ne-ddwyrain Asia ac mae'n gynyddol gyffredin yn y DU.",
     howAffects:"Mae golwg canolog yn dirywio'n raddol. Gall llinellau syth ymddangos yn ystumio neu'n gam. Gall smotyn dall ddatblygu. Mewn rhai achosion, mae pibellau gwaed annormal yn tyfu o dan y macula (CNV myopig), gan achosi colli golwg sydyn sy'n gofyn am driniaeth frys.",
     diagnosis:"Sgan OCT yn adnabod newidiadau macular a theneuo coroidol. Angiograffi fflworescein yn canfod twf pibellau gwaed abnormal. Mae monitro rheolaidd gan arbenigwr retinal yn hanfodol ar gyfer pobl â mypeia uchel.",
-    whoAffects:"Pobl â mypeia uchel (fel arfer -6 dioptri neu fwy). Mae poblogrwydd yn cynyddu yn fyd-eang oherwydd cyfraddau cynyddol o fypeia. Mae'n fwy cyffredin mewn pobl o dras Dwyrain Asia."
+    whoAffects:"Pobl â mypeia uchel (fel arfer -6 dioptri neu fwy). Mae poblogrwydd yn cynyddu yn fyd-eang oherwydd cyfraddau cynyddol o fypeia. Mae'n fwy cyffredin mewn pobl o dras Dwyrain Asia.",
+    researchSummary:"Mae triniaethau gwrth-VEGF ar gael ar y GIG ar gyfer CNV myopig. Mae llawdriniaeth atgyfnerthu sgleraidd mewn ymchwil. Mae rheoli mypeia mewn plant (atropin, orthokeratology) yn atal MMD yn y dyfodol."
   },
   what:"Myopic Macular Degeneration (MMD) is a serious complication of high myopia (severe short-sightedness, typically -6 dioptres or more) in which the elongated eyeball causes progressive damage to the macula. It is the leading cause of vision impairment in young and middle-aged adults in East Asia and is increasingly common in the UK. Unlike age-related AMD, MMD affects younger people and is directly caused by the physical stretching of the eye.",
   howAffects:"Central vision progressively deteriorates. Straight lines may appear distorted or wavy. A blind spot may develop in the centre of vision. In some cases, abnormal blood vessels grow under the macula (myopic CNV — choroidal neovascularisation), causing rapid vision loss requiring urgent treatment. Peripheral vision is usually preserved.",
@@ -3184,7 +3198,8 @@ charlesbonnet:{
     what:"Mae Syndrom Charles Bonnet (CBS) yn gyflwr lle mae pobl â cholli golwg sylweddol yn profi rhithwelediadau gweledol bywiog — yn gweld pethau nad ydynt yno. Mae'n effeithio ar amcangyfrif o 1 ym mhob 2 o bobl â cholli golwg sylweddol. Er gwaethaf natur frawychus y rhithwelediadau, nid yw CBS yn gyflwr iechyd meddwl ac nid yw'n arwydd o ddementia na seicosis.",
     howAffects:"Mae rhithwelediadau yn amrywio'n fawr — o batrymau syml, gridiau, a golau yn fflachio i ddelweddau manwl o bobl, anifeiliaid, adeiladau, a thirluniau. Maent bob amser yn dawel ac fel arfer yn cael eu cydnabod fel rhai nad ydynt yn real. Gallant achosi gofid a phryder sylweddol, yn enwedig os nad yw'r person yn gwybod beth sy'n digwydd.",
     diagnosis:"Mae CBS yn cael ei ddiagnosis gan feddyg neu offthalmolegydd ar sail disgrifiad y person o'i brofiadau a hanes cadarnhaol o golli golwg. Nid oes profion penodol. Mae llawer o bobl yn rhy swil i sôn am eu rhithwelediadau.",
-    whoAffects:"Mae'n effeithio ar amcangyfrif o 1 ym mhob 2 o bobl â cholli golwg sylweddol. Mae'n fwy cyffredin gyda cholli golwg difrifol neu sydyn. Gall effeithio ar bobl o unrhyw oedran. Mae'n cael ei danadrodd yn sylweddol."
+    whoAffects:"Mae'n effeithio ar amcangyfrif o 1 ym mhob 2 o bobl â cholli golwg sylweddol. Mae'n fwy cyffredin gyda cholli golwg difrifol neu sydyn. Gall effeithio ar bobl o unrhyw oedran. Mae'n cael ei danadrodd yn sylweddol.",
+    researchSummary:"Nid oes triniaeth safonol eto. Mae TMS (ysgogi yr ymennydd) mewn ymchwil gynnar. Mae gwybod beth yw CBS ei hun yn lleihau gofid yn sylweddol — mae hyn yn wirioneddol bwysig."
   },
   what:"Charles Bonnet Syndrome (CBS) is a condition in which people with significant sight loss experience vivid visual hallucinations — seeing things that are not there. It affects an estimated 1 in 2 people with significant vision loss, including those with AMD, glaucoma, diabetic retinopathy, and other conditions. Despite the alarming nature of the hallucinations, CBS is not a mental health condition and does not indicate dementia or psychosis. It is caused by the brain generating its own images when deprived of normal visual input.",
   howAffects:"Hallucinations vary widely — from simple patterns, grids, and flashing lights to detailed images of people, animals, buildings, and landscapes. They are always silent and usually recognised as not real by the person experiencing them. They can last seconds or hours and may occur daily or occasionally. They are often triggered by low light, tiredness, or stress. CBS can cause significant distress and anxiety, particularly if the person does not know what is happening to them.",
@@ -3226,7 +3241,8 @@ opticneuritis:{
     what:"Mae Niwritis Optig yn lid ar y nerf optig — y nerf sy'n cario gwybodaeth weledol o'r llygad i'r ymennydd. Mae'n achosi colli golwg sydyn, fel arfer mewn un llygad, yn aml gyda phoen wrth symud y llygad. Mae'n gysylltiedig yn gryf â sglerosis ymledol — bydd tua 50% o bobl â niwritis optig yn datblygu MS.",
     howAffects:"Niwlogrwydd sydyn neu golli golwg mewn un llygad, fel arfer yn datblygu dros oriau i ddyddiau. Poen y tu ôl i'r llygad, sy'n gwaethygu wrth symud y llygad. Gostyngiad mewn gweld lliw — mae lliwiau coch yn ymddangos yn ddiflas neu wedi pylu. Yn y rhan fwyaf o achosion, mae golwg yn adfer yn sylweddol o fewn wythnosau i fisoedd.",
     diagnosis:"Diagnosis gan offthalmolegydd neu niwrolegydd ar sail symptomau, profion maes gweledol, profion gweld lliw, a sgan OCT. Mae sgan MRI yr ymennydd a'r asgwrn cefn yn cael ei wneud fel arfer i asesu risg MS.",
-    whoAffects:"Mae'n effeithio fwyaf cyffredin ar fenywod 20-45 oed. Cysylltiedig ag MS mewn tua 50% o achosion."
+    whoAffects:"Mae'n effeithio fwyaf cyffredin ar fenywod 20-45 oed. Cysylltiedig ag MS mewn tua 50% o achosion.",
+    researchSummary:"Mae Methylprednisolone IV yn cyflymu adferiad. Mae ymchwil niwroamddiffyn mewn datblygiad. Mae cael diagnosis cynnar a thrafod risg MS gyda'ch niwrolegydd yn hanfodol."
   },
   what:"Optic Neuritis is inflammation of the optic nerve — the nerve that carries visual information from the eye to the brain. It causes sudden vision loss, usually in one eye, often accompanied by pain on eye movement. It is strongly associated with multiple sclerosis (MS) — approximately 50% of people with optic neuritis will go on to develop MS. It can also occur in isolation or in association with other conditions including neuromyelitis optica spectrum disorder (NMOSD).",
   howAffects:"Sudden blurring or loss of vision in one eye, typically developing over hours to days. Pain behind the eye, worsened by eye movement. Reduced colour vision — red colours appear washed out or faded. In most cases, vision recovers significantly within weeks to months, though some permanent reduction may remain. The Uhthoff phenomenon — temporary worsening of vision with heat or exercise — is common.",
@@ -3268,7 +3284,8 @@ blepharitis:{
     what:"Mae Blepharaidd yn lid cronig cyffredin o ymylon y pilen, lle mae'r amrannau'n tyfu. Mae'n un o'r cyflyrau llygaid mwyaf cyffredin yn y DU, yn effeithio ar bobl o bob oedran. Mae dau brif fath: Blepharaidd blaen (yn effeithio ar ymyl allanol yr amrant, yn aml yn gysylltiedig â bacteria neu gyflyrau croen) a Blepharaidd ôl (yn effeithio ar ymyl mewnol yr amrant, a achosir gan ddiffyg yn chwarennau meibomaidd).",
     howAffects:"Amrannau poenus, coch, coslyd, a chwyddedig. Llygaid cramennog neu ludiog, yn arbennig yn y bore. Teimlad llosgi neu graean yn y llygaid. Llygaid sych oherwydd aflonyddu ar ffilm dagrau. Sensitifrwydd i olau. Golwg aneglur sy'n gwella wrth blinco.",
     diagnosis:"Diagnosis gan optometrydd neu offthalmolegydd drwy archwilio ymylon yr amrannau o dan lamp hollt. Nid oes angen profion penodol.",
-    whoAffects:"Mae Blepharaidd yn hynod gyffredin — mae'n effeithio ar filiynau o bobl yn y DU. Mae'n fwy cyffredin gydag oedran. Mae'n gysylltiedig â chyflyrau croen gan gynnwys rosasea, dermatitis seborrhoeig, ac acne."
+    whoAffects:"Mae Blepharaidd yn hynod gyffredin — mae'n effeithio ar filiynau o bobl yn y DU. Mae'n fwy cyffredin gydag oedran. Mae'n gysylltiedig â chyflyrau croen gan gynnwys rosasea, dermatitis seborrhoeig, ac acne.",
+    researchSummary:"Mae therapi IPL ar gael mewn clinigau arbenigol yn y DU ar gyfer blepharaidd ôl. Mae Lotilaner (Xdemvy) wedi'i gymeradwyo yn yr UDA — disgwylir yn y DU cyn hir. Mae glendid amrantau dyddiol yn parhau i fod y driniaeth bwysicaf."
   },
   what:"Blepharitis is a common chronic inflammation of the eyelids, affecting the eyelid margins where the eyelashes grow. It is one of the most common eye conditions in the UK, affecting people of all ages. There are two main types: anterior blepharitis (affecting the outer eyelid margin, often associated with bacteria or skin conditions such as seborrhoeic dermatitis or rosacea) and posterior blepharitis (affecting the inner eyelid margin, caused by dysfunction of the meibomian glands which produce the oily layer of the tear film). Many people have both types.",
   howAffects:"Sore, red, itchy, and swollen eyelids. Crusty or sticky eyelashes, particularly in the morning. Burning or gritty sensation in the eyes. Dry eyes caused by disruption of the tear film. Sensitivity to light. Blurred vision that improves with blinking. In most cases blepharitis does not permanently damage vision, but it can cause significant discomfort and affect quality of life. In severe cases it can lead to corneal damage.",
@@ -3328,7 +3345,7 @@ function renderCondition(key) {
   const tc = {gene:"gene",stem:"stem",trial:"trial",drug:"drug",tech:"tech"};
   return `
   <div class="cond-hero">
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to conditions list">← All Conditions</button>
+    <button class="back-btn" onclick="_isWelsh ? (function(){ document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');}); var wh=document.getElementById('page-home-welsh'); if(wh){wh.style.display='';} window.scrollTo({top:0,behavior:'instant'}); })() : showPage('home')" aria-label="Back to conditions list">${_isWelsh ? '← Pob Cyflwr' : '← All Conditions'}</button>
     <span class="cond-hero-eyebrow">${_isWelsh ? 'Canllaw Cyflyrau\'r Llygad' : 'Eye Condition Guide'}</span>
     <h1>${d.name}</h1>
     <p style="font-size:0.75rem;color:var(--text2);margin-bottom:16px">Last reviewed: <time datetime="2026-05">May 2026</time> &nbsp;·&nbsp; <button onclick="showPage('disclaimer')" style="background:none;border:none;color:var(--text2);font-family:var(--font);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0">How we write our content</button></p>
@@ -3355,6 +3372,7 @@ function renderCondition(key) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
       </button>
       <div class="acc-body">
+        ${_isWelsh && d.cy && d.cy.researchSummary ? `<div class="wb" style="border-left:4px solid #00b140;margin-bottom:16px"><strong>🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁿 Crynodeb Ymchwil:</strong> ${d.cy.researchSummary}</div>` : ''}
         ${d.research.map(r=>`
         <div class="rc">
           <span class="rtag ${tc[r.tag]||'trial'}">${r.label}</span>
@@ -3554,6 +3572,43 @@ function toggleAcc(section, key) {
 
 
 /* ─────────────── WELSH PAGE ROUTING ─────────────── */
+function showConditionWelsh(key) {
+  // Show condition page in Welsh mode — keeps Welsh active
+  var base = DATA[key] || fallback(key);
+  var condContent = document.getElementById('condition-content');
+  if (condContent) condContent.innerHTML = renderCondition(key);
+
+  // Hide Welsh home, show English condition page (which uses Welsh data via _isWelsh)
+  var welshHome = document.getElementById('page-home-welsh');
+  if (welshHome) welshHome.style.display = 'none';
+
+  // Hide Welsh static pages
+  document.querySelectorAll('.welsh-page').forEach(function(p) { p.style.display = 'none'; });
+
+  // Show condition page
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+  var condPage = document.getElementById('page-condition');
+  if (condPage) condPage.classList.add('active');
+
+  // Keep Welsh active state
+  document.body.classList.add('welsh-active');
+  document.documentElement.setAttribute('lang', 'cy');
+
+  // Hide video resources
+  var videoWrap = document.getElementById('video-resources-wrap');
+  if (videoWrap) videoWrap.style.display = 'none';
+
+  // Update sidebar highlighting
+  document.querySelectorAll('.sidebar-link').forEach(function(l) {
+    l.classList.remove('active');
+    var oc = l.getAttribute('onclick') || '';
+    if (oc.indexOf("'" + key + "'") !== -1) l.classList.add('active');
+  });
+
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  try { history.pushState({key:key}, '', '#' + key); } catch(e){}
+}
+
 function showWelshPage(name) {
   if (_isWelsh) {
     // Show Welsh version if it exists
@@ -3638,6 +3693,18 @@ function toggleJD() {
 var _scrollPos = {};
 
 function showPage(name) {
+  // If Welsh active and going home, show Welsh home
+  if (_isWelsh && name === 'home') {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.welsh-page').forEach(function(p) { p.style.display = 'none'; });
+    var welshHome = document.getElementById('page-home-welsh');
+    if (welshHome) welshHome.style.display = '';
+    var videoWrap = document.getElementById('video-resources-wrap');
+    if (videoWrap) videoWrap.style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    return;
+  }
+
   // Save scroll position of current page
   var currentActive = document.querySelector('.page.active');
   if (currentActive) _scrollPos[currentActive.id] = window.scrollY;
@@ -3646,9 +3713,8 @@ function showPage(name) {
   var target = document.getElementById('page-' + name);
   if (target) target.classList.add('active');
 
-  // Show video resources and decorative divider only on home page
+  // Show video resources only on home page
   var videoWrap = document.getElementById('video-resources-wrap');
-  var decoDivider = document.querySelector('[aria-hidden="true"] svg');
   if (videoWrap) videoWrap.style.display = name === 'home' ? '' : 'none';
 
   // Restore or reset scroll
