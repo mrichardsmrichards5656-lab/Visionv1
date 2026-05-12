@@ -7647,17 +7647,8 @@ function toggleWelsh() {
 
 
 
-// Restore preference
-
-(function() {
-
-  if (localStorage.getItem('vh-lang') === 'cy') {
-
-    setTimeout(toggleWelsh, 300);
-
-  }
-
-})();
+// Welsh language is NOT auto-restored - user must choose each session
+// This ensures English is always the default on every page load
 
 
 
@@ -8011,6 +8002,7 @@ function setColour(mode) {
   if (mode === 'lb') {
     document.body.style.backgroundColor = '#d6eaf8';
     document.body.style.color = '#0a0a0a';
+    document.documentElement.style.backgroundColor = '#d6eaf8';
     document.documentElement.style.setProperty('--bg', '#d6eaf8');
     document.documentElement.style.setProperty('--bg2', '#bee3f8');
     document.documentElement.style.setProperty('--card', '#ffffff');
@@ -8021,6 +8013,7 @@ function setColour(mode) {
     document.documentElement.style.setProperty('--border', 'rgba(0,80,140,0.20)');
   } else {
     // Clear any inline CSS variables set for lb
+    document.documentElement.style.backgroundColor = '';
     document.documentElement.style.removeProperty('--bg');
     document.documentElement.style.removeProperty('--bg2');
     document.documentElement.style.removeProperty('--card');
@@ -8257,19 +8250,25 @@ function filterConds(q) {
 
   try {
 
-    const saved  = localStorage.getItem('vh-size');
+    // DEFAULT: English, Light theme, small text (scale 1)
+    // Only restore saved prefs if the user has explicitly set them
 
-    const size   = saved ? parseFloat(saved) : 1;
+    var savedSize   = localStorage.getItem('vh-size');
+    var savedColour = localStorage.getItem('vh-colour');
+    // NEVER restore Welsh as a default - always start in English
+    // User must actively choose Welsh each session
+    localStorage.removeItem('vh-lang');
 
-    const colour = localStorage.getItem('vh-colour') ?? '';
-
+    // Size: default 1 (small)
+    var size = savedSize ? parseFloat(savedSize) : 1;
     setSize(size);
 
+    // Colour: default light (empty string = light theme)
+    var colour = (savedColour !== null) ? savedColour : '';
     if (colour !== '') setColour(colour);
 
-    const sel = document.getElementById('col-select');
-
-    if (sel) sel.value = colour;
+    var sel = document.getElementById('col-select');
+    if (sel) sel.value = colour || '';
 
   } catch(e) {}
 
@@ -8550,59 +8549,67 @@ if ('serviceWorker' in navigator) {
   function _startSpeech() {
     var synth = window.speechSynthesis;
     if (!synth || typeof SpeechSynthesisUtterance === 'undefined') {
-      alert('Your browser does not support text to speech. Please try Chrome or Safari.');
+      alert('Text to speech is not supported in this browser. Please use Chrome or Safari.');
       return;
     }
 
     synth.cancel();
 
     var section = (document.getElementById('tts-section') || {}).value || 'current';
-    var speed = parseFloat((document.getElementById('tts-speed') || {}).value || '0.9');
-    var voiceName = (document.getElementById('tts-voice-sel') || {}).value || '';
-
-    try { localStorage.setItem('vh-tts-speed', speed); localStorage.setItem('vh-tts-voice', voiceName); } catch(e) {}
+    var speed   = parseFloat((document.getElementById('tts-speed') || {}).value || '0.9');
 
     var text = _getTTSText(section).replace(/\s+/g, ' ').trim();
-    if (!text) { alert('Nothing to read on this section.'); return; }
 
-    // Cap at 5000 chars for mobile reliability
-    if (text.length > 5000) text = text.slice(0, 5000);
-
-    _utter = new SpeechSynthesisUtterance(text);
-    _utter.lang = 'en-GB';
-    _utter.rate = speed;
-    _utter.volume = 1;
-    _utter.pitch = 1;
-
-    // Set voice if chosen
-    var voices = synth.getVoices();
-    if (voiceName && voices.length) {
-      var chosen = voices.find(function(v) { return v.name === voiceName; });
-      if (chosen) _utter.voice = chosen;
+    // Fallback: if section returns nothing, read visible page text
+    if (!text || text.length < 10) {
+      var main = document.getElementById('main') || document.body;
+      text = main.innerText.replace(/\s+/g, ' ').trim();
     }
 
-    _utter.onend = function() {
-      var tog = document.getElementById('tts-toggle');
-      var pb = document.getElementById('tts-play-btn');
+    if (!text) { alert('Nothing to read.'); return; }
+
+    // Keep under 3000 chars for reliable mobile speech
+    if (text.length > 3000) text = text.slice(0, 3000);
+
+    _utter = new SpeechSynthesisUtterance(text);
+    _utter.lang   = 'en-GB';  // Always English default
+    _utter.rate   = speed;
+    _utter.volume = 1;
+    _utter.pitch  = 1;
+
+    _utter.onstart = function() {
+      var pb   = document.getElementById('tts-play-btn');
       var stat = document.getElementById('tts-status');
-      if (tog) tog.setAttribute('aria-pressed', 'false');
-      if (pb) pb.textContent = '\u25b6 Play';
-      if (stat) stat.textContent = 'Choose what to read, then press Play \u00b7 Alt+L to open/close';
+      if (pb)   pb.textContent   = '\u23f8 Pause';
+      if (stat) stat.textContent = 'Reading...';
+    };
+
+    _utter.onend = function() {
+      var tog  = document.getElementById('tts-toggle');
+      var pb   = document.getElementById('tts-play-btn');
+      var stat = document.getElementById('tts-status');
+      if (tog)  tog.setAttribute('aria-pressed', 'false');
+      if (pb)   pb.textContent   = '\u25b6 Play';
+      if (stat) stat.textContent = 'Finished. Press Play to read again.';
     };
 
     _utter.onerror = function(e) {
       if (e.error === 'interrupted') return;
-      alert('Speech error: ' + e.error + '. Please try again.');
+      var pb   = document.getElementById('tts-play-btn');
+      var stat = document.getElementById('tts-status');
+      if (pb)   pb.textContent   = '\u25b6 Play';
+      if (stat) stat.textContent = 'Error. Please try again.';
     };
 
-    synth.speak(_utter);
-
-    var tog = document.getElementById('tts-toggle');
-    var pb = document.getElementById('tts-play-btn');
+    // Update UI immediately
+    var tog  = document.getElementById('tts-toggle');
+    var pb   = document.getElementById('tts-play-btn');
     var stat = document.getElementById('tts-status');
-    if (tog) tog.setAttribute('aria-pressed', 'true');
-    if (pb) pb.textContent = '\u23f8 Pause';
-    if (stat) stat.textContent = 'Reading...';
+    if (tog)  tog.setAttribute('aria-pressed', 'true');
+    if (pb)   pb.textContent   = '\u23f8 Pause';
+    if (stat) stat.textContent = 'Starting...';
+
+    synth.speak(_utter);
   }
 
   
