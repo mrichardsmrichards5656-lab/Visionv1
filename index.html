@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en-GB">
 
 <head>
 
@@ -262,7 +262,17 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
 
   .sidebar-link:hover { background: var(--card); color: var(--yellow); }
 
-  .sidebar-link:focus-visible { outline: 3px solid var(--yellow); }
+  .sidebar-link:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+body.hc :focus-visible, body.hc a:focus-visible, body.hc button:focus-visible { outline-color: #fff; }
+body.yb :focus-visible, body.yb a:focus-visible, body.yb button:focus-visible { outline-color: #ff0; }
+body.bb :focus-visible, body.bb a:focus-visible, body.bb button:focus-visible { outline-color: #7ec8ff; }
+body.lb :focus-visible, body.lb a:focus-visible, body.lb button:focus-visible { outline-color: #0055a5; }
 
   .sidebar-divider { height: 1px; background: var(--border); margin: 12px 0; }
 
@@ -345,6 +355,10 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
   scrollbar-width: none;
 
   min-height: 50px;
+
+  /* Magnifier: ensure bar scrolls rather than wraps or clips at 400% zoom */
+
+  white-space: nowrap;
 
 }
 
@@ -1158,6 +1172,8 @@ body.welsh-active .trial-link::after { content: " (Saesneg yn unig)"; font-size:
 body.lb .news-tag.research { background: #bbf7d0; color: #14532d; }
 body.lb .news-tag.benefits { background: #bfdbfe; color: #1e3a8a; }
 body.lb .news-tag.tech     { background: #e9d5ff; color: #581c87; }
+body.bb .news-tag.research, body.bb .news-tag.benefits,
+body.bb .news-tag.tech, body.bb .news-tag.general { background: #000; color: #7ec8ff; border: 1px solid #7ec8ff; }
 
 
 .news-tag.general  { background: #fef9c3; color: #854d0e; }
@@ -1609,7 +1625,7 @@ body.hc *:focus-visible,body.yb *:focus-visible,body.bb *:focus-visible{outline-
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px">
       <div>
         <strong style="font-size:0.95rem;color:var(--yellow)">🔊 Text to Speech</strong>
-        <span id="tts-status" style="display:block;font-size:0.75rem;color:var(--text2);margin-top:2px">Press Play to start reading · Alt+L to open/close</span>
+        <span id="tts-status" style="display:block;font-size:0.875rem;color:var(--text2);margin-top:2px">Choose what to read, then press Play · Alt+L to open/close</span>
       </div>
       <button onclick="document.getElementById('tts-panel').style.display='none';window.speechSynthesis.cancel();document.getElementById('tts-toggle').setAttribute('aria-pressed','false')" aria-label="Close text to speech panel" style="background:none;border:2px solid var(--border);border-radius:50%;width:44px;height:44px;cursor:pointer;color:var(--text);font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0">✕</button>
     </div>
@@ -1646,8 +1662,8 @@ body.hc *:focus-visible,body.yb *:focus-visible,body.bb *:focus-visible{outline-
       </select>
     </div>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <button id="tts-play-btn" onclick="_pauseResumeSpeech()" style="flex:1;min-height:44px;background:var(--yellow);color:#fff;border:none;border-radius:12px;font-family:var(--font);font-weight:800;font-size:0.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">▶ Play</button>
-      <button id="tts-stop-btn" onclick="_stopSpeech()" style="min-height:44px;padding:0 20px;background:var(--card2);color:var(--text);border:2px solid var(--border);border-radius:12px;font-family:var(--font);font-weight:700;font-size:0.9rem;cursor:pointer">⏹ Stop</button>
+      <button id="tts-play-btn" onclick="_pauseResumeSpeech()" aria-label="Play or pause reading" style="flex:1;min-height:44px;background:var(--yellow);color:#fff;border:none;border-radius:12px;font-family:var(--font);font-weight:800;font-size:0.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">▶ Play</button>
+      <button id="tts-stop-btn" onclick="_stopSpeech()" aria-label="Stop reading" style="min-height:44px;padding:0 20px;background:var(--card2);color:var(--text);border:2px solid var(--border);border-radius:12px;font-family:var(--font);font-weight:700;font-size:0.9rem;cursor:pointer">⏹ Stop</button>
       <button id="tts-copy-btn" onclick="_copyTTSText()" aria-label="Copy text to clipboard" title="Copy text to clipboard" style="min-height:44px;padding:0 16px;background:var(--card2);color:var(--text);border:2px solid var(--border);border-radius:12px;font-family:var(--font);font-weight:700;font-size:0.9rem;cursor:pointer">📋 Copy</button>
     </div>
   </div>
@@ -2057,7 +2073,7 @@ body.hc *:focus-visible,body.yb *:focus-visible,body.bb *:focus-visible{outline-
 
       <div aria-hidden="true" style="text-align:center;margin-bottom:28px;opacity:0.85">
 
-        <svg viewBox="0 0 320 180" width="100%" style="max-width:380px;display:inline-block" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 320 180" width="100%" aria-hidden="true" style="max-width:380px;display:inline-block" xmlns="http://www.w3.org/2000/svg">
 
           <circle cx="160" cy="90" r="85" fill="var(--yellow)" opacity="0.08"/>
 
@@ -2687,7 +2703,7 @@ body.hc *:focus-visible,body.yb *:focus-visible,body.bb *:focus-visible{outline-
 
       <div class="sidebar-divider"></div>
 
-      <button class="sidebar-link" onclick="showPage('home')">🏠 Home</button>
+      <button class="sidebar-link" onclick="showPage('home')" aria-label="Home">🏠 Home</button>
 
       <button class="sidebar-link" onclick="showPage('help')"><span aria-hidden="true">🆘</span> Help &amp; Support</button>
       <button class="sidebar-link" onclick="showPage('contact')"><span aria-hidden="true">✉️</span> Contact</button>
@@ -5040,7 +5056,7 @@ body.hc *:focus-visible,body.yb *:focus-visible,body.bb *:focus-visible{outline-
 
 <div aria-hidden="true" style="max-width:680px;margin:0 auto;padding:0 20px;text-align:center;opacity:0.4">
 
-  <svg viewBox="0 0 400 40" width="100%" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 400 40" width="100%" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
 
     <path d="M0,20 Q50,5 100,20 Q150,35 200,20 Q250,5 300,20 Q350,35 400,20" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round"/>
 
@@ -7592,7 +7608,7 @@ function toggleWelsh() {
 
 
 
-  document.documentElement.setAttribute('lang', _isWelsh ? 'cy' : 'en');
+  document.documentElement.setAttribute('lang', _isWelsh ? 'cy' : 'en-GB');
 
   document.body.classList.toggle('welsh-active', _isWelsh);
 
@@ -8240,6 +8256,16 @@ function filterConds(q) {
 
   } catch(e) {}
 
+  // Preload TTS voices so they're ready when panel opens
+
+  if (window.speechSynthesis) {
+
+    window.speechSynthesis.getVoices();
+
+    window.speechSynthesis.onvoiceschanged = function() { window.speechSynthesis.getVoices(); };
+
+  }
+
 })();
 
 
@@ -8525,22 +8551,31 @@ if ('serviceWorker' in navigator) {
     for (var i = 0; i < text.length; i += CHUNK) chunks.push(text.slice(i, i + CHUNK));
 
     var idx = 0;
+    // Chrome bug: cancel any stuck speech first
+    window.speechSynthesis.cancel();
     function speakNext() {
       if (idx >= chunks.length) {
         document.getElementById('tts-toggle').setAttribute('aria-pressed','false');
         document.getElementById('tts-play-btn') && (document.getElementById('tts-play-btn').textContent = '▶ ' + (_isWelsh ? 'Chwarae' : 'Play'));
         srAnnounce(_isWelsh ? 'Wedi gorffen darllen.' : 'Finished reading.');
+        var stat2 = document.getElementById('tts-status');
+        if (stat2) stat2.textContent = 'Press Play to start reading · Alt+L to open/close';
         return;
       }
       _utter = new SpeechSynthesisUtterance(chunks[idx++]);
       _utter.rate = speed;
       _utter.lang = document.documentElement.lang === 'cy' ? 'cy-GB' : 'en-GB';
+      _utter.volume = 1;
+      _utter.pitch = 1;
       if (voiceName) {
-        var v = _ttsVoices.find(function(v){ return v.name === voiceName; });
+        var voices = window.speechSynthesis.getVoices();
+        var v = voices.find(function(v){ return v.name === voiceName; });
         if (v) _utter.voice = v;
       }
+      _utter.onerror = function(e) { console.warn('TTS error:', e.error); speakNext(); };
       _utter.onend = speakNext;
-      window.speechSynthesis.speak(_utter);
+      // Small delay fixes Chrome/Android firing issue
+      setTimeout(function(){ window.speechSynthesis.speak(_utter); }, 50);
     }
     speakNext();
     document.getElementById('tts-toggle').setAttribute('aria-pressed','true');
