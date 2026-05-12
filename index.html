@@ -1804,19 +1804,6 @@ body.hc *:focus-visible,body.yb *:focus-visible,body.bb *:focus-visible{outline-
 
     </div>
 
-
-
-    <aside id="latest-research-may26" aria-labelledby="lr-may26-h" style="max-width:720px;margin:0 auto 24px;padding:18px 22px;background:var(--card);border:2px solid var(--yellow);border-radius:14px;box-shadow:var(--shadow)">
-<h2 id="lr-may26-h" style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--yellow);margin-bottom:10px">Latest research · May 2026</h2>
-<ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;font-size:0.95rem;line-height:1.55">
-<li><strong>Stargardt:</strong> SpliceBio's <a href="https://splice.bio/splicebio-initiates-dose-expansion-portion-of-phase-1-2-astra-for-sb-007/" target="_blank" rel="noopener">SB-007 ASTRA dual-AAV gene therapy</a> began dose-expansion at Oxford (UK site). <span lang="cy">Mae treial ASTRA SpliceBio yn Rhydychen wedi cychwyn cam ehangu dos.</span></li>
-<li><strong>AMD / Geographic atrophy:</strong> <a href="https://europe.ophthalmologytimes.com/view/intravitreal-complement-inhibitor-treatment-for-geographic-atrophy-ga-viewed-favorably-by-patients" target="_blank" rel="noopener">UK study</a> reports patients view intravitreal complement inhibitors (pegcetacoplan / avacincaptad) favourably for quality of life.</li>
-<li><strong>Diabetic retinopathy:</strong> 2026 systematic review and meta-analysis on <a href="https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2026.1778742/full" target="_blank" rel="noopener">GLP-1 receptor agonists (Ozempic/Wegovy class) and DR risk</a> — discuss with your diabetes team before stopping.</li>
-<li><strong>Retinal disease (general):</strong> NIH/NEI <a href="https://www.newswise.com/articles/nih-research-points-to-new-therapeutic-opportunities-for-retinal-diseases" target="_blank" rel="noopener">May 2026 study</a> links glucose metabolism to epigenetic changes in photoreceptors — opens new drug targets for inherited retinal disease.</li>
-</ul>
-<p style="font-size:0.8rem;color:var(--text2);margin-top:10px">Always check with your ophthalmologist or RNIB (0303 123 9999) before acting on research news.</p>
-</aside>
-
 <div class="cond-section" style="max-width:680px;margin:0 auto;padding:0 20px">
 
 
@@ -8014,7 +8001,35 @@ function setColour(mode) {
 
   document.body.classList.remove('dark','ll','hc','yb','bb','lb');
 
+  // Reset any inline style overrides
+  document.body.style.backgroundColor = '';
+  document.body.style.color = '';
+
   if (mode) document.body.classList.add(mode);
+
+  // Light blue: force inline styles to win against any media query
+  if (mode === 'lb') {
+    document.body.style.backgroundColor = '#d6eaf8';
+    document.body.style.color = '#0a0a0a';
+    document.documentElement.style.setProperty('--bg', '#d6eaf8');
+    document.documentElement.style.setProperty('--bg2', '#bee3f8');
+    document.documentElement.style.setProperty('--card', '#ffffff');
+    document.documentElement.style.setProperty('--card2', '#eaf4fc');
+    document.documentElement.style.setProperty('--text', '#0a0a0a');
+    document.documentElement.style.setProperty('--text2', '#1a3a52');
+    document.documentElement.style.setProperty('--yellow', '#0055a5');
+    document.documentElement.style.setProperty('--border', 'rgba(0,80,140,0.20)');
+  } else {
+    // Clear any inline CSS variables set for lb
+    document.documentElement.style.removeProperty('--bg');
+    document.documentElement.style.removeProperty('--bg2');
+    document.documentElement.style.removeProperty('--card');
+    document.documentElement.style.removeProperty('--card2');
+    document.documentElement.style.removeProperty('--text');
+    document.documentElement.style.removeProperty('--text2');
+    document.documentElement.style.removeProperty('--yellow');
+    document.documentElement.style.removeProperty('--border');
+  }
 
   try { localStorage.setItem('vh-colour', mode); } catch(e){}
 
@@ -8535,88 +8550,62 @@ if ('serviceWorker' in navigator) {
   function _startSpeech() {
     var synth = window.speechSynthesis;
     if (!synth || typeof SpeechSynthesisUtterance === 'undefined') {
-      alert('Sorry — your browser cannot read pages aloud. Try Chrome, Edge or Safari, or use VoiceOver / TalkBack on your device.');
+      alert('Your browser does not support text to speech. Please try Chrome or Safari.');
       return;
     }
+
     synth.cancel();
-    var section = document.getElementById('tts-section') ? document.getElementById('tts-section').value : 'current';
-    var speed = parseFloat(document.getElementById('tts-speed') ? document.getElementById('tts-speed').value : '0.9');
-    var voiceName = document.getElementById('tts-voice-sel') ? document.getElementById('tts-voice-sel').value : '';
-    // Persist settings
+
+    var section = (document.getElementById('tts-section') || {}).value || 'current';
+    var speed = parseFloat((document.getElementById('tts-speed') || {}).value || '0.9');
+    var voiceName = (document.getElementById('tts-voice-sel') || {}).value || '';
+
     try { localStorage.setItem('vh-tts-speed', speed); localStorage.setItem('vh-tts-voice', voiceName); } catch(e) {}
+
     var text = _getTTSText(section).replace(/\s+/g, ' ').trim();
-    if (!text) { srAnnounce(_isWelsh ? 'Dim testun i\'w ddarllen.' : 'No text to read.'); return; }
+    if (!text) { alert('Nothing to read on this section.'); return; }
 
-    // Split into chunks - smaller for Android compatibility
-    var isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
-    var CHUNK = isMobile ? 200 : 3000;
-    var chunks = [];
-    // Split on sentence boundaries where possible
-    if (isMobile) {
-      var sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
-      var current = '';
-      sentences.forEach(function(s) {
-        if ((current + s).length > CHUNK) {
-          if (current) chunks.push(current.trim());
-          current = s;
-        } else { current += s; }
-      });
-      if (current.trim()) chunks.push(current.trim());
-    } else {
-      for (var i = 0; i < text.length; i += CHUNK) chunks.push(text.slice(i, i + CHUNK));
-    }
-    if (!chunks.length) chunks = [text];
+    // Cap at 5000 chars for mobile reliability
+    if (text.length > 5000) text = text.slice(0, 5000);
 
-    var idx = 0;
-    // Chrome bug: cancel any stuck speech first
-    window.speechSynthesis.cancel();
-    function speakNext() {
-      if (idx >= chunks.length) {
-        document.getElementById('tts-toggle').setAttribute('aria-pressed','false');
-        document.getElementById('tts-play-btn') && (document.getElementById('tts-play-btn').textContent = '▶ ' + (_isWelsh ? 'Chwarae' : 'Play'));
-        srAnnounce(_isWelsh ? 'Wedi gorffen darllen.' : 'Finished reading.');
-        var stat2 = document.getElementById('tts-status');
-        if (stat2) stat2.textContent = 'Press Play to start reading · Alt+L to open/close';
-        return;
-      }
-      _utter = new SpeechSynthesisUtterance(chunks[idx++]);
-      _utter.rate = speed;
-      _utter.lang = document.documentElement.lang === 'cy' ? 'cy-GB' : 'en-GB';
-      _utter.volume = 1;
-      _utter.pitch = 1;
-      if (voiceName) {
-        var voices = window.speechSynthesis.getVoices();
-        var v = voices.find(function(v){ return v.name === voiceName; });
-        if (v) _utter.voice = v;
-      }
-      _utter.onerror = function(e) {
-        console.warn('TTS error:', e.error);
-        if (e.error !== 'interrupted') speakNext();
-      };
-      _utter.onend = speakNext;
-      window.speechSynthesis.speak(_utter);
+    _utter = new SpeechSynthesisUtterance(text);
+    _utter.lang = 'en-GB';
+    _utter.rate = speed;
+    _utter.volume = 1;
+    _utter.pitch = 1;
+
+    // Set voice if chosen
+    var voices = synth.getVoices();
+    if (voiceName && voices.length) {
+      var chosen = voices.find(function(v) { return v.name === voiceName; });
+      if (chosen) _utter.voice = chosen;
     }
-    // Android Chrome bug: speechSynthesis pauses after ~15s - keepalive
-    var _ttsKeepalive = null;
-    if (/Android/i.test(navigator.userAgent)) {
-      _ttsKeepalive = setInterval(function() {
-        if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-          window.speechSynthesis.pause();
-          window.speechSynthesis.resume();
-        } else if (!window.speechSynthesis.speaking) {
-          clearInterval(_ttsKeepalive);
-        }
-      }, 10000);
-    }
-    speakNext();
-    document.getElementById('tts-toggle').setAttribute('aria-pressed','true');
+
+    _utter.onend = function() {
+      var tog = document.getElementById('tts-toggle');
+      var pb = document.getElementById('tts-play-btn');
+      var stat = document.getElementById('tts-status');
+      if (tog) tog.setAttribute('aria-pressed', 'false');
+      if (pb) pb.textContent = '\u25b6 Play';
+      if (stat) stat.textContent = 'Choose what to read, then press Play \u00b7 Alt+L to open/close';
+    };
+
+    _utter.onerror = function(e) {
+      if (e.error === 'interrupted') return;
+      alert('Speech error: ' + e.error + '. Please try again.');
+    };
+
+    synth.speak(_utter);
+
+    var tog = document.getElementById('tts-toggle');
     var pb = document.getElementById('tts-play-btn');
-    if (pb) pb.textContent = '⏸ ' + (_isWelsh ? 'Oedi' : 'Pause');
     var stat = document.getElementById('tts-status');
-    if (stat) stat.textContent = (_isWelsh ? 'Yn darllen... ' : 'Reading... ') + chunks.length + (_isWelsh ? ' rhan' : (chunks.length > 1 ? ' parts' : ' part'));
-    srAnnounce(_isWelsh ? 'Yn darllen y dudalen yn uchel.' : 'Reading page aloud.');
+    if (tog) tog.setAttribute('aria-pressed', 'true');
+    if (pb) pb.textContent = '\u23f8 Pause';
+    if (stat) stat.textContent = 'Reading...';
   }
 
+  
   function _pauseResumeSpeech() {
     var synth = window.speechSynthesis;
     var pb = document.getElementById('tts-play-btn');
