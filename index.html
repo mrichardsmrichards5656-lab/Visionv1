@@ -116,6 +116,8 @@ body.lb {
   --text:#0a0a0a; --text2:#1a3a52; --border:rgba(0,80,140,0.20);
   --yellow:#0055a5; --yellow2:#0066cc; --shadow:0 2px 12px rgba(0,80,140,0.12);
   --green:#005c29; --blue:#003d7a; --red:#8b0000;
+  background-color:#d6eaf8 !important;
+  color:#0a0a0a !important;
 }
 
 body.ll {
@@ -1524,7 +1526,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 }
 @media (prefers-contrast: more){
   :root{--border:rgba(0,0,0,0.6)!important}
-  body{--text:#000;--bg:#fff}
+  body:not(.lb):not(.hc):not(.yb):not(.bb):not(.ll):not(.dark){--text:#000;--bg:#fff}
   body.dark{--text:#fff;--bg:#000}
   a,button{text-decoration:underline}
 }
@@ -8545,10 +8547,25 @@ if ('serviceWorker' in navigator) {
     var text = _getTTSText(section).replace(/\s+/g, ' ').trim();
     if (!text) { srAnnounce(_isWelsh ? 'Dim testun i\'w ddarllen.' : 'No text to read.'); return; }
 
-    // Split into chunks to avoid browser limits
-    var CHUNK = 3000;
+    // Split into chunks - smaller for Android compatibility
+    var isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+    var CHUNK = isMobile ? 200 : 3000;
     var chunks = [];
-    for (var i = 0; i < text.length; i += CHUNK) chunks.push(text.slice(i, i + CHUNK));
+    // Split on sentence boundaries where possible
+    if (isMobile) {
+      var sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+      var current = '';
+      sentences.forEach(function(s) {
+        if ((current + s).length > CHUNK) {
+          if (current) chunks.push(current.trim());
+          current = s;
+        } else { current += s; }
+      });
+      if (current.trim()) chunks.push(current.trim());
+    } else {
+      for (var i = 0; i < text.length; i += CHUNK) chunks.push(text.slice(i, i + CHUNK));
+    }
+    if (!chunks.length) chunks = [text];
 
     var idx = 0;
     // Chrome bug: cancel any stuck speech first
@@ -8572,10 +8589,24 @@ if ('serviceWorker' in navigator) {
         var v = voices.find(function(v){ return v.name === voiceName; });
         if (v) _utter.voice = v;
       }
-      _utter.onerror = function(e) { console.warn('TTS error:', e.error); speakNext(); };
+      _utter.onerror = function(e) {
+        console.warn('TTS error:', e.error);
+        if (e.error !== 'interrupted') speakNext();
+      };
       _utter.onend = speakNext;
-      // Small delay fixes Chrome/Android firing issue
-      setTimeout(function(){ window.speechSynthesis.speak(_utter); }, 50);
+      window.speechSynthesis.speak(_utter);
+    }
+    // Android Chrome bug: speechSynthesis pauses after ~15s - keepalive
+    var _ttsKeepalive = null;
+    if (/Android/i.test(navigator.userAgent)) {
+      _ttsKeepalive = setInterval(function() {
+        if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+          window.speechSynthesis.pause();
+          window.speechSynthesis.resume();
+        } else if (!window.speechSynthesis.speaking) {
+          clearInterval(_ttsKeepalive);
+        }
+      }, 10000);
     }
     speakNext();
     document.getElementById('tts-toggle').setAttribute('aria-pressed','true');
@@ -8604,6 +8635,7 @@ if ('serviceWorker' in navigator) {
 
   function _stopSpeech() {
     window.speechSynthesis.cancel();
+    if (typeof _ttsKeepalive !== 'undefined' && _ttsKeepalive) { clearInterval(_ttsKeepalive); _ttsKeepalive = null; }
     document.getElementById('tts-toggle').setAttribute('aria-pressed','false');
     var pb = document.getElementById('tts-play-btn');
     if (pb) pb.textContent = '▶ ' + (_isWelsh ? 'Chwarae' : 'Play');
