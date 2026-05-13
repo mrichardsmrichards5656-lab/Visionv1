@@ -365,6 +365,15 @@ body.lb :focus-visible, body.lb a:focus-visible, body.lb button:focus-visible { 
 }
 
 .a11y-bar::-webkit-scrollbar { display: none; }
+.a11y-bar-wrap { position: relative; overflow: hidden; }
+.a11y-bar-wrap::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 0; width: 28px;
+  background: linear-gradient(to right, transparent, var(--bg2));
+  pointer-events: none;
+  z-index: 201;
+}
 
 .a11y-bar .site-name {
 
@@ -552,11 +561,11 @@ body.lb :focus-visible, body.lb a:focus-visible, body.lb button:focus-visible { 
 
 .search-wrap { position: relative; }
 
-.search-wrap label { display: block; font-size: 0.88rem; font-weight: 700; color: var(--text2); margin-bottom: 8px; }
+.search-wrap label { display: block; font-size: 0.9rem; font-weight: 800; color: var(--text); margin-bottom: 8px; letter-spacing: 0.03em; }
 
 .search-wrap input {
 
-  width: 100%; background: var(--card); border: 2px solid var(--border);
+  width: 100%; background: var(--card); border: 3px solid var(--yellow);
 
   color: var(--text); padding: 16px 52px 16px 22px; border-radius: 50px;
 
@@ -1557,12 +1566,32 @@ body.hc *:focus-visible,body.yb *:focus-visible,body.bb *:focus-visible{outline-
 
 /* NARROW READING MODE - 58ch max width for easier scanning */
 body.narrow-reading .hero,
+body.nr-active .hero,
 body.narrow-reading .cond-page-inner,
+body.nr-active .cond-page-inner,
 body.narrow-reading .legal-wrap,
+body.nr-active .legal-wrap,
 body.narrow-reading .cond-section,
+body.nr-active .cond-section,
 body.narrow-reading .news-box,
-body.narrow-reading .desktop-main > * {
+body.nr-active .news-box,
+body.narrow-reading .desktop-main > *,
+body.nr-active .desktop-main > * {
   max-width: 58ch !important;
+}
+
+
+/* Force theme adherence for inner content boxes */
+body.bb .ic, body.bb .rc, body.bb .nc, body.bb .tc, body.bb .sc,
+body.bb .founder-box, body.bb .wb, body.bb .acc-item, body.bb .acc-body {
+  background-color: var(--card) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+body.bb .rtag.gene, body.bb .rtag.stem, body.bb .rtag.trial,
+body.bb .rtag.drug, body.bb .rtag.tech {
+  background-color: var(--yellow) !important;
+  color: #000 !important;
 }
 
 </style>
@@ -1611,7 +1640,7 @@ html.theme-lb .cond-page-inner { background: transparent !important; }
 
 <!-- ACCESSIBILITY BAR -->
 
-<div class="a11y-bar" role="toolbar" aria-label="Accessibility controls">
+<div class="a11y-bar-wrap"><div class="a11y-bar" role="toolbar" aria-label="Accessibility controls">
 
   <div class="logo-hex" aria-hidden="true" style="width:22px;height:22px;flex-shrink:0"></div>
 
@@ -1660,7 +1689,7 @@ html.theme-lb .cond-page-inner { background: transparent !important; }
   <button class="ab" id="narrow-toggle" onclick="toggleNarrowReading()" aria-pressed="false" aria-label="Toggle narrow reading mode" title="Narrow reading (easier to track lines)" style="font-size:0.7rem;font-weight:900">NR</button>
   <button class="ab" id="tts-toggle"  onclick="togglePageSpeech()"  aria-pressed="false" aria-label="Listen to this page" title="Listen to page">🔊</button>
 
-</div>
+</div></div>
 
 <!-- TTS PANEL -->
 <div id="tts-panel" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#1a1a2e;border-top:4px solid #f5b800;padding:20px;font-family:sans-serif">
@@ -7032,7 +7061,24 @@ function renderCondition(key) {
 
 
 
-        <div id="stargardt-theme-tip" role="note" style="display:none;background:#d6eaf8;color:#0a3a5a;border:2px solid #7ec8ff;border-radius:12px;padding:10px 16px;margin-bottom:14px;font-size:0.85rem;font-weight:600;line-height:1.6">💙 ${_isWelsh ? "Mae llawer o bobl â Chlefyd Stargardt yn ei chael hi'n haws ar gefndir glas golau." : "Many people with Stargardt Disease find a light blue background easier to read."} <button onclick="setColour('lb')" style="background:none;border:none;color:#0055a5;font-family:var(--font);font-size:inherit;font-weight:800;cursor:pointer;text-decoration:underline;padding:0">${_isWelsh ? "Newid i thema Glas/Du →" : "Switch to Blue/Black theme →"}</button></div>
+        ${(function(){
+      var tips={
+        stargardts:{t:'lb',l:'Blue/Black',m:'Many people with Stargardt Disease find a pale blue background reduces glare.'},
+        amd:{t:'lb',l:'Blue/Black',m:'A pale blue background can reduce glare, which many AMD patients find helpful.'},
+        achromatopsia:{t:'hc',l:'Hi-Con',m:'High contrast mode works well for achromatopsia.'},
+        albinism:{t:'lb',l:'Blue/Black',m:'Low-glare pale blue is often preferred by people with albinism.'},
+        nystagmus:{t:'ll',l:'Low Light',m:'Low light mode can help reduce visual noise with nystagmus.'},
+        charlesbonnet:{t:'dark',l:'Dark',m:'A dark background may reduce triggers for Charles Bonnet hallucinations.'},
+        rp:{t:'dark',l:'Dark',m:'Dark mode preserves night vision and reduces light sensitivity in RP.'},
+        cone:{t:'hc',l:'Hi-Con',m:'High contrast maximises limited colour vision in cone dystrophy.'},
+        glaucoma:{t:'ll',l:'Low Light',m:'Low light mode reduces brightness discomfort with glaucoma.'},
+        lca:{t:'dark',l:'Dark',m:'Dark mode reduces overall brightness, helping light sensitivity in LCA.'}
+      };
+      var tip=tips[key];
+      if(!tip||document.body.classList.contains(tip.t)) return '';
+      var btn='<button onclick="setColour(\"'+tip.t+'\")" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:0.875rem;font-weight:800;cursor:pointer;text-decoration:underline;padding:0">Switch to '+tip.l+' theme</button>';
+      return '<div role="note" style="background:var(--card2);border:2px solid var(--yellow);border-radius:12px;padding:10px 16px;margin-bottom:14px;font-size:0.875rem;font-weight:600;line-height:1.6">'+tip.m+' '+btn+'</div>';
+    })()}
 
     <span class="cond-hero-eyebrow">${_isWelsh ? 'Canllaw Cyflyrau\'r Llygad' : 'Eye Condition Guide'}</span>
 
@@ -7717,9 +7763,6 @@ var _scrollPos = {};
 
 function showPage(name) {
 
-  // Preserve Narrow Reading mode across navigation
-  var _nrOn = document.body.classList.contains('narrow-reading');
-
   // If Welsh active and going home, show Welsh home
 
   if (_isWelsh && name === 'home') {
@@ -7791,8 +7834,8 @@ function showPage(name) {
 
   window.scrollTo({ top: savedPos, behavior: 'instant' });
 
-  // Keep Narrow Reading mode active after navigation
-  if (_nrOn) document.body.classList.add('narrow-reading');
+  // Restore NR state after navigation
+  applyNRState();
 
 }
 
@@ -7801,8 +7844,6 @@ function showPage(name) {
 function showCondition(key) {
 
   window._currentCondKey = key;
-
-  var _nrOn = document.body.classList.contains('narrow-reading');
 
   // Save home scroll position
 
@@ -7815,13 +7856,10 @@ function showCondition(key) {
   if (condContent) {
     condContent.innerHTML = renderCondition(key);
     // Show Stargardt theme suggestion if needed
-    var stargBanner = document.getElementById('stargardt-theme-tip');
-    if (stargBanner) {
-      stargBanner.style.display = (key === 'stargardts' && !document.body.classList.contains('lb')) ? '' : 'none';
-    }
+    // Theme tip now rendered dynamically in renderCondition
   }
-  // Keep NR mode active
-  if (_nrOn) document.body.classList.add('narrow-reading');
+  // Restore NR state
+  applyNRState();
 
 
 
@@ -8478,11 +8516,26 @@ if ('serviceWorker' in navigator) {
   // Reading ruler — follows cursor / focus
   window.toggleNarrowReading = function(){
     var on = document.body.classList.toggle('narrow-reading');
+    document.body.classList.toggle('nr-active', on);
     try{ localStorage.setItem('vh-narrow', on?'1':'0'); }catch(e){}
     var b = document.getElementById('narrow-toggle');
-    if(b) b.setAttribute('aria-pressed', on?'true':'false');
-    srAnnounce(on ? 'Narrow reading on' : 'Narrow reading off');
+    if(b){
+      b.setAttribute('aria-pressed', on?'true':'false');
+      b.style.background = on ? 'var(--yellow)' : '';
+      b.style.color = on ? '#000' : '';
+    }
+    srAnnounce(on ? 'Narrow reading on. Lines are now shorter for easier tracking.' : 'Narrow reading off.');
   };
+
+  function applyNRState() {
+    var nrState = localStorage.getItem('vh-narrow');
+    if (nrState === '1') {
+      document.body.classList.add('narrow-reading');
+      document.body.classList.add('nr-active');
+      var b = document.getElementById('narrow-toggle');
+      if(b){ b.setAttribute('aria-pressed','true'); b.style.background='var(--yellow)'; b.style.color='#000'; }
+    }
+  }
 
   window.toggleReadingRuler = function(){
     var on = document.body.classList.toggle('reading-ruler');
@@ -8518,8 +8571,9 @@ if ('serviceWorker' in navigator) {
       ).forEach(function(j){ j.remove(); });
       var raw = clone.innerText;
       // Clean up symbols and UI artifacts
-      // Remove UI symbols and arrows
-      raw = raw.replace(/[▼▲▾▴←→◀▶‹›»«↑↓⬆⬇◉◎◈◭↔☀◑⬡◇◆]/g, '');
+      // Remove UI symbols, arrows and emojis (prevent 'eye emoji' being spoken)
+      raw = raw.replace(/[\u25BC\u25B2\u25BE\u25B4\u2190\u2192\u25C0\u25B6\u2039\u203A\u00BB\u00AB\u2191\u2193\u2B06\u2B07\u25C9\u25CE\u25C8\u25AD\u2194\u2600\u25D1\u2B21\u25C7\u25C6]/g, '');
+      raw = raw.replace(/[\uD83C-\uDBFF\uDC00-\uDFFF]+/g, '');
       // Remove standalone numbers (accordion section numbers)
       raw = raw.replace(/^\s*\d+\s*$/gm, '');
       // Remove very short UI-only lines (NR, Dx, A etc)
