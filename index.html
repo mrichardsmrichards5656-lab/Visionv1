@@ -1613,15 +1613,13 @@ html.theme-lb .hero { background: #b8dff0 !important; }
 
     <option value="dark">🌙 Dark</option>
 
-    <option value="lb">💙 Blue/Wht</option>
+    <option value="lb">💙 Blue/Black</option>
 
     <option value="ll">👁️ Low Light</option>
 
     <option value="hc">⬛ Hi-Con</option>
 
     <option value="yb">🟡 Yel/Blk</option>
-
-    <option value="bb">🔵 Blu/Blk</option>
 
   </select>
 
@@ -4412,7 +4410,7 @@ html.theme-lb .hero { background: #b8dff0 !important; }
 
     <div class="lc">
 
-      <h2>🏥 Types of Eye Specialist</h2>
+      <h2>?? Types of Eye Specialist</h2>
 
       <p><strong>Optometrist</strong> — performs eye tests, prescribes glasses and contact lenses, and screens for eye conditions. Available at high street opticians. NHS eye tests are free for many groups.</p>
 
@@ -8479,47 +8477,67 @@ if ('serviceWorker' in navigator) {
 
   window.ttsPlay = function() {
     var synth = window.speechSynthesis;
-    if (!synth) { alert('Speech not supported in this browser.'); return; }
+    if (!synth || typeof SpeechSynthesisUtterance === 'undefined') {
+      alert('Text to speech is not supported in this browser.');
+      return;
+    }
 
     synth.cancel();
 
-    var text = ttsGetText().replace(/\s+/g, ' ').trim().substring(0, 2500);
-    if (!text) { alert('No text found to read.'); return; }
+    var rawText = ttsGetText().replace(/\s+/g, ' ').trim();
+    if (!rawText) { alert('No text found to read.'); return; }
 
     var speed = parseFloat((document.getElementById('tts-speed')||{}).value || '0.85');
     var vname = (document.getElementById('tts-voice-sel')||{}).value || '';
 
-    _ttsUtter = new SpeechSynthesisUtterance(text);
-    _ttsUtter.lang = 'en-GB';
-    _ttsUtter.rate = speed;
-    _ttsUtter.volume = 1;
+    // Split into 180-char chunks at word boundaries - fixes Android stopping
+    var chunks = rawText.match(/.{1,180}(\s|$)/g) || [rawText];
+    var chunkIndex = 0;
 
-    if (vname) {
-      var voices = synth.getVoices();
-      var match = voices.find(function(v){ return v.name === vname; });
-      if (match) _ttsUtter.voice = match;
+    function speakChunk(voiceList) {
+      if (chunkIndex >= chunks.length) {
+        var pb = document.getElementById('tts-play-btn');
+        var st = document.getElementById('tts-status');
+        if (pb) pb.textContent = '\u25b6 Play';
+        if (st) st.textContent = 'Finished.';
+        return;
+      }
+      var utt = new SpeechSynthesisUtterance(chunks[chunkIndex]);
+      utt.lang = 'en-GB';
+      utt.rate = speed;
+      utt.volume = 1;
+      if (vname && voiceList && voiceList.length) {
+        var match = voiceList.find(function(v) { return v.name === vname; });
+        if (match) utt.voice = match;
+      }
+      utt.onend = function() { chunkIndex++; speakChunk(voiceList); };
+      utt.onerror = function(e) {
+        if (e.error === 'interrupted') return;
+        var st = document.getElementById('tts-status');
+        if (st) st.textContent = 'Error: ' + e.error + '. Please try again.';
+        var pb = document.getElementById('tts-play-btn');
+        if (pb) pb.textContent = '\u25b6 Play';
+      };
+      synth.speak(utt);
     }
-
-    _ttsUtter.onend = function() {
-      var pb = document.getElementById('tts-play-btn');
-      var st = document.getElementById('tts-status');
-      if (pb) pb.textContent = '▶ Play';
-      if (st) st.textContent = 'Finished.';
-    };
-
-    _ttsUtter.onerror = function(e) {
-      if (e.error === 'interrupted') return;
-      var st = document.getElementById('tts-status');
-      if (st) st.textContent = 'Could not speak. Try Chrome or Samsung Internet.';
-    };
 
     var pb = document.getElementById('tts-play-btn');
     var st = document.getElementById('tts-status');
-    if (pb) pb.textContent = '⏸ Speaking...';
-    if (st) st.textContent = 'Reading aloud...';
+    if (pb) pb.textContent = '\u23f8 Speaking...';
+    if (st) st.textContent = 'Reading ' + chunks.length + ' part' + (chunks.length > 1 ? 's' : '') + '...';
 
-    synth.speak(_ttsUtter);
-  };
+    var voices = synth.getVoices();
+    if (voices.length) {
+      speakChunk(voices);
+    } else {
+      // Voices not loaded yet - wait for them (Android Chrome)
+      if (st) st.textContent = 'Loading voice, please wait...';
+      synth.onvoiceschanged = function() {
+        synth.onvoiceschanged = null;
+        speakChunk(synth.getVoices());
+      };
+    }
+  }
 
   window.ttsStop = function() {
     window.speechSynthesis && window.speechSynthesis.cancel();
