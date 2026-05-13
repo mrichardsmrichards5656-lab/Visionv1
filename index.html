@@ -1594,6 +1594,34 @@ body.bb .rtag.drug, body.bb .rtag.tech {
   color: #000 !important;
 }
 
+
+/* TTS SENTENCE HIGHLIGHTING */
+.tts-sent {
+  transition: background-color 0.15s ease;
+  border-radius: 3px;
+  display: inline;
+}
+.tts-sent.tts-active {
+  background-color: #ffe066 !important;
+  color: #000 !important;
+  outline: 2px solid #f5b800;
+  border-radius: 3px;
+}
+body.dark .tts-sent.tts-active,
+body.ll .tts-sent.tts-active {
+  background-color: #c8a000 !important;
+  color: #fff !important;
+}
+html.theme-lb .tts-sent.tts-active {
+  background-color: #0055a5 !important;
+  color: #fff !important;
+}
+body.hc .tts-sent.tts-active {
+  background-color: #fff !important;
+  color: #000 !important;
+  outline: 3px solid #fff;
+}
+
 </style>
 
 
@@ -8628,66 +8656,195 @@ if ('serviceWorker' in navigator) {
       alert('Text to speech is not supported in this browser.');
       return;
     }
-
     synth.cancel();
-
-    var rawText = ttsGetText().replace(/\s+/g, ' ').trim();
-    if (!rawText) { alert('No text found to read.'); return; }
+    ttsRemoveHighlights();
 
     var speed = parseFloat((document.getElementById('tts-speed')||{}).value || '0.85');
     var vname = (document.getElementById('tts-voice-sel')||{}).value || '';
+    var voices = synth.getVoices();
 
-    // Split into 180-char chunks at word boundaries - fixes Android stopping
-    var chunks = rawText.match(/.{1,180}(\s|$)/g) || [rawText];
-    var chunkIndex = 0;
+    // Get the readable element (not just text)
+    var readEl = ttsGetReadableElement();
+    if (!readEl) { alert('No content found to read.'); return; }
 
-    function speakChunk(voiceList) {
-      if (chunkIndex >= chunks.length) {
+    // Wrap sentences in spans for highlighting
+    var sentences = ttsWrapSentences(readEl);
+    if (!sentences.length) { alert('No text found to read.'); return; }
+
+    var idx = 0;
+
+    function speakNext(voiceList) {
+      // Remove previous highlight
+      var prev = document.querySelector('.tts-sent.tts-active');
+      if (prev) prev.classList.remove('tts-active');
+
+      if (idx >= sentences.length) {
+        ttsRemoveHighlights();
         var pb = document.getElementById('tts-play-btn');
         var st = document.getElementById('tts-status');
         if (pb) pb.textContent = '\u25b6 Play';
         if (st) st.textContent = 'Finished.';
         return;
       }
-      var utt = new SpeechSynthesisUtterance(chunks[chunkIndex]);
+
+      var span = sentences[idx];
+      var text = span.textContent.trim();
+      if (!text) { idx++; speakNext(voiceList); return; }
+
+      // Highlight and scroll
+      span.classList.add('tts-active');
+      span.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      var utt = new SpeechSynthesisUtterance(text);
       utt.lang = 'en-GB';
       utt.rate = speed;
       utt.volume = 1;
+
       if (vname && voiceList && voiceList.length) {
         var match = voiceList.find(function(v) { return v.name === vname; });
         if (match) utt.voice = match;
       }
-      utt.onend = function() { chunkIndex++; speakChunk(voiceList); };
+
+      utt.onend = function() { idx++; speakNext(voiceList); };
       utt.onerror = function(e) {
         if (e.error === 'interrupted') return;
-        var st = document.getElementById('tts-status');
-        if (st) st.textContent = 'Error: ' + e.error + '. Please try again.';
-        var pb = document.getElementById('tts-play-btn');
-        if (pb) pb.textContent = '\u25b6 Play';
+        idx++; speakNext(voiceList);
       };
+
       synth.speak(utt);
+
+      // Update status
+      var st = document.getElementById('tts-status');
+      if (st) st.textContent = 'Reading sentence ' + (idx+1) + ' of ' + sentences.length;
     }
 
     var pb = document.getElementById('tts-play-btn');
     var st = document.getElementById('tts-status');
-    if (pb) pb.textContent = '\u23f8 Speaking...';
-    if (st) st.textContent = 'Reading ' + chunks.length + ' part' + (chunks.length > 1 ? 's' : '') + '...';
+    if (pb) pb.textContent = '\u23f8 Reading...';
+    if (st) st.textContent = 'Starting...';
 
-    var voices = synth.getVoices();
     if (voices.length) {
-      speakChunk(voices);
+      speakNext(voices);
     } else {
-      // Voices not loaded yet - wait for them (Android Chrome)
-      if (st) st.textContent = 'Loading voice, please wait...';
+      if (st) st.textContent = 'Loading voice...';
       synth.onvoiceschanged = function() {
         synth.onvoiceschanged = null;
-        speakChunk(synth.getVoices());
+        speakNext(synth.getVoices());
       };
     }
+  };
+
+  function ttsGetReadableElement() {
+    var section = (document.getElementById('tts-section')||{}).value || 'current';
+    var map = {
+      news: '.news-box', lw: '#page-livingwell',
+      questions: '#page-questions', employment: '#page-employment',
+      glossary: '#page-glossary', eyehealth: '#page-eyehealth',
+      benefits: '#page-employment'
+    };
+    if (section !== 'current' && map[section]) {
+      var el = document.querySelector(map[section]);
+      if (el) return el;
+    }
+    if (section === 'research') {
+      var nb = document.querySelector('.news-box');
+      if (nb) return nb;
+    }
+    return document.querySelector('.welsh-page[style*="block"]') ||
+           document.querySelector('.page.active') ||
+           document.body;
   }
 
-  window.ttsStop = function() {
+  function ttsWrapSentences(container) {
+    // Clone to avoid mutating the page, then extract text nodes
+    // Actually we DO mutate the page to enable highlighting
+    // First remove any existing wrappers
+    ttsRemoveHighlights();
+
+    // Get all text-bearing elements (p, li, h1-h6, td, dt, dd)
+    // but NOT inside nav/sidebar/buttons
+    var walker = document.createTreeWalker(
+      container,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode: function(node) {
+          var p = node.parentNode;
+          // Skip UI elements
+          while (p && p !== container) {
+            var tag = p.tagName ? p.tagName.toLowerCase() : '';
+            var cls = (p.className || '').toString();
+            if (tag === 'script' || tag === 'style' || tag === 'button' ||
+                tag === 'select' || tag === 'option' || tag === 'input' ||
+                p.getAttribute('aria-hidden') === 'true' ||
+                cls.indexOf('sidebar') !== -1 ||
+                cls.indexOf('a11y-bar') !== -1 ||
+                cls.indexOf('back-btn') !== -1 ||
+                cls.indexOf('acc-btn') !== -1 ||
+                cls.indexOf('share') !== -1) {
+              return NodeFilter.FILTER_REJECT;
+            }
+            p = p.parentNode;
+          }
+          var text = node.textContent.trim();
+          return text.length > 3 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+        }
+      }
+    );
+
+    var textNodes = [];
+    var node;
+    while ((node = walker.nextNode())) textNodes.push(node);
+
+    // Split text nodes into sentences and wrap each in a span
+    var spans = [];
+    textNodes.forEach(function(textNode) {
+      var text = textNode.textContent;
+      // Split on sentence endings
+      var parts = text.split(/(?<=[.!?])\s+/);
+      if (parts.length <= 1) {
+        // Wrap whole text node as one sentence
+        var span = document.createElement('span');
+        span.className = 'tts-sent';
+        span.dataset.ttsId = spans.length;
+        textNode.parentNode.replaceChild(span, textNode);
+        span.appendChild(document.createTextNode(text));
+        spans.push(span);
+      } else {
+        var frag = document.createDocumentFragment();
+        parts.forEach(function(part) {
+          if (!part.trim()) return;
+          var span = document.createElement('span');
+          span.className = 'tts-sent';
+          span.dataset.ttsId = spans.length;
+          span.textContent = part + ' ';
+          frag.appendChild(span);
+          spans.push(span);
+        });
+        textNode.parentNode.replaceChild(frag, textNode);
+      }
+    });
+
+    return spans;
+  }
+
+  function ttsRemoveHighlights() {
+    // Remove active class
+    document.querySelectorAll('.tts-sent.tts-active').forEach(function(el) {
+      el.classList.remove('tts-active');
+    });
+    // Unwrap tts-sent spans (restore text nodes)
+    document.querySelectorAll('.tts-sent').forEach(function(span) {
+      var parent = span.parentNode;
+      if (parent) {
+        while (span.firstChild) parent.insertBefore(span.firstChild, span);
+        parent.removeChild(span);
+      }
+    });
+  }
+
+    window.ttsStop = function() {
     window.speechSynthesis && window.speechSynthesis.cancel();
+    ttsRemoveHighlights();
     var pb = document.getElementById('tts-play-btn');
     var st = document.getElementById('tts-status');
     if (pb) pb.textContent = '▶ Play';
