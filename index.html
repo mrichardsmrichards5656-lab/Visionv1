@@ -1554,6 +1554,17 @@ body.reading-ruler .reading-ruler-bar{display:block}
 *:focus-visible{outline:3px solid var(--yellow)!important;outline-offset:3px!important;border-radius:4px}
 body.hc *:focus-visible,body.yb *:focus-visible,body.bb *:focus-visible{outline-color:#fff!important}
 
+
+/* NARROW READING MODE - 58ch max width for easier scanning */
+body.narrow-reading .hero,
+body.narrow-reading .cond-page-inner,
+body.narrow-reading .legal-wrap,
+body.narrow-reading .cond-section,
+body.narrow-reading .news-box,
+body.narrow-reading .desktop-main > * {
+  max-width: 58ch !important;
+}
+
 </style>
 
 
@@ -1630,6 +1641,8 @@ html.theme-lb .hero { background: #b8dff0 !important; }
   <div class="a11y-divider"></div>
   <button class="ab" id="dys-toggle"  onclick="toggleDyslexic()"   aria-pressed="false" aria-label="Toggle dyslexia-friendly font" title="Dyslexia-friendly font">Dx</button>
   <button class="ab" id="rule-toggle" onclick="toggleReadingRuler()" aria-pressed="false" aria-label="Toggle reading ruler" title="Reading ruler">▭</button>
+
+  <button class="ab" id="narrow-toggle" onclick="toggleNarrowReading()" aria-pressed="false" aria-label="Toggle narrow reading mode" title="Narrow reading (easier to track lines)" style="font-size:0.7rem;font-weight:900">NR</button>
   <button class="ab" id="tts-toggle"  onclick="togglePageSpeech()"  aria-pressed="false" aria-label="Listen to this page" title="Listen to page">🔊</button>
 
 </div>
@@ -1767,29 +1780,29 @@ html.theme-lb .hero { background: #b8dff0 !important; }
 
       <button class="sidebar-link" onclick="showConditionWelsh('myopic')"><span aria-hidden="true">👓</span> Dirywiad Macular Myopig</button>
 
-      <button class="sidebar-link" onclick="showConditionWelsh('charlesbonnet')">🧠 Syndrom Charles Bonnet</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('charlesbonnet')"><span aria-hidden="true">🧠</span> Syndrom Charles Bonnet</button>
 
-      <button class="sidebar-link" onclick="showConditionWelsh('opticneuritis')">⚡ Niwritis Optig</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('opticneuritis')"><span aria-hidden="true">⚡</span> Niwritis Optig</button>
 
-      <button class="sidebar-link" onclick="showConditionWelsh('blepharitis')">👁 Bleffaritis</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('blepharitis')"><span aria-hidden="true">👁</span> Bleffaritis</button>
 
       <div class="sidebar-divider"></div>
 
       <span class="sidebar-section">Canllawiau ac Adnoddau</span>
 
-      <button class="sidebar-link" onclick="showPage('livingwell')">🌟 Canllaw Beunyddiol</button>
+      <button class="sidebar-link" onclick="showPage('livingwell')"><span aria-hidden="true">🌟</span> Canllaw Beunyddiol</button>
 
       <button class="sidebar-link" onclick="showWelshPage('eyehealth')">👁️ Hanfodion Iechyd Llygaid</button>
 
-      <button class="sidebar-link" onclick="showWelshPage('employment')">💼 Cyflogaeth</button>
+      <button class="sidebar-link" onclick="showWelshPage('employment')"><span aria-hidden="true">💼</span> Cyflogaeth</button>
 
-      <button class="sidebar-link" onclick="showWelshPage('glossary')">📖 Geirfa</button>
+      <button class="sidebar-link" onclick="showWelshPage('glossary')"><span aria-hidden="true">📖</span> Geirfa</button>
 
-      <button class="sidebar-link" onclick="showWelshPage('questions')">❓ Cwestiynau i'w Gofyn</button>
+      <button class="sidebar-link" onclick="showWelshPage('questions')"><span aria-hidden="true">❓</span> Cwestiynau i'w Gofyn</button>
 
-      <button class="sidebar-link" onclick="showWelshPage('localsupport')">📍 Cymorth Lleol</button>
+      <button class="sidebar-link" onclick="showWelshPage('localsupport')"><span aria-hidden="true">📍</span> Cymorth Lleol</button>
 
-      <button class="sidebar-link" onclick="showWelshPage('children')">👶 I Rieni</button>
+      <button class="sidebar-link" onclick="showWelshPage('children')"><span aria-hidden="true">👶</span> I Rieni</button>
 
       <div class="sidebar-divider"></div>
 
@@ -1907,11 +1920,11 @@ html.theme-lb .hero { background: #b8dff0 !important; }
 
         <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('myopic') : showCondition('myopic')"><span aria-hidden="true">👓</span> Dirywiad Macular Myopig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
 
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('charlesbonnet') : showCondition('charlesbonnet')">🧠 Syndrom Charles Bonnet <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('charlesbonnet') : showCondition('charlesbonnet')"><span aria-hidden="true">🧠</span> Syndrom Charles Bonnet <span class="cond-arrow" aria-hidden="true">→</span></button></div>
 
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('opticneuritis') : showCondition('opticneuritis')">⚡ Niwritis Optig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('opticneuritis') : showCondition('opticneuritis')"><span aria-hidden="true">⚡</span> Niwritis Optig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
 
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('blepharitis') : showCondition('blepharitis')">👁 Bleffaritis <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('blepharitis') : showCondition('blepharitis')"><span aria-hidden="true">👁</span> Bleffaritis <span class="cond-arrow" aria-hidden="true">→</span></button></div>
 
       </div>
 
@@ -1922,7 +1935,7 @@ html.theme-lb .hero { background: #b8dff0 !important; }
         <span class="section-label">Bywyd bob dydd</span>
         <button class="cond-btn" onclick="showPage('livingwell')" aria-label="Agor Canllaw Beunyddiol" style="height:auto;flex-direction:column;align-items:flex-start;gap:8px;padding:20px 26px">
           <span style="display:flex;align-items:center;justify-content:space-between;width:100%;gap:12px">
-            <span style="font-size:1.05rem;font-weight:800">🌟 Canllaw Beunyddiol</span>
+            <span style="font-size:1.05rem;font-weight:800"><span aria-hidden="true">🌟</span> Canllaw Beunyddiol</span>
             <span class="cond-arrow" aria-hidden="true" style="flex-shrink:0">→</span>
           </span>
           <span style="font-size:0.85rem;font-weight:600;color:var(--text2);line-height:1.5">Awgrymiadau ymarferol i wneud bywyd bob dydd yn haws</span>
@@ -2026,11 +2039,11 @@ html.theme-lb .hero { background: #b8dff0 !important; }
 
       <button class="sidebar-link" onclick="showCondition('myopic')"><span aria-hidden="true">👓</span> Myopic MD</button>
 
-      <button class="sidebar-link" onclick="showCondition('charlesbonnet')">🧠 Charles Bonnet Syndrome</button>
+      <button class="sidebar-link" onclick="showCondition('charlesbonnet')"><span aria-hidden="true">🧠</span> Charles Bonnet Syndrome</button>
 
-      <button class="sidebar-link" onclick="showCondition('opticneuritis')">⚡ Optic Neuritis</button>
+      <button class="sidebar-link" onclick="showCondition('opticneuritis')"><span aria-hidden="true">⚡</span> Optic Neuritis</button>
 
-      <button class="sidebar-link" onclick="showCondition('blepharitis')">👁 Blepharitis</button>
+      <button class="sidebar-link" onclick="showCondition('blepharitis')"><span aria-hidden="true">👁</span> Blepharitis</button>
 
 
 
@@ -2038,19 +2051,19 @@ html.theme-lb .hero { background: #b8dff0 !important; }
 
       <span class="sidebar-section">Guides &amp; Resources</span>
 
-      <button class="sidebar-link" onclick="showPage('livingwell')">🌟 Everyday Guide</button>
+      <button class="sidebar-link" onclick="showPage('livingwell')"><span aria-hidden="true">🌟</span> Everyday Guide</button>
 
       <button class="sidebar-link" onclick="showPage('eyehealth')">👁️ Eye Health Basics</button>
 
-      <button class="sidebar-link" onclick="showPage('employment')">💼 Employment</button>
+      <button class="sidebar-link" onclick="showPage('employment')"><span aria-hidden="true">💼</span> Employment</button>
 
-      <button class="sidebar-link" onclick="showPage('glossary')">📖 Glossary</button>
+      <button class="sidebar-link" onclick="showPage('glossary')"><span aria-hidden="true">📖</span> Glossary</button>
 
-      <button class="sidebar-link" onclick="showPage('questions')">❓ Questions to Ask</button>
+      <button class="sidebar-link" onclick="showPage('questions')"><span aria-hidden="true">❓</span> Questions to Ask</button>
 
-      <button class="sidebar-link" onclick="showPage('localsupport')">📍 Local Support</button>
+      <button class="sidebar-link" onclick="showPage('localsupport')"><span aria-hidden="true">📍</span> Local Support</button>
 
-      <button class="sidebar-link" onclick="showPage('children')">👶 For Parents</button>
+      <button class="sidebar-link" onclick="showPage('children')"><span aria-hidden="true">👶</span> For Parents</button>
 
 
 
@@ -2507,7 +2520,7 @@ html.theme-lb .hero { background: #b8dff0 !important; }
 
           <span style="display:flex;align-items:center;justify-content:space-between;width:100%;gap:12px">
 
-            <span style="font-size:1.05rem;font-weight:800">🌟 Everyday Guide</span>
+            <span style="font-size:1.05rem;font-weight:800"><span aria-hidden="true">🌟</span> Everyday Guide</span>
 
             <span class="cond-arrow" aria-hidden="true" style="flex-shrink:0">→</span>
 
@@ -2675,33 +2688,33 @@ html.theme-lb .hero { background: #b8dff0 !important; }
 
       <button class="sidebar-link" onclick="showCondition('myopic')"><span aria-hidden="true">👓</span> Myopic MD</button>
 
-      <button class="sidebar-link" onclick="showCondition('charlesbonnet')">🧠 Charles Bonnet Syndrome</button>
+      <button class="sidebar-link" onclick="showCondition('charlesbonnet')"><span aria-hidden="true">🧠</span> Charles Bonnet Syndrome</button>
 
-      <button class="sidebar-link" onclick="showCondition('opticneuritis')">⚡ Optic Neuritis</button>
+      <button class="sidebar-link" onclick="showCondition('opticneuritis')"><span aria-hidden="true">⚡</span> Optic Neuritis</button>
 
-      <button class="sidebar-link" onclick="showCondition('blepharitis')">👁 Blepharitis</button>
+      <button class="sidebar-link" onclick="showCondition('blepharitis')"><span aria-hidden="true">👁</span> Blepharitis</button>
 
       <div class="sidebar-divider"></div>
 
       <span class="sidebar-section">Guides &amp; Resources</span>
 
-      <button class="sidebar-link" onclick="showPage('livingwell')">🌟 Everyday Guide</button>
+      <button class="sidebar-link" onclick="showPage('livingwell')"><span aria-hidden="true">🌟</span> Everyday Guide</button>
 
       <button class="sidebar-link" onclick="showPage('eyehealth')">👁️ Eye Health Basics</button>
 
-      <button class="sidebar-link" onclick="showPage('employment')">💼 Employment</button>
+      <button class="sidebar-link" onclick="showPage('employment')"><span aria-hidden="true">💼</span> Employment</button>
 
-      <button class="sidebar-link" onclick="showPage('glossary')">📖 Glossary</button>
+      <button class="sidebar-link" onclick="showPage('glossary')"><span aria-hidden="true">📖</span> Glossary</button>
 
-      <button class="sidebar-link" onclick="showPage('questions')">❓ Questions to Ask</button>
+      <button class="sidebar-link" onclick="showPage('questions')"><span aria-hidden="true">❓</span> Questions to Ask</button>
 
-      <button class="sidebar-link" onclick="showPage('localsupport')">📍 Local Support</button>
+      <button class="sidebar-link" onclick="showPage('localsupport')"><span aria-hidden="true">📍</span> Local Support</button>
 
-      <button class="sidebar-link" onclick="showPage('children')">👶 For Parents</button>
+      <button class="sidebar-link" onclick="showPage('children')"><span aria-hidden="true">👶</span> For Parents</button>
 
       <div class="sidebar-divider"></div>
 
-      <button class="sidebar-link" onclick="showPage('home')" aria-label="Home">🏠 Home</button>
+      <button class="sidebar-link" onclick="showPage('home')" aria-label="Home"><span aria-hidden="true">🏠</span> Home</button>
 
       <button class="sidebar-link" onclick="showPage('help')"><span aria-hidden="true">🆘</span> Help &amp; Support</button>
       <button class="sidebar-link" onclick="showPage('contact')"><span aria-hidden="true">✉️</span> Contact</button>
@@ -4410,7 +4423,7 @@ html.theme-lb .hero { background: #b8dff0 !important; }
 
     <div class="lc">
 
-      <h2>?? Types of Eye Specialist</h2>
+      <h2>🏥 Types of Eye Specialist</h2>
 
       <p><strong>Optometrist</strong> — performs eye tests, prescribes glasses and contact lenses, and screens for eye conditions. Available at high street opticians. NHS eye tests are free for many groups.</p>
 
@@ -8265,6 +8278,9 @@ function filterConds(q) {
 
   } catch(e) {}
 
+  // Restore narrow reading mode
+  if(localStorage.getItem('vh-narrow')==='1'){ document.body.classList.add('narrow-reading'); var nb=document.getElementById('narrow-toggle'); if(nb) nb.setAttribute('aria-pressed','true'); }
+
   // Preload TTS voices so they're ready when panel opens
 
   if (window.speechSynthesis) {
@@ -8454,25 +8470,53 @@ if ('serviceWorker' in navigator) {
 
   function ttsGetText() {
     var section = (document.getElementById('tts-section')||{}).value || 'current';
+
+    function cleanText(el) {
+      if (!el) return '';
+      // Clone and strip navigation/UI junk before reading
+      var clone = el.cloneNode(true);
+      var junk = clone.querySelectorAll(
+        '.desktop-sidebar, aside, .back-btn, .share-bar, .a11y-bar, ' +
+        '.cond-list, .search-wrap, .back-top, .sidebar-logo, ' +
+        '.sidebar-tagline, .sidebar-divider, .sidebar-section, ' +
+        '.acc-btn, script, style, #tts-panel'
+      );
+      junk.forEach(function(j){ j.remove(); });
+      return clone.innerText.replace(/\s+/g, ' ').trim();
+    }
+
     var pages = {
-      news:       '#page-home .news-box, .news-box',
-      benefits:   '#page-employment',
-      research:   '#page-employment',
+      news:       '.news-box',
       lw:         '#page-livingwell',
       questions:  '#page-questions',
       employment: '#page-employment',
       glossary:   '#page-glossary',
-      eyehealth:  '#page-eyehealth'
+      eyehealth:  '#page-eyehealth',
+      benefits:   '#page-employment',
+      research:   '.news-tag.research'
     };
+
+    if (section === 'research') {
+      // Collect all research news items text
+      var items = document.querySelectorAll('.news-tag.research');
+      var txt = '';
+      items.forEach(function(tag) {
+        var item = tag.closest('.news-item');
+        if (item) txt += item.innerText + ' ';
+      });
+      return txt.trim();
+    }
+
     if (section !== 'current' && pages[section]) {
       var el = document.querySelector(pages[section]);
-      if (el) return el.innerText;
+      if (el) return cleanText(el);
     }
-    // Current: read the active visible page
+
+    // Current: read active visible page, stripped of UI chrome
     var active = document.querySelector('.welsh-page[style*="block"]') ||
                  document.querySelector('.page.active') ||
                  document.body;
-    return active.innerText;
+    return cleanText(active);
   }
 
   window.ttsPlay = function() {
@@ -8556,18 +8600,30 @@ if ('serviceWorker' in navigator) {
       // Load voices into selector
       var sel = document.getElementById('tts-voice-sel');
       if (sel && window.speechSynthesis) {
-        var voices = window.speechSynthesis.getVoices();
-        if (voices.length > 1) {
-          sel.innerHTML = '<option value="">Default English voice</option>';
-          voices.forEach(function(v) {
-            if (v.lang.indexOf('en') === 0 || v.lang.indexOf('cy') === 0) {
-              var o = document.createElement('option');
-              o.value = v.name;
-              o.textContent = v.name + ' (' + v.lang + ')';
-              sel.appendChild(o);
+        var loadVoicesIntoPanel = function() {
+          var voices = window.speechSynthesis.getVoices();
+          if (voices.length > 1) {
+            sel.innerHTML = '<option value="">Default English voice</option>';
+            voices.forEach(function(v) {
+              if (v.lang.indexOf('en') === 0 || v.lang.indexOf('cy') === 0) {
+                var o = document.createElement('option');
+                o.value = v.name;
+                o.textContent = v.name + ' (' + v.lang + ')';
+                sel.appendChild(o);
+              }
+            });
+            // Auto-select Welsh voice if CY mode active
+            if (_isWelsh) {
+              var wv = voices.find(function(v){
+                return v.lang.indexOf('cy') === 0 || v.name.toLowerCase().indexOf('gwyneth') !== -1 || v.name.toLowerCase().indexOf('welsh') !== -1;
+              });
+              if (wv) sel.value = wv.name;
             }
-          });
-        }
+          }
+        };
+        var vv = window.speechSynthesis.getVoices();
+        if (vv.length) { loadVoicesIntoPanel(); }
+        else { window.speechSynthesis.onvoiceschanged = function(){ loadVoicesIntoPanel(); window.speechSynthesis.onvoiceschanged = null; }; }
       }
       var pb = document.getElementById('tts-play-btn');
       if (pb) pb.focus();
