@@ -1581,6 +1581,12 @@ html.theme-lb .card, html.theme-lb [class*="card"] { background: #e8f5fb !import
 html.theme-lb .news-box { background: #dff0f8 !important; }
 html.theme-lb .cond-item { background: #dff0f8 !important; }
 html.theme-lb .hero { background: #b8dff0 !important; }
+html.theme-lb .acc-item { background: #e8f4fb !important; border-color: rgba(0,100,180,0.25) !important; }
+html.theme-lb .acc-body { background: #f0f8fd !important; }
+html.theme-lb .acc-btn { background: #e8f4fb !important; }
+html.theme-lb .cond-item { background: #e8f4fb !important; }
+html.theme-lb .card, html.theme-lb .founder-box { background: #e8f4fb !important; }
+html.theme-lb .news-box { background: #dff0f8 !important; border-color: rgba(0,100,180,0.3) !important; }
 </style>
 </head>
 
@@ -7017,7 +7023,7 @@ function renderCondition(key) {
 
 
 
-        <div id="stargardt-theme-tip" role="note" style="display:none;background:#d6eaf8;color:#0a3a5a;border:2px solid #7ec8ff;border-radius:12px;padding:10px 16px;margin-bottom:14px;font-size:0.85rem;font-weight:600;line-height:1.6">💙 ${_isWelsh ? "Mae llawer o bobl â Chlefyd Stargardt yn ei chael hi'n haws ar gefndir glas golau." : "Many people with Stargardt Disease find a light blue background easier to read."} <button onclick="setColour('lb')" style="background:none;border:none;color:#0055a5;font-family:var(--font);font-size:inherit;font-weight:800;cursor:pointer;text-decoration:underline;padding:0">${_isWelsh ? "Newid i thema Glas/Gwyn →" : "Switch to Blue/White theme →"}</button></div>
+        <div id="stargardt-theme-tip" role="note" style="display:none;background:#d6eaf8;color:#0a3a5a;border:2px solid #7ec8ff;border-radius:12px;padding:10px 16px;margin-bottom:14px;font-size:0.85rem;font-weight:600;line-height:1.6">💙 ${_isWelsh ? "Mae llawer o bobl â Chlefyd Stargardt yn ei chael hi'n haws ar gefndir glas golau." : "Many people with Stargardt Disease find a light blue background easier to read."} <button onclick="setColour('lb')" style="background:none;border:none;color:#0055a5;font-family:var(--font);font-size:inherit;font-weight:800;cursor:pointer;text-decoration:underline;padding:0">${_isWelsh ? "Newid i thema Glas/Du →" : "Switch to Blue/Black theme →"}</button></div>
 
     <span class="cond-hero-eyebrow">${_isWelsh ? 'Canllaw Cyflyrau\'r Llygad' : 'Eye Condition Guide'}</span>
 
@@ -7663,6 +7669,8 @@ function toggleWelsh() {
 
   if(typeof _updateTTSLabels === 'function') _updateTTSLabels();
 
+  if(_nrOn) document.body.classList.add('narrow-reading');
+
   window.scrollTo({ top: 0, behavior: 'instant' });
 
 }
@@ -7701,6 +7709,9 @@ var _scrollPos = {};
 
 
 function showPage(name) {
+
+  // Preserve Narrow Reading mode across navigation
+  var _nrOn = document.body.classList.contains('narrow-reading');
 
   // If Welsh active and going home, show Welsh home
 
@@ -8451,6 +8462,14 @@ if ('serviceWorker' in navigator) {
   }
 
   // Reading ruler — follows cursor / focus
+  window.toggleNarrowReading = function(){
+    var on = document.body.classList.toggle('narrow-reading');
+    try{ localStorage.setItem('vh-narrow', on?'1':'0'); }catch(e){}
+    var b = document.getElementById('narrow-toggle');
+    if(b) b.setAttribute('aria-pressed', on?'true':'false');
+    srAnnounce(on ? 'Narrow reading on' : 'Narrow reading off');
+  };
+
   window.toggleReadingRuler = function(){
     var on = document.body.classList.toggle('reading-ruler');
     try{ localStorage.setItem('rule', on?'1':'0'); }catch(e){}
@@ -8473,16 +8492,25 @@ if ('serviceWorker' in navigator) {
 
     function cleanText(el) {
       if (!el) return '';
-      // Clone and strip navigation/UI junk before reading
       var clone = el.cloneNode(true);
-      var junk = clone.querySelectorAll(
+      // Remove UI chrome elements entirely
+      clone.querySelectorAll(
         '.desktop-sidebar, aside, .back-btn, .share-bar, .a11y-bar, ' +
         '.cond-list, .search-wrap, .back-top, .sidebar-logo, ' +
         '.sidebar-tagline, .sidebar-divider, .sidebar-section, ' +
-        '.acc-btn, script, style, #tts-panel'
-      );
-      junk.forEach(function(j){ j.remove(); });
-      return clone.innerText.replace(/\s+/g, ' ').trim();
+        '.acc-btn, .cond-arrow, .share-btn, script, style, #tts-panel, ' +
+        '.news-footer, .hero-eyebrow, .legal-updated, .trial-link, ' +
+        '[aria-hidden="true"]'
+      ).forEach(function(j){ j.remove(); });
+      var raw = clone.innerText;
+      // Clean up symbols and UI artifacts
+      raw = raw.replace(/[▼▲←→◀▶‹›»«↑↓⬆⬇]/g, '');
+      raw = raw.replace(/^\s*\d+\s*$/gm, '');      // lone numbers on their own line
+      raw = raw.replace(/\n{3,}/g, '\n\n');         // max 2 newlines
+      raw = raw.replace(/\s{2,}/g, ' ');            // collapse spaces
+      // Add pauses after headings by adding a period if missing
+      raw = raw.replace(/([A-Z][^\.\!\?]{10,})\n/g, '$1. ');
+      return raw.trim();
     }
 
     var pages = {
