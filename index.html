@@ -1581,12 +1581,21 @@ html.theme-lb .card, html.theme-lb [class*="card"] { background: #e8f5fb !import
 html.theme-lb .news-box { background: #dff0f8 !important; }
 html.theme-lb .cond-item { background: #dff0f8 !important; }
 html.theme-lb .hero { background: #b8dff0 !important; }
-html.theme-lb .acc-item { background: #e8f4fb !important; border-color: rgba(0,100,180,0.25) !important; }
-html.theme-lb .acc-body { background: #f0f8fd !important; }
-html.theme-lb .acc-btn { background: #e8f4fb !important; }
-html.theme-lb .cond-item { background: #e8f4fb !important; }
-html.theme-lb .card, html.theme-lb .founder-box { background: #e8f4fb !important; }
-html.theme-lb .news-box { background: #dff0f8 !important; border-color: rgba(0,100,180,0.3) !important; }
+html.theme-lb .acc-item { background: #daeef8 !important; border-color: rgba(0,100,180,0.3) !important; }
+html.theme-lb .acc-body { background: #daeef8 !important; }
+html.theme-lb .acc-btn { background: #daeef8 !important; }
+html.theme-lb .ic,
+html.theme-lb .nc,
+html.theme-lb .rc,
+html.theme-lb .tc,
+html.theme-lb .wb { background: #c8e6f5 !important; border-color: rgba(0,100,180,0.3) !important; }
+html.theme-lb .cond-item { background: #daeef8 !important; }
+html.theme-lb .card,
+html.theme-lb .founder-box,
+html.theme-lb [class*="card"] { background: #daeef8 !important; }
+html.theme-lb .news-box { background: #daeef8 !important; border-color: rgba(0,100,180,0.3) !important; }
+html.theme-lb .legal-wrap,
+html.theme-lb .cond-page-inner { background: transparent !important; }
 </style>
 </head>
 
@@ -7669,8 +7678,6 @@ function toggleWelsh() {
 
   if(typeof _updateTTSLabels === 'function') _updateTTSLabels();
 
-  if(_nrOn) document.body.classList.add('narrow-reading');
-
   window.scrollTo({ top: 0, behavior: 'instant' });
 
 }
@@ -7784,6 +7791,9 @@ function showPage(name) {
 
   window.scrollTo({ top: savedPos, behavior: 'instant' });
 
+  // Keep Narrow Reading mode active after navigation
+  if (_nrOn) document.body.classList.add('narrow-reading');
+
 }
 
 
@@ -7791,6 +7801,8 @@ function showPage(name) {
 function showCondition(key) {
 
   window._currentCondKey = key;
+
+  var _nrOn = document.body.classList.contains('narrow-reading');
 
   // Save home scroll position
 
@@ -7808,6 +7820,8 @@ function showCondition(key) {
       stargBanner.style.display = (key === 'stargardts' && !document.body.classList.contains('lb')) ? '' : 'none';
     }
   }
+  // Keep NR mode active
+  if (_nrOn) document.body.classList.add('narrow-reading');
 
 
 
@@ -8504,12 +8518,19 @@ if ('serviceWorker' in navigator) {
       ).forEach(function(j){ j.remove(); });
       var raw = clone.innerText;
       // Clean up symbols and UI artifacts
-      raw = raw.replace(/[▼▲←→◀▶‹›»«↑↓⬆⬇]/g, '');
-      raw = raw.replace(/^\s*\d+\s*$/gm, '');      // lone numbers on their own line
-      raw = raw.replace(/\n{3,}/g, '\n\n');         // max 2 newlines
-      raw = raw.replace(/\s{2,}/g, ' ');            // collapse spaces
-      // Add pauses after headings by adding a period if missing
-      raw = raw.replace(/([A-Z][^\.\!\?]{10,})\n/g, '$1. ');
+      // Remove UI symbols and arrows
+      raw = raw.replace(/[▼▲▾▴←→◀▶‹›»«↑↓⬆⬇◉◎◈◭↔☀◑⬡◇◆]/g, '');
+      // Remove standalone numbers (accordion section numbers)
+      raw = raw.replace(/^\s*\d+\s*$/gm, '');
+      // Remove very short UI-only lines (NR, Dx, A etc)
+      raw = raw.replace(/^\s*[A-Z]{1,3}\+?\s*$/gm, '');
+      // Remove lines that are just dashes or bullets
+      raw = raw.replace(/^\s*[•·–—\-]+\s*$/gm, '');
+      // Collapse excess whitespace
+      raw = raw.replace(/\n{3,}/g, '\n\n');
+      raw = raw.replace(/[ \t]{2,}/g, ' ');
+      // Natural pause after headings - add period so speech engine pauses
+      raw = raw.replace(/^([A-Z][A-Za-z &]{4,40})\n([A-Za-z])/gm, '$1. $2');
       return raw.trim();
     }
 
