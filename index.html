@@ -1581,6 +1581,39 @@ body.lb [role="listitem"] .cond-btn {
   background: #d8eef8 !important;
 }
 
+
+/* Mini listen-to-section button */
+.acc-listen {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text2);
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+  margin-left: 8px;
+}
+.acc-listen:hover, .acc-listen:focus-visible {
+  background: var(--yellow);
+  color: #000;
+  border-color: var(--yellow);
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
+}
+.acc-listen.speaking {
+  background: var(--yellow);
+  color: #000;
+  border-color: var(--yellow);
+  animation: pulse-listen 1s infinite;
+}
+@keyframes pulse-listen {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
 </style>
 
 </head>
@@ -7018,6 +7051,29 @@ function renderCondition(key) {
 
     <button class="back-btn" onclick="showPage('home')" aria-label="Back to conditions list">${_isWelsh ? '← Pob Cyflwr' : '← All Conditions'}</button>
 
+    ${(function(){
+      var tips={
+        stargardts:{t:'lb',l:'Blue/Black',m:'Many people with Stargardt Disease find a pale blue background reduces glare and eye strain.'},
+        amd:{t:'lb',l:'Blue/Black',m:'A pale blue, low-glare background can help with the central vision loss in AMD.'},
+        achromatopsia:{t:'hc',l:'Hi-Con',m:'High contrast removes colour dependency, which is helpful in achromatopsia.'},
+        albinism:{t:'lb',l:'Blue/Black',m:'The low-glare pale blue background is often easier for people with albinism.'},
+        nystagmus:{t:'ll',l:'Low Light',m:'Low light mode can help reduce visual noise and eye movement strain with nystagmus.'},
+        charlesbonnet:{t:'dark',l:'Dark',m:'A dark background may reduce contrast triggers that affect Charles Bonnet hallucinations.'},
+        rp:{t:'dark',l:'Dark',m:'Dark mode preserves night vision and reduces light sensitivity common in RP.'},
+        cone:{t:'hc',l:'Hi-Con',m:'High contrast maximises the limited colour vision in cone dystrophy.'},
+        glaucoma:{t:'ll',l:'Low Light',m:'Low light mode reduces brightness that can cause discomfort with glaucoma.'},
+        lca:{t:'dark',l:'Dark',m:'Dark mode reduces overall brightness, which helps with the severe light sensitivity in LCA.'},
+        diabetic:{t:'lb',l:'Blue/Black',m:'A pale blue background can reduce glare and improve comfort for diabetic retinopathy.'},
+        dmo:{t:'lb',l:'Blue/Black',m:'The low-glare pale blue background may help with central vision distortion in DMO.'},
+        myopic:{t:'dark',l:'Dark',m:'Dark mode can reduce the brightness that may aggravate myopic macular degeneration.'}
+      };
+      var tip=tips[key];
+      if(!tip||document.body.classList.contains(tip.t)) return '';
+      var btn='<button onclick="setColour(\''+tip.t+'\');this.closest(\'[role=note]\').remove()" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:0.875rem;font-weight:800;cursor:pointer;text-decoration:underline;padding:0;margin-left:8px">Switch now →</button>';
+      var dismiss='<button onclick="this.closest(\'[role=note]\').remove()" aria-label="Dismiss" style="background:none;border:none;color:var(--text2);cursor:pointer;font-size:1rem;padding:0 0 0 8px;float:right">✕</button>';
+      return '<div role="note" style="background:var(--card2);border:2px solid var(--yellow);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:0.875rem;font-weight:600;line-height:1.6">'+dismiss+'💡 '+tip.m+btn+'</div>';
+    })()}
+
     <span class="cond-hero-eyebrow">${_isWelsh ? 'Canllaw Cyflyrau\'r Llygad' : 'Eye Condition Guide'}</span>
 
     <h1>${d.name}</h1>
@@ -7035,6 +7091,8 @@ function renderCondition(key) {
       <button class="acc-btn" onclick="toggleAcc('about','${key}')" aria-expanded="false">
 
         <span class="acc-left"><span class="acc-num">1</span><span class="acc-label">What is ${d.name}?</span></span>
+
+        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('about','${key}',this)" aria-label="Listen to What is" title="Listen to What is">🔊</button>
 
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
@@ -7063,6 +7121,8 @@ function renderCondition(key) {
       <button class="acc-btn" onclick="toggleAcc('research','${key}')" aria-expanded="false">
 
         <span class="acc-left"><span class="acc-num">2</span><span class="acc-label">Latest Research &amp; Clinical Trials</span></span>
+
+        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('research','${key}',this)" aria-label="Listen to Latest Research" title="Listen to Latest Research">🔊</button>
 
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
@@ -7098,6 +7158,8 @@ function renderCondition(key) {
 
         <span class="acc-left"><span class="acc-num">3</span><span class="acc-label">Practical How-To Guides</span></span>
 
+        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('guides','${key}',this)" aria-label="Listen to Practical How-To Guides" title="Listen to Practical How-To Guides">🔊</button>
+
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
@@ -7125,6 +7187,8 @@ function renderCondition(key) {
       <button class="acc-btn" onclick="toggleAcc('tech','${key}')" aria-expanded="false">
 
         <span class="acc-left"><span class="acc-num">4</span><span class="acc-label">Assistive Technology</span></span>
+
+        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('tech','${key}',this)" aria-label="Listen to Assistive Technology" title="Listen to Assistive Technology">🔊</button>
 
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
@@ -7157,6 +7221,8 @@ function renderCondition(key) {
       <button class="acc-btn" onclick="toggleAcc('support','${key}')" aria-expanded="false">
 
         <span class="acc-left"><span class="acc-num">5</span><span class="acc-label">Support &amp; Community</span></span>
+
+        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('support','${key}',this)" aria-label="Listen to Support and Community" title="Listen to Support and Community">🔊</button>
 
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
@@ -7204,6 +7270,8 @@ function renderCondition(key) {
 
         <span class="acc-left"><span class="acc-num">6</span><span class="acc-label">Benefits &amp; Financial Help</span></span>
 
+        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('benefits','${key}',this)" aria-label="Listen to Benefits and Financial Help" title="Listen to Benefits and Financial Help">🔊</button>
+
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
@@ -7242,6 +7310,8 @@ function renderCondition(key) {
 
         <span class="acc-left"><span class="acc-num">7</span><span class="acc-label">Living with ${d.name}</span></span>
 
+        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('living','${key}',this)" aria-label="Listen to Living with this condition" title="Listen to Living with this condition">🔊</button>
+
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
@@ -7273,6 +7343,8 @@ function renderCondition(key) {
       <button class="acc-btn" onclick="toggleAcc('parents','${key}')" aria-expanded="false">
 
         <span class="acc-left"><span class="acc-num">👶</span><span class="acc-label">For Parents</span></span>
+
+        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('parents','${key}',this)" aria-label="Listen to For Parents" title="Listen to For Parents">🔊</button>
 
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
@@ -7423,6 +7495,86 @@ function initScrollSpy(key) {
 
 
 /* ─────────────── CONDITION PAGE ACCORDION ─────────────── */
+
+function listenToSection(section, key, btn) {
+  var synth = window.speechSynthesis;
+  if (!synth || typeof SpeechSynthesisUtterance === 'undefined') {
+    alert('Text to speech is not supported in this browser.');
+    return;
+  }
+
+  // If already speaking this section, stop it
+  if (btn.classList.contains('speaking')) {
+    synth.cancel();
+    btn.classList.remove('speaking');
+    btn.setAttribute('aria-label', 'Listen to this section');
+    btn.textContent = '🔊';
+    return;
+  }
+
+  // Stop any other speech
+  synth.cancel();
+  document.querySelectorAll('.acc-listen.speaking').forEach(function(b) {
+    b.classList.remove('speaking');
+    b.textContent = '🔊';
+  });
+
+  // Get the accordion body content
+  var accId = 'acc-' + section + '-' + key;
+  var accItem = document.getElementById(accId);
+  if (!accItem) return;
+
+  // Open the accordion if closed
+  var accBody = accItem.querySelector('.acc-body');
+  if (!accBody) return;
+  var wasOpen = accItem.classList.contains('open');
+  if (!wasOpen) {
+    toggleAcc(section, key);
+    // Wait for it to open
+    setTimeout(function() { speakAccSection(accBody, btn); }, 200);
+  } else {
+    speakAccSection(accBody, btn);
+  }
+}
+
+function speakAccSection(accBody, btn) {
+  var synth = window.speechSynthesis;
+  var clone = accBody.cloneNode(true);
+  clone.querySelectorAll('[aria-hidden="true"], .trial-link, .share-btn, button, .acc-listen').forEach(function(j){ j.remove(); });
+  var text = (clone.innerText || clone.textContent || '').replace(/\s+/g, ' ').trim();
+
+  // Expand abbreviations
+  text = text.replace(/\bAMD\b/g, 'Age-related macular degeneration');
+  text = text.replace(/\bRP\b/g, 'retinitis pigmentosa');
+  text = text.replace(/\bPIP\b/g, 'Personal Independence Payment');
+  text = text.replace(/\bNHS\b/g, 'National Health Service');
+  text = text.replace(/\bECLO\b/g, 'Eye Clinic Liaison Officer');
+
+  if (!text) return;
+
+  btn.classList.add('speaking');
+  btn.setAttribute('aria-label', 'Stop reading this section');
+  btn.textContent = '⏹';
+
+  var utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'en-GB';
+  utter.rate = parseFloat((document.getElementById('tts-speed') || {}).value || '0.85');
+  utter.volume = 1;
+
+  utter.onend = function() {
+    btn.classList.remove('speaking');
+    btn.textContent = '🔊';
+    btn.setAttribute('aria-label', 'Listen to this section');
+  };
+  utter.onerror = function(e) {
+    if (e.error === 'interrupted') return;
+    btn.classList.remove('speaking');
+    btn.textContent = '🔊';
+    btn.setAttribute('aria-label', 'Listen to this section');
+  };
+
+  synth.speak(utter);
+}
 
 function toggleAcc(section, key) {
 
