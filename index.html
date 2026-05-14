@@ -1627,32 +1627,32 @@ body.hc .tts-sent.tts-active {
 
 <style>
 /* LIGHT BLUE THEME - highest specificity, beats all other rules */
-html.theme-lb,
-html.theme-lb body {
+body.lb,
+html.theme-lb body,
+html.theme-lb {
   background-color: #cce8f4 !important;
   color: #000000 !important;
 }
-html.theme-lb .a11y-bar { background: #a8d5ea !important; }
-html.theme-lb .desktop-sidebar { background: #b8dff0 !important; }
-html.theme-lb .card, html.theme-lb [class*="card"] { background: #e8f5fb !important; }
-html.theme-lb .news-box { background: #dff0f8 !important; }
-html.theme-lb .cond-item { background: #dff0f8 !important; }
-html.theme-lb .hero { background: #b8dff0 !important; }
-html.theme-lb .acc-item { background: #daeef8 !important; border-color: rgba(0,100,180,0.3) !important; }
-html.theme-lb .acc-body { background: #daeef8 !important; }
-html.theme-lb .acc-btn { background: #daeef8 !important; }
-html.theme-lb .ic,
-html.theme-lb .nc,
-html.theme-lb .rc,
-html.theme-lb .tc,
-html.theme-lb .wb { background: #c8e6f5 !important; border-color: rgba(0,100,180,0.3) !important; }
+body.lb .a11y-bar, html.theme-lb .a11y-bar { background: #a8d5ea !important; }
+body.lb .desktop-sidebar, html.theme-lb .desktop-sidebar { background: #b8dff0 !important; }
+body.lb .card, body.lb [class*="card"], html.theme-lb .card { background: #e8f5fb !important; }
+body.lb .news-box, html.theme-lb .news-box { background: #dff0f8 !important; }
+body.lb .cond-item, html.theme-lb .cond-item { background: #dff0f8 !important; }
+body.lb .hero, html.theme-lb .hero { background: #b8dff0 !important; }
+body.lb .acc-item, html.theme-lb .acc-item { background: #daeef8 !important; border-color: rgba(0,100,180,0.3) !important; }
+body.lb .acc-body, html.theme-lb .acc-body { background: #daeef8 !important; }
+body.lb .acc-btn, html.theme-lb .acc-btn { background: #daeef8 !important; }
+body.lb .ic, body.lb .nc,
+html.theme-lb .ic, html.theme-lb .nc,
+body.lb .rc, body.lb .tc, body.lb .wb,
+html.theme-lb .rc, html.theme-lb .tc, html.theme-lb .wb { background: #c8e6f5 !important; border-color: rgba(0,100,180,0.3) !important; }
 html.theme-lb .cond-item { background: #daeef8 !important; }
 html.theme-lb .card,
 html.theme-lb .founder-box,
 html.theme-lb [class*="card"] { background: #daeef8 !important; }
 html.theme-lb .news-box { background: #daeef8 !important; border-color: rgba(0,100,180,0.3) !important; }
-html.theme-lb .legal-wrap,
-html.theme-lb .cond-page-inner { background: transparent !important; }
+body.lb .legal-wrap, body.lb .cond-page-inner,
+html.theme-lb .legal-wrap, html.theme-lb .cond-page-inner { background: transparent !important; }
 </style>
 </head>
 
@@ -1676,7 +1676,7 @@ html.theme-lb .cond-page-inner { background: transparent !important; }
 
   <div class="a11y-divider"></div>
 
-  <span class="a11y-label" aria-hidden="true">Text</span>
+  <span class="a11y-label" aria-hidden="true" title="Text size controls">Text size</span>
 
   <button class="ab ab-s on" id="sz-s"  onclick="setSize(1)"    aria-pressed="true"  aria-label="Small text">A</button>
 
@@ -1688,7 +1688,7 @@ html.theme-lb .cond-page-inner { background: transparent !important; }
 
   <div class="a11y-divider"></div>
 
-  <span class="a11y-label" aria-hidden="true" style="margin-left:4px">THEME</span>
+  <span class="a11y-label" aria-hidden="true" style="margin-left:4px" title="Colour theme">Colour</span>
 
   <select id="col-select" onchange="setColour(this.value)" aria-label="Choose colour theme" class="theme-select">
 
@@ -1712,10 +1712,10 @@ html.theme-lb .cond-page-inner { background: transparent !important; }
 
   <div class="a11y-divider"></div>
   <button class="ab" id="dys-toggle"  onclick="toggleDyslexic()"   aria-pressed="false" aria-label="Toggle dyslexia-friendly font" title="Dyslexia-friendly font">Dx</button>
-  <button class="ab" id="rule-toggle" onclick="toggleReadingRuler()" aria-pressed="false" aria-label="Toggle reading ruler" title="Reading ruler">▭</button>
+  <button class="ab" id="rule-toggle" onclick="toggleReadingRuler()" aria-pressed="false" aria-label="Toggle reading ruler — highlights a band across the screen to guide your eyes" title="Reading ruler — highlights a line to help you track text">▭</button>
 
-  <button class="ab" id="narrow-toggle" onclick="toggleNarrowReading()" aria-pressed="false" aria-label="Toggle narrow reading mode" title="Narrow reading (easier to track lines)" style="font-size:0.7rem;font-weight:900">NR</button>
-  <button class="ab" id="tts-toggle"  onclick="togglePageSpeech()"  aria-pressed="false" aria-label="Listen to this page" title="Listen to page">🔊</button>
+  <button class="ab" id="narrow-toggle" onclick="toggleNarrowReading()" aria-pressed="false" aria-label="Toggle narrow reading mode for easier line tracking" title="Narrow reading — shortens line width so your eyes track more easily">≡</button>
+  <button class="ab" id="tts-toggle"  onclick="togglePageSpeech()"  aria-pressed="false" aria-label="Read page aloud (text to speech)" title="Read aloud — tap to open speech controls">🔊</button>
 
 </div></div>
 
@@ -2064,6 +2064,355 @@ html.theme-lb .cond-page-inner { background: transparent !important; }
 
 
 <div id="page-home" class="page active english-only">
+
+  <main id="main">
+
+    <div class="desktop-wrap">
+
+
+
+    <!-- DESKTOP SIDEBAR -->
+
+    <aside class="desktop-sidebar" aria-label="Site navigation">
+
+      <span class="sidebar-logo">◈ Vision Hub</span>
+
+      <span class="sidebar-tagline">Free UK sight loss resource</span>
+
+
+
+      <span class="sidebar-section">Conditions</span>
+
+      <button class="sidebar-link" onclick="showCondition('stargardts')"><span aria-hidden="true">✦</span> Stargardt Disease</button>
+
+      <button class="sidebar-link" onclick="showCondition('amd')"><span aria-hidden="true">◉</span> Age-related MD</button>
+
+      <button class="sidebar-link" onclick="showCondition('glaucoma')"><span aria-hidden="true">◎</span> Glaucoma</button>
+
+      <button class="sidebar-link" onclick="showCondition('diabetic')"><span aria-hidden="true">◇</span> Diabetic Retinopathy</button>
+
+      <button class="sidebar-link" onclick="showCondition('rp')"><span aria-hidden="true">◈</span> Retinitis Pigmentosa</button>
+
+      <button class="sidebar-link" onclick="showCondition('cvi')"><span aria-hidden="true">◭</span> Cerebral Visual Impairment</button>
+
+      <button class="sidebar-link" onclick="showCondition('nystagmus')"><span aria-hidden="true">↔</span> Nystagmus</button>
+
+      <button class="sidebar-link" onclick="showCondition('albinism')"><span aria-hidden="true">☀</span> Albinism</button>
+
+      <button class="sidebar-link" onclick="showCondition('usher')"><span aria-hidden="true">◑</span> Usher Syndrome</button>
+
+      <button class="sidebar-link" onclick="showCondition('lca')"><span aria-hidden="true">⬡</span> Leber Congenital Amaurosis</button>
+
+      <button class="sidebar-link" onclick="showCondition('cone')"><span aria-hidden="true">🎯</span> Cone Dystrophy</button>
+
+      <button class="sidebar-link" onclick="showCondition('achromatopsia')"><span aria-hidden="true">⬤</span> Achromatopsia</button>
+
+      <button class="sidebar-link" onclick="showCondition('dmo')"><span aria-hidden="true">💧</span> Diabetic Macular Oedema</button>
+
+      <button class="sidebar-link" onclick="showCondition('myopic')"><span aria-hidden="true">👓</span> Myopic MD</button>
+
+      <button class="sidebar-link" onclick="showCondition('charlesbonnet')"><span aria-hidden="true">🧠</span> Charles Bonnet Syndrome</button>
+
+      <button class="sidebar-link" onclick="showCondition('opticneuritis')"><span aria-hidden="true">⚡</span> Optic Neuritis</button>
+
+      <button class="sidebar-link" onclick="showCondition('blepharitis')"><span aria-hidden="true">👁</span> Blepharitis</button>
+
+
+
+      <div class="sidebar-divider"></div>
+
+      <span class="sidebar-section">Guides &amp; Resources</span>
+
+      <button class="sidebar-link" onclick="showPage('livingwell')"><span aria-hidden="true">🌟</span> Everyday Guide</button>
+
+      <button class="sidebar-link" onclick="showPage('eyehealth')">👁️ Eye Health Basics</button>
+
+      <button class="sidebar-link" onclick="showPage('employment')"><span aria-hidden="true">💼</span> Employment</button>
+
+      <button class="sidebar-link" onclick="showPage('glossary')"><span aria-hidden="true">📖</span> Glossary</button>
+
+      <button class="sidebar-link" onclick="showPage('questions')"><span aria-hidden="true">❓</span> Questions to Ask</button>
+
+      <button class="sidebar-link" onclick="showPage('localsupport')"><span aria-hidden="true">📍</span> Local Support</button>
+
+      <button class="sidebar-link" onclick="showPage('children')"><span aria-hidden="true">👶</span> For Parents</button>
+
+
+
+      <div class="sidebar-divider"></div>
+
+      <button class="sidebar-link" onclick="showPage('help')"><span aria-hidden="true">🆘</span> Help &amp; Support</button>
+      <button class="sidebar-link" onclick="showPage('contact')"><span aria-hidden="true">✉️</span> Contact</button>
+
+    </aside>
+
+
+
+    <!-- DESKTOP MAIN CONTENT -->
+
+    <div class="desktop-main">
+
+    <div class="hero">
+
+      <div aria-hidden="true" style="text-align:center;margin-bottom:28px;opacity:0.85">
+
+        <svg viewBox="0 0 320 180" width="100%" aria-hidden="true" style="max-width:380px;display:inline-block" xmlns="http://www.w3.org/2000/svg">
+
+          <circle cx="160" cy="90" r="85" fill="var(--yellow)" opacity="0.08"/>
+
+          <ellipse cx="160" cy="90" rx="110" ry="58" fill="none" stroke="var(--yellow)" stroke-width="3" opacity="0.3"/>
+
+          <path d="M50,90 Q100,30 160,30 Q220,30 270,90" fill="none" stroke="var(--yellow)" stroke-width="2.5" opacity="0.5" stroke-linecap="round"/>
+
+          <path d="M50,90 Q100,150 160,150 Q220,150 270,90" fill="none" stroke="var(--yellow)" stroke-width="2.5" opacity="0.5" stroke-linecap="round"/>
+
+          <circle cx="160" cy="90" r="38" fill="none" stroke="var(--yellow)" stroke-width="3" opacity="0.6"/>
+
+          <circle cx="160" cy="90" r="28" fill="none" stroke="var(--yellow)" stroke-width="1.5" opacity="0.4"/>
+
+          <circle cx="160" cy="90" r="18" fill="none" stroke="var(--yellow)" stroke-width="1.5" opacity="0.3"/>
+
+          <circle cx="160" cy="90" r="12" fill="var(--yellow)" opacity="0.7"/>
+
+          <circle cx="166" cy="84" r="4" fill="var(--card)" opacity="0.8"/>
+
+          <line x1="160" y1="52" x2="160" y2="42" stroke="var(--yellow)" stroke-width="1.5" opacity="0.35" stroke-linecap="round"/>
+
+          <line x1="160" y1="128" x2="160" y2="138" stroke="var(--yellow)" stroke-width="1.5" opacity="0.35" stroke-linecap="round"/>
+
+          <line x1="122" y1="90" x2="112" y2="90" stroke="var(--yellow)" stroke-width="1.5" opacity="0.35" stroke-linecap="round"/>
+
+          <line x1="198" y1="90" x2="208" y2="90" stroke="var(--yellow)" stroke-width="1.5" opacity="0.35" stroke-linecap="round"/>
+
+          <circle cx="60" cy="45" r="3" fill="var(--yellow)" opacity="0.3"/>
+
+          <circle cx="275" cy="50" r="2" fill="var(--yellow)" opacity="0.25"/>
+
+          <circle cx="40" cy="120" r="2" fill="var(--yellow)" opacity="0.2"/>
+
+          <circle cx="290" cy="130" r="3" fill="var(--yellow)" opacity="0.25"/>
+
+        </svg>
+
+      </div>
+
+
+
+      <span class="hero-eyebrow">Free · Independent · UK</span>
+
+      <h1>Everything you need,<br>in one place.</h1>
+
+      <p class="hero-desc">Clear, accessible information for people living with sight conditions — and the people who support them.</p>
+
+      <p class="last-updated">Last updated: <time datetime="2026-05-15">May 2026</time> · Reviewed monthly · <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0">Contact us</button></p>
+
+
+
+      <div class="founder-box">
+
+        <p class="founder-short">When my daughter was diagnosed with Stargardts, I had so many questions. I couldn't find anywhere that had everything in one place — clear guidance, the latest research, benefits advice, and real support, all together.</p>
+
+        <p class="founder-short" style="margin-top:14px">So I built it. This site is here to help anyone living with sight loss, and those closest to them.</p>
+
+        <p class="founder-short" style="margin-top:14px">If your condition isn't listed, <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">get in touch</button> and I'll look into adding it.</p>
+
+        <p class="founder-short" style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);color:var(--yellow);font-weight:700;font-size:0.9rem;letter-spacing:0.01em">Free, independent, and built for people with sight loss.</p>
+
+      </div>
+
+
+
+      <div class="section-divider" aria-hidden="true">
+
+        <div class="section-divider-dot"></div>
+
+        <div class="section-divider-dot"></div>
+
+        <div class="section-divider-dot"></div>
+
+      </div>
+
+
+
+      </div>
+
+
+
+    <section class="cond-section" aria-label="Conditions list">
+
+
+
+      <!-- JUST DIAGNOSED -->
+
+      <div id="jd-box" style="background:var(--card);border:2px solid var(--border);border-radius:16px;padding:22px;margin-bottom:24px;box-shadow:var(--shadow)">
+
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:4px">
+
+          <div>
+
+            <span style="font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--yellow)">Just diagnosed?</span>
+
+            <h2 style="font-size:1.1rem;font-weight:900;color:var(--text);margin-top:4px;line-height:1.3">Start here.</h2>
+
+          </div>
+
+          <button id="jd-toggle" onclick="toggleJD()" aria-expanded="false" aria-controls="jd-steps"
+
+            style="background:none;border:2px solid var(--border);color:var(--text2);border-radius:50px;padding:6px 14px;font-family:var(--font);font-size:0.78rem;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0;min-height:44px;transition:border-color .15s,color .15s"
+
+            onmouseover="this.style.borderColor='var(--yellow)';this.style.color='var(--yellow)'"
+
+            onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text2)'">
+
+            Show &#8595;
+
+          </button>
+
+        </div>
+
+        <p style="font-size:0.88rem;color:var(--text2);margin-bottom:16px;line-height:1.7">You don't need to figure everything out today. Here are five things that actually matter in the first weeks.</p>
+
+
+
+        <div id="jd-steps" style="display:none">
+
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+
+
+
+            <div style="display:flex;gap:14px;align-items:flex-start">
+
+              <div style="width:32px;height:32px;min-width:32px;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:900;color:#fff;flex-shrink:0">1</div>
+
+              <div style="padding-top:4px">
+
+                <span style="font-size:0.95rem;font-weight:800;color:var(--text)">Get a follow-up appointment</span>
+
+                <p style="font-size:0.88rem;color:var(--text2);margin-top:3px;line-height:1.7">Ask your ophthalmologist what your diagnosis means for your vision long term. Write your questions down beforehand — you will forget them in the room.</p>
+
+                <button onclick="showPage('questions')" style="display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:var(--yellow);color:#000;border:none;padding:9px 18px;border-radius:50px;font-family:var(--font);font-size:0.82rem;font-weight:800;cursor:pointer;min-height:44px">❓ Questions to ask your doctor →</button>
+
+              </div>
+
+            </div>
+
+
+
+            <div style="display:flex;gap:14px;align-items:flex-start">
+
+              <div style="width:32px;height:32px;min-width:32px;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:900;color:#fff;flex-shrink:0">2</div>
+
+              <div style="padding-top:4px">
+
+                <span style="font-size:0.95rem;font-weight:800;color:var(--text)">Ask for a CVI</span>
+
+                <p style="font-size:0.88rem;color:var(--text2);margin-top:3px;line-height:1.7">Your Certificate of Visual Impairment is free and issued by your ophthalmologist. It unlocks benefits, rehabilitation, council tax reductions, and a free bus pass.</p>
+
+              </div>
+
+            </div>
+
+
+
+            <div style="display:flex;gap:14px;align-items:flex-start">
+
+              <div style="width:32px;height:32px;min-width:32px;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:900;color:#fff;flex-shrink:0">3</div>
+
+              <div style="padding-top:4px">
+
+                <span style="font-size:0.95rem;font-weight:800;color:var(--text)">Call RNIB</span>
+
+                <p style="font-size:0.88rem;color:var(--text2);margin-top:3px;line-height:1.7">Call <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a> and tell them your condition. They will tell you exactly what you are entitled to. Most people are surprised by how much support is available.</p>
+
+                <p style="font-size:0.88rem;color:var(--text2);margin-top:6px;line-height:1.7">Is this for your child? <button onclick="showPage('children')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">See our For Parents guide →</button></p>
+
+              </div>
+
+            </div>
+
+
+
+            <div style="display:flex;gap:14px;align-items:flex-start">
+
+              <div style="width:32px;height:32px;min-width:32px;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:900;color:#fff;flex-shrink:0">4</div>
+
+              <div style="padding-top:4px">
+
+                <span style="font-size:0.95rem;font-weight:800;color:var(--text)">Don't apply for benefits alone</span>
+
+                <p style="font-size:0.88rem;color:var(--text2);margin-top:3px;line-height:1.7">RNIB or Citizens Advice will help you fill in PIP or DLA forms for free. Applications made with support succeed far more often than those completed alone.</p>
+
+              </div>
+
+            </div>
+
+
+
+            <div style="display:flex;gap:14px;align-items:flex-start">
+
+              <div style="width:32px;height:32px;min-width:32px;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:900;color:#fff;flex-shrink:0">5</div>
+
+              <div style="padding-top:4px">
+
+                <span style="font-size:0.95rem;font-weight:800;color:var(--text)">Find your condition below</span>
+
+                <p style="font-size:0.88rem;color:var(--text2);margin-top:3px;line-height:1.7">Everything specific to your diagnosis is in the list below — research, assistive technology, step-by-step guides, and support organisations.</p>
+
+              </div>
+
+            </div>
+
+
+
+          </div>
+
+          <p style="font-size:0.82rem;color:var(--text2);font-style:italic;border-top:1px solid var(--border);padding-top:12px;line-height:1.7">Take it one step at a time. You do not have to work through this alone.</p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- USEFUL RESOURCES ROW -->
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px" role="group" aria-label="Useful resources">
+
+        <button onclick="showPage('glossary')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:44px;justify-content:center;border-radius:12px" aria-label="Open Glossary">📖 Glossary</button>
+
+        <button onclick="showPage('localsupport')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:44px;justify-content:center;border-radius:12px" aria-label="Open Local Support">📍 Local Support</button>
+
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px" role="group" aria-label="More resources">
+
+        <button onclick="showPage('eyehealth')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:44px;justify-content:center;border-radius:12px" aria-label="Open Eye Health Basics">👁️ Eye Health</button>
+
+        <button onclick="showPage('employment')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:44px;justify-content:center;border-radius:12px" aria-label="Open Employment guide">💼 Employment</button>
+
+        <button onclick="showPage('children')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:44px;justify-content:center;border-radius:12px" aria-label="Open For Parents guide">👶 For Parents</button>
+
+      </div>
+
+
+
+      <div class="search-wrap" style="margin-bottom:8px">
+
+        <label for="csearch" style="font-size:0.875rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--text)">Search conditions</label>
+
+        <input type="search" id="csearch" placeholder="Type a condition — e.g. Stargardt, glaucoma, RP…" autocomplete="off" aria-controls="cond-list" aria-label="Search eye conditions">
+
+        <span class="search-icon" aria-hidden="true">🔍</span>
+
+      </div>
+
+      <p id="cond-hint" style="font-size:0.875rem;color:var(--text2);margin:0 0 12px;line-height:1.5" aria-live="polite">Start typing to find your condition. <strong>17 conditions</strong> covered.</p>
+
+      <div class="cond-list" id="cond-list" role="list" aria-label="Matching conditions" style="display:none">
+
+      </div>
+
+       id="page-home" class="page active english-only">
 
   <main id="main">
 
@@ -8113,29 +8462,29 @@ function setSize(scale) {
 
 function setColour(mode) {
 
+  // Remove all theme classes from body and html
   document.body.classList.remove('dark','ll','hc','yb','bb','lb');
+  document.documentElement.classList.remove('theme-lb');
 
-  // Reset any inline style overrides
-  document.body.style.backgroundColor = '';
-  document.body.style.color = '';
+  // Reset inline styles
+  document.body.style.removeProperty('background-color');
+  document.body.style.removeProperty('color');
+  document.documentElement.style.removeProperty('background-color');
 
   if (mode) document.body.classList.add(mode);
 
-  // Light blue theme: use html class for maximum CSS specificity
-  document.documentElement.classList.remove('theme-lb');
-  document.body.style.backgroundColor = '';
-  document.body.style.color = '';
+  // lb: force inline styles on BOTH html and body — beats everything
   if (mode === 'lb') {
     document.documentElement.classList.add('theme-lb');
+    document.documentElement.style.setProperty('background-color', '#cce8f4', 'important');
     document.body.style.setProperty('background-color', '#cce8f4', 'important');
     document.body.style.setProperty('color', '#000000', 'important');
   }
 
   try { localStorage.setItem('vh-colour', mode); } catch(e){}
 
-  const sel = document.getElementById('col-select');
-
-  if (sel) sel.value = mode;
+  var sel = document.getElementById('col-select');
+  if (sel) sel.value = mode || '';
 
 }
 
@@ -8320,33 +8669,44 @@ function fuzzyMatch(query, target) {
 
 
 function filterConds(q) {
+  q = (q || '').trim();
+  var list = document.getElementById('cond-list');
+  var hint = document.getElementById('cond-hint');
+  if (!list) return;
 
-  q = (q || '').toLowerCase().trim();
-
-  var items = document.getElementsByClassName('cond-item');
-
-  for (var i = 0; i < items.length; i++) {
-
-    var btn = items[i].querySelector('.cond-btn');
-
-    if (!btn) continue;
-
-    var onclick = btn.getAttribute('onclick') || '';
-
-    var condKey = (onclick.match(/showCondition\('(\w+)'\)/) || [])[1] || '';
-
-    var label    = btn.textContent.toLowerCase();
-
-    var keywords = (COND_KEYWORDS[condKey] || []).join(' ');
-
-    var haystack = label + ' ' + keywords;
-
-    var match    = !q || fuzzyMatch(q, haystack);
-
-    items[i].style.display = match ? '' : 'none';
-
+  if (!q) {
+    list.style.display = 'none';
+    list.innerHTML = '';
+    if (hint) hint.innerHTML = 'Start typing to find your condition. <strong>17 conditions</strong> covered.';
+    return;
   }
 
+  var ql = q.toLowerCase();
+  var matches = [];
+  var keys = ['stargardts','amd','glaucoma','rp','diabetic','lca','nystagmus','achromatopsia','usher','albinism','cvi','cone','dmo','myopic','charlesbonnet','opticneuritis','blepharitis'];
+  var names = {stargardts:'Stargardt Disease',amd:'Age-Related Macular Degeneration',glaucoma:'Glaucoma',rp:'Retinitis Pigmentosa',diabetic:'Diabetic Retinopathy',lca:'Leber Congenital Amaurosis',nystagmus:'Nystagmus',achromatopsia:'Achromatopsia',usher:'Usher Syndrome',albinism:'Albinism',cvi:'Cerebral Visual Impairment',cone:'Cone Dystrophy',dmo:'Diabetic Macular Oedema',myopic:'Myopic Macular Degeneration',charlesbonnet:'Charles Bonnet Syndrome',opticneuritis:'Optic Neuritis',blepharitis:'Blepharitis'};
+
+  keys.forEach(function(key) {
+    var name = names[key] || key;
+    var kw = (COND_KEYWORDS[key] || []).join(' ');
+    var haystack = name.toLowerCase() + ' ' + key + ' ' + kw;
+    if (fuzzyMatch(ql, haystack)) matches.push({key: key, name: name});
+  });
+
+  if (matches.length === 0) {
+    list.style.display = 'none';
+    list.innerHTML = '';
+    if (hint) hint.innerHTML = 'No conditions found for <strong>"' + q + '"</strong>. Try a different spelling or <button onclick="showPage(\'contact\')" style="background:none;border:none;color:var(--yellow);font-weight:700;cursor:pointer;padding:0;font-size:inherit">contact us</button>.';
+    return;
+  }
+
+  if (hint) hint.innerHTML = matches.length + ' condition' + (matches.length > 1 ? 's' : '') + ' found:';
+
+  list.innerHTML = matches.map(function(m) {
+    return '<div role="listitem" class="cond-item"><button class="cond-btn" onclick="showCondition('' + m.key + '')" aria-label="Open ' + m.name + ' information"><span aria-hidden="true">✦</span> ' + m.name + ' <span class="cond-arrow" aria-hidden="true">›</span></button></div>';
+  }).join('');
+
+  list.style.display = '';
 }
 
 
