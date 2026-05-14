@@ -1614,6 +1614,27 @@ body.lb [role="listitem"] .cond-btn {
   50% { opacity: 0.6; }
 }
 
+
+/* Additional lb theme overrides for remaining white boxes */
+body.lb .wb,
+body.lb .video-card,
+body.lb .trial-card,
+body.lb .guide-card,
+body.lb .support-card,
+body.lb .ic,
+body.lb .nc,
+body.lb .rc,
+body.lb .tc,
+body.lb .sc { background: #c8e6f5 !important; border-color: rgba(0,100,180,0.25) !important; }
+body.lb .legal-box,
+body.lb [class*="box"] { background: #d4ecf7 !important; }
+body.lb .share-btn { background: #d4ecf7 !important; }
+body.lb .fb-btn { background: #d4ecf7 !important; }
+body.lb .acc-item.open { border-color: #0055a5 !important; }
+/* Force any element with inline background:var(--card) */
+body.lb { --card: #d8eef8; --card2: #c8e4f4; }
+
+.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
 </style>
 
 </head>
@@ -7088,15 +7109,17 @@ function renderCondition(key) {
 
     <div class="acc-item" id="acc-about-${key}">
 
-      <button class="acc-btn" onclick="toggleAcc('about','${key}')" aria-expanded="false">
+      <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('about','${key}')" aria-expanded="false">
 
         <span class="acc-left"><span class="acc-num">1</span><span class="acc-label">What is ${d.name}?</span></span>
 
-        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('about','${key}',this)" aria-label="Listen to What is" title="Listen to What is">🔊</button>
+        
 
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('about','${key}',this)" aria-label="Listen to What is" title="Listen to What is" tabindex="0">🔊<span class="sr-only"> What is</span></button>
+      </div>
 
       <div class="acc-body">
 
@@ -7118,15 +7141,17 @@ function renderCondition(key) {
 
     <div class="acc-item" id="acc-research-${key}">
 
-      <button class="acc-btn" onclick="toggleAcc('research','${key}')" aria-expanded="false">
+      <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('research','${key}')" aria-expanded="false">
 
         <span class="acc-left"><span class="acc-num">2</span><span class="acc-label">Latest Research &amp; Clinical Trials</span></span>
 
-        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('research','${key}',this)" aria-label="Listen to Latest Research" title="Listen to Latest Research">🔊</button>
+        
 
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('research','${key}',this)" aria-label="Listen to Latest Research" title="Listen to Latest Research" tabindex="0">🔊<span class="sr-only"> Latest Research</span></button>
+      </div>
 
       <div class="acc-body">
 
@@ -7154,15 +7179,17 @@ function renderCondition(key) {
 
     <div class="acc-item" id="acc-guides-${key}">
 
-      <button class="acc-btn" onclick="toggleAcc('guides','${key}')" aria-expanded="false">
+      <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('guides','${key}')" aria-expanded="false">
 
         <span class="acc-left"><span class="acc-num">3</span><span class="acc-label">Practical How-To Guides</span></span>
 
-        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('guides','${key}',this)" aria-label="Listen to Practical How-To Guides" title="Listen to Practical How-To Guides">🔊</button>
+        
 
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('guides','${key}',this)" aria-label="Listen to Practical How-To Guides" title="Listen to Practical How-To Guides" tabindex="0">🔊<span class="sr-only"> Practical How-To Guides</span></button>
+      </div>
 
       <div class="acc-body">
 
@@ -7184,15 +7211,17 @@ function renderCondition(key) {
 
     <div class="acc-item" id="acc-tech-${key}">
 
-      <button class="acc-btn" onclick="toggleAcc('tech','${key}')" aria-expanded="false">
+      <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('tech','${key}')" aria-expanded="false">
 
         <span class="acc-left"><span class="acc-num">4</span><span class="acc-label">Assistive Technology</span></span>
 
-        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('tech','${key}',this)" aria-label="Listen to Assistive Technology" title="Listen to Assistive Technology">🔊</button>
+        
 
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('tech','${key}',this)" aria-label="Listen to Assistive Technology" title="Listen to Assistive Technology" tabindex="0">🔊<span class="sr-only"> Assistive Technology</span></button>
+      </div>
 
       <div class="acc-body">
 
@@ -7218,15 +7247,17 @@ function renderCondition(key) {
 
     <div class="acc-item" id="acc-support-${key}">
 
-      <button class="acc-btn" onclick="toggleAcc('support','${key}')" aria-expanded="false">
+      <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('support','${key}')" aria-expanded="false">
 
         <span class="acc-left"><span class="acc-num">5</span><span class="acc-label">Support &amp; Community</span></span>
 
-        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('support','${key}',this)" aria-label="Listen to Support and Community" title="Listen to Support and Community">🔊</button>
+        
 
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('support','${key}',this)" aria-label="Listen to Support and Community" title="Listen to Support and Community" tabindex="0">🔊<span class="sr-only"> Support and Community</span></button>
+      </div>
 
       <div class="acc-body">
 
@@ -7266,15 +7297,17 @@ function renderCondition(key) {
 
     <div class="acc-item" id="acc-benefits-${key}">
 
-      <button class="acc-btn" onclick="toggleAcc('benefits','${key}')" aria-expanded="false">
+      <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('benefits','${key}')" aria-expanded="false">
 
         <span class="acc-left"><span class="acc-num">6</span><span class="acc-label">Benefits &amp; Financial Help</span></span>
 
-        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('benefits','${key}',this)" aria-label="Listen to Benefits and Financial Help" title="Listen to Benefits and Financial Help">🔊</button>
+        
 
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('benefits','${key}',this)" aria-label="Listen to Benefits and Financial Help" title="Listen to Benefits and Financial Help" tabindex="0">🔊<span class="sr-only"> Benefits and Financial Help</span></button>
+      </div>
 
       <div class="acc-body">
 
@@ -7306,15 +7339,17 @@ function renderCondition(key) {
 
     <div class="acc-item" id="acc-living-${key}">
 
-      <button class="acc-btn" onclick="toggleAcc('living','${key}')" aria-expanded="false">
+      <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('living','${key}')" aria-expanded="false">
 
         <span class="acc-left"><span class="acc-num">7</span><span class="acc-label">Living with ${d.name}</span></span>
 
-        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('living','${key}',this)" aria-label="Listen to Living with this condition" title="Listen to Living with this condition">🔊</button>
+        
 
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('living','${key}',this)" aria-label="Listen to Living with this condition" title="Listen to Living with this condition" tabindex="0">🔊<span class="sr-only"> Living with this condition</span></button>
+      </div>
 
       <div class="acc-body">
 
@@ -7340,15 +7375,17 @@ function renderCondition(key) {
 
     <div class="acc-item" id="acc-parents-${key}">
 
-      <button class="acc-btn" onclick="toggleAcc('parents','${key}')" aria-expanded="false">
+      <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('parents','${key}')" aria-expanded="false">
 
         <span class="acc-left"><span class="acc-num">👶</span><span class="acc-label">For Parents</span></span>
 
-        <button class="acc-listen" onclick="event.stopPropagation();listenToSection('parents','${key}',this)" aria-label="Listen to For Parents" title="Listen to For Parents">🔊</button>
+        
 
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('parents','${key}',this)" aria-label="Listen to For Parents" title="Listen to For Parents" tabindex="0">🔊<span class="sr-only"> For Parents</span></button>
+      </div>
 
       <div class="acc-body">
 
@@ -7774,7 +7811,7 @@ function toggleWelsh() {
 
   document.body.classList.toggle('welsh-active', _isWelsh);
 
-  localStorage.setItem('vh-lang', _isWelsh ? 'cy' : 'en');
+  try { localStorage.setItem('vh-lang', _isWelsh ? 'cy' : 'en'); } catch(e) {}
 
   window.scrollTo({ top: 0, behavior: 'instant' });
 
@@ -8403,21 +8440,47 @@ function filterConds(q) {
 
   try {
 
+    // Size — default 1 (small)
     var savedSize = localStorage.getItem('vh-size');
-    var savedColour = localStorage.getItem('vh-colour');
-    localStorage.removeItem('vh-lang');
-
     var size = savedSize ? parseFloat(savedSize) : 1;
     setSize(size);
 
-    var colour = (savedColour !== null) ? savedColour : '';
-    if (colour !== '') setColour(colour);
-
+    // Colour theme — default light
+    var savedColour = localStorage.getItem('vh-colour') || '';
+    if (savedColour) setColour(savedColour);
     var sel = document.getElementById('col-select');
-    if (sel) sel.value = colour || '';
+    if (sel) sel.value = savedColour;
 
-    // Restore NR mode
+    // Narrow reading mode
     applyNRState();
+
+    // Dyslexia font
+    if (localStorage.getItem('dyslexic') === '1') {
+      document.body.classList.add('dyslexic');
+      var db = document.getElementById('dys-toggle');
+      if (db) db.setAttribute('aria-pressed', 'true');
+    }
+
+    // Reading ruler
+    if (localStorage.getItem('rule') === '1') {
+      document.body.classList.add('reading-ruler');
+      var rb = document.getElementById('rule-toggle');
+      if (rb) rb.setAttribute('aria-pressed', 'true');
+    }
+
+    // TTS speed
+    var ttsSpeed = localStorage.getItem('vh-tts-speed');
+    if (ttsSpeed) {
+      var spd = document.getElementById('tts-speed');
+      if (spd) spd.value = ttsSpeed;
+    }
+
+    // Welsh language — restore if previously chosen
+    if (localStorage.getItem('vh-lang') === 'cy') {
+      setTimeout(function() {
+        if (typeof toggleWelsh === 'function') toggleWelsh();
+      }, 100);
+    }
 
   } catch(e) {}
 
