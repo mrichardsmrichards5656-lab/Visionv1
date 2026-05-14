@@ -1657,13 +1657,16 @@ body.lb { --card: #d8eef8; --card2: #c8e4f4; }
   min-width:44px;min-height:50px;padding:4px 6px;flex-shrink:0;
   transition:background .15s,border-color .15s;
 }
-.tb-btn:hover,.tb-btn:focus-visible{background:var(--yellow);color:#000;border-color:var(--yellow);outline:2px solid var(--yellow);outline-offset:2px;}
+.tb-btn:hover{background:var(--yellow);color:#000;border-color:var(--yellow);}
+.tb-btn:focus-visible{outline:3px solid var(--yellow);outline-offset:2px;}
+.tb-btn[aria-pressed=false]:not(:hover){background:var(--card2);color:var(--text);border-color:var(--border);}
 .tb-btn[aria-pressed=true]{background:var(--yellow);color:#000;border-color:var(--yellow);}
 .tb-icon{font-size:1rem;line-height:1;font-weight:900;}
 .tb-label{font-size:0.55rem;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;line-height:1;white-space:nowrap;}
 .tb-select{height:50px;border-radius:10px;border:1.5px solid var(--border);background:var(--card2);color:var(--text);font-family:var(--font);font-size:0.75rem;padding:0 6px;flex-shrink:0;cursor:pointer;}
 .tb-lang{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-width:44px;min-height:50px;padding:4px 6px;border-radius:10px;border:2px solid #00b140;background:var(--card2);color:#00b140;font-family:var(--font);cursor:pointer;flex-shrink:0;gap:1px;}
 .tb-lang[aria-pressed=true]{background:#00b140;color:#fff;}
+.tb-lang[aria-pressed=false]:not(:hover){background:var(--card2);color:#00b140;}
 .tb-lang .tb-icon{font-size:0.9rem;font-weight:900;}
 .tb-lang .tb-label{font-size:0.5rem;color:inherit;}
 .tb-divider{width:1px;height:36px;background:var(--border);flex-shrink:0;}
@@ -8756,16 +8759,18 @@ if ('serviceWorker' in navigator) {
 
   // Split text into natural sentence chunks for sequential reading
   function ttsSplitSentences(text) {
-    // Split on sentence boundaries WITHOUT lookbehind (Android compatible)
-    var chunks = [];
-    // Insert a marker after sentence-ending punctuation before capitals
-    var marked = text.replace(/([.!?])\s+([A-ZÀ-ɏ“‘"])/g, '$1 $2');
-    var parts = marked.split(' ');
-    parts.forEach(function(p) {
-      p = p.trim();
-      if (p.length > 5) chunks.push(p);
+    // Android-safe sentence splitting - no lookbehind
+    var sentences = [];
+    // Add space after sentence-ending punctuation to help splitting
+    var t = text
+      .replace(/([.!?])\s+/g, '$1\x0a')
+      .replace(/\x0a+/g, '\x0a');
+    var lines = t.split('\x0a');
+    lines.forEach(function(line) {
+      line = line.trim();
+      if (line.length > 4) sentences.push(line);
     });
-    return chunks.length > 0 ? chunks : [text];
+    return sentences.length > 0 ? sentences : [text.trim()];
   }
 
   function ttsGetEl() {
@@ -8792,6 +8797,9 @@ if ('serviceWorker' in navigator) {
 
     synth.cancel();
     _ttsActive = true;
+
+    // Small delay after cancel gives browser time to release audio on mobile
+    setTimeout(function() {
 
     var el = ttsGetEl();
     var text = ttsReadableText(el);
@@ -8839,10 +8847,10 @@ if ('serviceWorker' in navigator) {
 
       if (st) st.textContent = 'Sentence ' + idx + ' of ' + sentences.length;
 
-      _ttsUtter.onend = function() { speakNext(voices); };
+      _ttsUtter.onend = function() { setTimeout(function(){ speakNext(voices); }, 30); };
       _ttsUtter.onerror = function(e) {
         if (e.error === 'interrupted') return;
-        speakNext(voices); // skip broken sentence, continue
+        setTimeout(function(){ speakNext(voices); }, 30);
       };
 
       synth.speak(_ttsUtter);
@@ -8858,6 +8866,8 @@ if ('serviceWorker' in navigator) {
         speakNext(synth.getVoices());
       };
     }
+
+    }, 150); // end of cancel timeout
   };
 
   window.ttsStop = function() {
