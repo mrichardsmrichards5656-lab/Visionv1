@@ -7789,6 +7789,16 @@ var _scrollPos = {};
 
 
 
+function applyNRState() {
+  var nrState = localStorage.getItem('vh-narrow');
+  if (nrState === '1') {
+    document.body.classList.add('narrow-reading');
+    document.body.classList.add('nr-active');
+    var b = document.getElementById('narrow-toggle');
+    if(b){ b.setAttribute('aria-pressed','true'); b.style.background='var(--yellow)'; b.style.color='#000'; }
+  }
+}
+
 function showPage(name) {
 
   // If Welsh active and going home, show Welsh home
@@ -8555,15 +8565,7 @@ if ('serviceWorker' in navigator) {
     srAnnounce(on ? 'Narrow reading on. Lines are now shorter for easier tracking.' : 'Narrow reading off.');
   };
 
-  function applyNRState() {
-    var nrState = localStorage.getItem('vh-narrow');
-    if (nrState === '1') {
-      document.body.classList.add('narrow-reading');
-      document.body.classList.add('nr-active');
-      var b = document.getElementById('narrow-toggle');
-      if(b){ b.setAttribute('aria-pressed','true'); b.style.background='var(--yellow)'; b.style.color='#000'; }
-    }
-  }
+  // applyNRState moved to top-level function below
 
   window.toggleReadingRuler = function(){
     var on = document.body.classList.toggle('reading-ruler');
@@ -8800,7 +8802,7 @@ if ('serviceWorker' in navigator) {
     textNodes.forEach(function(textNode) {
       var text = textNode.textContent;
       // Split on sentence endings
-      var parts = text.split(/(?<=[.!?])\s+/);
+      var parts = text.split(/([.!?]+)\s+/).reduce(function(acc,cur,i,arr){ if(i%2===0){acc.push(cur+(arr[i+1]||''));}return acc;},[]).filter(function(s){return s.trim();});
       if (parts.length <= 1) {
         // Wrap whole text node as one sentence
         var span = document.createElement('span');
