@@ -24,7 +24,7 @@
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -64,7 +64,7 @@
 
   --shadow: 0 2px 12px rgba(0,0,0,0.08);
 
-  --font:   'Inter', sans-serif;
+  --font:   'Atkinson Hyperlegible', sans-serif;
 
   --scale:  1;
 
@@ -134,6 +134,8 @@ html { font-size: calc(17px * var(--scale)); scroll-behavior: smooth; overflow-x
 body {
 
   font-family: var(--font);
+
+  font-weight: 400;
 
   font-size: 1rem;
 
@@ -1505,7 +1507,7 @@ body.dyslexic, body.dyslexic *{
   font-family:'Atkinson Hyperlegible','OpenDyslexic',Verdana,sans-serif!important;
   letter-spacing:0.03em;word-spacing:0.08em;line-height:1.7!important;
 }
-body.wide-spacing, body.wide-spacing *{letter-spacing:0.08em!important;word-spacing:0.16em!important;line-height:1.8!important}
+body.wide-spacing, body.wide-spacing *{letter-spacing:0.06em!important;word-spacing:0.12em!important;line-height:2.1!important}
 body.reading-ruler{cursor:none}
 .reading-ruler-bar{
   position:fixed;left:0;right:0;height:48px;background:rgba(245,184,0,0.18);
@@ -1643,6 +1645,31 @@ body.lb .acc-item.open { border-color: #0055a5 !important; }
 /* Force any element with inline background:var(--card) */
 body.lb { --card: #d8eef8; --card2: #c8e4f4; }
 
+
+/* ══ FOCUS MODE ══ */
+body.focus-mode .desktop-sidebar,
+body.focus-mode .hero,
+body.focus-mode .cond-section,
+body.focus-mode .search-wrap,
+body.focus-mode .share-bar,
+body.focus-mode .back-top,
+body.focus-mode footer,
+body.focus-mode .back-btn,
+body.focus-mode .section-divider,
+body.focus-mode .founder-box,
+body.focus-mode #video-resources-wrap,
+body.focus-mode .news-box { display: none !important; }
+body.focus-mode .desktop-main { margin: 0 auto !important; max-width: 680px !important; }
+body.focus-mode .cond-page-inner { padding: 20px !important; }
+body.focus-mode .legal-wrap { padding-top: 16px !important; }
+body.focus-mode::after {
+  content: 'Focus Mode — distractions hidden';
+  position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
+  background: var(--yellow); color: #000; font-size: 0.7rem; font-weight: 800;
+  padding: 4px 12px; border-radius: 50px; z-index: 9999;
+  font-family: var(--font); pointer-events: none; opacity: 0.8;
+}
+
 .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
 </style>
 
@@ -1710,10 +1737,15 @@ body.lb { --card: #d8eef8; --card2: #c8e4f4; }
   <button class="tb-btn" id="dys-toggle"    onclick="toggleDyslexic()"       aria-pressed="false" aria-label="Toggle dyslexia-friendly font"><span class="tb-icon" style="font-size:0.85rem">Aa</span><span class="tb-label">Dyslexic</span></button>
   <button class="tb-btn" id="rule-toggle"   onclick="toggleReadingRuler()"   aria-pressed="false" aria-label="Toggle reading ruler"><span class="tb-icon">▭</span><span class="tb-label">Ruler</span></button>
   <button class="tb-btn" id="tts-toggle"    onclick="togglePageSpeech()"     aria-pressed="false" aria-label="Read page aloud"><span class="tb-icon">🔊</span><span class="tb-label">Listen</span></button>
+  <button class="tb-btn" id="spacing-toggle" onclick="toggleSpacing()" aria-pressed="false" aria-label="Increase line spacing"><span class="tb-icon" style="font-size:0.8rem">≡</span><span class="tb-label">Spacing</span></button>
 
   <div class="tb-divider"></div>
 
-  <button class="tb-lang" id="welsh-toggle" onclick="toggleWelsh()" aria-pressed="false" aria-label="Switch to Welsh / Newid i Gymraeg"><span class="tb-icon">🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁥</span><span class="tb-label">Welsh</span></button>
+  <button class="tb-btn" id="focus-toggle" onclick="toggleFocusMode()" aria-pressed="false" aria-label="Focus mode — hide distractions"><span class="tb-icon">🎯</span><span class="tb-label">Focus</span></button>
+
+  <div class="tb-divider"></div>
+
+  <button class="tb-lang" id="welsh-toggle" onclick="toggleWelsh()" aria-pressed="false" aria-label="Switch to Welsh / Newid i Gymraeg"><span class="tb-icon">🏴󠁧󠁢󠁷󠁬󠁳??󠁳󠁥</span><span class="tb-label">Welsh</span></button>
 
 </div>
 
@@ -2156,6 +2188,12 @@ body.lb { --card: #d8eef8; --card2: #c8e4f4; }
 
       <div class="sidebar-divider"></div>
 
+      <button class="sidebar-link" onclick="showPage('benefits-calc')">💰 Benefits Calculator</button>
+      <button class="sidebar-link" onclick="showPage('trials')">🔬 Clinical Trials</button>
+      <button class="sidebar-link" onclick="showPage('eclo')">👁️ Find Your ECLO</button>
+
+      <div class="sidebar-divider"></div>
+
       <button class="sidebar-link" onclick="showPage('help')"><span aria-hidden="true">🆘</span> Help &amp; Support</button>
       <button class="sidebar-link" onclick="showPage('contact')"><span aria-hidden="true">✉️</span> Contact</button>
 
@@ -2429,6 +2467,12 @@ body.lb { --card: #d8eef8; --card2: #c8e4f4; }
 
       </div>
 
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px" role="group" aria-label="More resources">
+        <button onclick="showPage('benefits-calc')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Benefits Calculator">💰 Benefits Calc</button>
+        <button onclick="showPage('trials')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Find Clinical Trials">🔬 Trials</button>
+        <button onclick="showPage('eclo')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Find Your ECLO">👁️ ECLO</button>
+      </div>
+
 
 
 </section>
@@ -2602,6 +2646,12 @@ body.lb { --card: #d8eef8; --card2: #c8e4f4; }
       <div class="sidebar-divider"></div>
 
       <button class="sidebar-link" onclick="showPage('home')">🏠 Home</button>
+
+      <button class="sidebar-link" onclick="showPage('benefits-calc')">💰 Benefits Calculator</button>
+      <button class="sidebar-link" onclick="showPage('trials')">🔬 Clinical Trials</button>
+      <button class="sidebar-link" onclick="showPage('eclo')">👁️ Find Your ECLO</button>
+
+      <div class="sidebar-divider"></div>
 
       <button class="sidebar-link" onclick="showPage('help')"><span aria-hidden="true">🆘</span> Help &amp; Support</button>
       <button class="sidebar-link" onclick="showPage('contact')"><span aria-hidden="true">✉️</span> Contact</button>
@@ -5015,6 +5065,174 @@ body.lb { --card: #d8eef8; --card2: #c8e4f4; }
 
 
 
+<!-- ══════════════════════════════════════
+     ECLO FINDER PAGE
+══════════════════════════════════════ -->
+<div id="page-eclo" class="page" role="main" aria-label="Find Your ECLO">
+  <div class="legal-wrap">
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <span class="legal-eyebrow">Eye Clinic Support</span>
+    <h1>Find Your ECLO</h1>
+    <p style="font-size:0.95rem;color:var(--text2);margin-bottom:24px;line-height:1.8">An <strong>Eye Clinic Liaison Officer (ECLO)</strong> is a specialist support worker based in hospital eye clinics. They are one of the most useful — and least known — resources available to people with sight loss. Their help is free.</p>
+
+    <div class="lc" style="border-color:var(--yellow)">
+      <h2>What does an ECLO do?</h2>
+      <p>An ECLO bridges the gap between your clinical appointment and your life outside the clinic. They can:</p>
+      <ul style="margin-top:10px">
+        <li>Explain your diagnosis in plain language after your appointment</li>
+        <li>Help you understand what support and benefits you are entitled to</li>
+        <li>Refer you to rehabilitation services, social care, and local support groups</li>
+        <li>Help you fill in CVI paperwork and benefits forms</li>
+        <li>Connect you with counselling and emotional support</li>
+        <li>Advise on assistive technology and practical daily living aids</li>
+      </ul>
+    </div>
+
+    <div class="lc">
+      <h2>🔍 Find your ECLO</h2>
+      <p>ECLOs are employed by hospital eye departments or charities such as RNIB, Macular Society, and Glaucoma UK. The best way to find yours:</p>
+      <ol style="margin-top:10px;padding-left:20px;line-height:2">
+        <li><strong>Ask at your eye clinic</strong> — ask the receptionist or your ophthalmologist whether there is an ECLO at your hospital. Many clinics don't advertise them prominently.</li>
+        <li><strong>Contact RNIB</strong> — call <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a>. RNIB funds ECLOs in many UK hospitals and can tell you whether yours has one.</li>
+        <li><strong>Macular Society ECLO search</strong> — if you have a macular condition, the Macular Society funds dedicated ECLOs at many UK hospitals.</li>
+      </ol>
+      <p style="margin-top:14px"><a href="https://www.macularsociety.org/support/eclo/" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700">Find a Macular Society ECLO ↗</a></p>
+      <p style="margin-top:10px"><a href="https://www.rnib.org.uk/eye-health/eclo/" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700">Find an RNIB ECLO ↗</a></p>
+    </div>
+
+    <div class="lc">
+      <h2>💡 If your clinic doesn't have an ECLO</h2>
+      <p>Not every hospital has an ECLO — particularly smaller or more rural units. If yours doesn't:</p>
+      <ul style="margin-top:10px">
+        <li><strong>Ask your ophthalmologist</strong> to refer you to one at a larger nearby centre</li>
+        <li><strong>Contact your local sight loss charity</strong> — many provide similar one-to-one support</li>
+        <li>RNIB's helpline (0303 123 9999) provides telephone ECLO-style support</li>
+        <li>The Macular Society's helpline (0300 3030 111) has specialist nurse advisors</li>
+      </ul>
+    </div>
+
+    <div class="lc">
+      <h2>👁️ What to ask your ECLO</h2>
+      <ul style="margin-top:8px">
+        <li>What does my diagnosis mean in practical terms day to day?</li>
+        <li>What benefits and financial support am I entitled to?</li>
+        <li>How do I get my Certificate of Visual Impairment (CVI)?</li>
+        <li>Can you refer me to a Vision Rehabilitation Specialist?</li>
+        <li>Are there support groups for my condition in this area?</li>
+        <li>What assistive technology would help me most?</li>
+        <li>Are there any clinical trials I might be eligible for?</li>
+      </ul>
+    </div>
+
+    <div class="wb"><strong>Newly diagnosed?</strong> Requesting an ECLO appointment is one of the first five steps we recommend — see our <button onclick="showPage('home')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Just Diagnosed guide on the home page</button>.</div>
+
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px">← Back to home</button>
+  </div>
+</div>
+<!-- ══════════════════════════════════════
+     CLINICAL TRIALS PAGE
+══════════════════════════════════════ -->
+<div id="page-trials" class="page" role="main" aria-label="Clinical Trials Finder">
+  <div class="legal-wrap">
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <span class="legal-eyebrow">Research</span>
+    <h1>Clinical Trials Finder</h1>
+    <p style="font-size:0.95rem;color:var(--text2);margin-bottom:24px;line-height:1.8">UK clinical trials currently recruiting or recently active for inherited and acquired eye conditions. Select your condition to see what's available.</p>
+
+    <div class="wb"><strong>Always discuss trials with your ophthalmologist</strong> before registering interest. Eligibility depends on your specific genetic mutation, disease stage, and other factors.</div>
+
+    <div style="margin:20px 0">
+      <label for="trials-condition-sel" style="display:block;font-size:0.88rem;font-weight:700;color:var(--text2);margin-bottom:8px">Select your condition:</label>
+      <select id="trials-condition-sel" onchange="showTrialsForCondition(this.value)" class="tb-select" style="width:100%;height:52px;font-size:1rem;border-radius:12px;padding:0 16px;border:2px solid var(--border)">
+        <option value="">— Choose a condition —</option>
+        <option value="stargardts">Stargardt Disease</option>
+        <option value="amd">Age-Related Macular Degeneration</option>
+        <option value="rp">Retinitis Pigmentosa</option>
+        <option value="lca">Leber Congenital Amaurosis</option>
+        <option value="usher">Usher Syndrome</option>
+        <option value="achromatopsia">Achromatopsia</option>
+        <option value="cone">Cone Dystrophy</option>
+        <option value="glaucoma">Glaucoma</option>
+        <option value="diabetic">Diabetic Retinopathy / DMO</option>
+        <option value="nystagmus">Nystagmus</option>
+        <option value="cvi">Cerebral Visual Impairment</option>
+        <option value="myopic">Myopic Macular Degeneration</option>
+        <option value="charlesbonnet">Charles Bonnet Syndrome</option>
+        <option value="opticneuritis">Optic Neuritis / MS</option>
+        <option value="albinism">Albinism</option>
+      </select>
+    </div>
+
+    <div id="trials-results" style="margin-top:8px"></div>
+
+    <div class="lc" style="margin-top:24px">
+      <h2>🔍 Search all UK eye trials</h2>
+      <p>NIHR's Be Part of Research covers all UK clinical trials. Search by your specific condition for the most current recruitment status.</p>
+      <p style="margin-top:12px"><a href="https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=eye+vision&location=" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700;font-size:1rem">Search NIHR Be Part of Research ↗</a></p>
+    </div>
+    <div class="lc">
+      <h2>🧬 Genetic testing for trial eligibility</h2>
+      <p>Many trials require a confirmed genetic diagnosis. NHS genetic testing for inherited eye conditions is free — ask your ophthalmologist for a referral to an Inherited Retinal Disease clinic. Your specific mutation determines which trials you can access.</p>
+    </div>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px">← Back to home</button>
+  </div>
+</div>
+<!-- ══════════════════════════════════════
+     BENEFITS CALCULATOR PAGE
+══════════════════════════════════════ -->
+<div id="page-benefits-calc" class="page" role="main" aria-label="Benefits Calculator">
+  <div class="legal-wrap">
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <span class="legal-eyebrow">Financial Support</span>
+    <h1>Benefits Calculator</h1>
+    <p style="font-size:0.95rem;color:var(--text2);margin-bottom:28px;line-height:1.8">Answer a few questions to find out which UK benefits and financial support you or your child may be entitled to. Rates are May 2026 figures.</p>
+
+    <div class="wb"><strong>Important:</strong> This tool gives guidance only. Always apply with support from RNIB (0303 123 9999) or Citizens Advice — applications made with help succeed far more often.</div>
+
+    <div id="bc-quiz" style="margin-top:24px">
+      <!-- Q1 -->
+      <div id="bc-q1" class="lc">
+        <h2>Who is this for?</h2>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+          <button class="cf-submit" style="background:var(--card2);color:var(--text);border:2px solid var(--border)" onclick="bcAnswer('who','adult')">Myself (adult aged 16–66)</button>
+          <button class="cf-submit" style="background:var(--card2);color:var(--text);border:2px solid var(--border)" onclick="bcAnswer('who','pension')">Myself (over state pension age)</button>
+          <button class="cf-submit" style="background:var(--card2);color:var(--text);border:2px solid var(--border)" onclick="bcAnswer('who','child')">My child (under 16)</button>
+        </div>
+      </div>
+      <!-- Q2 -->
+      <div id="bc-q2" class="lc" style="display:none">
+        <h2>Are you currently working?</h2>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+          <button class="cf-submit" style="background:var(--card2);color:var(--text);border:2px solid var(--border)" onclick="bcAnswer('working','yes')">Yes, employed or self-employed</button>
+          <button class="cf-submit" style="background:var(--card2);color:var(--text);border:2px solid var(--border)" onclick="bcAnswer('working','no')">No, not currently working</button>
+          <button class="cf-submit" style="background:var(--card2);color:var(--text);border:2px solid var(--border)" onclick="bcAnswer('working','student')">Student</button>
+        </div>
+      </div>
+      <!-- Q3 -->
+      <div id="bc-q3" class="lc" style="display:none">
+        <h2>How does your sight condition affect daily life?</h2>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+          <button class="cf-submit" style="background:var(--card2);color:var(--text);border:2px solid var(--border)" onclick="bcAnswer('impact','severe')">Significantly — I need help with daily tasks or getting around</button>
+          <button class="cf-submit" style="background:var(--card2);color:var(--text);border:2px solid var(--border)" onclick="bcAnswer('impact','moderate')">Moderately — some tasks are difficult but I manage most things</button>
+          <button class="cf-submit" style="background:var(--card2);color:var(--text);border:2px solid var(--border)" onclick="bcAnswer('impact','mild')">Mildly — mainly affects reading or fine detail</button>
+        </div>
+      </div>
+      <!-- Q4 -->
+      <div id="bc-q4" class="lc" style="display:none">
+        <h2>Do you have a Certificate of Visual Impairment (CVI)?</h2>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+          <button class="cf-submit" style="background:var(--card2);color:var(--text);border:2px solid var(--border)" onclick="bcAnswer('cvi','yes')">Yes</button>
+          <button class="cf-submit" style="background:var(--card2);color:var(--text);border:2px solid var(--border)" onclick="bcAnswer('cvi','no')">No</button>
+          <button class="cf-submit" style="background:var(--card2);color:var(--text);border:2px solid var(--border)" onclick="bcAnswer('cvi','unsure')">Not sure</button>
+        </div>
+      </div>
+      <!-- Results -->
+      <div id="bc-results" style="display:none"></div>
+      <!-- Restart -->
+      <button id="bc-restart" onclick="bcRestart()" class="back-btn" style="display:none;margin-top:16px">← Start again</button>
+    </div>
+  </div>
+</div>
 <button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 
@@ -6896,6 +7114,7 @@ function renderCondition(key) {
   <div class="cond-hero">
 
     <button class="back-btn" onclick="showPage('home')" aria-label="Back to conditions list">${_isWelsh ? '← Pob Cyflwr' : '← All Conditions'}</button>
+    <button onclick="window.print()" class="back-btn" style="margin-left:8px;color:var(--text2)" aria-label="Print or save as PDF"><span aria-hidden="true">🖨️</span> Print / Save PDF</button>
 
     ${(function(){
       var tips={
@@ -7842,6 +8061,19 @@ function showPage(name) {
   var _activePage = document.querySelector('.page.active');
   if (_activePage) setTimeout(function(){ addListenButtons(_activePage); }, 100);
 
+  // Add print button to legal pages if not already there
+  var _lw = _activePage && _activePage.querySelector('.legal-wrap');
+  if (_lw && !_lw.querySelector('.print-btn-added')) {
+    var _pb = document.createElement('button');
+    _pb.className = 'back-btn print-btn-added';
+    _pb.style.cssText = 'color:var(--text2);margin-bottom:16px';
+    _pb.setAttribute('aria-label', 'Print or save as PDF');
+    _pb.innerHTML = '🖨️ Print / Save PDF';
+    _pb.onclick = function() { window.print(); };
+    var _firstBack = _lw.querySelector('.back-btn');
+    if (_firstBack) _firstBack.parentNode.insertBefore(_pb, _firstBack.nextSibling);
+  }
+
 }
 
 
@@ -8553,6 +8785,21 @@ if ('serviceWorker' in navigator) {
   };
 
   // Dyslexia-friendly font
+  window.toggleFocusMode = function() {
+    var on = document.body.classList.toggle('focus-mode');
+    var b = document.getElementById('focus-toggle');
+    if (b) { b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.blur(); }
+    srAnnounce(on ? 'Focus mode on — sidebar and navigation hidden' : 'Focus mode off');
+  };
+
+  window.toggleSpacing = function() {
+    var on = document.body.classList.toggle('wide-spacing');
+    try { localStorage.setItem('vh-spacing', on ? '1' : '0'); } catch(e) {}
+    var b = document.getElementById('spacing-toggle');
+    if (b) { b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.blur(); }
+    srAnnounce(on ? 'Wide line spacing on' : 'Line spacing normal');
+  };
+
   window.toggleDyslexic = function(){
     var on = document.body.classList.toggle('dyslexic');
     try{ localStorage.setItem('dyslexic', on?'1':'0'); }catch(e){}
@@ -9038,6 +9285,187 @@ function copyAISLetter(){
   ta.select();
   try{ document.execCommand('copy'); if(window.srAnnounce) srAnnounce('Letter copied to clipboard'); }
   catch(e){ alert('Press Ctrl+C / Cmd+C to copy.'); }
+}
+
+// == BENEFITS CALCULATOR ==
+var _bcAnswers = {};
+function bcCard(title, amount, desc, link, linkText) {
+  return '<div class="lc" style="border-color:var(--yellow);margin-bottom:10px">' +
+    '<h2 style="color:var(--yellow)">' + title + '</h2>' +
+    (amount ? '<p style="font-size:1.1rem;font-weight:900;color:var(--text);margin-bottom:8px">' + amount + '</p>' : '') +
+    '<p>' + desc + '</p>' +
+    (link ? '<p style="margin-top:10px"><a href="' + link + '" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700">' + linkText + ' &rarr;</a></p>' : '') +
+    '</div>';
+}
+function bcAnswer(q, val) {
+  _bcAnswers[q] = val;
+  ['bc-q1','bc-q2','bc-q3','bc-q4','bc-results','bc-restart'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.style.display = 'none';
+  });
+  if (q === 'who') {
+    if (val === 'child') { bcShowChildResults(); return; }
+    if (val === 'pension') { bcShowPensionResults(); return; }
+    document.getElementById('bc-q2').style.display = 'block';
+  } else if (q === 'working') {
+    document.getElementById('bc-q3').style.display = 'block';
+  } else if (q === 'impact') {
+    document.getElementById('bc-q4').style.display = 'block';
+  } else if (q === 'cvi') {
+    bcShowAdultResults();
+  }
+}
+function bcShowAdultResults() {
+  var impact = _bcAnswers.impact, working = _bcAnswers.working, hasCvi = _bcAnswers.cvi;
+  var cards = '', headline = '';
+  if (impact === 'severe') {
+    headline = 'Based on your answers, you are likely entitled to several significant benefits.';
+    cards += bcCard('PIP - Daily Living (Enhanced)', '&pound;114.60/week (May 2026)', 'For daily living difficulties caused by sight loss. RNIB will help you apply for free.', 'https://www.gov.uk/pip', 'Apply at gov.uk/pip');
+    cards += bcCard('PIP - Mobility (Enhanced)', '&pound;80.00/week (May 2026)', 'Enhanced rate qualifies for Motability Scheme.', 'https://www.gov.uk/pip', 'Apply at gov.uk/pip');
+    if (working === 'yes') cards += bcCard('Access to Work', 'Up to &pound;69,260/year', 'Grant for specialist equipment and support at work. Apply BEFORE buying anything.', 'https://www.gov.uk/access-to-work', 'Apply at gov.uk');
+    if (working === 'no') cards += bcCard('Universal Credit / ESA', 'Varies', 'If you cannot work, you may qualify for Universal Credit with Limited Capability for Work.', 'https://www.gov.uk/universal-credit', 'Check at gov.uk');
+  } else if (impact === 'moderate') {
+    headline = 'You are likely entitled to at least PIP Daily Living at standard rate.';
+    cards += bcCard('PIP - Daily Living (Standard)', '&pound;43.00/week (May 2026)', 'Even moderate sight loss usually qualifies. Do not assume you will not qualify.', 'https://www.gov.uk/pip', 'Apply at gov.uk/pip');
+    if (working === 'yes') cards += bcCard('Access to Work', 'Up to &pound;69,260/year', 'Funds screen magnification, large print, and adjusted lighting at work.', 'https://www.gov.uk/access-to-work', 'Apply at gov.uk');
+  } else {
+    headline = 'Your situation may still qualify for support.';
+    cards += bcCard('Free NHS Eye Tests', 'Free', 'A diagnosed sight condition means free NHS eye tests and enhanced optical vouchers.', 'https://www.nhs.uk', 'Check at nhs.uk');
+  }
+  if (hasCvi === 'yes') {
+    cards += bcCard('Free Bus Pass', 'Free', 'CVI registration qualifies you for a free bus pass. Apply via your local council.', 'https://www.gov.uk/apply-for-disabled-bus-pass', 'Apply at gov.uk');
+    cards += bcCard('Blue Badge', 'Free', 'Severely sight impaired registration = automatic Blue Badge eligibility.', 'https://www.gov.uk/apply-blue-badge', 'Apply at gov.uk');
+    cards += bcCard('Council Tax Reduction', 'Up to 25% off', 'Tell your local council you have a CVI.', '', '');
+    cards += bcCard('50% TV Licence Discount', '&pound;79.85 saving/year', 'SSI/blind registration. Apply at tvlicensing.co.uk.', 'https://www.tvlicensing.co.uk', 'Apply');
+  } else {
+    cards += bcCard('Get Your CVI First', 'Unlocks major benefits', 'A CVI from your ophthalmologist is free and unlocks bus pass, Blue Badge, council tax reduction and more.', '', '');
+  }
+  if (hasCvi === 'yes' && impact === 'severe') {
+    cards += bcCard("Blind Person's Tax Allowance", '&pound;3,130 added to Personal Allowance', 'Registered SSI? Tell HMRC - not applied automatically.', 'https://www.gov.uk/blind-persons-allowance', 'Claim at gov.uk');
+  }
+  cards += '<div class="wb" style="margin-top:16px"><strong>Next step:</strong> Call RNIB on <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a> for a free personalised benefits check.</div>';
+  var r = document.getElementById('bc-results');
+  r.innerHTML = '<div class="lc" style="margin-bottom:16px"><h2>Your Results</h2><p>' + headline + '</p></div>' + cards;
+  r.style.display = 'block';
+  document.getElementById('bc-restart').style.display = 'inline-flex';
+  r.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function bcShowPensionResults() {
+  var cards = '';
+  cards += bcCard('Attendance Allowance', '&pound;73.90 or &pound;110.40/week', 'For over state pension age with care needs.', 'https://www.gov.uk/attendance-allowance', 'Apply at gov.uk');
+  cards += bcCard('Pension Credit', 'Tops up to &pound;218.15/week', 'Widely unclaimed. Unlocks free dental, rent help, Council Tax Reduction.', 'https://www.gov.uk/pension-credit', 'Check at gov.uk');
+  cards += bcCard('CVI Benefits', 'Bus pass, Blue Badge, TV licence', 'Free from your ophthalmologist. Unlocks multiple benefits.', '', '');
+  cards += '<div class="wb" style="margin-top:16px"><strong>Next step:</strong> Call Age UK on <a href="tel:08001696565" style="color:var(--yellow);font-weight:700">0800 169 6565</a> for a free benefits check.</div>';
+  var r = document.getElementById('bc-results');
+  r.innerHTML = '<div class="lc" style="margin-bottom:16px"><h2>Your Results</h2><p>As an older person with a sight condition, you have several specific entitlements.</p></div>' + cards;
+  r.style.display = 'block'; document.getElementById('bc-restart').style.display = 'inline-flex';
+  r.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function bcShowChildResults() {
+  var cards = '';
+  cards += bcCard('Disability Living Allowance (DLA)', 'Up to &pound;194.60/week', 'Both Care and Mobility components may apply. RNIB will help free.', 'https://www.gov.uk/disability-living-allowance-children', 'Apply at gov.uk');
+  cards += bcCard('EHC Plan', 'Legally binding school support', 'Funds QTVI, specialist technology, large print, and extra exam time.', 'https://www.gov.uk/children-with-special-educational-needs', 'Guidance at gov.uk');
+  cards += bcCard("Carer's Allowance", '&pound;86.45/week', 'If you provide 35+ hours of care per week.', 'https://www.gov.uk/carers-allowance', 'Check at gov.uk');
+  cards += '<div class="wb" style="margin-top:16px"><strong>Next step:</strong> Call RNIB on <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a> for free help with DLA forms.</div>';
+  var r = document.getElementById('bc-results');
+  r.innerHTML = '<div class="lc" style="margin-bottom:16px"><h2>Your Results</h2><p>Children with sight conditions are entitled to significant support.</p></div>' + cards;
+  r.style.display = 'block'; document.getElementById('bc-restart').style.display = 'inline-flex';
+  r.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function bcRestart() {
+  _bcAnswers = {};
+  ['bc-q2','bc-q3','bc-q4','bc-results','bc-restart'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.style.display = 'none';
+  });
+  document.getElementById('bc-q1').style.display = 'block';
+  document.getElementById('bc-q1').scrollIntoView({ behavior: 'smooth' });
+}
+
+// == CLINICAL TRIALS FINDER ==
+var TRIALS_DATA = {
+  stargardts:[
+    {tag:'Phase 1/2',title:'SpliceBio SB-007 - ASTRA Trial (Oxford)',body:'Covers all ABCA4 mutations. Recruiting at Oxford.',link:'https://splice.bio'},
+    {tag:'Phase 1/2',title:'AAVantgarde AAVB-039 - CELESTE (UK)',body:'Dual-vector AAV gene therapy. UK MHRA approved. Recruiting UK and US.',link:'https://www.aavantgarde.com'},
+    {tag:'Phase 3 Complete',title:'Tinlarebant (Belite Bio)',body:'FDA approval sought 2026. Not yet available.',link:'https://retinauk.org.uk/medical-research/'},
+    {tag:'Find More',title:'NIHR Be Part of Research',body:'Search current UK Stargardt trials.',link:'https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=Stargardt&location='}
+  ],
+  amd:[
+    {tag:'NHS Approved',title:'Pegcetacoplan (Syfovre) - Geographic Atrophy',body:'First approved treatment for advanced dry AMD. NICE approved.',link:'https://www.nice.org.uk/guidance/ta897'},
+    {tag:'NHS Approved',title:'Faricimab (Vabysmo) - Wet AMD',body:'Up to every 4 months. NICE approved.',link:'https://www.nice.org.uk/guidance/ta897'},
+    {tag:'Phase 3',title:'4D-150 Gene Therapy',body:'Single injection for continuous anti-VEGF. Data expected 2027.',link:'https://clinicaltrials.gov'},
+    {tag:'Find More',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=macular+degeneration&location='}
+  ],
+  rp:[
+    {tag:'NHS Approved',title:'Luxturna - RPE65 Mutations',body:'Available now at NHS specialist centres.',link:'https://www.nice.org.uk/guidance/hst11'},
+    {tag:'Phase 2/3',title:'MeiraGTx RPGR Gene Therapy',body:'X-linked RP. Significant visual field preservation at 12 months.',link:'https://retinauk.org.uk/medical-research/'},
+    {tag:'Find More',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=retinitis+pigmentosa&location='}
+  ],
+  lca:[
+    {tag:'NHS Approved',title:'Luxturna - RPE65-LCA',body:'Available at NHS specialist centres.',link:'https://www.nice.org.uk/guidance/hst11'},
+    {tag:'Phase 1/2',title:'EDIT-101 CRISPR - CEP290',body:'Most common LCA gene. Phase 1/2 results encouraging.',link:'https://retinauk.org.uk/medical-research/'},
+    {tag:'Find More',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=leber+congenital+amaurosis&location='}
+  ],
+  usher:[
+    {tag:'Phase 2',title:'QR-421a - USH2A',body:'24-month data shows preserved visual function.',link:'https://retinauk.org.uk/medical-research/'},
+    {tag:'Find More',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=usher+syndrome&location='}
+  ],
+  achromatopsia:[
+    {tag:'Phase 1/2',title:'CNGB3 Gene Therapy (50% of cases)',body:'Good safety data and early functional improvements.',link:'https://retinauk.org.uk/medical-research/'},
+    {tag:'Phase 1/2',title:'CNGA3 Gene Therapy',body:'Promising safety and early efficacy signals.',link:'https://retinauk.org.uk/medical-research/'},
+    {tag:'Find More',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=achromatopsia&location='}
+  ],
+  cone:[
+    {tag:'Phase 2/3',title:'MeiraGTx RPGR - X-Linked Cone Dystrophy',body:'Significant preservation of visual function.',link:'https://retinauk.org.uk/medical-research/'},
+    {tag:'Find More',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=cone+dystrophy&location='}
+  ],
+  glaucoma:[
+    {tag:'FDA Approved - UK Pending',title:'iDose TR Travoprost Implant',body:'Continuous medication. Expected UK 1-2 years.',link:'https://glaucoma.uk'},
+    {tag:'Find More',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=glaucoma&location='}
+  ],
+  diabetic:[
+    {tag:'NHS Approved',title:'Faricimab (Vabysmo) - DMO',body:'Up to every 4 months. NICE approved.',link:'https://www.nice.org.uk/guidance/ta799'},
+    {tag:'NHS Approved',title:'Aflibercept HD (Eylea HD)',body:'Fewer injections. NICE approved 2024.',link:'https://www.nice.org.uk'},
+    {tag:'Find More',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=diabetic+retinopathy&location='}
+  ],
+  nystagmus:[
+    {tag:'Available',title:'Tenotomy (Anderson Procedure)',body:'Eye muscle surgery shifting the null zone.',link:'https://www.nystagmusnet.org'},
+    {tag:'Find More',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=nystagmus&location='}
+  ],
+  cvi:[
+    {tag:'Evidence-Based',title:'Active Learning (CVI Scotland)',body:'Strong evidence for improving visual function in children.',link:'https://cviscotland.org'},
+    {tag:'Find Studies',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=cerebral+visual+impairment&location='}
+  ],
+  myopic:[
+    {tag:'NHS Available',title:'Anti-VEGF for Myopic CNV',body:'Seek same-day treatment if CNV detected.',link:'https://www.macularsociety.org'},
+    {tag:'Find More',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=myopic+macular&location='}
+  ],
+  charlesbonnet:[
+    {tag:'Pipeline',title:'TMS Brain Stimulation - UCL',body:'Non-invasive. Early-stage research.',link:'https://www.charlesbonnetsyndrome.uk'},
+    {tag:'Find More',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=charles+bonnet&location='}
+  ],
+  opticneuritis:[
+    {tag:'Standard Treatment',title:'IV Methylprednisolone',body:'Speeds recovery from acute episode. Standard UK care.',link:'https://www.mssociety.org.uk'},
+    {tag:'Find More',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=optic+neuritis&location='}
+  ],
+  albinism:[
+    {tag:'Horizon (5-10 years)',title:'OCA1/OCA2 Gene Therapy',body:'Preclinical. University of Manchester partnerships.',link:'https://www.albinism.org.uk'},
+    {tag:'Find More',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=albinism&location='}
+  ]
+};
+function showTrialsForCondition(key) {
+  var container = document.getElementById('trials-results');
+  if (!key) { container.innerHTML = ''; return; }
+  var trials = TRIALS_DATA[key];
+  if (!trials) { container.innerHTML = '<div class="wb">No trial data yet.</div>'; return; }
+  var label = document.querySelector('#trials-condition-sel option:checked');
+  var html = '<h2 style="color:var(--yellow);margin-bottom:16px">' + (label ? label.textContent : '') + '</h2>';
+  trials.forEach(function(t) {
+    html += '<div class="lc" style="margin-bottom:10px"><span style="display:inline-block;background:rgba(245,184,0,0.12);border:1px solid var(--yellow);color:var(--yellow);font-size:0.7rem;font-weight:800;padding:3px 10px;border-radius:50px;margin-bottom:8px">' + t.tag + '</span><h2 style="font-size:1rem">' + t.title + '</h2>';
+    if (t.body) html += '<p style="margin-top:6px">' + t.body + '</p>';
+    if (t.link) html += '<p style="margin-top:10px"><a href="' + t.link + '" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700">More information</a></p>';
+    html += '</div>';
+  });
+  container.innerHTML = html;
+  container.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 </script>
