@@ -1753,7 +1753,7 @@ body.focus-mode::after {
 .tb-btn[aria-pressed="true"]{background:var(--yellow) !important;color:#000 !important;border-color:var(--yellow) !important;}
 .tb-icon{font-size:1rem;line-height:1;font-weight:900;}
 .tb-label{font-size:0.55rem;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;line-height:1;white-space:nowrap;}
-.tb-select{height:50px;border-radius:10px;border:1.5px solid var(--border);background:var(--card2);color:var(--text);font-family:var(--font);font-size:0.75rem;padding:0 6px;flex-shrink:0;cursor:pointer;}
+.tb-select{height:50px;border-radius:10px;border:1.5px solid var(--border);background:var(--card2);color:var(--text);font-family:var(--font);font-size:0.65rem;padding:0 2px;flex-shrink:0;cursor:pointer;max-width:80px;}
 .tb-lang{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-width:44px;min-height:50px;padding:4px 6px;border-radius:10px;border:2px solid #00b140;background:var(--card2);color:#00b140;font-family:var(--font);cursor:pointer;flex-shrink:0;gap:1px;}
 .tb-lang[aria-pressed=true]{background:#00b140;color:#fff;}
 .tb-lang[aria-pressed=false]:not(:hover){background:var(--card2);color:#00b140;}
@@ -1765,7 +1765,7 @@ body.focus-mode::after {
 <div class="a11y-bar-outer">
 <div class="a11y-bar" role="toolbar" aria-label="Accessibility controls">
 
-  <span class="site-name" onclick="showPage('home')" role="link" tabindex="0" aria-label="Vision Hub home" style="font-weight:900;color:var(--yellow);cursor:pointer;flex-shrink:0;font-size:0.85rem;white-space:nowrap">Vision Hub</span>
+  <span class="site-name" onclick="showPage('home')" role="link" tabindex="0" aria-label="Vision Hub home" style="font-weight:900;color:var(--yellow);cursor:pointer;flex-shrink:0;white-space:nowrap;font-size:0.75rem">VH</span>
 
   <div class="tb-divider"></div>
 
@@ -1780,11 +1780,11 @@ body.focus-mode::after {
 
   <select id="col-select" onchange="setColour(this.value)" aria-label="Colour theme" class="tb-select" title="Colour theme">
     <option value="">☀️ Light</option>
-    <option value="lb">💙 Blue/Black</option>
+    <option value="lb">💙 Blue</option>
     <option value="dark">🌙 Dark</option>
-    <option value="ll">👁️ Low Light</option>
+    <option value="ll">👁️ Lo-Lt</option>
     <option value="hc">⬛ Hi-Con</option>
-    <option value="yb">🟡 Yel/Blk</option>
+    <option value="yb">🟡 Yel</option>
   </select>
 
 </div>
