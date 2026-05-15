@@ -8461,21 +8461,8 @@ function setColour(mode) {
 
   try { localStorage.setItem('vh-colour', mode); } catch(e){}
 
-  // Update old select if present (desktop single-row)
   var sel = document.getElementById('col-select');
   if (sel) sel.value = mode || '';
-
-  // Update theme pill buttons
-  var themeMap = {'':'th-light','lb':'th-lb','dark':'th-dark','ll':'th-ll','hc':'th-hc','yb':'th-yb'};
-  ['th-light','th-lb','th-dark','th-ll','th-hc','th-yb'].forEach(function(id) {
-    var b = document.getElementById(id);
-    if (b) b.setAttribute('aria-pressed', 'false');
-  });
-  var activeId = themeMap[mode || ''];
-  if (activeId) {
-    var ab = document.getElementById(activeId);
-    if (ab) ab.setAttribute('aria-pressed', 'true');
-  }
 
 }
 
