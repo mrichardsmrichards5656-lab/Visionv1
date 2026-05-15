@@ -1670,6 +1670,28 @@ body.focus-mode::after {
   font-family: var(--font); pointer-events: none; opacity: 0.8;
 }
 
+
+/* ══ STICKY PAGE TITLE (for zoomed users) ══ */
+#sticky-title {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
+  background: var(--yellow); color: #000;
+  padding: 8px 16px;
+  display: none;
+  align-items: center; justify-content: space-between;
+  font-family: var(--font); font-size: 0.85rem; font-weight: 800;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+#sticky-title.vis { display: flex; }
+#sticky-title-back {
+  background: none; border: none; color: #000; font-family: var(--font);
+  font-size: 0.85rem; font-weight: 800; cursor: pointer;
+  padding: 4px 8px; min-height: 36px;
+}
+#sticky-title-name { flex: 1; text-align: center; font-size: 0.85rem; }
+#sticky-rnib {
+  font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+}
+
 .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
 </style>
 
@@ -1743,6 +1765,13 @@ body.focus-mode::after {
 
   <button class="tb-lang" id="welsh-toggle" onclick="toggleWelsh()" aria-pressed="false" aria-label="Switch to Welsh / Newid i Gymraeg"><span class="tb-icon" id="welsh-icon" style="font-size:0.7rem;font-weight:900">CY</span><span class="tb-label" id="welsh-label">Welsh</span></button>
 
+</div>
+
+<!-- STICKY PAGE TITLE (shows on scroll for zoomed users) -->
+<div id="sticky-title" role="banner" aria-label="Current page and navigation">
+  <button id="sticky-title-back" onclick="window.stickyBack && stickyBack()" aria-label="Go back">← Back</button>
+  <span id="sticky-title-name"></span>
+  <a id="sticky-rnib" href="tel:03031239999" style="color:#000;text-decoration:none">📞 RNIB: 0303 123 9999</a>
 </div>
 
 <!-- TTS PANEL -->
@@ -7156,7 +7185,15 @@ function renderCondition(key) {
 
   <div class="cond-page-inner">
 
-
+    <!-- Helpline call button — prominent at top -->
+    ${d.helpline ? `<a href="tel:${d.helpline.number.replace(/\s/g,'')}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--yellow);color:#000;border-radius:14px;padding:14px 18px;margin-bottom:20px;text-decoration:none;font-family:var(--font)" aria-label="Call ${d.helpline.org}">
+      <div>
+        <div style="font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px">${d.helpline.org}</div>
+        <div style="font-size:1.2rem;font-weight:900">${d.helpline.number}</div>
+        <div style="font-size:0.72rem;margin-top:1px">${d.helpline.hours}</div>
+      </div>
+      <span style="font-size:1.8rem" aria-hidden="true">📞</span>
+    </a>` : ''}
 
     <div class="acc-item" id="acc-about-${key}">
 
@@ -8010,6 +8047,17 @@ window.toggleNarrowReading = function() {
 
 function showPage(name) {
 
+  // Update sticky title for zoomed users
+  var _pageNames = {
+    home:'Vision Hub', livingwell:'Everyday Guide', glossary:'Glossary',
+    eyehealth:'Eye Health Basics', employment:'Employment', questions:'Questions to Ask',
+    localsupport:'Local Support', children:'For Parents', contact:'Contact Us',
+    help:'Help & Support', 'benefits-calc':'Benefits Calculator',
+    trials:'Clinical Trials', eclo:'Find Your ECLO', privacy:'Privacy Policy',
+    disclaimer:'How We Write Our Content', a11y:'Accessibility'
+  };
+  updateStickyTitle(_pageNames[name] || 'Vision Hub', name !== 'home' ? function(){ showPage('home'); } : null);
+
   // If Welsh active and going home, show Welsh home
 
   if (_isWelsh && name === 'home') {
@@ -8066,6 +8114,20 @@ function showPage(name) {
 
   applyNRState();
 
+  // Add RNIB helpline strip to legal pages
+  setTimeout(function() {
+    var lw = document.querySelector('.page.active .legal-wrap');
+    if (lw && !lw.querySelector('.rnib-strip')) {
+      var strip = document.createElement('div');
+      strip.className = 'rnib-strip';
+      strip.style.cssText = 'background:var(--card);border:2px solid var(--yellow);border-radius:12px;padding:14px 18px;margin:24px 0 8px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap';
+      strip.innerHTML = '<span style="font-size:0.88rem;color:var(--text2)"><strong style="color:var(--text)">Need help?</strong> RNIB helpline — specialists for all sight conditions</span><a href="tel:03031239999" style="background:var(--yellow);color:#000;font-family:var(--font);font-size:0.95rem;font-weight:900;padding:10px 20px;border-radius:50px;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;white-space:nowrap">📞 0303 123 9999</a>';
+      var backs = lw.querySelectorAll('.back-btn');
+      var last = backs[backs.length - 1];
+      if (last) lw.insertBefore(strip, last);
+    }
+  }, 50);
+
   // Add listen buttons to section headings
   var _activePage = document.querySelector('.page.active');
   if (_activePage) setTimeout(function(){ addListenButtons(_activePage); }, 100);
@@ -8088,6 +8150,8 @@ function showPage(name) {
 
 
 function showCondition(key) {
+  var d = DATA[key];
+  if (d) updateStickyTitle(d.name, function(){ showPage('home'); });
 
   // Save home scroll position
 
@@ -9517,6 +9581,31 @@ function showTrialsForCondition(key) {
     el.innerHTML = '💡 You switched back. <button onclick="themeTipSwitch(\''+tipId+'\',\''+themeKey+'\',\''+themeLabel+'\')" style="background:none;border:none;font-family:var(--font);font-size:0.875rem;font-weight:800;cursor:pointer;text-decoration:underline;padding:0;margin-left:6px;' + btnStyle + '">Switch again</button>' +
       ' <button onclick="document.getElementById(\''+tipId+'\').remove()" style="background:none;border:none;font-family:var(--font);font-size:0.8rem;cursor:pointer;opacity:0.6;text-decoration:underline;padding:0;margin-left:8px">Close</button>';
   };
+
+  // ══ STICKY PAGE TITLE ══
+  var _stickyPage = '';
+  var _stickyBack = null;
+  window.stickyBack = function() {
+    if (_stickyBack) _stickyBack();
+    else showPage('home');
+  };
+
+  function updateStickyTitle(name, backFn) {
+    _stickyPage = name;
+    _stickyBack = backFn;
+    var el = document.getElementById('sticky-title-name');
+    if (el) el.textContent = name;
+    var bb = document.getElementById('sticky-title-back');
+    if (bb) bb.style.visibility = backFn ? 'visible' : 'hidden';
+  }
+
+  // Show sticky bar after scrolling 80px past the a11y bar
+  window.addEventListener('scroll', function() {
+    var bar = document.getElementById('sticky-title');
+    if (!bar) return;
+    if (window.scrollY > 80) bar.classList.add('vis');
+    else bar.classList.remove('vis');
+  }, { passive: true });
 
 </script>
 
