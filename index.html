@@ -315,6 +315,7 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
   z-index: 200;
   background: var(--bg2);
   border-bottom: 3px solid var(--yellow);
+  position: relative;
 }
 
 .a11y-bar {
@@ -361,22 +362,11 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
 .a11y-bar-row2::-webkit-scrollbar { display: none; }
 
 /* Fade-right scroll hint on mobile */
-.a11y-bar-wrap::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 28px;
-  height: 100%;
-  background: linear-gradient(to right, transparent, var(--bg2));
-  pointer-events: none;
-  z-index: 2;
-}
+
 
 /* On wider screens, single row, no fade needed */
 @media (min-width: 640px) {
   .a11y-bar-row2 { display: none !important; }
-  .a11y-bar-wrap::after { display: none; }
   .a11y-bar { padding: 6px 10px; }
 }
 
@@ -1784,7 +1774,7 @@ body.focus-mode::after {
 .tb-divider{width:1px;height:36px;background:var(--border);flex-shrink:0;}
 </style>
 
-<div class="a11y-bar-wrap" style="position:sticky;top:0;z-index:200">
+<div class="a11y-bar-wrap">
 
   <!-- Row 1: Text size + Theme dropdown -->
   <div class="a11y-bar" role="toolbar" aria-label="Accessibility controls">
