@@ -499,7 +499,10 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
 
   transition: border-color .15s, color .15s;
 
+  white-space: normal; overflow-wrap: break-word; word-break: break-word;
+
 }
+
 
 .share-btn:hover        { border-color: var(--yellow); color: var(--yellow); }
 
@@ -1091,7 +1094,7 @@ body.welsh-active .trial-link::after { content: " (Saesneg yn unig)"; font-size:
 
 .legal-updated { font-size: 0.82rem; color: var(--text2); margin-bottom: 32px; }
 
-.lc { background: var(--card); border: 2px solid var(--border); border-radius: 16px; padding: 22px 24px; margin-bottom: 14px; box-shadow: var(--shadow); }
+.lc { background: var(--card); border: 2px solid var(--border); border-radius: 16px; padding: 22px 24px; margin-bottom: 14px; box-shadow: var(--shadow); overflow-wrap: break-word; word-break: break-word; }
 
 .lc h2 { font-size: 1.1rem; font-weight: 800; color: var(--yellow); margin-bottom: 10px; overflow-wrap: break-word; }
 
@@ -1689,9 +1692,7 @@ body.focus-mode::after {
   padding: 4px 8px; min-height: 36px;
 }
 #sticky-title-name { flex: 1; text-align: center; font-size: 0.8rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-#sticky-rnib {
-  font-size: 0.75rem; font-weight: 700; white-space: nowrap; flex-shrink: 0;
-}
+
 
 .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
 </style>
@@ -1771,8 +1772,8 @@ body.focus-mode::after {
 <!-- STICKY PAGE TITLE (shows on scroll for zoomed users) -->
 <div id="sticky-title" role="banner" aria-label="Current page and navigation">
   <button id="sticky-title-back" onclick="window.stickyBack && stickyBack()" aria-label="Go back">← Back</button>
-  <span id="sticky-title-name"></span>
-  <a id="sticky-rnib" href="tel:03031239999" style="color:#000;text-decoration:none">📞 RNIB: 0303 123 9999</a>
+  <span id="sticky-title-name" style="flex:1;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:0.8rem"></span>
+  <button onclick="showPage('home')" style="background:none;border:none;color:#000;font-size:1.2rem;cursor:pointer;padding:4px 8px;min-height:36px" aria-label="Go to home page">🏠</button>
 </div>
 
 <!-- TTS PANEL -->
@@ -5123,7 +5124,7 @@ body.focus-mode::after {
         <li><strong>Macular Society ECLO search</strong> — if you have a macular condition, the Macular Society funds dedicated ECLOs at many UK hospitals.</li>
       </ol>
       <p style="margin-top:14px"><a href="https://www.macularsociety.org/support/eclo/" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700">Find a Macular Society ECLO ↗</a></p>
-      <p style="margin-top:10px"><a href="https://www.rnib.org.uk/eye-health/eclo/" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700">Find an RNIB ECLO ↗</a></p>
+      <p style="margin-top:10px"><a href="https://www.rnib.org.uk/living-with-sight-loss/support-for-you/eye-clinic-liaison-officers-eclos/" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700">Find an RNIB ECLO ↗</a></p>
     </div>
 
     <div class="lc">
@@ -7719,7 +7720,7 @@ function speakAccSection(accBody, btn) {
   function addListenButtons(container) {
     if (!container) return;
     // Find h2 headings that don't already have a listen button
-    var headings = container.querySelectorAll('h2:not(.sr):not([data-listen-added])');
+    var headings = container.querySelectorAll('h2:not(.sr):not([data-listen-added]), h3:not(.sr):not([data-listen-added])');
     headings.forEach(function(h2) {
       if (h2.closest('.acc-item')) return; // skip accordion headings (already have listen)
       if (h2.closest('.a11y-bar')) return;
@@ -9105,7 +9106,10 @@ if ('serviceWorker' in navigator) {
     nodes.forEach(function(node) {
       // Skip navigation buttons and UI chrome
       if (node.closest('.acc-btn, .back-btn, .share-btn, .acc-listen, .a11y-bar, .sidebar')) return;
+      if (node.closest('button, [role="button"]')) return;
       var text = ttsClean(node.innerText || node.textContent || '');
+      // Strip emoji characters from text before checking length
+      text = text.replace(/[\u{1F000}-\u{1FFFF}]/gu, '').replace(/[\u{2600}-\u{27FF}]/gu, '').trim();
       if (text.length > 10) paras.push({ el: node, text: text });
     });
     return paras;
@@ -9229,6 +9233,10 @@ if ('serviceWorker' in navigator) {
     if (!_ttsClosed && panel && panel.style.display === 'none') {
       panel.style.display = 'block';
     }
+    // Clear orange from all section listen buttons
+    document.querySelectorAll('.acc-listen[aria-pressed="true"]').forEach(function(b) {
+      b.setAttribute('aria-pressed', 'false');
+    });
   };
 
   // Close TTS entirely (X button) - stops reading and hides everything
