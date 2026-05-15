@@ -576,17 +576,17 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
 
   width: 100%; background: var(--card); border: 2px solid var(--border);
 
-  color: var(--text); padding: 20px 26px; border-radius: 16px;
+  color: var(--text); padding: 12px 16px; border-radius: 12px;
 
-  font-family: var(--font); font-size: 1.05rem; font-weight: 700;
+  font-family: var(--font); font-size: 0.95rem; font-weight: 700;
 
   cursor: pointer; text-align: left; display: flex; align-items: center;
 
-  justify-content: space-between; gap: 12px; min-height: 62px;
+  justify-content: space-between; gap: 8px; min-height: 44px;
 
-  line-height: 1.3; transition: background .18s, border-color .18s, color .18s, box-shadow .18s;
+  line-height: 1.2; transition: background .18s, border-color .18s, color .18s;
 
-  box-shadow: var(--shadow);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 
 }
 
@@ -1535,7 +1535,7 @@ body.hc *:focus-visible,body.yb *:focus-visible,body.bb *:focus-visible{outline-
 body.lb { background-color: #cce8f4 !important; color: #000 !important; }
 body.lb .a11y-bar { background: #a8d5ea !important; }
 body.lb .desktop-sidebar { background: #b8dff0 !important; }
-body.lb .cond-helpline-btn { background: #003a80 !important; color: #fff !important; }
+body.lb .cond-helpline-btn { background: #000 !important; color: #fff !important; }
 body.lb .cond-helpline-btn * { color: #fff !important; }
 body.lb .desktop-main { background: #cce8f4 !important; }
 body.lb .hero { background: #b8dff0 !important; }
@@ -1647,8 +1647,8 @@ body.lb [class*="box"] { background: #d4ecf7 !important; }
 body.lb .share-btn { background: #d4ecf7 !important; }
 body.lb .fb-btn { background: #d4ecf7 !important; }
 body.lb .cf-submit { background: #d4ecf7 !important; color: #000 !important; border-color: rgba(0,100,180,0.4) !important; }
-body.lb [style*="background:var(--yellow)"] { background: #003a80 !important; color: #fff !important; }
-body.lb [style*="background: var(--yellow)"] { background: #003a80 !important; color: #fff !important; }
+body.lb [style*="background:var(--yellow)"] { background: #000 !important; color: #fff !important; }
+body.lb [style*="background: var(--yellow)"] { background: #000 !important; color: #fff !important; }
 body.lb .acc-item.open { border-color: #0055a5 !important; }
 body.lb .acc-arrow { color: #003a80 !important; }
 body.lb .acc-listen { border-color: rgba(0,58,128,0.4) !important; }
@@ -1657,10 +1657,10 @@ body.lb { --card: #d8eef8; --card2: #c8e4f4; }
 body.lb .lc { background: #d8eef8 !important; border-color: rgba(0,100,180,0.25) !important; color: #000 !important; }
 body.lb .lc h2 { color: #003a80 !important; }
 body.lb .cf-submit { background: #d4ecf7 !important; color: #000 !important; border-color: rgba(0,100,180,0.4) !important; }
-body.lb [style*="background:var(--yellow)"] { background: #003a80 !important; color: #fff !important; }
-body.lb [style*="background: var(--yellow)"] { background: #003a80 !important; color: #fff !important; }
-body.lb .acc-num { background: #003a80 !important; color: #fff !important; }
-body.lb .back-top { background: #003a80 !important; color: #fff !important; }
+body.lb [style*="background:var(--yellow)"] { background: #000 !important; color: #fff !important; }
+body.lb [style*="background: var(--yellow)"] { background: #000 !important; color: #fff !important; }
+body.lb .acc-num { background: #000 !important; color: #fff !important; }
+body.lb .back-top { background: #000 !important; color: #fff !important; }
 body.lb .cond-hero-eyebrow { color: #003a80 !important; }
 
 
@@ -5137,8 +5137,8 @@ body.focus-mode::after {
         <li><strong>Contact RNIB</strong> — call <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a>. RNIB funds ECLOs in many UK hospitals and can tell you whether yours has one.</li>
         <li><strong>Macular Society ECLO search</strong> — if you have a macular condition, the Macular Society funds dedicated ECLOs at many UK hospitals.</li>
       </ol>
-      <p style="margin-top:14px"><a href="https://www.macularsociety.org/support/eclo/" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700">Find a Macular Society ECLO ↗</a></p>
-      <p style="margin-top:10px"><a href="https://www.rnib.org.uk/living-with-sight-loss/support-for-you/eye-clinic-liaison-officers-eclos/" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700">Find an RNIB ECLO ↗</a></p>
+      <p style="margin-top:14px"><a href="https://www.macularsociety.org/" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700">Macular Society website ↗</a></p>
+      <p style="margin-top:10px"><a href="https://www.rnib.org.uk/" target="_blank" rel="noopener" style="color:var(--yellow);font-weight:700">RNIB website ↗</a></p>
     </div>
 
     <div class="lc">
@@ -5186,7 +5186,7 @@ body.focus-mode::after {
       <label for="trials-condition-sel" style="display:block;font-size:0.88rem;font-weight:700;color:var(--text2);margin-bottom:8px">Select your condition:</label>
       <select id="trials-condition-sel" onchange="showTrialsForCondition(this.value)" class="tb-select" style="width:100%;height:52px;font-size:1rem;border-radius:12px;padding:0 16px;border:2px solid var(--border)">
         <option value="">— Choose a condition —</option>
-        <option value="stargardts">Stargardt Disease</option>
+        <option value="stargardts">Stargardt's Disease</option>
         <option value="amd">Age-Related Macular Degeneration</option>
         <option value="rp">Retinitis Pigmentosa</option>
         <option value="lca">Leber Congenital Amaurosis</option>
@@ -5366,7 +5366,7 @@ stargardts:{
 
     helpline:{org:"Retina UK Helpline",number:"01280 860363",hours:"Mon–Fri 9am–5pm",link:"https://retinauk.org.uk"},
 
-  name:"Stargardt Disease",
+  name:"Stargardt's Disease",
 
   cy:{
 
@@ -7159,7 +7159,7 @@ function renderCondition(key) {
 
     ${(function(){
       var tips={
-        stargardts:{t:'lb',l:'Blue/Black',m:'Many people with Stargardt Disease find a pale blue background reduces glare.'},
+        stargardts:{t:'lb',l:'Blue/Black',m:'Many people with Stargardt's Disease find a pale blue background reduces glare.'},
         amd:{t:'lb',l:'Blue/Black',m:'A pale blue background can reduce glare and help with central vision loss in AMD.'},
         achromatopsia:{t:'hc',l:'Hi-Con',m:'High contrast mode removes colour dependency, helpful in achromatopsia.'},
         albinism:{t:'lb',l:'Blue/Black',m:'Low-glare pale blue is often easier for people with albinism.'},
@@ -8643,7 +8643,7 @@ function filterConds(q) {
 
   var ql = q.toLowerCase();
   var allConds = [
-    {key:'stargardts',name:'Stargardt Disease'},
+    {key:'stargardts',name:'Stargardt\'s Disease'},
     {key:'amd',name:'Age-Related Macular Degeneration'},
     {key:'glaucoma',name:'Glaucoma'},
     {key:'rp',name:'Retinitis Pigmentosa'},
@@ -8678,7 +8678,7 @@ function filterConds(q) {
 
   list.innerHTML = matches.map(function(c) {
     var onclick = 'showCondition(\'' + c.key + '\')';
-    return '<div role="listitem" class="cond-item"><button class="cond-btn" onclick="' + onclick + '" aria-label="Open ' + c.name + ' information"><span aria-hidden="true">✶</span> ' + c.name + ' <span class="cond-arrow" aria-hidden="true">›</span></button></div>';
+    return '<div role="listitem" class="cond-item"><button class="cond-btn" onclick="' + onclick + '" aria-label="Open ' + c.name + ' information"><span aria-hidden="true" style="flex-shrink:0">✶</span><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">' + c.name + '</span><span class="cond-arrow" aria-hidden="true" style="flex-shrink:0">›</span></button></div>';
   }).join('');
 
   list.style.display = '';
