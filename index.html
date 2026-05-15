@@ -1650,6 +1650,8 @@ body.lb .cf-submit { background: #d4ecf7 !important; color: #000 !important; bor
 body.lb [style*="background:var(--yellow)"] { background: #003a80 !important; color: #fff !important; }
 body.lb [style*="background: var(--yellow)"] { background: #003a80 !important; color: #fff !important; }
 body.lb .acc-item.open { border-color: #0055a5 !important; }
+body.lb .acc-arrow { color: #003a80 !important; }
+body.lb .acc-listen { border-color: rgba(0,58,128,0.4) !important; }
 /* Force any element with inline background:var(--card) */
 body.lb { --card: #d8eef8; --card2: #c8e4f4; }
 body.lb .lc { background: #d8eef8 !important; border-color: rgba(0,100,180,0.25) !important; color: #000 !important; }
@@ -1657,6 +1659,9 @@ body.lb .lc h2 { color: #003a80 !important; }
 body.lb .cf-submit { background: #d4ecf7 !important; color: #000 !important; border-color: rgba(0,100,180,0.4) !important; }
 body.lb [style*="background:var(--yellow)"] { background: #003a80 !important; color: #fff !important; }
 body.lb [style*="background: var(--yellow)"] { background: #003a80 !important; color: #fff !important; }
+body.lb .acc-num { background: #003a80 !important; color: #fff !important; }
+body.lb .back-top { background: #003a80 !important; color: #fff !important; }
+body.lb .cond-hero-eyebrow { color: #003a80 !important; }
 
 
 /* ══ FOCUS MODE ══ */
@@ -2346,7 +2351,7 @@ body.focus-mode::after {
         <p id="cond-hint" aria-live="polite" style="font-size:0.95rem;font-weight:700;color:#000;margin:8px 0 0;line-height:1.5">Start typing to find your condition</p>
       </div>
 
-      <div class="cond-list" id="cond-list" role="list" style="display:none;max-height:55vh;overflow-y:auto;-webkit-overflow-scrolling:touch;margin-top:8px;border-radius:12px;overflow:hidden">
+      <div class="cond-list" id="cond-list" role="list" style="display:none;max-height:55vh;overflow-y:auto;-webkit-overflow-scrolling:touch;margin-top:2px">
       </div>
 
       <!-- JUST DIAGNOSED -->
