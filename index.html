@@ -1709,7 +1709,6 @@ body.lb { --card: #d8eef8; --card2: #c8e4f4; }
 
   <button class="tb-btn" id="dys-toggle"    onclick="toggleDyslexic()"       aria-pressed="false" aria-label="Toggle dyslexia-friendly font"><span class="tb-icon" style="font-size:0.85rem">Aa</span><span class="tb-label">Dyslexic</span></button>
   <button class="tb-btn" id="rule-toggle"   onclick="toggleReadingRuler()"   aria-pressed="false" aria-label="Toggle reading ruler"><span class="tb-icon">▭</span><span class="tb-label">Ruler</span></button>
-  <button class="tb-btn" id="narrow-toggle" onclick="toggleNarrowReading()"  aria-pressed="false" aria-label="Toggle narrow reading mode"><span class="tb-icon" style="font-size:0.75rem">↔</span><span class="tb-label">Narrow</span></button>
   <button class="tb-btn" id="tts-toggle"    onclick="togglePageSpeech()"     aria-pressed="false" aria-label="Read page aloud"><span class="tb-icon">🔊</span><span class="tb-label">Listen</span></button>
 
   <div class="tb-divider"></div>
@@ -1719,16 +1718,24 @@ body.lb { --card: #d8eef8; --card2: #c8e4f4; }
 </div>
 
 <!-- TTS PANEL -->
+<!-- Minimised floating bar (shows while reading) -->
+<div id="tts-mini" style="display:none;position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:10001;background:#1a1a2e;border:2px solid #f5b800;border-radius:50px;padding:8px 16px;display:none;align-items:center;gap:12px;box-shadow:0 4px 20px rgba(0,0,0,0.5);white-space:nowrap">
+  <span id="tts-mini-status" style="color:#f5b800;font-size:0.85rem;font-weight:700">Reading...</span>
+  <button onclick="ttsStop()" style="background:#f5b800;border:none;color:#000;width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center" aria-label="Stop reading">⏹</button>
+  <button onclick="ttsPanelExpand()" style="background:#333;border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:0.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center" aria-label="Expand controls">⚙</button>
+</div>
+
+<!-- Full TTS panel (shows for setup / when expanded) -->
 <div id="tts-panel" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#1a1a2e;border-top:4px solid #f5b800;padding:20px;font-family:sans-serif">
   <div style="max-width:600px;margin:0 auto">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
       <strong style="color:#f5b800;font-size:1rem">🔊 Read Aloud</strong>
-      <button style="background:#333;border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer" onclick="document.getElementById('tts-panel').style.display='none';ttsStop()">✕</button>
+      <button style="background:#333;border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer" onclick="document.getElementById('tts-panel').style.display='none';ttsStop()" aria-label="Close">✕</button>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
       <div>
         <label style="display:block;color:#ccc;font-size:0.875rem;margin-bottom:6px">What to read:</label>
-        <select id="tts-section" style="width:100%;height:44px;padding:0 10px;border-radius:8px;border:none;background:#333;color:#fff;font-size:0.9rem">
+        <select id="tts-section" onchange="ttsHandleSectionChange(this.value)" style="width:100%;height:44px;padding:0 10px;border-radius:8px;border:none;background:#333;color:#fff;font-size:0.9rem">
           <option value="current">Current page</option>
           <option value="news">Recent Updates</option>
           <option value="benefits">Benefits &amp; PIP</option>
@@ -8822,6 +8829,8 @@ if ('serviceWorker' in navigator) {
       ttsHighlightPara(para.el);
       if (enlarge) { para.el.style.fontSize = '1.3em'; }
       if (st) st.textContent = 'Reading ' + _ttsParaIdx + ' of ' + _ttsParas.length;
+      var ms = document.getElementById('tts-mini-status');
+      if (ms) ms.textContent = _ttsParaIdx + ' / ' + _ttsParas.length;
 
       // Split paragraph into sentences
       var sentences = ttsSplitSentences(para.text);
@@ -8850,7 +8859,9 @@ if ('serviceWorker' in navigator) {
     }
 
     if (pb) pb.textContent = '\u23f8 Reading...';
+    ttsPanelMinimise();
 
+    ttsPanelMinimise();
     setTimeout(function() {
       var voices = synth.getVoices();
       if (voices.length) {
@@ -8873,6 +8884,8 @@ if ('serviceWorker' in navigator) {
     var st = document.getElementById('tts-status');
     if (pb) pb.textContent = '\u25b6 Play';
     if (st) st.textContent = 'Stopped.';
+    document.getElementById('tts-mini').style.display = 'none';
+    document.getElementById('tts-panel').style.display = 'block';
   };
 
   
@@ -8895,6 +8908,32 @@ if ('serviceWorker' in navigator) {
               .forEach(function(v) { var o = document.createElement('option'); o.value = v.name; o.textContent = v.name + ' (' + v.lang + ')'; sel.appendChild(o); });
           }
         };
+
+  // Minimise panel when playing starts, re-expand when stopped
+  window.ttsPanelExpand = function() {
+    document.getElementById('tts-mini').style.display = 'none';
+    document.getElementById('tts-panel').style.display = 'block';
+  };
+
+  window.ttsPanelMinimise = function() {
+    var panel = document.getElementById('tts-panel');
+    if (panel) panel._wasOpen = panel.style.display !== 'none';
+    if (panel) panel.style.display = 'none';
+    var mini = document.getElementById('tts-mini');
+    if (mini) mini.style.display = 'flex';
+  };
+
+  // Handle section change - navigate to that page
+  window.ttsHandleSectionChange = function(val) {
+    var pageMap = {
+      news: 'home', benefits: 'employment', lw: 'livingwell',
+      questions: 'questions', employment: 'employment',
+      glossary: 'glossary', eyehealth: 'eyehealth'
+    };
+    if (val !== 'current' && pageMap[val]) {
+      showPage(pageMap[val]);
+    }
+  };
         var v = synth.getVoices();
         if (v.length) loadV();
         else { synth.onvoiceschanged = function(){ loadV(); synth.onvoiceschanged = null; }; }
