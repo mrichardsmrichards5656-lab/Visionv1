@@ -8729,6 +8729,7 @@ if ('serviceWorker' in navigator) {
 
   // ══ TEXT TO SPEECH ══
   var _ttsActive = false;
+  var _ttsClosed = false;
   var _ttsEl = null;      // current element being spoken
   var _ttsParas = [];     // array of {el, text} paragraph objects
   var _ttsParaIdx = 0;
@@ -8888,7 +8889,7 @@ if ('serviceWorker' in navigator) {
     var mini = document.getElementById('tts-mini');
     if (mini) mini.style.display = 'none';
     var panel = document.getElementById('tts-panel');
-    if (panel && panel.style.display === 'none' && mini && mini.style.display !== 'flex') {
+    if (!_ttsClosed && panel && panel.style.display === 'none') {
       panel.style.display = 'block';
     }
   };
@@ -8896,14 +8897,18 @@ if ('serviceWorker' in navigator) {
   // Close TTS entirely (X button) - stops reading and hides everything
   window.ttsClose = function() {
     _ttsActive = false;
+    _ttsClosed = true;
     window.speechSynthesis && window.speechSynthesis.cancel();
     ttsHighlightPara(null);
     var pb = document.getElementById('tts-play-btn');
     if (pb) pb.textContent = '\u25b6 Play';
+    var st = document.getElementById('tts-status');
+    if (st) st.textContent = 'Choose what to read, then press Play';
     document.getElementById('tts-panel').style.display = 'none';
     document.getElementById('tts-mini').style.display = 'none';
     var tb = document.getElementById('tts-toggle');
     if (tb) tb.setAttribute('aria-pressed', 'false');
+    setTimeout(function() { _ttsClosed = false; }, 300);
   };
 
   
