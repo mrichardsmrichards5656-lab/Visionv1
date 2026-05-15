@@ -1546,16 +1546,25 @@ body.lb .news-tag.tech { background: #d0d8f5 !important; color: #002080 !importa
 
 
 /* ══ NARROW READING MODE ══ */
-body.nr-active .hero,
-body.nr-active .cond-page-inner,
-body.nr-active .legal-wrap,
-body.nr-active .cond-section,
-body.nr-active .news-box,
-body.nr-active .desktop-main > * { max-width: 58ch !important; }
+body.nr-active .hero, body.narrow-reading .hero,
+body.nr-active .cond-page-inner, body.narrow-reading .cond-page-inner,
+body.nr-active .legal-wrap, body.narrow-reading .legal-wrap,
+body.nr-active .cond-section, body.narrow-reading .cond-section,
+body.nr-active .news-box, body.narrow-reading .news-box,
+body.nr-active .desktop-main > *, body.narrow-reading .desktop-main > * { max-width: 58ch !important; }
 
 
 /* ══ TTS SENTENCE HIGHLIGHTING ══ */
 .tts-sent { transition: background-color 0.15s ease; border-radius: 3px; }
+.tts-para-active {
+  background: rgba(245,184,0,0.18) !important;
+  border-radius: 6px !important;
+  padding: 2px 4px !important;
+  margin: -2px -4px !important;
+  transition: background 0.3s ease !important;
+  box-shadow: 0 0 0 2px rgba(245,184,0,0.3) !important;
+  outline: none !important;
+}
 .tts-sent.tts-active { background-color: #ffe066 !important; color: #000 !important; outline: 2px solid #f5b800; border-radius: 3px; }
 body.dark .tts-sent.tts-active, body.ll .tts-sent.tts-active { background-color: #b38000 !important; color: #fff !important; }
 body.lb .tts-sent.tts-active { background-color: #0055a5 !important; color: #fff !important; }
@@ -1659,8 +1668,8 @@ body.lb { --card: #d8eef8; --card2: #c8e4f4; }
 }
 .tb-btn:hover{background:var(--yellow);color:#000;border-color:var(--yellow);}
 .tb-btn:focus-visible{outline:3px solid var(--yellow);outline-offset:2px;}
-.tb-btn[aria-pressed=false]:not(:hover){background:var(--card2);color:var(--text);border-color:var(--border);}
-.tb-btn[aria-pressed=true]{background:var(--yellow);color:#000;border-color:var(--yellow);}
+.tb-btn[aria-pressed="false"]{background:var(--card2) !important;color:var(--text) !important;border-color:var(--border) !important;}
+.tb-btn[aria-pressed="true"]{background:var(--yellow) !important;color:#000 !important;border-color:var(--yellow) !important;}
 .tb-icon{font-size:1rem;line-height:1;font-weight:900;}
 .tb-label{font-size:0.55rem;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;line-height:1;white-space:nowrap;}
 .tb-select{height:50px;border-radius:10px;border:1.5px solid var(--border);background:var(--card2);color:var(--text);font-family:var(--font);font-size:0.75rem;padding:0 6px;flex-shrink:0;cursor:pointer;}
@@ -1750,6 +1759,10 @@ body.lb { --card: #d8eef8; --card2: #c8e4f4; }
       <button id="tts-play-btn" onclick="ttsPlay()" style="flex:1;height:52px;background:#f5b800;color:#000;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer">▶ Play</button>
       <button id="tts-stop-btn" onclick="ttsStop()" style="height:52px;padding:0 20px;background:#333;color:#fff;border:none;border-radius:10px;font-size:1rem;cursor:pointer">⏹ Stop</button>
     </div>
+    <label style="display:flex;align-items:center;gap:10px;color:#ccc;font-size:0.875rem;margin-top:12px;cursor:pointer">
+      <input type="checkbox" id="tts-enlarge" style="width:18px;height:18px;accent-color:#f5b800">
+      Enlarge active paragraph while reading
+    </label>
     <p id="tts-status" style="color:#aaa;font-size:0.875rem;margin-top:10px;text-align:center">Choose what to read, then press Play</p>
   </div>
 </div>
@@ -2368,9 +2381,9 @@ body.lb { --card: #d8eef8; --card2: #c8e4f4; }
 
               <div style="padding-top:4px">
 
-                <span style="font-size:0.95rem;font-weight:800;color:var(--text)">Find your condition below</span>
+                <span style="font-size:0.95rem;font-weight:800;color:var(--text)">Search for your condition above</span>
 
-                <p style="font-size:0.88rem;color:var(--text2);margin-top:3px;line-height:1.7">Everything specific to your diagnosis is in the list below — research, assistive technology, step-by-step guides, and support organisations.</p>
+                <p style="font-size:0.88rem;color:var(--text2);margin-top:3px;line-height:1.7">Use the search box above to find your condition — research, assistive technology, step-by-step guides, and support organisations, all in one place.</p>
 
               </div>
 
@@ -7745,22 +7758,18 @@ var _scrollPos = {};
 
 
 function applyNRState() {
-  if (localStorage.getItem('vh-narrow') === '1') {
-    document.body.classList.add('nr-active');
-    var b = document.getElementById('narrow-toggle');
-    if (b) { b.setAttribute('aria-pressed','true'); b.style.background='var(--yellow)'; b.style.color='#000'; }
-  } else {
-    document.body.classList.remove('nr-active');
-    var b = document.getElementById('narrow-toggle');
-    if (b) { b.setAttribute('aria-pressed','false'); b.style.background=''; b.style.color=''; }
-  }
+  var on = localStorage.getItem('vh-narrow') === '1';
+  document.body.classList.toggle('nr-active', on);
+  var b = document.getElementById('narrow-toggle');
+  if (b) b.setAttribute('aria-pressed', on ? 'true' : 'false');
 }
 
 window.toggleNarrowReading = function() {
   var on = document.body.classList.toggle('nr-active');
+  document.body.classList.toggle('narrow-reading', on);
   try { localStorage.setItem('vh-narrow', on ? '1' : '0'); } catch(e) {}
   var b = document.getElementById('narrow-toggle');
-  if (b) { b.setAttribute('aria-pressed', on ? 'true' : 'false'); }
+  if (b) { b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.blur(); }
   srAnnounce(on ? 'Narrow reading on' : 'Narrow reading off');
 };
 
@@ -8541,7 +8550,7 @@ if ('serviceWorker' in navigator) {
     var on = document.body.classList.toggle('dyslexic');
     try{ localStorage.setItem('dyslexic', on?'1':'0'); }catch(e){}
     var b = document.getElementById('dys-toggle');
-    if(b) b.setAttribute('aria-pressed', on?'true':'false');
+    if(b) { b.setAttribute('aria-pressed', on?'true':'false'); b.blur(); }
     srAnnounce(on ? 'Dyslexia-friendly font on' : 'Dyslexia-friendly font off');
   };
   if(localStorage.getItem('dyslexic')==='1'){
@@ -8554,7 +8563,7 @@ if ('serviceWorker' in navigator) {
     var on = document.body.classList.toggle('reading-ruler');
     try{ localStorage.setItem('rule', on?'1':'0'); }catch(e){}
     var b = document.getElementById('rule-toggle');
-    if(b) b.setAttribute('aria-pressed', on?'true':'false');
+    if(b) { b.setAttribute('aria-pressed', on?'true':'false'); b.blur(); }
     srAnnounce(on ? 'Reading ruler on' : 'Reading ruler off');
   };
   document.addEventListener('mousemove', function(e){
@@ -8712,80 +8721,61 @@ if ('serviceWorker' in navigator) {
   }
 
   // ══ TEXT TO SPEECH ══
-  var _ttsUtter = null;
   var _ttsActive = false;
+  var _ttsEl = null;      // current element being spoken
+  var _ttsParas = [];     // array of {el, text} paragraph objects
+  var _ttsParaIdx = 0;
 
-  // Get readable text from an element, cleaned for natural speech
-  function ttsReadableText(el) {
-    if (!el) return '';
-    var clone = el.cloneNode(true);
-    // Remove UI noise
-    clone.querySelectorAll(
-      'script,style,button,.acc-btn,.acc-listen,.back-btn,.share-bar,' +
-      '.a11y-bar,.search-wrap,.sidebar,.desktop-sidebar,[aria-hidden="true"],' +
-      '.cond-list,.cond-arrow,.search-icon,.tts-status,.acc-num'
-    ).forEach(function(j) { j.remove(); });
-
-    var text = clone.innerText || clone.textContent || '';
-
-    // Expand abbreviations
-    text = text.replace(/\bAMD\b/g, 'Age-related macular degeneration');
-    text = text.replace(/\bRP\b/g, 'retinitis pigmentosa');
-    text = text.replace(/\bLCA\b/g, 'Leber congenital amaurosis');
-    text = text.replace(/\bCVI\b/g, 'cerebral visual impairment');
-    text = text.replace(/\bDMO\b/g, 'diabetic macular oedema');
-    text = text.replace(/\bPIP\b/g, 'Personal Independence Payment');
-    text = text.replace(/\bESA\b/g, 'Employment and Support Allowance');
-    text = text.replace(/\bNHS\b/g, 'National Health Service');
-    text = text.replace(/\bECLO\b/g, 'Eye Clinic Liaison Officer');
-    text = text.replace(/\bRNIB\b/g, 'Royal National Institute of Blind People');
-    text = text.replace(/\bGP\b/g, 'G.P.');
-    text = text.replace(/\bUK\b/g, 'United Kingdom');
-
-    // Clean symbols
-    text = text.replace(/[▼▲▾▴←→◀▶✦›‹•◉◈⬡]/g, '');
-    text = text.replace(/[\uD83C-\uDBFF][\uDC00-\uDFFF]/g, ' ');
-
-    // Add pauses after headings (lines that don't end in punctuation)
-    text = text.replace(/([^\.\!\?\:\,\;])(\n)([A-Z\u00C0-\u024F])/g, '$1. $3');
-
-    // Clean whitespace
-    text = text.replace(/\n{3,}/g, '\n\n');
-    text = text.replace(/[ \t]{2,}/g, ' ');
-    text = text.trim();
-
-    return text;
+  // Get readable text, expanding abbreviations
+  function ttsClean(text) {
+    return text
+      .replace(/\bAMD\b/g, 'Age-related macular degeneration')
+      .replace(/\bRP\b/g, 'retinitis pigmentosa')
+      .replace(/\bLCA\b/g, 'Leber congenital amaurosis')
+      .replace(/\bCVI\b/g, 'cerebral visual impairment')
+      .replace(/\bDMO\b/g, 'diabetic macular oedema')
+      .replace(/\bPIP\b/g, 'Personal Independence Payment')
+      .replace(/\bESA\b/g, 'Employment and Support Allowance')
+      .replace(/\bNHS\b/g, 'National Health Service')
+      .replace(/\bECLO\b/g, 'Eye Clinic Liaison Officer')
+      .replace(/\bRNIB\b/g, 'Royal National Institute of Blind People')
+      .replace(/\bGP\b/g, 'G.P.')
+      .replace(/\bUK\b/g, 'United Kingdom')
+      .replace(/[▼▲▾▴←→◀▶✦›‹•◉◈⬡]/g, '')
+      .replace(/\s+/g, ' ').trim();
   }
 
-  // Split text into natural sentence chunks for sequential reading
+  // Split text into sentences (Android-compatible, no lookbehind)
   function ttsSplitSentences(text) {
-    // Android-safe sentence splitting - no lookbehind
-    var sentences = [];
-    // Add space after sentence-ending punctuation to help splitting
-    var t = text
-      .replace(/([.!?])\s+/g, '$1\x0a')
-      .replace(/\x0a+/g, '\x0a');
-    var lines = t.split('\x0a');
-    lines.forEach(function(line) {
-      line = line.trim();
-      if (line.length > 4) sentences.push(line);
-    });
-    return sentences.length > 0 ? sentences : [text.trim()];
+    var marked = text.replace(/([.!?])\s+/g, '$1\x0a').replace(/\x0a+/g, '\x0a');
+    return marked.split('\x0a').map(function(s){ return s.trim(); }).filter(function(s){ return s.length > 4; });
   }
 
-  function ttsGetEl() {
-    var section = (document.getElementById('tts-section') || {}).value || 'current';
-    var map = {
-      news: '.news-box', lw: '#page-livingwell',
-      questions: '#page-questions', employment: '#page-employment',
-      glossary: '#page-glossary', eyehealth: '#page-eyehealth',
-      benefits: '#page-employment'
-    };
-    if (section !== 'current' && map[section]) {
-      var el = document.querySelector(map[section]);
-      if (el) return el;
-    }
-    return document.querySelector('.page.active') || document.body;
+  // Collect paragraphs from an element for TTS
+  function ttsGetParagraphs(el) {
+    if (!el) return [];
+    var paras = [];
+    // Walk all text-bearing block elements
+    var nodes = el.querySelectorAll('p, h1, h2, h3, li, .lw-tip p, .lw-tip h3, dt, dd, .wb');
+    nodes.forEach(function(node) {
+      // Skip navigation buttons and UI chrome
+      if (node.closest('.acc-btn, .back-btn, .share-btn, .acc-listen, .a11y-bar, .sidebar')) return;
+      var text = ttsClean(node.innerText || node.textContent || '');
+      if (text.length > 10) paras.push({ el: node, text: text });
+    });
+    return paras;
+  }
+
+  // Highlight a paragraph element
+  function ttsHighlightPara(el) {
+    // Remove previous highlights
+    document.querySelectorAll('.tts-para-active').forEach(function(e) {
+      e.classList.remove('tts-para-active');
+      e.style.removeProperty('font-size');
+    });
+    if (!el) return;
+    el.classList.add('tts-para-active');
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
   window.ttsPlay = function() {
@@ -8798,81 +8788,87 @@ if ('serviceWorker' in navigator) {
     synth.cancel();
     _ttsActive = true;
 
-    // Small delay after cancel gives browser time to release audio on mobile
-    setTimeout(function() {
+    var section = (document.getElementById('tts-section') || {}).value || 'current';
+    var map = { news: '.news-box', lw: '#page-livingwell', questions: '#page-questions',
+                employment: '#page-employment', glossary: '#page-glossary',
+                eyehealth: '#page-eyehealth', benefits: '#page-employment' };
+    var el = (section !== 'current' && map[section])
+      ? document.querySelector(map[section])
+      : (document.querySelector('.page.active') || document.body);
 
-    var el = ttsGetEl();
-    var text = ttsReadableText(el);
+    _ttsParas = ttsGetParagraphs(el);
+    if (!_ttsParas.length) { alert('No readable content found.'); return; }
 
-    if (!text || text.length < 5) {
-      alert('No readable content found on this page.');
-      return;
-    }
-
+    _ttsParaIdx = 0;
     var speed = parseFloat((document.getElementById('tts-speed') || {}).value || '0.85');
     var vname = (document.getElementById('tts-voice-sel') || {}).value || '';
-
-    // Split into sentences for natural flow
-    var sentences = ttsSplitSentences(text);
-    var idx = 0;
-
+    var enlarge = document.getElementById('tts-enlarge') && document.getElementById('tts-enlarge').checked;
     var pb = document.getElementById('tts-play-btn');
     var st = document.getElementById('tts-status');
-    if (pb) pb.textContent = '\u23f8 Reading...';
-    if (st) st.textContent = 'Reading ' + sentences.length + ' sentence' + (sentences.length !== 1 ? 's' : '') + '...';
 
-    function speakNext(voices) {
-      if (!_ttsActive || idx >= sentences.length) {
+    function speakPara(voices) {
+      if (!_ttsActive || _ttsParaIdx >= _ttsParas.length) {
         _ttsActive = false;
+        ttsHighlightPara(null);
         if (pb) pb.textContent = '\u25b6 Play';
-        if (st) st.textContent = idx >= sentences.length ? 'Finished.' : 'Stopped.';
+        if (st) st.textContent = _ttsParaIdx >= _ttsParas.length ? 'Finished.' : 'Stopped.';
         return;
       }
 
-      var sentence = sentences[idx].trim();
-      idx++;
+      var para = _ttsParas[_ttsParaIdx];
+      _ttsParaIdx++;
 
-      if (!sentence) { speakNext(voices); return; }
+      // Highlight and optionally enlarge
+      ttsHighlightPara(para.el);
+      if (enlarge) { para.el.style.fontSize = '1.3em'; }
+      if (st) st.textContent = 'Reading ' + _ttsParaIdx + ' of ' + _ttsParas.length;
 
-      _ttsUtter = new SpeechSynthesisUtterance(sentence);
-      _ttsUtter.lang = 'en-GB';
-      _ttsUtter.rate = speed;
-      _ttsUtter.volume = 1;
-      _ttsUtter.pitch = 1;
+      // Split paragraph into sentences
+      var sentences = ttsSplitSentences(para.text);
+      var sentIdx = 0;
 
-      if (vname && voices && voices.length) {
-        var v = voices.find(function(v) { return v.name === vname; });
-        if (v) _ttsUtter.voice = v;
+      function speakSent() {
+        if (!_ttsActive || sentIdx >= sentences.length) {
+          setTimeout(function() { speakPara(voices); }, 50);
+          return;
+        }
+        var utt = new SpeechSynthesisUtterance(sentences[sentIdx++]);
+        utt.lang = 'en-GB';
+        utt.rate = speed;
+        utt.volume = 1;
+        utt.pitch = 1;
+        if (vname && voices) {
+          var v = voices.find(function(v) { return v.name === vname; });
+          if (v) utt.voice = v;
+        }
+        utt.onend = function() { setTimeout(speakSent, 30); };
+        utt.onerror = function(e) { if (e.error !== 'interrupted') setTimeout(speakSent, 30); };
+        synth.speak(utt);
       }
 
-      if (st) st.textContent = 'Sentence ' + idx + ' of ' + sentences.length;
-
-      _ttsUtter.onend = function() { setTimeout(function(){ speakNext(voices); }, 30); };
-      _ttsUtter.onerror = function(e) {
-        if (e.error === 'interrupted') return;
-        setTimeout(function(){ speakNext(voices); }, 30);
-      };
-
-      synth.speak(_ttsUtter);
+      setTimeout(speakSent, 100);
     }
 
-    var voices = synth.getVoices();
-    if (voices.length) {
-      speakNext(voices);
-    } else {
-      if (st) st.textContent = 'Loading voice...';
-      synth.onvoiceschanged = function() {
-        synth.onvoiceschanged = null;
-        speakNext(synth.getVoices());
-      };
-    }
+    if (pb) pb.textContent = '\u23f8 Reading...';
 
-    }, 150); // end of cancel timeout
+    setTimeout(function() {
+      var voices = synth.getVoices();
+      if (voices.length) {
+        speakPara(voices);
+      } else {
+        if (st) st.textContent = 'Loading voice...';
+        synth.onvoiceschanged = function() {
+          synth.onvoiceschanged = null;
+          speakPara(synth.getVoices());
+        };
+      }
+    }, 150);
   };
 
   window.ttsStop = function() {
     _ttsActive = false;
     window.speechSynthesis && window.speechSynthesis.cancel();
+    ttsHighlightPara(null);
     var pb = document.getElementById('tts-play-btn');
     var st = document.getElementById('tts-status');
     if (pb) pb.textContent = '\u25b6 Play';
