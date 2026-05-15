@@ -1535,6 +1535,8 @@ body.hc *:focus-visible,body.yb *:focus-visible,body.bb *:focus-visible{outline-
 body.lb { background-color: #cce8f4 !important; color: #000 !important; }
 body.lb .a11y-bar { background: #a8d5ea !important; }
 body.lb .desktop-sidebar { background: #b8dff0 !important; }
+body.lb .cond-helpline-btn { background: #0055a5 !important; color: #fff !important; }
+body.lb .cond-helpline-btn * { color: #fff !important; }
 body.lb .desktop-main { background: #cce8f4 !important; }
 body.lb .hero { background: #b8dff0 !important; }
 body.lb .card, body.lb .founder-box { background: #e0f2fb !important; }
@@ -1681,9 +1683,9 @@ body.focus-mode::after {
   padding: 6px 12px;
   display: none;
   align-items: center; justify-content: space-between;
-  font-family: var(--font); font-size: 0.8rem; font-weight: 800;
+  font-family: var(--font);
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  gap: 8px;
+  gap: 12px;
 }
 #sticky-title.vis { display: flex; }
 #sticky-title-back {
@@ -1770,10 +1772,9 @@ body.focus-mode::after {
 </div>
 
 <!-- STICKY PAGE TITLE (shows on scroll for zoomed users) -->
-<div id="sticky-title" role="banner" aria-label="Current page and navigation">
-  <button id="sticky-title-back" onclick="window.stickyBack && stickyBack()" aria-label="Go back">← Back</button>
-  <span id="sticky-title-name" style="flex:1;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:0.8rem"></span>
-  <button onclick="showPage('home')" style="background:none;border:none;color:#000;font-size:1.2rem;cursor:pointer;padding:4px 8px;min-height:36px" aria-label="Go to home page">🏠</button>
+<div id="sticky-title" role="navigation" aria-label="Page navigation">
+  <button id="sticky-title-back" onclick="window.stickyBack && stickyBack()" aria-label="Go back" style="background:none;border:2px solid #000;border-radius:50px;color:#000;font-family:inherit;font-size:0.85rem;font-weight:800;cursor:pointer;padding:6px 14px;min-height:40px">← Back</button>
+  <button onclick="showPage('home')" style="background:#000;border:none;color:var(--yellow);font-size:0.85rem;font-weight:800;cursor:pointer;padding:6px 14px;border-radius:50px;min-height:40px;font-family:inherit" aria-label="Go to home page">🏠 Home</button>
 </div>
 
 <!-- TTS PANEL -->
@@ -2292,7 +2293,7 @@ body.focus-mode::after {
         <div style="padding:16px 20px 12px">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px">
             <span style="font-size:0.95rem;font-weight:700;color:var(--text)">💛 Why this site exists</span>
-            <button class="acc-listen" onclick="listenToSection('founder','home',this)" aria-label="Listen to why this site was made" title="Listen to this section" style="width:32px;height:32px;flex-shrink:0">🔊</button>
+            <button class="acc-listen" onclick="listenToFounder(this)" aria-label="Listen to why this site was made" aria-pressed="false" title="Listen to this section" style="width:32px;height:32px;flex-shrink:0">🔊</button>
           </div>
           <p style="font-size:0.9rem;color:var(--text2);line-height:1.6;margin:0 0 10px">When my daughter was diagnosed with Stargardts, I had so many questions. I couldn't find anywhere that had everything in one place.</p>
           <button id="founder-expand-btn" onclick="document.getElementById('founder-full').style.display='block';this.style.display='none'" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:0.875rem;font-weight:700;cursor:pointer;text-decoration:underline;padding:0;margin-bottom:4px">Read more ▼</button>
@@ -2334,10 +2335,10 @@ body.focus-mode::after {
           <input type="search" id="csearch" placeholder="e.g. Stargardt, glaucoma, AMD, RP…" autocomplete="off" aria-controls="cond-list" aria-label="Search eye conditions" style="background:#fff;color:#000;font-size:1rem;border:none;border-radius:50px;padding:14px 48px 14px 20px;width:100%;box-shadow:0 2px 8px rgba(0,0,0,0.15)">
           <span class="search-icon" aria-hidden="true" style="color:#555">🔍</span>
         </div>
-        <p id="cond-hint" aria-live="polite" style="font-size:0.85rem;color:#333;margin:6px 0 0;line-height:1.5">Start typing to find your condition</p>
+        <p id="cond-hint" aria-live="polite" style="font-size:0.95rem;font-weight:700;color:#000;margin:8px 0 0;line-height:1.5">Start typing to find your condition</p>
       </div>
 
-      <div class="cond-list" id="cond-list" role="list" style="display:none;margin-bottom:16px">
+      <div class="cond-list" id="cond-list" role="list" style="display:none;margin-bottom:16px;max-height:60vh;overflow-y:auto;-webkit-overflow-scrolling:touch">
       </div>
 
       <!-- JUST DIAGNOSED -->
@@ -7188,7 +7189,7 @@ function renderCondition(key) {
   <div class="cond-page-inner">
 
     <!-- Helpline call button — prominent at top -->
-    ${d.helpline ? `<a href="tel:${d.helpline.number.replace(/\s/g,'')}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--yellow);color:#000;border-radius:14px;padding:14px 18px;margin-bottom:20px;text-decoration:none;font-family:var(--font)" aria-label="Call ${d.helpline.org}">
+    ${d.helpline ? `<a href="tel:${d.helpline.number.replace(/\s/g,'')}" class="cond-helpline-btn" style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--yellow);color:#000;border-radius:14px;padding:14px 18px;margin-bottom:20px;text-decoration:none;font-family:var(--font)" aria-label="Call ${d.helpline.org}">
       <div>
         <div style="font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px">${d.helpline.org}</div>
         <div style="font-size:1.2rem;font-weight:900">${d.helpline.number}</div>
@@ -9068,6 +9069,7 @@ if ('serviceWorker' in navigator) {
   // ══ TEXT TO SPEECH ══
   var _ttsActive = false;
   var _ttsClosed = false;
+  var _stickyActivePage = 'home';
   var _ttsEl = null;      // current element being spoken
   var _ttsParas = [];     // array of {el, text} paragraph objects
   var _ttsParaIdx = 0;
@@ -9619,9 +9621,7 @@ function showTrialsForCondition(key) {
     _stickyPage = name;
     _stickyBack = backFn;
     // Track active page for scroll listener
-    if (typeof _stickyActivePage !== 'undefined') _stickyActivePage = backFn ? 'sub' : 'home';
-    var el = document.getElementById('sticky-title-name');
-    if (el) el.textContent = name;
+    _stickyActivePage = backFn ? 'sub' : 'home';
     var bb = document.getElementById('sticky-title-back');
     if (bb) bb.style.visibility = backFn ? 'visible' : 'hidden';
     // Hide immediately when going to home
@@ -9629,7 +9629,6 @@ function showTrialsForCondition(key) {
   }
 
   // Show sticky bar after scrolling 80px past the a11y bar
-  var _stickyActivePage = 'home';
   window.addEventListener('scroll', function() {
     var bar = document.getElementById('sticky-title');
     if (!bar) return;
@@ -9639,6 +9638,35 @@ function showTrialsForCondition(key) {
     if (window.scrollY > 40) bar.classList.add('vis');
     else bar.classList.remove('vis');
   }, { passive: true });
+
+  window.listenToFounder = function(btn) {
+    var synth = window.speechSynthesis;
+    if (!synth || typeof SpeechSynthesisUtterance === 'undefined') {
+      alert('Text to speech is not supported in this browser.');
+      return;
+    }
+    // Toggle off if already speaking
+    if (btn.getAttribute('aria-pressed') === 'true') {
+      synth.cancel();
+      btn.setAttribute('aria-pressed', 'false');
+      return;
+    }
+    synth.cancel();
+    // Collect text from the founder box paragraphs
+    var founderEl = btn.closest('div').parentElement;
+    if (!founderEl) return;
+    var paras = founderEl.querySelectorAll('p');
+    var text = '';
+    paras.forEach(function(p) { text += ' ' + (p.innerText || p.textContent); });
+    text = text.replace(/Read more.*$/s,'').trim();
+    if (!text) return;
+    btn.setAttribute('aria-pressed', 'true');
+    var utt = new SpeechSynthesisUtterance(text);
+    utt.lang = 'en-GB'; utt.rate = 0.85;
+    utt.onend = function() { btn.setAttribute('aria-pressed', 'false'); };
+    utt.onerror = function() { btn.setAttribute('aria-pressed', 'false'); };
+    synth.speak(utt);
+  };
 
 </script>
 
