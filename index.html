@@ -1730,7 +1730,7 @@ body.lb { --card: #d8eef8; --card2: #c8e4f4; }
   <div style="max-width:600px;margin:0 auto">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
       <strong style="color:#f5b800;font-size:1rem">🔊 Read Aloud</strong>
-      <button style="background:#333;border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer" onclick="document.getElementById('tts-panel').style.display='none';ttsStop()" aria-label="Close">✕</button>
+      <button style="background:#333;border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer" onclick="ttsClose()" aria-label="Close">✕</button>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
       <div>
@@ -8884,8 +8884,26 @@ if ('serviceWorker' in navigator) {
     var st = document.getElementById('tts-status');
     if (pb) pb.textContent = '\u25b6 Play';
     if (st) st.textContent = 'Stopped.';
+    // Hide mini bar and re-show full panel (reading finished or stopped mid-read)
+    var mini = document.getElementById('tts-mini');
+    if (mini) mini.style.display = 'none';
+    var panel = document.getElementById('tts-panel');
+    if (panel && panel.style.display === 'none' && mini && mini.style.display !== 'flex') {
+      panel.style.display = 'block';
+    }
+  };
+
+  // Close TTS entirely (X button) - stops reading and hides everything
+  window.ttsClose = function() {
+    _ttsActive = false;
+    window.speechSynthesis && window.speechSynthesis.cancel();
+    ttsHighlightPara(null);
+    var pb = document.getElementById('tts-play-btn');
+    if (pb) pb.textContent = '\u25b6 Play';
+    document.getElementById('tts-panel').style.display = 'none';
     document.getElementById('tts-mini').style.display = 'none';
-    document.getElementById('tts-panel').style.display = 'block';
+    var tb = document.getElementById('tts-toggle');
+    if (tb) tb.setAttribute('aria-pressed', 'false');
   };
 
   
