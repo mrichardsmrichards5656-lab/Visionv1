@@ -1741,11 +1741,7 @@ body.focus-mode::after {
 
   <div class="tb-divider"></div>
 
-  <button class="tb-btn" id="focus-toggle" onclick="toggleFocusMode()" aria-pressed="false" aria-label="Focus mode — hide distractions"><span class="tb-icon">🎯</span><span class="tb-label">Focus</span></button>
-
-  <div class="tb-divider"></div>
-
-  <button class="tb-lang" id="welsh-toggle" onclick="toggleWelsh()" aria-pressed="false" aria-label="Switch to Welsh / Newid i Gymraeg"><span class="tb-icon">🏴󠁧󠁢󠁷󠁬󠁳??󠁳󠁥</span><span class="tb-label">Welsh</span></button>
+  <button class="tb-lang" id="welsh-toggle" onclick="toggleWelsh()" aria-pressed="false" aria-label="Switch to Welsh / Newid i Gymraeg"><span class="tb-icon" id="welsh-icon" style="font-size:0.7rem;font-weight:900">CY</span><span class="tb-label" id="welsh-label">Welsh</span></button>
 
 </div>
 
@@ -7135,9 +7131,19 @@ function renderCondition(key) {
       var tip=tips[key];
       if(!tip||document.body.classList.contains(tip.t)) return '';
       var tipId='theme-tip-'+key;
-      var switchBtn='<button onclick="setColour(\''+tip.t+'\');document.getElementById(\''+tipId+'\').remove()" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:0.875rem;font-weight:800;cursor:pointer;text-decoration:underline;padding:0;margin-left:8px">Switch now</button>';
+
       var closeBtn='<button onclick="document.getElementById(\''+tipId+'\').remove()" aria-label="Dismiss suggestion" style="float:right;background:none;border:none;color:var(--text2);cursor:pointer;font-size:1.1rem;padding:0;line-height:1">×</button>';
-      return '<div id="'+tipId+'" role="note" aria-live="polite" style="background:var(--card2);border:2px solid var(--yellow);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:0.875rem;line-height:1.6">'+closeBtn+'💡 '+tip.m+switchBtn+'</div>';
+      var tipStyles = {
+        'lb':   'background:#d4eef8;border-color:#0055a5;color:#000',
+        'dark': 'background:#1a1a2e;border-color:#f5b800;color:#e8e8e8',
+        'hc':   'background:#000;border-color:#fff;color:#fff',
+        'll':   'background:#1a1205;border-color:#f5b800;color:#e8d5b0',
+        'yb':   'background:#111;border-color:#ff0;color:#ff0'
+      };
+      var tStyle = tipStyles[tip.t] || 'background:var(--card2);border-color:var(--yellow);color:var(--text)';
+      var btnStyle = tip.t === 'dark' || tip.t === 'll' || tip.t === 'hc' ? 'color:#f5b800' : 'color:#0055a5';
+      if (tip.t === 'hc') btnStyle = 'color:#fff';
+      return '<div id="'+tipId+'" role="note" aria-live="polite" style="'+tStyle+';border:2px solid;border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:0.875rem;line-height:1.6">'+closeBtn+'💡 '+tip.m+'<button onclick="themeTipSwitch(\''+tipId+'\',\''+tip.t+'\',\''+tip.l+'\')" style="background:none;border:none;font-family:var(--font);font-size:0.875rem;font-weight:800;cursor:pointer;text-decoration:underline;padding:0;margin-left:8px;'+btnStyle+'">Switch now</button></div>';
     })()}
 
     <span class="cond-hero-eyebrow">${_isWelsh ? 'Canllaw Cyflyrau\'r Llygad' : 'Eye Condition Guide'}</span>
@@ -7872,7 +7878,10 @@ function toggleWelsh() {
 
     btn.setAttribute('aria-label', _isWelsh ? 'Newid i Saesneg' : 'Newid i Gymraeg');
 
-    btn.textContent = _isWelsh ? 'EN' : 'CY';
+    var wi = document.getElementById('welsh-icon');
+    var wl = document.getElementById('welsh-label');
+    if (wi) wi.textContent = _isWelsh ? 'EN' : 'CY';
+    if (wl) wl.textContent = _isWelsh ? 'English' : 'Welsh';
 
   }
 
@@ -9467,6 +9476,27 @@ function showTrialsForCondition(key) {
   container.innerHTML = html;
   container.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
+  // Theme tip switch — applies theme and updates tip to confirmation (not remove)
+  window.themeTipSwitch = function(tipId, themeKey, themeLabel) {
+    setColour(themeKey);
+    var el = document.getElementById(tipId);
+    if (!el) return;
+    // Update tip colours to match the now-active theme
+    var tipStyles = {
+      'lb':   'background:#d4eef8;border-color:#0055a5;color:#000',
+      'dark': 'background:#1a1a2e;border-color:#f5b800;color:#e8e8e8',
+      'hc':   'background:#000;border-color:#fff;color:#fff',
+      'll':   'background:#1a1205;border-color:#f5b800;color:#e8d5b0',
+      'yb':   'background:#111;border-color:#ff0;color:#ff0'
+    };
+    var s = tipStyles[themeKey] || '';
+    if (s) { s.split(';').forEach(function(rule) { var p=rule.split(':'); if(p[0]&&p[1]) el.style[p[0].trim()]=p[1].trim(); }); }
+    var undoCol = themeKey==='dark'||themeKey==='ll'||themeKey==='hc' ? '#f5b800' : themeKey==='hc' ? '#fff' : '#0055a5';
+    el.innerHTML = '<span style="font-weight:700">✓ Switched to ' + themeLabel + ' theme.</span>' +
+      ' <button onclick="setColour(\'\');document.getElementById(\''+tipId+'\').remove()" style="background:none;border:none;font-family:var(--font);font-size:0.8rem;font-weight:700;cursor:pointer;text-decoration:underline;padding:0;margin-left:8px;color:' + undoCol + '">Undo</button>' +
+      ' <button onclick="document.getElementById(\''+tipId+'\').remove()" style="background:none;border:none;font-family:var(--font);font-size:0.8rem;cursor:pointer;text-decoration:underline;padding:0;margin-left:8px;opacity:0.6">Dismiss</button>';
+  };
 
 </script>
 
