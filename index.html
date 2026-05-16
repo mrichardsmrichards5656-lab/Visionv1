@@ -1848,12 +1848,7 @@ body.focus-mode::after {
         </select>
       </div>
     </div>
-    <div style="margin-bottom:16px">
-      <label style="display:block;color:#ccc;font-size:0.875rem;margin-bottom:6px">Voice:</label>
-      <select id="tts-voice-sel" style="width:100%;height:44px;padding:0 10px;border-radius:8px;border:none;background:#333;color:#fff;font-size:0.9rem">
-        <option value="">Default English voice</option>
-      </select>
-    </div>
+    <input type="hidden" id="tts-voice-sel" value="">
     <div style="display:flex;gap:10px">
       <button id="tts-play-btn" onclick="ttsPlay()" style="flex:1;height:52px;background:#f5b800;color:#000;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer">▶ Play</button>
       <button id="tts-stop-btn" onclick="ttsStop()" style="height:52px;padding:0 20px;background:#333;color:#fff;border:none;border-radius:10px;font-size:1rem;cursor:pointer">⏹ Stop</button>
@@ -7711,7 +7706,7 @@ function speakAccSection(accBody, btn) {
   var synth = window.speechSynthesis;
   var clone = accBody.cloneNode(true);
   clone.querySelectorAll('[aria-hidden="true"], .trial-link, .share-btn, button, .acc-listen').forEach(function(j){ j.remove(); });
-  var text = (clone.innerText || clone.textContent || '').replace(/\s+/g, ' ').trim();
+  var text = (clone.innerText || clone.textContent || '').replace(/[\u{1F000}-\u{1FFFF}]/gu, '').replace(/[\u{2600}-\u{27BF}]/gu, '').replace(/[\u{1F300}-\u{1F9FF}]/gu, '').replace(/\s+/g, ' ').trim();
 
   // Expand abbreviations
   text = text.replace(/\bAMD\b/g, 'Age-related macular degeneration');
@@ -7777,17 +7772,22 @@ function speakAccSection(accBody, btn) {
           b.classList.remove('speaking');
         });
         // Get content: h2's next sibling elements until next h2
-        var textParts = [h2.textContent.trim() + '. '];
+        // Clone h2 and remove the listen button before reading its text
+        var h2clone = h2.cloneNode(true);
+        h2clone.querySelectorAll('button, .acc-listen').forEach(function(b){ b.remove(); });
+        var textParts = [h2clone.textContent.trim() + '. '];
         var el = h2.nextElementSibling;
         var count = 0;
         while (el && el.tagName !== 'H2' && count < 20) {
-          if (!el.querySelector('button') || el.tagName === 'P' || el.tagName === 'UL') {
-            textParts.push(el.textContent.replace(/\s+/g, ' ').trim());
-          }
+          // Clone element and strip any buttons before reading text
+          var elClone = el.cloneNode(true);
+          elClone.querySelectorAll('button, .acc-listen, .sr-only').forEach(function(b){ b.remove(); });
+          var elText = elClone.textContent.replace(/\s+/g, ' ').trim();
+          if (elText) textParts.push(elText);
           el = el.nextElementSibling;
           count++;
         }
-        var text = textParts.join(' ').replace(/[▼▲←→✦›•]/g, '').replace(/\s+/g, ' ').trim();
+        var text = textParts.join(' ').replace(/[▼▲←→✦›•]/g, '').replace(/[\u{1F000}-\u{1FFFF}]/gu, '').replace(/[\u{2600}-\u{27BF}]/gu, '').replace(/[\u{1F300}-\u{1F9FF}]/gu, '').replace(/\s+/g, ' ').trim();
         if (!text) return;
         if (text.length > 2000) text = text.slice(0, 2000);
         var utt = new SpeechSynthesisUtterance(text);
@@ -9305,16 +9305,7 @@ if ('serviceWorker' in navigator) {
     if (open) {
       var synth = window.speechSynthesis;
       if (synth) {
-        var loadV = function() {
-          var sel = document.getElementById('tts-voice-sel');
-          if (!sel) return;
-          var voices = synth.getVoices();
-          if (voices.length > 1) {
-            sel.innerHTML = '<option value="">Default English voice</option>';
-            voices.filter(function(v){ return v.lang.indexOf('en') === 0 || v.lang.indexOf('cy') === 0; })
-              .forEach(function(v) { var o = document.createElement('option'); o.value = v.name; o.textContent = v.name + ' (' + v.lang + ')'; sel.appendChild(o); });
-          }
-        };
+        var loadV = function() {};
 
   // Minimise panel when playing starts, re-expand when stopped
   window.ttsPanelExpand = function() {
