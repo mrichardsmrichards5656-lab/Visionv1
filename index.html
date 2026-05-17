@@ -2405,7 +2405,7 @@ body.focus-mode::after {
           <input type="search" id="csearch" placeholder="e.g. AMD, glaucoma, RP…" autocomplete="off" aria-controls="cond-list" aria-label="Search eye conditions" style="background:#fff;color:#000;font-size:1rem;border:2px solid var(--border);border-radius:50px;padding:14px 20px;width:100%;box-sizing:border-box;box-shadow:0 1px 4px rgba(0,0,0,0.06);margin-bottom:10px">
           <button onclick="filterConds(document.getElementById('csearch').value); document.getElementById('csearch').blur();" aria-label="Search conditions" style="background:var(--yellow);color:#000;border:none;border-radius:50px;padding:14px 24px;font-family:var(--font);font-size:1rem;font-weight:900;cursor:pointer;width:100%;min-height:50px">🔍 Search</button>
         </div>
-        <p id="cond-hint" aria-live="polite" style="font-size:0.95rem;font-weight:700;color:var(--text2);margin:4px 0 0;line-height:1.5">Start typing to find your condition</p>
+        <p id="cond-hint" aria-live="polite" style="font-size:0.95rem;font-weight:700;color:var(--text2);margin:4px 0 0;line-height:1.5">Type your condition then tap Search (or press Enter)</p>
         <div class="cond-list" id="cond-list" role="list" style="display:none;max-height:60vh;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;margin-top:6px;border-radius:12px;background:#fff">
         </div>
       </div>
@@ -8155,6 +8155,25 @@ function showPage(name) {
   };
   srAnnounce('Navigated to: ' + (_srPageNames[name] || name));
 
+  // Update document.title so screen readers announce the new page
+  var _pageTitle = _srPageNames[name] || name;
+  document.title = _pageTitle + ' — Vision Hub UK';
+
+  // Move keyboard focus to the new page's h1 so screen readers start reading there
+  setTimeout(function() {
+    var _target = document.querySelector('.page.active h1');
+    if (_target) {
+      // Make h1 focusable temporarily so screen reader can land on it
+      _target.setAttribute('tabindex', '-1');
+      _target.focus({preventScroll: false});
+      // Remove tabindex after blur so it's not in normal tab order
+      _target.addEventListener('blur', function _b(){
+        _target.removeAttribute('tabindex');
+        _target.removeEventListener('blur', _b);
+      });
+    }
+  }, 150);
+
   // Update sticky title for zoomed users
   var _pageNames = {
     home:'Vision Hub', livingwell:'Everyday Guide', glossary:'Glossary',
@@ -8253,7 +8272,7 @@ function selectCondition(key) {
   var l = document.getElementById('cond-list');
   if (l) l.style.display = 'none';
   var h = document.getElementById('cond-hint');
-  if (h) { h.style.display = 'block'; h.innerHTML = 'Start typing to find your condition. <strong>17 conditions</strong> covered.'; }
+  if (h) { h.style.display = 'block'; h.innerHTML = 'Type your condition then tap <strong>Search</strong> (or press Enter). <strong>17 conditions</strong> covered.'; }
   showCondition(key);
 }
 
