@@ -1771,7 +1771,7 @@ body.focus-mode::after {
     <strong style="display:block;font-size:1.2rem;margin-bottom:8px;color:#b86d00">JavaScript is required</strong>
     Sight Atlas UK needs JavaScript to display its accessibility features and condition information.<br>
     Please enable JavaScript in your browser settings, then refresh this page.<br>
-    <span style="display:block;margin-top:10px;font-size:0.95rem;color:#4a4a6a">If you need help, ask someone to enable JavaScript for you, or visit <a href="https://www.rnib.org.uk" style="color:#b86d00;font-weight:700">rnib.org.uk</a> for sight loss support.</span>
+    <span style="display:block;margin-top:10px;font-size:0.95rem;color:#4a4a6a">If you need help, ask someone to enable JavaScript for you, or visit <a href="https://www.rnib.org.uk" target="_blank" rel="noopener" style="color:#b86d00;font-weight:700">rnib.org.uk</a> for sight loss support.</span>
   </div>
 </noscript>
 
@@ -4992,7 +4992,7 @@ body.focus-mode::after {
       <li><strong>Disney+:</strong> Audio menu → English Audio Description.</li>
       <li><strong>Sky / NOW:</strong> Press Help on the remote → Accessibility → Audio Description.</li>
       <li><strong>Apple TV+ / Prime Video:</strong> Audio menu during playback.</li>
-      <li><strong>Cinemas:</strong> Most chains lend AD headsets at the box office — ask. Use the <a href="https://www.yourlocalcinema.com" rel="noopener">Your Local Cinema</a> site to find AD-compatible screenings.</li>
+      <li><strong>Cinemas:</strong> Most chains lend AD headsets at the box office — ask. Use the <a href="https://www.yourlocalcinema.com" target="_blank" rel="noopener">Your Local Cinema</a> site to find AD-compatible screenings.</li>
     </ul>
 
     <h2 id="apps">Sighted-help apps (all free)</h2>
@@ -8022,7 +8022,26 @@ function showWelshPage(name) {
 
       welshEl.style.display = '';
 
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      // Hide video resources (only meant to show on home)
+      var videoWrapW = document.getElementById('video-resources-wrap');
+      if (videoWrapW) videoWrapW.style.display = 'none';
+
+      // Hide news box if present (home-only content)
+      var newsW = document.querySelector('.news-box');
+      if (newsW) newsW.style.display = 'none';
+
+      // Hide footer while on a Welsh sub-page (Welsh pages physically come after footer
+      // in the DOM, so showing the footer would make the page look broken)
+      var ftW = document.querySelector('footer');
+      if (ftW) ftW.style.display = 'none';
+
+      // Welsh sub-pages live after the footer in the DOM, so scroll to the element
+      // directly rather than to top of document
+      setTimeout(function() {
+        var rect = welshEl.getBoundingClientRect();
+        var top = rect.top + window.pageYOffset - 80; // 80px offset for sticky top bar
+        window.scrollTo({ top: top, behavior: 'instant' });
+      }, 0);
 
       return;
 
@@ -8096,6 +8115,10 @@ function toggleWelsh() {
 
     }
 
+    // Hide English-only video resources when in Welsh mode
+    var vrW = document.getElementById('video-resources-wrap');
+    if (vrW) vrW.style.display = 'none';
+
   } else {
 
     // Switch back to English home
@@ -8109,6 +8132,16 @@ function toggleWelsh() {
       engHome.classList.add('active');
 
     }
+
+    // Show video resources again on English home
+    var vrE = document.getElementById('video-resources-wrap');
+    if (vrE) vrE.style.display = '';
+
+    // Restore news box and footer (in case hidden by Welsh sub-page nav)
+    var newsE = document.querySelector('.news-box');
+    if (newsE) newsE.style.display = '';
+    var ftE = document.querySelector('footer');
+    if (ftE) ftE.style.display = '';
 
   }
 
@@ -8247,6 +8280,12 @@ function showPage(name) {
 
     if (videoWrap) videoWrap.style.display = 'none';
 
+    // Restore news box and footer when returning to Welsh home
+    var newsH = document.querySelector('.news-box');
+    if (newsH) newsH.style.display = '';
+    var ftH = document.querySelector('footer');
+    if (ftH) ftH.style.display = '';
+
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     return;
@@ -8268,6 +8307,10 @@ function showPage(name) {
   var target = document.getElementById('page-' + name);
 
   if (target) target.classList.add('active');
+
+  // Ensure footer is visible on English pages (may have been hidden by Welsh sub-page)
+  var ftMain = document.querySelector('footer');
+  if (ftMain) ftMain.style.display = '';
 
 
 
