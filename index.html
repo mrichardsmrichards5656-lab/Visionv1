@@ -8452,6 +8452,9 @@ function showCfError(msg) {
 
   el.style.display = 'block';
 
+  // Also announce assertively so screen readers interrupt immediately
+  if (window.srAnnounce) srAnnounce(msg, true);
+
 }
 
 
@@ -9398,10 +9401,19 @@ if (_siteName) {
 
 
 function generateAISLetter(){
-  var name = (document.getElementById('ais-name')||{}).value || '[your name]';
-  var dob  = (document.getElementById('ais-dob')||{}).value  || '[date of birth]';
-  var nhs  = (document.getElementById('ais-nhs')||{}).value  || '[NHS number]';
-  var fmt  = (document.getElementById('ais-format')||{}).value || '';
+  var nameVal = (document.getElementById('ais-name')||{}).value || '';
+  var fmtVal  = (document.getElementById('ais-format')||{}).value || '';
+  // Announce missing critical info before generating (helps screen reader users)
+  if (!nameVal.trim() && window.srAnnounce) {
+    srAnnounce('Notice: your name field is empty. The letter will include [your name] as a placeholder.', true);
+  }
+  if (!fmtVal && window.srAnnounce) {
+    srAnnounce('Notice: no preferred format selected. Please choose your preferred format from the dropdown.', true);
+  }
+  var name = nameVal || '[your name]';
+  var dob  = (document.getElementById('ais-dob')||{}).value || '[date of birth]';
+  var nhs  = (document.getElementById('ais-nhs')||{}).value || '[NHS number]';
+  var fmt  = fmtVal;
   var extra= (document.getElementById('ais-extra')||{}).value || '';
   var today= new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
   var t = ''
