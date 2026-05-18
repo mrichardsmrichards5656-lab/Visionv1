@@ -1838,9 +1838,8 @@ body.focus-mode::after {
   align-items: center;
   gap: 6px;
   border-top: 1px solid var(--border);
-}
-@media (min-width: 640px) {
-  .a11y-bar-row2 { display: none !important; }
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 </style>
@@ -2515,7 +2514,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
             <span style="font-size:0.95rem;font-weight:700;color:var(--text)">💛 Why this site exists</span>
             <button class="acc-listen" onclick="listenToFounder(this)" aria-label="Listen to why this site was made" aria-pressed="false" title="Listen to this section" style="width:32px;height:32px;flex-shrink:0">🔊</button>
           </div>
-          <p style="font-size:0.9rem;color:var(--text2);line-height:1.6;margin:0 0 10px">When my daughter was diagnosed with Stargardts, I had so many questions. I couldn't find anywhere that had everything in one place.</p>
+          <p style="font-size:0.9rem;color:var(--text2);line-height:1.6;margin:0 0 10px">When my daughter was diagnosed with Stargardt's, I had so many questions. I couldn't find anywhere that had everything in one place.</p>
           <button id="founder-expand-btn" onclick="document.getElementById('founder-full').style.display='block';this.style.display='none'" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:0.875rem;font-weight:700;cursor:pointer;text-decoration:underline;padding:0;margin-bottom:4px">Read more ▼</button>
         </div>
         <div id="founder-full" style="display:none;padding:0 20px 20px">
