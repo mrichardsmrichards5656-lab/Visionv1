@@ -1901,6 +1901,13 @@ body.yb .tb-lang { border-color: #000 !important; color: #000 !important; backgr
 body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !important; }
 .tb-divider{width:1px;height:36px;background:var(--border);flex-shrink:0;}
 
+/* On desktop, make quick links 3-row grids match the 2-column top row */
+@media (min-width: 640px) {
+  .ql-row-3 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
 /* Inner wrapper to align row 1 and row 2 content on desktop */
 .a11y-bar-inner {
   display: flex;
@@ -2728,7 +2735,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
       <!-- USEFUL RESOURCES ROW -->
 
       <!-- QUICK LINKS -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px" role="group" aria-label="Useful resources">
+      <div class="ql-row-2" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px" role="group" aria-label="Useful resources">
 
         <button onclick="showPage('glossary')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Glossary">📖 Glossary</button>
 
@@ -2736,7 +2743,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:8px;margin-bottom:20px" role="group" aria-label="More resources">
+      <div class="ql-row-3" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:8px;margin-bottom:20px" role="group" aria-label="More resources">
 
         <button onclick="showPage('eyehealth')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Eye Health Basics">👁️ Eye Health</button>
 
@@ -2746,7 +2753,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px" role="group" aria-label="More resources">
+      <div class="ql-row-3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px" role="group" aria-label="More resources">
         <button onclick="showPage('benefits-calc')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Open Benefits Calculator">💰 Benefits Calc</button>
         <button onclick="showPage('trials')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Find Clinical Trials">🔬 Trials</button>
         <button onclick="showPage('eclo')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px" aria-label="Eye Clinic Support">🏥 Eye Clinic Support</button>
