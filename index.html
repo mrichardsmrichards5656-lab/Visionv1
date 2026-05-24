@@ -56,7 +56,7 @@
 }
 </script>
 
-<title>Sight Atlas UK — Free UK Resource for Sight Loss & Eye Conditions</title>
+<title>Sight Atlas UK — Free UK Resource for Sight Loss &amp; Eye Conditions</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -90,7 +90,7 @@
 
   --text2:  #4a4a6a;
 
-  --border: rgba(0,0,0,0.10);
+  --border: rgba(0,0,0,0.50);
 
   --green:  #1a7a3c;
 
@@ -108,11 +108,32 @@
 
 }
 
+/* GLOBAL FOCUS INDICATOR - every focusable element gets a high-contrast yellow ring
+   Crucial for partially sighted users who navigate by keyboard. */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+body.hc button:focus-visible,
+body.hc a:focus-visible,
+body.hc input:focus-visible,
+body.hc select:focus-visible,
+body.hc textarea:focus-visible {
+  outline: 4px solid #fff;
+  outline-offset: 3px;
+}
+
 body.dark {
 
   --bg:#0f1320; --bg2:#161c2e; --card:#1e2640; --card2:#242d4a;
 
-  --text:#ffffff; --text2:#9aa3bf; --border:rgba(255,255,255,0.09);
+  --text:#ffffff; --text2:#9aa3bf; --border:rgba(255,255,255,0.30);
 
   --yellow:#f5b800; --yellow2:#ffc929;
 
@@ -194,7 +215,7 @@ body.ll {
 
   --bg:#2b1f15; --bg2:#3a2a1c; --card:#3d2d20; --card2:#4a3729;
 
-  --text:#f4e4cc; --text2:#d4b896; --border:rgba(244,228,204,0.15);
+  --text:#f4e4cc; --text2:#d4b896; --border:rgba(244,228,204,0.35);
 
   --yellow:#ffb84d; --yellow2:#ffc466;
 
@@ -368,19 +389,33 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
 
 .skip {
 
-  position: absolute; top: -999px; left: -999px;
-
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
   background: var(--yellow); color: #000;
-
-  padding: 14px 28px; border-radius: 50px;
-
   font-weight: 800; font-size: 16px;
-
-  text-decoration: none; z-index: 9999;
+  text-decoration: none;
 
 }
 
-.skip:focus { top: 12px; left: 12px; }
+.skip:focus {
+
+  position: fixed;
+  top: 12px; left: 12px;
+  width: auto; height: auto;
+  margin: 0;
+  padding: 14px 28px;
+  border-radius: 50px;
+  clip: auto;
+  overflow: visible;
+  white-space: normal;
+  z-index: 9999;
+
+}
 
 
 
@@ -1649,7 +1684,7 @@ body.reading-ruler .reading-ruler-bar{display:block}
 
 
 /* ══ BLUE/BLACK THEME (lb) ══ */
-body.lb { background-color: #cce8f4 !important; color: #000 !important; }
+body.lb { background-color: #cce8f4 !important; color: #000 !important; --border: #003a80 !important; }
 body.lb .a11y-bar { background: #a8d5ea !important; }
 body.lb .desktop-sidebar { background: #b8dff0 !important; }
 body.lb .cond-helpline-btn { background: #a8d5ea !important; color: #000 !important; }
@@ -1984,21 +2019,21 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
   <div class="tb-divider"></div>
 
   <div role="group" aria-label="Text size" style="display:flex;gap:3px;align-items:center">
-    <button class="tb-btn ab-s on" id="sz-s"  onclick="setSize(1)"    aria-pressed="true"  aria-label="Small text"><span class="tb-icon" style="font-size:14px">A</span><span class="tb-label">Small</span></button>
-    <button class="tb-btn ab-m"    id="sz-m"  onclick="setSize(1.35)" aria-pressed="false" aria-label="Medium text"><span class="tb-icon">A</span><span class="tb-label">Med</span></button>
-    <button class="tb-btn ab-l"    id="sz-l"  onclick="setSize(1.7)"  aria-pressed="false" aria-label="Large text"><span class="tb-icon" style="font-size:19px">A</span><span class="tb-label">Large</span></button>
-    <button class="tb-btn ab-xl"   id="sz-xl" onclick="setSize(2.2)"  aria-pressed="false" aria-label="Extra large text"><span class="tb-icon" style="font-size:21px">A</span><span class="tb-label">X-Lrg</span></button>
+    <button class="tb-btn ab-s on" id="sz-s"  onclick="setSize(1)"    aria-pressed="true"  aria-label="Small text"><span class="tb-icon" style="font-size:14px" aria-hidden="true">A</span><span class="tb-label">Small</span></button>
+    <button class="tb-btn ab-m"    id="sz-m"  onclick="setSize(1.35)" aria-pressed="false" aria-label="Medium text"><span class="tb-icon" aria-hidden="true">A</span><span class="tb-label">Med</span></button>
+    <button class="tb-btn ab-l"    id="sz-l"  onclick="setSize(1.7)"  aria-pressed="false" aria-label="Large text"><span class="tb-icon" style="font-size:19px" aria-hidden="true">A</span><span class="tb-label">Large</span></button>
+    <button class="tb-btn ab-xl"   id="sz-xl" onclick="setSize(2.2)"  aria-pressed="false" aria-label="Extra large text"><span class="tb-icon" style="font-size:21px" aria-hidden="true">A</span><span class="tb-label">X-Lrg</span></button>
   </div>
 
   <div class="tb-divider"></div>
 
   <select id="col-select" onchange="setColour(this.value)" aria-label="Colour theme" class="tb-select" title="Colour theme">
-    <option value="">☀️ Light</option>
-    <option value="lb">💙 Blue/Black</option>
-    <option value="dark">🌙 Dark</option>
-    <option value="ll">👁️ Low Light</option>
-    <option value="hc">⬛ Black/White</option>
-    <option value="yb">🟨 Black/Yellow</option>
+    <option value="">Light</option>
+    <option value="lb">Blue on black</option>
+    <option value="dark">Dark</option>
+    <option value="ll">Low light</option>
+    <option value="hc">Black and white</option>
+    <option value="yb">Yellow on black</option>
   </select>
 
 </div>
@@ -2008,12 +2043,12 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 <div class="a11y-bar-row2" role="toolbar" aria-label="Accessibility features">
 <div class="a11y-bar-inner">
 
-  <button class="tb-btn" id="tts-toggle"     onclick="togglePageSpeech()"   aria-pressed="false" aria-label="Read page aloud"><span class="tb-icon">🔊</span><span class="tb-label">Listen</span></button>
-  <button class="tb-btn" id="dys-toggle"     onclick="toggleDyslexic()"     aria-pressed="false" aria-label="Toggle dyslexia-friendly font"><span class="tb-icon" style="font-size:15px">Aa</span><span class="tb-label">Dyslexic</span></button>
-  <button class="tb-btn" id="rule-toggle"    onclick="toggleReadingRuler()" aria-pressed="false" aria-label="Toggle reading ruler"><span class="tb-icon">▭</span><span class="tb-label">Ruler</span></button>
-  <button class="tb-btn" id="spacing-toggle" onclick="toggleSpacing()"      aria-pressed="false" aria-label="Increase line spacing"><span class="tb-icon" style="font-size:14px">≡</span><span class="tb-label">Spacing</span></button>
+  <button class="tb-btn" id="tts-toggle"     onclick="togglePageSpeech()"   aria-pressed="false" aria-label="Read page aloud"><span class="tb-icon"><span aria-hidden="true">🔊</span></span><span class="tb-label">Listen</span></button>
+  <button class="tb-btn" id="dys-toggle"     onclick="toggleDyslexic()"     aria-pressed="false" aria-label="Toggle dyslexia-friendly font"><span class="tb-icon" style="font-size:15px" aria-hidden="true">Aa</span><span class="tb-label">Dyslexic</span></button>
+  <button class="tb-btn" id="rule-toggle"    onclick="toggleReadingRuler()" aria-pressed="false" aria-label="Toggle reading ruler"><span class="tb-icon" aria-hidden="true">▭</span><span class="tb-label">Ruler</span></button>
+  <button class="tb-btn" id="spacing-toggle" onclick="toggleSpacing()"      aria-pressed="false" aria-label="Increase line spacing"><span class="tb-icon" style="font-size:14px" aria-hidden="true">≡</span><span class="tb-label">Spacing</span></button>
   <div class="tb-divider"></div>
-  <button class="tb-lang" id="welsh-toggle"  onclick="toggleWelsh()"        aria-pressed="false" aria-label="Switch to Welsh / Newid i Gymraeg"><span class="tb-icon" id="welsh-icon" style="font-size:12px;font-weight:900">CY</span><span class="tb-label" id="welsh-label">Welsh</span></button>
+  <button class="tb-lang" id="welsh-toggle"  onclick="toggleWelsh()"        aria-pressed="false" aria-label="Switch to Welsh / Newid i Gymraeg"><span class="tb-icon" id="welsh-icon" style="font-size:12px;font-weight:900" aria-hidden="true">CY</span><span class="tb-label" id="welsh-label">Welsh</span></button>
 
 </div>
 </div>
@@ -2022,16 +2057,16 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
 <!-- STICKY PAGE TITLE (shows on scroll for zoomed users) -->
 <div id="sticky-title" role="navigation" aria-label="Page navigation">
-  <button id="sticky-title-back" onclick="window.stickyBack && stickyBack()" aria-label="Go back" style="background:none;border:2px solid #fff;border-radius:50px;color:#fff;font-family:inherit;font-size:0.85rem;font-weight:800;cursor:pointer;padding:6px 14px;min-height:40px">← Back</button>
-  <button id="sticky-home-btn" onclick="showPage('home')" style="background:#000;border:none;color:var(--yellow2);font-size:0.85rem;font-weight:800;cursor:pointer;padding:6px 14px;border-radius:50px;min-height:40px;font-family:inherit" aria-label="Go to home page">🏠 Home</button>
+  <button id="sticky-title-back" onclick="window.stickyBack && stickyBack()" aria-label="Go back" style="background:none;border:2px solid #fff;border-radius:50px;color:#fff;font-family:inherit;font-size:0.85rem;font-weight:800;cursor:pointer;padding:6px 14px;min-height:40px"><span aria-hidden="true">←</span> Back</button>
+  <button id="sticky-home-btn" onclick="showPage('home')" style="background:#000;border:none;color:var(--yellow2);font-size:0.85rem;font-weight:800;cursor:pointer;padding:6px 14px;border-radius:50px;min-height:40px;font-family:inherit" aria-label="Go to home page"><span aria-hidden="true">🏠</span> Home</button>
 </div>
 
 <!-- TTS PANEL -->
 <!-- Minimised floating bar (shows while reading) -->
 <div id="tts-mini" style="display:none;position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:10001;background:#1a1a2e;border:2px solid #f5b800;border-radius:50px;padding:8px 16px;display:none;align-items:center;gap:12px;box-shadow:0 4px 20px rgba(0,0,0,0.5);white-space:nowrap">
   <span id="tts-mini-status" style="color:#f5b800;font-size:0.85rem;font-weight:700">Reading...</span>
-  <button onclick="ttsStop()" style="background:#f5b800;border:none;color:#000;width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center" aria-label="Stop reading">⏹</button>
-  <button onclick="ttsPanelExpand()" style="background:#333;border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:0.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center" aria-label="Expand controls">⚙</button>
+  <button onclick="ttsStop()" style="background:#f5b800;border:none;color:#000;width:44px;height:44px;border-radius:50%;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center" aria-label="Stop reading"><span aria-hidden="true">⏹</span></button>
+  <button onclick="ttsPanelExpand()" style="background:#333;border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center" aria-label="Expand controls"><span aria-hidden="true">⚙</span></button>
 </div>
 
 <!-- Full TTS panel (shows for setup / when expanded) -->
@@ -2039,7 +2074,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
   <div style="max-width:600px;margin:0 auto">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
       <strong style="color:#f5b800;font-size:1rem">🔊 Read Aloud</strong>
-      <button style="background:#333;border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer" onclick="ttsClose()" aria-label="Close">✕</button>
+      <button style="background:#333;border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer" onclick="ttsClose()" aria-label="Close"><span aria-hidden="true">✕</span></button>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
       <div>
@@ -2068,7 +2103,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
     <input type="hidden" id="tts-voice-sel" value="">
     <div style="display:flex;gap:10px">
       <button id="tts-play-btn" onclick="ttsPlay()" style="flex:1;height:52px;background:#f5b800;color:#000;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer">▶ Play</button>
-      <button id="tts-stop-btn" onclick="ttsStop()" style="height:52px;padding:0 20px;background:#333;color:#fff;border:none;border-radius:10px;font-size:1rem;cursor:pointer">⏹ Stop</button>
+      <button id="tts-stop-btn" onclick="ttsStop()" style="height:52px;padding:0 20px;background:#333;color:#fff;border:none;border-radius:10px;font-size:1rem;cursor:pointer"><span aria-hidden="true">⏹</span> Stop</button>
     </div>
     <label style="display:flex;align-items:center;gap:10px;color:#ccc;font-size:0.875rem;margin-top:12px;cursor:pointer">
       <input type="checkbox" id="tts-enlarge" style="width:18px;height:18px;accent-color:#f5b800">
@@ -2090,7 +2125,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
     style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:1.3rem;cursor:pointer;color:#000;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center"
 
-    aria-label="Dismiss install banner">✕</button>
+    aria-label="Dismiss install banner"><span aria-hidden="true">✕</span></button>
 
 </div>
 
@@ -2125,7 +2160,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
     <br><br>
 
-    <button onclick="toggleWelsh()" style="background:#fff;color:#00b140;border:2px solid #fff;border-radius:50px;padding:10px 20px;font-family:var(--font);font-size:0.9rem;font-weight:900;cursor:pointer;min-height:42px">🇬🇧 Newid i Saesneg / Switch to English</button>
+    <button onclick="toggleWelsh()" style="background:#fff;color:#00b140;border:2px solid #fff;border-radius:50px;padding:10px 20px;font-family:var(--font);font-size:0.9rem;font-weight:900;cursor:pointer;min-height:42px"><span aria-hidden="true">🇬🇧</span> Newid i Saesneg / Switch to English</button>
 
     <div style="margin-top:10px;font-size:0.72rem;opacity:0.9;font-weight:500">
       <span lang="en">Welsh translation is partial. Home, glossary, local support, eye health, employment, parents pages, and condition overviews are available in Welsh. Clinical research, benefits calculators, and detailed guides remain in English. For medical accuracy, use the English version or speak to your ophthalmologist.</span>
@@ -2139,7 +2174,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
 <!-- Welsh home page -->
 
-<div id="page-home-welsh" class="welsh-page" lang="cy" style="display:none">
+<div id="page-home-welsh" class="welsh-page" lang="cy-GB" style="display:none">
 
   <main>
 
@@ -2181,35 +2216,35 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <button class="sidebar-link" onclick="showConditionWelsh('myopic')"><span aria-hidden="true">👓</span> Dirywiad Macular Myopig</button>
 
-      <button class="sidebar-link" onclick="showConditionWelsh('charlesbonnet')">🧠 Syndrom Charles Bonnet</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('charlesbonnet')"><span aria-hidden="true">🧠</span> Syndrom Charles Bonnet</button>
 
-      <button class="sidebar-link" onclick="showConditionWelsh('opticneuritis')">⚡ Niwritis Optig</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('opticneuritis')"><span aria-hidden="true">⚡</span> Niwritis Optig</button>
 
-      <button class="sidebar-link" onclick="showConditionWelsh('blepharitis')">👁 Bleffaritis</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('blepharitis')"><span aria-hidden="true">👁</span> Bleffaritis</button>
 
-      <button class="sidebar-link" onclick="showConditionWelsh('pagets')">🦴 Clefyd Paget (Golwg a Chlyw)</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('pagets')"><span aria-hidden="true">🦴</span> Clefyd Paget (Golwg a Chlyw)</button>
 
       <div class="sidebar-divider"></div>
 
       <span class="sidebar-section">Canllawiau ac Adnoddau</span>
 
-      <button class="sidebar-link" onclick="showPage('livingwell')">🌟 Canllaw Beunyddiol</button>
+      <button class="sidebar-link" onclick="showPage('livingwell')"><span aria-hidden="true">🌟</span> Canllaw Beunyddiol</button>
 
-      <button class="sidebar-link" onclick="showWelshPage('eyehealth')">👁️ Hanfodion Iechyd Llygaid</button>
+      <button class="sidebar-link" onclick="showWelshPage('eyehealth')"><span aria-hidden="true">👁️</span> Hanfodion Iechyd Llygaid</button>
 
-      <button class="sidebar-link" onclick="showWelshPage('employment')">💼 Cyflogaeth</button>
+      <button class="sidebar-link" onclick="showWelshPage('employment')"><span aria-hidden="true">💼</span> Cyflogaeth</button>
 
-      <button class="sidebar-link" onclick="showWelshPage('glossary')">📖 Geirfa</button>
+      <button class="sidebar-link" onclick="showWelshPage('glossary')"><span aria-hidden="true">📖</span> Geirfa</button>
 
-      <button class="sidebar-link" onclick="showWelshPage('questions')">❓ Cwestiynau i'w Gofyn</button>
+      <button class="sidebar-link" onclick="showWelshPage('questions')"><span aria-hidden="true">❓</span> Cwestiynau i'w Gofyn</button>
 
-      <button class="sidebar-link" onclick="showWelshPage('localsupport')">📍 Cymorth Lleol</button>
+      <button class="sidebar-link" onclick="showWelshPage('localsupport')"><span aria-hidden="true">📍</span> Cymorth Lleol</button>
 
-      <button class="sidebar-link" onclick="showWelshPage('children')">👶 I Rieni</button>
+      <button class="sidebar-link" onclick="showWelshPage('children')"><span aria-hidden="true">👶</span> I Rieni</button>
 
       <div class="sidebar-divider"></div>
 
-      <button class="sidebar-link" onclick="showWelshPage('contact')">✉️ Cysylltu</button>
+      <button class="sidebar-link" onclick="showWelshPage('contact')"><span aria-hidden="true">✉️</span> Cysylltu</button>
 
     </aside>
 
@@ -2248,7 +2283,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
         <div style="margin-bottom:8px">
           <input type="search" id="search-cy" placeholder="e.e. AMD, glawcoma, RP…" autocomplete="off" aria-controls="cond-list-cy" aria-label="Chwilio am gyflyrau llygad" class="theme-input" style="font-size:1rem;border:2px solid var(--border);border-radius:50px;padding:14px 20px;width:100%;box-sizing:border-box;box-shadow:0 1px 4px rgba(0,0,0,0.06);margin-bottom:10px">
 
-          <button onclick="doSearch(document.getElementById('search-cy').value); document.getElementById('search-cy').blur();" aria-label="Chwilio am gyflyrau" class="search-go-btn" style="background:var(--yellow2);color:#000;border:none;border-radius:50px;padding:14px 24px;font-family:var(--font);font-size:1rem;font-weight:900;cursor:pointer;width:100%;min-height:50px">🔍 Chwilio</button>
+          <button onclick="doSearch(document.getElementById('search-cy').value); document.getElementById('search-cy').blur();" aria-label="Chwilio am gyflyrau" class="search-go-btn" style="background:var(--yellow2);color:#000;border:none;border-radius:50px;padding:14px 24px;font-family:var(--font);font-size:1rem;font-weight:900;cursor:pointer;width:100%;min-height:50px"><span aria-hidden="true">🔍</span> Chwilio</button>
         </div>
 
         <p id="cond-hint-cy" aria-live="polite" style="font-size:0.95rem;font-weight:700;color:var(--text2);margin:4px 0 0;line-height:1.5">Teipiwch eich cyflwr yna tapiwch <strong>Chwilio</strong> (neu pwyswch Enter). <strong>18 cyflwr</strong>.</p>
@@ -2280,19 +2315,19 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
 
-        <button onclick="showWelshPage('glossary')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px">📖 Geirfa</button>
+        <button onclick="showWelshPage('glossary')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px"><span aria-hidden="true">📖</span> Geirfa</button>
 
-        <button onclick="showWelshPage('localsupport')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px">📍 Cymorth Lleol</button>
+        <button onclick="showWelshPage('localsupport')" class="share-btn" style="font-size:0.82rem;padding:0 8px;min-height:42px;justify-content:center;border-radius:12px"><span aria-hidden="true">📍</span> Cymorth Lleol</button>
 
       </div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px">
 
-        <button onclick="showWelshPage('eyehealth')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px">👁️ Iechyd Llygaid</button>
+        <button onclick="showWelshPage('eyehealth')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px"><span aria-hidden="true">👁️</span> Iechyd Llygaid</button>
 
-        <button onclick="showWelshPage('employment')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px">💼 Cyflogaeth</button>
+        <button onclick="showWelshPage('employment')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px"><span aria-hidden="true">💼</span> Cyflogaeth</button>
 
-        <button onclick="showWelshPage('children')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px">👶 I Rieni</button>
+        <button onclick="showWelshPage('children')" class="share-btn" style="font-size:0.78rem;padding:0 6px;min-height:42px;justify-content:center;border-radius:12px"><span aria-hidden="true">👶</span> I Rieni</button>
 
       </div>
 
@@ -2334,13 +2369,13 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
         <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('myopic') : showCondition('myopic')"><span aria-hidden="true">👓</span> Dirywiad Macular Myopig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
 
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('charlesbonnet') : showCondition('charlesbonnet')">🧠 Syndrom Charles Bonnet <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('charlesbonnet') : showCondition('charlesbonnet')"><span aria-hidden="true">🧠</span> Syndrom Charles Bonnet <span class="cond-arrow" aria-hidden="true">→</span></button></div>
 
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('opticneuritis') : showCondition('opticneuritis')">⚡ Niwritis Optig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('opticneuritis') : showCondition('opticneuritis')"><span aria-hidden="true">⚡</span> Niwritis Optig <span class="cond-arrow" aria-hidden="true">→</span></button></div>
 
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('blepharitis') : showCondition('blepharitis')">👁 Bleffaritis <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('blepharitis') : showCondition('blepharitis')"><span aria-hidden="true">👁</span> Bleffaritis <span class="cond-arrow" aria-hidden="true">→</span></button></div>
 
-        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('pagets') : showCondition('pagets')">🦴 Clefyd Paget (Golwg a Chlyw) <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('pagets') : showCondition('pagets')"><span aria-hidden="true">🦴</span> Clefyd Paget (Golwg a Chlyw) <span class="cond-arrow" aria-hidden="true">→</span></button></div>
 
       </div>
 
@@ -2351,7 +2386,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
         <span class="section-label">Bywyd bob dydd</span>
         <button class="cond-btn" onclick="showPage('livingwell')" aria-label="Agor Canllaw Beunyddiol" style="height:auto;flex-direction:column;align-items:flex-start;gap:8px;padding:20px 26px">
           <span style="display:flex;align-items:center;justify-content:space-between;width:100%;gap:12px">
-            <span style="font-size:1.05rem;font-weight:800">🌟 Canllaw Beunyddiol</span>
+            <span style="font-size:1.05rem;font-weight:800"><span aria-hidden="true">🌟</span> Canllaw Beunyddiol</span>
             <span class="cond-arrow" aria-hidden="true" style="flex-shrink:0">→</span>
           </span>
           <span style="font-size:0.85rem;font-weight:600;color:var(--text2);line-height:1.5">Awgrymiadau ymarferol i wneud bywyd bob dydd yn haws</span>
@@ -2455,13 +2490,13 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <button class="sidebar-link" onclick="showCondition('myopic')"><span aria-hidden="true">👓</span> Myopic MD</button>
 
-      <button class="sidebar-link" onclick="showCondition('charlesbonnet')">🧠 Charles Bonnet Syndrome</button>
+      <button class="sidebar-link" onclick="showCondition('charlesbonnet')"><span aria-hidden="true">🧠</span> Charles Bonnet Syndrome</button>
 
-      <button class="sidebar-link" onclick="showCondition('opticneuritis')">⚡ Optic Neuritis</button>
+      <button class="sidebar-link" onclick="showCondition('opticneuritis')"><span aria-hidden="true">⚡</span> Optic Neuritis</button>
 
-      <button class="sidebar-link" onclick="showCondition('blepharitis')">👁 Blepharitis</button>
+      <button class="sidebar-link" onclick="showCondition('blepharitis')"><span aria-hidden="true">👁</span> Blepharitis</button>
 
-      <button class="sidebar-link" onclick="showCondition('pagets')">🦴 Paget's Disease (Sight &amp; Hearing)</button>
+      <button class="sidebar-link" onclick="showCondition('pagets')"><span aria-hidden="true">🦴</span> Paget's Disease (Sight &amp; Hearing)</button>
 
 
 
@@ -2469,27 +2504,27 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <span class="sidebar-section">Guides &amp; Resources</span>
 
-      <button class="sidebar-link" onclick="showPage('livingwell')">🌟 Everyday Guide</button>
+      <button class="sidebar-link" onclick="showPage('livingwell')"><span aria-hidden="true">🌟</span> Everyday Guide</button>
 
-      <button class="sidebar-link" onclick="showPage('eyehealth')">👁️ Eye Health Basics</button>
+      <button class="sidebar-link" onclick="showPage('eyehealth')"><span aria-hidden="true">👁️</span> Eye Health Basics</button>
 
-      <button class="sidebar-link" onclick="showPage('employment')">💼 Employment</button>
+      <button class="sidebar-link" onclick="showPage('employment')"><span aria-hidden="true">💼</span> Employment</button>
 
-      <button class="sidebar-link" onclick="showPage('glossary')">📖 Glossary</button>
+      <button class="sidebar-link" onclick="showPage('glossary')"><span aria-hidden="true">📖</span> Glossary</button>
 
-      <button class="sidebar-link" onclick="showPage('questions')">❓ Questions to Ask</button>
+      <button class="sidebar-link" onclick="showPage('questions')"><span aria-hidden="true">❓</span> Questions to Ask</button>
 
-      <button class="sidebar-link" onclick="showPage('localsupport')">📍 Local Support</button>
+      <button class="sidebar-link" onclick="showPage('localsupport')"><span aria-hidden="true">📍</span> Local Support</button>
 
-      <button class="sidebar-link" onclick="showPage('children')">👶 For Parents</button>
+      <button class="sidebar-link" onclick="showPage('children')"><span aria-hidden="true">👶</span> For Parents</button>
 
 
 
       <div class="sidebar-divider"></div>
 
-      <button class="sidebar-link" onclick="showPage('benefits-calc')">💰 Benefits Calculator</button>
-      <button class="sidebar-link" onclick="showPage('trials')">🔬 Clinical Trials</button>
-      <button class="sidebar-link" onclick="showPage('eclo')">🏥 Eye Clinic Support</button>
+      <button class="sidebar-link" onclick="showPage('benefits-calc')"><span aria-hidden="true">💰</span> Benefits Calculator</button>
+      <button class="sidebar-link" onclick="showPage('trials')"><span aria-hidden="true">🔬</span> Clinical Trials</button>
+      <button class="sidebar-link" onclick="showPage('eclo')"><span aria-hidden="true">🏥</span> Eye Clinic Support</button>
 
       <div class="sidebar-divider"></div>
 
@@ -2599,7 +2634,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
         <div style="padding:16px 20px 12px">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px">
             <span style="font-size:0.95rem;font-weight:700;color:var(--text)">💛 Why this site exists</span>
-            <button class="acc-listen" onclick="listenToFounder(this)" aria-label="Listen to why this site was made" aria-pressed="false" title="Listen to this section" style="width:32px;height:32px;flex-shrink:0">🔊</button>
+            <button class="acc-listen" onclick="listenToFounder(this)" aria-label="Listen to why this site was made" aria-pressed="false" title="Listen to this section" style="width:44px;height:44px;flex-shrink:0;font-size:1.1rem"><span aria-hidden="true">🔊</span></button>
           </div>
           <p style="font-size:0.9rem;color:var(--text2);line-height:1.6;margin:0 0 10px">When my daughter was diagnosed with Stargardt's, I had so many questions. I couldn't find anywhere that had everything in one place.</p>
           <button id="founder-expand-btn" onclick="document.getElementById('founder-full').style.display='block';this.style.display='none'" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:0.875rem;font-weight:700;cursor:pointer;text-decoration:underline;padding:0;margin-bottom:4px">Read more ▼</button>
@@ -2639,7 +2674,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
         <p style="font-size:1rem;font-weight:700;color:var(--text);margin:0 0 12px;line-height:1.4">Search 18 eye conditions — get research, practical guides, benefits help &amp; support</p>
         <div style="margin-bottom:8px">
           <input type="search" id="csearch" placeholder="e.g. AMD, glaucoma, RP…" autocomplete="off" aria-controls="cond-list" aria-label="Search eye conditions" class="theme-input" style="font-size:1rem;border:2px solid var(--border);border-radius:50px;padding:14px 20px;width:100%;box-sizing:border-box;box-shadow:0 1px 4px rgba(0,0,0,0.06);margin-bottom:10px">
-          <button onclick="filterConds(document.getElementById('csearch').value); document.getElementById('csearch').blur();" aria-label="Search conditions" class="search-go-btn" style="background:var(--yellow2);color:#000;border:none;border-radius:50px;padding:14px 24px;font-family:var(--font);font-size:1rem;font-weight:900;cursor:pointer;width:100%;min-height:50px">🔍 Search</button>
+          <button onclick="filterConds(document.getElementById('csearch').value); document.getElementById('csearch').blur();" aria-label="Search conditions" class="search-go-btn" style="background:var(--yellow2);color:#000;border:none;border-radius:50px;padding:14px 24px;font-family:var(--font);font-size:1rem;font-weight:900;cursor:pointer;width:100%;min-height:50px"><span aria-hidden="true">🔍</span> Search</button>
         </div>
         <p id="cond-hint" aria-live="polite" style="font-size:0.95rem;font-weight:700;color:var(--text2);margin:4px 0 0;line-height:1.5">Type your condition then tap Search (or press Enter)</p>
         <div class="cond-list" id="cond-list" role="list" style="display:none;max-height:60vh;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;margin-top:6px;border-radius:12px;background:#fff">
@@ -2651,7 +2686,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
         <p style="font-size:0.78rem;font-weight:700;color:var(--text2);margin:0 0 8px;line-height:1.3">Or search topics (benefits, daily life, support...)</p>
         <div style="display:flex;gap:8px;align-items:stretch">
           <input type="search" id="tsearch" placeholder="e.g. blue badge, PIP, cooking…" autocomplete="off" aria-controls="topic-list" aria-label="Search topics across the site" class="theme-input" style="font-size:0.95rem;border:1.5px solid var(--border);border-radius:50px;padding:10px 16px;flex:1;min-width:0;box-sizing:border-box;min-height:44px">
-          <button onclick="filterTopics(document.getElementById('tsearch').value); document.getElementById('tsearch').blur();" aria-label="Search topics" style="background:var(--text);color:#fff;border:none;border-radius:50px;padding:10px 18px;font-family:var(--font);font-size:0.9rem;font-weight:800;cursor:pointer;min-height:44px;min-width:44px;flex-shrink:0">🔍</button>
+          <button onclick="filterTopics(document.getElementById('tsearch').value); document.getElementById('tsearch').blur();" aria-label="Search topics" style="background:var(--text);color:#fff;border:none;border-radius:50px;padding:10px 18px;font-family:var(--font);font-size:0.9rem;font-weight:800;cursor:pointer;min-height:44px;min-width:44px;flex-shrink:0"><span aria-hidden="true">🔍</span></button>
         </div>
         <p id="topic-hint" aria-live="polite" style="font-size:0.8rem;color:var(--text2);margin:8px 0 0;line-height:1.4;display:none"></p>
         <div class="cond-list" id="topic-list" role="list" style="display:none;max-height:60vh;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;margin-top:10px;border-radius:12px;background:#fff">
@@ -2672,7 +2707,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
               <h2 style="font-size:1.1rem;font-weight:900;color:var(--text);margin-top:4px;line-height:1.3" data-listen-added="1">Start here.</h2>
             </div>
 
-            <button class="acc-listen" onclick="(function(b){var s=window.speechSynthesis;if(!s)return;if(b.classList.contains('speaking')){s.cancel();b.classList.remove('speaking');return;}s.cancel();var box=document.getElementById('jd-box');if(!box)return;var c=box.cloneNode(true);c.querySelectorAll('button,.acc-listen,.sr-only').forEach(function(x){x.remove();});var t=(c.textContent||'').replace(/[\u{1F000}-\u{1FFFF}]/gu,'').replace(/[\u{2600}-\u{27BF}]/gu,'').replace(/[\u{1F300}-\u{1F9FF}]/gu,'').replace(/\s+/g,' ').trim();if(!t)return;if(t.length>2000)t=t.slice(0,2000);var u=new SpeechSynthesisUtterance(t);u.lang='en-GB';u.rate=parseFloat((document.getElementById('tts-speed')||{}).value||'0.85');u.onend=function(){b.classList.remove('speaking');};b.classList.add('speaking');s.speak(u);})(this)" aria-label="Listen to Just Diagnosed section" title="Listen to this section" style="margin-left:0">🔊</button>
+            <button class="acc-listen" onclick="(function(b){var s=window.speechSynthesis;if(!s)return;if(b.classList.contains('speaking')){s.cancel();b.classList.remove('speaking');return;}s.cancel();var box=document.getElementById('jd-box');if(!box)return;var c=box.cloneNode(true);c.querySelectorAll('button,.acc-listen,.sr-only').forEach(function(x){x.remove();});var t=(c.textContent||'').replace(/[\u{1F000}-\u{1FFFF}]/gu,'').replace(/[\u{2600}-\u{27BF}]/gu,'').replace(/[\u{1F300}-\u{1F9FF}]/gu,'').replace(/\s+/g,' ').trim();if(!t)return;if(t.length>2000)t=t.slice(0,2000);var u=new SpeechSynthesisUtterance(t);u.lang='en-GB';u.rate=parseFloat((document.getElementById('tts-speed')||{}).value||'0.85');u.onend=function(){b.classList.remove('speaking');};b.classList.add('speaking');s.speak(u);})(this)" aria-label="Listen to Just Diagnosed section" title="Listen to this section" style="margin-left:0"><span aria-hidden="true">🔊</span></button>
 
           </div>
 
@@ -2710,7 +2745,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
                 <p style="font-size:0.88rem;color:var(--text2);margin-top:3px;line-height:1.7">Ask your ophthalmologist what your diagnosis means for your vision long term. Write your questions down beforehand — you will forget them in the room.</p>
 
-                <button onclick="showPage('questions')" style="display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:var(--yellow2);color:#000;border:none;padding:9px 18px;border-radius:50px;font-family:var(--font);font-size:0.82rem;font-weight:800;cursor:pointer;min-height:40px">❓ Questions to ask your doctor →</button>
+                <button onclick="showPage('questions')" style="display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:var(--yellow2);color:#000;border:none;padding:9px 18px;border-radius:50px;font-family:var(--font);font-size:0.82rem;font-weight:800;cursor:pointer;min-height:40px"><span aria-hidden="true">❓</span> Questions to ask your doctor <span aria-hidden="true">→</span></button>
 
               </div>
 
@@ -2744,7 +2779,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
                 <p style="font-size:0.88rem;color:var(--text2);margin-top:3px;line-height:1.7">Call <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a> and tell them your condition. They will tell you exactly what you are entitled to. Most people are surprised by how much support is available.</p>
 
-                <p style="font-size:0.88rem;color:var(--text2);margin-top:6px;line-height:1.7">Is this for your child? <button onclick="showPage('children')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">See our For Parents guide →</button></p>
+                <p style="font-size:0.88rem;color:var(--text2);margin-top:6px;line-height:1.7">Is this for your child? <button onclick="showPage('children')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">See our For Parents guide <span aria-hidden="true">→</span></button></p>
 
               </div>
 
@@ -2799,23 +2834,23 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
       <!-- QUICK LINKS -->
       <div class="quick-links-grid" role="group" aria-label="Quick links to useful resources">
 
-        <button onclick="showPage('glossary')" class="share-btn ql-btn" aria-label="Open Glossary">📖 Glossary</button>
+        <button onclick="showPage('glossary')" class="share-btn ql-btn" aria-label="Open Glossary"><span aria-hidden="true">📖</span> Glossary</button>
 
-        <button onclick="showPage('localsupport')" class="share-btn ql-btn" aria-label="Open Local Support">📍 Local Support</button>
+        <button onclick="showPage('localsupport')" class="share-btn ql-btn" aria-label="Open Local Support"><span aria-hidden="true">📍</span> Local Support</button>
 
-        <button onclick="showPage('eyehealth')" class="share-btn ql-btn" aria-label="Open Eye Health Basics">👁️ Eye Health</button>
+        <button onclick="showPage('eyehealth')" class="share-btn ql-btn" aria-label="Open Eye Health Basics"><span aria-hidden="true">👁️</span> Eye Health</button>
 
-        <button onclick="showPage('employment')" class="share-btn ql-btn" aria-label="Open Work and Employment guide">💼 Work</button>
+        <button onclick="showPage('employment')" class="share-btn ql-btn" aria-label="Open Work and Employment guide"><span aria-hidden="true">💼</span> Work</button>
 
-        <button onclick="showPage('children')" class="share-btn ql-btn" aria-label="Open For Parents guide">👶 For Parents</button>
+        <button onclick="showPage('children')" class="share-btn ql-btn" aria-label="Open For Parents guide"><span aria-hidden="true">👶</span> For Parents</button>
 
-        <button onclick="showPage('benefits-calc')" class="share-btn ql-btn" aria-label="Open Benefits Calculator">💰 Benefits Calc</button>
+        <button onclick="showPage('benefits-calc')" class="share-btn ql-btn" aria-label="Open Benefits Calculator"><span aria-hidden="true">💰</span> Benefits Calc</button>
 
-        <button onclick="showPage('trials')" class="share-btn ql-btn" aria-label="Find Clinical Trials">🔬 Trials</button>
+        <button onclick="showPage('trials')" class="share-btn ql-btn" aria-label="Find Clinical Trials"><span aria-hidden="true">🔬</span> Trials</button>
 
-        <button onclick="showPage('eclo')" class="share-btn ql-btn" aria-label="Eye Clinic Support">🏥 Eye Clinic Support</button>
+        <button onclick="showPage('eclo')" class="share-btn ql-btn" aria-label="Eye Clinic Support"><span aria-hidden="true">🏥</span> Eye Clinic Support</button>
 
-        <button onclick="showPage('help')" class="share-btn ql-btn" aria-label="Open Help and Emotional Support page">💬 Emotional Support</button>
+        <button onclick="showPage('help')" class="share-btn ql-btn" aria-label="Open Help and Emotional Support page"><span aria-hidden="true">💬</span> Emotional Support</button>
 
       </div>
 
@@ -2965,39 +3000,39 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <button class="sidebar-link" onclick="showCondition('myopic')"><span aria-hidden="true">👓</span> Myopic MD</button>
 
-      <button class="sidebar-link" onclick="showCondition('charlesbonnet')">🧠 Charles Bonnet Syndrome</button>
+      <button class="sidebar-link" onclick="showCondition('charlesbonnet')"><span aria-hidden="true">🧠</span> Charles Bonnet Syndrome</button>
 
-      <button class="sidebar-link" onclick="showCondition('opticneuritis')">⚡ Optic Neuritis</button>
+      <button class="sidebar-link" onclick="showCondition('opticneuritis')"><span aria-hidden="true">⚡</span> Optic Neuritis</button>
 
-      <button class="sidebar-link" onclick="showCondition('blepharitis')">👁 Blepharitis</button>
+      <button class="sidebar-link" onclick="showCondition('blepharitis')"><span aria-hidden="true">👁</span> Blepharitis</button>
 
-      <button class="sidebar-link" onclick="showCondition('pagets')">🦴 Paget's Disease (Sight &amp; Hearing)</button>
+      <button class="sidebar-link" onclick="showCondition('pagets')"><span aria-hidden="true">🦴</span> Paget's Disease (Sight &amp; Hearing)</button>
 
       <div class="sidebar-divider"></div>
 
       <span class="sidebar-section">Guides &amp; Resources</span>
 
-      <button class="sidebar-link" onclick="showPage('livingwell')">🌟 Everyday Guide</button>
+      <button class="sidebar-link" onclick="showPage('livingwell')"><span aria-hidden="true">🌟</span> Everyday Guide</button>
 
-      <button class="sidebar-link" onclick="showPage('eyehealth')">👁️ Eye Health Basics</button>
+      <button class="sidebar-link" onclick="showPage('eyehealth')"><span aria-hidden="true">👁️</span> Eye Health Basics</button>
 
-      <button class="sidebar-link" onclick="showPage('employment')">💼 Employment</button>
+      <button class="sidebar-link" onclick="showPage('employment')"><span aria-hidden="true">💼</span> Employment</button>
 
-      <button class="sidebar-link" onclick="showPage('glossary')">📖 Glossary</button>
+      <button class="sidebar-link" onclick="showPage('glossary')"><span aria-hidden="true">📖</span> Glossary</button>
 
-      <button class="sidebar-link" onclick="showPage('questions')">❓ Questions to Ask</button>
+      <button class="sidebar-link" onclick="showPage('questions')"><span aria-hidden="true">❓</span> Questions to Ask</button>
 
-      <button class="sidebar-link" onclick="showPage('localsupport')">📍 Local Support</button>
+      <button class="sidebar-link" onclick="showPage('localsupport')"><span aria-hidden="true">📍</span> Local Support</button>
 
-      <button class="sidebar-link" onclick="showPage('children')">👶 For Parents</button>
+      <button class="sidebar-link" onclick="showPage('children')"><span aria-hidden="true">👶</span> For Parents</button>
 
       <div class="sidebar-divider"></div>
 
-      <button class="sidebar-link" onclick="showPage('home')">🏠 Home</button>
+      <button class="sidebar-link" onclick="showPage('home')"><span aria-hidden="true">🏠</span> Home</button>
 
-      <button class="sidebar-link" onclick="showPage('benefits-calc')">💰 Benefits Calculator</button>
-      <button class="sidebar-link" onclick="showPage('trials')">🔬 Clinical Trials</button>
-      <button class="sidebar-link" onclick="showPage('eclo')">🏥 Eye Clinic Support</button>
+      <button class="sidebar-link" onclick="showPage('benefits-calc')"><span aria-hidden="true">💰</span> Benefits Calculator</button>
+      <button class="sidebar-link" onclick="showPage('trials')"><span aria-hidden="true">🔬</span> Clinical Trials</button>
+      <button class="sidebar-link" onclick="showPage('eclo')"><span aria-hidden="true">🏥</span> Eye Clinic Support</button>
 
       <div class="sidebar-divider"></div>
 
@@ -3032,7 +3067,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
     <span class="legal-eyebrow">Daily Life</span>
 
@@ -3144,11 +3179,11 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             <h3>RNIB and rehab support</h3>
 
-            <p>A Vision Rehabilitation Specialist (VRS) can visit your home and give personalised kitchen training — completely free. Ask your ophthalmologist or local authority sensory team for a referral. <a href="https://www.rnib.org.uk">rnib.org.uk ↗</a></p>
+            <p>A Vision Rehabilitation Specialist (VRS) can visit your home and give personalised kitchen training — completely free. Ask your ophthalmologist or local authority sensory team for a referral. <a href="https://www.rnib.org.uk">rnib.org.uk <span aria-hidden="true">↗</span></a></p>
 
           </div>
 
-          <button class="lw-close" onclick="toggleLW('cooking',this.previousElementSibling)" aria-label="Close cooking section">↑ Close</button>
+          <button class="lw-close" onclick="toggleLW('cooking',this.previousElementSibling)" aria-label="Close cooking section"><span aria-hidden="true">↑</span> Close</button>
 
         </div>
 
@@ -3228,7 +3263,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             <h3>You are a good parent</h3>
 
-            <p>Sight loss does not determine the quality of your parenting. Research consistently shows that children of disabled parents develop exceptional empathy, independence, and resilience. RNIB has a dedicated parents' community and information at <a href="https://www.rnib.org.uk">rnib.org.uk ↗</a>. Look Up UK also provides peer support specifically for parents with sight loss.</p>
+            <p>Sight loss does not determine the quality of your parenting. Research consistently shows that children of disabled parents develop exceptional empathy, independence, and resilience. RNIB has a dedicated parents' community and information at <a href="https://www.rnib.org.uk">rnib.org.uk <span aria-hidden="true">↗</span></a>. Look Up UK also provides peer support specifically for parents with sight loss.</p>
 
           </div>
 
@@ -3238,11 +3273,11 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             <h3>Practical help available</h3>
 
-            <p>Local authorities can provide a carer or support worker to assist with childcare tasks if needed — request a social care assessment. This is separate from any benefits you claim. <a href="https://www.sense.org.uk">Sense ↗</a> and RNIB both have family support services.</p>
+            <p>Local authorities can provide a carer or support worker to assist with childcare tasks if needed — request a social care assessment. This is separate from any benefits you claim. <a href="https://www.sense.org.uk">Sense <span aria-hidden="true">↗</span></a> and RNIB both have family support services.</p>
 
           </div>
 
-          <button class="lw-close" onclick="toggleLW('parenting',this.previousElementSibling)" aria-label="Close parenting section">↑ Close</button>
+          <button class="lw-close" onclick="toggleLW('parenting',this.previousElementSibling)" aria-label="Close parenting section"><span aria-hidden="true">↑</span> Close</button>
 
         </div>
 
@@ -3280,7 +3315,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             <h3>Guide running</h3>
 
-            <p>Guide running (running with a sighted guide connected by a tether or holding a rope) is one of the most popular sports for people with sight loss. <a href="https://www.uka.org.uk">UK Athletics ↗</a> has a guide runner network. The <strong>Blind Veterans UK</strong> and <strong>British Blind Sport</strong> can also match you with a local guide runner.</p>
+            <p>Guide running (running with a sighted guide connected by a tether or holding a rope) is one of the most popular sports for people with sight loss. <a href="https://www.uka.org.uk">UK Athletics <span aria-hidden="true">↗</span></a> has a guide runner network. The <strong>Blind Veterans UK</strong> and <strong>British Blind Sport</strong> can also match you with a local guide runner.</p>
 
           </div>
 
@@ -3292,7 +3327,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             <ul>
 
-              <li><strong>Goalball</strong> — a team sport designed specifically for people with visual impairment. All players wear blackout masks. Hugely sociable and competitive. <a href="https://www.britishblindsport.org.uk">British Blind Sport ↗</a></li>
+              <li><strong>Goalball</strong> — a team sport designed specifically for people with visual impairment. All players wear blackout masks. Hugely sociable and competitive. <a href="https://www.britishblindsport.org.uk">British Blind Sport <span aria-hidden="true">↗</span></a></li>
 
               <li><strong>Tandem cycling</strong> — cycling on a tandem bicycle with a sighted pilot. Active communities across the UK</li>
 
@@ -3332,11 +3367,11 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             <h3>British Blind Sport</h3>
 
-            <p>The national organisation for sport for people with sight loss. Find local clubs, events, and activity programmes at <a href="https://www.britishblindsport.org.uk">britishblindsport.org.uk ↗</a>.</p>
+            <p>The national organisation for sport for people with sight loss. Find local clubs, events, and activity programmes at <a href="https://www.britishblindsport.org.uk">britishblindsport.org.uk <span aria-hidden="true">↗</span></a>.</p>
 
           </div>
 
-          <button class="lw-close" onclick="toggleLW('sport',this.previousElementSibling)" aria-label="Close sport section">↑ Close</button>
+          <button class="lw-close" onclick="toggleLW('sport',this.previousElementSibling)" aria-label="Close sport section"><span aria-hidden="true">↑</span> Close</button>
 
         </div>
 
@@ -3440,7 +3475,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
           </div>
 
-          <button class="lw-close" onclick="toggleLW('makeup',this.previousElementSibling)" aria-label="Close makeup section">↑ Close</button>
+          <button class="lw-close" onclick="toggleLW('makeup',this.previousElementSibling)" aria-label="Close makeup section"><span aria-hidden="true">↑</span> Close</button>
 
         </div>
 
@@ -3478,7 +3513,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             <h3>RNIB Talking Books — free</h3>
 
-            <p>RNIB's Talking Books service is completely free for anyone with a sight condition and offers over 40,000 titles available for download or by post. This is specifically designed for people with sight loss and should be the first service you sign up for. <a href="https://readingservices.rnib.org.uk/">Sign up at rnib.org.uk ↗</a></p>
+            <p>RNIB's Talking Books service is completely free for anyone with a sight condition and offers over 40,000 titles available for download or by post. This is specifically designed for people with sight loss and should be the first service you sign up for. <a href="https://readingservices.rnib.org.uk/">Sign up at rnib.org.uk <span aria-hidden="true">↗</span></a></p>
 
           </div>
 
@@ -3488,7 +3523,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             <h3>Calibre Audio Library</h3>
 
-            <p>Calibre is a UK lending library of over 20,000 audiobooks. Free for under-25s and those in full-time education; a subsidised membership of £30/year (or £3/month) applies for adults using digital streaming or download. The postal USB-stick service is free for everyone. <a href="https://www.calibreaudio.org.uk">calibreaudio.org.uk ↗</a></p>
+            <p>Calibre is a UK lending library of over 20,000 audiobooks. Free for under-25s and those in full-time education; a subsidised membership of £30/year (or £3/month) applies for adults using digital streaming or download. The postal USB-stick service is free for everyone. <a href="https://www.calibreaudio.org.uk">calibreaudio.org.uk <span aria-hidden="true">↗</span></a></p>
 
           </div>
 
@@ -3498,7 +3533,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             <h3>Libby / OverDrive — free with library card</h3>
 
-            <p>Download the free Libby app, connect your local library card, and access thousands of audiobooks and ebooks for free. Most UK councils are members. <a href="https://libbyapp.com">libbyapp.com ↗</a></p>
+            <p>Download the free Libby app, connect your local library card, and access thousands of audiobooks and ebooks for free. Most UK councils are members. <a href="https://libbyapp.com">libbyapp.com <span aria-hidden="true">↗</span></a></p>
 
           </div>
 
@@ -3518,7 +3553,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             <h3>Audible — the best-known paid service</h3>
 
-            <p>Audible (Amazon) has the largest library of commercial audiobooks and is fully accessible. It costs around £7.99/month with one credit per month, or individual titles can be purchased. A free trial is available. Note: RNIB Talking Books is free for anyone with sight loss — try that first before subscribing. <a href="https://www.audible.co.uk">audible.co.uk ↗</a></p>
+            <p>Audible (Amazon) has the largest library of commercial audiobooks and is fully accessible. It costs around £7.99/month with one credit per month, or individual titles can be purchased. A free trial is available. Note: RNIB Talking Books is free for anyone with sight loss — try that first before subscribing. <a href="https://www.audible.co.uk">audible.co.uk <span aria-hidden="true">↗</span></a></p>
 
           </div>
 
@@ -3540,7 +3575,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
           </div>
 
-          <button class="lw-close" onclick="toggleLW('listening',this.previousElementSibling)" aria-label="Close listening section">↑ Close</button>
+          <button class="lw-close" onclick="toggleLW('listening',this.previousElementSibling)" aria-label="Close listening section"><span aria-hidden="true">↑</span> Close</button>
 
         </div>
 
@@ -3578,7 +3613,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             <h3>Passenger Assist (trains)</h3>
 
-            <p>Passenger Assist is a free service allowing you to book assistance at train stations across the UK. You can book by phone or via the Passenger Assist app. Staff will meet you at the station, guide you to your platform, and ensure you board safely. Book at least 2 hours in advance where possible. <a href="https://www.nationalrail.co.uk/help-and-assistance/passenger-assist/">nationalrail.co.uk ↗</a></p>
+            <p>Passenger Assist is a free service allowing you to book assistance at train stations across the UK. You can book by phone or via the Passenger Assist app. Staff will meet you at the station, guide you to your platform, and ensure you board safely. Book at least 2 hours in advance where possible. <a href="https://www.nationalrail.co.uk/help-and-assistance/passenger-assist/">nationalrail.co.uk <span aria-hidden="true">↗</span></a></p>
 
           </div>
 
@@ -3618,7 +3653,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             <h3>Orientation and mobility training</h3>
 
-            <p>Free specialist training to help you travel safely and independently is available via your local authority rehabilitation service. This includes long cane training and route learning. Ask your ophthalmologist or council sensory team for a referral. Guide Dogs UK also provides free travel training. <a href="https://www.guidedogs.org.uk">guidedogs.org.uk ↗</a></p>
+            <p>Free specialist training to help you travel safely and independently is available via your local authority rehabilitation service. This includes long cane training and route learning. Ask your ophthalmologist or council sensory team for a referral. Guide Dogs UK also provides free travel training. <a href="https://www.guidedogs.org.uk">guidedogs.org.uk <span aria-hidden="true">↗</span></a></p>
 
           </div>
 
@@ -3632,7 +3667,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
           </div>
 
-          <button class="lw-close" onclick="toggleLW('travel',this.previousElementSibling)" aria-label="Close travel section">↑ Close</button>
+          <button class="lw-close" onclick="toggleLW('travel',this.previousElementSibling)" aria-label="Close travel section"><span aria-hidden="true">↑</span> Close</button>
 
         </div>
 
@@ -3680,7 +3715,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             <h3>Access to Work — up to £69,260/year</h3>
 
-            <p>Access to Work is a government grant that pays for equipment and support you need to do your job that your employer cannot reasonably fund. This covers screen readers (JAWS, ZoomText), magnifiers, support workers, and taxi fares to work. Apply at <a href="https://www.gov.uk/access-to-work">gov.uk/access-to-work ↗</a> — before buying anything privately.</p>
+            <p>Access to Work is a government grant that pays for equipment and support you need to do your job that your employer cannot reasonably fund. This covers screen readers (JAWS, ZoomText), magnifiers, support workers, and taxi fares to work. Apply at <a href="https://www.gov.uk/access-to-work">gov.uk/access-to-work <span aria-hidden="true">↗</span></a> — before buying anything privately.</p>
 
           </div>
 
@@ -3712,7 +3747,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             <h3>RNIB Employment Services</h3>
 
-            <p>RNIB's employment team provides free, confidential advice on disclosure, adjustments, redundancy, and career development. Call 0303 123 9999 or visit <a href="https://www.rnib.org.uk">rnib.org.uk ↗</a>.</p>
+            <p>RNIB's employment team provides free, confidential advice on disclosure, adjustments, redundancy, and career development. Call 0303 123 9999 or visit <a href="https://www.rnib.org.uk">rnib.org.uk <span aria-hidden="true">↗</span></a>.</p>
 
           </div>
 
@@ -3726,7 +3761,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
           </div>
 
-          <button class="lw-close" onclick="toggleLW('work',this.previousElementSibling)" aria-label="Close work section">↑ Close</button>
+          <button class="lw-close" onclick="toggleLW('work',this.previousElementSibling)" aria-label="Close work section"><span aria-hidden="true">↑</span> Close</button>
 
         </div>
 
@@ -3774,7 +3809,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             <h3>RNIB Sight Loss Counselling</h3>
 
-            <p>RNIB provides free talking therapy sessions with counsellors who specialise in sight loss. This is different from general counselling — these therapists understand the specific emotional landscape. Call 0303 123 9999 to be referred. <a href="https://www.rnib.org.uk">rnib.org.uk ↗</a></p>
+            <p>RNIB provides free talking therapy sessions with counsellors who specialise in sight loss. This is different from general counselling — these therapists understand the specific emotional landscape. Call 0303 123 9999 to be referred. <a href="https://www.rnib.org.uk">rnib.org.uk <span aria-hidden="true">↗</span></a></p>
 
           </div>
 
@@ -3808,7 +3843,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
           </div>
 
-          <button class="lw-close" onclick="toggleLW('mentalhealth',this.previousElementSibling)" aria-label="Close mental health section">↑ Close</button>
+          <button class="lw-close" onclick="toggleLW('mentalhealth',this.previousElementSibling)" aria-label="Close mental health section"><span aria-hidden="true">↑</span> Close</button>
 
         </div>
 
@@ -3820,11 +3855,11 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
 
 
-    <div class="wb" style="margin-top:8px"><strong>Something missing?</strong> This guide grows based on what people tell us they need. <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Suggest a topic →</button></div>
+    <div class="wb" style="margin-top:8px"><strong>Something missing?</strong> This guide grows based on what people tell us they need. <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Suggest a topic <span aria-hidden="true">→</span></button></div>
 
 
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:20px" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:20px" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
   </div>
 
@@ -3842,7 +3877,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
     <span class="legal-eyebrow">Get in touch</span>
 
@@ -3856,7 +3891,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <p class="cf-desc">Your message comes directly to me. I never share your details with third parties.</p>
 
-      <div id="cf-form">
+      <form id="cf-form" novalidate onsubmit="event.preventDefault(); submitContactForm(); return false;">
 
         <div class="cf-field">
 
@@ -3908,11 +3943,11 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
         <div id="cf-error" class="cf-error" role="alert" aria-live="polite"></div>
 
-        <button type="button" class="cf-submit" onclick="submitContactForm()">📨 Send Message</button>
+        <button type="submit" class="cf-submit"><span aria-hidden="true">📨</span> Send Message</button>
 
         <p class="cf-note">We never sell or share your email. We only use it to reply to you.</p>
 
-      </div>
+      </form>
 
       <div id="cf-success" class="cf-success" role="status" aria-live="polite">
 
@@ -3936,7 +3971,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
     </div>
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
   </div>
 
@@ -3950,7 +3985,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
     <span class="legal-eyebrow">Legal</span>
 
@@ -3974,7 +4009,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
     <div class="lc"><h2>🔒 Your rights</h2><p>Access, correction, deletion, and objection — use our <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">contact form</button>. Complaints to ICO: <a href="https://ico.org.uk">ico.org.uk</a> or 0303 123 1113.</p></div>
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
   </div>
 
@@ -3988,7 +4023,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
     <span class="legal-eyebrow">Legal</span>
 
@@ -4024,7 +4059,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
     <div class="lc"><h2>Enforcement</h2><p>EASS: <a href="https://www.equalityadvisoryservice.com">equalityadvisoryservice.com</a> · 0808 800 0082</p></div>
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
   </div>
 
@@ -4042,7 +4077,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
     <span class="legal-eyebrow">Reference</span>
 
@@ -4052,7 +4087,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
 
 
-    <div class="wb"><strong>Tip:</strong> Use your browser's find function (Ctrl+F on desktop) to search for a specific term. New to eye conditions? See our <button onclick="showPage('eyehealth')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Eye Health Basics guide →</button></div>
+    <div class="wb"><strong>Tip:</strong> Use your browser's find function (Ctrl+F on desktop) to search for a specific term. New to eye conditions? See our <button onclick="showPage('eyehealth')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Eye Health Basics guide <span aria-hidden="true">→</span></button></div>
 
 
 
@@ -4288,7 +4323,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
 
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
   </div>
 
@@ -4306,7 +4341,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
     <span class="legal-eyebrow">Be Prepared</span>
 
@@ -4454,7 +4489,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
 
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
   </div>
 
@@ -4472,7 +4507,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
     <span class="legal-eyebrow">In Your Area</span>
 
@@ -4488,7 +4523,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <p>RNIB's support finder lets you search by postcode for local sight loss groups, rehabilitation services, and specialist support in your area.</p>
 
-      <p style="margin-top:12px"><a href="https://www.rnib.org.uk/your-eyes/navigating-sight-loss/eye-care-services-and-roles/eye-care-liaison-officers-eclos/" style="color:var(--yellow);font-weight:700;font-size:1rem">Find support near you at rnib.org.uk ↗</a></p>
+      <p style="margin-top:12px"><a href="https://www.rnib.org.uk/your-eyes/navigating-sight-loss/eye-care-services-and-roles/eye-care-liaison-officers-eclos/" style="color:var(--yellow);font-weight:700;font-size:1rem">Find support near you at rnib.org.uk <span aria-hidden="true">↗</span></a></p>
 
       <p style="margin-top:12px;font-size:0.85rem;color:var(--text2)">This link goes to RNIB's website. If the link has moved, go to rnib.org.uk and search "find support near you".</p>
 
@@ -4504,7 +4539,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <p style="margin-top:10px">Everything is tried and tested by people with sight loss. If you need specialist daily living equipment, this is the place to start.</p>
 
-      <p style="margin-top:12px"><a href="https://shop.rnib.org.uk" style="color:var(--yellow);font-weight:700;font-size:1rem">Visit the RNIB Shop ↗</a></p>
+      <p style="margin-top:12px"><a href="https://shop.rnib.org.uk" style="color:var(--yellow);font-weight:700;font-size:1rem">Visit the RNIB Shop <span aria-hidden="true">↗</span></a></p>
 
     </div>
 
@@ -4516,7 +4551,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <p>Free video guides teaching people with sight loss how to use technology — iPhones, Android phones, screen readers, and accessibility features — in plain, practical language. The best free tech training resource in the UK for people with sight loss.</p>
 
-      <p style="margin-top:12px"><a href="https://www.henshaws.org.uk/knowledge-village/" style="color:var(--yellow);font-weight:700;font-size:1rem">Visit Henshaws Knowledge Village ↗</a></p>
+      <p style="margin-top:12px"><a href="https://www.henshaws.org.uk/knowledge-village/" style="color:var(--yellow);font-weight:700;font-size:1rem">Visit Henshaws Knowledge Village <span aria-hidden="true">↗</span></a></p>
 
     </div>
 
@@ -4588,7 +4623,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <p style="margin-top:10px"><strong>Find an accredited counsellor near you</strong> — The British Association for Counselling and Psychotherapy (BACP) directory lets you search for accredited counsellors by location. Filter by "visual impairment" or "disability" to find specialists.</p>
 
-      <p style="margin-top:12px"><a href="https://www.bacp.co.uk/search/Therapists" style="color:var(--yellow);font-weight:700;font-size:1rem">Search the BACP counsellor directory ↗</a></p>
+      <p style="margin-top:12px"><a href="https://www.bacp.co.uk/search/Therapists" style="color:var(--yellow);font-weight:700;font-size:1rem">Search the BACP counsellor directory <span aria-hidden="true">↗</span></a></p>
 
       <p style="margin-top:10px"><strong>Samaritans</strong> — <a href="tel:116123" style="color:var(--yellow);font-weight:700">116 123</a> — free, 24 hours a day, 7 days a week. Always there if you need to talk.</p>
 
@@ -4596,7 +4631,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
 
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
   </div>
 
@@ -4614,7 +4649,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
     <span class="legal-eyebrow">Understanding Your Eyes</span>
 
@@ -4720,11 +4755,11 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
 
 
-    <div class="wb"><strong>Want to understand a specific term?</strong> Visit our <button onclick="showPage('glossary')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Glossary →</button></div>
+    <div class="wb"><strong>Want to understand a specific term?</strong> Visit our <button onclick="showPage('glossary')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Glossary <span aria-hidden="true">→</span></button></div>
 
 
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
   </div>
 
@@ -4742,7 +4777,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
     <span class="legal-eyebrow">Work</span>
 
@@ -4794,7 +4829,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       </ul>
 
-      <p style="margin-top:12px"><strong>Apply before buying anything privately.</strong> Access to Work cannot reimburse purchases made before the application. Apply at <a href="https://www.gov.uk/access-to-work" style="color:var(--yellow);font-weight:700">gov.uk/access-to-work ↗</a></p>
+      <p style="margin-top:12px"><strong>Apply before buying anything privately.</strong> Access to Work cannot reimburse purchases made before the application. Apply at <a href="https://www.gov.uk/access-to-work" style="color:var(--yellow);font-weight:700">gov.uk/access-to-work <span aria-hidden="true">↗</span></a></p>
 
       <p style="margin-top:10px"><strong>Be prepared for delays.</strong> Average processing time was 109 working days in November 2025 (NAO report, 2026) — up from 28 days in 2021-22. Apply as early as possible and chase regularly. If you have started work and equipment is delayed, you have the right to escalate via your case manager.</p>
 
@@ -4808,7 +4843,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <h2 id="tech">💻 Essential Workplace Technology</h2>
 
-      <p><strong>JAWS</strong> — the most widely used professional screen reader for Windows. Reads all on-screen content aloud. Around £995 (Professional) or £1,850 (Home) via UK retailers VisionAid and Sight & Sound — usually funded via Access to Work.</p>
+      <p><strong>JAWS</strong> — the most widely used professional screen reader for Windows. Reads all on-screen content aloud. Around £995 (Professional) or £1,850 (Home) via UK retailers VisionAid and Sight &amp; Sound — usually funded via Access to Work.</p>
 
       <p style="margin-top:10px"><strong>NVDA</strong> — a free, open-source screen reader for Windows. Excellent alternative to JAWS for many users.</p>
 
@@ -4820,7 +4855,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <p style="margin-top:10px"><strong>OrCam MyEye</strong> — clips to glasses and reads documents, screens, and faces aloud. Useful in meetings and for reading printed materials.</p>
 
-      <p style="margin-top:12px"><strong>Need training on workplace technology?</strong> <a href="https://www.henshaws.org.uk/knowledge-village/" style="color:var(--yellow);font-weight:700">Henshaws Knowledge Village ↗</a> provides free video guides on using accessibility technology — including screen readers and phone accessibility — specifically for people with sight loss.</p>
+      <p style="margin-top:12px"><strong>Need training on workplace technology?</strong> <a href="https://www.henshaws.org.uk/knowledge-village/" style="color:var(--yellow);font-weight:700">Henshaws Knowledge Village <span aria-hidden="true">↗</span></a> provides free video guides on using accessibility technology — including screen readers and phone accessibility — specifically for people with sight loss.</p>
 
     </div>
 
@@ -4910,7 +4945,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
 
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
   </div>
 
@@ -4928,7 +4963,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
     <span class="legal-eyebrow">For Parents</span>
 
@@ -5088,7 +5123,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
 
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
   </div>
 
@@ -5108,7 +5143,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 ══════════════════════════════════════ -->
 <div id="page-help" class="page" role="main" aria-label="Help and Support">
   <div class="legal-wrap">
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
     <span class="legal-eyebrow">Practical help</span>
     <h1>Help &amp; Support</h1>
     <p class="legal-updated">Last updated: <time datetime="2026-05-15">May 2026</time></p>
@@ -5171,7 +5206,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
       <div id="ais-output" style="margin-top:18px;display:none">
         <h3>Your letter (copy &amp; send to GP and hospital)</h3>
         <textarea id="ais-letter-text" rows="14" aria-label="Generated AIS letter — copy and send to GP and hospital" style="width:100%;font-family:var(--font);padding:14px;border-radius:10px;border:2px solid var(--border);background:var(--card)"></textarea>
-        <button class="cf-submit" type="button" onclick="copyAISLetter()" style="margin-top:10px">📋 Copy to clipboard</button>
+        <button class="cf-submit" type="button" onclick="copyAISLetter()" style="margin-top:10px"><span aria-hidden="true">📋</span> Copy to clipboard</button>
       </div>
     </div>
 
@@ -5230,7 +5265,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
     <span class="legal-eyebrow">Transparency</span>
 
@@ -5322,7 +5357,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <h2>💷 Benefits information</h2>
 
-      <p>Benefit rates on this site are updated quarterly following the annual April uprating. They are provided for guidance only. Benefit rules and rates change — always verify current rates and eligibility at <a href="https://www.gov.uk" style="color:var(--yellow);font-weight:700">gov.uk ↗</a> or by calling the relevant benefit helpline.</p>
+      <p>Benefit rates on this site are updated quarterly following the annual April uprating. They are provided for guidance only. Benefit rules and rates change — always verify current rates and eligibility at <a href="https://www.gov.uk" style="color:var(--yellow);font-weight:700">gov.uk <span aria-hidden="true">↗</span></a> or by calling the relevant benefit helpline.</p>
 
     </div>
 
@@ -5338,7 +5373,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
 
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
 
   </div>
 
@@ -5382,7 +5417,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
     <p style="color:var(--text2);font-size:0.9rem;margin-bottom:12px;line-height:1.7">Free video training specifically for people with sight loss — how to use an iPhone if you can't see the screen, Android accessibility, screen readers, and practical technology skills. The best free tech training resource in the UK for people with sight loss.</p>
 
-    <a href="https://www.henshaws.org.uk/knowledge-village/" style="color:var(--yellow);font-weight:700;font-size:0.95rem">Visit Henshaws Knowledge Village ↗</a>
+    <a href="https://www.henshaws.org.uk/knowledge-village/" style="color:var(--yellow);font-weight:700;font-size:0.95rem">Visit Henshaws Knowledge Village <span aria-hidden="true">↗</span></a>
 
   </div>
 
@@ -5396,13 +5431,13 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
     <ul style="margin-top:12px">
 
-      <li style="margin-bottom:10px"><a href="https://www.youtube.com/c/theblindlife" style="color:var(--yellow);font-weight:700">The Blind Life ↗</a><span style="color:var(--text2);font-size:0.9rem;display:block">Run by Sam Seavy (Stargardt disease). Assistive tech, apps, and low vision tips.</span></li>
+      <li style="margin-bottom:10px"><a href="https://www.youtube.com/c/theblindlife" style="color:var(--yellow);font-weight:700">The Blind Life <span aria-hidden="true">↗</span></a><span style="color:var(--text2);font-size:0.9rem;display:block">Run by Sam Seavy (Stargardt disease). Assistive tech, apps, and low vision tips.</span></li>
 
-      <li style="margin-bottom:10px"><a href="https://www.youtube.com/@DoubleTapVideo" style="color:var(--yellow);font-weight:700">Double Tap ↗</a><span style="color:var(--text2);font-size:0.9rem;display:block">Weekly assistive technology show for blind and partially sighted people.</span></li>
+      <li style="margin-bottom:10px"><a href="https://www.youtube.com/@DoubleTapVideo" style="color:var(--yellow);font-weight:700">Double Tap <span aria-hidden="true">↗</span></a><span style="color:var(--text2);font-size:0.9rem;display:block">Weekly assistive technology show for blind and partially sighted people.</span></li>
 
-      <li style="margin-bottom:10px"><a href="https://www.youtube.com/user/rnibuk" style="color:var(--yellow);font-weight:700">RNIB on YouTube ↗</a><span style="color:var(--text2);font-size:0.9rem;display:block">Phone accessibility, wearable tech, screen readers, and more.</span></li>
+      <li style="margin-bottom:10px"><a href="https://www.youtube.com/user/rnibuk" style="color:var(--yellow);font-weight:700">RNIB on YouTube <span aria-hidden="true">↗</span></a><span style="color:var(--text2);font-size:0.9rem;display:block">Phone accessibility, wearable tech, screen readers, and more.</span></li>
 
-      <li><a href="https://www.youtube.com/watch?v=m184At7OkcA" style="color:var(--yellow);font-weight:700">Daily Living Skills Series ↗</a><span style="color:var(--text2);font-size:0.9rem;display:block">Practical everyday skills from a vision rehabilitation therapist.</span></li>
+      <li><a href="https://www.youtube.com/watch?v=m184At7OkcA" style="color:var(--yellow);font-weight:700">Daily Living Skills Series <span aria-hidden="true">↗</span></a><span style="color:var(--text2);font-size:0.9rem;display:block">Practical everyday skills from a vision rehabilitation therapist.</span></li>
 
     </ul>
 
@@ -5422,11 +5457,11 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
     <div class="share-bar" style="justify-content:center;margin-bottom:20px">
 
-      <button class="share-btn" onclick="shareCondition('Sight Atlas UK')" aria-label="Share Sight Atlas UK">📤 Share</button>
+      <button class="share-btn" onclick="shareCondition('Sight Atlas UK')" aria-label="Share Sight Atlas UK"><span aria-hidden="true">📤</span> Share</button>
 
-      <button class="share-btn" onclick="copyLink()" aria-label="Copy link to clipboard">🔗 Copy link</button>
+      <button class="share-btn" onclick="copyLink()" aria-label="Copy link to clipboard"><span aria-hidden="true">🔗</span> Copy link</button>
 
-      <button class="share-btn" onclick="window.print()" aria-label="Print or save as PDF">🖨️ Print / Save PDF</button>
+      <button class="share-btn" onclick="window.print()" aria-label="Print or save as PDF"><span aria-hidden="true">🖨️</span> Print / Save PDF</button>
 
     </div>
 
@@ -5434,7 +5469,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <p style="font-size:0.92rem;color:var(--text2);margin:0 0 10px;line-height:1.5">Got a question, spotted something wrong, or want to suggest a resource?</p>
 
-      <button onclick="showPage('contact')" class="share-btn" style="background:var(--yellow2);color:#000;border-color:var(--yellow2);font-weight:900" aria-label="Contact us">✉️ Contact us</button>
+      <button onclick="showPage('contact')" class="share-btn" style="background:var(--yellow2);color:#000;border-color:var(--yellow2);font-weight:900" aria-label="Contact us"><span aria-hidden="true">✉️</span> Contact us</button>
 
     </div>
 
@@ -5451,7 +5486,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 ══════════════════════════════════════ -->
 <div id="page-eclo" class="page" role="main" aria-label="Find Your ECLO">
   <div class="legal-wrap">
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
     <span class="legal-eyebrow">Eye Clinic Support</span>
     <h1>Find Your ECLO</h1>
     <p style="font-size:0.95rem;color:var(--text2);margin-bottom:24px;line-height:1.8">An <strong>Eye Clinic Liaison Officer (ECLO)</strong> is a specialist support worker based in hospital eye clinics. They are one of the most useful — and least known — resources available to people with sight loss. Their help is free.</p>
@@ -5477,8 +5512,8 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
         <li><strong>Contact RNIB</strong> — call <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a>. RNIB funds ECLOs in many UK hospitals and can tell you whether yours has one.</li>
         <li><strong>Macular Society ECLO search</strong> — if you have a macular condition, the Macular Society funds dedicated ECLOs at many UK hospitals.</li>
       </ol>
-      <p style="margin-top:14px"><a href="https://www.macularsociety.org/about/media/news/2024/july/understanding-the-role-of-an-eclo/" style="color:var(--yellow);font-weight:700">Understanding the role of an ECLO (Macular Society) ↗</a></p>
-      <p style="margin-top:10px"><a href="https://www.rnib.org.uk/your-eyes/navigating-sight-loss/eye-care-services-and-roles/eye-care-liaison-officers-eclos/" style="color:var(--yellow);font-weight:700">RNIB living with sight loss ↗</a></p>
+      <p style="margin-top:14px"><a href="https://www.macularsociety.org/about/media/news/2024/july/understanding-the-role-of-an-eclo/" style="color:var(--yellow);font-weight:700">Understanding the role of an ECLO (Macular Society) <span aria-hidden="true">↗</span></a></p>
+      <p style="margin-top:10px"><a href="https://www.rnib.org.uk/your-eyes/navigating-sight-loss/eye-care-services-and-roles/eye-care-liaison-officers-eclos/" style="color:var(--yellow);font-weight:700">RNIB living with sight loss <span aria-hidden="true">↗</span></a></p>
     </div>
 
     <div class="lc">
@@ -5507,7 +5542,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
     <div class="wb"><strong>Newly diagnosed?</strong> Requesting an ECLO appointment is one of the first five steps we recommend — see our <button onclick="showPage('home')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Just Diagnosed guide on the home page</button>.</div>
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px"><span aria-hidden="true">←</span> Back to home</button>
   </div>
 </div>
 <!-- ══════════════════════════════════════
@@ -5515,7 +5550,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 ══════════════════════════════════════ -->
 <div id="page-trials" class="page" role="main" aria-label="Clinical Trials Finder">
   <div class="legal-wrap">
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
     <span class="legal-eyebrow">Research</span>
     <h1>Clinical Trials Finder</h1>
     <p style="font-size:0.95rem;color:var(--text2);margin-bottom:24px;line-height:1.8">UK clinical trials currently recruiting or recently active for inherited and acquired eye conditions. Select your condition to see what's available.</p>
@@ -5549,13 +5584,13 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
     <div class="lc" style="margin-top:24px">
       <h2>🔍 Search all UK eye trials</h2>
       <p>NIHR's Be Part of Research covers all UK clinical trials. Search by your specific condition for the most current recruitment status.</p>
-      <p style="margin-top:12px"><a href="https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=eye+vision&location=" style="color:var(--yellow);font-weight:700;font-size:1rem">Search NIHR Be Part of Research ↗</a></p>
+      <p style="margin-top:12px"><a href="https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=eye+vision&location=" style="color:var(--yellow);font-weight:700;font-size:1rem">Search NIHR Be Part of Research <span aria-hidden="true">↗</span></a></p>
     </div>
     <div class="lc">
       <h2>🧬 Genetic testing for trial eligibility</h2>
       <p>Many trials require a confirmed genetic diagnosis. NHS genetic testing for inherited eye conditions is free — ask your ophthalmologist for a referral to an Inherited Retinal Disease clinic. Your specific mutation determines which trials you can access.</p>
     </div>
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px"><span aria-hidden="true">←</span> Back to home</button>
   </div>
 </div>
 <!-- ══════════════════════════════════════
@@ -5563,7 +5598,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 ══════════════════════════════════════ -->
 <div id="page-benefits-calc" class="page" role="main" aria-label="Benefits Calculator">
   <div class="legal-wrap">
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home">← Back to home</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
     <span class="legal-eyebrow">Financial Support</span>
     <h1>Benefits Calculator</h1>
     <p style="font-size:0.95rem;color:var(--text2);margin-bottom:28px;line-height:1.8">Answer a few questions to find out which UK benefits and financial support you or your child may be entitled to. Rates are 2026/27 figures.</p>
@@ -5610,11 +5645,11 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
       <!-- Results -->
       <div id="bc-results" style="display:none"></div>
       <!-- Restart -->
-      <button id="bc-restart" onclick="bcRestart()" class="back-btn" style="display:none;margin-top:16px">← Start again</button>
+      <button id="bc-restart" onclick="bcRestart()" class="back-btn" style="display:none;margin-top:16px"><span aria-hidden="true">←</span> Start again</button>
     </div>
   </div>
 </div>
-<button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><span aria-hidden="true">↑</span></button>
 
 
 
@@ -7586,7 +7621,7 @@ function renderCondition(key) {
 
   <div class="cond-hero">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Back to conditions list">${_isWelsh ? '← Pob Cyflwr' : '← All Conditions'}</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to conditions list">${_isWelsh ? '<span aria-hidden="true">←</span> Pob Cyflwr' : '<span aria-hidden="true">←</span> All Conditions'}</button>
 
     ${(function(){
       var tips={
@@ -7653,7 +7688,7 @@ function renderCondition(key) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
-      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('about','${key}',this)" aria-label="Listen to What is" title="Listen to What is" tabindex="0">🔊<span class="sr-only"> What is</span></button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('about','${key}',this)" aria-label="Listen to What is" title="Listen to What is" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> What is</span></button>
       </div>
 
       <div class="acc-body">
@@ -7685,7 +7720,7 @@ function renderCondition(key) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
-      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('research','${key}',this)" aria-label="Listen to Latest Research" title="Listen to Latest Research" tabindex="0">🔊<span class="sr-only"> Latest Research</span></button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('research','${key}',this)" aria-label="Listen to Latest Research" title="Listen to Latest Research" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> Latest Research</span></button>
       </div>
 
       <div class="acc-body">
@@ -7700,7 +7735,7 @@ function renderCondition(key) {
 
           <h3>${r.title}</h3><p>${r.body}</p>
 
-          <a href="${r.link}" class="trial-link">Find out more →</a>
+          <a href="${r.link}" class="trial-link">Find out more <span aria-hidden="true">→</span></a>
 
         </div>`).join('')}
 
@@ -7723,7 +7758,7 @@ function renderCondition(key) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
-      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('guides','${key}',this)" aria-label="Listen to Practical How-To Guides" title="Listen to Practical How-To Guides" tabindex="0">🔊<span class="sr-only"> Practical How-To Guides</span></button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('guides','${key}',this)" aria-label="Listen to Practical How-To Guides" title="Listen to Practical How-To Guides" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> Practical How-To Guides</span></button>
       </div>
 
       <div class="acc-body">
@@ -7757,7 +7792,7 @@ function renderCondition(key) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
-      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('tech','${key}',this)" aria-label="Listen to Assistive Technology" title="Listen to Assistive Technology" tabindex="0">🔊<span class="sr-only"> Assistive Technology</span></button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('tech','${key}',this)" aria-label="Listen to Assistive Technology" title="Listen to Assistive Technology" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> Assistive Technology</span></button>
       </div>
 
       <div class="acc-body">
@@ -7776,7 +7811,7 @@ function renderCondition(key) {
 
         </div>`).join('')}
 
-        <div class="wb"><strong>Funding help:</strong> Many devices are part or fully funded. Ask your local authority sensory team, Access to Work, or Disabled Students Allowance before buying privately. To buy specialist equipment, the <a href="https://shop.rnib.org.uk" style="color:var(--yellow);font-weight:700">RNIB Shop ↗</a> is the UK gold standard.</div>
+        <div class="wb"><strong>Funding help:</strong> Many devices are part or fully funded. Ask your local authority sensory team, Access to Work, or Disabled Students Allowance before buying privately. To buy specialist equipment, the <a href="https://shop.rnib.org.uk" style="color:var(--yellow);font-weight:700">RNIB Shop <span aria-hidden="true">↗</span></a> is the UK gold standard.</div>
 
       </div>
 
@@ -7795,7 +7830,7 @@ function renderCondition(key) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
-      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('support','${key}',this)" aria-label="Listen to Support and Community" title="Listen to Support and Community" tabindex="0">🔊<span class="sr-only"> Support and Community</span></button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('support','${key}',this)" aria-label="Listen to Support and Community" title="Listen to Support and Community" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> Support and Community</span></button>
       </div>
 
       <div class="acc-body">
@@ -7824,7 +7859,7 @@ function renderCondition(key) {
 
           <h3>${s.title}</h3><p>${s.body}</p>
 
-          <a href="${s.link}">${s.link.replace('https://','').replace('www.','')} ↗</a>
+          <a href="${s.link}" aria-label="Visit ${s.title} website (opens external link)">${s.link.replace('https://','').replace('www.','')} <span aria-hidden="true">↗</span></a>
 
         </div>`).join('')}
 
@@ -7847,7 +7882,7 @@ function renderCondition(key) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
-      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('benefits','${key}',this)" aria-label="Listen to Benefits and Financial Help" title="Listen to Benefits and Financial Help" tabindex="0">🔊<span class="sr-only"> Benefits and Financial Help</span></button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('benefits','${key}',this)" aria-label="Listen to Benefits and Financial Help" title="Listen to Benefits and Financial Help" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> Benefits and Financial Help</span></button>
       </div>
 
       <div class="acc-body">
@@ -7891,7 +7926,7 @@ function renderCondition(key) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
-      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('living','${key}',this)" aria-label="Listen to Living with this condition" title="Listen to Living with this condition" tabindex="0">🔊<span class="sr-only"> Living with this condition</span></button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('living','${key}',this)" aria-label="Listen to Living with this condition" title="Listen to Living with this condition" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> Living with this condition</span></button>
       </div>
 
       <div class="acc-body">
@@ -7908,7 +7943,7 @@ function renderCondition(key) {
 
         </div>`).join('')}
 
-        <div class="wb"><strong>More daily life tips:</strong> Visit our <button onclick="showPage('livingwell')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Everyday Guide →</button></div>
+        <div class="wb"><strong>More daily life tips:</strong> Visit our <button onclick="showPage('livingwell')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Everyday Guide <span aria-hidden="true">→</span></button></div>
 
       </div>
 
@@ -7922,14 +7957,14 @@ function renderCondition(key) {
 
       <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('parents','${key}')" aria-expanded="false">
 
-        <span class="acc-left"><span class="acc-num">👶</span><span class="acc-label">For Parents</span></span>
+        <span class="acc-left"><span class="acc-num"><span aria-hidden="true">👶</span></span><span class="acc-label">For Parents</span></span>
 
         
 
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
-      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('parents','${key}',this)" aria-label="Listen to For Parents" title="Listen to For Parents" tabindex="0">🔊<span class="sr-only"> For Parents</span></button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('parents','${key}',this)" aria-label="Listen to For Parents" title="Listen to For Parents" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> For Parents</span></button>
       </div>
 
       <div class="acc-body">
@@ -7948,7 +7983,7 @@ function renderCondition(key) {
 
         </div>`).join('')}
 
-        <div class="wb">For more detailed guidance, visit our <button onclick="showPage('children')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">For Parents page →</button></div>
+        <div class="wb">For more detailed guidance, visit our <button onclick="showPage('children')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">For Parents page <span aria-hidden="true">→</span></button></div>
 
       </div>
 
@@ -7956,17 +7991,17 @@ function renderCondition(key) {
 
 
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to conditions list">← All Conditions</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="Back to conditions list"><span aria-hidden="true">←</span> All Conditions</button>
 
 
 
     <div class="share-bar" style="margin-top:8px">
 
-      <button class="share-btn" onclick="window.print()" aria-label="Print or save as PDF">🖨️ Print / Save PDF</button>
+      <button class="share-btn" onclick="window.print()" aria-label="Print or save as PDF"><span aria-hidden="true">🖨️</span> Print / Save PDF</button>
 
-      <button class="share-btn" onclick="shareCondition('${d.name}')" aria-label="Share this page">📤 Share</button>
+      <button class="share-btn" onclick="shareCondition('${d.name}')" aria-label="Share this page"><span aria-hidden="true">📤</span> Share</button>
 
-      <button class="share-btn" onclick="copyLink()" aria-label="Copy link to clipboard">🔗 Copy link</button>
+      <button class="share-btn" onclick="copyLink()" aria-label="Copy link to clipboard"><span aria-hidden="true">🔗</span> Copy link</button>
 
 
 
@@ -7978,11 +8013,11 @@ function renderCondition(key) {
 
       <span class="feedback-q">Was this page helpful?</span>
 
-      <button class="fb-btn" onclick="submitFeedback('${key}','yes',this)" aria-label="Yes helpful">👍 Yes</button>
+      <button class="fb-btn" onclick="submitFeedback('${key}','yes',this)" aria-label="Yes helpful"><span aria-hidden="true">👍</span> Yes</button>
 
-      <button class="fb-btn" onclick="submitFeedback('${key}','no',this)" aria-label="No not helpful">👎 No</button>
+      <button class="fb-btn" onclick="submitFeedback('${key}','no',this)" aria-label="No not helpful"><span aria-hidden="true">👎</span> No</button>
 
-      <button class="fb-btn" onclick="showPage('contact')" aria-label="Something is missing" style="font-size:0.82rem">✉️ Something's missing</button>
+      <button class="fb-btn" onclick="showPage('contact')" aria-label="Something is missing" style="font-size:0.82rem"><span aria-hidden="true">✉️</span> Something's missing</button>
 
       <span class="feedback-thanks" id="fb-thanks-${key}">Thank you!</span>
 
@@ -8312,7 +8347,7 @@ function showConditionWelsh(key) {
 
   document.body.classList.add('welsh-active');
 
-  document.documentElement.setAttribute('lang', 'cy');
+  document.documentElement.setAttribute('lang', 'cy-GB');
 
   document.documentElement.lang = _isWelsh ? 'cy' : 'en-GB';
   var btn = document.getElementById('welsh-toggle');
@@ -8495,11 +8530,11 @@ function toggleWelsh() {
 
 
 
-  document.documentElement.setAttribute('lang', _isWelsh ? 'cy' : 'en');
+  document.documentElement.setAttribute('lang', _isWelsh ? 'cy-GB' : 'en-GB');
 
   document.body.classList.toggle('welsh-active', _isWelsh);
 
-  try { localStorage.setItem('vh-lang', _isWelsh ? 'cy' : 'en'); } catch(e) {}
+  try { localStorage.setItem('vh-lang', _isWelsh ? 'cy-GB' : 'en-GB'); } catch(e) {}
 
   // Translate search box and home labels
   var cyhint = document.getElementById('cond-hint');
@@ -8688,7 +8723,7 @@ function showPage(name) {
       var strip = document.createElement('div');
       strip.className = 'rnib-strip';
       strip.style.cssText = 'background:var(--card);border:2px solid var(--yellow);border-radius:12px;padding:14px 18px;margin:24px 0 8px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap';
-      strip.innerHTML = '<span style="font-size:0.88rem;color:var(--text2)"><strong style="color:var(--text)">Need help?</strong> RNIB helpline — specialists for all sight conditions</span><a href="tel:03031239999" style="background:var(--yellow);color:#000;font-family:var(--font);font-size:0.95rem;font-weight:900;padding:10px 20px;border-radius:50px;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;white-space:nowrap">📞 0303 123 9999</a>';
+      strip.innerHTML = '<span style="font-size:0.88rem;color:var(--text2)"><strong style="color:var(--text)">Need help?</strong> RNIB helpline — specialists for all sight conditions</span><a href="tel:03031239999" style="background:var(--yellow);color:#000;font-family:var(--font);font-size:0.95rem;font-weight:900;padding:10px 20px;border-radius:50px;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;white-space:nowrap"><span aria-hidden="true">📞</span> 0303 123 9999</a>';
       // Find the last back-button that is a direct child of lw (insertBefore requires this)
       var directBacks = Array.prototype.filter.call(lw.children, function(el){ return el.classList && el.classList.contains('back-btn'); });
       var last = directBacks[directBacks.length - 1];
@@ -10566,17 +10601,17 @@ function showTrialsForCondition(key) {
 
 <!-- WELSH GLOSSARY -->
 
-<div id="page-glossary-welsh" class="welsh-page" lang="cy" style="display:none">
+<div id="page-glossary-welsh" class="welsh-page" lang="cy-GB" style="display:none">
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home');if(_isWelsh)document.getElementById('page-home-welsh').style.display=''" aria-label="Yn ôl i'r hafan">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home');if(_isWelsh)document.getElementById('page-home-welsh').style.display=''" aria-label="Yn ôl i'r hafan"><span aria-hidden="true">←</span> Yn ôl</button>
 
     <span class="legal-eyebrow">Termau</span>
 
     <h1>Geirfa</h1>
 
-    <p style="font-size:0.95rem;color:var(--text2);margin-bottom:24px">Termau cyffredin llygad a meddygol wedi'u hegluro mewn iaith syml. Gweler ein <button onclick="showPage('eyehealth')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Hanfodion Iechyd Llygaid →</button> am ragor o esboniadau.</p>
+    <p style="font-size:0.95rem;color:var(--text2);margin-bottom:24px">Termau cyffredin llygad a meddygol wedi'u hegluro mewn iaith syml. Gweler ein <button onclick="showPage('eyehealth')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Hanfodion Iechyd Llygaid <span aria-hidden="true">→</span></button> am ragor o esboniadau.</p>
 
     <div class="wb">Awgrym: Defnyddiwch swyddogaeth dod o hyd i'ch porwr (Ctrl+F ar y bwrdd gwaith) i chwilio am derm penodol.</div>
 
@@ -10668,7 +10703,7 @@ function showTrialsForCondition(key) {
 
     </div>
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px"><span aria-hidden="true">←</span> Yn ôl</button>
 
   </div>
 
@@ -10678,11 +10713,11 @@ function showTrialsForCondition(key) {
 
 <!-- WELSH EYE HEALTH BASICS -->
 
-<div id="page-eyehealth-welsh" class="welsh-page" lang="cy" style="display:none">
+<div id="page-eyehealth-welsh" class="welsh-page" lang="cy-GB" style="display:none">
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Yn ôl i'r hafan">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Yn ôl i'r hafan"><span aria-hidden="true">←</span> Yn ôl</button>
 
     <span class="legal-eyebrow">Deall Eich Llygaid</span>
 
@@ -10762,9 +10797,9 @@ function showTrialsForCondition(key) {
 
     </div>
 
-    <div class="wb">Eisiau deall term penodol? Ewch i'n <button onclick="showPage('glossary')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Geirfa →</button></div>
+    <div class="wb">Eisiau deall term penodol? Ewch i'n <button onclick="showPage('glossary')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Geirfa <span aria-hidden="true">→</span></button></div>
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px"><span aria-hidden="true">←</span> Yn ôl</button>
 
   </div>
 
@@ -10774,11 +10809,11 @@ function showTrialsForCondition(key) {
 
 <!-- WELSH FOR PARENTS -->
 
-<div id="page-children-welsh" class="welsh-page" lang="cy" style="display:none">
+<div id="page-children-welsh" class="welsh-page" lang="cy-GB" style="display:none">
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Yn ôl i'r hafan">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Yn ôl i'r hafan"><span aria-hidden="true">←</span> Yn ôl</button>
 
     <span class="legal-eyebrow">I Rieni</span>
 
@@ -10864,7 +10899,7 @@ function showTrialsForCondition(key) {
 
     </div>
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px"><span aria-hidden="true">←</span> Yn ôl</button>
 
   </div>
 
@@ -10874,11 +10909,11 @@ function showTrialsForCondition(key) {
 
 <!-- WELSH CONTACT -->
 
-<div id="page-contact-welsh" class="welsh-page" lang="cy" style="display:none">
+<div id="page-contact-welsh" class="welsh-page" lang="cy-GB" style="display:none">
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Yn ôl i'r hafan">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Yn ôl i'r hafan"><span aria-hidden="true">←</span> Yn ôl</button>
 
     <span class="legal-eyebrow">Cysylltu</span>
 
@@ -10920,7 +10955,7 @@ function showTrialsForCondition(key) {
 
     </div>
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px"><span aria-hidden="true">←</span> Yn ôl</button>
 
   </div>
 
@@ -10932,11 +10967,11 @@ function showTrialsForCondition(key) {
 
 <!-- WELSH EMPLOYMENT PAGE -->
 
-<div id="page-employment-welsh" class="welsh-page" lang="cy" style="display:none">
+<div id="page-employment-welsh" class="welsh-page" lang="cy-GB" style="display:none">
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Yn ôl i'r hafan">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Yn ôl i'r hafan"><span aria-hidden="true">←</span> Yn ôl</button>
 
     <span class="legal-eyebrow">Gwaith</span>
 
@@ -10964,7 +10999,7 @@ function showTrialsForCondition(key) {
 
       <p style="margin-top:10px">Gall Mynediad i Waith ariannu: darllenwyr sgrin (JAWS, NVDA), meddalwedd chwyddo (ZoomText), arddangos Braille, cymorthwyr cymorth neu hyfforddwyr swyddi, costau tacsi i'r gwaith os na allwch ddefnyddio trafnidiaeth gyhoeddus.</p>
 
-      <p style="margin-top:12px"><strong>Gwnewch gais cyn prynu unrhyw beth yn breifat.</strong> Gwneud cais ar <a href="https://www.gov.uk/access-to-work" style="color:var(--yellow);font-weight:700">gov.uk/access-to-work ↗</a> (Saesneg yn unig)</p>
+      <p style="margin-top:12px"><strong>Gwnewch gais cyn prynu unrhyw beth yn breifat.</strong> Gwneud cais ar <a href="https://www.gov.uk/access-to-work" style="color:var(--yellow);font-weight:700">gov.uk/access-to-work <span aria-hidden="true">↗</span></a> (Saesneg yn unig)</p>
 
     </div>
 
@@ -10996,7 +11031,7 @@ function showTrialsForCondition(key) {
 
     </div>
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px"><span aria-hidden="true">←</span> Yn ôl</button>
 
   </div>
 
@@ -11006,11 +11041,11 @@ function showTrialsForCondition(key) {
 
 <!-- WELSH DISCLAIMER PAGE -->
 
-<div id="page-disclaimer-welsh" class="welsh-page" lang="cy" style="display:none">
+<div id="page-disclaimer-welsh" class="welsh-page" lang="cy-GB" style="display:none">
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Yn ôl i'r hafan">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Yn ôl i'r hafan"><span aria-hidden="true">←</span> Yn ôl</button>
 
     <span class="legal-eyebrow">Tryloywder</span>
 
@@ -11084,7 +11119,7 @@ function showTrialsForCondition(key) {
 
     </div>
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px"><span aria-hidden="true">←</span> Yn ôl</button>
 
   </div>
 
@@ -11094,11 +11129,11 @@ function showTrialsForCondition(key) {
 
 <!-- WELSH LOCAL SUPPORT PAGE -->
 
-<div id="page-localsupport-welsh" class="welsh-page" lang="cy" style="display:none">
+<div id="page-localsupport-welsh" class="welsh-page" lang="cy-GB" style="display:none">
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Yn ôl i'r hafan">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Yn ôl i'r hafan"><span aria-hidden="true">←</span> Yn ôl</button>
 
     <span class="legal-eyebrow">Cymorth</span>
 
@@ -11112,7 +11147,7 @@ function showTrialsForCondition(key) {
 
       <p>Siop RNIB yw manwerthwr blaenllaw'r DU ar gyfer offer arbenigol i bobl â cholli golwg — clociau siarad, clorianau siarad, eitemau print mawr, a llawer mwy.</p>
 
-      <p style="margin-top:12px"><a href="https://shop.rnib.org.uk" style="color:var(--yellow);font-weight:700;font-size:1rem">Ewch i Siop RNIB ↗ (Saesneg yn unig)</a></p>
+      <p style="margin-top:12px"><a href="https://shop.rnib.org.uk" style="color:var(--yellow);font-weight:700;font-size:1rem">Ewch i Siop RNIB <span aria-hidden="true">↗</span> (Saesneg yn unig)</a></p>
 
     </div>
 
@@ -11122,7 +11157,7 @@ function showTrialsForCondition(key) {
 
       <p>Canllawiau fideo am ddim i ddysgu pobl â cholli golwg sut i ddefnyddio technoleg — ffonau iPhone, ffonau Android, darllenwyr sgrin, a nodweddion hygyrchedd. Yr adnodd hyfforddi technoleg am ddim gorau yn y DU ar gyfer pobl â cholli golwg.</p>
 
-      <p style="margin-top:12px"><a href="https://www.henshaws.org.uk/knowledge-village/" style="color:var(--yellow);font-weight:700;font-size:1rem">Ewch i Bentref Gwybodaeth Henshaws ↗ (Saesneg yn unig)</a></p>
+      <p style="margin-top:12px"><a href="https://www.henshaws.org.uk/knowledge-village/" style="color:var(--yellow);font-weight:700;font-size:1rem">Ewch i Bentref Gwybodaeth Henshaws <span aria-hidden="true">↗</span> (Saesneg yn unig)</a></p>
 
     </div>
 
@@ -11146,11 +11181,11 @@ function showTrialsForCondition(key) {
 
       <h2>🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymorth yng Nghymru</h2>
 
-      <p><strong>RNIB Cymru</strong> — yn darparu gwasanaethau cymorth penodol i Gymru gan gynnwys cyngor, eiriolaeth, a chymorth cyflogaeth. <a href="https://www.rnib.org.uk/cymru" style="color:var(--yellow);font-weight:700">rnib.org.uk/cymru ↗</a></p>
+      <p><strong>RNIB Cymru</strong> — yn darparu gwasanaethau cymorth penodol i Gymru gan gynnwys cyngor, eiriolaeth, a chymorth cyflogaeth. <a href="https://www.rnib.org.uk/cymru" style="color:var(--yellow);font-weight:700">rnib.org.uk/cymru <span aria-hidden="true">↗</span></a></p>
 
-      <p style="margin-top:10px"><strong>Gweld Cymru</strong> — prif elusen golwg Cymru. <a href="https://www.sightcymru.org.uk" style="color:var(--yellow);font-weight:700">sight.cymru ↗</a></p>
+      <p style="margin-top:10px"><strong>Gweld Cymru</strong> — prif elusen golwg Cymru. <a href="https://www.sightcymru.org.uk" style="color:var(--yellow);font-weight:700">sight.cymru <span aria-hidden="true">↗</span></a></p>
 
-      <p style="margin-top:10px"><strong>GIG 111 Cymru</strong> — ar gyfer cymorth iechyd nad yw'n argyfwng: <a href="https://111.wales.nhs.uk" style="color:var(--yellow);font-weight:700" class="no-en-label">111.wales.nhs.uk ↗</a></p>
+      <p style="margin-top:10px"><strong>GIG 111 Cymru</strong> — ar gyfer cymorth iechyd nad yw'n argyfwng: <a href="https://111.wales.nhs.uk" style="color:var(--yellow);font-weight:700" class="no-en-label">111.wales.nhs.uk <span aria-hidden="true">↗</span></a></p>
 
     </div>
 
@@ -11164,7 +11199,7 @@ function showTrialsForCondition(key) {
 
     </div>
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px"><span aria-hidden="true">←</span> Yn ôl</button>
 
   </div>
 
@@ -11174,11 +11209,11 @@ function showTrialsForCondition(key) {
 
 <!-- WELSH QUESTIONS TO ASK PAGE -->
 
-<div id="page-questions-welsh" class="welsh-page" lang="cy" style="display:none">
+<div id="page-questions-welsh" class="welsh-page" lang="cy-GB" style="display:none">
 
   <div class="legal-wrap">
 
-    <button class="back-btn" onclick="showPage('home')" aria-label="Yn ôl">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home')" aria-label="Yn ôl"><span aria-hidden="true">←</span> Yn ôl</button>
 
     <span class="legal-eyebrow">Paratoi</span>
 
@@ -11266,7 +11301,7 @@ function showTrialsForCondition(key) {
 
     </div>
 
-    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px">← Yn ôl</button>
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px"><span aria-hidden="true">←</span> Yn ôl</button>
 
   </div>
 
