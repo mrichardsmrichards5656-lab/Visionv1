@@ -74,6 +74,9 @@
 
 :root {
 
+  /* SC 2.4.11 Focus Not Obscured: keeps focused elements visible below sticky toolbar */
+  scroll-padding-top: 120px;
+
   --bg:     #eef3f7;
 
   --bg2:    #e4ebf1;
@@ -189,7 +192,11 @@ body.yb .cond-helpline-btn * { color: #000 !important; }
 body.yb .back-top { color: #fff !important; }
 body.yb .ab.on { color: #fff !important; }
 /* Pressed toolbar buttons in Black/Yellow - need white text since var(--yellow) is black */
+body.yb .tb-btn { border: 2.5px solid #000 !important; }
+body.yb .tb-btn[aria-pressed="false"] { border: 2.5px solid #000 !important; }
 body.yb .tb-btn[aria-pressed="true"] { color: #000 !important; background: #ffe066 !important; border: 3px solid #000 !important; }
+body.yb .tb-select { border: 2.5px solid #000 !important; }
+body.yb .tb-lang { border-width: 2.5px !important; }
 body.yb .tb-btn[aria-pressed="true"] .tb-icon,
 body.yb .tb-btn[aria-pressed="true"] .tb-label { color: #000 !important; }
 
@@ -387,6 +394,19 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
 
 
 
+/* Screen reader only - visually hidden but available to assistive tech */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 .skip {
 
   position: absolute;
@@ -435,7 +455,7 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
 
   align-items: center;
 
-  justify-content: center;
+  justify-content: flex-start;
 
   gap: 6px;
 
@@ -458,6 +478,7 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
   .a11y-bar {
     flex-wrap: wrap;
     overflow-x: visible;
+    justify-content: center;
   }
 }
 
@@ -470,6 +491,7 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
   z-index: 200;
   border-bottom: 3px solid var(--yellow);
 }
+
 
 .a11y-bar .site-name {
 
@@ -485,7 +507,7 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
 
 .a11y-label {
 
-  font-size: 10px; font-weight: 800; text-transform: uppercase;
+  font-size: 11px; font-weight: 800; text-transform: uppercase;
 
   letter-spacing: 0.08em; color: var(--text2); white-space: nowrap; flex-shrink: 0;
 
@@ -1935,7 +1957,9 @@ body.focus-mode::after {
   transition:background .15s,border-color .15s;
 }
 .tb-btn:hover{background:var(--yellow);color:#000;border-color:var(--yellow);}
+.jd-hover-btn:hover,.jd-hover-btn:focus-visible{border-color:var(--yellow) !important;color:var(--yellow) !important;}
 .tb-btn:focus-visible{outline:3px solid var(--yellow);outline-offset:2px;}
+.tb-select:focus-visible{outline:3px solid var(--yellow);outline-offset:0;}
 .tb-btn[aria-pressed="false"]{background:var(--card2) !important;color:#000 !important;border-color:var(--border) !important;}
 .tb-btn[aria-pressed="true"]{background:var(--yellow) !important;color:#000 !important;border-color:var(--yellow) !important;}
 /* WCAG AA contrast fix: active accessibility-bar buttons need 4.5:1+ for black text.
@@ -1953,13 +1977,14 @@ body.focus-mode::after {
   border-color: var(--yellow2) !important;
 }
 .tb-icon{font-size:17px;line-height:1;font-weight:900;}
-.tb-label{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;line-height:1;white-space:nowrap;color:#000;}
-.tb-select{height:50px;border-radius:10px;border:1.5px solid var(--border);background:var(--card2);color:var(--text);font-family:var(--font);font-size:11px;padding:0 2px;flex-shrink:0;cursor:pointer;max-width:80px;}
+.jd-hover-btn:hover,.jd-hover-btn:focus-visible{border-color:var(--yellow) !important;color:var(--yellow) !important;}
+.tb-label{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;line-height:1;white-space:nowrap;color:#000;}
+.tb-select{height:50px;border-radius:10px;border:2px solid var(--border);background:var(--card2);color:var(--text);font-family:var(--font);font-size:13px;font-weight:800;padding:0 28px 0 10px;flex-shrink:0;cursor:pointer;width:95px;box-sizing:border-box;appearance:none;-webkit-appearance:none;-moz-appearance:none;text-overflow:ellipsis;background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='4 6 8 10 12 6'/%3e%3c/svg%3e");background-repeat:no-repeat;background-position:right 8px center;background-size:14px;}
 .tb-lang{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-width:44px;min-height:50px;padding:4px 6px;border-radius:10px;border:2px solid #006d27;background:var(--card2);color:#006d27;font-family:var(--font);cursor:pointer;flex-shrink:0;gap:1px;}
 .tb-lang[aria-pressed=true]{background:#006d27;color:#fff;}
 .tb-lang[aria-pressed=false]:not(:hover){background:var(--card2);color:#006d27;}
 .tb-lang .tb-icon{font-size:15px;font-weight:900;}
-.tb-lang .tb-label{font-size:9px;color:inherit;font-weight:900;}
+.tb-lang .tb-label{font-size:11px;color:inherit;font-weight:900;}
 
 /* Welsh CY button — adapt to high-contrast themes */
 body.hc .tb-lang { border-color: #fff !important; color: #fff !important; background: #000 !important; }
@@ -1967,6 +1992,12 @@ body.hc .tb-lang[aria-pressed=true] { background: #fff !important; color: #000 !
 body.yb .tb-lang { border-color: #000 !important; color: #000 !important; background: #fff599 !important; }
 body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !important; }
 .tb-divider{width:1px;height:36px;background:var(--border);flex-shrink:0;}
+/* On mobile, hide the decorative eye-icon home button + its divider to free up row 1 space.
+   The X close button (browser tab) and sticky home button already give users a way home. */
+@media (max-width: 639px) {
+  .a11y-bar .site-name { display: none !important; }
+  .a11y-bar-inner > .tb-divider:first-of-type { display: none !important; }
+}
 
 /* Quick links grid - clean uniform layout */
 .quick-links-grid {
@@ -2000,6 +2031,12 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
   gap: 6px;
   width: 100%;
 }
+@media (max-width: 639px) {
+  .a11y-bar-inner {
+    padding-right: 14px;
+    padding-left: 4px;
+  }
+}
 @media (min-width: 640px) {
   .a11y-bar-inner {
     max-width: 600px;
@@ -2014,7 +2051,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 <div class="a11y-bar" role="toolbar" aria-label="Accessibility controls">
 <div class="a11y-bar-inner">
 
-  <span class="site-name" onclick="showPage('home')" role="link" tabindex="0" aria-label="Sight Atlas home" style="cursor:pointer;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px"><svg viewBox="0 0 32 32" width="14" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="16" cy="16" rx="14" ry="9" fill="none" stroke="var(--yellow)" stroke-width="3"/><circle cx="16" cy="16" r="6" fill="var(--yellow)"/></svg></span>
+  <button class="site-name" onclick="showPage('home')" aria-label="Sight Atlas home" style="cursor:pointer;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:none;border:none;padding:0"><svg viewBox="0 0 32 32" width="14" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="16" cy="16" rx="14" ry="9" fill="none" stroke="var(--yellow)" stroke-width="3"/><circle cx="16" cy="16" r="6" fill="var(--yellow)"/></svg></button>
 
   <div class="tb-divider"></div>
 
@@ -2029,11 +2066,11 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
   <select id="col-select" onchange="setColour(this.value)" aria-label="Colour theme" class="tb-select" title="Colour theme">
     <option value="">Light</option>
-    <option value="lb">Blue on black</option>
+    <option value="lb">Blue/Black</option>
     <option value="dark">Dark</option>
-    <option value="ll">Low light</option>
-    <option value="hc">Black and white</option>
-    <option value="yb">Yellow on black</option>
+    <option value="ll">Low Light</option>
+    <option value="hc">B&amp;W</option>
+    <option value="yb">Yellow/Black</option>
   </select>
 
 </div>
@@ -2106,7 +2143,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
       <button id="tts-stop-btn" onclick="ttsStop()" style="height:52px;padding:0 20px;background:#333;color:#fff;border:none;border-radius:10px;font-size:1rem;cursor:pointer"><span aria-hidden="true">⏹</span> Stop</button>
     </div>
     <label style="display:flex;align-items:center;gap:10px;color:#ccc;font-size:0.875rem;margin-top:12px;cursor:pointer">
-      <input type="checkbox" id="tts-enlarge" style="width:18px;height:18px;accent-color:#f5b800">
+      <input type="checkbox" id="tts-enlarge" style="width:18px;height:18px;accent-color:#f5b800" aria-label="Enlarge text while reading">
       Enlarge active paragraph while reading
     </label>
     <p id="tts-status" style="color:#aaa;font-size:0.875rem;margin-top:10px;text-align:center">Choose what to read, then press Play</p>
@@ -2715,9 +2752,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
             style="background:none;border:2px solid var(--border);color:var(--text2);border-radius:50px;padding:6px 14px;font-family:var(--font);font-size:0.78rem;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0;min-height:36px;transition:border-color .15s,color .15s"
 
-            onmouseover="this.style.borderColor='var(--yellow)';this.style.color='var(--yellow)'"
-
-            onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text2)'">
+            class="jd-hover-btn">
 
             Show &#8595;
 
@@ -3089,6 +3124,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <div>
 
+        <h2 class="sr-only">Cooking &amp; Kitchen</h2>
         <button class="lw-card" onclick="toggleLW('cooking',this)" aria-expanded="false" aria-controls="lw-cooking">
 
           <div class="lw-card-top">
@@ -3195,6 +3231,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <div>
 
+        <h2 class="sr-only">Parenting with Sight Loss</h2>
         <button class="lw-card" onclick="toggleLW('parenting',this)" aria-expanded="false" aria-controls="lw-parenting">
 
           <div class="lw-card-top">
@@ -3289,6 +3326,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <div>
 
+        <h2 class="sr-only">Sport &amp; Fitness</h2>
         <button class="lw-card" onclick="toggleLW('sport',this)" aria-expanded="false" aria-controls="lw-sport">
 
           <div class="lw-card-top">
@@ -3383,6 +3421,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <div>
 
+        <h2 class="sr-only">Makeup &amp; Grooming</h2>
         <button class="lw-card" onclick="toggleLW('makeup',this)" aria-expanded="false" aria-controls="lw-makeup">
 
           <div class="lw-card-top">
@@ -3487,6 +3526,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <div>
 
+        <h2 class="sr-only">Listening &amp; Audiobooks</h2>
         <button class="lw-card" onclick="toggleLW('listening',this)" aria-expanded="false" aria-controls="lw-listening">
 
           <div class="lw-card-top">
@@ -3587,6 +3627,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <div>
 
+        <h2 class="sr-only">Travel &amp; Getting Around</h2>
         <button class="lw-card" onclick="toggleLW('travel',this)" aria-expanded="false" aria-controls="lw-travel">
 
           <div class="lw-card-top">
@@ -3679,6 +3720,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <div>
 
+        <h2 class="sr-only">Work &amp; Employment</h2>
         <button class="lw-card" onclick="toggleLW('work',this)" aria-expanded="false" aria-controls="lw-work">
 
           <div class="lw-card-top">
@@ -3773,6 +3815,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <div>
 
+        <h2 class="sr-only">Mental Health &amp; Wellbeing</h2>
         <button class="lw-card" onclick="toggleLW('mentalhealth',this)" aria-expanded="false" aria-controls="lw-mentalhealth">
 
           <div class="lw-card-top">
@@ -3892,6 +3935,8 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
       <p class="cf-desc">Your message comes directly to me. I never share your details with third parties.</p>
 
       <form id="cf-form" novalidate onsubmit="event.preventDefault(); submitContactForm(); return false;">
+
+        <p class="cf-legend" style="font-size:0.85rem;color:var(--text2);margin-bottom:12px"><span aria-hidden="true" style="color:var(--red)">*</span> indicates a required field</p>
 
         <div class="cf-field">
 
@@ -4033,7 +4078,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
     <div class="wb"><strong>My commitment:</strong> Sight Atlas UK exists to serve people living with sight loss. Accessibility is not an afterthought — it is the core purpose of this website.</div>
 
-    <div class="lc"><h2>Conformance status</h2><p>We aim to meet <strong>WCAG 2.1 Level AA</strong>. We believe this website is <strong>substantially conformant</strong>.</p></div>
+    <div class="lc"><h2>Conformance status</h2><p>We aim to meet <strong>WCAG 2.2 Level AA</strong>. We believe this website is <strong>substantially conformant</strong>.</p></div>
 
     <div class="lc"><h2>What we have built in</h2><ul>
 
@@ -5188,8 +5233,8 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
     <p>Since 2016, the <strong>NHS Accessible Information Standard</strong> requires all NHS and adult social care services to ask you how you want information sent — large print, braille, email, audio, or BSL — and to record it on your patient record. Most patients don't know this. Use the form below to generate a letter to your GP and hospital.</p>
     <div class="cf-form" style="margin-top:18px">
       <div class="cf-field"><label for="ais-name">Your name</label><input type="text" id="ais-name" autocomplete="name"></div>
-      <div class="cf-field"><label for="ais-dob">Date of birth</label><input type="text" id="ais-dob" placeholder="DD/MM/YYYY"></div>
-      <div class="cf-field"><label for="ais-nhs">NHS number (if known)</label><input type="text" id="ais-nhs" inputmode="numeric"></div>
+      <div class="cf-field"><label for="ais-dob">Date of birth</label><input type="text" id="ais-dob" placeholder="DD/MM/YYYY" autocomplete="bday"></div>
+      <div class="cf-field"><label for="ais-nhs">NHS number (if known)</label><input type="text" id="ais-nhs" inputmode="numeric" autocomplete="off"></div>
       <div class="cf-field"><label for="ais-format">Preferred format</label>
         <select id="ais-format">
           <option>Large print, minimum 18pt, Arial</option>
@@ -5385,7 +5430,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
 <div aria-hidden="true" style="max-width:680px;margin:0 auto;padding:0 20px;text-align:center;opacity:0.4;line-height:0">
 
-  <svg viewBox="0 0 400 40" width="100%" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 400 40" width="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
 
     <path d="M0,20 Q50,5 100,20 Q150,35 200,20 Q250,5 300,20 Q350,35 400,20" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round"/>
 
@@ -8968,7 +9013,7 @@ function showCfError(msg) {
 
   var el = document.getElementById('cf-error');
 
-  el.textContent = '⚠️ ' + msg;
+  el.innerHTML = '<span aria-hidden="true">⚠️</span> ' + msg.replace(/</g,'&lt;');
 
   el.style.display = 'block';
 
