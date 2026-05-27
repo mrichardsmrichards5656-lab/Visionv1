@@ -187,6 +187,46 @@ body.hc .cf-submit {
 }
 body.hc .trial-link:hover,
 body.hc .cf-submit:hover { background: #1a1a1a !important; }
+/* B&W: pressed toolbar buttons need black text on white background (--yellow is #fff in hc) */
+body.hc .tb-btn[aria-pressed="true"] { background: #fff !important; color: #000 !important; border-color: #fff !important; }
+body.hc .tb-btn[aria-pressed="true"] .tb-icon,
+body.hc .tb-btn[aria-pressed="true"] .tb-label { color: #000 !important; }
+body.hc .tb-btn:hover { background: #fff !important; color: #000 !important; }
+body.hc .tb-btn:hover .tb-icon,
+body.hc .tb-btn:hover .tb-label { color: #000 !important; }
+/* B&W theme: remove all colour from the entire page. Catches emojis anywhere (in headings, badges, buttons) and any other coloured visual elements. */
+body.hc { filter: grayscale(100%) contrast(1.1); }
+/* But re-saturate the focus outline so keyboard users can still see it clearly */
+body.hc button:focus-visible,
+body.hc a:focus-visible,
+body.hc input:focus-visible,
+body.hc select:focus-visible,
+body.hc textarea:focus-visible { outline: 4px solid #fff !important; outline-offset: 3px; }
+/* B&W: research badges should be plain white-on-black, not coloured pills */
+body.hc .rtag { background: #fff !important; color: #000 !important; border: 2px solid #fff !important; }
+/* B&W: borders should be solid white, not 35% opacity grey */
+body.hc { --border: #fff; }
+/* Blue/Black: monochrome emojis for visual cohesion. Two-pronged approach: */
+/* 1. font-variant-emoji forces text-style (B&W) emoji presentation - native, no filter needed */
+body.lb { font-variant-emoji: text; }
+/* 2. Fallback for older browsers: grayscale filter on aria-hidden emoji-bearing spans */
+body.lb span[aria-hidden="true"]:not(.nc-num):not(.acc-num),
+body.lb .lw-card-icon { filter: grayscale(100%) contrast(1.2); }
+/* Blue/Black: sticky home button - black bg needs light blue text */
+body.lb #sticky-home-btn { background: #003a80 !important; color: #fff !important; }
+/* B&W: explicit white chevron SVG (currentColor doesn't reliably propagate into data URI SVGs) */
+body.hc .tb-select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='4 6 8 10 12 6'/%3e%3c/svg%3e") !important;
+}
+/* Dark theme: white chevron */
+body.dark .tb-select { background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='4 6 8 10 12 6'/%3e%3c/svg%3e") !important; }
+/* Yellow/Black theme: black chevron */
+body.yb .tb-select { background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='4 6 8 10 12 6'/%3e%3c/svg%3e") !important; }
+/* Blue/Black theme: black chevron */
+body.lb .tb-select { background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='4 6 8 10 12 6'/%3e%3c/svg%3e") !important; }
+/* Low Light theme: cream chevron */
+body.ll .tb-select { background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23f4e4cc' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='4 6 8 10 12 6'/%3e%3c/svg%3e") !important; }
+
 body.yb .cond-helpline-btn { background: #fff599 !important; color: #000 !important; border: 3px solid #000 !important; }
 body.yb .cond-helpline-btn * { color: #000 !important; }
 body.yb .back-top { color: #fff !important; }
@@ -194,11 +234,16 @@ body.yb .ab.on { color: #fff !important; }
 /* Pressed toolbar buttons in Black/Yellow - need white text since var(--yellow) is black */
 body.yb .tb-btn { border: 2.5px solid #000 !important; }
 body.yb .tb-btn[aria-pressed="false"] { border: 2.5px solid #000 !important; }
-body.yb .tb-btn[aria-pressed="true"] { color: #000 !important; background: #ffe066 !important; border: 3px solid #000 !important; }
+body.yb .tb-btn[aria-pressed="true"] { color: #ffeb00 !important; background: #000 !important; border: 3px solid #000 !important; }
 body.yb .tb-select { border: 2.5px solid #000 !important; }
 body.yb .tb-lang { border-width: 2.5px !important; }
+/* Welsh button adapts to dark themes - the bright green is jarring in low-light themes */
+body.dark .tb-lang { border-color: var(--yellow) !important; color: var(--yellow) !important; background: var(--card2) !important; }
+body.dark .tb-lang[aria-pressed=true] { background: var(--yellow) !important; color: #000 !important; }
+body.ll .tb-lang { border-color: var(--yellow) !important; color: var(--yellow) !important; background: var(--card2) !important; }
+body.ll .tb-lang[aria-pressed=true] { background: var(--yellow) !important; color: #000 !important; }
 body.yb .tb-btn[aria-pressed="true"] .tb-icon,
-body.yb .tb-btn[aria-pressed="true"] .tb-label { color: #000 !important; }
+body.yb .tb-btn[aria-pressed="true"] .tb-label { color: #ffeb00 !important; }
 
 
 /* Sticky home button (hardcoded black background): make text bright yellow for contrast */
@@ -1706,7 +1751,7 @@ body.reading-ruler .reading-ruler-bar{display:block}
 
 
 /* ══ BLUE/BLACK THEME (lb) ══ */
-body.lb { background-color: #cce8f4 !important; color: #000 !important; --border: #003a80 !important; }
+body.lb { background-color: #cce8f4 !important; color: #000 !important; --border: #003a80 !important; --yellow: #003a80 !important; --yellow2: #0055a5 !important; }
 body.lb .a11y-bar { background: #a8d5ea !important; }
 body.lb .desktop-sidebar { background: #b8dff0 !important; }
 body.lb .cond-helpline-btn { background: #a8d5ea !important; color: #000 !important; }
@@ -1978,7 +2023,7 @@ body.focus-mode::after {
 }
 .tb-icon{font-size:17px;line-height:1;font-weight:900;}
 .jd-hover-btn:hover,.jd-hover-btn:focus-visible{border-color:var(--yellow) !important;color:var(--yellow) !important;}
-.tb-label{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;line-height:1;white-space:nowrap;color:#000;}
+.tb-label{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;line-height:1;white-space:nowrap;color:var(--text);}
 .tb-select{height:50px;border-radius:10px;border:2px solid var(--border);background:var(--card2);color:var(--text);font-family:var(--font);font-size:13px;font-weight:800;padding:0 28px 0 10px;flex-shrink:0;cursor:pointer;width:95px;box-sizing:border-box;appearance:none;-webkit-appearance:none;-moz-appearance:none;text-overflow:ellipsis;background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='4 6 8 10 12 6'/%3e%3c/svg%3e");background-repeat:no-repeat;background-position:right 8px center;background-size:14px;}
 .tb-lang{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-width:44px;min-height:50px;padding:4px 6px;border-radius:10px;border:2px solid #006d27;background:var(--card2);color:#006d27;font-family:var(--font);cursor:pointer;flex-shrink:0;gap:1px;}
 .tb-lang[aria-pressed=true]{background:#006d27;color:#fff;}
@@ -2002,17 +2047,33 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 /* Quick links grid - clean uniform layout */
 .quick-links-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* Always 3 columns - 9 buttons fits exactly 3x3 with no lonely button left over */
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
   margin-bottom: 0;
 }
 .ql-btn {
-  font-size: 0.85rem;
-  padding: 6px 10px;
+  font-size: 0.72rem;
+  padding: 8px 4px;
   min-height: 48px;
   justify-content: center;
   border-radius: 12px;
   word-break: keep-all;
+  overflow-wrap: break-word;
+  text-align: center;
+  hyphens: none;
+  line-height: 1.25;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+/* When user enlarges text via the size buttons, --scale grows. Hide the leading emoji at larger sizes so the label has room. The emojis are decorative aria-hidden anyway. */
+@media (max-width: 600px) {
+  .ql-btn span[aria-hidden="true"]:first-child {
+    font-size: 0.85em;
+  }
 }
 @media (min-width: 640px) {
   .quick-links-grid {
@@ -4623,6 +4684,37 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
     <div class="lc">
 
+      <h2 id="your-rights">⚖️ Your Rights Under the Equality Act 2010</h2>
+
+      <p>The <strong>Equality Act 2010</strong> (which replaced the older Disability Discrimination Act 1995) protects you from discrimination in many areas of life because of your sight condition. Sight loss that has a substantial, long-term impact on your daily life almost always counts as a disability under the Act.</p>
+
+      <p style="margin-top:14px"><strong>Areas the Equality Act protects you in:</strong></p>
+      <ul style="margin-top:8px">
+        <li><strong>Work and recruitment</strong> — reasonable adjustments by employers, protection from discriminatory hiring, dismissal, or pay (see the Work page for full detail)</li>
+        <li><strong>Goods and services</strong> — shops, banks, restaurants, gyms, hotels and other service providers must make reasonable adjustments (such as accepting guide dogs, providing accessible information, or staff assistance)</li>
+        <li><strong>Education</strong> — schools, colleges and universities must make reasonable adjustments and provide auxiliary aids; admissions cannot be refused because of disability</li>
+        <li><strong>Public services and councils</strong> — healthcare, social services, libraries, leisure centres and other public bodies must not discriminate and must make services accessible</li>
+        <li><strong>Transport</strong> — buses, trains, taxis and airlines must provide reasonable assistance; assistance dogs cannot be refused</li>
+        <li><strong>Housing</strong> — landlords cannot refuse to let to you because of disability and must consider reasonable adjustments to communal areas</li>
+        <li><strong>Associations and clubs</strong> — private clubs with 25+ members cannot discriminate against disabled members</li>
+      </ul>
+
+      <p style="margin-top:14px"><strong>The four main types of unlawful conduct:</strong></p>
+      <ul style="margin-top:8px">
+        <li><strong>Direct discrimination</strong> — being treated worse because of your sight condition</li>
+        <li><strong>Indirect discrimination</strong> — a rule or practice that puts disabled people at a disadvantage (such as a website that does not work with screen readers)</li>
+        <li><strong>Failure to make reasonable adjustments</strong> — not removing barriers that put you at a substantial disadvantage</li>
+        <li><strong>Harassment or victimisation</strong> — unwanted conduct related to disability, or being treated badly for raising a complaint</li>
+      </ul>
+
+      <p style="margin-top:14px"><strong>If you experience discrimination:</strong> the Equality Advisory and Support Service (EASS) gives free advice on 0808 800 0082. Citizens Advice and your local law centre can also help. There are strict time limits (usually 6 months) for taking legal action, so seek advice quickly.</p>
+
+    </div>
+
+
+
+    <div class="lc">
+
       <h2 id="rehab">🏥 NHS Rehabilitation Services</h2>
 
       <p>Local authorities across the UK are required to provide sight loss rehabilitation services — under the Care Act 2014 in England, the Social Services and Well-being Act 2014 in Wales, and equivalent legislation in Scotland and Northern Ireland. These are free and include:</p>
@@ -4839,38 +4931,15 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
     <div class="lc">
 
-      <h2 id="rights">⚖️ Your Legal Rights</h2>
+      <h2 id="rights">⚖️ Your Legal Rights at Work</h2>
 
-      <p>The <strong>Equality Act 2010</strong> (which replaced the older Disability Discrimination Act 1995) protects you from discrimination in many areas of life because of your sight condition, not just at work. Sight loss that has a substantial, long-term impact on your daily life almost always counts as a disability under the Act.</p>
-
-      <p style="margin-top:14px"><strong>Areas the Equality Act protects you in:</strong></p>
-      <ul style="margin-top:8px">
-        <li><strong>Work and recruitment</strong> — reasonable adjustments by employers, protection from discriminatory hiring, dismissal, or pay (covered in detail below)</li>
-        <li><strong>Goods and services</strong> — shops, banks, restaurants, gyms, hotels and other service providers must make reasonable adjustments (such as accepting guide dogs, providing accessible information, or staff assistance)</li>
-        <li><strong>Education</strong> — schools, colleges and universities must make reasonable adjustments and provide auxiliary aids; admissions cannot be refused because of disability</li>
-        <li><strong>Public services and councils</strong> — healthcare, social services, libraries, leisure centres and other public bodies must not discriminate and must make services accessible</li>
-        <li><strong>Transport</strong> — buses, trains, taxis and airlines must provide reasonable assistance; assistance dogs cannot be refused</li>
-        <li><strong>Housing</strong> — landlords cannot refuse to let to you because of disability and must consider reasonable adjustments to communal areas</li>
-        <li><strong>Associations and clubs</strong> — private clubs with 25+ members cannot discriminate against disabled members</li>
-      </ul>
-
-      <p style="margin-top:14px"><strong>The four main types of unlawful conduct:</strong></p>
-      <ul style="margin-top:8px">
-        <li><strong>Direct discrimination</strong> — being treated worse because of your sight condition</li>
-        <li><strong>Indirect discrimination</strong> — a rule or practice that puts disabled people at a disadvantage (such as a website that does not work with screen readers)</li>
-        <li><strong>Failure to make reasonable adjustments</strong> — not removing barriers that put you at a substantial disadvantage</li>
-        <li><strong>Harassment or victimisation</strong> — unwanted conduct related to disability, or being treated badly for raising a complaint</li>
-      </ul>
-
-      <p style="margin-top:14px"><strong>If you experience discrimination:</strong> the Equality Advisory and Support Service (EASS) gives free advice on 0808 800 0082. Citizens Advice and your local law centre can also help. There are strict time limits (usually 6 months) for taking legal action, so seek advice quickly.</p>
-
-      <h3 style="margin-top:20px">At work specifically</h3>
-
-      <p style="margin-top:10px">Your employer must make <strong>reasonable adjustments</strong> to remove disadvantages you face because of your condition. Refusing to make reasonable adjustments is unlawful disability discrimination.</p>
+      <p>The <strong>Equality Act 2010</strong> protects you from discrimination at work because of your sight condition. Your employer must make <strong>reasonable adjustments</strong> to remove disadvantages you face because of your condition. Refusing to make reasonable adjustments is unlawful disability discrimination.</p>
 
       <p style="margin-top:10px">Reasonable adjustments can include: screen magnification software, adjusted lighting, modified duties, remote working, flexible hours, a dedicated support worker, or changes to your workstation.</p>
 
       <p style="margin-top:10px">The duty applies from the point of application — you do not have to be employed before requesting adjustments.</p>
+
+      <p style="margin-top:14px"><em>The Equality Act protects you in many other areas too — services, transport, housing, education, healthcare. See the Everyday Guide page for full details.</em></p>
 
     </div>
 
