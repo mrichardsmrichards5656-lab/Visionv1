@@ -136,7 +136,7 @@ body.dark {
 
   --bg:#0f1320; --bg2:#161c2e; --card:#1e2640; --card2:#242d4a;
 
-  --text:#ffffff; --text2:#9aa3bf; --border:rgba(255,255,255,0.30);
+  --text:#ffffff; --text2:#d6dae8; --border:rgba(255,255,255,0.30);
 
   --yellow:#f5b800; --yellow2:#ffc929;
 
@@ -1960,7 +1960,7 @@ body.focus-mode::after {
 .jd-hover-btn:hover,.jd-hover-btn:focus-visible{border-color:var(--yellow) !important;color:var(--yellow) !important;}
 .tb-btn:focus-visible{outline:3px solid var(--yellow);outline-offset:2px;}
 .tb-select:focus-visible{outline:3px solid var(--yellow);outline-offset:0;}
-.tb-btn[aria-pressed="false"]{background:var(--card2) !important;color:#000 !important;border-color:var(--border) !important;}
+.tb-btn[aria-pressed="false"]{background:var(--card2) !important;color:var(--text) !important;border-color:var(--border) !important;}
 .tb-btn[aria-pressed="true"]{background:var(--yellow) !important;color:#000 !important;border-color:var(--yellow) !important;}
 /* WCAG AA contrast fix: active accessibility-bar buttons need 4.5:1+ for black text.
    Default --yellow (#a85d00) is 4.23:1. Override with --yellow2 (#c47408) which is 5.85:1. */
@@ -2002,16 +2002,17 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 /* Quick links grid - clean uniform layout */
 .quick-links-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
   margin-bottom: 0;
 }
 .ql-btn {
-  font-size: 0.78rem;
-  padding: 0 6px;
-  min-height: 42px;
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  min-height: 48px;
   justify-content: center;
   border-radius: 12px;
+  word-break: keep-all;
 }
 @media (min-width: 640px) {
   .quick-links-grid {
@@ -4840,7 +4841,32 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
       <h2 id="rights">⚖️ Your Legal Rights</h2>
 
-      <p>The <strong>Equality Act 2010</strong> protects you from discrimination at work because of your sight condition. Your employer must make <strong>reasonable adjustments</strong> to remove disadvantages you face because of your condition. Refusing to make reasonable adjustments is unlawful disability discrimination.</p>
+      <p>The <strong>Equality Act 2010</strong> (which replaced the older Disability Discrimination Act 1995) protects you from discrimination in many areas of life because of your sight condition, not just at work. Sight loss that has a substantial, long-term impact on your daily life almost always counts as a disability under the Act.</p>
+
+      <p style="margin-top:14px"><strong>Areas the Equality Act protects you in:</strong></p>
+      <ul style="margin-top:8px">
+        <li><strong>Work and recruitment</strong> — reasonable adjustments by employers, protection from discriminatory hiring, dismissal, or pay (covered in detail below)</li>
+        <li><strong>Goods and services</strong> — shops, banks, restaurants, gyms, hotels and other service providers must make reasonable adjustments (such as accepting guide dogs, providing accessible information, or staff assistance)</li>
+        <li><strong>Education</strong> — schools, colleges and universities must make reasonable adjustments and provide auxiliary aids; admissions cannot be refused because of disability</li>
+        <li><strong>Public services and councils</strong> — healthcare, social services, libraries, leisure centres and other public bodies must not discriminate and must make services accessible</li>
+        <li><strong>Transport</strong> — buses, trains, taxis and airlines must provide reasonable assistance; assistance dogs cannot be refused</li>
+        <li><strong>Housing</strong> — landlords cannot refuse to let to you because of disability and must consider reasonable adjustments to communal areas</li>
+        <li><strong>Associations and clubs</strong> — private clubs with 25+ members cannot discriminate against disabled members</li>
+      </ul>
+
+      <p style="margin-top:14px"><strong>The four main types of unlawful conduct:</strong></p>
+      <ul style="margin-top:8px">
+        <li><strong>Direct discrimination</strong> — being treated worse because of your sight condition</li>
+        <li><strong>Indirect discrimination</strong> — a rule or practice that puts disabled people at a disadvantage (such as a website that does not work with screen readers)</li>
+        <li><strong>Failure to make reasonable adjustments</strong> — not removing barriers that put you at a substantial disadvantage</li>
+        <li><strong>Harassment or victimisation</strong> — unwanted conduct related to disability, or being treated badly for raising a complaint</li>
+      </ul>
+
+      <p style="margin-top:14px"><strong>If you experience discrimination:</strong> the Equality Advisory and Support Service (EASS) gives free advice on 0808 800 0082. Citizens Advice and your local law centre can also help. There are strict time limits (usually 6 months) for taking legal action, so seek advice quickly.</p>
+
+      <h3 style="margin-top:20px">At work specifically</h3>
+
+      <p style="margin-top:10px">Your employer must make <strong>reasonable adjustments</strong> to remove disadvantages you face because of your condition. Refusing to make reasonable adjustments is unlawful disability discrimination.</p>
 
       <p style="margin-top:10px">Reasonable adjustments can include: screen magnification software, adjusted lighting, modified duties, remote working, flexible hours, a dedicated support worker, or changes to your workstation.</p>
 
@@ -5950,11 +5976,11 @@ amd:{
 
     {tag:"drug",label:"✅ NHS Available",title:"Faricimab (Vabysmo) — Wet AMD",body:"Dual-pathway anti-VEGF injection targeting both VEGF and Ang-2. NICE approved. Fewer injections needed than older treatments — up to every 4 months for some patients.",link:"https://www.nice.org.uk/guidance/ta800"},
 
-    {tag:"gene",label:"🔬 Pipeline",title:"4D-150 Gene Therapy — Wet AMD (Phase 3)",body:"Single injection delivering continuous anti-VEGF production — potentially replacing years of repeat injections. Phase 3 trials ongoing. Data readout expected 2027.",link:"https://www.modernretina.com/view/pipeline-update-catch-up-on-recent-updates-in-the-retina-pipeline"},
+    {tag:"gene",label:"🔬 Pipeline",title:"4D-150 Gene Therapy — 4FRONT Phase 3 Trials",body:"Single injection delivering continuous anti-VEGF production — potentially replacing years of repeat injections. The 4FRONT-1 Phase 3 trial completed enrolment in February 2026 (~500 patients, ahead of schedule); topline data expected H1 2027. 4FRONT-2 (global) on track to complete enrolment H2 2026 with topline H2 2027.",link:"https://clinicaltrials.gov/study/NCT06864676"},
 
-    {tag:"gene",label:"🔬 Pipeline",title:"OCU-410 Gene Therapy — Geographic Atrophy",body:"Single subretinal injection targeting multiple disease pathways. Phase 1/2 data (Jan 2026) showed 46% slowing of lesion growth — among the best results seen for GA treatment.",link:"https://www.fightingblindness.org/news/age-related-macular-degeneration-research-advances-821"},
+    {tag:"gene",label:"🔬 Pipeline",title:"OCU410 (Ocugen) — ArMaDa Trial, Geographic Atrophy",body:"Single subretinal injection targeting multiple disease pathways via RORA gene. Full Phase 2 12-month data (March 2026) showed 31% reduction in lesion growth in the optimal dose group versus control, plus 27% slower ellipsoid zone loss. No drug-related serious adverse events to date. Ocugen plans to initiate Phase 3 in 2026.",link:"https://ir.ocugen.com/news-releases/news-release-details/ocugen-announces-positive-preliminary-phase-2-data-ocu410"},
 
-    {tag:"trial",label:"🌅 Horizon",title:"PRIMA Retinal Implant — Bionic Vision",body:"A tiny chip placed under the retina combined with specialist glasses. In a study of 38 people with geographic atrophy, over 80% reported clinically significant vision improvement — including reading letters they previously could not see.",link:"https://www.fightingblindness.org/news/age-related-macular-degeneration-research-advances-821"},
+    {tag:"trial",label:"🔬 Pipeline",title:"PRIMA Retinal Implant (Science Corp) — Bionic Vision",body:"A tiny chip placed under the retina combined with specialist glasses. The PRIMAvera trial in 38 people with geographic atrophy showed 81% had clinically meaningful improvement in visual acuity at 12 months — including reading letters they previously could not see. Results published in the New England Journal of Medicine (Oct 2025). Regulatory approval underway in Europe with expected market launch in 2026; FDA filing in progress.",link:"https://www.nejm.org/doi/full/10.1056/NEJMoa2501396"},
 
     {tag:"trial",label:"🔗 Find UK Trials",title:"NIHR Be Part of Research — AMD",body:"Find and register for UK clinical trials for AMD and geographic atrophy. Filtered search for your specific condition.",link:"https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=macular+degeneration&location="}
 
@@ -6050,11 +6076,11 @@ glaucoma:{
 
     {tag:"drug",label:"🌍 Available Abroad",title:"iDose TR (Travoprost) Implant",body:"A tiny implant placed inside the eye delivers continuous pressure-lowering medication for up to 3 years — eliminating daily eye drops. FDA approved December 2023. No MHRA or NICE approval announced for the UK as of 2026. Speak to your ophthalmologist if you have difficulty with eye drops — alternatives like SLT laser may be available.",link:"https://glaucoma.uk/about-glaucoma/treatment/"},
 
-    {tag:"tech",label:"✅ NHS Available",title:"AI Progression Detection",body:"DeepMind and Moorfields Eye Hospital's AI can detect glaucoma progression on OCT scans years earlier than current clinical methods. Already being used at Moorfields and rolling out across NHS eye units.",link:"https://www.moorfields.nhs.uk/research-innovation"},
+    {tag:"tech",label:"🔬 Pipeline",title:"AI Progression Detection on OCT Scans",body:"Active research is developing AI models that detect glaucoma progression from OCT scans earlier than standard methods. Moorfields, UCL and international groups have published deep-learning approaches with high accuracy, but most are still in research or limited pilot use rather than full NHS deployment. Ask your eye clinic whether AI-assisted OCT analysis is being used.",link:"https://moorfieldsbrc.nihr.ac.uk/case-study/deepmind-research-report/"},
 
-    {tag:"gene",label:"🔬 Pipeline",title:"Neuroprotection Research",body:"Trials investigating whether drugs can protect optic nerve fibres from dying — going beyond just lowering pressure. This could preserve vision even when IOP control is incomplete. Several Phase 2 trials ongoing.",link:"https://glaucoma.uk/about-glaucoma/treatment/"},
+    {tag:"gene",label:"🔬 Pipeline",title:"Neuroprotection Research",body:"Trials investigating whether drugs can protect optic nerve fibres from dying — going beyond just lowering pressure. Active Phase 2 programmes include NT-501 (Neurotech, an implant releasing CNTF protein), BL1107 (Bausch + Lomb, alpha-2 agonist) and nicotinamide riboside oral supplementation. Larger results expected through 2026-27.",link:"https://www.reviewofophthalmology.com/article/the-2026-glaucoma-pipeline"},
 
-    {tag:"gene",label:"🌅 Horizon",title:"Gene Therapy for Glaucoma",body:"Early research into gene therapy approaches targeting the trabecular meshwork (the eye's drainage system) to permanently improve fluid drainage and reduce IOP without daily medication.",link:"https://glaucoma.uk/about-glaucoma/treatment/"},
+    {tag:"gene",label:"🌅 Horizon",title:"Gene Therapy for Glaucoma",body:"Early research into gene therapy approaches targeting the trabecular meshwork (the eye's drainage system) to permanently improve fluid drainage and reduce IOP without daily medication. A first-in-human CRISPR/Cas9 trial began in 2024 for the small group of patients with myocilin (MYOC) gene mutations — about 4% of adult open-angle glaucoma. Wider gene therapies remain at preclinical stage.",link:"https://clinicaltrials.gov/study/NCT06465537"},
 
     {tag:"trial",label:"🔗 Find UK Trials",title:"NIHR Be Part of Research — Glaucoma",body:"Find and register for UK clinical trials for glaucoma.",link:"https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=glaucoma&location="}
 
@@ -6146,11 +6172,11 @@ rp:{
 
     {tag:"gene",label:"✅ NHS Available",title:"Luxturna — RPE65 Mutations",body:"First gene therapy approved on the NHS for an inherited eye condition. A single subretinal injection in each eye. Available now at specialist centres for patients with biallelic RPE65 mutations. Life-changing results in eligible patients.",link:"https://www.nice.org.uk/guidance/hst11"},
 
-    {tag:"gene",label:"🔬 Pipeline",title:"MeiraGTx RPGR Gene Therapy",body:"Phase 2/3 trial showing significant preservation of visual field in X-linked RP patients at 12-month follow-up. One of the most advanced RP gene therapy programmes. RPGR mutations are the most common cause of X-linked RP.",link:"https://retinauk.org.uk/medical-research/"},
+    {tag:"gene",label:"🔬 Pipeline",title:"Botaretigene Sparoparvovec (bota-vec) — RPGR Gene Therapy",body:"The Phase 3 LUMEOS trial (95 patients) did not meet its primary endpoint of vision-guided mobility (May 2025), but showed meaningful improvements in visual acuity and patient-reported outcomes. Johnson & Johnson returned rights to MeiraGTx in April 2026; MeiraGTx plans regulatory filings in the US, Europe and Japan based on the existing data, with potential commercial launch in 2027 if approved. For males with X-linked RP caused by RPGR mutations — the most common cause of X-linked RP.",link:"https://www.fightingblindness.org/news/retinitis-pigmentosa-research-advances-899"},
 
-    {tag:"trial",label:"🔬 Pipeline",title:"Optogenetics — Restoring Vision in End-Stage RP",body:"Delivers light-sensitive proteins to surviving retinal cells that have lost their natural photoreceptors. One landmark patient demonstrated partial vision restoration. GenSight, Nanoscope and others have active programmes. Could help people with advanced RP who are not eligible for gene therapy.",link:"https://retinauk.org.uk/medical-research/"},
+    {tag:"trial",label:"🔬 Pipeline",title:"Optogenetics — Restoring Vision in End-Stage RP",body:"Delivers light-sensitive proteins to surviving retinal cells that have lost their natural photoreceptors. Mutation-agnostic, so could help many RP types. Nanoscope MCO-010 (the most advanced programme) is in a rolling FDA Biologics License Application submission with full filing expected in the first half of 2026; three-year follow-up data presented at ARVO 2026 showed lasting improvements. GenSight GS030, Bionic Sight BS01 and others have ongoing Phase 1/2 trials. Could help people with advanced RP who are not eligible for gene therapy.",link:"https://www.fightingblindness.org/news/retinitis-pigmentosa-research-advances-899"},
 
-    {tag:"gene",label:"🌅 Horizon",title:"CRISPR Gene Editing for RP",body:"Early-stage CRISPR trials targeting specific RP mutations. Unlike gene replacement, CRISPR can correct the faulty gene in place. Very early stage but significant long-term potential.",link:"https://retinauk.org.uk/medical-research/"},
+    {tag:"gene",label:"🌅 Horizon",title:"CRISPR Gene Editing for RP",body:"Early-stage CRISPR trials targeting specific RP mutations. Unlike gene replacement, CRISPR can correct the faulty gene in place. The first-in-human CRISPR trial for RP (ZVS203e) is recruiting patients with RHO mutations (the most common cause of autosomal dominant RP) in a Phase 1/2 study. Significant long-term potential but very early stage.",link:"https://clinicaltrials.gov/study/NCT06952842"},
 
     {tag:"trial",label:"🔗 Find UK Trials",title:"NIHR Be Part of Research — Retinitis Pigmentosa",body:"Find and register for UK clinical trials for RP and inherited retinal conditions.",link:"https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=retinitis+pigmentosa&location="}
 
