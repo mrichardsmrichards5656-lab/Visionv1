@@ -2035,6 +2035,13 @@ body.focus-mode::after {
 /* WCAG AA contrast fix: active accessibility-bar buttons need 4.5:1+ for black text.
    Default --yellow (#a85d00) is 4.23:1. Override with --yellow2 (#c47408) which is 5.85:1. */
 .tb-btn[aria-pressed="true"]{background:var(--yellow2) !important;border-color:var(--yellow2) !important;}
+/* The active button has a yellow background with black text. The .tb-label has its
+   own color:var(--text), which in Dark/Low Light is light — making the label nearly
+   invisible on the yellow highlight. Force both label and icon to black so the whole
+   button (e.g. "A MED") reads clearly. Theme-specific rules for Black/White, Yellow/Black
+   and Blue/Black come later in the cascade and still override this where needed. */
+.tb-btn[aria-pressed="true"] .tb-icon,
+.tb-btn[aria-pressed="true"] .tb-label{color:#000 !important;}
 /* WCAG AA contrast fix: any element using --yellow as background with black text
    needs --yellow2 instead. --yellow (#9c5500) on black is 3.71:1 (fail);
    --yellow2 (#c47408) on black is 5.85:1 (pass). Targets inline-styled buttons like
