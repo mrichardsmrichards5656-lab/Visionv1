@@ -285,6 +285,19 @@ body.ll {
 
 html { font-size: calc(17px * var(--scale)); scroll-behavior: smooth; overflow-x: hidden; background: var(--bg); }
 
+/* Prevent the OS/browser font-scaling setting (Android Chrome "Font size",
+   iOS text-size-adjust) from inflating the accessibility toolbar's button
+   labels. When inflated, the size buttons grow wider than the row and the
+   toolbar wraps to extra lines. The toolbar has its own A SMALL/MED/LARGE
+   controls, so auto-scaling here is redundant. Body content text is left
+   free to scale with the user's OS preference. */
+.a11y-bar-outer, .a11y-bar, .a11y-bar-row2, .a11y-bar-inner,
+.a11y-bar .tb-btn, .a11y-bar .tb-select, .a11y-bar .tb-lang, .a11y-bar .tb-label, .a11y-bar .tb-icon,
+.a11y-bar-row2 .tb-btn, .a11y-bar-row2 .tb-select, .a11y-bar-row2 .tb-lang, .a11y-bar-row2 .tb-label, .a11y-bar-row2 .tb-icon {
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -2020,7 +2033,7 @@ body.focus-mode::after {
   gap: 6px;
   border-top: 1px solid var(--border);
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 </style>
@@ -2138,7 +2151,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
   gap: 6px;
   width: 100%;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   row-gap: 6px;
 }
 @media (max-width: 639px) {
