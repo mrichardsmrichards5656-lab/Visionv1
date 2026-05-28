@@ -197,6 +197,9 @@ body.hc .tb-btn:hover .tb-label { color: #000 !important; }
 /* B&W theme: remove all colour from the entire page. Catches emojis anywhere (in headings, badges, buttons) and any other coloured visual elements. */
 body.hc { filter: grayscale(100%) contrast(1.1); }
 body.wb { filter: grayscale(100%); }
+body.wb .a11y-bar-outer, body.wb .a11y-bar, body.wb .a11y-bar-row2 { filter: grayscale(100%); }
+body.wb [aria-hidden="true"] { filter: grayscale(100%); }
+body.wb [style*="linear-gradient(to right,#c8102e"], body.wb [style*="linear-gradient(to right,#012169"] { background: linear-gradient(to right,#000 33%,#888 33%,#888 66%,#000 66%) !important; }
 /* But re-saturate the focus outline so keyboard users can still see it clearly */
 body.hc button:focus-visible,
 body.hc a:focus-visible,
@@ -2017,7 +2020,7 @@ body.focus-mode::after {
   gap: 6px;
   border-top: 1px solid var(--border);
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 </style>
@@ -2134,6 +2137,9 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
   align-items: center;
   gap: 6px;
   width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  row-gap: 6px;
 }
 @media (max-width: 639px) {
   .a11y-bar-inner {
@@ -4043,7 +4049,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
         <li><a href="https://www.gov.uk/rights-disabled-person" aria-label="Disabled people's rights on GOV.UK (opens external site)" rel="noopener noreferrer">GOV.UK — Disabled people's rights</a> — the official Government guide covering daily life, services, work, education and transport.</li>
         <li><a href="https://www.equalityadvisoryservice.com" aria-label="Equality Advisory and Support Service (opens external site)" rel="noopener noreferrer">Equality Advisory &amp; Support Service (EASS)</a> — free, confidential advice and help if you have been treated unfairly.</li>
         <li><a href="https://www.citizensadvice.org.uk/law-and-courts/discrimination/" aria-label="Citizens Advice discrimination guidance (opens external site)" rel="noopener noreferrer">Citizens Advice — Discrimination</a> — plain-English guidance on what counts as discrimination and what you can do.</li>
-        <li><a href="https://www.rnib.org.uk/living-with-sight-loss/your-rights/" aria-label="RNIB your rights (opens external site)" rel="noopener noreferrer">RNIB — Your rights</a> — sight-loss-specific advice on the Equality Act and reasonable adjustments.</li>
+        <li><a href="https://www.rnib.org.uk/living-with-sight-loss/equality-and-employment/the-equality-act-2010/" aria-label="RNIB Equality Act and your rights (opens external site)" rel="noopener noreferrer">RNIB — Your rights</a> — sight-loss-specific advice on the Equality Act and reasonable adjustments.</li>
       </ul>
 
     </div>
