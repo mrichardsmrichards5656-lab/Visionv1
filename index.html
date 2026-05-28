@@ -8025,7 +8025,7 @@ function labelToClass(label) {
 
       <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('about','${key}')" aria-expanded="false">
 
-        <span class="acc-left"><span class="acc-num">1</span><span class="acc-label">What is ${d.name}?</span></span>
+        <span class="acc-left"><span class="acc-num">1</span><span class="acc-label">${_isWelsh ? 'Beth yw' : 'What is'} ${d.name}?</span></span>
 
         
 
@@ -8037,15 +8037,15 @@ function labelToClass(label) {
 
       <div class="acc-body">
 
-        <h2 class="sr" id="about-heading-${key}">About ${d.name}</h2>
+        <h2 class="sr" id="about-heading-${key}">${_isWelsh ? 'Ynghylch' : 'About'} ${d.name}</h2>
 
         <div class="ic"><p>${d.what}</p></div>
 
-        <div class="ic"><span class="ic-icon" aria-hidden="true">👁️</span><h3>How It Affects Vision</h3><p>${d.howAffects}</p></div>
+        <div class="ic"><span class="ic-icon" aria-hidden="true">👁️</span><h3>${_isWelsh ? 'Sut Mae\'n Effeithio ar Olwg' : 'How It Affects Vision'}</h3><p>${d.howAffects}</p></div>
 
-        <div class="ic"><h3>Diagnosis</h3><p>${d.diagnosis}</p></div>
+        <div class="ic"><h3>${_isWelsh ? 'Diagnosis' : 'Diagnosis'}</h3><p>${d.diagnosis}</p></div>
 
-        <div class="ic"><h3>Who It Affects</h3><p>${d.whoAffects}</p></div>
+        <div class="ic"><h3>${_isWelsh ? 'Pwy Mae\'n Effeithio Arnynt' : 'Who It Affects'}</h3><p>${d.whoAffects}</p></div>
 
       </div>
 
@@ -8057,7 +8057,7 @@ function labelToClass(label) {
 
       <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('research','${key}')" aria-expanded="false">
 
-        <span class="acc-left"><span class="acc-num">2</span><span class="acc-label">Latest Research &amp; Clinical Trials</span></span>
+        <span class="acc-left"><span class="acc-num">2</span><span class="acc-label">${_isWelsh ? 'Ymchwil Diweddaraf a Threialon Clinigol' : 'Latest Research &amp; Clinical Trials'}</span></span>
 
         
 
@@ -8097,7 +8097,7 @@ function labelToClass(label) {
 
       <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('guides','${key}')" aria-expanded="false">
 
-        <span class="acc-left"><span class="acc-num">3</span><span class="acc-label">Practical How-To Guides</span></span>
+        <span class="acc-left"><span class="acc-num">3</span><span class="acc-label">${_isWelsh ? 'Canllawiau Ymarferol' : 'Practical How-To Guides'}</span></span>
 
         
 
@@ -8131,7 +8131,7 @@ function labelToClass(label) {
 
       <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('tech','${key}')" aria-expanded="false">
 
-        <span class="acc-left"><span class="acc-num">4</span><span class="acc-label">Assistive Technology</span></span>
+        <span class="acc-left"><span class="acc-num">4</span><span class="acc-label">${_isWelsh ? 'Technoleg Gynorthwyol' : 'Assistive Technology'}</span></span>
 
         
 
@@ -8169,7 +8169,7 @@ function labelToClass(label) {
 
       <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('support','${key}')" aria-expanded="false">
 
-        <span class="acc-left"><span class="acc-num">5</span><span class="acc-label">Support &amp; Community</span></span>
+        <span class="acc-left"><span class="acc-num">5</span><span class="acc-label">${_isWelsh ? 'Cefnogaeth a Chymuned' : 'Support &amp; Community'}</span></span>
 
         
 
@@ -8221,7 +8221,7 @@ function labelToClass(label) {
 
       <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('benefits','${key}')" aria-expanded="false">
 
-        <span class="acc-left"><span class="acc-num">6</span><span class="acc-label">Benefits &amp; Financial Help</span></span>
+        <span class="acc-left"><span class="acc-num">6</span><span class="acc-label">${_isWelsh ? 'Budd-daliadau a Chymorth Ariannol' : 'Benefits &amp; Financial Help'}</span></span>
 
         
 
@@ -8786,11 +8786,38 @@ function showWelshPage(name) {
 
 var _isWelsh = false;
 
+var _currentCond = null;  // tracks which condition is being viewed (null = not on a condition page)
+
 
 
 function toggleWelsh() {
 
   _isWelsh = !_isWelsh;
+
+  // If currently viewing a condition, re-render it in the new language and stop
+  // (don't force the user back to the home page)
+  if (_currentCond) {
+    var _btn = document.getElementById('welsh-toggle');
+    if (_btn) {
+      _btn.classList.toggle('active', _isWelsh);
+      _btn.setAttribute('aria-pressed', _isWelsh ? 'true' : 'false');
+      _btn.setAttribute('aria-label', _isWelsh ? 'Newid i Saesneg' : 'Newid i Gymraeg');
+      var _wi = document.getElementById('welsh-icon');
+      var _wl = document.getElementById('welsh-label');
+      if (_wi) _wi.textContent = _isWelsh ? 'EN' : 'CY';
+      if (_wl) _wl.textContent = _isWelsh ? 'English' : 'Welsh';
+    }
+    document.documentElement.setAttribute('lang', _isWelsh ? 'cy-GB' : 'en-GB');
+    document.body.classList.toggle('welsh-active', _isWelsh);
+    try { localStorage.setItem('vh-lang', _isWelsh ? 'cy-GB' : 'en-GB'); } catch(e) {}
+    var _cc = document.getElementById('condition-content');
+    if (_cc) {
+      _cc.innerHTML = renderCondition(_currentCond);
+      setTimeout(function(){ addListenButtons(_cc); }, 200);
+    }
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    return;
+  }
 
   var btn = document.getElementById('welsh-toggle');
 
@@ -8951,6 +8978,8 @@ window.toggleNarrowReading = function() {
 
 function showPage(name) {
 
+  _currentCond = null;  // leaving any condition page
+
   // Announce to screen readers
   var _srPageNames = {
     home:'Home page', livingwell:'Everyday Guide', glossary:'Glossary',
@@ -9107,6 +9136,7 @@ function selectCondition(key) {
 }
 
 function showCondition(key) {
+  _currentCond = key;
   var d = DATA[key];
   if (d) {
     updateStickyTitle(d.name, function(){ showPage('home'); });
