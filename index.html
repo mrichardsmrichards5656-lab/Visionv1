@@ -24,7 +24,7 @@
 <!-- Open Graph (Facebook, WhatsApp, Slack, etc.) -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sight Atlas UK — Free UK Resource for Sight Loss & Eye Conditions">
-<meta property="og:description" content="Free UK resource for people living with sight conditions. Clear information on 18 eye conditions, benefits help, assistive technology, and current research.">
+<meta property="og:description" content="Free UK resource for people living with sight conditions. Clear information on 20 eye conditions, benefits help, assistive technology, and current research.">
 <meta property="og:site_name" content="Sight Atlas UK">
 <meta property="og:url" content="https://sightatlasuk.co.uk/">
 <meta property="og:image" content="https://sightatlasuk.co.uk/og-image.png">
@@ -37,7 +37,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sight Atlas UK — Free UK Resource for Sight Loss & Eye Conditions">
-<meta name="twitter:description" content="Free UK resource for people living with sight conditions. 18 conditions covered with benefits help, assistive tech, and current research.">
+<meta name="twitter:description" content="Free UK resource for people living with sight conditions. 20 conditions covered with benefits help, assistive tech, and current research.">
 <meta name="twitter:image" content="https://sightatlasuk.co.uk/og-image.png">
 <meta name="twitter:image:alt" content="Sight Atlas UK — Free UK resource for people living with sight loss"><!-- Structured data for search engines -->
 <script type="application/ld+json">
@@ -45,7 +45,7 @@
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
   "name": "Sight Atlas UK",
-  "description": "Free UK resource for people living with sight conditions. Information on 18 eye conditions including Stargardt disease, AMD, glaucoma, retinitis pigmentosa, and more. Covers benefits, assistive technology, and current research.",
+  "description": "Free UK resource for people living with sight conditions. Information on 20 eye conditions including Stargardt disease, AMD, glaucoma, retinitis pigmentosa, and more. Covers benefits, assistive technology, and current research.",
   "inLanguage": ["en-GB", "cy-GB"],
   "audience": {
     "@type": "PeopleAudience",
@@ -2322,6 +2322,8 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
       <button class="sidebar-link" onclick="showConditionWelsh('blepharitis')"><span aria-hidden="true">👁</span> Bleffaritis</button>
 
       <button class="sidebar-link" onclick="showConditionWelsh('pagets')"><span aria-hidden="true">🦴</span> Clefyd Paget (Golwg a Chlyw)</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('microphthalmia')"><span aria-hidden="true">👁</span> Microffthalmia</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('congenitalcataracts')"><span aria-hidden="true">👓</span> Cataractau Cynhenid</button>
 
       <div class="sidebar-divider"></div>
 
@@ -2475,6 +2477,8 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
         <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('blepharitis') : showCondition('blepharitis')"><span aria-hidden="true">👁</span> Bleffaritis <span class="cond-arrow" aria-hidden="true">→</span></button></div>
 
         <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('pagets') : showCondition('pagets')"><span aria-hidden="true">🦴</span> Clefyd Paget (Golwg a Chlyw) <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('microphthalmia') : showCondition('microphthalmia')"><span aria-hidden="true">👁</span> Microphthalmia <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('congenitalcataracts') : showCondition('congenitalcataracts')"><span aria-hidden="true">👓</span> Congenital Cataracts <span class="cond-arrow" aria-hidden="true">→</span></button></div>
 
       </div>
 
@@ -2596,6 +2600,8 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
       <button class="sidebar-link" onclick="showCondition('blepharitis')"><span aria-hidden="true">👁</span> Blepharitis</button>
 
       <button class="sidebar-link" onclick="showCondition('pagets')"><span aria-hidden="true">🦴</span> Paget's Disease (Sight &amp; Hearing)</button>
+      <button class="sidebar-link" onclick="showCondition('microphthalmia')"><span aria-hidden="true">👁</span> Microphthalmia</button>
+      <button class="sidebar-link" onclick="showCondition('congenitalcataracts')"><span aria-hidden="true">👓</span> Congenital Cataracts</button>
 
 
 
@@ -2770,7 +2776,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
       <!-- SEARCH CONDITIONS — PROMINENT FIRST -->
       <div style="background:var(--card);border:3px solid var(--yellow);border-radius:20px;padding:20px 20px 16px;margin-bottom:20px;box-shadow:var(--shadow)">
         <p style="font-size:0.8rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--yellow);margin:0 0 6px">Find your condition</p>
-        <p style="font-size:1rem;font-weight:700;color:var(--text);margin:0 0 12px;line-height:1.4">Search 18 eye conditions — get research, practical guides, benefits help &amp; support</p>
+        <p style="font-size:1rem;font-weight:700;color:var(--text);margin:0 0 12px;line-height:1.4">Search 20 eye conditions — get research, practical guides, benefits help &amp; support</p>
         <div style="margin-bottom:8px">
           <input type="search" id="csearch" placeholder="e.g. AMD, glaucoma, RP…" autocomplete="off" aria-controls="cond-list" aria-label="Search eye conditions" class="theme-input" style="font-size:1rem;border:2px solid var(--border);border-radius:50px;padding:14px 20px;width:100%;box-sizing:border-box;box-shadow:0 1px 4px rgba(0,0,0,0.06);margin-bottom:10px">
           <button onclick="filterConds(document.getElementById('csearch').value); document.getElementById('csearch').blur();" aria-label="Search conditions" class="search-go-btn" style="background:var(--yellow2);color:#000;border:none;border-radius:50px;padding:14px 24px;font-family:var(--font);font-size:1rem;font-weight:900;cursor:pointer;width:100%;min-height:50px"><span aria-hidden="true">🔍</span> Search</button>
@@ -3104,6 +3110,8 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
       <button class="sidebar-link" onclick="showCondition('blepharitis')"><span aria-hidden="true">👁</span> Blepharitis</button>
 
       <button class="sidebar-link" onclick="showCondition('pagets')"><span aria-hidden="true">🦴</span> Paget's Disease (Sight &amp; Hearing)</button>
+      <button class="sidebar-link" onclick="showCondition('microphthalmia')"><span aria-hidden="true">👁</span> Microphthalmia</button>
+      <button class="sidebar-link" onclick="showCondition('congenitalcataracts')"><span aria-hidden="true">👓</span> Congenital Cataracts</button>
 
       <div class="sidebar-divider"></div>
 
@@ -7705,6 +7713,190 @@ pagets:{
 
   ]
 
+},
+
+microphthalmia:{
+
+    helpline:{org:"MACS Helpline",number:"0800 169 8088",hours:"Mon–Fri 9am–5pm",link:"https://macs.org.uk"},
+
+  name:"Microphthalmia",
+
+  cy:{
+
+    name:"Microffthalmia",
+
+    what:"Mae microffthalmia yn gyflwr cynhenid (yn bresennol o enedigaeth) lle mae un neu ddau lygad yn datblygu'n llai na'r maint arferol yn ystod beichiogrwydd. Gall amrywio o lygad ychydig yn llai gyda golwg dda i lygad bach iawn heb fawr ddim golwg. Mae'n effeithio ar tua 8.6 ym mhob 100,000 o fabanod yn y DU (tua 53 o fabanod newydd y flwyddyn). Mae'n aml yn digwydd ochr yn ochr ag anophthalmia (dim llygad) neu coloboma (hollt yn y llygad) — cyflyrau a elwir gyda'i gilydd yn gyflyrau MACS.",
+
+    howAffects:"Mae'r effaith ar olwg yn dibynnu'n llwyr ar ba mor ddifrifol yw'r cyflwr. Gall rhai plant â microffthalmia ysgafn gael golwg ddefnyddiol, tra bod eraill yn ddall yn y llygad yr effeithir arno. Pan fo un llygad yn unig yn cael ei effeithio, gall y llygad arall ddatblygu golwg dda. Mae llawer o blant yn gwisgo prosthesis (llygad artiffisial acrylig) i helpu'r wyneb i dyfu'n normal ac am resymau cosmetig — caiff hwn ei ailfowldio bob ychydig fisoedd wrth i'r plentyn dyfu.",
+
+    diagnosis:"Caiff microffthalmia ei ddiagnosio fel arfer ar enedigaeth neu yn ystod archwiliad sgrinio newydd-anedig. Mae profion yn cynnwys: sgan uwchsain i fesur maint y llygad, profion electrodiagnostig i wirio a all y llygad weld, sganiau MRI neu CT i edrych ar strwythur y llygad a'r ymennydd, a phrawf gwaed genetig. Argymhellir i fabanod gael eu gweld gan offthalmolegydd cyn gynted â phosibl.",
+
+    whoAffects:"Mae microffthalmia yn bresennol o enedigaeth ac yn effeithio ar fechgyn a merched. Gall fod yn enetig (genynnau fel SOX2, OTX2, RAX, PAX6) neu'n gysylltiedig â ffactorau yn ystod beichiogrwydd. Mae'n aml yn digwydd ochr yn ochr â chyflyrau iechyd eraill. Nid oes triniaeth i adfer golwg ar hyn o bryd — mae rheolaeth yn canolbwyntio ar gadw unrhyw olwg sy'n bodoli a chefnogi datblygiad.",
+
+    researchSummary:"Nid oes triniaeth i adfer golwg ar gyfer microffthalmia eto. Mae ymchwil ym Moorfields (grŵp yr Athro Mariya Moosajee) wedi gwella cyfraddau darganfod achosion genetig o 8% i 33%, ac yn datblygu modelau organoid llygad 3D. Mae'r gwaith yn dal i fod ar gam cyn-glinigol. Cysylltwch â MACS am gefnogaeth."
+
+  },
+
+  what:"Microphthalmia is a congenital condition (present from birth) in which one or both eyes develop smaller than normal during pregnancy. It ranges from a slightly small eye with good vision to a very small eye with little or no sight. It affects around 8.6 per 100,000 infants in the UK (roughly 53 newly diagnosed babies per year). It often occurs alongside anophthalmia (absence of an eye) or coloboma (a cleft or gap in the eye) — together known as MACS conditions. Around 114 babies are born with a MACS condition in the UK each year.",
+
+  howAffects:"The impact on vision depends entirely on severity. Some children with mild microphthalmia have useful vision, while others are blind in the affected eye. When only one eye is affected, the other eye can often develop good vision. Many children wear a prosthesis (an acrylic artificial eye) over the affected eye to help the face grow normally and for cosmetic reasons — this is remoulded every few months as the child grows. Microphthalmia is frequently associated with other conditions, and some children have additional learning, developmental, or health needs.",
+
+  diagnosis:"Microphthalmia is usually diagnosed at birth or during newborn screening. A baby with suspected microphthalmia should be seen at an eye clinic as soon as possible. Tests may include: an ultrasound scan to measure the size of the eye, electrodiagnostic tests to check whether the eye can see, MRI or CT scans to look at the structure of the eye and brain, and a genetic blood test to see whether a change in genes caused the condition. Diagnosis often involves a multidisciplinary team because of associated conditions.",
+
+  whoAffects:"Microphthalmia is present from birth and affects boys and girls equally. Genetic causes include changes in genes such as SOX2, OTX2, RAX, PAX6 and CHX10. Potential environmental factors during pregnancy include gestational infections (such as rubella and toxoplasmosis), vitamin A deficiency, and exposure to alcohol or certain drugs. It often co-occurs with other developmental conditions. There is currently no treatment to restore vision — management focuses on preserving existing sight and supporting development.",
+
+  research:[
+
+    {tag:"trial",label:"🔬 Pipeline",title:"Genetic Diagnosis Research (Moorfields)",body:"Research led by Professor Mariya Moosajee at Moorfields and the NIHR Biomedical Research Centre has increased the rate of identifying genetic causes of microphthalmia from 8% to 33%, using data from the UK's 100,000 Genomes Project. Better genetic diagnosis improves counselling and is the foundation for future treatments.",link:"https://moorfieldseyecharity.org.uk/impact-stories/understanding-microphthalmia"},
+
+    {tag:"gene",label:"🌅 Horizon",title:"3D Eye Organoid Models",body:"Scientists are growing 3D models of the developing human eye using stem cell technology to understand how microphthalmia develops and to test potential treatments. This research also identified that the childhood cataract gene EPHA2 is involved in microphthalmia. Still at preclinical (laboratory) stage — no human trials yet.",link:"https://moorfieldseyecharity.org.uk/impact-stories/understanding-microphthalmia"},
+
+    {tag:"trial",label:"🔗 Find UK Trials",title:"NIHR Be Part of Research — Microphthalmia",body:"Find and register for UK research studies on microphthalmia and related conditions.",link:"https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=microphthalmia&location="}
+
+  ],
+
+  guides:[
+
+    {n:1,title:"Contact MACS Early",body:"MACS (Microphthalmia, Anophthalmia & Coloboma Support) is the UK's only charity dedicated specifically to these conditions. They provide peer support, practical help, and family activity trips. Call 0800 169 8088 — connecting with other families early makes a real difference."},
+
+    {n:2,title:"See a Specialist Quickly",body:"A baby with microphthalmia should be seen by an ophthalmologist as soon as possible, ideally at a specialist centre such as Moorfields. Early assessment guides prosthesis fitting and protects any vision in the better eye."},
+
+    {n:3,title:"Protect the Better Eye",body:"If one eye is affected, protecting the sight in the other eye is vital. Ask about safety glasses for sport and play, and ensure regular monitoring of the unaffected eye."},
+
+    {n:4,title:"Prosthesis and Facial Growth",body:"A prosthesis (artificial eye or conformer) is often fitted to help the eye socket and face develop normally. It needs remoulding every few months as your child grows. This is managed by an ocularist working with the eye clinic."},
+
+    {n:5,title:"Genetic Counselling",body:"Ask for a referral for genetic testing and counselling. This helps identify the cause, understand the chance of it happening in future pregnancies, and may open doors to research studies."},
+
+    {n:6,title:"Educational Support",body:"Request a QTVI (Qualified Teacher of Visual Impairment) from your local authority. Children with microphthalmia may need support in school whether they have sight in one eye or significant vision loss."}
+
+  ],
+
+  tech:[
+
+    {cat:"Support",title:"MACS Family Support",body:"Peer support, family weekends, and activity trips designed for children with MACS conditions and their families.",price:"Free — 0800 169 8088"},
+
+    {cat:"Vision",title:"Low Vision Aids",body:"For children with some remaining vision, magnifiers, good lighting, and high-contrast materials can help. Your local low vision clinic can assess needs.",price:"Free on NHS / varies"},
+
+    {cat:"Prosthetics",title:"Artificial Eye (Prosthesis)",body:"A custom acrylic prosthesis made and fitted by an ocularist on the NHS, remoulded periodically as the child grows.",price:"Free on NHS"}
+
+  ],
+
+  support:[
+
+    {title:"MACS",body:"The UK's only charity dedicated to Microphthalmia, Anophthalmia and Coloboma. Peer support, practical help, and life-changing activity trips for over 3,500 people from 1,200 families.",link:"https://macs.org.uk"},
+
+    {title:"Moorfields Eye Hospital",body:"Leading UK specialist centre for microphthalmia, with a dedicated research programme. Ask your GP or local eye clinic for a referral.",link:"https://www.moorfields.nhs.uk"},
+
+    {title:"RNIB",body:"Helpline 0303 123 9999. Information, emotional support, and practical help for families of children with sight conditions.",link:"https://www.rnib.org.uk"}
+
+  ],
+
+  benefits:[
+
+    {n:1,title:"Disability Living Allowance (DLA)",body:"Children under 16 with microphthalmia are likely eligible for DLA. Call RNIB (0303 123 9999) for free help with the form. Apply early — the process takes time and backdating is not available."},
+
+    {n:2,title:"Certificate of Vision Impairment (CVI)",body:"If your child meets the criteria, ask the ophthalmologist about registering them as sight impaired or severely sight impaired. This unlocks practical support and benefits."},
+
+    {n:3,title:"Carer's Allowance",body:"If you provide significant care, you may be entitled to Carer's Allowance (£86.45/week from April 2026). Your child's DLA may also qualify the household for additional support."},
+
+    {n:4,title:"Special Educational Needs Support",body:"Your child may be entitled to an Education, Health and Care Plan (EHCP). Contact your local authority's SEND team and request a QTVI assessment."}
+
+  ]
+
+},
+
+congenitalcataracts:{
+
+    helpline:{org:"RNIB Helpline",number:"0303 123 9999",hours:"Mon–Fri 8am–8pm, Sat 9am–1pm",link:"https://www.rnib.org.uk"},
+
+  name:"Congenital Cataracts",
+
+  cy:{
+
+    name:"Cataractau Cynhenid",
+
+    what:"Mae cataract yn lens gymylog yn y llygad. Mae cataractau cynhenid yn bresennol o enedigaeth, tra bod cataractau datblygiadol yn ymddangos yn ystod plentyndod. Mae'r lens fel arfer yn glir ac yn helpu i ffocysu golau ar y retina — pan fydd yn gymylog, mae golwg yn cael ei rwystro. Mae'n effeithio ar tua 2.5 ym mhob 10,000 o fabanod dan flwydd oed yn y DU. Gall effeithio ar un llygad (unochrog) neu'r ddau lygad (dwyochrog).",
+
+    howAffects:"Mae cataractau dwys mewn babanod yn rhwystro datblygiad gweledol arferol. Os na chânt eu trin yn gynnar, gallant arwain at newidiadau parhaol yn rhan weledol yr ymennydd (amblyopia neu 'lygad diog'). Dyma pam mae llawdriniaeth gynnar mor bwysig. Gall cataractau ysgafn beidio ag effeithio ar olwg, a dim ond monitro y bydd eu hangen. Ar ôl llawdriniaeth, bydd angen sbectol neu lensys cyffwrdd ar y plentyn i ffocysu.",
+
+    diagnosis:"Caiff cataractau cynhenid eu canfod yn aml yn ystod archwiliad sgrinio newydd-anedig (NIPE) o fewn 72 awr o enedigaeth, neu yn yr archwiliad 6-8 wythnos. Mae'r prawf 'adlewyrchiad coch' yn allweddol. Os canfyddir cataract, dylai'r baban gael ei weld gan offthalmolegydd o fewn 2 wythnos. Mae profion pellach yn cynnwys archwiliad manwl o'r llygad a phrofion genetig.",
+
+    whoAffects:"Mae cataractau cynhenid yn effeithio ar fechgyn a merched. Gall achosion gynnwys: newid genetig a etifeddwyd, cyflyrau genetig eraill (fel syndrom Down), a heintiau yn ystod beichiogrwydd (fel rwbela). Mewn llawer o achosion, ni ellir canfod yr union achos. Mae cyfran fawr ag achos genetig.",
+
+    researchSummary:"Llawdriniaeth yw'r prif driniaeth ac mae'n effeithiol iawn pan gaiff ei gwneud yn gynnar. Mae ymchwil yn canolbwyntio ar amseru llawdriniaeth optimaidd, dewisiadau lens mewnblanedig, ac achosion genetig. Trafodwch gyda thîm offthalmoleg eich plentyn."
+
+  },
+
+  what:"A cataract is a clouding of the lens inside the eye. Congenital cataracts are present at birth, while developmental (or childhood) cataracts appear during childhood. The lens is normally clear and helps focus light onto the retina — when it becomes cloudy, vision is blocked. Congenital cataracts affect approximately 2.5 per 10,000 infants under one year of age in the UK. They can affect one eye (unilateral) or both eyes (bilateral). They are uncommon but regularly seen in UK paediatric ophthalmology clinics, and a large proportion have a genetic cause.",
+
+  howAffects:"Dense cataracts in babies prevent normal visual development. If not treated early, they can cause permanent changes in the visual part of the brain (amblyopia, or 'lazy eye'), leading to reduced vision even after the cataract is removed. This is why early surgery is so important — ideally before three months of age, or even younger for cataracts in one eye. Mild cataracts may not affect vision and only need monitoring with glasses. After surgery, children need glasses or contact lenses to focus, because the natural lens has been removed.",
+
+  diagnosis:"Congenital cataracts are often detected during the NHS newborn and infant physical examination (NIPE) within 72 hours of birth, or at the 6-8 week check. The 'red reflex' test is key — a cataract can stop the normal red reflection from the back of the eye. A baby who screens positive should be seen by an ophthalmologist within two weeks. Further tests include a detailed eye examination under anaesthetic and genetic testing, as a large proportion of cases are inherited.",
+
+  whoAffects:"Congenital cataracts affect boys and girls. Causes include: an inherited genetic change passed from a parent, other genetic conditions (such as Down's syndrome), and infections caught by the mother during pregnancy (such as rubella and chickenpox). In many cases the exact cause cannot be identified. Because a large proportion are genetic, genetic testing and counselling are often recommended, and some cases are associated with other health conditions.",
+
+  research:[
+
+    {tag:"trial",label:"✅ NHS Available",title:"Early Cataract Surgery",body:"Surgery to remove the cloudy lens is the established treatment and is highly effective when done early. For babies under one year, a lensectomy with posterior capsulotomy and anterior vitrectomy is typically performed. Unilateral cataracts are usually operated around six weeks of age, bilateral around ten weeks, to protect visual development.",link:"https://www.gosh.nhs.uk/conditions-and-treatments/conditions-we-treat/children-cataracts/"},
+
+    {tag:"trial",label:"✅ NHS Available",title:"Newborn Screening (NIPE)",body:"The UK National Screening Committee recommends all eligible newborns are offered eye screening within 72 hours of birth and again at 6-8 weeks. This early detection of congenital cataracts is critical — the earlier a dense cataract is found and removed, the better the visual outcome.",link:"https://www.gov.uk/topic/population-screening-programmes/newborn-infant-physical-examination"},
+
+    {tag:"trial",label:"🔬 Pipeline",title:"Intraocular Lens (IOL) Research",body:"Research continues into the best timing and method of implanting an artificial lens (IOL) in young children. The Infant Aphakia Treatment Study found contact lenses and primary lens implants gave similar vision outcomes at five years, helping surgeons tailor treatment to each child.",link:"https://www.nature.com/articles/s41433-020-1115-6"},
+
+    {tag:"gene",label:"🌅 Horizon",title:"Genetic Research",body:"A large proportion of congenital cataracts are genetic. Researchers are identifying the genes responsible (including EPHA2, which is also linked to microphthalmia), improving diagnosis and genetic counselling for families and laying groundwork for future therapies.",link:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7784951/"},
+
+    {tag:"trial",label:"🔗 Find UK Trials",title:"NIHR Be Part of Research — Childhood Cataracts",body:"Find and register for UK research studies on congenital and childhood cataracts.",link:"https://bepartofresearch.nihr.ac.uk/results/listing/?resultsfound=true&q=congenital+cataract&location="}
+
+  ],
+
+  guides:[
+
+    {n:1,title:"Act Quickly on Diagnosis",body:"For dense cataracts, timing is critical. Surgery before three months of age gives the best chance of good vision. If your baby is diagnosed, make sure you understand the recommended timeline and keep every appointment."},
+
+    {n:2,title:"Understand Post-Surgery Care",body:"After cataract removal, your child will need glasses or contact lenses to focus, and often patching of the stronger eye to prevent amblyopia. Compliance with this is the single biggest factor in a good outcome — it is demanding but vital."},
+
+    {n:3,title:"Ask About Glaucoma Risk",body:"Children who have had cataract surgery have a lifelong increased risk of glaucoma (raised eye pressure). Make sure your child has regular monitoring, even into adulthood."},
+
+    {n:4,title:"Genetic Testing",body:"Ask for a referral for genetic testing and counselling. Many congenital cataracts are inherited, and understanding the cause helps with family planning and identifying any associated conditions."},
+
+    {n:5,title:"Educational Support",body:"Request a QTVI (Qualified Teacher of Visual Impairment) from your local authority. Even children with good outcomes after surgery may need some support, large print, or extra time."},
+
+    {n:6,title:"Emotional Support for Parents",body:"A diagnosis and early surgery for your baby is stressful. Lean on RNIB's helpline (0303 123 9999) and peer support groups — you are not alone, and outcomes for early-treated children are often very good."}
+
+  ],
+
+  tech:[
+
+    {cat:"Vision",title:"Contact Lenses for Infants",body:"Specialist contact lenses are often used after cataract surgery in babies, fitted and managed by the eye clinic. Staff will teach you how to insert and care for them.",price:"Free on NHS"},
+
+    {cat:"Vision",title:"Glasses",body:"Children who have had cataract surgery usually need glasses, sometimes bifocals, to focus at different distances. Free on the NHS for under-16s.",price:"Free on NHS (under 16)"},
+
+    {cat:"Support",title:"Patching Materials",body:"Eye patches to treat amblyopia (lazy eye) after surgery. Decorated patches can make this easier for young children to accept.",price:"Free on NHS / low cost"}
+
+  ],
+
+  support:[
+
+    {title:"RNIB",body:"Helpline 0303 123 9999. Information, emotional support, and practical help for families of children with congenital cataracts and other sight conditions.",link:"https://www.rnib.org.uk"},
+
+    {title:"Great Ormond Street Hospital",body:"Leading UK specialist centre for children's cataracts with detailed family information and expert surgical care.",link:"https://www.gosh.nhs.uk/conditions-and-treatments/conditions-we-treat/children-cataracts/"},
+
+    {title:"Look UK",body:"National charity supporting young people with visual impairment and their families, offering mentoring and peer support.",link:"https://www.look-uk.org"}
+
+  ],
+
+  benefits:[
+
+    {n:1,title:"Disability Living Allowance (DLA)",body:"Children under 16 with significant vision impairment from congenital cataracts may be eligible for DLA. Call RNIB (0303 123 9999) for free help with the form. Apply early — backdating is not available."},
+
+    {n:2,title:"Certificate of Vision Impairment (CVI)",body:"If your child's vision remains impaired, ask the ophthalmologist about registration as sight impaired or severely sight impaired, which unlocks further support."},
+
+    {n:3,title:"Free NHS Eye Care and Glasses",body:"All under-16s receive free NHS sight tests and optical vouchers for glasses or contact lenses. Children who have had cataract surgery need lifelong monitoring, which is free on the NHS."},
+
+    {n:4,title:"Education, Health and Care Plan (EHCP)",body:"Your child may be entitled to an EHCP for support in school. Contact your local authority's SEND team and request a QTVI assessment."}
+
+  ]
+
 }
 
 };
@@ -8910,7 +9102,7 @@ function selectCondition(key) {
   var l = document.getElementById('cond-list');
   if (l) l.style.display = 'none';
   var h = document.getElementById('cond-hint');
-  if (h) { h.style.display = 'block'; h.innerHTML = 'Type your condition then tap <strong>Search</strong> (or press Enter). <strong>18 conditions</strong> covered.'; }
+  if (h) { h.style.display = 'block'; h.innerHTML = 'Type your condition then tap <strong>Search</strong> (or press Enter). <strong>20 conditions</strong> covered.'; }
   showCondition(key);
 }
 
@@ -9435,7 +9627,7 @@ function filterConds(q) {
   if (!q) {
     list.style.display = 'none';
     list.innerHTML = '';
-    if (hint) { hint.style.display = 'block'; hint.innerHTML = 'Type your condition then tap <strong>Search</strong> (or press Enter). <strong>18 conditions</strong> covered.'; }
+    if (hint) { hint.style.display = 'block'; hint.innerHTML = 'Type your condition then tap <strong>Search</strong> (or press Enter). <strong>20 conditions</strong> covered.'; }
     return;
   }
 
@@ -9458,7 +9650,9 @@ function filterConds(q) {
     {key:'charlesbonnet',name:'Charles Bonnet Syndrome'},
     {key:'opticneuritis',name:'Optic Neuritis'},
     {key:'blepharitis',name:'Blepharitis'},
-    {key:'pagets',name:'Paget\'s Disease (Sight & Hearing)'}
+    {key:'pagets',name:'Paget\'s Disease (Sight & Hearing)'},
+    {key:'microphthalmia',name:'Microphthalmia'},
+    {key:'congenitalcataracts',name:'Congenital Cataracts'}
   ];
 
   var matches = allConds.filter(function(c) {
