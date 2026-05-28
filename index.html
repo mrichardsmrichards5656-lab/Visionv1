@@ -196,6 +196,7 @@ body.hc .tb-btn:hover .tb-icon,
 body.hc .tb-btn:hover .tb-label { color: #000 !important; }
 /* B&W theme: remove all colour from the entire page. Catches emojis anywhere (in headings, badges, buttons) and any other coloured visual elements. */
 body.hc { filter: grayscale(100%) contrast(1.1); }
+body.wb { filter: grayscale(100%); }
 /* But re-saturate the focus outline so keyboard users can still see it clearly */
 body.hc button:focus-visible,
 body.hc a:focus-visible,
@@ -525,6 +526,14 @@ p, h1, h2, h3, h4, li, span, a, button { overflow-wrap: break-word; word-wrap: b
     overflow-x: visible;
     justify-content: center;
   }
+}
+/* On phones, wrap the toolbar to multiple rows so no buttons spill off-screen
+   (partially-sighted users may not discover horizontal scrolling) */
+.a11y-bar {
+  flex-wrap: wrap !important;
+  overflow-x: visible !important;
+  justify-content: center;
+  row-gap: 6px;
 }
 
 .a11y-bar::-webkit-scrollbar { display: none; }
@@ -1752,22 +1761,22 @@ body.reading-ruler .reading-ruler-bar{display:block}
 
 /* ══ BLUE/BLACK THEME (lb) ══ */
 /* ── WHITE / BLACK theme (clean, RNIB-style: pure white bg, black text) ── */
-body.wb { background-color: #ffffff !important; color: #000000 !important; --bg: #ffffff; --bg2: #f2f2f2; --text: #000000; --text2: #000000; --border: #000000 !important; --card: #f2f2f2; --yellow: #000000 !important; --yellow2: #000000 !important; --green: #000000; --blue: #000000; --purple: #000000; --red: #000000; }
-body.wb .a11y-bar { background: #f2f2f2 !important; border-bottom: 2px solid #000 !important; }
-body.wb .desktop-sidebar { background: #f2f2f2 !important; }
+body.wb { background-color: #ffffff !important; color: #000000 !important; --bg: #ffffff; --bg2: #ffffff; --text: #000000; --text2: #000000; --border: #000000 !important; --card: #ffffff; --yellow: #000000 !important; --yellow2: #000000 !important; --green: #000000; --blue: #000000; --purple: #000000; --red: #000000; }
+body.wb .a11y-bar { background: #ffffff !important; border-bottom: 2px solid #000 !important; }
+body.wb .desktop-sidebar { background: #ffffff !important; }
 body.wb .desktop-main { background: #ffffff !important; }
 body.wb .hero { background: #ffffff !important; }
-body.wb .card, body.wb .founder-box { background: #f2f2f2 !important; border-color: #000 !important; }
-body.wb .acc-item, body.wb .acc-body, body.wb .acc-btn { background: #f2f2f2 !important; border-color: #000 !important; }
-body.wb .ic, body.wb .nc, body.wb .rc, body.wb .tc, body.wb .wb, body.wb .sc { background: #ececec !important; border-color: #000 !important; }
-body.wb .cond-item, body.wb .cond-btn { background: #f2f2f2 !important; color: #000 !important; border-color: #000 !important; }
-body.wb .cond-list, body.wb #search-results-cy { background: #f2f2f2 !important; border: 2px solid #000 !important; }
-body.wb .news-box, body.wb .news-item { background: #f2f2f2 !important; border-color: #000 !important; }
-body.wb #jd-box, body.wb #jd-steps, body.wb .jd-step, body.wb .video-card { background: #f2f2f2 !important; border-color: #000 !important; }
-body.wb .legal-box, body.wb [class*="box"] { background: #f2f2f2 !important; }
-body.wb .lc { background: #f2f2f2 !important; border-color: #000 !important; color: #000 !important; }
+body.wb .card, body.wb .founder-box { background: #ffffff !important; border-color: #000 !important; }
+body.wb .acc-item, body.wb .acc-body, body.wb .acc-btn { background: #ffffff !important; border-color: #000 !important; }
+body.wb .ic, body.wb .nc, body.wb .rc, body.wb .tc, body.wb .wb, body.wb .sc { background: #ffffff !important; border-color: #000 !important; }
+body.wb .cond-item, body.wb .cond-btn { background: #ffffff !important; color: #000 !important; border-color: #000 !important; }
+body.wb .cond-list, body.wb #search-results-cy { background: #ffffff !important; border: 2px solid #000 !important; }
+body.wb .news-box, body.wb .news-item { background: #ffffff !important; border-color: #000 !important; }
+body.wb #jd-box, body.wb #jd-steps, body.wb .jd-step, body.wb .video-card { background: #ffffff !important; border-color: #000 !important; }
+body.wb .legal-box, body.wb [class*="box"] { background: #ffffff !important; }
+body.wb .lc { background: #ffffff !important; border-color: #000 !important; color: #000 !important; }
 body.wb a { color: #000000 !important; text-decoration: underline !important; }
-body.wb .cond-helpline-btn { background: #f2f2f2 !important; color: #000 !important; border-color: #000 !important; }
+body.wb .cond-helpline-btn { background: #ffffff !important; color: #000 !important; border-color: #000 !important; }
 body.wb .cond-helpline-btn * { color: #000 !important; }
 body.wb .acc-num, body.wb .nc-num { background: #000000 !important; color: #fff !important; }
 body.wb .tb-btn { border-color: #000 !important; color: #000 !important; background: #fff !important; }
@@ -1782,6 +1791,7 @@ body.wb .rtag.gene, body.wb .rtag.stem, body.wb .rtag.trial, body.wb .rtag.drug,
 body.wb .news-tag.research, body.wb .news-tag.benefits, body.wb .news-tag.tech, body.wb .news-tag.general { background: #000000 !important; color: #fff !important; }
 body.wb [style*="background:var(--yellow)"], body.wb [style*="background: var(--yellow)"] { background: #000000 !important; color: #fff !important; }
 body.wb [style*="color:var(--yellow)"], body.wb [style*="color: var(--yellow)"] { color: #000000 !important; }
+body.wb [style*="linear-gradient(to right,#c8102e"], body.wb [style*="linear-gradient(to right,#012169"] { background: #000 !important; }
 body.lb { background-color: #cce8f4 !important; color: #000 !important; --bg: #cce8f4; --border: #003a80 !important; --yellow: #003a80 !important; --yellow2: #0055a5 !important; }
 body.lb .a11y-bar { background: #d6ebf7 !important; }
 body.lb .desktop-sidebar { background: #d6ebf7 !important; }
