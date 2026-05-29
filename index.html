@@ -9955,7 +9955,11 @@ function filterConds(q) {
   if (!matches.length) {
     list.style.display = 'none';
     list.innerHTML = '';
-    if (hint) { hint.style.display = 'block'; hint.textContent = 'No conditions found for "' + q + '". Try a different spelling.'; }
+    if (hint) {
+      hint.style.display = 'block';
+      var safeQ = q.replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      hint.innerHTML = 'No eye conditions found for "' + safeQ + '". This box only searches the 20 eye conditions — for things like benefits, days out, cooking or travel, <button type="button" onclick="(function(){var t=document.getElementById(\'tsearch\');if(t){t.value=' + JSON.stringify(q) + ';filterTopics(t.value);t.scrollIntoView({behavior:\'smooth\',block:\'center\'});t.focus();}})()" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">search the rest of the site <span aria-hidden="true">→</span></button>.';
+    }
     return;
   }
 
@@ -10051,6 +10055,13 @@ var TOPIC_INDEX = [
   {label:"Carers UK (external)", page:"external:https://www.carersuk.org", icon:"👥", section:"External", keywords:"carers uk caring loved one family member carer support unpaid carer"},
   {label:"Citizens Advice (external)", page:"external:https://www.citizensadvice.org.uk", icon:"⚖️", section:"External", keywords:"citizens advice debt money universal credit pension credit help free legal"},
   {label:"Age UK (external)", page:"external:https://www.ageuk.org.uk", icon:"👴", section:"External", keywords:"age uk older people attendance allowance pension credit support helpline"},
+
+  // DAYS OUT & LEISURE
+  {label:"Days Out & Entertainment (theatre, cinema, attractions)", page:"home$daysout", icon:"🎭", section:"Days Out", keywords:"days out entertainment leisure theatre cinema attractions theme park stadium museum concert show access scheme companion carer free ticket accessible seats audio described touch tour"},
+  {label:"ATG Access Membership (theatre)", page:"home$daysout", icon:"🎭", section:"Days Out", keywords:"atg ambassador theatre group access membership theatre play musical west end accessible seats free companion carer ticket audio described touch tour"},
+  {label:"CEA Card (free cinema companion ticket)", page:"home$daysout", icon:"🎬", section:"Days Out", keywords:"cea card cinema film movie odeon vue cineworld showcase free companion carer ticket disabled sight impaired"},
+  {label:"Nimbus Access Card (attractions & venues)", page:"home$daysout", icon:"🪪", section:"Days Out", keywords:"nimbus access card attractions venues theme park stadium essential companion plus one free carer ticket digital access pass symbols disabled sight impaired"},
+  {label:"Audio-Described Performances & Touch Tours", page:"home$daysout", icon:"🎧", section:"Days Out", keywords:"audio description audio described performance touch tour theatre describer earpiece visually impaired blind partially sighted accessible show"},
 
   // ABOUT THE SITE
   {label:"How We Write Our Content", page:"disclaimer", icon:"📝", section:"About", keywords:"how we write content sources medical references methodology review disclaimer"},
