@@ -10058,11 +10058,11 @@ var TOPIC_INDEX = [
   {label:"Age UK (external)", page:"external:https://www.ageuk.org.uk", icon:"👴", section:"External", keywords:"age uk older people attendance allowance pension credit support helpline"},
 
   // DAYS OUT & LEISURE
-  {label:"Days Out & Entertainment (theatre, cinema, attractions)", page:"home$daysout", icon:"🎭", section:"Days Out", keywords:"days out entertainment leisure theatre cinema attractions theme park stadium museum concert show access scheme companion carer free ticket accessible seats audio described touch tour"},
-  {label:"ATG Access Membership (theatre)", page:"home$daysout", icon:"🎭", section:"Days Out", keywords:"atg ambassador theatre group access membership theatre play musical west end accessible seats free companion carer ticket audio described touch tour"},
-  {label:"CEA Card (free cinema companion ticket)", page:"home$daysout", icon:"🎬", section:"Days Out", keywords:"cea card cinema film movie odeon vue cineworld showcase free companion carer ticket disabled sight impaired"},
-  {label:"Nimbus Access Card (attractions & venues)", page:"home$daysout", icon:"🪪", section:"Days Out", keywords:"nimbus access card attractions venues theme park stadium essential companion plus one free carer ticket digital access pass symbols disabled sight impaired"},
-  {label:"Audio-Described Performances & Touch Tours", page:"home$daysout", icon:"🎧", section:"Days Out", keywords:"audio description audio described performance touch tour theatre describer earpiece visually impaired blind partially sighted accessible show"},
+  {label:"Days Out & Entertainment (theatre, cinema, attractions)", page:"livingwell$daysout", icon:"🎭", section:"Days Out", keywords:"days out entertainment leisure theatre cinema attractions theme park stadium museum concert show access scheme companion carer free ticket accessible seats audio described touch tour"},
+  {label:"ATG Access Membership (theatre)", page:"livingwell$daysout", icon:"🎭", section:"Days Out", keywords:"atg ambassador theatre group access membership theatre play musical west end accessible seats free companion carer ticket audio described touch tour"},
+  {label:"CEA Card (free cinema companion ticket)", page:"livingwell$daysout", icon:"🎬", section:"Days Out", keywords:"cea card cinema film movie odeon vue cineworld showcase free companion carer ticket disabled sight impaired"},
+  {label:"Nimbus Access Card (attractions & venues)", page:"livingwell$daysout", icon:"🪪", section:"Days Out", keywords:"nimbus access card attractions venues theme park stadium essential companion plus one free carer ticket digital access pass symbols disabled sight impaired"},
+  {label:"Audio-Described Performances & Touch Tours", page:"livingwell$daysout", icon:"🎧", section:"Days Out", keywords:"audio description audio described performance touch tour theatre describer earpiece visually impaired blind partially sighted accessible show"},
 
   // ABOUT THE SITE
   {label:"How We Write Our Content", page:"disclaimer", icon:"📝", section:"About", keywords:"how we write content sources medical references methodology review disclaimer"},
@@ -10233,35 +10233,39 @@ function selectTopic(target) {
       }
 
       if (focusTarget) {
-        var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        // Slight delay if accordion just opened to let animation start
-        setTimeout(function() {
-          try {
-            focusTarget.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
-          } catch (e) { focusTarget.scrollIntoView(); }
+        // Robust scroll: the target can briefly report as not-yet-laid-out
+        // (offsetParent null / rect.top 0) right after a page switch + accordion
+        // open. So poll a few times until it has a real position, then scroll the
+        // window by an absolute document offset (more reliable on mobile than
+        // scrollIntoView with smooth behaviour).
+        var _scrollTarget = document.getElementById('lw-' + lwId) || focusTarget;
+        var _tries = 0;
+        var _doScroll = function() {
+          _tries++;
+          var rect = _scrollTarget.getBoundingClientRect();
+          var laidOut = _scrollTarget.offsetParent !== null && (rect.height > 0 || rect.top !== 0);
+          if (!laidOut && _tries < 12) { setTimeout(_doScroll, 60); return; }
+          // Compute absolute position from document top
+          var absTop = rect.top + window.pageYOffset;
+          // Land slightly above the card so its heading isn't jammed under the sticky bar
+          var dest = Math.max(0, absTop - 70);
+          try { window.scrollTo({ top: dest, behavior: 'auto' }); }
+          catch (e) { window.scrollTo(0, dest); }
+          // focus for screen readers without moving the view again
           var hadTabindex = focusTarget.hasAttribute('tabindex');
           if (!hadTabindex) focusTarget.setAttribute('tabindex', '-1');
-          try { focusTarget.focus({ preventScroll: true }); } catch (e) { focusTarget.focus(); }
+          try { focusTarget.focus({ preventScroll: true }); } catch (e) {}
           if (!hadTabindex) {
             focusTarget.addEventListener('blur', function once() {
               focusTarget.removeAttribute('tabindex');
               focusTarget.removeEventListener('blur', once);
             });
           }
-          // Safety re-scroll: if anything else (page focus, layout shift) moved the
-          // view after we scrolled, re-assert the target position once more.
-          setTimeout(function() {
-            try {
-              var r = focusTarget.getBoundingClientRect();
-              if (r.top < 0 || r.top > 200) {
-                focusTarget.scrollIntoView({ behavior: 'auto', block: 'start' });
-              }
-            } catch (e) {}
-            _suppressPageScroll = false;  // done — let future navigation manage scroll normally
-          }, 300);
-        }, lwId ? 320 : 60);
+          _suppressPageScroll = false;
+        };
+        setTimeout(_doScroll, lwId ? 120 : 40);
       } else {
-        _suppressPageScroll = false;  // nothing to scroll to; release the flag
+        _suppressPageScroll = false;
       }
     } catch (err) {
       _suppressPageScroll = false;
