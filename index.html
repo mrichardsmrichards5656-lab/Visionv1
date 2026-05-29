@@ -9219,6 +9219,7 @@ function toggleJD() {
 /* ─────────────── PAGE SWITCHER ─────────────── */
 
 var _scrollPos = {};
+var _suppressPageScroll = false;  // when true, showPage won't manage scroll (caller will scroll to a specific target)
 
 
 
@@ -9264,7 +9265,7 @@ function showPage(name) {
     if (_target) {
       // Make h1 focusable temporarily so screen reader can land on it
       _target.setAttribute('tabindex', '-1');
-      _target.focus({preventScroll: false});
+      _target.focus({preventScroll: _suppressPageScroll ? true : false});
       // Remove tabindex after blur so it's not in normal tab order
       _target.addEventListener('blur', function _b(){
         _target.removeAttribute('tabindex');
@@ -9308,7 +9309,7 @@ function showPage(name) {
     var ftH = document.querySelector('footer');
     if (ftH) ftH.style.display = '';
 
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    if (!_suppressPageScroll) window.scrollTo({ top: 0, behavior: 'instant' });
 
     return;
 
@@ -9348,7 +9349,7 @@ function showPage(name) {
 
   var savedPos = _scrollPos['page-' + name] || 0;
 
-  window.scrollTo({ top: savedPos, behavior: 'instant' });
+  if (!_suppressPageScroll) window.scrollTo({ top: savedPos, behavior: 'instant' });
 
   applyNRState();
 
@@ -10204,7 +10205,9 @@ function selectTopic(target) {
     return;
   }
 
-  // Navigate
+  // Navigate. If we're heading to a specific card/anchor, tell showPage not to
+  // manage scroll itself (otherwise it scrolls to top and fights our scroll).
+  _suppressPageScroll = !!(lwId || anchor);
   showPage(pageKey);
 
   // After page renders, perform any extra steps
@@ -10224,7 +10227,9 @@ function selectTopic(target) {
       if (anchor) {
         focusTarget = document.getElementById(anchor);
       } else if (lwId) {
-        focusTarget = document.getElementById('lw-' + lwId);
+        // Scroll to the card BUTTON (always visible, stable position) rather than
+        // the section, which may still be animating open / zero-height at this moment.
+        focusTarget = document.querySelector('[onclick*="toggleLW(\'' + lwId + '\'"]') || document.getElementById('lw-' + lwId);
       }
 
       if (focusTarget) {
@@ -10243,12 +10248,26 @@ function selectTopic(target) {
               focusTarget.removeEventListener('blur', once);
             });
           }
-        }, lwId ? 200 : 0);
+          // Safety re-scroll: if anything else (page focus, layout shift) moved the
+          // view after we scrolled, re-assert the target position once more.
+          setTimeout(function() {
+            try {
+              var r = focusTarget.getBoundingClientRect();
+              if (r.top < 0 || r.top > 200) {
+                focusTarget.scrollIntoView({ behavior: 'auto', block: 'start' });
+              }
+            } catch (e) {}
+            _suppressPageScroll = false;  // done — let future navigation manage scroll normally
+          }, 300);
+        }, lwId ? 320 : 60);
+      } else {
+        _suppressPageScroll = false;  // nothing to scroll to; release the flag
       }
     } catch (err) {
+      _suppressPageScroll = false;
       if (window.console && console.warn) console.warn('Topic navigation issue:', err);
     }
-  }, 150);
+  }, 200);
 }
 
 
