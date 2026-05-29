@@ -1643,7 +1643,7 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 
 .acc-label { font-size: 1rem; font-weight: 800; color: var(--text); overflow-wrap: break-word; word-break: break-word; min-width: 0; }
 
-.acc-arrow { font-size: 1rem; color: var(--yellow); flex-shrink: 0; transition: transform .25s; }
+.acc-arrow { font-size: 1.6rem; font-weight: 900; line-height: 1; color: var(--yellow); flex-shrink: 0; transition: transform .25s; padding-left: 4px; }
 
 .acc-item.open .acc-arrow { transform: rotate(180deg); }
 
@@ -8331,6 +8331,8 @@ function labelToClass(label) {
       <div class="acc-body">
 
         ${_isWelsh ? '<p style="background:#00b140;color:#fff;padding:8px 14px;border-radius:8px;font-size:0.85rem;margin-bottom:12px">🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁥 Mae\'r adran hon ar gael yn Saesneg yn unig ar hyn o bryd. / This section is currently in English only.</p>' : ''}
+
+        <div class="wb" style="margin-bottom:16px"><strong>Before you buy:</strong> a free NHS low-vision assessment can match the right aids to your sight — ask your optometrist or eye clinic. To see and try equipment, two trusted UK suppliers offer free home demonstrations: the <a href="https://shop.rnib.org.uk" aria-label="RNIB Shop (opens external site)" rel="noopener" style="color:var(--yellow);font-weight:700">RNIB Shop <span aria-hidden="true">↗</span></a> and <a href="https://www.visionaid.co.uk" aria-label="VisionAid Technologies (opens external site)" rel="noopener" style="color:var(--yellow);font-weight:700">VisionAid <span aria-hidden="true">↗</span></a>.</div>
 
         ${d.tech.map(t=>`
 
