@@ -8321,6 +8321,11 @@ function labelToClass(label) {
       <span style="font-size:1.8rem" aria-hidden="true">${d.helpline.number.includes('@') ? '✉️' : '📞'}</span>
     </a>` : ''}
 
+    <button type="button" id="acc-toggle-all" class="acc-toggle-all" onclick="setAllAcc(this.getAttribute('aria-expanded')!=='true')" aria-expanded="false" style="display:flex;align-items:center;gap:8px;background:var(--card);border:2px solid var(--yellow);color:var(--yellow);border-radius:50px;padding:10px 18px;margin-bottom:16px;font-family:var(--font);font-weight:700;font-size:0.95rem;cursor:pointer">
+      <span aria-hidden="true" style="font-size:1.1rem">⊕</span>
+      <span class="acc-toggle-all-label">Open all sections</span>
+    </button>
+
     <div class="acc-item" id="acc-about-${key}">
 
       <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('about','${key}')" aria-expanded="false">
@@ -8924,6 +8929,26 @@ function speakAccSection(accBody, btn) {
   // Call addListenButtons when page changes
   var _origShowPage = window.showPage || function(){};
 
+
+function setAllAcc(openState) {
+  // Open or close ALL accordion panels on the current condition page.
+  // Uses the same DOM changes as toggleAcc (open class + aria-expanded) so
+  // state stays consistent, but without the per-panel focus move.
+  var page = document.getElementById('page-condition');
+  if (!page) return;
+  var items = page.querySelectorAll('.acc-item');
+  items.forEach(function(item) {
+    var btn = item.querySelector('.acc-btn');
+    item.classList.toggle('open', openState);
+    if (btn) btn.setAttribute('aria-expanded', String(openState));
+  });
+  // Update the control button label/state
+  var ctrl = document.getElementById('acc-toggle-all');
+  if (ctrl) {
+    ctrl.setAttribute('aria-expanded', String(openState));
+    ctrl.querySelector('.acc-toggle-all-label').textContent = openState ? 'Close all sections' : 'Open all sections';
+  }
+}
 
 function toggleAcc(section, key) {
 
