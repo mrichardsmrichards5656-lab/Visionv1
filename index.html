@@ -1143,7 +1143,7 @@ body.welsh-active .trial-link::after { content: " (Saesneg yn unig)"; font-size:
 
 .lw-card-icon  { font-size: 1.6rem; flex-shrink: 0; }
 
-.lw-card-arrow { font-size: 1rem; color: var(--yellow); flex-shrink: 0; transition: transform .25s; margin-top: 2px; }
+.lw-card-arrow { font-size: 1.6rem; font-weight: 900; color: var(--yellow); flex-shrink: 0; transition: transform .25s; margin-top: 2px; line-height: 1; }
 
 .lw-card[aria-expanded="true"] .lw-card-arrow { transform: rotate(180deg); }
 
@@ -1153,7 +1153,11 @@ body.welsh-active .trial-link::after { content: " (Saesneg yn unig)"; font-size:
 
 .lw-card-hint  { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--yellow); display: block; }
 
-.lw-card[aria-expanded="true"] .lw-card-hint { display: none; }
+.lw-hint-open { display: none; }
+
+.lw-card[aria-expanded="true"] .lw-hint-closed { display: none; }
+
+.lw-card[aria-expanded="true"] .lw-hint-open { display: inline; }
 
 
 
@@ -3278,7 +3282,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
           <span class="lw-card-desc">Safe, independent cooking with low or no vision — tools, techniques, and organisation tips.</span>
 
-          <span class="lw-card-hint">Tap to expand</span>
+          <span class="lw-card-hint"><span class="lw-hint-closed">Tap to expand</span><span class="lw-hint-open">Tap to close</span></span>
 
         </button>
 
@@ -3385,7 +3389,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
           <span class="lw-card-desc">Being a brilliant parent with low or no vision — practical strategies, equipment, and emotional support.</span>
 
-          <span class="lw-card-hint">Tap to expand</span>
+          <span class="lw-card-hint"><span class="lw-hint-closed">Tap to expand</span><span class="lw-hint-open">Tap to close</span></span>
 
         </button>
 
@@ -3480,7 +3484,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
           <span class="lw-card-desc">Staying active with sight loss — from gym to goalball, running to yoga.</span>
 
-          <span class="lw-card-hint">Tap to expand</span>
+          <span class="lw-card-hint"><span class="lw-hint-closed">Tap to expand</span><span class="lw-hint-open">Tap to close</span></span>
 
         </button>
 
@@ -3575,7 +3579,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
           <span class="lw-card-desc">Looking and feeling great with low or no vision — practical techniques and trusted tools.</span>
 
-          <span class="lw-card-hint">Tap to expand</span>
+          <span class="lw-card-hint"><span class="lw-hint-closed">Tap to expand</span><span class="lw-hint-open">Tap to close</span></span>
 
         </button>
 
@@ -3680,7 +3684,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
           <span class="lw-card-desc">Books, radio, podcasts and audio — the best free and paid services for people with sight loss.</span>
 
-          <span class="lw-card-hint">Tap to expand</span>
+          <span class="lw-card-hint"><span class="lw-hint-closed">Tap to expand</span><span class="lw-hint-open">Tap to close</span></span>
 
         </button>
 
@@ -3781,7 +3785,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
           <span class="lw-card-desc">Trains, buses, taxis, and travelling independently with sight loss.</span>
 
-          <span class="lw-card-hint">Tap to expand</span>
+          <span class="lw-card-hint"><span class="lw-hint-closed">Tap to expand</span><span class="lw-hint-open">Tap to close</span></span>
 
         </button>
 
@@ -3874,7 +3878,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
           <span class="lw-card-desc">Theatre, cinema and attractions — discount schemes that give a free ticket for the person accompanying you, plus audio-described shows.</span>
 
-          <span class="lw-card-hint">Tap to expand</span>
+          <span class="lw-card-hint"><span class="lw-hint-closed">Tap to expand</span><span class="lw-hint-open">Tap to close</span></span>
 
         </button>
 
@@ -3947,7 +3951,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
           <span class="lw-card-desc">Your rights, available support, and how to thrive professionally with sight loss.</span>
 
-          <span class="lw-card-hint">Tap to expand</span>
+          <span class="lw-card-hint"><span class="lw-hint-closed">Tap to expand</span><span class="lw-hint-open">Tap to close</span></span>
 
         </button>
 
@@ -4042,7 +4046,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
           <span class="lw-card-desc">Emotional support, coping with diagnosis, and finding your community.</span>
 
-          <span class="lw-card-hint">Tap to expand</span>
+          <span class="lw-card-hint"><span class="lw-hint-closed">Tap to expand</span><span class="lw-hint-open">Tap to close</span></span>
 
         </button>
 
@@ -9614,6 +9618,26 @@ function toggleLW(id, cardBtn) {
   } else {
 
     openLW = null;
+
+    // Keep the view on the card just closed. Find the card's TOP header button
+
+    // reliably (the one that controls this section), because when closing via the
+
+    // in-section "Close" button, the passed-in element is inside the collapsing
+
+    // content and its position becomes meaningless after collapse.
+
+    setTimeout(function() {
+
+      try {
+
+        var headerBtn = document.querySelector('.lw-card[aria-controls="lw-' + id + '"]');
+
+        if (headerBtn) headerBtn.scrollIntoView({behavior:'smooth', block:'start'});
+
+      } catch (e) {}
+
+    }, 60);
 
   }
 
