@@ -3240,11 +3240,18 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !
 
     <h1>Everyday Guide</h1>
 
-    <p style="font-size:0.95rem;color:var(--text2);margin-bottom:32px;line-height:1.8;">Practical tips to make daily life easier — covering the things that matter beyond the clinic. Tap any topic to expand it.</p>
+    <p style="font-size:0.95rem;color:var(--text2);margin-bottom:32px;line-height:1.8;">Practical tips to make daily life easier — covering the things that matter beyond the clinic. Tap any topic to expand it, or open them all at once.</p>
 
 
 
     <div class="wb"><strong>You are not alone.</strong> Every tip here comes from the community — people with sight conditions who have found what works. If you have something to add, <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">get in touch</button>.</div>
+
+
+
+    <button type="button" id="lw-toggle-all" class="lw-toggle-all" onclick="setAllLW(this.getAttribute('aria-expanded')!=='true')" aria-expanded="false" style="display:flex;align-items:center;gap:8px;background:var(--card);border:2px solid var(--yellow);color:var(--yellow);border-radius:50px;padding:10px 18px;margin:0 0 20px;font-family:var(--font);font-weight:700;font-size:0.95rem;cursor:pointer">
+      <span aria-hidden="true" style="font-size:1.1rem">⊕</span>
+      <span class="lw-toggle-all-label">Open all sections</span>
+    </button>
 
 
 
@@ -9592,18 +9599,6 @@ function toggleLW(id, cardBtn) {
 
   if (!section) return;
 
-  if (openLW && openLW !== id) {
-
-    var prevSection = document.getElementById('lw-' + openLW);
-
-    var prevBtns = document.querySelectorAll('[onclick*="toggleLW(\'' + openLW + '\'"]');
-
-    if (prevSection) prevSection.classList.remove('vis');
-
-    prevBtns.forEach(function(b) { b.setAttribute('aria-expanded','false'); });
-
-  }
-
   var isOpen = section.classList.contains('vis');
 
   section.classList.toggle('vis', !isOpen);
@@ -9621,6 +9616,64 @@ function toggleLW(id, cardBtn) {
     openLW = null;
 
   }
+
+  updateLWToggleAll();
+
+}
+
+function updateLWToggleAll() {
+
+  // Keep the Everyday Guide "open/close all" button label in sync with how many cards are open.
+
+  var ctrl = document.getElementById('lw-toggle-all');
+
+  if (!ctrl) return;
+
+  var page = document.getElementById('page-livingwell');
+
+  if (!page) return;
+
+  var sections = page.querySelectorAll('.lw-section');
+
+  var anyClosed = false;
+
+  sections.forEach(function(s) { if (!s.classList.contains('vis')) anyClosed = true; });
+
+  // If anything is closed, button offers "Open all"; if all open, it offers "Close all".
+
+  ctrl.setAttribute('aria-expanded', String(!anyClosed));
+
+  var label = ctrl.querySelector('.lw-toggle-all-label');
+
+  if (label) label.textContent = anyClosed ? 'Open all sections' : 'Close all sections';
+
+}
+
+function setAllLW(openState) {
+
+  // Open or close ALL Living Well cards on the Everyday Guide page.
+
+  var page = document.getElementById('page-livingwell');
+
+  if (!page) return;
+
+  var sections = page.querySelectorAll('.lw-section');
+
+  sections.forEach(function(section) {
+
+    var id = section.id.replace('lw-', '');
+
+    var btns = page.querySelectorAll('[onclick*="toggleLW(\'' + id + '\'"]');
+
+    section.classList.toggle('vis', openState);
+
+    btns.forEach(function(b) { b.setAttribute('aria-expanded', String(openState)); });
+
+  });
+
+  openLW = null;  // no single "current" card when using open/close all
+
+  updateLWToggleAll();
 
 }
 
