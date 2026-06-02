@@ -8442,6 +8442,8 @@ function labelToClass(label) {
 
         ${_isWelsh && d.cy && d.cy.researchSummary ? `<div class="wb" style="border-left:4px solid #00b140;margin-bottom:16px"><strong>🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁿 Crynodeb Ymchwil:</strong> ${d.cy.researchSummary}</div>` : ''}
 
+        ${_isWelsh ? '<p style="background:#00b140;color:#fff;padding:8px 14px;border-radius:8px;font-size:0.85rem;margin-bottom:12px">🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁿 Mae\'r manylion ymchwil isod ar gael yn Saesneg yn unig ar hyn o bryd. / The detailed research items below are currently in English only.</p>' : ''}
+
         <div class="wb" style="border-left:4px solid #b86d00;margin-bottom:16px;background:rgba(184,109,0,0.08)"><strong>⚠️ Always check current status before acting.</strong> Research changes fast. Verify on <a href="https://www.clinicaltrials.gov" aria-label="ClinicalTrials.gov (opens external site)" rel="noopener noreferrer">ClinicalTrials.gov</a> and discuss with your ophthalmologist. <span style="opacity:0.75">Last reviewed June 2026.</span></div>
 
         ${d.research.map(r=>`
