@@ -9440,6 +9440,10 @@ function showPage(name) {
 
   if (videoWrap) videoWrap.style.display = name === 'home' ? '' : 'none';
 
+  // Show the home share/contact box only on home page (was hidden on leaving but not restored)
+  var hfCta = document.getElementById('home-footer-cta');
+  if (hfCta) hfCta.style.display = name === 'home' ? '' : 'none';
+
 
 
   // Restore or reset scroll
