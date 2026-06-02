@@ -8403,7 +8403,7 @@ function labelToClass(label) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
-      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('about','${key}',this)" aria-label="Listen to What is" title="Listen to What is" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> What is</span></button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('about','${key}',this)" aria-label="${_isWelsh ? 'Gwrando ar Beth yw' : 'Listen to What is'}" title="${_isWelsh ? 'Gwrando ar Beth yw' : 'Listen to What is'}" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> ${_isWelsh ? 'Beth yw' : 'What is'}</span></button>
       </div>
 
       <div class="acc-body">
@@ -8435,7 +8435,7 @@ function labelToClass(label) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
-      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('research','${key}',this)" aria-label="Listen to Latest Research" title="Listen to Latest Research" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> Latest Research</span></button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('research','${key}',this)" aria-label="${_isWelsh ? 'Gwrando ar Ymchwil Diweddaraf' : 'Listen to Latest Research'}" title="${_isWelsh ? 'Gwrando ar Ymchwil Diweddaraf' : 'Listen to Latest Research'}" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> ${_isWelsh ? 'Ymchwil Diweddaraf' : 'Latest Research'}</span></button>
       </div>
 
       <div class="acc-body">
@@ -8454,7 +8454,7 @@ function labelToClass(label) {
 
           <h3>${r.title}</h3><p>${r.body}</p>
 
-          <a href="${r.link}" class="trial-link">Find out more <span aria-hidden="true">→</span></a>
+          <a href="${r.link}" class="trial-link">${_isWelsh ? 'Darganfod mwy' : 'Find out more'} <span aria-hidden="true">→</span></a>
 
         </div>`).join('')}
 
@@ -8477,10 +8477,12 @@ function labelToClass(label) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
-      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('guides','${key}',this)" aria-label="Listen to Practical How-To Guides" title="Listen to Practical How-To Guides" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> Practical How-To Guides</span></button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('guides','${key}',this)" aria-label="${_isWelsh ? 'Gwrando ar Ganllawiau Ymarferol' : 'Listen to Practical How-To Guides'}" title="${_isWelsh ? 'Gwrando ar Ganllawiau Ymarferol' : 'Listen to Practical How-To Guides'}" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> ${_isWelsh ? 'Canllawiau Ymarferol' : 'Practical How-To Guides'}</span></button>
       </div>
 
       <div class="acc-body">
+
+        ${_isWelsh ? '<p style="background:#00b140;color:#fff;padding:8px 14px;border-radius:8px;font-size:0.85rem;margin-bottom:12px">🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁿 Mae manylion y rhan hon ar gael yn Saesneg yn unig ar hyn o bryd. / The details in this section are currently in English only.</p>' : ''}
 
         ${_isWelsh ? '<p style="background:#00b140;color:#fff;padding:8px 14px;border-radius:8px;font-size:0.85rem;margin-bottom:12px">🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁥 Mae\'r adran hon ar gael yn Saesneg yn unig ar hyn o bryd. / This section is currently in English only.</p>' : ''}
 
@@ -8511,10 +8513,12 @@ function labelToClass(label) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
-      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('tech','${key}',this)" aria-label="Listen to Assistive Technology" title="Listen to Assistive Technology" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> Assistive Technology</span></button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('tech','${key}',this)" aria-label="${_isWelsh ? 'Gwrando ar Dechnoleg Gynorthwyol' : 'Listen to Assistive Technology'}" title="${_isWelsh ? 'Gwrando ar Dechnoleg Gynorthwyol' : 'Listen to Assistive Technology'}" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> ${_isWelsh ? 'Technoleg Gynorthwyol' : 'Assistive Technology'}</span></button>
       </div>
 
       <div class="acc-body">
+
+        ${_isWelsh ? '<p style="background:#00b140;color:#fff;padding:8px 14px;border-radius:8px;font-size:0.85rem;margin-bottom:12px">🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁿 Mae manylion y rhan hon ar gael yn Saesneg yn unig ar hyn o bryd. / The details in this section are currently in English only.</p>' : ''}
 
         ${_isWelsh ? '<p style="background:#00b140;color:#fff;padding:8px 14px;border-radius:8px;font-size:0.85rem;margin-bottom:12px">🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁥 Mae\'r adran hon ar gael yn Saesneg yn unig ar hyn o bryd. / This section is currently in English only.</p>' : ''}
 
@@ -8551,10 +8555,12 @@ function labelToClass(label) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
-      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('support','${key}',this)" aria-label="Listen to Support and Community" title="Listen to Support and Community" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> Support and Community</span></button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('support','${key}',this)" aria-label="${_isWelsh ? 'Gwrando ar Gefnogaeth a Chymuned' : 'Listen to Support and Community'}" title="${_isWelsh ? 'Gwrando ar Gefnogaeth a Chymuned' : 'Listen to Support and Community'}" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> ${_isWelsh ? 'Cefnogaeth a Chymuned' : 'Support and Community'}</span></button>
       </div>
 
       <div class="acc-body">
+
+        ${_isWelsh ? '<p style="background:#00b140;color:#fff;padding:8px 14px;border-radius:8px;font-size:0.85rem;margin-bottom:12px">🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁿 Mae manylion y rhan hon ar gael yn Saesneg yn unig ar hyn o bryd. / The details in this section are currently in English only.</p>' : ''}
 
         ${_isWelsh ? '<p style="background:#00b140;color:#fff;padding:8px 14px;border-radius:8px;font-size:0.85rem;margin-bottom:12px">🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁥 Mae\'r adran hon ar gael yn Saesneg yn unig ar hyn o bryd. / This section is currently in English only.</p>' : ''}
 
@@ -8603,10 +8609,12 @@ function labelToClass(label) {
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
-      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('benefits','${key}',this)" aria-label="Listen to Benefits and Financial Help" title="Listen to Benefits and Financial Help" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> Benefits and Financial Help</span></button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('benefits','${key}',this)" aria-label="${_isWelsh ? 'Gwrando ar Fudd-daliadau a Chymorth Ariannol' : 'Listen to Benefits and Financial Help'}" title="${_isWelsh ? 'Gwrando ar Fudd-daliadau a Chymorth Ariannol' : 'Listen to Benefits and Financial Help'}" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> ${_isWelsh ? 'Budd-daliadau a Chymorth Ariannol' : 'Benefits and Financial Help'}</span></button>
       </div>
 
       <div class="acc-body">
+
+        ${_isWelsh ? '<p style="background:#00b140;color:#fff;padding:8px 14px;border-radius:8px;font-size:0.85rem;margin-bottom:12px">🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁿 Mae manylion y rhan hon ar gael yn Saesneg yn unig ar hyn o bryd. / The details in this section are currently in English only.</p>' : ''}
 
         ${_isWelsh ? '<p style="background:#00b140;color:#fff;padding:8px 14px;border-radius:8px;font-size:0.85rem;margin-bottom:12px">🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁥 Mae\'r adran hon ar gael yn Saesneg yn unig ar hyn o bryd. / This section is currently in English only.</p>' : ''}
 
@@ -8640,17 +8648,19 @@ function labelToClass(label) {
 
       <div style="display:flex;align-items:center;gap:8px"><button class="acc-btn" onclick="toggleAcc('living','${key}')" aria-expanded="false">
 
-        <span class="acc-left"><span class="acc-num">7</span><span class="acc-label">Living with ${d.name}</span></span>
+        <span class="acc-left"><span class="acc-num">7</span><span class="acc-label">${_isWelsh ? 'Byw gyda' : 'Living with'} ${d.name}</span></span>
 
         
 
         <span class="acc-arrow" aria-hidden="true">▾</span>
 
       </button>
-      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('living','${key}',this)" aria-label="Listen to Living with this condition" title="Listen to Living with this condition" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> Living with this condition</span></button>
+      <button class="acc-listen" onclick="event.stopPropagation();listenToSection('living','${key}',this)" aria-label="${_isWelsh ? 'Gwrando ar Fyw gyda\'r cyflwr hwn' : 'Listen to Living with this condition'}" title="${_isWelsh ? 'Gwrando ar Fyw gyda\'r cyflwr hwn' : 'Listen to Living with this condition'}" tabindex="0"><span aria-hidden="true">🔊</span><span class="sr-only"> ${_isWelsh ? 'Byw gyda\'r cyflwr hwn' : 'Living with this condition'}</span></button>
       </div>
 
       <div class="acc-body">
+
+        ${_isWelsh ? '<p style="background:#00b140;color:#fff;padding:8px 14px;border-radius:8px;font-size:0.85rem;margin-bottom:12px">🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁿 Mae manylion y rhan hon ar gael yn Saesneg yn unig ar hyn o bryd. / The details in this section are currently in English only.</p>' : ''}
 
         ${_isWelsh ? '<p style="background:#00b140;color:#fff;padding:8px 14px;border-radius:8px;font-size:0.85rem;margin-bottom:12px">🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁳󠁥 Mae\'r adran hon ar gael yn Saesneg yn unig ar hyn o bryd. / This section is currently in English only.</p>' : ''}
 
