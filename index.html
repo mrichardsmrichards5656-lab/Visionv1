@@ -9093,9 +9093,7 @@ function showConditionWelsh(key) {
   document.documentElement.setAttribute('lang', 'cy-GB');
 
   document.documentElement.lang = _isWelsh ? 'cy' : 'en-GB';
-  var btn = document.getElementById('welsh-toggle');
-
-  if (btn) { btn.classList.add('active'); btn.textContent = 'EN'; }
+  syncLangButton();
 
 }
 
@@ -9185,6 +9183,21 @@ var _isWelsh = false;
 
 var _currentCond = null;  // tracks which condition is being viewed (null = not on a condition page)
 
+// Single source of truth for the language toggle button's label/state.
+// Call this whenever the language or page changes so the button always
+// reflects the real _isWelsh value. EN/English = currently Welsh (tap to go English).
+function syncLangButton() {
+  var btn = document.getElementById('welsh-toggle');
+  if (!btn) return;
+  btn.classList.toggle('active', _isWelsh);
+  btn.setAttribute('aria-pressed', _isWelsh ? 'true' : 'false');
+  btn.setAttribute('aria-label', _isWelsh ? 'Newid i Saesneg' : 'Newid i Gymraeg');
+  var wi = document.getElementById('welsh-icon');
+  var wl = document.getElementById('welsh-label');
+  if (wi) wi.textContent = _isWelsh ? 'EN' : 'CY';
+  if (wl) wl.textContent = _isWelsh ? 'English' : 'Welsh';
+}
+
 
 
 function toggleWelsh() {
@@ -9194,16 +9207,7 @@ function toggleWelsh() {
   // If currently viewing a condition, re-render it in the new language and stop
   // (don't force the user back to the home page)
   if (_currentCond) {
-    var _btn = document.getElementById('welsh-toggle');
-    if (_btn) {
-      _btn.classList.toggle('active', _isWelsh);
-      _btn.setAttribute('aria-pressed', _isWelsh ? 'true' : 'false');
-      _btn.setAttribute('aria-label', _isWelsh ? 'Newid i Saesneg' : 'Newid i Gymraeg');
-      var _wi = document.getElementById('welsh-icon');
-      var _wl = document.getElementById('welsh-label');
-      if (_wi) _wi.textContent = _isWelsh ? 'EN' : 'CY';
-      if (_wl) _wl.textContent = _isWelsh ? 'English' : 'Welsh';
-    }
+    syncLangButton();
     document.documentElement.setAttribute('lang', _isWelsh ? 'cy-GB' : 'en-GB');
     document.body.classList.toggle('welsh-active', _isWelsh);
     try { localStorage.setItem('vh-lang', _isWelsh ? 'cy-GB' : 'en-GB'); } catch(e) {}
@@ -9216,21 +9220,7 @@ function toggleWelsh() {
     return;
   }
 
-  var btn = document.getElementById('welsh-toggle');
-
-  if (btn) {
-
-    btn.classList.toggle('active', _isWelsh);
-    btn.setAttribute('aria-pressed', _isWelsh ? 'true' : 'false');
-
-    btn.setAttribute('aria-label', _isWelsh ? 'Newid i Saesneg' : 'Newid i Gymraeg');
-
-    var wi = document.getElementById('welsh-icon');
-    var wl = document.getElementById('welsh-label');
-    if (wi) wi.textContent = _isWelsh ? 'EN' : 'CY';
-    if (wl) wl.textContent = _isWelsh ? 'English' : 'Welsh';
-
-  }
+  syncLangButton();
 
 
 
@@ -9544,6 +9534,7 @@ function showCondition(key) {
     updateStickyTitle(d.name, function(){ showPage('home'); });
     srAnnounce('Navigated to: ' + d.name + ' condition guide');
   }
+  syncLangButton();
 
   // Save home scroll position
 
@@ -10531,7 +10522,8 @@ function selectTopic(target) {
     }
 
     // Welsh language — restore if previously chosen
-    if (localStorage.getItem('vh-lang') === 'cy') {
+    var _savedLang = localStorage.getItem('vh-lang');
+    if (_savedLang === 'cy' || _savedLang === 'cy-GB') {
       setTimeout(function() {
         if (typeof toggleWelsh === 'function') toggleWelsh();
       }, 100);
