@@ -2933,7 +2933,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
               <h2 style="font-size:1.1rem;font-weight:900;color:var(--text);margin-top:4px;line-height:1.3" data-listen-added="1">Start here.</h2>
             </div>
 
-            <button class="acc-listen" onclick="(function(b){var s=window.speechSynthesis;if(!s)return;if(b.classList.contains('speaking')){s.cancel();b.classList.remove('speaking');return;}s.cancel();var box=document.getElementById('jd-box');if(!box)return;var c=box.cloneNode(true);c.querySelectorAll('button,.acc-listen,.sr-only').forEach(function(x){x.remove();});var t=(c.textContent||'').replace(/[\u{1F000}-\u{1FFFF}]/gu,'').replace(/[\u{2600}-\u{27BF}]/gu,'').replace(/[\u{1F300}-\u{1F9FF}]/gu,'').replace(/\s+/g,' ').trim();if(!t)return;if(t.length>2000)t=t.slice(0,2000);var u=new SpeechSynthesisUtterance(t);u.lang='en-GB';u.rate=parseFloat((document.getElementById('tts-speed')||{}).value||'0.85');u.onend=function(){b.classList.remove('speaking');};b.classList.add('speaking');s.speak(u);})(this)" aria-label="Listen to Just Diagnosed section" title="Listen to this section" style="margin-left:0"><span aria-hidden="true">🔊</span></button>
+            <button class="acc-listen" onclick="(function(b){var s=window.speechSynthesis;if(!s)return;if(b.classList.contains('speaking')){s.cancel();b.classList.remove('speaking');return;}s.cancel();var box=document.getElementById('jd-box');if(!box)return;var c=box.cloneNode(true);c.querySelectorAll('button,.acc-listen,.sr-only').forEach(function(x){x.remove();});var t=(c.textContent||'').replace(/[\u{1F000}-\u{1FFFF}]/gu,'').replace(/[\u{2600}-\u{27BF}]/gu,'').replace(/[\u{1F300}-\u{1F9FF}]/gu,'').replace(/\s+/g,' ').trim();if(!t)return;if(t.length>2000)t=t.slice(0,2000);var u=new SpeechSynthesisUtterance(t);u.lang='en-GB';try{var _bv=window._bestVoice&&window._bestVoice('en-GB');if(_bv)u.voice=_bv;}catch(e){}u.rate=parseFloat((document.getElementById('tts-speed')||{}).value||'0.85');u.onend=function(){b.classList.remove('speaking');};b.classList.add('speaking');s.speak(u);})(this)" aria-label="Listen to Just Diagnosed section" title="Listen to this section" style="margin-left:0"><span aria-hidden="true">🔊</span></button>
 
           </div>
 
@@ -8922,6 +8922,7 @@ function speakAccSection(accBody, btn) {
 
   var utter = new SpeechSynthesisUtterance(text);
   utter.lang = (window._isWelsh ? 'cy-GB' : 'en-GB');
+  try{var _bv=window._bestVoice&&window._bestVoice(utter.lang);if(_bv)utter.voice=_bv;}catch(e){}
   utter.rate = parseFloat((document.getElementById('tts-speed') || {}).value || '0.85');
   utter.volume = 1;
 
@@ -9008,6 +9009,7 @@ function speakAccSection(accBody, btn) {
         var utt = new SpeechSynthesisUtterance(text);
         utt.lang = (window._isWelsh ? 'cy-GB' : 'en-GB');
         utt.rate = parseFloat((document.getElementById('tts-speed') || {}).value || '0.85');
+        try{var _bv=window._bestVoice&&window._bestVoice(utt.lang);if(_bv)utt.voice=_bv;}catch(e){}
         utt.volume = 1;
         utt.onend = function() { btn.classList.remove('speaking'); btn.innerHTML = '🔊<span class="sr-only"> ' + h2.textContent.trim().slice(0, 30) + '</span>'; };
         utt.onerror = function(e) { if (e.error !== 'interrupted') { btn.classList.remove('speaking'); } };
@@ -11100,7 +11102,8 @@ if (_siteName) {
     if (open) {
       var synth = window.speechSynthesis;
       if (synth) {
-        var loadV = function() {};
+        window._bestVoice = function(lang){ try { var vs = window.speechSynthesis.getVoices() || []; if(!vs.length) return null; lang = (lang || 'en-GB').toLowerCase().replace('_','-'); var fam = lang.split('-')[0]; var exact = vs.filter(function(v){ return v.lang && v.lang.toLowerCase().replace('_','-') === lang; }); var pool = exact.length ? exact : vs.filter(function(v){ return v.lang && v.lang.toLowerCase().indexOf(fam) === 0; }); var rx = /(natural|neural|enhanced|premium)/i; for(var i=0;i<pool.length;i++){ if(rx.test(pool[i].name)) return pool[i]; } return null; } catch(e){ return null; } };
+        var loadV = function() { try { var _s = document.getElementById('tts-voice-sel'); if(_s){ var _bv = window._bestVoice(window._isWelsh ? 'cy-GB' : 'en-GB'); _s.value = _bv ? _bv.name : ''; } } catch(e){} };
 
   // Minimise panel when playing starts, re-expand when stopped
   window.ttsPanelExpand = function() {
@@ -11511,6 +11514,7 @@ function showTrialsForCondition(key) {
     btn.setAttribute('aria-pressed', 'true');
     var utt = new SpeechSynthesisUtterance(text);
     utt.lang = (window._isWelsh ? 'cy-GB' : 'en-GB'); utt.rate = 0.85;
+    try{var _bv=window._bestVoice&&window._bestVoice(utt.lang);if(_bv)utt.voice=_bv;}catch(e){}
     utt.onend = function() { btn.setAttribute('aria-pressed', 'false'); };
     utt.onerror = function() { btn.setAttribute('aria-pressed', 'false'); };
     synth.speak(utt);
