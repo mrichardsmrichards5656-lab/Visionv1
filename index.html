@@ -1956,6 +1956,16 @@ body.lb .cf-submit { background: #cce8f4 !important; color: #000 !important; bor
 body.lb [style*="background:var(--yellow)"] { background: #cce8f4 !important; color: #000 !important; }
 body.lb [style*="background: var(--yellow)"] { background: #cce8f4 !important; color: #000 !important; }
 
+/* Blue/Black: --yellow2 becomes #003a80 (dark navy). Buttons that hardcode a
+   var(--yellow2) background with black text (the "Questions to ask" button and
+   the iOS banner) turn black-on-navy and become unreadable. Match this theme's
+   other action buttons: navy background, white text. Search and share buttons
+   already have their own lb rules, so exclude them. */
+body.lb [style*="background:var(--yellow2)"]:not(.search-go-btn):not(.share-btn),
+body.lb [style*="background: var(--yellow2)"]:not(.search-go-btn):not(.share-btn) { background:#003a80 !important; color:#fff !important; border-color:#003a80 !important; }
+body.lb [style*="background:var(--yellow2)"]:not(.search-go-btn):not(.share-btn) *,
+body.lb [style*="background: var(--yellow2)"]:not(.search-go-btn):not(.share-btn) * { color:#fff !important; }
+
 /* Search button - theme-specific styling so it's always prominent and readable */
 body.lb .search-go-btn { background: #003a80 !important; color: #fff !important; }
 body.hc .search-go-btn { background: #000 !important; color: #fff !important; border: 4px solid #fff !important; }
@@ -2012,7 +2022,6 @@ body.focus-mode::after {
 #sticky-title-name { flex: 1; text-align: center; font-size: 0.8rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 
-.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
 /* ══ TWO-ROW A11Y BAR (mobile) ══ */
 .a11y-bar-row2 {
   background: var(--bg2);
@@ -2033,7 +2042,7 @@ body.focus-mode::after {
 
 
 
-<a href="#main" class="skip" style="position:absolute;top:-999px;left:-999px;z-index:99999;background:var(--yellow);color:#000;padding:12px 24px;font-weight:800;border-radius:0 0 8px 8px;text-decoration:none;font-size:1rem" onfocus="this.style.top='0';this.style.left='50%';this.style.transform='translateX(-50%)'" onblur="this.style.top='-999px';this.style.left='-999px'">Skip to main content</a>
+<a href="#main" class="skip" style="position:absolute;top:-999px;left:-999px;z-index:99999;background:var(--yellow);color:#000;padding:12px 24px;font-weight:800;border-radius:0 0 8px 8px;text-decoration:none;font-size:1rem" onfocus="this.style.top='0';this.style.left='50%';this.style.transform='translateX(-50%)'" onblur="this.style.top='-999px';this.style.left='-999px'" onclick="try{var p=document.querySelector('.page.active')||document.getElementById('main');if(p){var h=p.querySelector('h1,h2')||p;h.setAttribute('tabindex','-1');h.focus();event.preventDefault();}}catch(e){}">Skip to main content</a>
 
 <noscript>
   <div style="background:#fff8e1;border:2px solid #b86d00;color:#1a1a2e;padding:20px;margin:0;text-align:center;font-family:Georgia,serif;font-size:1.1rem;line-height:1.6">
