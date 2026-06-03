@@ -11464,7 +11464,7 @@ function showTrialsForCondition(key) {
     var hb = document.getElementById('sticky-home-btn');
     if (backFn) {
       // Subpage: show Back + Home
-      if (bb) { bb.style.display = 'block'; bb.style.visibility = 'visible'; }
+      if (bb) { bb.style.display = 'block'; bb.style.visibility = 'visible'; bb.innerHTML = '<span aria-hidden="true">\u2190</span> Back'; bb.onclick = function(){ window.stickyBack && stickyBack(); }; }
       if (hb) hb.style.display = 'block';
     } else {
       // Home page: hide Back, show only Back to Top (repurpose back btn)
