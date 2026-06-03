@@ -169,7 +169,7 @@ body.yb {
 /* Black/Yellow theme: --yellow is a deep amber so it stands out as an accent on the 
    bright yellow page. Text on amber accents stays black (high contrast). */
 body.yb .acc-num,
-body.yb .nc-num { color: #fff !important; background: #000 !important; }
+body.yb .nc-num { color: #fcd901 !important; background: #000 !important; }
 
 /* Black/White theme: numbered circles need to be visible on black page */
 body.hc .nc-num { background: #000 !important; color: #fff !important; border: 3px solid #fff !important; }
@@ -244,8 +244,8 @@ body.ll .tb-select { background-image: url("data:image/svg+xml;charset=UTF-8,%3c
 
 body.yb .cond-helpline-btn { background: #fcd901 !important; color: #000 !important; border: 3px solid #000 !important; }
 body.yb .cond-helpline-btn * { color: #000 !important; }
-body.yb .back-top { color: #fff !important; }
-body.yb .ab.on { color: #fff !important; }
+body.yb .back-top { color: #fcd901 !important; }
+body.yb .ab.on { color: #fcd901 !important; }
 /* Pressed toolbar buttons in Black/Yellow - need white text since var(--yellow) is black */
 body.yb .tb-btn { border: 2.5px solid #000 !important; }
 body.yb .tb-btn[aria-pressed="false"] { border: 2.5px solid #000 !important; }
@@ -266,15 +266,24 @@ body.yb #sticky-home-btn { background: #000 !important; color: #fcd901 !importan
 
 /* Sticky title bar uses var(--yellow) as background which is black in yb theme.
    Force white text on the bar and back button. */
-body.yb #sticky-title { color: #fff !important; }
-body.yb #sticky-title-back { color: #fff !important; border-color: #fff !important; }
+body.yb #sticky-title { color: #fcd901 !important; }
+body.yb #sticky-title-back { color: #fcd901 !important; border-color: #fcd901 !important; }
 
 /* Black/Yellow: --yellow is black. All elements using var(--yellow) as background
    become black, so force WHITE text for readability. */
 body.yb [style*="background:var(--yellow)"]:not(.cond-helpline-btn),
-body.yb [style*="background: var(--yellow)"]:not(.cond-helpline-btn) { color: #fff !important; }
+body.yb [style*="background: var(--yellow)"]:not(.cond-helpline-btn) { color: #fcd901 !important; }
 body.yb [style*="background:var(--yellow)"]:not(.cond-helpline-btn) *,
-body.yb [style*="background: var(--yellow)"]:not(.cond-helpline-btn) * { color: #fff !important; }
+body.yb [style*="background: var(--yellow)"]:not(.cond-helpline-btn) * { color: #fcd901 !important; }
+
+/* Yellow/Black: --yellow2 is #1a1a1a (near-black). Buttons that hardcode a
+   var(--yellow2) background with black text (e.g. the Contact us button) become
+   invisible. Force a solid black button with bright-yellow text. Search buttons
+   are handled separately by body.yb .search-go-btn, so exclude them here. */
+body.yb [style*="background:var(--yellow2)"]:not(.search-go-btn),
+body.yb [style*="background: var(--yellow2)"]:not(.search-go-btn) { background:#000 !important; color:#fcd901 !important; border-color:#000 !important; }
+body.yb [style*="background:var(--yellow2)"]:not(.search-go-btn) *,
+body.yb [style*="background: var(--yellow2)"]:not(.search-go-btn) * { color:#fcd901 !important; }
 
 
 
@@ -931,7 +940,7 @@ body.dark .rtag.tech  { background: #de8b8b;    color: #000; }
 body.hc .rtag.gene, body.hc .rtag.stem, body.hc .rtag.trial, body.hc .rtag.drug, body.hc .rtag.tech { background: transparent; color: #fff; border: 2px solid #fff; }
 
 
-body.yb .rtag.gene, body.yb .rtag.stem, body.yb .rtag.trial, body.yb .rtag.drug, body.yb .rtag.tech { background: #000; color: #fff; }
+body.yb .rtag.gene, body.yb .rtag.stem, body.yb .rtag.trial, body.yb .rtag.drug, body.yb .rtag.tech { background: #000; color: #fcd901; }
 
 
 
@@ -1417,7 +1426,7 @@ body.hc .news-tag.tech, body.hc .news-tag.general { background: transparent; col
 
 body.yb .news-tag.research, body.yb .news-tag.benefits,
 
-body.yb .news-tag.tech, body.yb .news-tag.general { background: #000; color: #fff; }
+body.yb .news-tag.tech, body.yb .news-tag.general { background: #000; color: #fcd901; }
 
 .news-text { font-size: 0.9rem; color: var(--text2); line-height: 1.6; }
 
@@ -1950,7 +1959,7 @@ body.lb [style*="background: var(--yellow)"] { background: #cce8f4 !important; c
 /* Search button - theme-specific styling so it's always prominent and readable */
 body.lb .search-go-btn { background: #003a80 !important; color: #fff !important; }
 body.hc .search-go-btn { background: #000 !important; color: #fff !important; border: 4px solid #fff !important; }
-body.yb .search-go-btn { background: #000 !important; color: #fff !important; }
+body.yb .search-go-btn { background: #000 !important; color: #fcd901 !important; }
 body.dark .search-go-btn { background: #c6a12f !important; color: #000 !important; }
 body.ll .search-go-btn { background: #d7b075 !important; color: #000 !important; }
 body.lb .acc-num { background: #cce8f4 !important; color: #000 !important; }
@@ -2086,7 +2095,7 @@ body.focus-mode::after {
 body.hc .tb-lang { border-color: #fff !important; color: #fff !important; background: #000 !important; }
 body.hc .tb-lang[aria-pressed=true] { background: #fff !important; color: #000 !important; }
 body.yb .tb-lang { border-color: #000 !important; color: #000 !important; background: #fcd901 !important; }
-body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fff !important; }
+body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd901 !important; }
 .tb-divider{width:1px;height:36px;background:var(--border);flex-shrink:0;}
 /* On mobile, hide the decorative eye-icon home button + its divider to free up row 1 space.
    The X close button (browser tab) and sticky home button already give users a way home. */
