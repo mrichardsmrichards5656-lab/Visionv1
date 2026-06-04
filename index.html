@@ -11490,6 +11490,15 @@ function showTrialsForCondition(key) {
     }
   }, { passive: true });
 
+  // Initialise the sticky bar to its correct home state on load, so the home page shows
+  // just “↑ Top” instead of a meaningless Back/Home until the first navigation.
+  (function() {
+    try {
+      var _h = window.location.hash.replace('#','');
+      if (!(_h && typeof DATA !== 'undefined' && DATA[_h])) updateStickyTitle('home', null);
+    } catch (e) {}
+  })();
+
   window.listenToFounder = function(btn) {
     var synth = window.speechSynthesis;
     if (!synth || typeof SpeechSynthesisUtterance === 'undefined') {
