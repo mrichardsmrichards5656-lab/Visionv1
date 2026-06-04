@@ -1008,7 +1008,7 @@ body.welsh-active .trial-link::after { content: " (Saesneg yn unig)"; font-size:
 
 .sc a  { color: var(--blue); font-weight: 700; font-size: 0.9rem; text-decoration: underline; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; word-break: break-all; }
 /* In-text links must not rely on colour alone (WCAG 1.4.1): underline links sitting inside body text. Buttons/cards/footer links set their own text-decoration and are unaffected. */
-p a { text-decoration: underline; }
+p a, li a { text-decoration: underline; }
 
 .sc a:hover { color: var(--yellow); }
 
@@ -4184,6 +4184,11 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
 
     </div><!-- end lw-grid -->
+
+    <button type="button" onclick="setAllLW(false);window.scrollTo({top:0,behavior:'smooth'})" aria-label="Close all sections" style="display:flex;align-items:center;gap:8px;background:var(--card);border:2px solid var(--yellow);color:var(--yellow);border-radius:50px;padding:10px 18px;margin:0 0 20px;font-family:var(--font);font-weight:700;font-size:0.95rem;cursor:pointer">
+      <span aria-hidden="true" style="font-size:1.1rem">⊖</span>
+      <span>Close all sections</span>
+    </button>
 
     <div class="lc">
 
@@ -8735,6 +8740,11 @@ function labelToClass(label) {
     </div>` : ''}
 
 
+
+    <button type="button" onclick="setAllAcc(false);window.scrollTo({top:0,behavior:'smooth'})" aria-label="${_isWelsh ? 'Cau pob adran' : 'Close all sections'}" style="display:flex;align-items:center;gap:8px;background:var(--card);border:2px solid var(--yellow);color:var(--yellow);border-radius:50px;padding:10px 18px;margin:0 0 16px;font-family:var(--font);font-weight:700;font-size:0.95rem;cursor:pointer">
+      <span aria-hidden="true" style="font-size:1.1rem">⊖</span>
+      <span>${_isWelsh ? 'Cau pob adran' : 'Close all sections'}</span>
+    </button>
 
     <button class="back-btn" onclick="showPage('home')" style="margin-top:8px" aria-label="${_isWelsh ? 'Yn ôl i\'r rhestr cyflyrau' : 'Back to conditions list'}"><span aria-hidden="true">←</span> ${_isWelsh ? 'Pob Cyflwr' : 'All Conditions'}</button>
 
