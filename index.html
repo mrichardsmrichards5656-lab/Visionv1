@@ -703,6 +703,10 @@ body.yb .theme-input::placeholder { color: #555; }
 
 .page.active { display: block; }
 
+@keyframes hlflash { 0% { box-shadow: 0 0 0 3px var(--yellow); } 100% { box-shadow: 0 0 0 3px transparent; } }
+
+.hl-flash { animation: hlflash 2.6s ease-out; border-radius: 10px; }
+
 
 
 /* ══════════════════════════════════════
@@ -5136,6 +5140,22 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
 
 
+    <div class="lc">
+
+      <h2 id="supplements">💊 Do Supplements Help?</h2>
+
+      <p>Eye supplements are heavily marketed, but very little is actually proven. The honest version: one specific formula helps one specific condition, and most of the rest have no good evidence behind them.</p>
+
+      <p style="margin-top:10px"><strong>What's proven:</strong> The <strong>AREDS2</strong> formula (lutein, zeaxanthin, vitamins C and E, zinc and copper) is shown in large trials to slow <em>intermediate or advanced</em> age-related macular degeneration (AMD) from progressing further — by around a quarter. It doesn't prevent AMD, doesn't help early AMD and doesn't restore lost sight, and it's only suitable for certain people. <button onclick="openCondSupp('amd')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">See the AMD page <span aria-hidden="true">→</span></button></p>
+
+      <p style="margin-top:10px"><strong>What isn't:</strong> No supplement is proven to help glaucoma, cataracts (surgery is the only fix), diabetic retinopathy or, on the best evidence, dry eye. Omega-3 (fish oil) doesn't help AMD or cataracts, despite how often it's sold for eyes.</p>
+
+      <div class="wb" style="margin-top:14px"><strong>⚠️ Safety warning — Stargardt's &amp; inherited retinal conditions:</strong> If you have Stargardt's disease or another inherited retinal dystrophy, <strong>avoid vitamin A and beta-carotene supplements</strong> — the retina can't process them properly and they may speed up the damage. This includes the <em>original</em> AREDS formula, which is high in beta-carotene, so "eye vitamins" are not automatically safe. Always check with your eye specialist first. <button onclick="openCondSupp('stargardts')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">See the Stargardt's page <span aria-hidden="true">→</span></button></div>
+
+      <p style="margin-top:14px;font-size:0.9rem;color:var(--text2)">Supplements can interact with medicines and aren't right for everyone — always talk to your ophthalmologist, GP or pharmacist before starting one.</p>
+
+    </div>
+
     <div class="wb"><strong>Want to understand a specific term?</strong> Visit our <button onclick="showPage('glossary')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Glossary <span aria-hidden="true">→</span></button></div>
 
 
@@ -6223,7 +6243,9 @@ stargardts:{
 
     {n:4,title:"Applying for Disability Benefits",body:"In the UK, you may be eligible for PIP or DLA (children under 16). Apply at gov.uk/pip or call 0800 917 2222. RNIB and Citizens Advice can help. Don't wait — claims can take months."},
 
-    {n:5,title:"Protecting Remaining Vision",body:"Wear wraparound UV-blocking sunglasses outdoors. Some specialists suggest avoiding high-dose Vitamin A supplements. Avoid smoking, which accelerates progression."}
+    {n:5,title:"Protecting Remaining Vision",body:"Wear wraparound UV-blocking sunglasses outdoors, and avoid smoking, which can accelerate progression."},
+
+    {n:6,title:"Be Careful With Eye Supplements",body:"If you have Stargardt's, avoid vitamin A and beta-carotene supplements — the Stargardt's retina can't process them properly and they may speed up the build-up that damages it. This includes the original AREDS formula (high in beta-carotene), so don't assume 'eye vitamins' are safe. Safe carotenoids such as lutein and zeaxanthin don't convert to vitamin A. Always check with your specialist before taking any supplement."}
 
   ],
 
@@ -6355,7 +6377,7 @@ amd:{
 
     {n:2,title:"Understanding Anti-VEGF Injections",body:"Anti-VEGF injections (Eylea, Lucentis, Vabysmo) are given at your eye clinic under local anaesthetic. They are highly effective at halting progression."},
 
-    {n:3,title:"AREDS2 Supplements",body:"For intermediate or late AMD in one eye, AREDS2 supplements (lutein, zeaxanthin, vitamins C and E, zinc) were shown in large trials to reduce the risk of intermediate AMD progressing to advanced AMD. They don't help everyone or restore lost vision — ask your ophthalmologist whether they're right for you."}
+    {n:3,title:"AREDS2 Supplements",body:"For intermediate or advanced AMD, AREDS2 supplements (lutein, zeaxanthin, vitamins C and E, zinc and copper) were shown in large trials to slow AMD progressing further — by around a quarter. Use the AREDS2 formula, not the older beta-carotene version, which raised lung-cancer risk in people who smoke or used to. They don't help everyone, don't prevent AMD and don't restore lost vision — ask your ophthalmologist whether they're right for you."}
 
   ],
 
@@ -10270,6 +10292,9 @@ var TOPIC_INDEX = [
   {label:"How the Eye Works", page:"eyehealth#how-eye-works", icon:"👁️", section:"Medical", keywords:"how eye works retina cornea lens macula fovea optic nerve photoreceptors rods cones anatomy"},
   {label:"Visual Acuity & Vision Test Results", page:"eyehealth#acuity", icon:"📊", section:"Medical", keywords:"visual acuity 6/6 6/60 6/12 driving standard vision test results snellen chart"},
   {label:"Eye Specialists (Ophthalmologist, Optometrist...)", page:"eyehealth#specialists", icon:"👨‍⚕️", section:"Medical", keywords:"ophthalmologist optometrist optician orthoptist eye doctor specialist difference between"},
+  {label:"Supplements & Vitamins for Eyes (what's proven)", page:"eyehealth#supplements", icon:"💊", section:"Medical", keywords:"supplements vitamins eye vitamins areds areds2 lutein zeaxanthin zinc omega 3 omega-3 fish oil do supplements help proven evidence which supplements should i take"},
+  {label:"AREDS2 Supplements for AMD", page:"supp:amd", icon:"💊", section:"Medical", keywords:"areds areds2 supplements vitamins amd macular degeneration lutein zeaxanthin zinc slow progression eye vitamins"},
+  {label:"Vitamin A Warning — Stargardt's & inherited retinal conditions", page:"supp:stargardts", icon:"⚠️", section:"Medical", keywords:"vitamin a beta carotene beta-carotene supplements avoid stargardt stargardts inherited retinal dystrophy areds warning safety harmful eye vitamins"},
   {label:"Low Vision Clinics", page:"localsupport#low-vision", icon:"👁️", section:"Medical", keywords:"low vision clinic assessment magnifier nhs free referral"},
   {label:"Vision Rehabilitation Specialist (VRS)", page:"localsupport#rehab", icon:"🤝", section:"Medical", keywords:"vrs vision rehabilitation specialist home visit training local authority habilitation cane orientation"},
   {label:"Questions to Ask Your Doctor", page:"questions", icon:"❓", section:"Medical", keywords:"questions to ask doctor ophthalmologist appointment clinic consultation"},
@@ -10356,7 +10381,9 @@ function filterTopics(q) {
     'privacy': 'Privacy page',
     'a11y': 'Accessibility page',
     'disclaimer': 'How We Write page',
-    'charlesbonnet': 'Charles Bonnet page'
+    'charlesbonnet': 'Charles Bonnet page',
+    'amd': 'AMD page',
+    'stargardts': "Stargardt's page"
   };
 
   // Render results with destination hint and proper escaping
@@ -10366,7 +10393,8 @@ function filterTopics(q) {
   list.innerHTML = matches.map(function(t) {
     var raw = t.page || '';
     var isExternal = raw.indexOf('external:') === 0;
-    var basePage = raw.split('#')[0].split('$')[0];
+    var isSupp = raw.indexOf('supp:') === 0;
+    var basePage = isSupp ? raw.substring(5) : raw.split('#')[0].split('$')[0];
     var hasAnchor = !isExternal && raw.indexOf('#') !== -1;
     var hasAccordion = !isExternal && raw.indexOf('$') !== -1;
     var dest = pageNames[basePage] || basePage;
@@ -10377,6 +10405,7 @@ function filterTopics(q) {
       destText = 'Opens ' + displayUrl + ' in a new tab (external site)';
     } else if (hasAnchor) destText = 'Jumps to this section on the ' + dest;
     else if (hasAccordion) destText = 'Opens this topic in the ' + dest;
+    else if (isSupp) destText = 'Jumps to the supplement note on the ' + dest;
     else destText = 'Opens the ' + dest;
     var ariaLabel = escAttr(t.label + ' — ' + destText);
     return '<div role="listitem" class="cond-item">' +
@@ -10384,13 +10413,44 @@ function filterTopics(q) {
         '<span aria-hidden="true" style="flex-shrink:0;margin-top:2px">' + (t.icon || '•') + '</span>' +
         '<span style="flex:1;min-width:0;overflow-wrap:break-word;text-align:left">' +
           '<span style="display:block;font-weight:700">' + escAttr(t.label) + (t.section ? ' <span style="font-size:0.75rem;font-weight:600;color:var(--text2);margin-left:4px">· ' + escAttr(t.section) + '</span>' : '') + '</span>' +
-          '<span style="display:block;font-size:0.78rem;font-weight:500;color:var(--text2);margin-top:3px" aria-hidden="true">' + (isExternal ? '↗ ' : ((hasAnchor || hasAccordion) ? '↪ ' : '→ ')) + destText + '</span>' +
+          '<span style="display:block;font-size:0.78rem;font-weight:500;color:var(--text2);margin-top:3px" aria-hidden="true">' + (isExternal ? '↗ ' : ((hasAnchor || hasAccordion || isSupp) ? '↪ ' : '→ ')) + destText + '</span>' +
         '</span>' +
       '</button>' +
     '</div>';
   }).join('');
 
   list.style.display = '';
+}
+
+function openCondSupp(key) {
+  if (_isWelsh && typeof showConditionWelsh === "function") { showConditionWelsh(key); }
+  else if (typeof showCondition === "function") { showCondition(key); }
+  setTimeout(function() {
+    var sec = document.getElementById("acc-guides-" + key);
+    if (!sec) return;
+    sec.classList.add("open");
+    var b = sec.querySelector(".acc-btn"); if (b) b.setAttribute("aria-expanded", "true");
+    var target = null;
+    sec.querySelectorAll(".acc-body .nc").forEach(function(n) {
+      if (!target && /supplement/i.test(n.textContent || "")) target = n;
+    });
+    var scrollEl = target || sec;
+    var tries = 0;
+    (function go() {
+      tries++;
+      var r = scrollEl.getBoundingClientRect();
+      var laid = scrollEl.offsetParent !== null && (r.height > 0 || r.top !== 0);
+      if (!laid && tries < 12) { setTimeout(go, 60); return; }
+      var top = Math.max(0, r.top + window.pageYOffset - 70);
+      try { window.scrollTo({ top: top, behavior: "smooth" }); } catch (e) { window.scrollTo(0, top); }
+      if (target) {
+        target.classList.add("hl-flash");
+        target.setAttribute("tabindex", "-1");
+        try { target.focus({ preventScroll: true }); } catch (e) {}
+        setTimeout(function() { target.classList.remove("hl-flash"); target.removeAttribute("tabindex"); }, 2600);
+      }
+    })();
+  }, 80);
 }
 
 function selectTopic(target) {
@@ -10418,6 +10478,8 @@ function selectTopic(target) {
     }
     return;
   }
+
+  if (target && target.indexOf('supp:') === 0) { openCondSupp(target.substring(5)); return; }
 
   // Parse
   var anchor = '';
