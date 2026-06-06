@@ -248,6 +248,11 @@ body.ll .tb-select { background-image: url("data:image/svg+xml;charset=UTF-8,%3c
 
 body.yb .cond-helpline-btn { background: #fcd901 !important; color: #000 !important; border: 3px solid #000 !important; }
 body.yb .cond-helpline-btn * { color: #000 !important; }
+/* Default (amber) theme only: the helpline card sits on the deep brand orange #9c5500, where white text (5.66:1) reads better than black (3.71:1, which fails AA on the small label/hours). Bright-amber (dark/low-light) and the yb/lb/hc themes keep their own correct colours, so this is scoped to the default theme. */
+body:not(.dark):not(.ll):not(.hc):not(.yb):not(.lb) .cond-helpline-btn,
+body:not(.dark):not(.ll):not(.hc):not(.yb):not(.lb) .cond-helpline-btn *,
+body:not(.dark):not(.ll):not(.hc):not(.yb):not(.lb) .cond-helpline-cy,
+body:not(.dark):not(.ll):not(.hc):not(.yb):not(.lb) .cond-helpline-cy * { color: #fff !important; }
 body.yb .back-top { color: #fcd901 !important; }
 body.yb .ab.on { color: #fcd901 !important; }
 /* Pressed toolbar buttons in Black/Yellow - need white text since var(--yellow) is black */
@@ -1664,6 +1669,9 @@ footer { background: var(--bg2); border-top: 3px solid var(--yellow); padding: 3
 
 .acc-item.open .acc-num { background: var(--yellow); }
 
+/* Default (amber) theme only: section-number circles sit on the deep brand orange #9c5500, where black is only 3.71:1 (fails AA on this small text). White is 5.66:1 and matches the step-numbers (.nc-num), which are already white. Bright-amber (dark/low-light) keep black, and yb/hc/lb have their own correct colours, so scope to default only. */
+body:not(.dark):not(.ll):not(.hc):not(.yb):not(.lb) .acc-num { color: #fff !important; }
+
 .acc-label { font-size: 1rem; font-weight: 800; color: var(--text); overflow-wrap: break-word; word-break: break-word; min-width: 0; }
 
 .acc-arrow { font-size: 1.6rem; font-weight: 900; line-height: 1; color: var(--yellow); flex-shrink: 0; transition: transform .25s; padding-left: 4px; }
@@ -1982,6 +1990,12 @@ body.hc .search-go-btn { background: #000 !important; color: #fff !important; bo
 body.yb .search-go-btn { background: #000 !important; color: #fcd901 !important; }
 body.dark .search-go-btn { background: #c6a12f !important; color: #000 !important; }
 body.ll .search-go-btn { background: #d7b075 !important; color: #000 !important; }
+
+/* Default (amber) theme only: match the white-on-deep-orange look of the helpline and number circles. The Search button and the SELECTED text-size button use var(--yellow) (#9c5500) with white text = 5.66:1 (passes AA). Unselected size buttons (aria-pressed=false) and every other theme are left untouched. */
+body:not(.dark):not(.ll):not(.hc):not(.yb):not(.lb) .search-go-btn { background: var(--yellow) !important; color: #fff !important; }
+body:not(.dark):not(.ll):not(.hc):not(.yb):not(.lb) .tb-btn[aria-pressed="true"] { background: var(--yellow) !important; color: #fff !important; border-color: var(--yellow) !important; }
+body:not(.dark):not(.ll):not(.hc):not(.yb):not(.lb) .tb-btn[aria-pressed="true"] .tb-icon,
+body:not(.dark):not(.ll):not(.hc):not(.yb):not(.lb) .tb-btn[aria-pressed="true"] .tb-label { color: #fff !important; }
 body.lb .acc-num { background: #cce8f4 !important; color: #000 !important; }
 body.lb .back-top { background: #003a80 !important; color: #fff !important; }
 body.lb .cond-hero-eyebrow { color: #000 !important; }
@@ -6197,11 +6211,11 @@ stargardts:{
 
     what:"Mae Clefyd Stargardt yn gyflwr etifeddol sy'n effeithio ar y macula — rhan ganolog y retina sy'n gyfrifol am weledigaeth fanwl, darllen, adnabod wynebau, a gweld lliw. Fe'i hachosir gan fwtaniadau yn y genyn ABCA4, sy'n achosi i brotein niweidiol gronni yn y retina ac yn dinistrio celloedd ffotodderbynnydd (celloedd côn) yn raddol. Mae'n effeithio ar tua 1 ym mhob 8,000-10,000 o bobl yn y DU.",
 
-    howAffects:"Mae golwg canolog yn pylu'n raddol, tra bod golwg ymylol fel arfer yn cael ei gadw. Mae pobl yn aml yn disgrifio smotyn dall canolog neu ardal niwlog. Mae darllen, adnabod wynebau, a gweld manylion mân yn dod yn anoddach cynyddol. Mae sensitifrwydd i olau (ffotoffobia) yn gyffredin. Mae'r cynnydd yn amrywio o berson i berson — gall rai bobl gynnal lefelau golwg da am flynyddoedd lawer.",
+    howAffects:"Mae golwg canolog yn pylu'n raddol, tra bod golwg ymylol fel arfer yn cael ei gadw. Mae pobl yn aml yn disgrifio smotyn dall canolog neu ardal niwlog. Mae darllen, adnabod wynebau, a gweld manylion mân yn dod yn anoddach cynyddol. Mae sensitifrwydd i olau (ffotoffobia) yn gyffredin. Mae'r cynnydd yn amrywio o berson i berson — gall rhai pobl gynnal lefelau golwg da am flynyddoedd lawer.",
 
     diagnosis:"Mae Clefyd Stargardt yn cael ei ddiagnosis fel arfer rhwng 6 a 20 oed, er y gall fersiwn oedolion ymddangos yn hwyrach. Mae offer arbenigol yn cael eu defnyddio gan offthalmolegwyr: sgan OCT (tomograffi cydlyniant optegol), angiograffi fflworescein, ac electrophysioleg. Mae profion geneteg DNA yn cadarnhau mwtaniadau ABCA4 — mae hyn yn bwysig iawn ar gyfer cymhwysedd treialon clinigol.",
 
-    whoAffects:"Mae Clefyd Stargardt yn effeithio ar fechgyn a merched yn gyfartal. Mae'n gyflwr awtosomaidd adweithiol — rhaid i'r ddau riant fod yn gludyddion o'r genyn diffygiol. Mae risg o 1 mewn 4 o'i etifeddu os yw'r ddau riant yn gludyddion. Gall hefyd effeithio ar oedolion hŷn — mae Clefyd Stargardt oedolion (ABCA4) weithiau'n cael ei gamdiagnosis fel AMD.",
+    whoAffects:"Mae Clefyd Stargardt yn effeithio ar fechgyn a merched yn gyfartal. Mae'n gyflwr awtosomaidd enciliol — rhaid i'r ddau riant fod yn gludyddion o'r genyn diffygiol. Mae risg o 1 mewn 4 o'i etifeddu os yw'r ddau riant yn gludyddion. Gall hefyd effeithio ar oedolion hŷn — mae Clefyd Stargardt oedolion (ABCA4) weithiau'n cael ei gamdiagnosis fel AMD.",
 
     researchSummary:"Mae sawl triniaeth addawol ar wahanol gamau. Mae Tinlarebant wedi cwblhau Cam 3 — nid yw ar gael eto. Mae therapi genynnau ABCA4 mewn treialon yn y DU (ASTRA, CELESTE). Trafodwch opsiynau gyda'ch offthalmolegydd."
 
@@ -6555,7 +6569,7 @@ rp:{
 
     diagnosis:"Mae RP yn cael ei ddiagnosis drwy brawf maes gweledol, electrophysioleg (ERG), ac OCT. Mae profion geneteg yn bwysig i adnabod y genyn penodol — mae hyn yn hanfodol ar gyfer cymhwysedd therapi genynnau.",
 
-    whoAffects:"Mae RP yn effeithio ar ddynion a menywod. Gall gael ei etifeddu mewn sawl ffordd wahanol — awtosomaidd adweithiol, awtosomaidd trechol, neu gysylltiedig â'r X. Mae 50 o enynnau gwahanol yn gallu achosi RP.",
+    whoAffects:"Mae RP yn effeithio ar ddynion a menywod. Gall gael ei etifeddu mewn sawl ffordd wahanol — awtosomaidd enciliol, awtosomaidd trechol, neu gysylltiedig â'r X. Mae 50 o enynnau gwahanol yn gallu achosi RP.",
 
     researchSummary:"Mae Luxturna ar gael ar y GIG ar gyfer mwtaniadau RPE65. Mae therapi genynnau RPGR mewn Cam 2/3. Mae optogeneteg mewn treialon cynnar ar gyfer RP datblygedig."
 
@@ -6761,7 +6775,7 @@ lca:{
 
     diagnosis:"Mae LCA yn cael ei amau pan fo baban yn ymateb yn wael i olau neu'n arddangos nystagmus. Mae profion arbenigol gan offthalmolegydd pediatrig, yn cynnwys electroretinogram (ERG), yn cadarnhau'r diagnosis. Mae profion geneteg yn hanfodol.",
 
-    whoAffects:"Mae LCA yn effeithio ar fechgyn a merched yn gyfartal. Mae'n gyflwr awtosomaidd adweithiol yn y mwyafrif o achosion — rhaid i'r ddau riant fod yn gludyddion.",
+    whoAffects:"Mae LCA yn effeithio ar fechgyn a merched yn gyfartal. Mae'n gyflwr awtosomaidd enciliol yn y mwyafrif o achosion — rhaid i'r ddau riant fod yn gludyddion.",
 
     researchSummary:"Mae Luxturna ar gael ar y GIG ar gyfer mwtaniadau RPE65. Mae therapi CRISPR ar gyfer CEP290 mewn Cam 1/2. Mae profion geneteg yn hanfodol."
 
@@ -7009,11 +7023,11 @@ achromatopsia:{
 
     what:"Mae Achromatopsia yn gyflwr genetig prin sy'n achosi absenoldeb llwyr neu rannol o weledigaeth lliw, ynghyd â sensitifrwydd eithafol i olau a golwg gostyngol. Fe'i hachosir gan fwtaniadau mewn genynnau sy'n effeithio ar gelloedd côn y retina. Mae'n effeithio ar tua 1 ym mhob 30,000-50,000 o bobl.",
 
-    howAffects:"Mae'r byd yn ymddangos mewn lliwiau llwyd neu washed-out (nid bob amser yn hollol ddu a gwyn). Mae sensitifrwydd eithafol i olau llachar (ffotoffobia) yn aml yn broblem fwy sylweddol na'r absenoldeb lliw. Mae golwg yn wan mewn goleuni da ond gall wella mewn golau isel. Mae nystagmus yn gyffredin.",
+    howAffects:"Mae'r byd yn ymddangos mewn lliwiau llwyd neu wedi pylu (nid bob amser yn hollol ddu a gwyn). Mae sensitifrwydd eithafol i olau llachar (ffotoffobia) yn aml yn broblem fwy sylweddol na'r absenoldeb lliw. Mae golwg yn wan mewn goleuni da ond gall wella mewn golau isel. Mae nystagmus yn gyffredin.",
 
     diagnosis:"Profion gweld lliw arbenigol. Electroretinogram (ERG) i fesur ymateb y côn. Sgan OCT. Profion geneteg i gadarnhau'r mwtaniad (CNGB3 neu CNGA3 yw'r mwyaf cyffredin).",
 
-    whoAffects:"Mae Achromatopsia yn effeithio ar fechgyn a merched yn gyfartal. Mae'n awtosomaidd adweithiol — rhaid i'r ddau riant fod yn gludyddion.",
+    whoAffects:"Mae Achromatopsia yn effeithio ar fechgyn a merched yn gyfartal. Mae'n awtosomaidd enciliol — rhaid i'r ddau riant fod yn gludyddion.",
 
     researchSummary:"Mae therapi genynnau ar gyfer CNGB3 a CNGA3 mewn treialon Cam 1/2 gyda data diogelwch addawol. Mae profion geneteg yn hanfodol i bennu cymhwysedd treial."
 
@@ -7131,7 +7145,7 @@ usher:{
 
     name:"Syndrom Usher",
 
-    what:"Mae Syndrom Usher yn gyflwr etifeddol sy'n cyfuno colli clyw â nam gweledol cynyddol (patrwm Retinitis Pigmentosa). Dyma achos mwyaf cyffredin byddar-ddall etifeddol. Mae tri phrif fath: Math 1 (colli clyw dwys/profond o enedigaeth, colled gwybodaeth vestibular), Math 2 (colli clyw cymhedrol i ddifrifol, golwg yn dechrau dirywio yn yr arddegau), a Math 3 (colli clyw cynyddol, golwg yn dirywio yn ddiweddarach).",
+    what:"Mae Syndrom Usher yn gyflwr etifeddol sy'n cyfuno colli clyw â nam gweledol cynyddol (patrwm Retinitis Pigmentosa). Dyma achos mwyaf cyffredin byddar-ddall etifeddol. Mae tri phrif fath: Math 1 (colli clyw dwfn o enedigaeth, a phroblemau cydbwysedd), Math 2 (colli clyw cymhedrol i ddifrifol, golwg yn dechrau dirywio yn yr arddegau), a Math 3 (colli clyw cynyddol, golwg yn dirywio yn ddiweddarach).",
 
     howAffects:"Mae'r cyfuniad o golli clyw a cholli golwg yn creu heriau cymhleth ar gyfer cyfathrebu, symudedd, a chyfranogi cymdeithasol. Mae'r golwg yn dirywio yn yr un modd â RP — golwg nos gwael yn gyntaf, yna maes gweledol yn crebachu.",
 
@@ -7359,7 +7373,7 @@ cvi:{
 
     what:"Mae Nam Gweledol yr Ymennydd (CVI) yn gyflwr lle mae'r ymennydd yn cael anhawster prosesu gwybodaeth weledol, er bod y llygaid eu hunain yn iach. Dyma achos mwyaf cyffredin nam gweledol ymhlith plant yn y DU. Fe'i hachosir fel arfer gan niwed i rannau gweledol yr ymennydd — yn aml o ganlyniad i enedigaeth gynnar, diffyg ocsigen adeg geni, neu strôc.",
 
-    howAffects:"Mae CVI yn wahanol i gyflyrau llygaid eraill — gall y llygaid fod yn iach ond mae'r ymennydd yn methu prosesu'r hyn a welir yn effeithiol. Mae'r symptomau'n cynnwys anhawster gyda symudiad, cymhlethdod gweledol, problemau sylw gweledol, a binder gweledol (mynd yn ddall dros dro). Mae CVI yn newid o ddydd i ddydd ac yn dibynnu ar flinder a lefelau ysgogiad.",
+    howAffects:"Mae CVI yn wahanol i gyflyrau llygaid eraill — gall y llygaid fod yn iach ond mae'r ymennydd yn methu prosesu'r hyn a welir yn effeithiol. Mae'r symptomau'n cynnwys anhawster gyda symudiad, cymhlethdod gweledol, problemau sylw gweledol, a blinder gweledol (mynd yn ddall dros dro). Mae CVI yn newid o ddydd i ddydd ac yn dibynnu ar flinder a lefelau ysgogiad.",
 
     diagnosis:"Mae diagnosis CVI yn gymhleth ac yn gofyn am asesiad arbenigol. Nid yw profion llygaid safonol yn ddigon — mae angen asesiad swyddogaethol o sut mae'r plentyn yn defnyddio'i olwg mewn bywyd go iawn. Mae CVI Scotland yn cynnig adnoddau asesu ardderchog.",
 
@@ -7489,7 +7503,7 @@ cone:{
 
     diagnosis:"Diagnosis drwy electroretinogram (ERG) sy'n mesur ymateb celloedd côn i oleuni. Sgan OCT i asesu strwythur y retina. Profion geneteg i adnabod y mwtaniad penodol.",
 
-    whoAffects:"Mae Dystroffi Côn yn effeithio ar fechgyn a merched. Gall ddigwydd mewn sawl ffordd etifeddol — awtosomaidd adweithiol, awtosomaidd trechol, neu gysylltiedig â'r X (RPGR).",
+    whoAffects:"Mae Dystroffi Côn yn effeithio ar fechgyn a merched. Gall ddigwydd mewn sawl ffordd etifeddol — awtosomaidd enciliol, awtosomaidd trechol, neu gysylltiedig â'r X (RPGR).",
 
     researchSummary:"Mae therapi genynnau RPGR mewn Cam 2/3 — un o'r rhaglenni mwyaf datblygedig ar gyfer Dystroffi Côn. Mae profion geneteg yn pennu pa dreial sy'n berthnasol."
 
@@ -7687,7 +7701,7 @@ myopic:{
 
     diagnosis:"Sgan OCT yn adnabod newidiadau macular a theneuo coroidol. Angiograffi fflworescein yn canfod twf pibellau gwaed abnormal. Mae monitro rheolaidd gan arbenigwr retinal yn hanfodol ar gyfer pobl â myopia uchel.",
 
-    whoAffects:"Pobl â myopia uchel (fel arfer -6 dioptri neu fwy). Mae poblogrwydd yn cynyddu yn fyd-eang oherwydd cyfraddau cynyddol o myopia. Mae'n fwy cyffredin mewn pobl o dras Dwyrain Asia.",
+    whoAffects:"Pobl â myopia uchel (fel arfer -6 dioptri neu fwy). Mae nifer yr achosion yn cynyddu yn fyd-eang oherwydd cyfraddau cynyddol o myopia. Mae'n fwy cyffredin mewn pobl o dras Dwyrain Asia.",
 
     researchSummary:"Mae triniaethau gwrth-VEGF ar gael ar y GIG ar gyfer CNV myopig. Mae llawdriniaeth atgyfnerthu sgleraidd mewn ymchwil. Mae rheoli myopia mewn plant (atropin, orthokeratology) yn atal MMD yn y dyfodol."
 
@@ -7961,7 +7975,7 @@ blepharitis:{
 
     whoAffects:"Mae Bleffaritis yn hynod gyffredin — mae'n effeithio ar filiynau o bobl yn y DU. Mae'n fwy cyffredin gydag oedran. Mae'n gysylltiedig â chyflyrau croen gan gynnwys rosasea, dermatitis seborrhoeig, ac acne.",
 
-    researchSummary:"Mae therapi IPL ar gael mewn clinigau arbenigol yn y DU ar gyfer blepharaidd ôl. Mae Lotilaner (Xdemvy) wedi'i gymeradwyo yn yr UDA ers Gorffennaf 2023 — heb gymeradwyaeth MHRA yn y DU eto. Mae glendid amrantau dyddiol yn parhau i fod y driniaeth bwysicaf."
+    researchSummary:"Mae therapi IPL ar gael mewn clinigau arbenigol yn y DU ar gyfer Bleffaritis ôl. Mae Lotilaner (Xdemvy) wedi'i gymeradwyo yn yr UDA ers Gorffennaf 2023 — heb gymeradwyaeth MHRA yn y DU eto. Mae glendid amrantau dyddiol yn parhau i fod y driniaeth bwysicaf."
 
   },
 
@@ -8609,7 +8623,7 @@ function labelToClass(label) {
 
         ${_isWelsh ? '<p style="background:#00b140;color:#fff;padding:8px 14px;border-radius:8px;font-size:0.85rem;margin-bottom:12px">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Mae\'r adran hon ar gael yn Saesneg yn unig ar hyn o bryd. / This section is currently in English only.</p>' : ''}
 
-        ${d.helpline ? `<div style="background:var(--yellow);border-radius:14px;padding:16px 18px;margin-bottom:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        ${d.helpline ? `<div class="cond-helpline-cy" style="background:var(--yellow);border-radius:14px;padding:16px 18px;margin-bottom:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
 
           <span style="font-size:1.4rem" aria-hidden="true">📞</span>
 
