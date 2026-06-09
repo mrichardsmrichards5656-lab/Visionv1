@@ -10957,8 +10957,8 @@ if (_siteName) {
       ttsUnwrap();
       var pb = document.getElementById('tts-play-btn');
       var st = document.getElementById('tts-status');
-      if (pb) pb.textContent = '\u25b6 Play';
-      if (st) st.textContent = 'Finished.';
+      if (pb) pb.textContent = (window._isWelsh ? '\u25b6 Chwarae' : '\u25b6 Play');
+      if (st) st.textContent = (window._isWelsh ? 'Wedi gorffen.' : 'Finished.');
       _ttsActive = false;
       return;
     }
@@ -10984,7 +10984,7 @@ if (_siteName) {
     _ttsUtter.onerror = function(e) { if (e.error !== 'interrupted') { _ttsIdx = idx+1; ttsSpeakFrom(_ttsIdx, voices); } };
 
     var st = document.getElementById('tts-status');
-    if (st) st.textContent = 'Reading ' + (idx+1) + ' of ' + _ttsSentSpans.length;
+    if (st) st.textContent = (window._isWelsh ? 'Yn darllen ' : 'Reading ') + (idx+1) + (window._isWelsh ? ' o ' : ' of ') + _ttsSentSpans.length;
 
     window.speechSynthesis.speak(_ttsUtter);
   }
@@ -11083,8 +11083,8 @@ if (_siteName) {
       if (!_ttsActive || _ttsParaIdx >= _ttsParas.length) {
         _ttsActive = false;
         ttsHighlightPara(null);
-        if (pb) pb.textContent = '\u25b6 Play';
-        if (st) st.textContent = _ttsParaIdx >= _ttsParas.length ? 'Finished.' : 'Stopped.';
+        if (pb) pb.textContent = (window._isWelsh ? '\u25b6 Chwarae' : '\u25b6 Play');
+        if (st) st.textContent = _ttsParaIdx >= _ttsParas.length ? (window._isWelsh ? 'Wedi gorffen.' : 'Finished.') : (window._isWelsh ? 'Wedi atal.' : 'Stopped.');
         return;
       }
 
@@ -11094,7 +11094,7 @@ if (_siteName) {
       // Highlight and optionally enlarge
       ttsHighlightPara(para.el);
       if (enlarge) { para.el.style.fontSize = '1.3em'; }
-      if (st) st.textContent = 'Reading ' + _ttsParaIdx + ' of ' + _ttsParas.length;
+      if (st) st.textContent = (window._isWelsh ? 'Yn darllen ' : 'Reading ') + _ttsParaIdx + (window._isWelsh ? ' o ' : ' of ') + _ttsParas.length;
       var ms = document.getElementById('tts-mini-status');
       if (ms) ms.textContent = _ttsParaIdx + ' / ' + _ttsParas.length;
 
@@ -11124,7 +11124,7 @@ if (_siteName) {
       setTimeout(speakSent, 100);
     }
 
-    if (pb) pb.textContent = '\u23f8 Reading...';
+    if (pb) pb.textContent = (window._isWelsh ? '\u23f8 Yn darllen...' : '\u23f8 Reading...');
     ttsPanelMinimise();
 
     ttsPanelMinimise();
@@ -11133,7 +11133,7 @@ if (_siteName) {
       if (voices.length) {
         speakPara(voices);
       } else {
-        if (st) st.textContent = 'Loading voice...';
+        if (st) st.textContent = (window._isWelsh ? 'Yn llwytho llais...' : 'Loading voice...');
         synth.onvoiceschanged = function() {
           synth.onvoiceschanged = null;
           speakPara(synth.getVoices());
@@ -11148,8 +11148,8 @@ if (_siteName) {
     ttsHighlightPara(null);
     var pb = document.getElementById('tts-play-btn');
     var st = document.getElementById('tts-status');
-    if (pb) pb.textContent = '\u25b6 Play';
-    if (st) st.textContent = 'Stopped.';
+    if (pb) pb.textContent = (window._isWelsh ? '\u25b6 Chwarae' : '\u25b6 Play');
+    if (st) st.textContent = (window._isWelsh ? 'Wedi atal.' : 'Stopped.');
     // Hide mini bar and re-show full panel (reading finished or stopped mid-read)
     var mini = document.getElementById('tts-mini');
     if (mini) mini.style.display = 'none';
@@ -11170,9 +11170,9 @@ if (_siteName) {
     window.speechSynthesis && window.speechSynthesis.cancel();
     ttsHighlightPara(null);
     var pb = document.getElementById('tts-play-btn');
-    if (pb) pb.textContent = '\u25b6 Play';
+    if (pb) pb.textContent = (window._isWelsh ? '\u25b6 Chwarae' : '\u25b6 Play');
     var st = document.getElementById('tts-status');
-    if (st) st.textContent = 'Choose what to read, then press Play';
+    if (st) st.textContent = (window._isWelsh ? 'Dewiswch beth i\'w ddarllen, yna pwyswch Chwarae' : 'Choose what to read, then press Play');
     document.getElementById('tts-panel').style.display = 'none';
     document.getElementById('tts-mini').style.display = 'none';
     var tb = document.getElementById('tts-toggle');
@@ -11481,13 +11481,13 @@ function showTrialsForCondition(key) {
   var container = document.getElementById('trials-results');
   if (!key) { container.innerHTML = ''; return; }
   var trials = TRIALS_DATA[key];
-  if (!trials) { container.innerHTML = '<div class="wb">No trial data yet.</div>'; return; }
+  if (!trials) { container.innerHTML = '<div class="wb">' + (window._isWelsh ? 'Dim data treial eto.' : 'No trial data yet.') + '</div>'; return; }
   var label = document.querySelector('#trials-condition-sel option:checked');
   var html = '<h2 style="color:var(--yellow);margin-bottom:16px">' + (label ? label.textContent : '') + '</h2>';
   trials.forEach(function(t) {
     html += '<div class="lc" style="margin-bottom:10px"><span style="display:inline-block;background:rgba(245,184,0,0.12);border:1px solid var(--yellow);color:var(--yellow);font-size:0.7rem;font-weight:800;padding:3px 10px;border-radius:50px;margin-bottom:8px">' + t.tag + '</span><h2 style="font-size:1rem">' + t.title + '</h2>';
     if (t.body) html += '<p style="margin-top:6px">' + t.body + '</p>';
-    if (t.link) html += '<p style="margin-top:10px"><a href="' + t.link + '" style="color:var(--yellow);font-weight:700">More information</a></p>';
+    if (t.link) html += '<p style="margin-top:10px"><a href="' + t.link + '" style="color:var(--yellow);font-weight:700">' + (window._isWelsh ? 'Mwy o wybodaeth' : 'More information') + '</a></p>';
     html += '</div>';
   });
   container.innerHTML = html;
