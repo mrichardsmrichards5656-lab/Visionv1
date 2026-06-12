@@ -4348,6 +4348,8 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
         ✅ Thank you! Your message has been sent. We'll be in touch within 5 working days.
 
+        <br><button type="button" class="cf-submit" style="margin-top:14px" onclick="resetContactForm()">Send another message</button>
+
       </div>
 
     </div>
@@ -9906,6 +9908,34 @@ function submitContactForm() {
     showCfError('Sorry \u2014 your message could not be sent just now. Please try again in a few minutes, or email us directly at ' + recipient + '.');
 
   });
+
+}
+
+function resetContactForm() {
+
+  document.getElementById('cf-name').value = '';
+
+  document.getElementById('cf-email').value = '';
+
+  document.getElementById('cf-message').value = '';
+
+  var subj = document.getElementById('cf-subject');
+
+  if (subj) subj.selectedIndex = 0;
+
+  var btn = document.querySelector('#cf-form .cf-submit');
+
+  if (btn) { btn.disabled = false; btn.innerHTML = '<span aria-hidden="true">\ud83d\udce8</span> Send Message'; }
+
+  document.getElementById('cf-success').style.display = 'none';
+
+  document.getElementById('cf-error').style.display = 'none';
+
+  document.getElementById('cf-form').style.display = '';
+
+  document.getElementById('cf-name').focus();
+
+  if (window.srAnnounce) srAnnounce('Form ready for a new message');
 
 }
 
