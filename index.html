@@ -9853,23 +9853,59 @@ function submitContactForm() {
 
   if (!message) { showCfError('Please enter your message.'); document.getElementById('cf-message').focus(); return; }
 
-  var recipient = atob('c2lnaHRhdGxhc3VrQGdtYWlsLmNvbQ==');
+  var btn = document.querySelector('#cf-form .cf-submit');
 
-  var mailtoUrl = 'mailto:' + recipient
+  var btnHtml = btn ? btn.innerHTML : '';
 
-    + '?subject=' + encodeURIComponent('[Sight Atlas] ' + subject.options[subject.selectedIndex].text + ' — from ' + name)
+  if (btn) { btn.disabled = true; btn.innerHTML = 'Sending\u2026'; }
 
-    + '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+  if (window.srAnnounce) srAnnounce('Sending your message');
 
-  window.location.href = mailtoUrl;
+  var subjText = subject.options[subject.selectedIndex].text;
 
-  setTimeout(function() {
+  fetch('https://api.web3forms.com/submit', {
 
-    document.getElementById('cf-form').style.display = 'none';
+    method: 'POST',
 
-    document.getElementById('cf-success').style.display = 'block';
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
 
-  }, 800);
+    body: JSON.stringify({
+
+      access_key: 'b670e472-ab5e-4e0f-ac2c-9f58d3e982c0',
+
+      subject: '[Sight Atlas] ' + subjText + ' \u2014 from ' + name,
+
+      from_name: 'Sight Atlas UK website',
+
+      name: name,
+
+      email: email,
+
+      message: message
+
+    })
+
+  }).then(function(r) { return r.json(); }).then(function(data) {
+
+    if (data && data.success) {
+
+      document.getElementById('cf-form').style.display = 'none';
+
+      document.getElementById('cf-success').style.display = 'block';
+
+      if (window.srAnnounce) srAnnounce('Thank you! Your message has been sent.');
+
+    } else { throw new Error('send failed'); }
+
+  }).catch(function() {
+
+    if (btn) { btn.disabled = false; btn.innerHTML = btnHtml; }
+
+    var recipient = atob('c2lnaHRhdGxhc3VrQGdtYWlsLmNvbQ==');
+
+    showCfError('Sorry \u2014 your message could not be sent just now. Please try again in a few minutes, or email us directly at ' + recipient + '.');
+
+  });
 
 }
 
