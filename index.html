@@ -9695,18 +9695,18 @@ function syncLangButton() {
 
 
 function toggleWelsh() {
-
   _isWelsh = !_isWelsh;
 
-  // If currently viewing a condition, re-render it in the new language and stop
-  // (don't force the user back to the home page)
+  // --- Language chrome that applies on EVERY page ---
+  syncLangButton();
+  document.documentElement.setAttribute('lang', _isWelsh ? 'cy-GB' : 'en-GB');
+  document.body.classList.toggle('welsh-active', _isWelsh);
+  try { localStorage.setItem('vh-lang', _isWelsh ? 'cy-GB' : 'en-GB'); } catch(e) {}
+  var notice = document.getElementById('welsh-notice');
+  if (notice) notice.style.display = _isWelsh ? '' : 'none';
+
+  // 1) On a CONDITION page: re-render that condition in the new language and stay put.
   if (_currentCond) {
-    syncLangButton();
-    document.documentElement.setAttribute('lang', _isWelsh ? 'cy-GB' : 'en-GB');
-    document.body.classList.toggle('welsh-active', _isWelsh);
-    try { localStorage.setItem('vh-lang', _isWelsh ? 'cy-GB' : 'en-GB'); } catch(e) {}
-    var _notice = document.getElementById('welsh-notice');
-    if (_notice) _notice.style.display = _isWelsh ? '' : 'none';
     var _cc = document.getElementById('condition-content');
     if (_cc) {
       _cc.innerHTML = renderCondition(_currentCond);
@@ -9716,87 +9716,65 @@ function toggleWelsh() {
     return;
   }
 
-  syncLangButton();
+  // 2) Work out which page the user is currently on (language-independent name),
+  //    so we can keep them on the SAME page instead of jumping to the home page.
+  var pageName = null;
+  var activeEng = document.querySelector('.page.active');            // active English page, if any
+  if (activeEng && activeEng.id && activeEng.id !== 'page-home') {
+    pageName = activeEng.id.replace(/^page-/, '');
+  } else {
+    // A Welsh sub-page may be showing instead (these are .welsh-page shown via display)
+    var welshPages = document.querySelectorAll('.welsh-page');
+    for (var i = 0; i < welshPages.length; i++) {
+      var wp = welshPages[i];
+      if (wp.id !== 'page-home-welsh' && wp.style.display !== 'none') {
+        pageName = wp.id.replace(/^page-/, '').replace(/-welsh$/, '');
+        break;
+      }
+    }
+  }
 
+  // 3) On any non-home page: show that SAME page in the new language.
+  //    showWelshPage() shows the Welsh version if one exists, otherwise it
+  //    falls back to the English page — either way we never bounce to home.
+  if (pageName) {
+    if (_isWelsh) {
+      showWelshPage(pageName);
+    } else {
+      showPage(pageName);
+    }
+    return;
+  }
 
-
-  // Show/hide Welsh home page and notice
-
+  // 4) On the HOME page: swap between the English and Welsh home (original behaviour).
   var welshHome = document.getElementById('page-home-welsh');
-
-  var engHome = document.getElementById('page-home');
-
-  var notice = document.getElementById('welsh-notice');
-
-
-
+  var engHome   = document.getElementById('page-home');
   if (welshHome) welshHome.style.display = _isWelsh ? '' : 'none';
 
-  if (notice) notice.style.display = _isWelsh ? '' : 'none';
-
-
-
-  // If switching to Welsh, activate Welsh home
-
   if (_isWelsh) {
-
     document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
-
-    if (welshHome) {
-
-      welshHome.style.display = '';
-
-      welshHome.classList.add('active');
-
-    }
-
-    // Hide English-only video resources when in Welsh mode
+    if (welshHome) { welshHome.style.display = ''; welshHome.classList.add('active'); }
     var vrW = document.getElementById('video-resources-wrap');
     if (vrW) vrW.style.display = 'none';
     var hf_vrW = document.getElementById('home-footer-cta');
     if (hf_vrW) hf_vrW.style.display = 'none';
-
   } else {
-
-    // Switch back to English home
-
     document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
-
-    if (engHome) {
-
-      engHome.style.display = '';
-
-      engHome.classList.add('active');
-
-    }
-
-    // Show video resources again on English home
+    if (engHome) { engHome.style.display = ''; engHome.classList.add('active'); }
     var vrE = document.getElementById('video-resources-wrap');
     if (vrE) vrE.style.display = '';
     var hf_vrE = document.getElementById('home-footer-cta');
     if (hf_vrE) hf_vrE.style.display = '';
-
-    // Restore news box and footer (in case hidden by Welsh sub-page nav)
     var newsE = document.querySelector('.news-box');
     if (newsE) newsE.style.display = '';
     var ftE = document.querySelector('footer');
     if (ftE) ftE.style.display = '';
-
   }
 
-
-
-  document.documentElement.setAttribute('lang', _isWelsh ? 'cy-GB' : 'en-GB');
-
-  document.body.classList.toggle('welsh-active', _isWelsh);
-
-  try { localStorage.setItem('vh-lang', _isWelsh ? 'cy-GB' : 'en-GB'); } catch(e) {}
-
-  // Translate search box and home labels
+  // Translate the home search box labels
   var cyhint = document.getElementById('cond-hint');
   var cyinput = document.getElementById('csearch');
   var searchLabel = document.querySelector('label[for="csearch"]');
-  var searchDesc = document.querySelector('#csearch').parentElement && document.querySelector('#csearch').parentElement.previousElementSibling;
   if (_isWelsh) {
     if (cyhint) cyhint.textContent = 'Dechreuwch deipio i ddod o hyd i\'ch cyflwr';
     if (cyinput) cyinput.placeholder = 'e.e. Stargardt, glawcoma, AMD, RP…';
@@ -9808,7 +9786,6 @@ function toggleWelsh() {
   }
 
   window.scrollTo({ top: 0, behavior: 'instant' });
-
 }
 
 
