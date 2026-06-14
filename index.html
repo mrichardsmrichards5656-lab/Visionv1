@@ -2752,6 +2752,10 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
       <button class="sidebar-link" onclick="showPage('livingwell')"><span aria-hidden="true">🌟</span> Everyday Guide</button>
 
+      <button class="sidebar-link" onclick="showPage('assistivetech')"><span aria-hidden="true">📱</span> Technology &amp; Apps</button>
+
+      <button class="sidebar-link" onclick="showPage('mobility')"><span aria-hidden="true">🦯</span> Getting Around</button>
+
       <button class="sidebar-link" onclick="showPage('eyehealth')"><span aria-hidden="true">👁️</span> Eye Health Basics</button>
 
       <button class="sidebar-link" onclick="showPage('employment')"><span aria-hidden="true">💼</span> Employment</button>
@@ -3084,6 +3088,10 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
         <button onclick="showPage('livingwell')" class="share-btn ql-btn" aria-label="Open Everyday Guide for daily living"><span aria-hidden="true">🌟</span> Everyday Guide</button>
 
+        <button onclick="showPage('assistivetech')" class="share-btn ql-btn" aria-label="Open Assistive Technology and Apps guide"><span aria-hidden="true">📱</span> Technology &amp; Apps</button>
+
+        <button onclick="showPage('mobility')" class="share-btn ql-btn" aria-label="Open Getting Around mobility guide"><span aria-hidden="true">🦯</span> Getting Around</button>
+
         <button onclick="showPage('eyehealth')" class="share-btn ql-btn" aria-label="Open Eye Health Basics"><span aria-hidden="true">👁️</span> Eye Health</button>
 
         <button onclick="showPage('employment')" class="share-btn ql-btn" aria-label="Open Work and Employment guide"><span aria-hidden="true">💼</span> Work</button>
@@ -3261,6 +3269,10 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
       <span class="sidebar-section">Guides &amp; Resources</span>
 
       <button class="sidebar-link" onclick="showPage('livingwell')"><span aria-hidden="true">🌟</span> Everyday Guide</button>
+
+      <button class="sidebar-link" onclick="showPage('assistivetech')"><span aria-hidden="true">📱</span> Technology &amp; Apps</button>
+
+      <button class="sidebar-link" onclick="showPage('mobility')"><span aria-hidden="true">🦯</span> Getting Around</button>
 
       <button class="sidebar-link" onclick="showPage('eyehealth')"><span aria-hidden="true">👁️</span> Eye Health Basics</button>
 
@@ -3447,7 +3459,123 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
 
 
-      <!-- PARENTING -->
+      <!-- EATING -->
+
+      <div>
+
+        <h2 class="sr-only">Eating well</h2>
+
+        <button class="lw-card" onclick="toggleLW('eating',this)" aria-expanded="false" aria-controls="lw-eating">
+
+          <div class="lw-card-top">
+
+            <span class="lw-card-icon" aria-hidden="true">🥗</span>
+
+            <span class="lw-card-arrow" aria-hidden="true">▾</span>
+
+          </div>
+
+          <span class="lw-card-title">Eating well</span>
+
+          <span class="lw-card-desc">What to eat for steady energy and eye health — balanced meals, food that supports your sight, and eating well with diabetes.</span>
+
+          <span class="lw-card-hint"><span class="lw-hint-closed">Tap to expand</span><span class="lw-hint-open">Tap to close</span></span>
+
+        </button>
+
+        <div id="lw-eating" class="lw-section" role="region" aria-label="Eating well tips">
+
+          <div class="lw-tip">
+
+            <span class="lw-tip-tag">Balance</span>
+
+            <h3>Balance, not counting</h3>
+
+            <p>You don’t need to weigh food or count calories. The NHS Eatwell Guide keeps it simple: make vegetables and fruit the biggest part of your plate (aim for five a day), base meals on higher-fibre starchy foods like potatoes, wholemeal bread, rice or pasta, add some protein (beans, pulses, fish, eggs or meat) and a little dairy or a fortified alternative, and go easy on sugar, salt and fatty foods. Drink plenty through the day — six to eight glasses.</p>
+
+          </div>
+
+          <div class="lw-tip">
+
+            <span class="lw-tip-tag">Food and your eyes</span>
+
+            <h3>Food that supports your sight</h3>
+
+            <p>Food can’t cure an eye condition, but a colourful, Mediterranean-style way of eating is linked with better eye health — and, for people with age-related macular degeneration (AMD), with slower progression. The useful staples:</p>
+
+            <ul>
+
+            <li><strong>Leafy greens and bright veg:</strong> kale, spinach, broccoli, peas, sweetcorn and orange or red peppers are rich in lutein and zeaxanthin — pigments that gather in the macula. Eggs are a good source too.</li>
+
+            <li><strong>Oily fish</strong> such as salmon, mackerel, sardines or trout about once a week gives you omega-3, linked with a lower risk of diabetic eye disease.</li>
+
+            <li><strong>Colourful fruit</strong> — berries, oranges and other bright produce — adds vitamins C and E and other antioxidants.</li>
+
+            <li><strong>Steady blood sugar:</strong> wholegrains, pulses and vegetables help avoid the spikes that, over time, aren’t good for the retina.</li>
+
+            </ul>
+
+            <p><strong>Supplements:</strong> for some people with a particular stage of AMD, a specific formula (known as AREDS2) may slow it down. It isn’t right for everyone, and isn’t a substitute for a good diet — so only take it, or any supplement, on the advice of your eye specialist or GP, especially if you take other medicines.</p>
+
+            <p><a href="https://www.macularsociety.org/support/daily-life/practical-guides/healthy-living/nutrition/" aria-label="Macular Society — nutrition and eye health (opens external site)" rel="noopener noreferrer">Macular Society — nutrition and eye health <span aria-hidden="true">↗</span></a></p>
+
+          </div>
+
+          <div class="lw-tip">
+
+            <span class="lw-tip-tag">Diabetes</span>
+
+            <h3>Diabetes and your sight</h3>
+
+            <p>Diabetes is one of the biggest causes of sight loss in the UK, through diabetic retinopathy. Keeping your blood sugar, blood pressure and weight in a steady range is one of the best things you can do to protect your sight.</p>
+
+            <ul>
+
+            <li>There’s no single “diabetes diet” — the same colourful, balanced eating suits most people.</li>
+
+            <li>Higher-fibre foods, pulses, vegetables and wholegrains help avoid sugar spikes; oily fish about once a week helps too.</li>
+
+            <li>Your GP, diabetes nurse or a dietitian can tailor this to you — ask for a referral.</li>
+
+            <li>Never miss your free annual diabetic eye screening.</li>
+
+            </ul>
+
+            <p><a href="https://www.diabetes.org.uk" aria-label="Diabetes UK (opens external site)" rel="noopener noreferrer">Diabetes UK <span aria-hidden="true">↗</span></a></p>
+
+          </div>
+
+          <div class="lw-tip">
+
+            <span class="lw-tip-tag">Shopping</span>
+
+            <h3>Reading labels and shopping</h3>
+
+            <p>A phone app with a screen reader can read out ingredients, cooking instructions and use-by dates from packaging. Apps like Seeing AI, Google Lookout and Be My Eyes (which connects you to a sighted volunteer through your camera) make label-reading and shopping far easier. Online shopping with a screen reader can re-order your usual basket in seconds, and in store most supermarkets will help you get round if you ask at customer services.</p>
+
+          </div>
+
+          <div class="lw-tip">
+
+            <span class="lw-tip-tag">Easy meals</span>
+
+            <h3>Simple, nourishing meals</h3>
+
+            <p>You don’t need complicated recipes. One-pot meals, batch cooking, and assembling rather than cooking all make balanced eating easy — wholemeal toast with beans, yoghurt with fruit and oats, or a tray bake of chicken and vegetables. Frozen and tinned vegetables, pulses and fish count just as much, keep for ages, and save effort on a tired day.</p>
+
+            <p><a href="https://www.nhs.uk/live-well/eat-well/food-guidelines-and-food-labels/the-eatwell-guide/" aria-label="NHS — the Eatwell Guide (opens external site)" rel="noopener noreferrer">NHS — the Eatwell Guide <span aria-hidden="true">↗</span></a></p>
+
+          </div>
+
+          <button class="lw-close" onclick="toggleLW('eating',this.previousElementSibling)" aria-label="Close eating well section"><span aria-hidden="true">↑</span> Close</button>
+
+        </div>
+
+      </div>
+
+
+
+            <!-- PARENTING -->
 
       <div>
 
@@ -4118,7 +4246,117 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
 
 
-      <!-- MENTAL HEALTH -->
+      <!-- SLEEP -->
+
+      <div>
+
+        <h2 class="sr-only">Sleep</h2>
+
+        <button class="lw-card" onclick="toggleLW('sleep',this)" aria-expanded="false" aria-controls="lw-sleep">
+
+          <div class="lw-card-top">
+
+            <span class="lw-card-icon" aria-hidden="true">😴</span>
+
+            <span class="lw-card-arrow" aria-hidden="true">▾</span>
+
+          </div>
+
+          <span class="lw-card-title">Sleep</span>
+
+          <span class="lw-card-desc">Sleeping better with sight loss — a steady routine, winding down, and help for body-clock problems.</span>
+
+          <span class="lw-card-hint"><span class="lw-hint-closed">Tap to expand</span><span class="lw-hint-open">Tap to close</span></span>
+
+        </button>
+
+        <div id="lw-sleep" class="lw-section" role="region" aria-label="Sleep tips">
+
+          <div class="lw-tip">
+
+            <span class="lw-tip-tag">The basics</span>
+
+            <h3>The basics of sleeping better</h3>
+
+            <ul>
+
+            <li>Keep regular times for going to bed and getting up — even at weekends. A steady rhythm is the single biggest help.</li>
+
+            <li>Wind down for half an hour before bed with a calm, predictable routine.</li>
+
+            <li>Go easy on caffeine, alcohol and big meals in the evening.</li>
+
+            <li>Keep the bedroom cool, quiet and comfortable, and use it mainly for sleep.</li>
+
+            <li>Get some daytime activity, but try to finish vigorous exercise a few hours before bed.</li>
+
+            </ul>
+
+          </div>
+
+          <div class="lw-tip">
+
+            <span class="lw-tip-tag">Wind down</span>
+
+            <h3>Building a wind-down routine</h3>
+
+            <p>What you do in the half-hour before bed matters more than you’d think. A few ideas that work well without needing sight:</p>
+
+            <ul>
+
+            <li>An audiobook, podcast, radio or calm “sleep sounds” played quietly.</li>
+
+            <li>A warm bath or shower — the drop in body temperature afterwards helps you drift off.</li>
+
+            <li>Slow breathing, with longer out-breaths, or a gentle body-scan.</li>
+
+            <li>Doing the same few things in the same order each night, so your body learns it’s nearly time to sleep.</li>
+
+            </ul>
+
+          </div>
+
+          <div class="lw-tip">
+
+            <span class="lw-tip-tag">Body clock</span>
+
+            <h3>Sight loss and your body clock</h3>
+
+            <p>Our internal body clock is mainly set by light reaching the eye. People with little or no light perception can lose that daily reset, so their sleep pattern drifts a little later every day — a real medical condition called Non-24-Hour Sleep-Wake Disorder, which affects a majority of people who are totally blind.</p>
+
+            <p>It shows up as nights when you can’t sleep and days when you’re exhausted, in a pattern that slowly cycles round the clock. It is not a matter of “trying harder” — and it can be treated. A very consistent daily routine helps, and there are prescribed options (such as carefully timed melatonin, or a medicine called tasimelteon) that can re-set the rhythm. If your sleep feels out of step with the world, talk to your GP and ask about a referral to a sleep specialist.</p>
+
+          </div>
+
+          <div class="lw-tip">
+
+            <span class="lw-tip-tag">Can’t drop off</span>
+
+            <h3>When you just can’t drop off</h3>
+
+            <ul>
+
+            <li>Don’t lie there willing yourself to sleep — if you’re still wide awake after a while, get up and do something calm and quiet, then go back when you feel sleepy.</li>
+
+            <li>Keep any daytime naps short and early.</li>
+
+            <li>If poor sleep lasts more than a few weeks or is wearing you down, see your GP — good help is available.</li>
+
+            </ul>
+
+            <p><a href="https://www.nhs.uk/live-well/sleep-and-tiredness/" aria-label="NHS — Sleep and tiredness (opens external site)" rel="noopener noreferrer">NHS — Sleep and tiredness <span aria-hidden="true">↗</span></a> · <a href="https://www.rnib.org.uk/living-with-sight-loss/community-connection-and-wellbeing/" aria-label="RNIB — wellbeing guides (opens external site)" rel="noopener noreferrer">RNIB — wellbeing guides <span aria-hidden="true">↗</span></a></p>
+
+          </div>
+
+          <button class="lw-close" onclick="toggleLW('sleep',this.previousElementSibling)" aria-label="Close sleep section"><span aria-hidden="true">↑</span> Close</button>
+
+        </div>
+
+      </div>
+
+
+
+            <!-- MENTAL HEALTH -->
 
       <div>
 
@@ -6007,6 +6245,188 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
     <button class="back-btn" onclick="showPage('home')" style="margin-top:8px"><span aria-hidden="true">←</span> Back to home</button>
   </div>
 </div>
+<div id="page-assistivetech" class="page" role="main" aria-label="Assistive Technology">
+  <div class="legal-wrap">
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
+    <span class="legal-eyebrow">Technology &amp; Apps</span>
+    <h1>Assistive Technology &amp; Useful Apps</h1>
+    <p style="font-size:0.95rem;color:var(--text2);margin-bottom:24px;line-height:1.8">Technology can make an enormous difference to living independently with sight loss — and a surprising amount of it is free and already built into the phone or computer you own. This guide explains the tools that help most, what they do, and where to get patient help learning them.</p>
+
+    <div class="lc" style="border-color:var(--yellow)">
+      <h2>📱 Your phone is the most powerful tool — and it's free</h2>
+      <p>The single most useful piece of assistive technology is probably already in your pocket. Every modern smartphone has a full set of accessibility tools built in at no extra cost — you just switch them on.</p>
+      <ul style="margin-top:10px;line-height:1.9">
+      <li><strong>Spoken feedback:</strong> <em>VoiceOver</em> on iPhone and <em>TalkBack</em> on Android read aloud everything on the screen, so you can use the phone by touch and sound. Turn VoiceOver on via Settings → Accessibility → VoiceOver; TalkBack via Settings → Accessibility → TalkBack.</li>
+      <li><strong>Make everything bigger:</strong> increase text size, turn on bold text, and use Display Zoom or Magnification to enlarge the whole screen.</li>
+      <li><strong>Contrast and colour:</strong> high-contrast modes, dark mode, and colour filters can make a screen far easier to read.</li>
+      <li><strong>Just ask:</strong> Siri (Apple) and Google Assistant let you send messages, set reminders, make calls and search the web entirely by voice.</li>
+      </ul>
+      <p style="margin-top:12px">If setting these up feels daunting, you do not have to do it alone — see the training and support section below.</p>
+      <p style="margin-top:10px"><a href="https://www.rnib.org.uk" aria-label="RNIB technology (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700">RNIB — living with sight loss and technology <span aria-hidden="true">↗</span></a></p>
+    </div>
+
+    <div class="lc">
+      <h2>👁️ A &ldquo;second pair of eyes&rdquo; — AI camera apps</h2>
+      <p>A group of free apps use your phone&rsquo;s camera to describe the world around you. They are genuinely life-changing for everyday tasks like reading post or checking a label.</p>
+      <ul style="margin-top:10px;line-height:1.9">
+      <li><strong>Seeing AI</strong> (free) reads printed and handwritten text aloud, identifies products by barcode, describes scenes and recognises people you have saved.</li>
+      <li><strong>Google Lookout</strong> (free) does much the same on Android — reading text and documents, scanning barcodes and describing surroundings.</li>
+      <li><strong>Be My Eyes</strong> (free) connects you live to a sighted volunteer through your camera, or to a company&rsquo;s trained support desk, to help with anything you cannot do alone. It also has an AI &ldquo;virtual volunteer&rdquo; that describes photos. <a href="https://www.bemyeyes.com" aria-label="Be My Eyes (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700">Be My Eyes <span aria-hidden="true">↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="lc">
+      <h2>🔍 Making things bigger — magnification</h2>
+      <p>If you have some useful vision, magnification often helps more than speech.</p>
+      <ul style="margin-top:10px;line-height:1.9">
+      <li><strong>On your phone:</strong> the built-in Magnifier app turns your camera into a digital magnifying glass with brightness, contrast and freeze-frame.</li>
+      <li><strong>Electronic magnifiers (CCTV):</strong> handheld or desktop units enlarge text and photos onto a screen with adjustable colour and contrast — useful for reading post, books and crosswords.</li>
+      <li><strong>On a computer:</strong> Windows Magnifier and Mac Zoom are free and built in; programs like ZoomText add magnification with speech for heavier use.</li>
+      </ul>
+    </div>
+
+    <div class="lc">
+      <h2>⌨️ Screen readers for computers</h2>
+      <p>A screen reader speaks aloud what is on a computer screen and lets you control everything from the keyboard.</p>
+      <ul style="margin-top:10px;line-height:1.9">
+      <li><strong>Windows:</strong> <em>NVDA</em> is a full-featured screen reader that is completely free; <em>JAWS</em> is the long-established paid option; <em>Narrator</em> is built into Windows. <a href="https://www.nvaccess.org" aria-label="NVDA (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700">NVDA (NV Access) <span aria-hidden="true">↗</span></a></li>
+      <li><strong>Mac:</strong> <em>VoiceOver</em> is built in and included with every Apple computer.</li>
+      </ul>
+      <p style="margin-top:12px">Learning a screen reader takes time and is well worth getting proper training for — RNIB and AbilityNet (below) can help.</p>
+    </div>
+
+    <div class="lc">
+      <h2>🔊 Smart speakers and the smart home</h2>
+      <p>A voice-controlled smart speaker (Amazon Alexa or Google Nest) is an inexpensive and genuinely useful bit of kit when you cannot easily see a screen. By voice alone you can:</p>
+      <ul style="margin-top:10px;line-height:1.9">
+      <li>Hear the news, weather, radio and audiobooks, and set timers and reminders.</li>
+      <li>Make hands-free calls and add things to a shopping list.</li>
+      <li>Control smart lights, plugs, heating and doorbells by voice — so a dark room or a fiddly switch stops being a barrier.</li>
+      </ul>
+    </div>
+
+    <div class="lc">
+      <h2>🕶️ Wearables and specialist devices</h2>
+      <p>Beyond the phone, there are dedicated and mainstream devices that help with sight loss. They cost more than free apps, so try before you buy where you can — many local sight-loss societies and RNIB have demonstration kit you can try.</p>
+      <ul style="margin-top:10px;line-height:1.9">
+      <li><strong>Ray-Ban Meta smart glasses</strong> have quickly become a popular tool for blind and partially sighted people. By voice — &ldquo;Hey Meta, Be My Eyes&rdquo; — you can connect hands-free to a sighted volunteer who sees what you see, and the built-in AI can describe your surroundings and read text aloud, such as menus, post and signs. Because they are worn, they free your hands for a cane, a guide dog or your bags. Worth knowing: the glasses cost a few hundred pounds, whereas the Be My Eyes app itself is free on any phone — so the glasses add hands-free convenience rather than a different service.</li>
+      <li><strong>Envision Glasses</strong> and <strong>OrCam</strong> are purpose-built devices that read text aloud and describe surroundings hands-free.</li>
+      <li><strong>Wearable vision-enhancement devices</strong> use a camera to capture what you are looking at and show an enhanced, magnified image on screens close to your eyes in real time. Unlike the apps above — which describe things or read them aloud — these aim to help you actually <em>see</em> more clearly: faces, the television, a book. They come in two broad styles: lightweight, spectacle-style devices that keep your peripheral vision (such as <strong>eSight Go</strong> and <strong>Eyedaptic</strong>), and fuller headsets that give a brighter, more immersive image (such as <strong>IrisVision</strong> and <strong>Acesight</strong>). Most are designed for central vision loss (macular degeneration, Stargardt disease, diabetic retinopathy), though some have modes for peripheral or field loss too — and <strong>OxSight</strong>, a UK maker, focuses specifically on field loss from conditions like retinitis pigmentosa and glaucoma.</li>
+      <li><strong>Trying one of these:</strong> they are premium devices — typically a few thousand pounds — and the right choice depends entirely on your own vision, so a demonstration and assessment with a low-vision specialist is essential before buying. UK specialist suppliers offer home or clinic trials, and it is worth asking about funding such as Access to Work, charitable grants, or your local sight-loss society.</li>
+      <li><strong>WeWALK</strong> is a smart cane that pairs with your phone to warn of obstacles and give navigation prompts.</li>
+      <li><strong>Refreshable braille displays and notetakers</strong> connect to a phone or computer so braille readers can read what is on screen by touch, and take notes in braille.</li>
+      </ul>
+    </div>
+
+    <div class="lc">
+      <h2>🎧 Reading, audiobooks and listening</h2>
+      <p>There is a whole world of free and low-cost audio — talking books, podcasts, radio and accessible ebooks — that means a love of reading need never stop.</p>
+      <p style="margin-top:10px">We cover the best services in detail in the <button onclick="showPage('livingwell')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Listening &amp; Audiobooks section of our Everyday Guide</button> — including RNIB Talking Books, Calibre, the free Libby app and BBC Sounds.</p>
+    </div>
+
+    <div class="lc">
+      <h2>🤝 Where to get help and training</h2>
+      <p>You should never have to work this out by trial and error. Free, patient help is available:</p>
+      <ul style="margin-top:10px;line-height:1.9">
+      <li><strong>RNIB Technology for Life</strong> offers phone and online support to help you choose and learn assistive technology. Call the RNIB Helpline on <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a>.</li>
+      <li><strong>AbilityNet</strong> provides free help with computers, phones and tablets for older and disabled people, including volunteer home visits. <a href="https://abilitynet.org.uk" aria-label="AbilityNet (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700">AbilityNet <span aria-hidden="true">↗</span></a></li>
+      <li><strong>Henshaws, local sight-loss societies and ECLOs</strong> often run technology sessions and can show you devices in person.</li>
+      </ul>
+    </div>
+
+    <div class="wb"><strong>Not sure where to start?</strong> Begin with the accessibility settings on your own phone, and call the RNIB Helpline on <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a> for free, friendly advice on what would help you most. This information is a guide only and is not run by medical professionals.</div>
+
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px"><span aria-hidden="true">←</span> Back to home</button>
+  </div>
+</div>
+
+
+<div id="page-mobility" class="page" role="main" aria-label="Getting Around with Sight Loss">
+  <div class="legal-wrap">
+    <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
+    <span class="legal-eyebrow">Mobility &amp; Independence</span>
+    <h1>Getting Around with Sight Loss</h1>
+    <p style="font-size:0.95rem;color:var(--text2);margin-bottom:24px;line-height:1.8">Keeping your independence and confidence to get out and about is one of the most important parts of living with sight loss. This guide explains canes and mobility training, being guided, guide dogs, the navigation apps people rely on, and the help built into public transport — and how to arrange an assessment.</p>
+
+    <div class="lc">
+      <h2>🦯 The long cane and the symbol cane</h2>
+      <p>White canes are not all the same, and it helps to know the difference:</p>
+      <ul style="margin-top:10px;line-height:1.9">
+      <li>A <strong>symbol cane</strong> is short and light. It does not detect obstacles — its job is to <em>signal to other people</em> that you have a sight problem, so they give you space and time.</li>
+      <li>A <strong>long cane</strong> is a mobility tool. Swept in front of you, it finds kerbs, steps, obstacles and changes in surface before you reach them. Using one safely takes proper training.</li>
+      <li>A <strong>guide cane</strong> sits between the two — used to find kerbs and steps and to give a little protection, as well as signalling to others.</li>
+      </ul>
+      <p style="margin-top:12px">A red-and-white banded cane signals that a person is deafblind (has both sight and hearing loss).</p>
+    </div>
+
+    <div class="lc">
+      <h2>🧭 Mobility training and Rehabilitation Officers</h2>
+      <p>Getting around confidently is a skill that can be taught. A <strong>Rehabilitation Officer for Visual Impairment (ROVI)</strong> — sometimes called a vision rehabilitation specialist — works with you on:</p>
+      <ul style="margin-top:10px;line-height:1.9">
+      <li>Safe routes you use often, and how to cross roads and use steps and escalators.</li>
+      <li>Long-cane technique, and using your remaining vision and hearing well.</li>
+      <li>Confidence indoors and out, and practical skills around the home.</li>
+      </ul>
+      <p style="margin-top:12px"><strong>How to get this:</strong> ask your local council&rsquo;s Adult Social Care team for a <em>vision rehabilitation assessment</em>. Registering as sight impaired (with a CVI) usually triggers the offer, but you do <em>not</em> have to be registered to ask — you can contact the council yourself, and an ECLO can help arrange it.</p>
+    </div>
+
+    <div class="lc">
+      <h2>👥 Being guided — sighted guide technique</h2>
+      <p>When someone guides you, a simple, safe technique makes all the difference — useful to share with family and friends:</p>
+      <ul style="margin-top:10px;line-height:1.9">
+      <li>You hold the guide&rsquo;s arm just above the elbow, rather than being pushed or pulled.</li>
+      <li>You walk a half-step behind, so you feel their movements and can react to kerbs and steps.</li>
+      <li>The guide describes changes ahead — &ldquo;step down here&rdquo;, &ldquo;narrow gap&rdquo; — and pauses at kerbs and stairs.</li>
+      </ul>
+    </div>
+
+    <div class="lc">
+      <h2>🐕‍🦺 Guide dogs</h2>
+      <p>A guide dog can give enormous freedom and companionship, though it is a serious commitment and there can be a wait. Guide Dogs provides and supports the dog; you do not have to be totally blind to apply.</p>
+      <p style="margin-top:10px">The process involves an assessment of your needs, mobility and lifestyle, then careful matching and training together. Guide Dogs also offers other free services, including the My Sighted Guide befriending service and children&rsquo;s services.</p>
+      <p style="margin-top:10px"><a href="https://www.guidedogs.org.uk" aria-label="Guide Dogs UK (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700">Guide Dogs UK <span aria-hidden="true">↗</span></a></p>
+    </div>
+
+    <div class="lc">
+      <h2>📍 Finding your way — navigation apps</h2>
+      <p>If you use a smartphone, navigation apps can announce streets, junctions and points of interest as you go:</p>
+      <ul style="margin-top:10px;line-height:1.9">
+      <li><strong>Google Maps</strong> and <strong>Apple Maps</strong> both work with VoiceOver and TalkBack and give spoken, step-by-step walking directions.</li>
+      <li><strong>BlindSquare</strong> is designed for blind and partially sighted people, describing your surroundings and nearby places as you travel.</li>
+      <li><strong>Aira</strong> connects you to a trained agent who can see your camera view and guide you — free at many UK stations, airports and venues.</li>
+      <li><strong>what3words</strong> gives every 3m square its own three-word address, handy for telling someone exactly where you are.</li>
+      </ul>
+    </div>
+
+    <div class="lc">
+      <h2>🚌 Public transport and getting further afield</h2>
+      <p>Help is built into the transport system once you know to ask for it:</p>
+      <ul style="margin-top:10px;line-height:1.9">
+      <li><strong>Passenger Assist</strong> lets you book free help at railway stations — someone to meet you, help you change trains and find your seat. Book ahead or ask staff on the day. <a href="https://www.nationalrail.co.uk" aria-label="National Rail Passenger Assist (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700">National Rail — Passenger Assist <span aria-hidden="true">↗</span></a></li>
+      <li><strong>Free bus pass:</strong> sight impaired and severely sight impaired registration usually entitles you to a free or discounted bus pass — apply through your local council.</li>
+      <li><strong>&ldquo;Please offer me a seat&rdquo;</strong> badges and cards (and the Sunflower lanyard) quietly signal that you may need a seat or a little extra patience.</li>
+      <li><strong>Taxis and community transport</strong> fill the gaps; if travelling for work, the Access to Work grant can help with the cost of journeys.</li>
+      </ul>
+    </div>
+
+    <div class="lc">
+      <h2>🚦 Where to start</h2>
+      <p>If getting out and about has become harder, the best first steps are:</p>
+      <ol style="margin-top:10px;padding-left:20px;line-height:2">
+      <li>Ask your eye clinic about an <button onclick="showPage('eclo')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">ECLO</button>, who can point you to local mobility services.</li>
+      <li>Contact your council&rsquo;s Adult Social Care team and ask for a <strong>vision rehabilitation assessment</strong>.</li>
+      <li>Call the RNIB Helpline on <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a> for advice on canes, training and getting around.</li>
+      </ol>
+    </div>
+
+    <div class="wb"><strong>You can learn this with proper support.</strong> Mobility skills are taught by trained specialists — ask your council for a vision rehabilitation assessment, or call the RNIB Helpline on <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a>. This information is a guide only and is not run by medical professionals.</div>
+
+    <button class="back-btn" onclick="showPage('home')" style="margin-top:8px"><span aria-hidden="true">←</span> Back to home</button>
+  </div>
+</div>
+
+
+
 <!-- ══════════════════════════════════════
      CLINICAL TRIALS PAGE
 ══════════════════════════════════════ -->
