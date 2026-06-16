@@ -25,7 +25,7 @@
 <!-- Open Graph (Facebook, WhatsApp, Slack, etc.) -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sight Atlas UK — Free UK Resource for Sight Loss & Eye Conditions">
-<meta property="og:description" content="Free UK resource for people living with sight conditions. Clear information on 20 eye conditions, benefits help, assistive technology, and current research.">
+<meta property="og:description" content="Free UK resource for people living with sight conditions. Clear information on 24 eye conditions, benefits help, assistive technology, and current research.">
 <meta property="og:site_name" content="Sight Atlas UK">
 <meta property="og:url" content="https://sightatlasuk.co.uk/">
 <meta property="og:image" content="https://sightatlasuk.co.uk/og-image.png">
@@ -38,7 +38,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sight Atlas UK — Free UK Resource for Sight Loss & Eye Conditions">
-<meta name="twitter:description" content="Free UK resource for people living with sight conditions. 20 conditions covered with benefits help, assistive tech, and current research.">
+<meta name="twitter:description" content="Free UK resource for people living with sight conditions. 24 conditions covered with benefits help, assistive tech, and current research.">
 <meta name="twitter:image" content="https://sightatlasuk.co.uk/og-image.png">
 <meta name="twitter:image:alt" content="Sight Atlas UK — Free UK resource for people living with sight loss"><!-- Structured data for search engines -->
 <script type="application/ld+json">
@@ -46,7 +46,7 @@
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
   "name": "Sight Atlas UK",
-  "description": "Free UK resource for people living with sight conditions. Information on 20 eye conditions including Stargardt disease, AMD, glaucoma, retinitis pigmentosa, and more. Covers benefits, assistive technology, and current research.",
+  "description": "Free UK resource for people living with sight conditions. Information on 24 eye conditions including Stargardt disease, AMD, glaucoma, retinitis pigmentosa, and more. Covers benefits, assistive technology, and current research.",
   "inLanguage": ["en-GB", "cy-GB"],
   "audience": {
     "@type": "PeopleAudience",
@@ -1787,7 +1787,7 @@ body.dyslexic, body.dyslexic *{
 body.wide-spacing, body.wide-spacing *{letter-spacing:0.06em!important;word-spacing:0.12em!important;line-height:2.1!important}
 body.reading-ruler{cursor:none}
 .reading-ruler-bar{
-  position:fixed;left:0;right:0;height:48px;background:rgba(245,184,0,0.18);
+  position:fixed;left:0;right:0;height:calc(44px * var(--scale));background:rgba(245,184,0,0.18);
   border-top:2px solid var(--yellow);border-bottom:2px solid var(--yellow);
   pointer-events:none;z-index:99998;display:none;
 }
@@ -2431,6 +2431,14 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
       <button class="sidebar-link" onclick="showConditionWelsh('microphthalmia')"><span aria-hidden="true">👁</span> Microffthalmia</button>
       <button class="sidebar-link" onclick="showConditionWelsh('congenitalcataracts')"><span aria-hidden="true">👓</span> Cataractau Cynhenid</button>
 
+      <button class="sidebar-link" onclick="showConditionWelsh('keratoconus')"><span aria-hidden="true">◬</span> Keratoconus</button>
+
+      <button class="sidebar-link" onclick="showConditionWelsh('hemianopia')"><span aria-hidden="true">◑</span> Hemianopia</button>
+
+      <button class="sidebar-link" onclick="showConditionWelsh('maculahole')"><span aria-hidden="true">◎</span> Twll Macular</button>
+
+      <button class="sidebar-link" onclick="showConditionWelsh('retinaldetachment')"><span aria-hidden="true">⦻</span> Datgysylltiad Retinal</button>
+
       <div class="sidebar-divider"></div>
 
       <span class="sidebar-section">Canllawiau ac Adnoddau</span>
@@ -2485,7 +2493,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
         <span style="font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--yellow);display:block;margin-bottom:6px">Dod o hyd i'ch cyflwr</span>
 
-        <p style="font-size:1rem;font-weight:800;color:var(--text);margin:0 0 14px;line-height:1.4">Chwiliwch drwy 20 cyflwr llygad — cael ymchwil, canllawiau ymarferol, cymorth budd-daliadau a chefnogaeth</p>
+        <p style="font-size:1rem;font-weight:800;color:var(--text);margin:0 0 14px;line-height:1.4">Chwiliwch drwy 24 cyflwr llygad — cael ymchwil, canllawiau ymarferol, cymorth budd-daliadau a chefnogaeth</p>
 
         <div style="margin-bottom:8px">
           <input type="search" id="search-cy" placeholder="e.e. AMD, glawcoma, RP…" autocomplete="off" aria-controls="cond-list-cy" aria-label="Chwilio am gyflyrau llygad" class="theme-input" style="font-size:1rem;border:2px solid var(--border);border-radius:50px;padding:14px 20px;width:100%;box-sizing:border-box;box-shadow:0 1px 4px rgba(0,0,0,0.06);margin-bottom:10px">
@@ -2493,7 +2501,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
           <button onclick="doSearch(document.getElementById('search-cy').value); document.getElementById('search-cy').blur();" aria-label="Chwilio am gyflyrau" class="search-go-btn" style="background:var(--yellow2);color:#000;border:none;border-radius:50px;padding:14px 24px;font-family:var(--font);font-size:1rem;font-weight:900;cursor:pointer;width:100%;min-height:50px"><span aria-hidden="true">🔍</span> Chwilio</button>
         </div>
 
-        <p id="cond-hint-cy" aria-live="polite" style="font-size:0.95rem;font-weight:700;color:var(--text2);margin:4px 0 0;line-height:1.5">Teipiwch eich cyflwr yna tapiwch <strong>Chwilio</strong> (neu pwyswch Enter). <strong>20 cyflwr</strong>.</p>
+        <p id="cond-hint-cy" aria-live="polite" style="font-size:0.95rem;font-weight:700;color:var(--text2);margin:4px 0 0;line-height:1.5">Teipiwch eich cyflwr yna tapiwch <strong>Chwilio</strong> (neu pwyswch Enter). <strong>24 cyflwr</strong>.</p>
 
         <!-- Search results display inside card (populated by doSearch) -->
         <div id="search-results-cy" role="list" aria-label="Canlyniadau chwilio" style="display:none;margin-top:12px;max-height:50vh;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;border-radius:12px;background:#fff;border:1px solid var(--border)"></div>
@@ -2585,6 +2593,10 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
         <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('pagets') : showCondition('pagets')"><span aria-hidden="true">🦴</span> Clefyd Paget (Golwg a Chlyw) <span class="cond-arrow" aria-hidden="true">→</span></button></div>
         <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('microphthalmia') : showCondition('microphthalmia')"><span aria-hidden="true">👁</span> Microphthalmia <span class="cond-arrow" aria-hidden="true">→</span></button></div>
         <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('congenitalcataracts') : showCondition('congenitalcataracts')"><span aria-hidden="true">👓</span> Congenital Cataracts <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('keratoconus') : showCondition('keratoconus')"><span aria-hidden="true">◬</span> Keratoconus <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('hemianopia') : showCondition('hemianopia')"><span aria-hidden="true">◑</span> Hemianopia <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('maculahole') : showCondition('maculahole')"><span aria-hidden="true">◎</span> Macular Hole <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('retinaldetachment') : showCondition('retinaldetachment')"><span aria-hidden="true">⦻</span> Retinal Detachment <span class="cond-arrow" aria-hidden="true">→</span></button></div>
 
       </div>
 
@@ -2743,6 +2755,13 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
       <button class="sidebar-link" onclick="showCondition('pagets')"><span aria-hidden="true">🦴</span> Paget's Disease (Sight &amp; Hearing)</button>
       <button class="sidebar-link" onclick="showCondition('microphthalmia')"><span aria-hidden="true">👁</span> Microphthalmia</button>
       <button class="sidebar-link" onclick="showCondition('congenitalcataracts')"><span aria-hidden="true">👓</span> Congenital Cataracts</button>
+<button class="sidebar-link" onclick="showCondition('keratoconus')"><span aria-hidden="true">◬</span> Keratoconus</button>
+
+<button class="sidebar-link" onclick="showCondition('hemianopia')"><span aria-hidden="true">◑</span> Hemianopia</button>
+
+<button class="sidebar-link" onclick="showCondition('maculahole')"><span aria-hidden="true">◎</span> Macular Hole</button>
+
+<button class="sidebar-link" onclick="showCondition('retinaldetachment')"><span aria-hidden="true">⦻</span> Retinal Detachment</button>
 
 
 
@@ -2921,7 +2940,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
       <!-- SEARCH CONDITIONS — PROMINENT FIRST -->
       <div style="background:var(--card);border:3px solid var(--yellow);border-radius:20px;padding:20px 20px 16px;margin-bottom:20px;box-shadow:var(--shadow)">
         <p style="font-size:0.8rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--yellow);margin:0 0 6px">Find your condition</p>
-        <p style="font-size:1rem;font-weight:700;color:var(--text);margin:0 0 12px;line-height:1.4">Search 20 eye conditions — get research, practical guides, benefits help &amp; support</p>
+        <p style="font-size:1rem;font-weight:700;color:var(--text);margin:0 0 12px;line-height:1.4">Search 24 eye conditions — get research, practical guides, benefits help &amp; support</p>
         <div style="margin-bottom:8px">
           <input type="search" id="csearch" placeholder="e.g. AMD, glaucoma, RP…" autocomplete="off" aria-controls="cond-list" aria-label="Search eye conditions" class="theme-input" style="font-size:1rem;border:2px solid var(--border);border-radius:50px;padding:14px 20px;width:100%;box-sizing:border-box;box-shadow:0 1px 4px rgba(0,0,0,0.06);margin-bottom:10px">
           <button onclick="filterConds(document.getElementById('csearch').value); document.getElementById('csearch').blur();" aria-label="Search conditions" class="search-go-btn" style="background:var(--yellow2);color:#000;border:none;border-radius:50px;padding:14px 24px;font-family:var(--font);font-size:1rem;font-weight:900;cursor:pointer;width:100%;min-height:50px"><span aria-hidden="true">🔍</span> Search</button>
@@ -6410,6 +6429,45 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
     </div>
 
     <div class="lc">
+
+      <h2 id="driving">&#x1F697; Driving and Your Sight</h2>
+
+      <p>Losing the ability to drive \u2014 or worrying you might \u2014 is one of the most significant practical and emotional moments in adjusting to a sight condition. Here is what you need to know.</p>
+
+      <h3>The legal vision standard for driving</h3>
+
+      <p>To drive legally in the UK, you must be able to:</p>
+      <ul>
+        <li>Read a standard number plate from 20 metres in good daylight (with glasses or lenses if you normally wear them)</li>
+        <li>Have a visual acuity of at least 6/12 (0.5) using both eyes together, or in the remaining eye if you have sight in one eye only</li>
+        <li>Have a horizontal visual field of at least 120 degrees, with no significant defect within 20 degrees of centre</li>
+      </ul>
+      <p>These standards apply to standard car and motorcycle licences (Group 1). Bus and lorry licences (Group 2) carry stricter requirements.</p>
+
+      <h3>When you must tell the DVLA</h3>
+
+      <p>You have a legal duty to tell the DVLA if you develop any condition that affects your vision in both eyes \u2014 or your remaining eye if you only have one. This includes glaucoma, diabetic retinopathy, macular degeneration, retinal detachment, hemianopia, significant visual field loss, and any other condition affecting both eyes. Being short- or long-sighted, or colour blind, does not need to be declared.</p>
+      <p>Driving without telling the DVLA when you should is a criminal offence and invalidates your car insurance. If you are unsure whether your condition needs to be declared, ask your optometrist or ophthalmologist.</p>
+
+      <h3>How to notify the DVLA</h3>
+
+      <p>Notify the DVLA online or by post using form V1 (available at gov.uk/health-conditions-and-driving). The DVLA will usually arrange a free sight assessment through their contracted optician service (currently Specsavers) and may request a report from your eye specialist. They will then decide whether your licence can continue, be adapted, or must be revoked.</p>
+
+      <h3>If your licence is revoked</h3>
+
+      <p>A revoked licence is not always permanent. Some people are reassessed after treatment or adaptation. For visual field loss including hemianopia, the DVLA has an exceptional cases pathway: if your condition is stable, you have fully adapted (usually after at least 12 months), and you meet other criteria, you may be offered a formal driving assessment in a dual-control vehicle. UK clinical studies have found that most people who are referred through this pathway pass.</p>
+
+      <h3>Motability \u2014 if you are eligible for PIP or other qualifying benefits</h3>
+
+      <p>If you receive the PIP enhanced mobility component, you can use it to lease a new car, scooter, or powered wheelchair through the Motability Scheme \u2014 including automatic transmission and adaptations. If you lose your licence due to your sight, Motability may still be relevant if a family member or carer drives you. <a href="https://www.motability.co.uk" target="_blank" rel="noopener noreferrer" aria-label="Motability Scheme website (opens external site)">Motability Scheme &#x2197;</a></p>
+
+      <h3>When driving must stop immediately</h3>
+
+      <p>Some conditions require you to stop driving at once and notify the DVLA without waiting for a formal assessment: homonymous or bitemporal hemianopia, visual acuity below 6/60 in both eyes, and certain other acute conditions. If your ophthalmologist or neurologist advises you not to drive \u2014 stop immediately and follow their advice.</p>
+
+      <p>The DVLA's full guidance for medical professionals is published as the <a href="https://www.gov.uk/government/publications/assessing-fitness-to-drive-a-guide-for-medical-professionals" target="_blank" rel="noopener noreferrer" aria-label="DVLA At a Glance Guide for medical professionals (opens external site)">&lsquo;At a Glance Guide&rsquo; &#x2197;</a>, which your GP or ophthalmologist will use to advise you.</p>
+
+
       <h2>🚦 Where to start</h2>
       <p>If getting out and about has become harder, the best first steps are:</p>
       <ol style="margin-top:10px;padding-left:20px;line-height:2">
@@ -8751,7 +8809,404 @@ congenitalcataracts:{
 
   ]
 
-}
+},
+
+keratoconus:{
+
+  helpline:{org:"RNIB Sight Loss Advice Service",number:"0303 123 9999",hours:"Mon\u2013Fri 8am\u20138pm, Sat 9am\u20131pm",link:"https://www.rnib.org.uk"},
+
+  name:"Keratoconus",
+
+  cy:{
+
+    name:"Keratoconus",
+
+    what:"Mae Keratoconus yn gyflwr cynyddol lle mae'r gornea \u2014 gwydr tryloyw blaen y llygad \u2014 yn teneuo ac yn chwyddo allan i ffurf c\u00f4n. Mae hyn yn newid y ffordd mae golau yn plygu wrth fynd i mewn i'r llygad, gan achosi golwg aneglur ac ystumio. Mae'n effeithio ar y ddau lygad fel arfer, er gall un fod yn waeth na'r llall. Mae'n datblygu'n araf dros flynyddoedd lawer, ac yn aml yn sefydlogi erbyn canol y tridegau.",
+
+    howAffects:"Yn gynnar, gellir cywiro golwg gyda sbectol neu lensys meddal. Wrth i'r cyflwr ddatblygu, efallai na fydd sbectol yn ddigonol a bydd angen lensys cyffwrdd caled (lensys scleral). Symptomau cyffredin: golwg aneglur ac ystumio, halo a phelydrau o amgylch goleuadau, a sensitifrwydd cynyddol i olau.",
+
+    diagnosis:"Darganfyddir yn aml yn ystod prawf llygad arferol. Cadarnheir gan dopograffeg a thômograffeg cornea (e.e. Pentacam). Dylai unrhyw amheuaeth o'r cyflwr arwain at atgyfeiriad at arbenigwr cornea yn gyflym.",
+
+    whoAffects:"Mae'n effeithio ar tua 1 ym mhob 375 o bobl. Mae'n dechrau fel arfer rhwng 10 a 25 oed, yn aml yn sefydlogi erbyn canol y tridegau. Mae'n fwy cyffredin mewn poblogaethau De Asiaidd.",
+
+    researchSummary:"Mae croesgyswllt cornea (CXL) \u2014 ar gael ar y GIG \u2014 yn atal cynnydd y cyflwr mewn y mwyafrif o gleifion. Mae'r treial ARGO yn ymchwilio i CXL trawseithiolegol (heb dynnu'r epitheliwm). Mae therapi genyn yn ddatblygol cynnar iawn."
+
+  },
+
+  what:"Keratoconus is a progressive corneal condition in which the cornea \u2014 the clear front window of the eye \u2014 gradually thins and bulges outward into a cone shape. This distorts the way light enters the eye, causing blurred and distorted vision that worsens over time. It usually affects both eyes, though one is often more severely affected. Keratoconus typically begins in the teens or early twenties and often stabilises naturally by the mid-thirties.",
+
+  howAffects:"In the early stages, vision can be corrected with glasses or soft contact lenses. As the condition progresses, glasses become increasingly ineffective and rigid contact lenses are needed to create a smooth optical surface over the irregular cornea. Scleral lenses \u2014 large rigid lenses resting on the white of the eye rather than the cornea \u2014 now allow most people to achieve excellent vision even in advanced cases. Common symptoms include blurred and distorted vision (especially at distance), frequently changing glasses prescriptions, halos and streaking around lights, and increasing light sensitivity. In a minority of advanced cases, scarring of the cornea reduces vision even with the best lenses.",
+
+  diagnosis:"Keratoconus is most often picked up during a routine sight test \u2014 an optometrist may notice irregular astigmatism or a pattern of frequent prescription changes. Diagnosis is confirmed using corneal topography and tomography (such as a Pentacam scan), which map the shape and thickness of the cornea precisely. Early diagnosis matters: cross-linking treatment is far more effective before significant thinning has occurred. Anyone suspected of having keratoconus should be referred to a corneal specialist promptly.",
+
+  whoAffects:"Keratoconus affects approximately 1 in 375 people, making it more common than many realise. It usually begins between the ages of 10 and 25, with most progression occurring in the late teens and twenties, and often stabilising by the mid-thirties. It affects males and females roughly equally, but prevalence is notably higher in South Asian populations \u2014 some studies suggest rates as high as 1 in 45 in certain groups. A family history is present in around 10\u201315% of cases.",
+
+  research:[
+
+    {tag:"tech",label:"\u2705 NHS Available",title:"Corneal Collagen Cross-Linking (CXL)",body:"CXL is the first-line NHS treatment to halt keratoconus progression. After applying a riboflavin (vitamin B2) solution to the cornea, ultraviolet light is used to stiffen the collagen fibres and stop the cornea thinning further. It does not restore vision already lost \u2014 its job is to prevent further deterioration. A 2026 study from Birmingham and Midland Eye Centre confirmed its long-term effectiveness over two to three years. CXL is available on the NHS where there is documented evidence of progression.",link:"https://www.nhs.uk/conditions/keratoconus/"},
+
+    {tag:"trial",label:"\ud83d\udd2c Pipeline",title:"ARGO Trial \u2014 Transepithelial (Epi-On) Cross-Linking",body:"Standard CXL requires temporary removal of the corneal surface layer (epithelium), which causes a few days of discomfort while it heals. Transepithelial CXL (epi-on) leaves the surface intact, aiming to be less painful with faster recovery. The ARGO trial is evaluating this approach and is expected to clarify key questions about riboflavin penetration through the intact epithelium. Results will inform whether epi-on CXL can become a mainstream NHS alternative.",link:"https://eyewiki.org/Corneal_Cross-Linking"},
+
+    {tag:"trial",label:"\ud83d\udd17 Find UK Trials",title:"NIHR Be Part of Research \u2014 Keratoconus",body:"Search for current UK clinical trials for keratoconus, including studies on cross-linking protocols and contact lens approaches.",link:"https://bepartofresearch.nihr.ac.uk/results/search-results?query=keratoconus&location="}
+
+  ],
+
+  guides:[
+
+    {n:1,title:"Get Referred Early \u2014 It Matters",body:"If your optometrist suspects keratoconus, ask for an urgent referral to a corneal specialist at your nearest teaching hospital. Early cross-linking is far more effective, as it halts progression before significant thinning and damage have occurred. Waiting is the one thing that makes outcomes worse."},
+
+    {n:2,title:"Understanding Cross-Linking (CXL)",body:"CXL is available on the NHS where your keratoconus is clearly progressing. It will not reverse existing changes \u2014 its purpose is to stop things getting worse. Most people take a few days off work while the corneal surface heals. Results are durable: most patients remain stable for over ten years after treatment."},
+
+    {n:3,title:"Scleral Lenses \u2014 the Vision Game-Changer",body:"As keratoconus progresses, standard glasses stop working well. Scleral lenses are large-diameter rigid lenses that rest on the white of the eye (the sclera) rather than the irregular cornea. They create a smooth, stable optical surface and allow most people \u2014 even those with advanced keratoconus \u2014 to achieve excellent vision. Ask your ophthalmologist to refer you to a specialist scleral lens fitter."},
+
+    {n:4,title:"Stop Rubbing Your Eyes",body:"Repeated eye rubbing is strongly linked to keratoconus progression and can accelerate corneal damage. If you have allergies or persistently itchy eyes, speak to your GP about antihistamine eye drops. Treating the itch safely is far better than rubbing."},
+
+    {n:5,title:"Benefits and Work Support",body:"Keratoconus can qualify for PIP if it significantly affects daily life or the ability to travel. If vision cannot be adequately corrected even with specialist lenses, a Certificate of Visual Impairment (CVI) may be appropriate \u2014 ask your ophthalmologist. Access to Work can fund specialist workplace adjustments, including screen magnification software, adjusted lighting, and specialist monitors."}
+
+  ],
+
+  tech:[
+
+    {cat:"Specialist Lenses",title:"Scleral Contact Lenses",body:"Custom-fitted large-diameter rigid lenses that vault over the irregular cornea, creating a smooth optical surface. Fitted by specialist practitioners, usually via hospital eye service referral. Dramatically improve vision for most people with moderate to advanced keratoconus.",price:"Usually fitted via NHS referral; private fitting typically \u00a3300\u2013\u00a3800+"},
+
+    {cat:"Low Vision",title:"Tinted and Photochromic Lenses",body:"Light sensitivity (photophobia) is common in keratoconus. Tinted or photochromic lenses that darken in bright conditions significantly reduce glare discomfort both indoors and outdoors.",price:"From around \u00a350 with standard glasses; ask your optician"},
+
+    {cat:"Free App",title:"Seeing AI (Microsoft)",body:"Free AI camera app that reads text, describes scenes and identifies products through your phone camera. Useful during periods when contact lens discomfort limits wearing time.",price:"Free"}
+
+  ],
+
+  support:[
+
+    {title:"RNIB (UK)",body:"Helpline 0303 123 9999. Advice on vision aids, benefits, emotional support, and accessing rehabilitation services for any sight condition.",link:"https://www.rnib.org.uk"},
+
+    {title:"Keratoconus Group (UK)",body:"UK-based patient community offering peer support, information on treatments and lens options, and connection to others living with the condition.",link:"https://www.keratoconus-group.org.uk"},
+
+    {title:"Moorfields Eye Hospital NHS Foundation Trust",body:"One of the leading UK centres for keratoconus, offering cross-linking, scleral lens fitting, intrastromal ring segments, and corneal transplantation. Accepts referrals from across England.",link:"https://www.moorfields.nhs.uk"}
+
+  ],
+
+  benefits:[
+
+    {n:1,title:"Personal Independence Payment (PIP)",body:"If keratoconus significantly affects your daily life or ability to travel safely \u2014 including the time and difficulty involved in managing specialist lenses \u2014 you may qualify for PIP. RNIB and Citizens Advice can help you complete the form."},
+
+    {n:2,title:"Access to Work",body:"If you are employed, the Access to Work grant can fund specialist workplace adjustments \u2014 including screen magnification software, adjusted monitor lighting, or taxis if contact lens discomfort affects your ability to commute."},
+
+    {n:3,title:"Certificate of Visual Impairment (CVI)",body:"If your vision with best correction remains severely reduced, your consultant ophthalmologist can issue a CVI, unlocking local authority rehabilitation support and council tax reduction."}
+
+  ],
+
+  livingWith:[
+
+    {title:"Managing Contact Lens Discomfort",body:"Scleral and rigid lenses can feel unfamiliar at first, particularly at the end of a long day. Build up wearing time gradually, keep lenses scrupulously clean, and attend all aftercare appointments. If discomfort persists, go back to your fitter \u2014 small adjustments to fit or parameters often make a significant difference."},
+
+    {title:"Driving and Keratoconus",body:"Many people with keratoconus can continue driving if their vision meets the legal standard (6/12 acuity with both eyes open and adequate visual field). If your condition affects both eyes, you must notify the DVLA \u2014 this is a legal requirement. Night driving can be particularly difficult due to halos and glare; be honest with yourself about whether it is safe."},
+
+    {title:"Screen Use and Work",body:"Extended screen use can worsen light sensitivity and eye fatigue. An anti-glare filter, reduced screen brightness, and dark mode can all help. The Access to Work scheme can fund specialist workplace equipment."},
+
+    {title:"The Emotional Side",body:"A diagnosis of keratoconus \u2014 particularly in a teenager or young adult \u2014 can be frightening. The uncertainty of progression and the dependence on specialist lenses takes time to adjust to. RNIB Sight Loss Counselling (0303 123 9999) offers free, confidential support from counsellors who specialise in sight loss. The Keratoconus Group community connects you with people who genuinely understand."}
+
+  ]
+
+},
+
+hemianopia:{
+
+  helpline:{org:"RNIB Sight Loss Advice Service",number:"0303 123 9999",hours:"Mon\u2013Fri 8am\u20138pm, Sat 9am\u20131pm",link:"https://www.rnib.org.uk"},
+
+  name:"Hemianopia",
+
+  cy:{
+
+    name:"Hemianopia",
+
+    what:"Mae Hemianopia yn golled hanner maes gweledol yn y ddau lygad ar yr un pryd, a achosir gan niwed i lwybrau gweledol yr ymennydd yn hytrach na'r llygaid eu hunain. Y prif achosion yw strôc, tiwmor yr ymennydd, neu anaf trawmatig. Yn hemianopia homonymous \u2014 y math mwyaf cyffredin \u2014 mae'r un ochr o'r maes gweledol wedi'i golli yn y ddau lygad. Amcangyfrifir ei fod yn effeithio ar dros 230,000 o bobl yn y DU.",
+
+    howAffects:"Mae'r effaith yn dibynnu ar pa ochr sy'n effeithiedig. Anawsterau cyffredin: darllen (geiriau'n diflannu i un ochr o'r dudalen); taro i mewn i bethau ar yr ochr ddall; croesi ffyrdd; a llywio yn y dorf. Rhaid rhoi'r gorau i yrru ar unwaith a hysbysu'r DVLA \u2014 mae hwn yn ofyniad cyfreithiol.",
+
+    diagnosis:"Canfyddir trwy brawf maes gweledol ffurfiol \u2014 naill ai prawf gwrthdaro syml neu berimetreg awtomataidd (Humphrey neu Goldmann). Mae delweddu'r ymennydd (MRI neu CT) yn nodi'r achos sylfaenol. Ar gyfer asesu gyrru'r DVLA, defnyddir prawf maes deunocular Esterman.",
+
+    whoAffects:"Amcangyfrifir bod hemianopia homonymous yn effeithio ar dros 230,000 o bobl yn y DU, y mwyafrif ar \u00f4l strôc. Mae hemianopia bitemporal (colli meysydd allanol y ddau lygad) yn cael ei achosi'n nodweddiadol gan diwmor pituitary.",
+
+    researchSummary:"Mae therapi adfer golwg (VRT) yn arbrofol \u2014 mae astudiaeth Rhydychen 2021 yn dangos gwelliannau mesuradwy mewn gweithgaredd yr ymennydd. Mae sbectol prism ar gael a gallant ehangu maes gweledol effeithiol. Mae hyfforddiant sganio \u2014 dysgu symud y llygaid tuag at yr ochr ddall \u2014 yn opsiwn adfer effeithiol."
+
+  },
+
+  what:"Hemianopia (also written hemianopsia) is the loss of half the visual field in both eyes simultaneously, caused by damage to the visual pathways inside the brain \u2014 not to the eyes themselves. The most common cause is stroke; others include brain tumours, traumatic brain injury, and other neurological events. In homonymous hemianopia \u2014 the most common type \u2014 the same side of the visual field is lost in both eyes, because both pathways are damaged at the same point. In bitemporal hemianopia, the outer edges of vision in both eyes are lost, typically due to a pituitary tumour pressing on the optic chiasm. Hemianopia is estimated to affect more than 230,000 people in the UK.",
+
+  howAffects:"The impact depends on which side of the visual field is affected, but common difficulties include: reading, because words fall off one side of the page and disappear into the blind field; walking into objects, door frames, and people on the blind side; crossing roads safely; and navigating busy environments. Driving must stop immediately upon diagnosis \u2014 there is a legal duty to notify the DVLA. Many people are initially unaware of the loss, as the brain partly compensates, but formal testing makes it clear. A dark 'curtain' or shadow on one side of vision, or persistent difficulty seeing on one side, should prompt urgent assessment.",
+
+  diagnosis:"Hemianopia is detected with a formal visual field test \u2014 either a confrontation test (a quick bedside test where the examiner moves a finger into different areas of your vision) or automated perimetry (Humphrey or Goldmann). Brain imaging (MRI or CT) identifies the underlying cause. For DVLA driving assessment purposes, a binocular Esterman visual field test is used. If you have had a stroke and nobody has formally assessed your visual fields, specifically ask the stroke team for a neuro-ophthalmology or orthoptic referral.",
+
+  whoAffects:"Homonymous hemianopia \u2014 loss of the same side in both eyes \u2014 is estimated to affect more than 230,000 people in the UK, the majority following stroke. It occurs when the visual pathway is damaged after the optic chiasm, where the nerve fibres from both eyes cross. Bitemporal hemianopia (loss of the outer fields in both eyes) is usually caused by a pituitary tumour pressing on the chiasm at the crossing point. Quadrantanopia \u2014 loss of a quarter rather than a half of the visual field \u2014 is a partial form. In all cases, the eyes themselves are healthy \u2014 the problem is in the brain's visual pathway.",
+
+  research:[
+
+    {tag:"tech",label:"\ud83d\udd2c Experimental",title:"Vision Restoration Therapy (VRT)",body:"VRT uses computer-based training to stimulate the border region between the seeing and non-seeing visual field. A 2021 Oxford University study (Ajina et al., Journal of Neuroscience) found that VRT was associated with increased visual sensitivity in the affected area and measurable changes in brain activity on fMRI. However, it remains experimental \u2014 it is not yet a standard NHS treatment and results vary significantly between individuals. Research into visual restoration continues.",link:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8276743/"},
+
+    {tag:"tech",label:"\ud83d\udd2c In Use",title:"Prism Glasses \u2014 Sector and Fresnel Prisms",body:"Prism lenses bend light from the blind side into the seeing visual field, effectively widening the useful visual area. They do not restore lost vision but reduce the frequency of collisions and improve navigation. Two types are used: sector prisms (fitted to the outer edge of the lens) and Fresnel prisms (a thin adhesive sheet applied to existing lenses). Both require fitting by a low vision specialist or orthoptist and a period of adaptation. Referral to a low vision clinic or orthoptics department is the starting point.",link:"https://www.rnib.org.uk/living-with-sight-loss/assistive-aids-and-technology/"},
+
+    {tag:"trial",label:"\ud83d\udd17 Find UK Trials",title:"NIHR Be Part of Research \u2014 Visual Field Loss",body:"Search for current UK studies on hemianopia, visual field loss, and vision rehabilitation after brain injury or stroke.",link:"https://bepartofresearch.nihr.ac.uk/results/search-results?query=hemianopia&location="}
+
+  ],
+
+  guides:[
+
+    {n:1,title:"Notify the DVLA Immediately",body:"If you are diagnosed with homonymous or bitemporal hemianopia, you must stop driving at once and notify the DVLA. This is a legal requirement \u2014 continuing to drive is a criminal offence and invalidates your insurance. Your licence will normally be revoked. After at least 12 months, if the underlying cause is stable (stroke qualifies), you may be considered for the 'exceptional cases' driving assessment \u2014 a formal test in a dual-control vehicle. UK clinical studies have found that most people who are referred and meet the criteria pass and have their licence reinstated. Ask your neurologist or ophthalmologist about this pathway."},
+
+    {n:2,title:"Scanning Training \u2014 Learning to Look",body:"The most consistently effective rehabilitation for hemianopia is scanning training: learning to systematically move your eyes towards the blind side to compensate for the missing field. A vision rehabilitation specialist or orthoptist can teach this. It significantly improves reading, navigation, and daily safety. This is available through NHS neurological rehabilitation services \u2014 if it has not been offered after a stroke, ask specifically for an orthoptic or low vision referral."},
+
+    {n:3,title:"Reading After Hemianopia",body:"Reading is often the most frustrating daily difficulty. Strategies that help: rotating the page so text falls in the seeing field; using a finger or ruler to track along lines; using text-to-speech on your phone or computer (available free on both iOS and Android); or requesting large print or audiobooks. RNIB Talking Books are free and need no screen at all."},
+
+    {n:4,title:"Registering as Sight Impaired",body:"Hemianopia may qualify for a Certificate of Visual Impairment (CVI) depending on the severity of field loss. A CVI unlocks local authority rehabilitation services, potential council tax reduction, and \u2014 for those registered severely sight impaired \u2014 a free TV licence. Ask the consultant managing your care \u2014 neurologist, neuro-ophthalmologist, or ophthalmologist \u2014 about certification."},
+
+    {n:5,title:"Safety at Home and Outside",body:"A vision rehabilitation officer can work with you on safe outdoor routes, road-crossing techniques, and navigating crowds. On the blind side: remove trip hazards at home; sit with your blind side to a wall in social situations; approach junctions and road crossings especially carefully. A symbol cane signals your visual difficulty to others. If you had a stroke, your rehabilitation team should include visual rehabilitation \u2014 ask specifically if it has not been offered."}
+
+  ],
+
+    tech:[
+
+    {cat:"Reading Aid",title:"Line Guides & Typoscopes",body:"A typoscope is a simple card with a slot that reveals one line of text at a time, helping with the losing-your-place problem common in hemianopia. Reading rulers work the same way — cheap, low-tech, and surprisingly effective.",price:"From around £5; free reading-ruler templates available online"},
+
+    {cat:"Prism Lenses",title:"Peli Prism Glasses",body:"Specialist prism lenses (such as the Peli prism design) shift an image from the blind side into the seeing field, expanding awareness of obstacles. Fitted by a low vision optometrist or orthoptist after assessment. They take practice to adapt to.",price:"Fitted via low vision clinic; private fitting varies — ask your optometrist"},
+
+    {cat:"Free App",title:"Seeing AI & Text-to-Speech",body:"When reading becomes tiring, free text-to-speech turns any document into audio. Seeing AI (free, Microsoft) reads printed text aloud through the phone camera; the built-in Read Aloud on iPhone and Android reads on-screen text.",price:"Free"},
+
+    {cat:"Navigation",title:"Smartphone Navigation Apps",body:"Apps like Google Maps and BlindSquare give spoken, turn-by-turn directions, reducing reliance on spotting visual landmarks on the blind side. Useful for rebuilding travel confidence after stroke.",price:"Free"}
+
+  ],
+
+  support:[
+
+    {title:"RNIB (UK)",body:"Helpline 0303 123 9999. Advice on sight loss from any cause, including neurological field loss. Can help with benefits, reading services, emotional support, and rehabilitation referrals.",link:"https://www.rnib.org.uk"},
+
+    {title:"Stroke Association",body:"If hemianopia followed a stroke, the Stroke Association helpline (0303 3033 100) provides information, support, and local peer groups. Their Visual Problems After Stroke resource is available free.",link:"https://www.stroke.org.uk"},
+
+    {title:"Headway \u2014 Brain Injury Association",body:"For hemianopia caused by traumatic brain injury or other neurological events, Headway provides specialist support and a helpline on 0808 800 2244 (freephone). Local groups across the UK.",link:"https://www.headway.org.uk"},
+
+    {title:"Macular Society \u2014 Low Vision",body:"The Macular Society helpline (0300 3030 111) can advise on visual aids and low vision assessments for any visual impairment, including field loss.",link:"https://www.macularsociety.org"}
+
+  ],
+
+  benefits:[
+
+    {n:1,title:"Personal Independence Payment (PIP)",body:"Hemianopia significantly affects daily activities and the ability to travel safely. PIP assesses functional impact \u2014 difficulty reading, navigating, crossing roads, and the risk of accidents all strengthen a claim. RNIB and Citizens Advice can help with the form."},
+
+    {n:2,title:"Blue Badge",body:"If hemianopia affects your ability to walk safely and independently in public \u2014 particularly following stroke with additional mobility difficulties \u2014 you may qualify for a Blue Badge. Apply via your local council."},
+
+    {n:3,title:"Certificate of Visual Impairment (CVI)",body:"If field loss is severe enough to meet CVI criteria, your consultant can issue one. This unlocks local authority rehabilitation services, possible council tax reduction, and \u2014 for registered severely sight impaired people \u2014 a free TV licence."},
+
+    {n:4,title:"Access to Work",body:"If you are working, Access to Work can fund adjustments such as screen-reading software, adapted lighting, or travel costs if driving is no longer possible."}
+
+  ],
+
+  livingWith:[
+
+    {title:"The First Weeks",body:"A sudden hemianopia \u2014 particularly after stroke \u2014 is disorientating and frightening. Some visual field may recover in the weeks immediately after a stroke as swelling reduces, but field loss that remains at six months is typically permanent. Grief for lost vision and the driving licence is real and valid. RNIB Sight Loss Counselling (0303 123 9999) is available free of charge and offers confidential support from specialists in sight loss."},
+
+    {title:"Safe at Home",body:"Arrange your home so that important things \u2014 keys, phone, clock \u2014 are on your seeing side. Good, consistent lighting helps maximise what your remaining vision can do. Remove trip hazards, particularly on the blind side. In social settings, sit with your blind side towards a wall so conversations happen in your seeing field."},
+
+    {title:"Driving After Hemianopia",body:"Losing a driving licence is one of the most significant practical consequences of hemianopia. It is not necessarily permanent: the DVLA exceptional cases pathway exists for people who have adapted well after at least 12 months. In the meantime, plan alternatives: Passenger Assist on trains, a free bus pass with a CVI, community transport schemes, and Access to Work for work journeys. See the Driving and DVLA section under Getting Around for more detail."},
+
+    {title:"Telling People",body:"Many people with hemianopia look completely well and others don't understand why they walk into things or struggle with reading. A short explanation \u2014 'I can't see anything on my left side' \u2014 usually helps. A sunflower lanyard or sight loss card can signal to others that you may need a little extra awareness."}
+
+  ]
+
+},
+
+maculahole:{
+
+  helpline:{org:"Macular Society Helpline",number:"0300 3030 111",hours:"Mon\u2013Fri 9am\u20135pm",link:"https://www.macularsociety.org"},
+
+  name:"Macular Hole",
+
+  cy:{
+
+    name:"Twll Macular",
+
+    what:"Mae twll macular yn hollt lawn drwy'r macula \u2014 y rhan ganolog o'r retina sy'n gyfrifol am weledigaeth fanwl. Mae'n datblygu'n fwyaf cyffredin mewn pobl dros 60 oed fel canlyniad i newidiadau oedran i'r gel fireous y tu mewn i'r llygad. Wrth i'r fireous grebachu'n araf a thynnu oddi wrth y retina, gall greu rhwyg yn union ar y macula. Mae'r llawdriniaeth yn hynod lwyddiannus \u2014 mae astudiaethau yn y DU yn adrodd cyfradd cau o tua 96%.",
+
+    howAffects:"Mae twll macular yn achosi darn aneglur neu ystumio yng nghanol y golwg. Efallai y byddwch yn sylwi ar smotyn niwlog yng nghanol eich golwg, llinellau syth yn ymddangos yn gam, anhawster darllen neu adnabod wynebau. Mae golwg ymylol yn aros heb ei effeithio.",
+
+    diagnosis:"Cadarnheir gan sgan OCT (tomograffi cydlyniant optegol), sy'n dangos y twll yn glir. Os yw optometrydd yn sylwi ar broblem, dylai atgyfeirio'n frys at arbenigwr retinal. Caiff y twll ei raddio yn \u00f4l maint a cham (1\u20134).",
+
+    whoAffects:"Mae tyllau macular yn effeithio ar tua 1 ym mhob 200 o bobl dros 60 oed. Mae merched yn cyfrif am tua 71% o achosion llawfeddygol. Gallant effeithio ar y ddau lygad mewn hyd at 10% o achosion.",
+
+    researchSummary:"Fitrecctomi yw'r driniaeth safonol \u2014 cyfradd cau o 96% mewn astudiaeth fawr yn y DU. Mae canllawiau yn esblygu ynghylch safle gwyneb i lawr ar \u00f4l llawdriniaeth \u2014 efallai na fydd ei angen ar gyfer tyllau llai. Mae therapi genyn a dulliau ffarmacolegol yn ddatblygol cynnar."
+
+  },
+
+  what:"A macular hole is a small, full-thickness break in the macula \u2014 the central area of the retina responsible for detailed, sharp, central vision. It most commonly develops in people over 60 as a result of age-related changes to the vitreous gel inside the eye: as the vitreous slowly shrinks and pulls away from the retina, it can create a tear at the macula itself. Macular holes are graded by size and severity in four stages. They are more common in women and are bilateral (affecting both eyes eventually) in up to 10% of cases. The good news is that surgery is highly effective \u2014 UK studies report a closure rate of around 96%.",
+
+  howAffects:"A macular hole causes a blurred, distorted, or missing patch at the very centre of vision. You may notice: a blurry or absent spot in the middle of what you are looking at; straight lines appearing wavy or bent (a symptom called metamorphopsia); difficulty reading or recognising faces; and colours that appear washed out centrally. Peripheral vision is preserved. Symptoms typically develop gradually, and many people first notice the problem when covering their good eye by accident.",
+
+  diagnosis:"Diagnosis is confirmed with an OCT (Optical Coherence Tomography) scan, which produces a detailed cross-section of the retina and can visualise the hole precisely, grade it by size, and guide the surgical approach. If your optometrist notices anything on a routine eye test, they should refer you urgently to a retinal specialist. The OCT also helps surgeons plan the operation and assess recovery after surgery. If you notice a new blurred or distorted patch in the centre of your vision, see your optometrist the same day \u2014 earlier surgery gives better outcomes.",
+
+  whoAffects:"Macular holes affect approximately 1 in 200 people over the age of 60. Women account for around 71% of surgical cases (based on a UK study of more than 1,400 operations). They can also develop in younger people following eye trauma or as a complication of severe short-sightedness (myopia). Up to 10% of people who develop a macular hole will eventually develop one in the other eye, so the second eye is monitored carefully after diagnosis.",
+
+  research:[
+
+    {tag:"drug",label:"\u2705 NHS Available",title:"Vitrectomy Surgery \u2014 96% Closure Rate in UK Studies",body:"Vitrectomy is the standard NHS treatment for macular holes. The surgeon removes the vitreous gel and carefully peels away a thin membrane (the internal limiting membrane, ILM) surrounding the hole, then fills the eye with a gas bubble that holds the edges of the hole together as it heals. A large UK study of 1,253 operations published in the journal Eye found successful closure in 96% of cases. Vision typically improves significantly after closure, though some central distortion may remain. Smaller holes carry the highest success rates.",link:"https://pmc.ncbi.nlm.nih.gov/articles/PMC7852599/"},
+
+    {tag:"trial",label:"\ud83d\udd2c Evolving Guidance",title:"Face-Down Positioning After Surgery \u2014 Changing Practice",body:"Patients were historically required to lie face-down for up to two weeks after vitrectomy to keep the gas bubble in contact with the hole. A large UK prospective study found that post-operative positioning made no statistically significant difference to outcomes for many hole sizes. A 2026 national survey of UK vitreoretinal surgeons confirmed that most now use minimal or no face-down positioning for smaller holes. Your surgeon will advise based on the size of your specific hole.",link:"https://www.nature.com/articles/s41433-026-04449-6"},
+
+    {tag:"trial",label:"\ud83d\udd17 Find UK Trials",title:"NIHR Be Part of Research \u2014 Macular Hole",body:"Search for current UK clinical trials related to macular hole surgery and vitreoretinal treatments.",link:"https://bepartofresearch.nihr.ac.uk/results/search-results?query=macular+hole&location="}
+
+  ],
+
+  guides:[
+
+    {n:1,title:"Act Quickly \u2014 Earlier Surgery Gives Better Results",body:"Macular holes tend to enlarge over time if untreated, and larger holes have lower closure rates and poorer visual outcomes. Once referred, don't delay. Most UK vitreoretinal surgeons aim to operate within one to three months of referral \u2014 within this window is good, but try not to let it extend much beyond that."},
+
+    {n:2,title:"What to Expect From Surgery",body:"Vitrectomy is usually performed under local anaesthetic as a day procedure. It takes around an hour. Afterwards, your eye will be red and sore for a few days, and you'll have eye drops to use for several weeks. Vision will be blurry while the gas bubble is present. The bubble absorbs gradually over six to eight weeks, and vision improves during that time."},
+
+    {n:3,title:"You Must Not Fly With a Gas Bubble",body:"After vitrectomy, you must not travel by air or go to high altitude until the gas bubble has completely disappeared. The drop in air pressure causes gas to expand rapidly, which can cause serious damage to the eye. Tell your surgeon about the gas bubble before any planned operation under general anaesthetic for other conditions \u2014 even if unrelated to the eye."},
+
+    {n:4,title:"Watch the Other Eye",body:"After a macular hole in one eye, the other eye carries a higher risk. Test it regularly with an Amsler grid: look at the central dot with one eye covered, one eye at a time. If any new distortion, waviness, or missing area appears, contact your eye clinic the same day. Catching a hole early gives the best outcomes."},
+
+    {n:5,title:"Benefits if Vision Does Not Fully Recover",body:"If macular hole surgery doesn't fully restore your central vision, you may be left with lasting visual impairment. PIP can be claimed if daily life is significantly affected. If vision in the affected eye is severely reduced, a CVI may be appropriate \u2014 ask your ophthalmologist. A referral to a low vision clinic is free and can make a real difference to daily function."}
+
+  ],
+
+  tech:[
+
+    {cat:"Monitoring",title:"Amsler Grid",body:"A simple grid used to monitor your central vision at home. Cover one eye and look at the centre dot \u2014 wavy, missing, or distorted lines need same-day attention. Particularly important for monitoring the second eye after a macular hole diagnosis.",price:"Free \u2014 printable from RNIB and Macular Society websites"},
+
+    {cat:"Smart Magnifier",title:"Desktop Video Magnifier (CCTV)",body:"Magnifies text and objects on a large screen with adjustable contrast and colour modes. Very useful if central vision remains reduced after surgery. Available free via NHS low vision clinic \u2014 ask your ophthalmologist for a referral.",price:"Roughly \u00a3400 (portable) to \u00a32,000+ (full desktop)"},
+
+    {cat:"Free App",title:"Seeing AI (Microsoft)",body:"Free app that reads printed text, handwriting, and documents aloud through your phone camera. Helpful when central vision is temporarily or permanently reduced.",price:"Free"}
+
+  ],
+
+  support:[
+
+    {title:"Macular Society (UK)",body:"Specialist helpline (0300 3030 111) staffed by nurses and advisers, local support groups, befriending, and Sight Loss Counsellors. Specifically covers macular holes as well as macular degeneration.",link:"https://www.macularsociety.org"},
+
+    {title:"RNIB (UK)",body:"Helpline 0303 123 9999. Talking books, benefits advice, emotional support, and referrals to local rehabilitation services.",link:"https://www.rnib.org.uk"},
+
+    {title:"Royal College of Ophthalmologists \u2014 Patient Information",body:"The RCOphth publishes clear, NHS-endorsed patient information on macular hole diagnosis, surgery, and recovery, including draft clinical guidelines.",link:"https://www.rcophth.ac.uk/patients/"}
+
+  ],
+
+  benefits:[
+
+    {n:1,title:"Personal Independence Payment (PIP)",body:"If macular hole surgery leaves lasting central vision loss that affects daily activities or your ability to travel safely, you may be eligible for PIP. The functional impact is what matters. RNIB Benefits Helpline (0303 123 9999) can advise."},
+
+    {n:2,title:"Certificate of Visual Impairment (CVI)",body:"If vision in the affected eye is severely reduced after surgery, your consultant ophthalmologist can issue a CVI. If both eyes are significantly affected, a CVI is more likely. It unlocks local authority rehabilitation support and, for those registered as severely sight impaired, a free TV licence."},
+
+    {n:3,title:"NHS Low Vision Clinic",body:"After surgery, ask your ophthalmologist for a referral to a low vision clinic. These free NHS services assess your remaining vision and prescribe magnifiers, lighting, and other aids to help you manage daily life."}
+
+  ],
+
+  livingWith:[
+
+    {title:"Recovery Expectations",body:"Vision after macular hole surgery typically improves gradually over three to six months as the retina heals. Most people see significant improvement, but some central distortion or blur may remain permanently. The first few weeks are the hardest: the gas bubble severely limits what you can see, making reading and faces very difficult. This is entirely normal and temporary."},
+
+    {title:"Reading and Daily Life During Recovery",body:"While the gas bubble is present, reading print is very difficult. RNIB Talking Books (free), BBC Sounds, and audiobooks on a phone keep reading accessible without any need to see a screen. Large-button phones and voice assistants (Alexa, Google Home, Siri) can manage calls, timers, and reminders hands-free."},
+
+    {title:"The Emotional Impact",body:"Even with successful surgery, the uncertainty and temporary sight loss are stressful. The Macular Society's befriending service connects you with trained volunteers who have lived experience of macular conditions. RNIB Sight Loss Counselling (0303 123 9999) offers free, confidential counselling from specialists who understand sight loss \u2014 available before, during, and after treatment."},
+
+    {title:"Protecting the Other Eye",body:"After a macular hole in one eye, regular Amsler grid monitoring of the other eye is important. A daily test takes under a minute. If any new distortion appears, contact your eye clinic the same day. A hole caught early almost always closes successfully with surgery."}
+
+  ]
+
+},
+
+retinaldetachment:{
+
+  helpline:{org:"RNIB Sight Loss Advice Service",number:"0303 123 9999",hours:"Mon\u2013Fri 8am\u20138pm, Sat 9am\u20131pm",link:"https://www.rnib.org.uk"},
+
+  name:"Retinal Detachment",
+
+  cy:{
+
+    name:"Datgysylltiad Retinal",
+
+    what:"Mae datgysylltiad retinal yn argyfwng meddygol. Mae'r retina \u2014 haen sensitif i olau cefn y llygad \u2014 yn plicio i ffwrdd o'r meinwe sylfaenol sy'n rhoi maetholion iddi. Heb lawdriniaeth frys, gall y retina gael ei niweidio'n barhaol a cholled weledigaeth ddilyn. Tri math cyffredin: rhegmatogenous (y mwyaf cyffredin) \u2014 o rwyg neu dwll yn y retina; tractional \u2014 meinwe creithiau yn tynnu'r retina; ecsoddatig \u2014 hylif yn cronni o dan y retina. Mae'r arwyddion rhybudd yn nodweddiadol ac yn gofyn am weithredu ar unwaith.",
+
+    howAffects:"Arwyddion rhybudd clasurol datgysylltiad retinal: cynnydd sydyn mewn fflotyddion (smotiau tywyll, edafedd, gwe pry copyn yn symud ar draws y golwg); fflachiau golau (yn arbennig mewn tywyllwch); a chysgod neu 'llen' yn croesi rhan o'r golwg. Os ymddengys unrhyw rai o'r rhain \u2014 yn arbennig ar y cyd \u2014 ewch i'r adran lygaid A&E agosaf ar unwaith.",
+
+    diagnosis:"Diagnosis trwy archwiliad llygad wedi'i leddfu \u2014 mae'r meddyg yn gosod diferion i ehangu cannwyll y llygad ac yn archwilio'r retina. Gall sgan uwchsain hefyd gael ei ddefnyddio. Mae datgysylltiadau 'macula-on' (lle mae'r canol o'r golwg yn dal yn gyfan) yn cael eu trin o fewn 24 awr i ddiogelu'r golwg canolog.",
+
+    whoAffects:"Mae datgysylltiad retinal yn effeithio ar tua 10,000 o bobl yn y DU bob blwyddyn. Ffactorau risg: byrbweledd uchel, llawdriniaeth cataract blaenorol, hanes teuluol, niwed i'r llygad, ac oedran cynyddol.",
+
+    researchSummary:"Mae tua 85% o ddatgysylltiadau retinal yn cael eu trwsio'n llwyddiannus ag un llawdriniaeth. Mae treial 10-ganolfan yn y DU (Ysbyty Prifysgol Lerpwl) yn cymharu tamponad aer yn erbyn nwy ar \u00f4l fitrecctomi \u2014 gallai nwy symlach olygu adferiad haws i gleifion."
+
+  },
+
+  what:"Retinal detachment is a medical emergency. The retina \u2014 the light-sensitive lining at the back of the eye \u2014 peels away from the underlying tissue that supplies it with oxygen and nutrients. Without prompt surgery, the photoreceptor cells in the detached area can be permanently damaged and vision lost. There are three main types: Rhegmatogenous (the most common) \u2014 caused by a tear or hole in the retina through which fluid seeps beneath it, most often related to a posterior vitreous detachment (PVD). Tractional \u2014 caused by scar tissue pulling the retina away; most commonly seen in people with diabetic retinopathy. Exudative \u2014 caused by fluid building up beneath the retina without a tear, usually due to inflammation or other eye conditions. Approximately 85% of retinal detachments can be repaired with a single operation.",
+
+  howAffects:"The warning signs of a retinal detachment are distinctive and must be taken seriously: a sudden shower of new floaters (dark spots, threads, or cobwebs drifting across vision); flashes of light, especially in the dark or periphery; and \u2014 most urgently \u2014 a dark shadow or 'curtain' that appears to move across part of your vision. If any of these appear, especially in combination, go to your nearest A&E eye unit immediately. Do not wait to see your GP. Do not drive yourself. Every hour before surgery increases the risk of permanent damage. If the detachment reaches the macula, the central part of the retina, central vision is at greater risk of permanent loss.",
+
+  diagnosis:"Retinal detachment is diagnosed with a dilated eye examination: the doctor puts drops in your eye to widen the pupil, then uses an ophthalmoscope or slit lamp to examine the retina directly. An ultrasound scan may be used if the view is obscured. In A&E, this should happen the same day. If detachment is confirmed, surgery is arranged urgently. Macula-on detachments \u2014 where central vision is still intact \u2014 are operated on within 24 hours to protect it. Macula-off cases are still urgent and usually operated on within a few days.",
+
+  whoAffects:"Retinal detachment affects around 10,000 people in the UK each year. Risk factors include: high short-sightedness (myopia) \u2014 the elongated eye in myopia creates mechanical stress on the retina; previous cataract surgery; a family history of retinal detachment; previous detachment in the other eye; trauma to the eye; and advancing age. Many people experience a posterior vitreous detachment (PVD) first \u2014 a common, usually harmless ageing process where the vitreous gel pulls away from the retina. PVD causes floaters and flashes and rarely leads to detachment, but any new floaters or flashes should be assessed by an optometrist the same day to rule out a retinal tear.",
+
+  research:[
+
+    {tag:"drug",label:"\u2705 NHS Available",title:"Vitrectomy, Scleral Buckle, and Pneumatic Retinopexy",body:"Around 85% of retinal detachments are successfully repaired with a single operation. The main approaches are: Vitrectomy (most common) \u2014 the vitreous gel is removed and a gas or silicone oil bubble placed inside the eye to support the retina while it reattaches. Scleral buckle \u2014 a soft silicone band is stitched around the outside of the eye to close the tear from outside. Pneumatic retinopexy \u2014 a gas bubble is injected in the clinic without full surgery, used for selected uncomplicated detachments. Some cases require a combination of approaches or a second operation.",link:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6253314/"},
+
+    {tag:"trial",label:"\ud83d\udd2c Pipeline",title:"Air vs Gas Tamponade After Vitrectomy \u2014 UK Multi-Centre Trial",body:"Current UK research is comparing air versus fluorinated gas as the tamponade agent after vitrectomy for retinal detachment. Gas provides longer support but requires significant restrictions (no flying, specific positioning, longer recovery). If air proves equally effective, recovery would be considerably simpler for patients. A 10-centre, non-inferiority trial led by Liverpool University Hospitals NHS Foundation Trust is under way, with a 24-week primary outcome.",link:"https://clinicaltrials.gov/study/NCT07034469"},
+
+    {tag:"trial",label:"\ud83d\udd17 Find UK Trials",title:"NIHR Be Part of Research \u2014 Retinal Detachment",body:"Search for current UK clinical trials related to retinal detachment and vitreoretinal surgery.",link:"https://bepartofresearch.nihr.ac.uk/results/search-results?query=retinal+detachment&location="}
+
+  ],
+
+  guides:[
+
+    {n:1,title:"THIS IS AN EMERGENCY \u2014 Go Immediately",body:"If you notice a sudden shower of new floaters, flashes of light, or a shadow or curtain moving across your vision \u2014 go to your nearest hospital eye unit or A&E right now. Call ahead if you can. Do not drive yourself \u2014 call a taxi or ask someone to take you. Do not wait until morning to see your GP. Every hour before treatment increases the risk of permanent vision loss."},
+
+    {n:2,title:"You Must Not Fly After Gas Bubble Surgery",body:"If your surgery uses a gas bubble (vitrectomy or pneumatic retinopexy), you must not travel by aircraft or ascend to significant altitude until the gas has completely absorbed \u2014 typically six to ten weeks. The change in atmospheric pressure causes the gas to expand dangerously. Also inform any anaesthetist about the gas bubble before any operation under general anaesthetic, even for unrelated conditions."},
+
+    {n:3,title:"Positioning After Surgery",body:"Your surgeon may ask you to position yourself face-down, or to lie on a specific side, for a period after surgery to keep the gas bubble in contact with the area of detachment. Follow the instructions exactly \u2014 even a few hours of incorrect positioning can affect the outcome. This is usually for a set period each day rather than all day and night."},
+
+    {n:4,title:"Watch the Other Eye",body:"After a retinal detachment, your other eye carries a higher risk. Your ophthalmologist will examine it carefully. Learn the warning signs \u2014 new floaters, flashes, or a shadow. If any of these appear in the other eye, seek emergency assessment immediately. You already know how important speed is."},
+
+    {n:5,title:"If Surgery Does Not Fully Restore Vision",body:"If the macula was detached before surgery, some permanent central vision loss may remain even after the retina is successfully reattached. This is not a surgical failure \u2014 it reflects the damage that occurred before treatment. RNIB (0303 123 9999), low vision clinics, and your ophthalmologist can help you maximise remaining vision and adapt. PIP and a CVI may both be appropriate if vision is significantly affected."}
+
+  ],
+
+    tech:[
+
+    {cat:"Monitoring",title:"Phone Magnifier & Reminders",body:"During recovery, the built-in magnifier and high-contrast modes on your phone (Settings then Accessibility) help with reading while vision is blurry from the gas bubble. Reminder apps help track the strict post-surgery eye-drop schedule.",price:"Free — built into iPhone and Android"},
+
+    {cat:"Low Vision",title:"Desktop Video Magnifier (CCTV)",body:"If central vision is reduced after a macula-off detachment, a desktop video magnifier enlarges text and photos with adjustable contrast. Available free through an NHS low vision clinic — ask your ophthalmologist for a referral.",price:"Roughly £400 (portable) to £2,000+ (full desktop); free via NHS low vision clinic"},
+
+    {cat:"Free App",title:"Seeing AI & Be My Eyes",body:"While vision is recovering, Seeing AI (free, Microsoft) reads text and describes scenes through the camera, and Be My Eyes connects you by live video to a sighted volunteer who can help with everyday tasks.",price:"Free"}
+
+  ],
+
+  support:[
+
+    {title:"RNIB (UK)",body:"Helpline 0303 123 9999. Emotional support, vision aids, benefits advice, and rehabilitation referrals. Available whether vision has fully recovered or not.",link:"https://www.rnib.org.uk"},
+
+    {title:"Macular Society",body:"If the detachment affected your central vision, the Macular Society (0300 3030 111) can provide targeted support for living with macular vision loss after a detachment.",link:"https://www.macularsociety.org"},
+
+    {title:"BEAVRS \u2014 British and Eire Association of Vitreoretinal Surgeons",body:"BEAVRS represents specialist retinal surgeons in the UK. Their patient resources include information on retinal detachment and what to expect from vitreoretinal surgery.",link:"https://www.beavrs.org"}
+
+  ],
+
+  benefits:[
+
+    {n:1,title:"Personal Independence Payment (PIP)",body:"If retinal detachment has caused lasting vision impairment, you may be eligible for PIP based on the functional impact on daily life and mobility. Don't wait for final visual outcomes before claiming \u2014 you can apply during recovery."},
+
+    {n:2,title:"Certificate of Visual Impairment (CVI)",body:"If surgery leaves you with significant permanent vision loss \u2014 particularly if the macula was detached \u2014 your consultant ophthalmologist can issue a CVI. This unlocks local authority rehabilitation services and, for registered severely sight impaired people, a free TV licence."},
+
+    {n:3,title:"Sick Pay and Work Adjustments",body:"Recovery from retinal detachment surgery requires at least two weeks off work, and longer for physically active or visually demanding roles. If there are lasting vision changes, Access to Work can fund workplace adaptations and the Equality Act 2010 requires your employer to make reasonable adjustments."}
+
+  ],
+
+  livingWith:[
+
+    {title:"Recovery Timeline",body:"Recovery from vitrectomy varies by individual and by the extent of detachment. The gas bubble causes blurry vision and gradually clears over six to ten weeks. If the macula was still attached at the time of surgery, vision recovery is often good. If the macula was detached, recovery is slower and less complete, but improvement can continue for up to 12\u201318 months after surgery."},
+
+    {title:"Return to Activities",body:"Most people need at least two weeks off work after surgery, and longer for outdoor, active, or visually demanding work. Ask your surgeon specifically about: swimming (usually avoid for several weeks); contact sports; strenuous lifting; flying (must not fly while gas bubble is present); and driving (must not drive until the gas bubble has gone and your surgeon confirms it is safe)."},
+
+    {title:"The Emotional Impact",body:"A retinal detachment is sudden, frightening, and often happens without any warning at all. The emergency, the surgery, and the wait to see how much vision returns can be traumatic. Anxiety about the other eye is common and completely understandable. RNIB Sight Loss Counselling (0303 123 9999) offers free, confidential support from counsellors who understand sight loss \u2014 available from the beginning, not just once the outcome is clear."}
+
+  ]
+
+},
+
 
 };
 
@@ -9009,7 +9464,7 @@ function labelToClass(label) {
 
         <div class="wb" style="margin-bottom:16px"><strong>Before you buy:</strong> a free NHS low-vision assessment can match the right aids to your sight — ask your optometrist or eye clinic. To see and try equipment, several UK suppliers offer free home demonstrations; two well-established ones are the <a href="https://shop.rnib.org.uk" aria-label="RNIB Shop (opens external site)" rel="noopener" style="color:var(--yellow);font-weight:700">RNIB Shop <span aria-hidden="true">↗</span></a> and <a href="https://www.visionaid.co.uk" aria-label="VisionAid Technologies (opens external site)" rel="noopener" style="color:var(--yellow);font-weight:700">VisionAid <span aria-hidden="true">↗</span></a>. It's worth comparing a few before deciding.</div>
 
-        ${d.tech.map(t=>`
+        ${(d.tech||[]).map(t=>`
 
         <div class="tc">
 
@@ -9998,7 +10453,7 @@ function selectCondition(key) {
   var l = document.getElementById('cond-list');
   if (l) l.style.display = 'none';
   var h = document.getElementById('cond-hint');
-  if (h) { h.style.display = 'block'; h.innerHTML = 'Type your condition then tap <strong>Search</strong> (or press Enter). <strong>20 conditions</strong> covered.'; }
+  if (h) { h.style.display = 'block'; h.innerHTML = 'Type your condition then tap <strong>Search</strong> (or press Enter). <strong>24 conditions</strong> covered.'; }
   showCondition(key);
 }
 
@@ -10359,6 +10814,12 @@ const SIZE_IDS = {1:'sz-s', 1.35:'sz-m', 1.7:'sz-l', 2.2:'sz-xl'};
 
 function setSize(scale) {
 
+  // Hide the reading ruler BEFORE the text reflows, so it can't be seen
+  // repainting at its old position (which caused the flash to the top).
+  if (typeof window.hideReadingRulerDuringReflow === 'function') {
+    window.hideReadingRulerDuringReflow();
+  }
+
   document.documentElement.style.setProperty('--scale', scale);
 
   try { localStorage.setItem('vh-size', scale); } catch(e){}
@@ -10376,6 +10837,11 @@ function setSize(scale) {
     b.setAttribute('aria-pressed', String(active));
 
   });
+
+  // Reposition and reveal the ruler once the new layout has settled.
+  if (typeof window.nudgeReadingRuler === 'function') {
+    window.nudgeReadingRuler();
+  }
 
 }
 
@@ -10492,6 +10958,15 @@ function submitFeedback(key, vote, btn) {
 /* ─────────────── SEARCH ─────────────── */
 
 const COND_KEYWORDS = {
+
+  keratoconus: ['keratoconus','cone shaped cornea','cornea','corneal','thinning cornea','cross linking','cross-linking','cxl','scleral lens','scleral lenses','rigid lens','rgp','irregular astigmatism','astigmatism','rubbing eyes','bulging cornea','distorted vision','young','teenager'],
+
+  hemianopia: ['hemianopia','hemianopsia','homonymous','bitemporal','half vision','field loss','visual field','stroke','brain injury','tumour','quadrantanopia','blind side','left side','right side','curtain','scanning','prism glasses','prism','neurological','occipital'],
+
+  maculahole: ['macular hole','macula hole','hole in macula','vitrectomy','gas bubble','central vision','distortion','metamorphopsia','wavy lines','ilm peel','full thickness','amsler','blurred centre','blurry spot','retinal surgery','face down'],
+
+  retinaldetachment: ['retinal detachment','detached retina','retina detachment','floaters','flashes','flashing lights','curtain','shadow','emergency','vitrectomy','scleral buckle','pneumatic retinopexy','gas bubble','sudden','urgent','torn retina','retinal tear','pvd','posterior vitreous','myopia short sighted'],
+
 
   stargardts: ['stargardt','stargardts','macular','central vision','blurry','reading','abca4','juvenile macular','inherited','flecks','lipofuscin','light sensitivity','photophobia','young','child','teenage'],
 
@@ -10655,7 +11130,7 @@ function filterConds(q) {
   if (!q) {
     list.style.display = 'none';
     list.innerHTML = '';
-    if (hint) { hint.style.display = 'block'; hint.innerHTML = 'Type your condition then tap <strong>Search</strong> (or press Enter). <strong>20 conditions</strong> covered.'; }
+    if (hint) { hint.style.display = 'block'; hint.innerHTML = 'Type your condition then tap <strong>Search</strong> (or press Enter). <strong>24 conditions</strong> covered.'; }
     return;
   }
 
@@ -10680,7 +11155,11 @@ function filterConds(q) {
     {key:'blepharitis',name:'Blepharitis'},
     {key:'pagets',name:'Paget\'s Disease (Sight & Hearing)'},
     {key:'microphthalmia',name:'Microphthalmia'},
-    {key:'congenitalcataracts',name:'Congenital Cataracts'}
+    {key:'congenitalcataracts',name:'Congenital Cataracts'},
+    {key:'keratoconus',name:'Keratoconus'},
+    {key:'hemianopia',name:'Hemianopia'},
+    {key:'maculahole',name:'Macular Hole'},
+    {key:'retinaldetachment',name:'Retinal Detachment'}
   ];
 
   var matches = allConds.filter(function(c) {
@@ -10694,7 +11173,7 @@ function filterConds(q) {
     if (hint) {
       hint.style.display = 'block';
       var safeQ = q.replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-      hint.innerHTML = 'No eye conditions found for "' + safeQ + '". This box only searches the 20 eye conditions — for things like benefits, days out, cooking or travel, <button type="button" onclick="(function(){var t=document.getElementById(\'tsearch\');if(t){t.value=' + JSON.stringify(q) + ';filterTopics(t.value);t.scrollIntoView({behavior:\'smooth\',block:\'center\'});t.focus();}})()" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">search the rest of the site <span aria-hidden="true">→</span></button>.';
+      hint.innerHTML = 'No eye conditions found for "' + safeQ + '". This box only searches the 24 eye conditions — for things like benefits, days out, cooking or travel, <button type="button" onclick="(function(){var t=document.getElementById(\'tsearch\');if(t){t.value=' + JSON.stringify(q) + ';filterTopics(t.value);t.scrollIntoView({behavior:\'smooth\',block:\'center\'});t.focus();}})()" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">search the rest of the site <span aria-hidden="true">→</span></button>.';
     }
     return;
   }
@@ -10731,7 +11210,7 @@ var TOPIC_INDEX = [
   {label:"Free NHS Eye Tests & Prescriptions", page:"help#registration-unlocks", icon:"💊", section:"Benefits", keywords:"free nhs eye tests prescriptions glasses voucher diagnosed sight condition"},
 
   // DRIVING & REGISTRATION
-  {label:"Driving & DVLA — Sight Loss Rules", page:"eyehealth#acuity", icon:"🚗", section:"Daily Life", keywords:"driving dvla licence inform tell give up car sight loss vision standard 6/12 cease"},
+  {label:"Driving & DVLA — Sight Loss Rules", page:"mobility#driving", icon:"🚗", section:"Daily Life", keywords:"driving dvla licence inform tell give up car sight loss vision standard 6/12 cease motability revoked notify field of vision exceptional cases hemianopia"},
   {label:"Registering as Sight Impaired or Blind", page:"help#cvi", icon:"📜", section:"Medical", keywords:"register registration sight impaired partially sighted severely blind ssi si council local authority cvi how"},
 
   // EMPLOYMENT
@@ -11292,20 +11771,146 @@ if (_siteName) {
     var b=document.getElementById('dys-toggle'); if(b) b.setAttribute('aria-pressed','true');
   }
 
-  // Reading ruler — follows cursor / focus
+  // Reading ruler — follows mouse, a deliberate tap, or keyboard focus.
+  // The bar centres on the target point (its own height / 2 above it).
+  function rulerOn(){ return document.body.classList.contains('reading-ruler'); }
+
+  var _rulerBar = null;            // cached element (avoids a DOM query per move)
+  var _rulerY = null;              // last requested centre Y (viewport coords)
+  var _rulerRAF = 0;               // pending animation-frame id
+
+  function rulerBar(){
+    if(!_rulerBar) _rulerBar = document.querySelector('.reading-ruler-bar');
+    return _rulerBar;
+  }
+
+  // The lowest the ruler is allowed to go (its minimum top): just below the
+  // sticky page-navigation bar when that bar is visible, so the ruler is never
+  // hidden behind it. When the bar is hidden, the minimum is 0.
+  function rulerMinTop(){
+    var st = document.getElementById('sticky-title');
+    if(st && st.classList.contains('vis')){
+      var r = st.getBoundingClientRect();
+      if(r.height) return Math.ceil(r.bottom) + 4;
+    }
+    return 0;
+  }
+
+  // Paint the bar at the last requested position, clamped on-screen and kept
+  // clear of the sticky toolbar. Runs at most once per animation frame, which
+  // is what removes the jerkiness.
+  function paintRuler(){
+    _rulerRAF = 0;
+    var bar = rulerBar();
+    if(!bar || _rulerY === null) return;
+    var h = bar.offsetHeight || 48;
+    var minTop = rulerMinTop();
+    var maxTop = Math.max(minTop, window.innerHeight - h);
+    var top = Math.round(_rulerY - h/2);
+    if(top < minTop) top = minTop;
+    if(top > maxTop) top = maxTop;
+    bar.style.top = top + 'px';
+  }
+
+  // Request a move to viewport-y "y". We only store the value and schedule one
+  // repaint per frame, so a burst of events can't stack up and stutter.
+  function moveRuler(y){
+    _rulerY = y;
+    if(!_rulerRAF) _rulerRAF = requestAnimationFrame(paintRuler);
+  }
+
+  // Place the ruler just above the middle of the screen, so it is visible and
+  // usable the instant it is switched on — important on touch devices.
+  function resetRulerPosition(){
+    if(!rulerOn()) return;
+    moveRuler(Math.round(window.innerHeight * 0.42));
+  }
+
+  // Hide the ruler immediately (synchronously) so it cannot be seen repainting
+  // at its old position while the page reflows. Called BEFORE a text-size change.
+  window.hideReadingRulerDuringReflow = function(){
+    if(!rulerOn()) return;
+    var bar = rulerBar();
+    if(bar) bar.style.visibility = 'hidden';
+  };
+
+  // Public hook: re-centre the ruler after a layout change that doesn't fire a
+  // window resize (e.g. the text-size buttons), then reveal it. We wait a beat
+  // for the reflow to finish so the height/position are computed against the
+  // final layout, never the old one.
+  window.nudgeReadingRuler = function(){
+    if(!rulerOn()) return;
+    _rulerBar = null;
+    var bar = rulerBar();
+    if(bar) bar.style.visibility = 'hidden';
+    setTimeout(function(){
+      _rulerBar = null;
+      resetRulerPosition();
+      requestAnimationFrame(function(){
+        var b = rulerBar();
+        if(b) b.style.visibility = '';
+      });
+    }, 90);
+  };
+
   window.toggleReadingRuler = function(){
     var on = document.body.classList.toggle('reading-ruler');
     try{ localStorage.setItem('rule', on?'1':'0'); }catch(e){}
     var b = document.getElementById('rule-toggle');
     if(b) { b.setAttribute('aria-pressed', on?'true':'false'); b.blur(); }
-    srAnnounce(on ? 'Reading ruler on' : 'Reading ruler off');
+    if(on){ _rulerBar = null; resetRulerPosition(); }
+    srAnnounce(on ? 'Reading ruler on — it follows your mouse, or tap where you want it. Tap the button again to turn it off' : 'Reading ruler off');
   };
+
+  // Mouse — follow the pointer (desktop).
   document.addEventListener('mousemove', function(e){
-    if(!document.body.classList.contains('reading-ruler')) return;
-    var bar = document.querySelector('.reading-ruler-bar');
-    if(bar) bar.style.top = (e.clientY - 24) + 'px';
+    if(!rulerOn()) return;
+    moveRuler(e.clientY);
   });
-  if(localStorage.getItem('rule')==='1'){ document.body.classList.add('reading-ruler'); }
+
+  // Touch — move the ruler only on a deliberate TAP, never while scrolling.
+  // We record where the finger went down, and if it lifts in roughly the same
+  // place (i.e. a tap, not a drag/scroll), we move the ruler there.
+  var _touchStartY = null, _touchStartX = null, _touchScrolled = false;
+  document.addEventListener('touchstart', function(e){
+    if(!rulerOn() || !e.touches || !e.touches.length) return;
+    _touchStartY = e.touches[0].clientY;
+    _touchStartX = e.touches[0].clientX;
+    _touchScrolled = false;
+  }, {passive:true});
+  document.addEventListener('touchmove', function(e){
+    if(_touchStartY === null || !e.touches || !e.touches.length) return;
+    // If the finger has travelled more than ~10px, treat it as a scroll, not a tap.
+    if(Math.abs(e.touches[0].clientY - _touchStartY) > 10 ||
+       Math.abs(e.touches[0].clientX - _touchStartX) > 10){ _touchScrolled = true; }
+  }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    if(!rulerOn() || _touchStartY === null) return;
+    var endY = (e.changedTouches && e.changedTouches.length) ? e.changedTouches[0].clientY : _touchStartY;
+    var tgt = e.target;
+    var onControl = tgt && tgt.closest && tgt.closest('button, a, input, select, textarea, label, .a11y-bar, .sidebar');
+    // A tap that wasn't a scroll and didn't land on a control → move the ruler there.
+    if(!_touchScrolled && !onControl){ moveRuler(endY); }
+    _touchStartY = null; _touchStartX = null;
+  }, {passive:true});
+
+  // Keyboard — when focus moves to a link/button/field, bring the ruler to it.
+  document.addEventListener('focusin', function(e){
+    if(!rulerOn() || !e.target || !e.target.getBoundingClientRect) return;
+    var r = e.target.getBoundingClientRect();
+    if(r.height) moveRuler(r.top + r.height/2);
+  });
+
+  // Re-clamp when the layout changes (rotation, browser resize). Debounced and
+  // routed through the same hide-then-settle path so there is no visible jump.
+  var _rulerResizeT = 0;
+  window.addEventListener('resize', function(){
+    if(!rulerOn()){ _rulerBar = null; return; }
+    clearTimeout(_rulerResizeT);
+    _rulerResizeT = setTimeout(function(){ window.nudgeReadingRuler(); }, 120);
+  });
+
+  if(localStorage.getItem('rule')==='1'){ document.body.classList.add('reading-ruler'); resetRulerPosition(); }
 
   // ══ TEXT TO SPEECH WITH SENTENCE HIGHLIGHTING ══
   var _ttsUtter = null;
