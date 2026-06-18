@@ -76,7 +76,7 @@
 :root {
 
   /* SC 2.4.11 Focus Not Obscured: keeps focused elements visible below sticky toolbar */
-  scroll-padding-top: 120px;
+  scroll-padding-top: 128px;
 
   --bg:     #eef3f7;
 
@@ -2030,7 +2030,7 @@ body.focus-mode::after {
 #sticky-title {
   position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
   background: var(--yellow); color: #fff;
-  padding: 6px 12px;
+  padding: 10px 12px;
   display: none;
   align-items: center; justify-content: space-between;
   font-family: var(--font);
@@ -2940,7 +2940,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
       <!-- SEARCH CONDITIONS — PROMINENT FIRST -->
       <div style="background:var(--card);border:3px solid var(--yellow);border-radius:20px;padding:20px 20px 16px;margin-bottom:20px;box-shadow:var(--shadow)">
         <p style="font-size:0.8rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--yellow);margin:0 0 6px">Find your condition</p>
-        <p style="font-size:1rem;font-weight:700;color:var(--text);margin:0 0 12px;line-height:1.4">Search 24 eye conditions — get research, practical guides, benefits help &amp; support</p>
+        <p style="font-size:1rem;font-weight:600;color:var(--text);margin:0 0 14px;line-height:1.55">Search 24 eye conditions — get research, practical guides, benefits help &amp; support</p>
         <div style="margin-bottom:8px">
           <input type="search" id="csearch" placeholder="e.g. AMD, glaucoma, RP…" autocomplete="off" aria-controls="cond-list" aria-label="Search eye conditions" class="theme-input" style="font-size:1rem;border:2px solid var(--border);border-radius:50px;padding:14px 20px;width:100%;box-sizing:border-box;box-shadow:0 1px 4px rgba(0,0,0,0.06);margin-bottom:10px">
           <button onclick="filterConds(document.getElementById('csearch').value); document.getElementById('csearch').blur();" aria-label="Search conditions" class="search-go-btn" style="background:var(--yellow2);color:#000;border:none;border-radius:50px;padding:14px 24px;font-family:var(--font);font-size:1rem;font-weight:900;cursor:pointer;width:100%;min-height:50px"><span aria-hidden="true">🔍</span> Search</button>
@@ -2951,11 +2951,11 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
       </div>
 
       <!-- SEARCH EVERYTHING ELSE - compact secondary search -->
-      <div style="background:var(--card);border:2px solid var(--yellow);border-radius:14px;padding:12px 14px;margin-bottom:36px;box-shadow:var(--shadow)">
-        <p style="font-size:0.78rem;font-weight:700;color:var(--text2);margin:0 0 8px;line-height:1.3">Or search topics (benefits, daily life, support...)</p>
+      <div style="background:var(--card);border:2px solid var(--yellow);border-radius:20px;padding:20px;margin-bottom:36px;box-shadow:var(--shadow)">
+        <p style="font-size:0.8rem;font-weight:700;color:var(--text2);margin:0 0 8px;line-height:1.4">Or search topics (benefits, daily life, support...)</p>
         <div style="display:flex;gap:8px;align-items:stretch">
-          <input type="search" id="tsearch" placeholder="e.g. blue badge, PIP, cooking…" autocomplete="off" aria-controls="topic-list" aria-label="Search topics across the site" class="theme-input" style="font-size:0.95rem;border:1.5px solid var(--border);border-radius:50px;padding:10px 16px;flex:1;min-width:0;box-sizing:border-box;min-height:44px">
-          <button onclick="filterTopics(document.getElementById('tsearch').value); document.getElementById('tsearch').blur();" aria-label="Search topics" style="background:var(--text);color:#fff;border:none;border-radius:50px;padding:10px 18px;font-family:var(--font);font-size:0.9rem;font-weight:800;cursor:pointer;min-height:44px;min-width:44px;flex-shrink:0"><span aria-hidden="true">🔍</span></button>
+          <input type="search" id="tsearch" placeholder="e.g. blue badge, PIP, cooking…" autocomplete="off" aria-controls="topic-list" aria-label="Search topics across the site" class="theme-input" style="font-size:1rem;border:2px solid var(--border);border-radius:50px;padding:14px 20px;flex:1;min-width:0;box-sizing:border-box;min-height:44px;box-shadow:0 1px 4px rgba(0,0,0,0.06)">
+          <button onclick="filterTopics(document.getElementById('tsearch').value); document.getElementById('tsearch').blur();" aria-label="Search topics" style="background:var(--yellow2);color:#000;border:none;border-radius:50px;padding:10px 18px;font-family:var(--font);font-size:1rem;font-weight:800;cursor:pointer;min-height:44px;min-width:44px;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,0.1)"><span aria-hidden="true">🔍</span></button>
         </div>
         <p id="topic-hint" aria-live="polite" style="font-size:0.8rem;color:var(--text2);margin:8px 0 0;line-height:1.4;display:none"></p>
         <div class="cond-list" id="topic-list" role="list" style="display:none;max-height:60vh;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;margin-top:10px;border-radius:12px;background:#fff">
@@ -6343,7 +6343,53 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
       <p style="margin-top:10px">We cover the best services in detail in the <button onclick="showPage('livingwell')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Listening &amp; Audiobooks section of our Everyday Guide</button> — including RNIB Talking Books, Calibre, the free Libby app and BBC Sounds.</p>
     </div>
 
-    <div class="lc">
+        <div class="lc" id="apps-quick-reference" style="border-color:var(--yellow)">
+      <h2>📲 Useful apps — quick reference</h2>
+      <p>A scannable list of the apps that help most, grouped by what they do. Most are free. Always check the price and reviews in your phone's app store before downloading, as apps change.</p>
+      <p style="font-size:0.85rem;color:var(--text2);margin-top:6px"><strong>Last checked: June 2026.</strong> Apps change often — if something here looks out of date, please verify in your app store.</p>
+
+      <h3 style="margin-top:18px">🗣️ Read text aloud (camera apps)</h3>
+      <ul style="line-height:1.9">
+      <li><strong>Seeing AI</strong> — reads printed and handwritten text, identifies products, money and colours, and describes scenes and people. <em>(iPhone and Android; free)</em> &nbsp; <a href="https://apps.apple.com/app/seeing-ai/id999062298" aria-label="App Store — Seeing AI (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">App Store <span aria-hidden="true">↗</span></a> &nbsp; <a href="https://play.google.com/store/apps/details?id=com.microsoft.seeingai" aria-label="Google Play — Seeing AI (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">Google Play <span aria-hidden="true">↗</span></a></li>
+      <li><strong>Envision AI</strong> — reads text, recognises faces, describes surroundings, with an AI assistant called Ally. <em>(iPhone and Android; free, with an optional paid upgrade)</em> &nbsp; <a href="https://www.letsenvision.com/app" aria-label="Download — Envision AI (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">Download <span aria-hidden="true">↗</span></a></li>
+      <li><strong>Google Lookout</strong> — reads text, labels, currency and describes objects; designed for Android. <em>(Android; free)</em> &nbsp; <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.accessibility.reveal" aria-label="Google Play — Google Lookout (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">Google Play <span aria-hidden="true">↗</span></a></li>
+      </ul>
+
+      <h3 style="margin-top:18px">👥 Live human help</h3>
+      <ul style="line-height:1.9">
+      <li><strong>Be My Eyes</strong> — connects you by live video to a sighted volunteer for everyday tasks, plus a built-in AI photo-describer. <em>(iPhone and Android; free)</em> &nbsp; <a href="https://apps.apple.com/app/be-my-eyes/id905177575" aria-label="App Store — Be My Eyes (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">App Store <span aria-hidden="true">↗</span></a> &nbsp; <a href="https://play.google.com/store/apps/details?id=com.bemyeyes.bemyeyes" aria-label="Google Play — Be My Eyes (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">Google Play <span aria-hidden="true">↗</span></a></li>
+      <li><strong>Aira</strong> — connects you to professionally trained agents for more complex tasks like airports or forms. <em>(iPhone and Android; paid, with a short amount of free time)</em> &nbsp; <a href="https://apps.apple.com/app/aira-explorer/id1590186766" aria-label="App Store — Aira (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">App Store <span aria-hidden="true">↗</span></a> &nbsp; <a href="https://play.google.com/store/apps/details?id=io.aira.explorer" aria-label="Google Play — Aira (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">Google Play <span aria-hidden="true">↗</span></a></li>
+      </ul>
+
+      <h3 style="margin-top:18px">🧭 Getting around (navigation)</h3>
+      <ul style="line-height:1.9">
+      <li><strong>VoiceVista / Soundscape</strong> — uses 3D audio to build awareness of your surroundings as you move. Free versions include VoiceVista and the community Soundscape apps. <em>(iPhone; free)</em> &nbsp; <a href="https://apps.apple.com/app/voicevista/id6451066573" aria-label="App Store — VoiceVista (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">App Store <span aria-hidden="true">↗</span></a></li>
+      <li><strong>BlindSquare</strong> — describes points of interest and intersections as you travel, developed with blind users. <em>(iPhone; paid, one-off purchase)</em> &nbsp; <a href="https://apps.apple.com/app/blindsquare/id500557255" aria-label="App Store — BlindSquare (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">App Store <span aria-hidden="true">↗</span></a></li>
+      <li><strong>Lazarillo</strong> — announces nearby places, streets and intersections as you walk. <em>(iPhone and Android; free)</em> &nbsp; <a href="https://lazarillo.app" aria-label="Download — Lazarillo (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">Download <span aria-hidden="true">↗</span></a></li>
+      </ul>
+
+      <h3 style="margin-top:18px">📚 Books and newspapers</h3>
+      <ul style="line-height:1.9">
+      <li><strong>Dolphin EasyReader</strong> — gives access to RNIB Talking Books, newspapers and over 40 accessible libraries, with text and audio synced. <em>(iPhone and Android; free)</em> &nbsp; <a href="https://apps.apple.com/app/dolphin-easyreader/id1161662515" aria-label="App Store — Dolphin EasyReader (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">App Store <span aria-hidden="true">↗</span></a> &nbsp; <a href="https://play.google.com/store/apps/details?id=com.yourdolphin.easyreader" aria-label="Google Play — Dolphin EasyReader (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">Google Play <span aria-hidden="true">↗</span></a></li>
+      <li><strong>RNIB Talking Books on Alexa</strong> — listen to Talking Books on an Amazon Alexa smart speaker, which remembers your place. <em>(Alexa smart speaker; free with RNIB membership)</em></li>
+      </ul>
+
+      <h3 style="margin-top:18px">💷 Identifying money and products</h3>
+      <ul style="line-height:1.9">
+      <li><strong>Cash Reader</strong> — identifies banknotes by sound or vibration, works offline, supports many currencies. <em>(iPhone and Android; free for basic use, with a paid upgrade)</em> &nbsp; <a href="https://cashreader.app/en/" aria-label="Download — Cash Reader (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">Download <span aria-hidden="true">↗</span></a></li>
+      <li><strong>Seeing AI, Envision and Lookout</strong> (listed above) also identify products, barcodes and colours.</li>
+      </ul>
+
+      <h3 style="margin-top:18px">📱 Already built into your phone (free)</h3>
+      <ul style="line-height:1.9">
+      <li><strong>VoiceOver</strong> (iPhone) and <strong>TalkBack</strong> (Android) read the screen aloud so you can use the phone by touch and sound. Turn on via Settings → Accessibility.</li>
+      <li><strong>Magnifier</strong> and <strong>large text</strong> are built in too — no download needed. See the sections above for how to switch them on.</li>
+      </ul>
+
+      <p style="margin-top:14px;font-size:0.9rem;color:var(--text2)">Not sure which to try first? <strong>Seeing AI</strong> (or <strong>Be My Eyes</strong> for human help) are free, popular starting points. The RNIB Helpline on <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a> can help you choose.</p>
+    </div>
+
+<div class="lc">
       <h2>🤝 Where to get help and training</h2>
       <p>You should never have to work this out by trial and error. Free, patient help is available:</p>
       <ul style="margin-top:10px;line-height:1.9">
@@ -11241,6 +11287,7 @@ var TOPIC_INDEX = [
   {label:"Work Tips for Sight Loss", page:"livingwell$work", icon:"💼", section:"Daily Life", keywords:"work everyday tips office colleagues meeting screen"},
 
   // TECH & APPS (with real content)
+  {label:"Useful apps — quick reference list", page:"assistivetech#apps-quick-reference", icon:"📲", section:"Tech", keywords:"apps app list quick reference best apps free apps download seeing ai be my eyes envision lookout aira voicevista soundscape blindsquare lazarillo easyreader talking books cash reader voiceover talkback android iphone navigation reading money"},
   {label:"Seeing AI, Be My Eyes & sighted-help apps", page:"help#apps", icon:"📱", section:"Tech", keywords:"seeing ai be my eyes app microsoft volunteer help describe ocr read text envision aira lookout"},
   {label:"Audio Description (TV, streaming, cinema)", page:"help#ad", icon:"📺", section:"Tech", keywords:"audio description ad bbc iplayer itvx channel 4 netflix disney sky prime amazon cinema films movies"},
 
