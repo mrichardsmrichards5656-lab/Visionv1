@@ -11,6 +11,8 @@
 <meta name="description" content="Sight Atlas UK — Free UK resource for people living with sight conditions. Information on Stargardt, AMD, Glaucoma, Retinitis Pigmentosa and more. Benefits, assistive technology, research and support.">
 
 <meta name="theme-color" content="#f5b800">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 
@@ -2332,6 +2334,13 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
     aria-label="Dismiss install banner"><span aria-hidden="true">✕</span></button>
 
+</div>
+
+<!-- INSTALL BANNER for Chrome / Edge / Android (shown only when the browser says the site can be installed) -->
+<div id="install-banner" role="region" aria-label="Install Sight Atlas as an app" style="display:none;background:var(--yellow2);color:#000;padding:12px 64px 12px 16px;text-align:center;font-family:var(--font);font-size:0.88rem;font-weight:700;line-height:1.6;position:relative">
+  📱 <strong>Install Sight Atlas</strong> on your device for one-tap access. No app store needed.
+  <button id="install-btn" type="button" style="margin:6px 0 0 8px;background:#000;color:#fff;border:2px solid #000;border-radius:8px;padding:8px 18px;min-height:44px;font-family:var(--font);font-size:0.9rem;font-weight:800;cursor:pointer">Install app</button>
+  <button id="install-dismiss" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:1.3rem;cursor:pointer;color:#000;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center" aria-label="Dismiss install banner"><span aria-hidden="true">✕</span></button>
 </div>
 
 
@@ -12370,7 +12379,30 @@ if (_siteName) {
 
 
 
-/* Service worker removed - was using blob URL which browsers reject */
+/* Install button for Chrome / Edge / Android. The service worker itself is registered from /sw.js at the end of the page. */
+(function() {
+  var deferred = null;
+  var banner = document.getElementById('install-banner');
+  var btn = document.getElementById('install-btn');
+  var closeBtn = document.getElementById('install-dismiss');
+  function wasDismissed() { try { return localStorage.getItem('install-banner-dismissed') === '1'; } catch (e) { return false; } }
+  function hide() { if (banner) banner.style.display = 'none'; }
+  window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    deferred = e;
+    if (banner && !wasDismissed()) banner.style.display = 'block';
+  });
+  if (btn) btn.addEventListener('click', function() {
+    if (!deferred) return;
+    deferred.prompt();
+    deferred.userChoice.then(function() { deferred = null; hide(); });
+  });
+  if (closeBtn) closeBtn.addEventListener('click', function() {
+    hide();
+    try { localStorage.setItem('install-banner-dismissed', '1'); } catch (e) {}
+  });
+  window.addEventListener('appinstalled', function() { deferred = null; hide(); });
+})();
 
 
 /* ─── A11Y ENHANCEMENTS ─── */
@@ -14063,6 +14095,13 @@ function showTrialsForCondition(key) {
 
 </div>
 
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    try { navigator.serviceWorker.register('/sw.js').catch(function () {}); } catch (e) {}
+  });
+}
+</script>
 </body>
 
 </html>
