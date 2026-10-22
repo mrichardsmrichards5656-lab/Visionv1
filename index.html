@@ -12405,6 +12405,8 @@ if (_siteName) {
   }
   window.updateInstallBarLang = applyLang;
   applyLang();
+  function remember() { try { localStorage.setItem('install-bar-hidden', '1'); } catch (e) {} }
+  if (standalone) remember();
   function wasDismissed() { try { return localStorage.getItem('install-bar-hidden') === '1'; } catch (e) { return false; } }
   function show() { if (!standalone && !wasDismissed()) banner.style.display = 'flex'; }
   function hide() { banner.style.display = 'none'; }
@@ -12417,7 +12419,7 @@ if (_siteName) {
   btn.addEventListener('click', function() {
     if (deferred) {
       deferred.prompt();
-      deferred.userChoice.then(function() { deferred = null; hide(); });
+      deferred.userChoice.then(function(choice) { deferred = null; if (choice && choice.outcome === 'accepted') remember(); hide(); });
     } else {
       hintShown = true;
       btn.style.display = 'none';
@@ -12428,7 +12430,7 @@ if (_siteName) {
     hide();
     try { localStorage.setItem('install-bar-hidden', '1'); } catch (e) {}
   });
-  window.addEventListener('appinstalled', function() { deferred = null; hide(); });
+  window.addEventListener('appinstalled', function() { deferred = null; remember(); hide(); });
 })();
 
 
