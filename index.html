@@ -2337,10 +2337,10 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 </div>
 
 <!-- INSTALL BAR for Android / Chrome / Edge: slim, theme-aware. Shown when the browser offers install, or (Android Chrome) with a menu hint if it does not. -->
-<div id="install-banner" role="region" aria-label="Install Sight Atlas as an app" style="display:none;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;background:var(--card2);color:var(--text);border-bottom:1px solid var(--border);padding:4px 56px 4px 12px;position:relative;font-family:var(--font);font-size:0.85rem;font-weight:700;line-height:1.4;text-align:center">
-  <span id="install-text">Install Sight Atlas as an app</span>
-  <button id="install-btn" type="button" style="background:var(--text);color:var(--card);border:2px solid var(--text);border-radius:8px;padding:4px 16px;min-height:44px;font-family:var(--font);font-size:0.85rem;font-weight:800;cursor:pointer">Install</button>
-  <button id="install-dismiss" type="button" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--text);min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center" aria-label="Dismiss install bar"><span aria-hidden="true">✕</span></button>
+<div id="install-banner" role="region" aria-label="Install Sight Atlas as an app" style="display:none;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center;background:var(--card2);color:var(--text);border-bottom:1px solid var(--border);padding:4px 8px;position:relative;font-family:var(--font);font-size:0.85rem;font-weight:700;line-height:1.4;text-align:center">
+  <span id="install-text">Install as an app</span>
+  <button id="install-btn" type="button" style="background:var(--text);color:var(--card);border:2px solid var(--text);border-radius:8px;padding:4px 12px;min-height:44px;font-family:var(--font);font-size:0.85rem;font-weight:800;cursor:pointer">Install</button>
+  <button id="install-dismiss" type="button" style="background:none;border:2px solid var(--border);border-radius:8px;color:var(--text);padding:4px 8px;min-height:44px;font-family:var(--font);font-size:0.78rem;font-weight:700;cursor:pointer">Don't show again</button>
 </div>
 
 
@@ -10785,6 +10785,7 @@ function syncLangButton() {
   var wl = document.getElementById('welsh-label');
   if (wi) wi.textContent = _isWelsh ? 'EN' : 'CY';
   if (wl) wl.textContent = _isWelsh ? 'English' : 'Welsh';
+  if (window.updateInstallBarLang) window.updateInstallBarLang();
 }
 
 
@@ -12392,7 +12393,19 @@ if (_siteName) {
   var inApp = /FBAN|FBAV|FB_IAB|Instagram|; wv\)/i.test(ua);
   var standalone = false;
   try { standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true; } catch (e) {}
-  function wasDismissed() { try { return localStorage.getItem('install-banner-dismissed') === '1'; } catch (e) { return false; } }
+  var hintShown = false;
+  var HINT_EN = 'Tap the menu button (three dots, top right), then Install app or Add to home screen.';
+  var HINT_CY = 'Tapiwch y botwm dewislen (tri dot, ar y brig ar y dde), yna Gosod ap neu Ychwanegu at y sgrin gartref.';
+  function applyLang() {
+    var cy = window._isWelsh === true;
+    text.textContent = hintShown ? (cy ? HINT_CY : HINT_EN) : (cy ? 'Gosod fel ap' : 'Install as an app');
+    btn.textContent = cy ? 'Gosod' : 'Install';
+    closeBtn.textContent = cy ? 'Peidio â dangos eto' : "Don't show again";
+    banner.setAttribute('aria-label', cy ? 'Gosod Sight Atlas fel ap' : 'Install Sight Atlas as an app');
+  }
+  window.updateInstallBarLang = applyLang;
+  applyLang();
+  function wasDismissed() { try { return localStorage.getItem('install-bar-hidden') === '1'; } catch (e) { return false; } }
   function show() { if (!standalone && !wasDismissed()) banner.style.display = 'flex'; }
   function hide() { banner.style.display = 'none'; }
   window.addEventListener('beforeinstallprompt', function(e) {
@@ -12406,13 +12419,14 @@ if (_siteName) {
       deferred.prompt();
       deferred.userChoice.then(function() { deferred = null; hide(); });
     } else {
-      text.textContent = 'Tap the menu button (three dots, top right), then Install app or Add to home screen.';
+      hintShown = true;
       btn.style.display = 'none';
+      applyLang();
     }
   });
   closeBtn.addEventListener('click', function() {
     hide();
-    try { localStorage.setItem('install-banner-dismissed', '1'); } catch (e) {}
+    try { localStorage.setItem('install-bar-hidden', '1'); } catch (e) {}
   });
   window.addEventListener('appinstalled', function() { deferred = null; hide(); });
 })();
