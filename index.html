@@ -27,7 +27,7 @@
 <!-- Open Graph (Facebook, WhatsApp, Slack, etc.) -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sight Atlas UK — Free UK Resource for Sight Loss & Eye Conditions">
-<meta property="og:description" content="Free UK resource for people living with sight conditions. Clear information on 28 eye conditions, benefits help, assistive technology, and current research.">
+<meta property="og:description" content="Free UK resource for people living with sight conditions. Clear information on 34 eye conditions, benefits help, assistive technology, and current research.">
 <meta property="og:site_name" content="Sight Atlas UK">
 <meta property="og:url" content="https://sightatlasuk.co.uk/">
 <meta property="og:image" content="https://sightatlasuk.co.uk/og-image.png">
@@ -40,7 +40,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sight Atlas UK — Free UK Resource for Sight Loss & Eye Conditions">
-<meta name="twitter:description" content="Free UK resource for people living with sight conditions. 28 conditions covered with benefits help, assistive tech, and current research.">
+<meta name="twitter:description" content="Free UK resource for people living with sight conditions. 34 conditions covered with benefits help, assistive tech, and current research.">
 <meta name="twitter:image" content="https://sightatlasuk.co.uk/og-image.png">
 <meta name="twitter:image:alt" content="Sight Atlas UK — Free UK resource for people living with sight loss"><!-- Structured data for search engines -->
 <script type="application/ld+json">
@@ -48,7 +48,7 @@
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
   "name": "Sight Atlas UK",
-  "description": "Free UK resource for people living with sight conditions. Information on 28 eye conditions including Stargardt disease, AMD, glaucoma, retinitis pigmentosa, and more. Covers benefits, assistive technology, and current research.",
+  "description": "Free UK resource for people living with sight conditions. Information on 34 eye conditions including Stargardt disease, AMD, glaucoma, retinitis pigmentosa, and more. Covers benefits, assistive technology, and current research.",
   "inLanguage": ["en-GB", "cy-GB"],
   "audience": {
     "@type": "PeopleAudience",
@@ -2442,6 +2442,12 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
       <button class="sidebar-link" onclick="showConditionWelsh('microphthalmia')"><span aria-hidden="true">👁</span> Microffthalmia</button>
       <button class="sidebar-link" onclick="showConditionWelsh('congenitalcataracts')"><span aria-hidden="true">👓</span> Cataractau Cynhenid</button>
       <button class="sidebar-link" onclick="showConditionWelsh('cataracts')"><span aria-hidden="true">👓</span> Cataractau</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('rvo')"><span aria-hidden="true">🩸</span> Rhwystr Gwythïen y Retina</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('dryeye')"><span aria-hidden="true">💧</span> Clefyd Llygaid Sych</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('uveitis')"><span aria-hidden="true">🔥</span> Uveitis</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('gca')"><span aria-hidden="true">🩺</span> Arteritis Cell Anferth</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('amblyopia')"><span aria-hidden="true">👀</span> Llygad Diog a Llygad Croes</button>
+      <button class="sidebar-link" onclick="showConditionWelsh('ted')"><span aria-hidden="true">🦋</span> Clefyd Llygaid y Thyroid</button>
 
       <button class="sidebar-link" onclick="showConditionWelsh('keratoconus')"><span aria-hidden="true">◬</span> Keratoconus</button>
 
@@ -2505,7 +2511,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
         <span style="font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--yellow);display:block;margin-bottom:6px">Dod o hyd i'ch cyflwr</span>
 
-        <p style="font-size:1rem;font-weight:800;color:var(--text);margin:0 0 14px;line-height:1.4">Chwiliwch drwy 28 cyflwr llygad — cael ymchwil, canllawiau ymarferol, cymorth budd-daliadau a chefnogaeth</p>
+        <p style="font-size:1rem;font-weight:800;color:var(--text);margin:0 0 14px;line-height:1.4">Chwiliwch drwy 34 cyflwr llygad — cael ymchwil, canllawiau ymarferol, cymorth budd-daliadau a chefnogaeth</p>
 
         <div style="margin-bottom:8px">
           <input type="search" id="search-cy" placeholder="e.e. AMD, glawcoma, RP…" autocomplete="off" aria-controls="cond-list-cy" aria-label="Chwilio am gyflyrau llygad" class="theme-input" style="font-size:1rem;border:2px solid var(--border);border-radius:50px;padding:14px 20px;width:100%;box-sizing:border-box;box-shadow:0 1px 4px rgba(0,0,0,0.06);margin-bottom:10px">
@@ -2610,6 +2616,12 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
         <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('ocularmelanoma') : showCondition('ocularmelanoma')"><span aria-hidden="true">👁</span> Ocular Melanoma <span class="cond-arrow" aria-hidden="true">→</span></button></div>
         <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('congenitalcataracts') : showCondition('congenitalcataracts')"><span aria-hidden="true">👓</span> Congenital Cataracts <span class="cond-arrow" aria-hidden="true">→</span></button></div>
         <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('cataracts') : showCondition('cataracts')"><span aria-hidden="true">👓</span> Cataracts <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('rvo') : showCondition('rvo')"><span aria-hidden="true">🩸</span> Cataracts <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('dryeye') : showCondition('dryeye')"><span aria-hidden="true">💧</span> Cataracts <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('uveitis') : showCondition('uveitis')"><span aria-hidden="true">🔥</span> Cataracts <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('gca') : showCondition('gca')"><span aria-hidden="true">🩺</span> Cataracts <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('amblyopia') : showCondition('amblyopia')"><span aria-hidden="true">👀</span> Cataracts <span class="cond-arrow" aria-hidden="true">→</span></button></div>
+        <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('ted') : showCondition('ted')"><span aria-hidden="true">🦋</span> Cataracts <span class="cond-arrow" aria-hidden="true">→</span></button></div>
         <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('keratoconus') : showCondition('keratoconus')"><span aria-hidden="true">◬</span> Keratoconus <span class="cond-arrow" aria-hidden="true">→</span></button></div>
         <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('hemianopia') : showCondition('hemianopia')"><span aria-hidden="true">◑</span> Hemianopia <span class="cond-arrow" aria-hidden="true">→</span></button></div>
         <div role="listitem" class="cond-item"><button class="cond-btn" onclick="_isWelsh ? showConditionWelsh('maculahole') : showCondition('maculahole')"><span aria-hidden="true">◎</span> Macular Hole <span class="cond-arrow" aria-hidden="true">→</span></button></div>
@@ -2775,6 +2787,12 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
       <button class="sidebar-link" onclick="showCondition('microphthalmia')"><span aria-hidden="true">👁</span> Microphthalmia</button> <button class="sidebar-link" onclick="showCondition('coloboma')"><span aria-hidden="true">👁</span> Coloboma</button> <button class="sidebar-link" onclick="showCondition('ocularmelanoma')"><span aria-hidden="true">👁</span> Ocular Melanoma</button>
       <button class="sidebar-link" onclick="showCondition('congenitalcataracts')"><span aria-hidden="true">👓</span> Congenital Cataracts</button>
       <button class="sidebar-link" onclick="showCondition('cataracts')"><span aria-hidden="true">👓</span> Cataracts</button>
+      <button class="sidebar-link" onclick="showCondition('rvo')"><span aria-hidden="true">🩸</span> Retinal Vein Occlusion</button>
+      <button class="sidebar-link" onclick="showCondition('dryeye')"><span aria-hidden="true">💧</span> Dry Eye Disease</button>
+      <button class="sidebar-link" onclick="showCondition('uveitis')"><span aria-hidden="true">🔥</span> Uveitis</button>
+      <button class="sidebar-link" onclick="showCondition('gca')"><span aria-hidden="true">🩺</span> Giant Cell Arteritis</button>
+      <button class="sidebar-link" onclick="showCondition('amblyopia')"><span aria-hidden="true">👀</span> Lazy Eye & Squint</button>
+      <button class="sidebar-link" onclick="showCondition('ted')"><span aria-hidden="true">🦋</span> Thyroid Eye Disease</button>
 <button class="sidebar-link" onclick="showCondition('keratoconus')"><span aria-hidden="true">◬</span> Keratoconus</button>
 
 <button class="sidebar-link" onclick="showCondition('hemianopia')"><span aria-hidden="true">◑</span> Hemianopia</button>
@@ -2960,7 +2978,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
       <!-- SEARCH CONDITIONS — PROMINENT FIRST -->
       <div style="background:var(--card);border:3px solid var(--yellow);border-radius:20px;padding:20px 20px 16px;margin-bottom:20px;box-shadow:var(--shadow)">
         <p style="font-size:0.8rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--yellow);margin:0 0 6px">Find your condition</p>
-        <p style="font-size:1rem;font-weight:600;color:var(--text);margin:0 0 14px;line-height:1.55">Search 28 eye conditions — get research, practical guides, benefits help &amp; support</p>
+        <p style="font-size:1rem;font-weight:600;color:var(--text);margin:0 0 14px;line-height:1.55">Search 34 eye conditions — get research, practical guides, benefits help &amp; support</p>
         <div style="margin-bottom:8px">
           <input type="search" id="csearch" placeholder="e.g. AMD, glaucoma, RP…" autocomplete="off" aria-controls="cond-list" aria-label="Search eye conditions" class="theme-input" style="font-size:1rem;border:2px solid var(--border);border-radius:50px;padding:14px 20px;width:100%;box-sizing:border-box;box-shadow:0 1px 4px rgba(0,0,0,0.06);margin-bottom:10px">
           <button onclick="filterConds(document.getElementById('csearch').value); document.getElementById('csearch').blur();" aria-label="Search conditions" class="search-go-btn" style="background:var(--yellow2);color:#000;border:none;border-radius:50px;padding:14px 24px;font-family:var(--font);font-size:1rem;font-weight:900;cursor:pointer;width:100%;min-height:50px"><span aria-hidden="true">🔍</span> Search</button>
@@ -3305,6 +3323,12 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
       <button class="sidebar-link" onclick="showCondition('microphthalmia')"><span aria-hidden="true">👁</span> Microphthalmia</button> <button class="sidebar-link" onclick="showCondition('coloboma')"><span aria-hidden="true">👁</span> Coloboma</button> <button class="sidebar-link" onclick="showCondition('ocularmelanoma')"><span aria-hidden="true">👁</span> Ocular Melanoma</button>
       <button class="sidebar-link" onclick="showCondition('congenitalcataracts')"><span aria-hidden="true">👓</span> Congenital Cataracts</button>
       <button class="sidebar-link" onclick="showCondition('cataracts')"><span aria-hidden="true">👓</span> Cataracts</button>
+      <button class="sidebar-link" onclick="showCondition('rvo')"><span aria-hidden="true">🩸</span> Retinal Vein Occlusion</button>
+      <button class="sidebar-link" onclick="showCondition('dryeye')"><span aria-hidden="true">💧</span> Dry Eye Disease</button>
+      <button class="sidebar-link" onclick="showCondition('uveitis')"><span aria-hidden="true">🔥</span> Uveitis</button>
+      <button class="sidebar-link" onclick="showCondition('gca')"><span aria-hidden="true">🩺</span> Giant Cell Arteritis</button>
+      <button class="sidebar-link" onclick="showCondition('amblyopia')"><span aria-hidden="true">👀</span> Lazy Eye & Squint</button>
+      <button class="sidebar-link" onclick="showCondition('ted')"><span aria-hidden="true">🦋</span> Thyroid Eye Disease</button>
 
       <div class="sidebar-divider"></div>
 
@@ -4865,6 +4889,8 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
     <div class="lc"><h2>A</h2>
 
+      <p style="margin-top:10px"><strong>Amblyopia (Lazy Eye)</strong> — Reduced vision in one eye that did not develop properly in childhood, even though the eye itself may be healthy. Treated with glasses, patching or drops, ideally before age 7. See Lazy Eye and Squint.</p>
+
       <p><strong>Acuity (Visual Acuity)</strong> — A measure of how clearly you can see detail. Expressed as a fraction, e.g. 6/6 is normal vision, 6/60 means you see at 6 metres what a normally sighted person sees at 60 metres.</p>
 
       <p style="margin-top:10px"><strong>AMD (Age-related Macular Degeneration)</strong> — See Macular Degeneration.</p>
@@ -4944,6 +4970,8 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
 
     <div class="lc"><h2>G</h2>
+
+      <p style="margin-top:10px"><strong>GCA (Giant Cell Arteritis)</strong> — Inflammation of the arteries, especially at the temples, that can cause sight loss if not treated quickly. Needs urgent medical attention. See Giant Cell Arteritis.</p>
 
       <p><strong>Gene Therapy</strong> — A treatment that delivers a corrected or replacement gene directly into cells, typically using a viral vector. Luxturna is the first approved gene therapy for an inherited retinal condition.</p>
 
@@ -5043,6 +5071,8 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
     <div class="lc"><h2>R</h2>
 
+      <p style="margin-top:10px"><strong>RVO (Retinal Vein Occlusion)</strong> — A blockage in a vein that drains blood from the retina, causing leakage and swelling. See Retinal Vein Occlusion.</p>
+
       <p><strong>Retina</strong> — The light-sensitive layer at the back of the eye that converts light into electrical signals sent to the brain via the optic nerve.</p>
 
       <p style="margin-top:10px"><strong>RPE (Retinal Pigment Epithelium)</strong> — A layer of cells behind the photoreceptors that supports and nourishes them. Damaged in Stargardt disease, AMD, and other macular conditions.</p>
@@ -5054,6 +5084,8 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
 
     <div class="lc"><h2>S</h2>
+
+      <p style="margin-top:10px"><strong>Squint (Strabismus)</strong> — When the eyes do not line up and point in different directions. See Lazy Eye and Squint.</p>
 
       <p><strong>Scotopic Vision</strong> — Vision in dim or dark conditions, primarily using rod photoreceptors. Normal in achromatopsia (which affects cones only). Impaired early in retinitis pigmentosa.</p>
 
@@ -5067,9 +5099,19 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
     <div class="lc"><h2>T</h2>
 
+      <p style="margin-top:10px"><strong>TED (Thyroid Eye Disease)</strong> — An autoimmune condition, mostly linked to Graves' disease, that causes inflammation of the tissues around the eyes. See Thyroid Eye Disease.</p>
+
       <p><strong>Tonometry</strong> — Measurement of the pressure inside the eye (IOP). A standard part of glaucoma assessment. The familiar "puff of air" test at an optician is a form of tonometry.</p>
 
       <p style="margin-top:10px"><strong>TalkBack</strong> — Google's built-in screen reader for Android devices. Reads all on-screen content aloud.</p>
+
+    </div>
+
+
+
+    <div class="lc"><h2>U</h2>
+
+      <p><strong>Uveitis</strong> — Inflammation inside the eye, sometimes called iritis. Needs prompt treatment to protect sight. See Uveitis.</p>
 
     </div>
 
@@ -6794,6 +6836,12 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
         <option value="achromatopsia">Achromatopsia</option>
         <option value="cone">Cone Dystrophy</option>
         <option value="cataracts">Cataracts</option>
+        <option value="rvo">Retinal Vein Occlusion</option>
+        <option value="dryeye">Dry Eye Disease</option>
+        <option value="uveitis">Uveitis</option>
+        <option value="gca">Giant Cell Arteritis</option>
+        <option value="amblyopia">Lazy Eye (Amblyopia) and Squint</option>
+        <option value="ted">Thyroid Eye Disease</option>
         <option value="best">Best Disease</option>
         <option value="glaucoma">Glaucoma</option>
         <option value="diabetic">Diabetic Retinopathy / DMO</option>
@@ -8549,6 +8597,835 @@ cataracts:{
   ]
 },
 
+rvo:{
+  "helpline": {
+    "org": "Macular Society Helpline",
+    "number": "0300 3030 111",
+    "hours": "Mon–Fri 9am–5pm",
+    "link": "https://www.macularsociety.org"
+  },
+  "name": "Retinal Vein Occlusion",
+  "cy": {
+    "name": "Rhwystr Gwythïen y Retina",
+    "what": "Mae rhwystr gwythïen y retina (RVO) yn floc mewn gwythïen sy'n draenio gwaed o'r retina, y meinwe sy'n sensitif i olau yng nghefn y llygad. Fel arfer mae'n effeithio ar un llygad. Os caiff cangen fach o'r wythïen ei rhwystro, fe'i gelwir yn RVO cangen (BRVO); os caiff y brif wythïen ei rhwystro, fe'i gelwir yn RVO canolog (CRVO). Gall y gollyngiad a'r chwyddo sy'n deillio o hyn niweidio'r macwla, sy'n rheoli golwg canolog.",
+    "howAffects": "Gall symptomau gynnwys golwg aneglur mewn un llygad, smotyn tywyll, golwg donnog neu afluniaidd, ac anhawster darllen neu weld manylion. Gallant ymddangos dros oriau neu ddyddiau. Mae BRVO fel arfer yn achosi symptomau mwynach na CRVO. Os daw symptomau'n sydyn neu os ydynt yn ddifrifol, neu os ydych yn gweld fflachiadau golau, fflotwyr newydd, neu gysgod neu len ar draws eich golwg, ewch i adran ddamweiniau llygaid neu A&E ar unwaith, gan y gallai fod yn ddatgysylltiad retinol.",
+    "diagnosis": "Gwneir y diagnosis ar ôl archwiliad llygaid, sgan OCT, angiograffeg fflworesin (llifyn a chwistrellir i'r fraich) a phrofion gwaed gyda gwiriad pwysedd gwaed.",
+    "whoAffects": "Mae'n effeithio'n bennaf ar bobl dros 65 oed ac mae'n gysylltiedig â phwysedd gwaed uchel. Mae ffactorau risg yn cynnwys pwysedd gwaed uchel, diabetes, colesterol uchel, problemau ceulo, BMI uchel, deiet afiach ac ysmygu. Weithiau ni cheir hyd i achos.",
+    "researchSummary": "Mae pigiadau gwrth-VEGF, laser ac mewnblaniadau steroid ar gael ar y GIG i drin chwyddo'r macwla ar ôl RVO. Mae'r rhan fwyaf o bobl yn cael golwg da ar ôl triniaeth, er efallai na fydd cystal ag o'r blaen. Mae'r Macular Society yn cynnig llinell gymorth, cwnsela a grwpiau cymorth."
+  },
+  "what": "A retinal vein occlusion (RVO) is a blockage in a vein that drains blood from the retina, the light-sensitive tissue at the back of the eye. It usually affects one eye. When a small branch vein is blocked it is called a branch RVO (BRVO); when the main vein is blocked it is called a central RVO (CRVO). The resulting leakage and swelling can damage the macula, which handles central vision.",
+  "howAffects": "Symptoms can include blurred vision in one eye, a dark spot, wavy or distorted vision, and difficulty reading or seeing detail. They can appear over hours or days. A branch RVO usually causes milder symptoms than a central RVO. If symptoms come on suddenly or are severe, or you see flashing lights, new floaters, or a shadow or curtain across your vision, go to an eye casualty or A&E straight away, because these can signal a retinal detachment, which needs urgent treatment.",
+  "diagnosis": "Diagnosis is made after an eye examination, an OCT scan, fluorescein angiography (dye injected into the arm) and blood tests with a blood pressure check.",
+  "whoAffects": "RVO mostly affects people over 65 and is linked to high blood pressure. Risk factors include high blood pressure, diabetes, high cholesterol, clotting problems, high BMI, an unhealthy diet and smoking. Sometimes no cause is found.",
+  "research": [
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Anti-VEGF Injections",
+      "body": "Injections into the eye reduce leakage and swelling at the macula and slow the growth of new blood vessels. They are repeated over several months. NICE has recommended ranibizumab and aflibercept for macular oedema after RVO (NICE guidance TA283, TA305 and TA409, applying in England; other UK nations have their own approval processes). Side effects are usually temporary, such as discomfort, redness, blurred vision and floaters.",
+      "link": "https://www.macularsociety.org/macular-disease/macular-conditions/retinal-vein-occlusion/"
+    },
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Laser and Steroid Implants",
+      "body": "Laser can seal leaking vessels and is usually combined with injections. A steroid implant placed in the eye can reduce swelling and may be used in some people. Your eye specialist will explain which suits you.",
+      "link": "https://www.macularsociety.org/macular-disease/macular-conditions/retinal-vein-occlusion/"
+    },
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Monitoring Without Treatment",
+      "body": "Not everyone needs treatment straight away. A branch RVO is more likely than a central RVO to improve on its own, so your clinic may monitor you first. Follow-up usually lasts about two years, and RVO can recur or affect the other eye, so regular checks continue after treatment.",
+      "link": "https://www.macularsociety.org/macular-disease/macular-conditions/retinal-vein-occlusion/"
+    },
+    {
+      "tag": "trial",
+      "label": "🔗 Find UK Trials",
+      "title": "NIHR Be Part of Research — Retinal Vein Occlusion",
+      "body": "Search for current UK research studies on retinal vein occlusion that you could take part in.",
+      "link": "https://bepartofresearch.nihr.ac.uk/results/search-results?query=retinal+vein+occlusion&location="
+    }
+  ],
+  "guides": [
+    {
+      "n": 1,
+      "title": "Know the Emergency Signs",
+      "body": "Sudden or severe sight loss, new floaters, flashing lights, or a shadow or curtain across your vision need same-day attention at an eye casualty or A&E. Do not wait to see if it settles."
+    },
+    {
+      "n": 2,
+      "title": "Ask Your GP About Your General Health",
+      "body": "RVO is linked to high blood pressure, diabetes, high cholesterol and smoking. Ask your GP to check your blood pressure, cholesterol and blood sugar, and for help to stop smoking if you smoke."
+    },
+    {
+      "n": 3,
+      "title": "Expect Repeat Appointments",
+      "body": "Injections are normally given at regular visits over several months, and treatment can take time to work. Keeping every appointment matters, because missed checks can mean missed swelling."
+    },
+    {
+      "n": 4,
+      "title": "Watch Both Eyes",
+      "body": "RVO can recur or affect the other eye. Covering each eye in turn now and then can help you notice a change. If you do, contact your eye clinic or optometrist promptly."
+    },
+    {
+      "n": 5,
+      "title": "Ask for a Low Vision Assessment",
+      "body": "If your sight stays reduced, ask your ophthalmologist or optometrist for a referral to an NHS low vision service — the assessment is free. They work from what you actually struggle with (reading, screens, faces, getting about) and match aids and lighting to it. Optical magnifiers are normally loaned free for as long as they help; electronic and desktop video magnifiers are usually not funded."
+    }
+  ],
+  "tech": [
+    {
+      "cat": "Magnification",
+      "title": "Magnifiers (Optical, Handheld & Desktop)",
+      "body": "Optical magnifiers may be loaned free via an NHS low-vision clinic; electronic handheld magnifiers and larger desktop video magnifiers offer more power for longer reading.",
+      "price": "Optical aids often free via NHS; electronic and desktop magnifiers are usually bought privately and prices vary widely"
+    },
+    {
+      "cat": "Free App",
+      "title": "Seeing AI and Be My Eyes",
+      "body": "Two free smartphone apps. Seeing AI uses the phone camera to read text aloud and describe products and scenes; Be My Eyes connects you with a sighted volunteer by video for help with a task.",
+      "price": "Free"
+    },
+    {
+      "cat": "Screen Settings",
+      "title": "Dark Mode, Contrast & Zoom",
+      "body": "Larger text, high contrast, dark mode and screen zoom are built into all phones, tablets and computers and can reduce glare and strain at no cost.",
+      "price": "Free — built in"
+    }
+  ],
+  "support": [
+    {
+      "title": "Macular Society",
+      "body": "Information on retinal vein occlusion, a helpline on 0300 3030 111 (Mon–Fri 9am–5pm), free counselling, befriending and local support groups. Advisers are experienced but not medically qualified, so clinical questions need your eye team.",
+      "link": "https://www.macularsociety.org/macular-disease/macular-conditions/retinal-vein-occlusion/"
+    },
+    {
+      "title": "RNIB (UK)",
+      "body": "Helpline 0303 123 9999, low vision aids, talking books, and benefits advice.",
+      "link": "https://www.rnib.org.uk"
+    }
+  ],
+  "benefits": [
+    {
+      "n": 1,
+      "title": "Certificate of Vision Impairment (CVI)",
+      "body": "Ask your consultant ophthalmologist about a Certificate of Vision Impairment, which is free. Registration can open access to local authority rehabilitation and support, free NHS sight tests and travel concessions. A council tax reduction is sometimes possible but is not automatic, so ask your council. Whether you qualify depends on how much sight you have, and your consultant decides."
+    },
+    {
+      "n": 2,
+      "title": "Personal Independence Payment (PIP)",
+      "body": "Awards depend on how your sight affects daily life, not on the diagnosis. Apply at gov.uk/pip or call 0800 917 2222. In Scotland, Adult Disability Payment replaces PIP — apply through Social Security Scotland on 0800 182 2222. RNIB can help with the form on 0303 123 9999."
+    },
+    {
+      "n": 3,
+      "title": "Access to Work",
+      "body": "A government grant towards workplace adjustments and specialist equipment. Apply at gov.uk/access-to-work. There is currently a long waiting list, so apply as early as you can."
+    }
+  ],
+  "livingWith": [
+    {
+      "title": "Driving",
+      "body": "Many people can keep driving after RVO. The Macular Society says you must tell the DVLA only if both eyes are affected; the DVLA decides whether you meet the standard. Ask your optician or eye clinic how your own vision measures up.",
+      "link": "https://www.gov.uk/eye-conditions-and-driving"
+    },
+    {
+      "title": "Reading and Screen Use",
+      "body": "Larger text, high contrast and dark mode, a magnifier and good lighting all help. Vision often improves as the brain adapts and the better eye takes over, so give treatment time to work."
+    },
+    {
+      "title": "Work and Study",
+      "body": "Screen magnification, good non-glare lighting and adjusted monitor positioning are reasonable adjustments that employers must consider. Access to Work can help fund specialist equipment, though waits are long, so apply early."
+    }
+  ]
+},
+
+dryeye:{
+  "helpline": {
+    "org": "RNIB Helpline",
+    "number": "0303 123 9999",
+    "hours": "Mon–Fri 8am–8pm, Sat 9am–1pm",
+    "link": "https://www.rnib.org.uk"
+  },
+  "name": "Dry Eye Disease",
+  "cy": {
+    "name": "Clefyd Llygaid Sych",
+    "what": "Mae llygaid sych yn gyffredin ac fel arfer nid ydynt yn ddifrifol. Maent yn digwydd pan nad ydych yn gwneud digon o ddagrau, neu pan fo'ch dagrau'n anweddu'n rhy gyflym. Mae hyn yn gadael wyneb y llygad yn anghyfforddus ac weithiau'n effeithio ar eich golwg.",
+    "howAffects": "Gall y symptomau gynnwys llygaid cosi, dolurus, graeanog neu goch, golwg aneglur, sensitifrwydd i olau a llygaid dyfrllyd (mwy dyfrllyd nag arfer). Ewch i adran ddamweiniau a brys ar unwaith os bydd eich golwg yn newid (megis llinellau tonnog, fflachiadau golau neu golli golwg), os yw golau'n brifo, neu os oes gennych lygad coch gyda chur pen difrifol a chyfog.",
+    "diagnosis": "Gall optometrydd neu feddyg teulu ganfod yr achos a'ch cynghori. Os na cheir achos, efallai y cewch eich cyfeirio at arbenigwr llygaid (offthalmolegydd) am brofion.",
+    "whoAffects": "Mae llygaid sych yn fwy tebygol os ydych dros 50 oed, yn gwisgo lensys cyffwrdd, yn edrych ar sgriniau am gyfnodau hir, yn byw neu'n gweithio mewn amgylcheddau sych, llychlyd, mwglyd neu gyda thymheru aer, yn ysmygu neu'n yfed llawer o alcohol, neu'n cymryd rhai meddyginiaethau. Mae cyflyrau fel blepharitis, syndrom Sjögren a lwpws hefyd yn gysylltiedig.",
+    "researchSummary": "Mae hunanofal (glanhau amrannau, seibiannau o sgriniau, lleithydd) a chynhyrchion fferyllfa fel diferion, geliau ac eli yn helpu llawer o bobl. Gall optometrydd neu feddyg teulu drin unrhyw achos sylfaenol. Nid yw dagrau annigonol fel arfer yn arwain at golli golwg difrifol."
+  },
+  "what": "Dry eyes are common and usually not serious. They happen when you don't make enough tears, or your tears evaporate too quickly. This leaves the surface of the eye uncomfortable and can sometimes affect your sight. This page is about dry eye disease; blepharitis (inflamed eyelids), which often goes with it, has its own page.",
+  "howAffects": "Symptoms can include itchy, sore, gritty or red eyes, blurry vision, sensitivity to light, and eyes that are more watery than normal. Get emergency help (999 or A&E) if your vision changes, such as wavy lines, flashing lights or loss of sight, if looking at light hurts, or if you have a red eye with severe headache and nausea. A painful red eye, or a red eye while wearing contact lenses, needs urgent advice from a GP or NHS 111, as it could be an infection.",
+  "diagnosis": "An optometrist (optician) or GP can look for the cause and recommend treatment. If no cause is found, they may refer you to an eye specialist (ophthalmologist) for tests. See them if dry eyes last more than a few weeks despite home treatment, or if the shape of your eyelids changes.",
+  "whoAffects": "You are more likely to have dry eyes if you are over 50, wear contact lenses, spend long periods looking at screens, work or live in air-conditioned, heated, dry, dusty or smoky places, smoke or drink a lot of alcohol, or take certain medicines, including some antidepressants and blood pressure medicines. Conditions such as blepharitis, Sjögren's syndrome and lupus are also linked.",
+  "research": [
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Self-Care First",
+      "body": "The NHS recommends cleaning your eyelids daily (a warm, not hot, flannel, gentle massage of the lids, then wiping away oil and crusts with warm cotton wool), taking regular screen breaks with the screen just below eye level, using a humidifier, resting your eyes from contact lenses, and avoiding smoke and dry or dusty rooms.",
+      "link": "https://www.nhs.uk/conditions/dry-eyes/"
+    },
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Pharmacy Products and Advice",
+      "body": "A pharmacist can advise on eye drops, gels and ointments, and tell you whether you need to see an optician or GP.",
+      "link": "https://www.nhs.uk/conditions/dry-eyes/"
+    },
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Treating the Underlying Cause",
+      "body": "Your optician or GP can look for a cause, such as a medicine, blepharitis or an autoimmune condition, and treat or manage it. Do not stop a prescribed medicine without medical advice, even if you think it is causing dry eyes.",
+      "link": "https://www.nhs.uk/conditions/dry-eyes/"
+    },
+    {
+      "tag": "trial",
+      "label": "🔗 Find UK Trials",
+      "title": "NIHR Be Part of Research — Dry Eye",
+      "body": "Search for current UK research studies on dry eye that you could take part in.",
+      "link": "https://bepartofresearch.nihr.ac.uk/results/search-results?query=dry+eye&location="
+    }
+  ],
+  "guides": [
+    {
+      "n": 1,
+      "title": "Keep Your Eyelids Clean",
+      "body": "Daily lid care is the NHS's main self-care advice: a warm flannel on closed lids, a gentle massage, then wipe away oil, crusts and debris with warm cotton wool. See our Blepharitis page if your lids are sore or crusty."
+    },
+    {
+      "n": 2,
+      "title": "Take Screen Breaks",
+      "body": "We blink less when we look at screens, so tears evaporate faster. Take regular breaks and position the screen just below eye level."
+    },
+    {
+      "n": 3,
+      "title": "Look After Contact Lenses",
+      "body": "Rest your eyes by wearing glasses instead of contact lenses for a while. A red eye while wearing contact lenses needs urgent advice from a GP or NHS 111."
+    },
+    {
+      "n": 4,
+      "title": "Know When It Is Urgent",
+      "body": "Get urgent help for a painful red eye. Go to A&E or call 999 if your vision changes, light hurts your eyes, or you have a very dark red eye or a red eye with severe headache and nausea. Do not drive yourself."
+    },
+    {
+      "n": 5,
+      "title": "See Your Optician If It Persists",
+      "body": "If dry eyes last more than a few weeks despite home treatment, or the shape of your eyelids changes, see an optician or GP to find the cause."
+    }
+  ],
+  "tech": [
+    {
+      "cat": "Screen Settings",
+      "title": "Dark Mode, Contrast & Zoom",
+      "body": "Larger text, high contrast, dark mode and screen zoom are built into all phones, tablets and computers and can reduce glare and strain at no cost.",
+      "price": "Free — built in"
+    },
+    {
+      "cat": "Environment",
+      "title": "Humidifier and Screen Position",
+      "body": "The NHS suggests using a humidifier to add moisture to the air and positioning your screen just below eye level.",
+      "price": "Humidifier prices vary; screen position is free"
+    }
+  ],
+  "support": [
+    {
+      "title": "NHS — Dry Eyes",
+      "body": "Plain-English NHS advice on symptoms, causes, self-care, when to see an optician or GP, and urgent warning signs.",
+      "link": "https://www.nhs.uk/conditions/dry-eyes/"
+    },
+    {
+      "title": "RNIB (UK)",
+      "body": "Helpline 0303 123 9999, low vision aids, talking books, and benefits advice.",
+      "link": "https://www.rnib.org.uk"
+    }
+  ],
+  "benefits": [
+    {
+      "n": 1,
+      "title": "Free NHS Sight Tests",
+      "body": "Sight tests are free on the NHS if you are aged 60 or over (throughout the UK), and for everyone in Scotland. They are also free for people with diabetes or glaucoma, people registered as sight impaired, and some others, including children under 16. Ask your optician."
+    },
+    {
+      "n": 2,
+      "title": "Reasonable Adjustments at Work",
+      "body": "If dry eyes make screen work uncomfortable, ask your employer about adjustments such as screen breaks, positioning and lighting. Employers must consider reasonable adjustments. Access to Work may help if the effect is significant; apply at gov.uk/access-to-work."
+    }
+  ],
+  "livingWith": [
+    {
+      "title": "Screens and Environment",
+      "body": "Take regular breaks, avoid smoky, dusty and dry rooms, and think about heating and air conditioning, which dry the air."
+    },
+    {
+      "title": "Driving",
+      "body": "Dry eyes do not normally stop you driving, but blurred vision can affect your sight. Blink and rest your eyes, and stop driving if your vision is not clear. Ask your optician if you are unsure."
+    },
+    {
+      "title": "Work and Study",
+      "body": "Screen magnification, good non-glare lighting and adjusted monitor positioning are reasonable adjustments that employers must consider. Access to Work can help fund specialist equipment, though waits are long, so apply early."
+    }
+  ]
+},
+
+uveitis:{
+  "helpline": {
+    "org": "RNIB Helpline",
+    "number": "0303 123 9999",
+    "hours": "Mon–Fri 8am–8pm, Sat 9am–1pm",
+    "link": "https://www.rnib.org.uk"
+  },
+  "name": "Uveitis",
+  "cy": {
+    "name": "Uveitis",
+    "what": "Mae uveitis, a elwir weithiau'n iritis, yn llid y tu mewn i ran o'r llygad. Mae'n brin. Fel arfer mae'n effeithio ar un llygad, er y gall effeithio ar y ddau. Mae angen ei drin yn gyflym oherwydd, os na chaiff ei drin, gall achosi niwed hirdymor i'r golwg a hyd yn oed dallineb.",
+    "howAffects": "Gall y symptomau gynnwys poen yn y llygad (yn aml yn waeth wrth ddarllen), llygaid coch neu ddyfrllyd, golwg llai neu aneglur, sensitifrwydd i olau, a fflachiadau neu fflotwyr. Gallant ymddangos o fewn oriau neu ddyddiau, neu ddatblygu dros wythnosau neu fisoedd. Weithiau nid oes symptomau. Ceisiwch apwyntiad meddyg teulu brys neu NHS 111 os oes gennych boen, sensitifrwydd i olau neu newidiadau golwg. Ewch i A&E neu ffoniwch 999 os collwch unrhyw olwg.",
+    "diagnosis": "Bydd meddyg teulu yn eich cyfeirio at offthalmolegydd, a welir fel arfer o fewn 24 awr. Bydd yr arbenigwr yn archwilio'ch llygad ac yn chwilio am achos.",
+    "whoAffects": "Yn aml ni wyddys yr achos. Mae sbardunau hysbys yn cynnwys cyflyrau hunanimiwn (megis sglerosis ymledol a spondylitis ankylosing), heintiau (herpes simplex, yr eryr a thocsoplasmosis), anaf i'r llygad ac, yn anaml, tyfiant yn y llygad.",
+    "researchSummary": "Fel arfer rhoddir meddyginiaethau i glirio unrhyw haint, lleihau llid ac ymlacio'r llygad. Ar gyfer achosion difrifol neu rai sy'n dychwelyd, gellir cynnig meddyginiaethau gwrthimiwnedd neu atalyddion TNF, therapi laser, cryotherapi neu lawdriniaeth. Mae triniaeth gynnar yn anelu at atal colli golwg."
+  },
+  "what": "Uveitis, sometimes called iritis, is inflammation inside part of the eye. It is rare. It usually affects one eye, though both can be affected. It needs prompt treatment because, if untreated, it can cause long-term sight loss and even blindness.",
+  "howAffects": "Symptoms can include eye pain (often worse when reading), red or watery eyes, reduced or blurred vision, sensitivity to light, and flashes or floaters. They can appear within hours or days, or develop over weeks or months. Sometimes there are no symptoms. Get an urgent GP appointment or call NHS 111 if you have eye pain, light sensitivity, changes in vision or a very red eye. Go to A&E or call 999 if you lose any vision.",
+  "diagnosis": "A GP will refer you to an ophthalmologist, who is usually seen within 24 hours. The specialist will examine your eye and look for a cause.",
+  "whoAffects": "The cause is often unknown. Known triggers include autoimmune conditions (such as multiple sclerosis and ankylosing spondylitis), infections (herpes simplex, shingles and toxoplasmosis), eye injury and, rarely, a growth in the eye.",
+  "research": [
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Treatment to Clear Infection and Calm Inflammation",
+      "body": "Treatment is usually a combination of medicines to clear any infection, reduce inflammation, and relax the eye and ease pain. The aim is to prevent long-term sight loss. Uveitis usually improves quickly with treatment but can come back, so follow-up checks matter.",
+      "link": "https://www.nhs.uk/conditions/uveitis/"
+    },
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Stronger Treatment for Severe or Recurring Uveitis",
+      "body": "If uveitis is severe or keeps returning, specialists may use immunosuppressant medicines or TNF inhibitors, laser phototherapy, cryotherapy, or eye surgery. Follow-up checks look at how well treatment is working, side effects and complications.",
+      "link": "https://www.nhs.uk/conditions/uveitis/"
+    },
+    {
+      "tag": "trial",
+      "label": "🔗 Find UK Trials",
+      "title": "NIHR Be Part of Research — Uveitis",
+      "body": "Search for current UK research studies on uveitis that you could take part in.",
+      "link": "https://bepartofresearch.nihr.ac.uk/results/search-results?query=uveitis&location="
+    }
+  ],
+  "guides": [
+    {
+      "n": 1,
+      "title": "Treat It as Urgent",
+      "body": "Eye pain, light sensitivity, blurred vision, flashes or floaters, or a very red eye need an urgent GP appointment or NHS 111. Any loss of vision needs A&E or 999. Early treatment is the best protection for your sight."
+    },
+    {
+      "n": 2,
+      "title": "Keep Your Follow-Up Appointments",
+      "body": "Uveitis can return, and complications can develop without obvious symptoms. Follow-up checks look at how treatment is working and whether there are side effects."
+    },
+    {
+      "n": 3,
+      "title": "Take Medicines as Prescribed",
+      "body": "Do not stop eye drops or tablets early or change the dose without advice from your eye team, even if the eye feels better."
+    },
+    {
+      "n": 4,
+      "title": "Ask About the Cause",
+      "body": "Uveitis can be linked to autoimmune conditions or infections. Ask your eye specialist whether tests are needed, and tell any new doctor that you have had uveitis."
+    },
+    {
+      "n": 5,
+      "title": "Do Not Wait if Symptoms Return",
+      "body": "Uveitis can come back. If pain, redness or blurred vision return, do not wait for your next appointment: contact your eye clinic, GP or NHS 111 promptly."
+    }
+  ],
+  "tech": [
+    {
+      "cat": "Screen Settings",
+      "title": "Dark Mode, Contrast & Zoom",
+      "body": "Larger text, high contrast, dark mode and screen zoom are built into all phones, tablets and computers and can reduce glare and strain at no cost.",
+      "price": "Free — built in"
+    },
+    {
+      "cat": "Magnification",
+      "title": "Magnifiers (Optical, Handheld & Desktop)",
+      "body": "Optical magnifiers may be loaned free via an NHS low-vision clinic; electronic handheld magnifiers and larger desktop video magnifiers offer more power for longer reading.",
+      "price": "Optical aids often free via NHS; electronic and desktop magnifiers are usually bought privately and prices vary widely"
+    },
+    {
+      "cat": "Free App",
+      "title": "Seeing AI and Be My Eyes",
+      "body": "Two free smartphone apps. Seeing AI uses the phone camera to read text aloud and describe products and scenes; Be My Eyes connects you with a sighted volunteer by video for help with a task.",
+      "price": "Free"
+    }
+  ],
+  "support": [
+    {
+      "title": "NHS — Uveitis",
+      "body": "NHS information on symptoms, causes, urgent warning signs, treatment and complications.",
+      "link": "https://www.nhs.uk/conditions/uveitis/"
+    },
+    {
+      "title": "RNIB (UK)",
+      "body": "Helpline 0303 123 9999, low vision aids, talking books, and benefits advice.",
+      "link": "https://www.rnib.org.uk"
+    }
+  ],
+  "benefits": [
+    {
+      "n": 1,
+      "title": "Certificate of Vision Impairment (CVI)",
+      "body": "Ask your consultant ophthalmologist about a Certificate of Vision Impairment, which is free. Registration can open access to local authority rehabilitation and support, free NHS sight tests and travel concessions. A council tax reduction is sometimes possible but is not automatic, so ask your council. Whether you qualify depends on how much sight you have, and your consultant decides. Uveitis can sometimes cause lasting sight loss; if it has, ask your eye clinic."
+    },
+    {
+      "n": 2,
+      "title": "Personal Independence Payment (PIP)",
+      "body": "Awards depend on how your sight affects daily life, not on the diagnosis. Apply at gov.uk/pip or call 0800 917 2222. In Scotland, Adult Disability Payment replaces PIP — apply through Social Security Scotland on 0800 182 2222. RNIB can help with the form on 0303 123 9999."
+    },
+    {
+      "n": 3,
+      "title": "Access to Work",
+      "body": "A government grant towards workplace adjustments and specialist equipment. Apply at gov.uk/access-to-work. There is currently a long waiting list, so apply as early as you can."
+    }
+  ],
+  "livingWith": [
+    {
+      "title": "Light Sensitivity",
+      "body": "Light sensitivity is common during flare-ups. Dimmer indoor lighting and dark mode on screens may be more comfortable; ask your optometrist about tinted lenses."
+    },
+    {
+      "title": "Driving",
+      "body": "You must meet the legal eyesight standard to drive, and you must tell the DVLA if your eyes do not meet it. If your vision is blurred or your eyes are painful or light-sensitive, do not drive. Ask your eye clinic if you are unsure.",
+      "link": "https://www.gov.uk/eye-conditions-and-driving"
+    },
+    {
+      "title": "Work and Study",
+      "body": "Screen magnification, good non-glare lighting and adjusted monitor positioning are reasonable adjustments that employers must consider. Access to Work can help fund specialist equipment, though waits are long, so apply early."
+    }
+  ]
+},
+
+gca:{
+  "helpline": {
+    "org": "RNIB Helpline",
+    "number": "0303 123 9999",
+    "hours": "Mon–Fri 8am–8pm, Sat 9am–1pm",
+    "link": "https://www.rnib.org.uk"
+  },
+  "name": "Giant Cell Arteritis",
+  "cy": {
+    "name": "Arteritis Cell Anferth",
+    "what": "Mae arteritis cell anferth (GCA), a elwir hefyd yn arteritis amserol, yn llid yn y rhydwelïau, yn enwedig y rhai wrth y temlau. Mae'r GIG yn ei ddisgrifio fel cyflwr difrifol sydd angen triniaeth frys. Os na chaiff ei drin yn gyflym, gall achosi strôc a dallineb.",
+    "howAffects": "Gall y symptomau gynnwys cur pen difrifol aml, poen neu dynerwch wrth y temlau neu groen y pen, poen yn yr ên wrth fwyta neu siarad, a phroblemau golwg megis golwg dwbl neu golli golwg mewn un llygad neu'r ddau. Mae symptomau cyffredinol yn cynnwys symptomau tebyg i'r ffliw, colli pwysau anfwriadol, hwyliau isel a blinder. Os ydych yn meddwl y gallai fod gennych GCA, ceisiwch apwyntiad meddyg teulu brys neu ffoniwch NHS 111. Mae angen apwyntiad ar yr un diwrnod gydag arbenigwr llygaid ar gyfer problemau golwg.",
+    "diagnosis": "Bydd meddyg teulu yn gofyn am eich symptomau, yn archwilio'r temlau ac yn trefnu profion gwaed, yna'n eich cyfeirio at arbenigwr. Gall yr arbenigwr drefnu sgan uwchsain o'r temlau a/neu fiopsi o'r rhydweli amserol dan anesthetig lleol.",
+    "whoAffects": "Mae rhai pobl â GCA hefyd yn datblygu polymyalgia rheumatica (PMR), sy'n achosi poen a stiffrwydd yn y cyhyrau yn yr ysgwyddau, y gwddf a'r cluniau. Dywed y GIG y bydd hyd at 1 o bob 5 person â PMR yn datblygu GCA, ac mae PMR yn effeithio'n bennaf ar bobl dros 65 oed.",
+    "researchSummary": "Fel arfer rhoddir steroidau (prednisolone) ar unwaith, hyd yn oed cyn cadarnhau'r diagnosis, oherwydd y risg o golli golwg. Gellir defnyddio meddyginiaethau eraill i leihau'r dos steroid. Peidiwch â rhoi'r gorau i steroidau yn sydyn."
+  },
+  "what": "Giant cell arteritis (GCA), also called temporal arteritis, is inflammation of the arteries, especially those at the temples. The NHS describes it as serious and in need of urgent treatment. If it is not treated quickly it can cause stroke and blindness.",
+  "howAffects": "Symptoms can include frequent severe headaches, pain or tenderness at the temples or scalp, jaw pain when eating or talking, and vision problems such as double vision or loss of sight in one or both eyes. General symptoms include flu-like symptoms, unintentional weight loss, low mood and tiredness. If you think you might have GCA, get an urgent GP appointment or call NHS 111. Vision problems need a same-day appointment with an eye specialist.",
+  "diagnosis": "A GP will ask about your symptoms, examine your temples and arrange blood tests, then refer you to a specialist. The specialist may arrange an ultrasound scan of the temples and/or a biopsy of the temporal artery under local anaesthetic.",
+  "whoAffects": "Some people with GCA also develop polymyalgia rheumatica (PMR), which causes pain and stiffness in the muscles of the shoulders, neck and hips. The NHS says up to 1 in 5 people with PMR go on to develop GCA, and PMR mostly affects people over 65.",
+  "research": [
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Steroid Treatment (Prednisolone)",
+      "body": "Treatment is usually prednisolone, a steroid, started before the diagnosis is confirmed because of the risk of vision loss. A high dose is given for a few weeks, then reduced to a lower dose, which may continue for several years. A small number of people need steroids for life. Do not stop steroids suddenly unless a doctor advises it.",
+      "link": "https://www.nhs.uk/conditions/giant-cell-arteritis/"
+    },
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Protecting Your Body While on Steroids",
+      "body": "Other medicines may be added, including low-dose aspirin, stomach-protecting medicines, bisphosphonates to reduce osteoporosis risk, and immunosuppressants to help reduce the steroid dose and prevent relapse.",
+      "link": "https://www.nhs.uk/conditions/giant-cell-arteritis/"
+    },
+    {
+      "tag": "trial",
+      "label": "🔗 Find UK Trials",
+      "title": "NIHR Be Part of Research — Giant Cell Arteritis",
+      "body": "Search for current UK research studies on giant cell arteritis that you could take part in.",
+      "link": "https://bepartofresearch.nihr.ac.uk/results/search-results?query=giant+cell+arteritis&location="
+    }
+  ],
+  "guides": [
+    {
+      "n": 1,
+      "title": "Act the Same Day",
+      "body": "If you have a new, severe headache with scalp or temple tenderness or jaw pain when eating, especially with any change in vision, get urgent help the same day: NHS 111, an urgent GP appointment, or A&E. Treatment started quickly aims to protect your sight."
+    },
+    {
+      "n": 2,
+      "title": "Never Stop Steroids Suddenly",
+      "body": "Do not stop prednisolone without medical advice."
+    },
+    {
+      "n": 3,
+      "title": "Know About Polymyalgia Rheumatica",
+      "body": "GCA and PMR often go together. Stiffness in the shoulders, neck or hips lasting over 45 minutes after waking is a sign of PMR, so mention it to your doctor."
+    },
+    {
+      "n": 4,
+      "title": "Bone and Stomach Protection",
+      "body": "Long-term steroids can affect bones and the stomach. Your doctor may prescribe protective medicines; take them as advised."
+    },
+    {
+      "n": 5,
+      "title": "Ask for a Low Vision Assessment",
+      "body": "If your sight stays reduced, ask your ophthalmologist or optometrist for a referral to an NHS low vision service — the assessment is free. They work from what you actually struggle with (reading, screens, faces, getting about) and match aids and lighting to it. Optical magnifiers are normally loaned free for as long as they help; electronic and desktop video magnifiers are usually not funded."
+    }
+  ],
+  "tech": [
+    {
+      "cat": "Magnification",
+      "title": "Magnifiers (Optical, Handheld & Desktop)",
+      "body": "Optical magnifiers may be loaned free via an NHS low-vision clinic; electronic handheld magnifiers and larger desktop video magnifiers offer more power for longer reading.",
+      "price": "Optical aids often free via NHS; electronic and desktop magnifiers are usually bought privately and prices vary widely"
+    },
+    {
+      "cat": "Free App",
+      "title": "Seeing AI and Be My Eyes",
+      "body": "Two free smartphone apps. Seeing AI uses the phone camera to read text aloud and describe products and scenes; Be My Eyes connects you with a sighted volunteer by video for help with a task.",
+      "price": "Free"
+    },
+    {
+      "cat": "Screen Settings",
+      "title": "Dark Mode, Contrast & Zoom",
+      "body": "Larger text, high contrast, dark mode and screen zoom are built into all phones, tablets and computers and can reduce glare and strain at no cost.",
+      "price": "Free — built in"
+    }
+  ],
+  "support": [
+    {
+      "title": "NHS — Giant Cell Arteritis",
+      "body": "NHS information on symptoms, urgent action, diagnosis and treatment.",
+      "link": "https://www.nhs.uk/conditions/giant-cell-arteritis/"
+    },
+    {
+      "title": "NHS — Polymyalgia Rheumatica",
+      "body": "NHS information on PMR, which often goes together with giant cell arteritis.",
+      "link": "https://www.nhs.uk/conditions/polymyalgia-rheumatica/"
+    },
+    {
+      "title": "RNIB (UK)",
+      "body": "Helpline 0303 123 9999, low vision aids, talking books, and benefits advice.",
+      "link": "https://www.rnib.org.uk"
+    }
+  ],
+  "benefits": [
+    {
+      "n": 1,
+      "title": "Certificate of Vision Impairment (CVI)",
+      "body": "Ask your consultant ophthalmologist about a Certificate of Vision Impairment, which is free. Registration can open access to local authority rehabilitation and support, free NHS sight tests and travel concessions. A council tax reduction is sometimes possible but is not automatic, so ask your council. Whether you qualify depends on how much sight you have, and your consultant decides. If GCA has caused lasting sight loss, ask your consultant."
+    },
+    {
+      "n": 2,
+      "title": "Personal Independence Payment (PIP)",
+      "body": "Awards depend on how your sight affects daily life, not on the diagnosis. Apply at gov.uk/pip or call 0800 917 2222. In Scotland, Adult Disability Payment replaces PIP — apply through Social Security Scotland on 0800 182 2222. RNIB can help with the form on 0303 123 9999."
+    },
+    {
+      "n": 3,
+      "title": "Access to Work",
+      "body": "A government grant towards workplace adjustments and specialist equipment. Apply at gov.uk/access-to-work. There is currently a long waiting list, so apply as early as you can."
+    }
+  ],
+  "livingWith": [
+    {
+      "title": "Living with Long-Term Steroids",
+      "body": "You will have regular check-ups while your steroid dose is reduced. Report new headaches, jaw pain or vision changes straight away, because symptoms can return as the dose falls."
+    },
+    {
+      "title": "Driving",
+      "body": "If GCA has affected your vision, the law requires you to meet the eyesight standard and to tell the DVLA if you do not. Ask your eye specialist how your own vision measures up.",
+      "link": "https://www.gov.uk/eye-conditions-and-driving"
+    },
+    {
+      "title": "Work and Study",
+      "body": "Screen magnification, good non-glare lighting and adjusted monitor positioning are reasonable adjustments that employers must consider. Access to Work can help fund specialist equipment, though waits are long, so apply early."
+    }
+  ]
+},
+
+amblyopia:{
+  "helpline": {
+    "org": "RNIB Helpline",
+    "number": "0303 123 9999",
+    "hours": "Mon–Fri 8am–8pm, Sat 9am–1pm",
+    "link": "https://www.rnib.org.uk"
+  },
+  "name": "Lazy Eye (Amblyopia) and Squint",
+  "cy": {
+    "name": "Llygad Diog (Amblyopia) a Llygad Croes",
+    "what": "Mae llygad diog (amblyopia) yn digwydd pan nad yw'r golwg mewn un llygad yn datblygu'n iawn; yn anaml mae'r ddau lygad yn cael eu heffeithio. Mae llygad croes (strabismus) yn digwydd pan nad yw'r llygaid yn alinio ac yn pwyntio i gyfeiriadau gwahanol. Gall un llygad droi i mewn, allan, i fyny neu i lawr tra bod y llall yn edrych yn syth. Gall llygad croes arwain at lygad diog, ond nid yw bob amser yn gwneud hynny. Mae'r ddau yn cael eu gweld amlaf mewn plant ond gall llygad croes ddatblygu ar unrhyw oedran.",
+    "howAffects": "Yn aml nid oes symptomau gyda llygad diog ac fe'i canfyddir yn ystod prawf llygaid. Gall arwyddion mewn plentyn gynnwys cau un llygad, llygaid yn pwyntio i gyfeiriadau gwahanol, anhawster dilyn gwrthrychau, gogwyddo'r pen, cur pen, bod yn drwsgl neu faglu'n aml. Gall llygad croes ddod gyda golwg dwbl. Os na chaiff ei drin yn gynnar, gall colli golwg fod yn barhaol.",
+    "diagnosis": "Fel arfer bydd optometrydd yn gwirio am lygad diog yn ystod prawf llygaid, gan edrych ar oleuadau neu lythrennau drwy lensys gwahanol ac weithiau gan ddefnyddio diferion llygaid. Gall meddyg teulu, ymwelydd iechyd neu optegydd gyfeirio at arbenigwr llygaid.",
+    "whoAffects": "Mae'n effeithio'n bennaf ar blant. Yn aml ni wyddys achos llygad croes; gall fod yn bresennol o enedigaeth neu ddatblygu'n ddiweddarach, a gall redeg mewn teuluoedd. Mewn plant, mae'n aml yn ymateb i broblem golwg sylfaenol megis byrwelediad, hirwelediad neu astigmatedd. Yn anaml, gall fod yn arwydd o retinoblastoma (canser llygad plentyndod), felly dylai plentyn â llygad croes weld meddyg teulu.",
+    "researchSummary": "Y nod yw gwella golwg y llygad gwannach gyda sbectol, clytio'r llygad cryfach neu ddiferion sy'n pylu golwg y llygad cryfach dros dro. Y driniaeth orau yw dechrau cyn 7 oed. Mae llawdriniaeth yn sythu'r llygaid ond nid yw'n gwella golwg. Mae profion llygaid am ddim i blant dan 16."
+  },
+  "what": "Lazy eye (amblyopia) is when vision in one eye does not develop properly; rarely, both eyes are affected. A squint (strabismus) is when the eyes do not line up and point in different directions. One eye may turn in, out, up or down while the other looks straight ahead. A squint can lead to a lazy eye but does not always. Both are seen most often in young children, though a squint can develop at any age.",
+  "howAffects": "A lazy eye often has no symptoms and is found during an eye test. Signs in a child can include closing one eye, eyes pointing in different directions, difficulty following objects, tilting the head, headaches, clumsiness or frequent tripping. A squint can come with double vision. If untreated in childhood, the loss of sight can be permanent. A squint that develops in an adult, or double vision at any age, needs prompt assessment.",
+  "diagnosis": "An optometrist usually checks for lazy eye during an eye test, looking at lights or letters through different lenses and sometimes using eye drops to examine the back of the eye. A GP, health visitor or optician can refer you to an eye specialist.",
+  "whoAffects": "Mainly children. The cause of a squint is often unknown; it can be present from birth or develop later, and can run in families. In children it is often the eye's response to an underlying vision problem such as short-sightedness, long-sightedness or astigmatism. Rarer causes include some infections, genetic conditions, cerebral palsy and other brain or nerve problems. Rarely, a squint can be a sign of retinoblastoma, a childhood eye cancer, so a child with a squint should see a GP.",
+  "research": [
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Glasses, Patching and Eye Drops",
+      "body": "The aim is to improve vision in the weaker eye. Treatment may include glasses, an eye patch over the stronger eye for a few hours a day for several months (usually with glasses), or eye drops that temporarily blur the stronger eye. Treatment should ideally start before the age of 7, while vision is still developing.",
+      "link": "https://www.nhs.uk/conditions/lazy-eye/"
+    },
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Squint Treatment",
+      "body": "Treatment is usually recommended because a squint is unlikely to resolve on its own. Options include glasses (if the squint stems from a vision problem such as long-sightedness), eye exercises, surgery to adjust the eye muscles when glasses alone aren't enough, and muscle injections that temporarily weaken eye muscles to improve alignment. If a lazy eye is also present it is usually treated first. Squint surgery straightens the eyes but does not improve vision.",
+      "link": "https://www.nhs.uk/conditions/squint/"
+    },
+    {
+      "tag": "trial",
+      "label": "🔗 Find UK Trials",
+      "title": "NIHR Be Part of Research — Lazy Eye and Squint",
+      "body": "Search for current UK research studies on lazy eye and squint that you could take part in.",
+      "link": "https://bepartofresearch.nihr.ac.uk/results/search-results?query=amblyopia+squint&location="
+    }
+  ],
+  "guides": [
+    {
+      "n": 1,
+      "title": "Get Your Child's Eyes Tested Early",
+      "body": "Lazy eye often has no obvious signs. Ask an optician to test your child's eyes if you notice head tilting, closing one eye, eyes pointing in different directions, or clumsiness, or if they haven't had a test in two years. NHS sight tests are free for children under 16 and for 16 to 18-year-olds in full-time education."
+    },
+    {
+      "n": 2,
+      "title": "See a GP About a Squint",
+      "body": "A child with a squint that is always present, or one that comes and goes after 3 months of age, should see a GP, health visitor or optician. Occasional squints in babies under 3 months are common and usually not a concern."
+    },
+    {
+      "n": 3,
+      "title": "Stick With Patching and Glasses",
+      "body": "Patching works best when it is done as advised for the full time. Ask your eye clinic for tips if your child finds it hard."
+    },
+    {
+      "n": 4,
+      "title": "Act Before Age 7",
+      "body": "Treatment works best when started early, ideally before the age of 7. If your child is older than 7, ask the clinic what is possible."
+    },
+    {
+      "n": 5,
+      "title": "Squint in Adults",
+      "body": "A squint or double vision that develops in adulthood needs prompt assessment by a GP or optician and an eye specialist. Surgery can still improve how the eyes line up after many years."
+    }
+  ],
+  "tech": [
+    {
+      "cat": "Screen Settings",
+      "title": "Dark Mode, Contrast & Zoom",
+      "body": "Larger text, high contrast, dark mode and screen zoom are built into all phones, tablets and computers and can reduce glare and strain at no cost.",
+      "price": "Free — built in"
+    },
+    {
+      "cat": "Treatment Aid",
+      "title": "Eye Patches and Glasses",
+      "body": "Your eye clinic will advise on patches. Children under 16 and 16 to 18-year-olds in full-time education may qualify for NHS optical vouchers towards glasses.",
+      "price": "Patches are low-cost; NHS optical vouchers help eligible children"
+    }
+  ],
+  "support": [
+    {
+      "title": "NHS — Lazy Eye",
+      "body": "NHS information on symptoms, screening, treatment and outlook.",
+      "link": "https://www.nhs.uk/conditions/lazy-eye/"
+    },
+    {
+      "title": "NHS — Squint",
+      "body": "NHS information on types, causes, when to get help and treatment in children and adults.",
+      "link": "https://www.nhs.uk/conditions/squint/"
+    },
+    {
+      "title": "RNIB (UK)",
+      "body": "Helpline 0303 123 9999, low vision aids, talking books, and benefits advice.",
+      "link": "https://www.rnib.org.uk"
+    }
+  ],
+  "benefits": [
+    {
+      "n": 1,
+      "title": "Free NHS Sight Tests",
+      "body": "Sight tests are free on the NHS if you are aged 60 or over (throughout the UK), and for everyone in Scotland. They are also free for people with diabetes or glaucoma, people registered as sight impaired, and some others, including children under 16. Ask your optician."
+    },
+    {
+      "n": 2,
+      "title": "Optical Vouchers for Glasses",
+      "body": "Children under 16 and 16 to 18-year-olds in full-time education may qualify for NHS optical vouchers towards glasses or contact lenses. Ask your optician."
+    },
+    {
+      "n": 3,
+      "title": "Disability Benefits for Children",
+      "body": "Most children with a lazy eye or squint don't qualify, but if sight is significantly affected, ask about Disability Living Allowance (in Scotland, Child Disability Payment). It depends on how much extra help the child needs, not the diagnosis."
+    }
+  ],
+  "livingWith": [
+    {
+      "title": "Support at School",
+      "body": "Tell the school early. Preferential seating and reduced copying from the board are straightforward reasonable adjustments, and your local authority's sensory support service can advise. Your local SENDIASS gives free independent advice."
+    },
+    {
+      "title": "Confidence and Wellbeing",
+      "body": "A visible squint can affect a child's or adult's confidence. Ask your eye clinic about treatment options and, if teasing is a problem, speak to the school."
+    },
+    {
+      "title": "Driving",
+      "body": "You must meet the legal eyesight standard to drive and tell the DVLA if you do not. Double vision from a squint can make driving unsafe. Ask your optician or eye clinic if unsure.",
+      "link": "https://www.gov.uk/eye-conditions-and-driving"
+    }
+  ]
+},
+
+ted:{
+  "helpline": {
+    "org": "RNIB Helpline",
+    "number": "0303 123 9999",
+    "hours": "Mon–Fri 8am–8pm, Sat 9am–1pm",
+    "link": "https://www.rnib.org.uk"
+  },
+  "name": "Thyroid Eye Disease",
+  "cy": {
+    "name": "Clefyd Llygaid y Thyroid",
+    "what": "Mae clefyd llygaid y thyroid (TED), a elwir hefyd yn orbitopathi Graves, yn anhwylder llidiol hunanimiwn sy'n effeithio ar y meinweoedd o amgylch y llygad. Fe'i gwelir yn bennaf mewn pobl â thyroid gorweithgar (hyperthyroidiaeth) a achosir gan glefyd Graves. Mae tua 1 o bob 4 person â chlefyd Graves yn datblygu problemau llygaid. Mae'r British Thyroid Foundation yn amcangyfrif bod tua 50,000 o bobl yn y DU yn cael eu heffeithio.",
+    "howAffects": "Gall y symptomau gynnwys llygaid yn syllu neu'n chwyddo, cochni a chwyddo'r llygaid a'r amrannau, graeaniogrwydd, sychder, llygaid dyfrllyd, sensitifrwydd i olau llachar, golwg aneglur neu ddwbl, a phoen yn neu y tu ôl i'r llygad. Gellir camgymryd y symptomau am alergedd neu gonjunctivitis. Ceisiwch gymorth meddygol ar unwaith a gofyn am atgyfeiriad ar frys i ganolfan llygaid arbenigol os yw'r symptomau'n gwaethygu dros ddyddiau neu wythnosau, os nad yw golwg aneglur yn gwella wrth amrantu, os yw lliwiau'n edrych yn llai llachar, neu os oes golwg dwbl wrth edrych ymlaen neu i lawr.",
+    "diagnosis": "Dylai gofal gynnwys offthalmolegydd (arbenigwr llygaid) ac endocrinolegydd (arbenigwr thyroid), yn ddelfrydol mewn clinig arbenigol gyda phrofiad rheolaidd o TED. Mae diagnosis cynnar yn hanfodol i driniaeth fod yn effeithiol.",
+    "whoAffects": "Ysmygu yw'r ffactor risg y gellir ei newid bwysicaf. Mae gan ysmygwyr tua dwywaith y risg o ddatblygu TED, ac ysmygwyr trwm tua wyth gwaith y risg, ac maent yn ymateb yn llai da i driniaeth. Mae rhoi'r gorau iddi yn helpu.",
+    "researchSummary": "Mae triniaethau'n cynnwys dagrau artiffisial, seleniwm ar gyfer TED gweithredol ysgafn, steroidau (yn well drwy wythïen), radiotherapi a llawdriniaeth ar ôl i'r llid setlo. Mae triniaethau biolegol mwy newydd yn bodoli ond yn gostus ac nid ydynt ar gael yn eang. Mae'r British Thyroid Foundation yn cynnig gwybodaeth a chymorth."
+  },
+  "what": "Thyroid eye disease (TED), also called Graves' orbitopathy, is an autoimmune inflammatory disorder that affects the tissues around the eye. It is mainly seen in people with an overactive thyroid (hyperthyroidism) caused by Graves' disease. About one in four people with Graves' disease develop eye problems. The British Thyroid Foundation estimates that around 50,000 people in the UK are affected.",
+  "howAffects": "Symptoms can include staring or bulging eyes, redness and swelling of the eyes and lids, grittiness, dryness, watery eyes, sensitivity to bright light, swollen or full-feeling eyelids, blurred or double vision, and pain in or behind the eye. Symptoms can be mistaken for allergy, hay fever or conjunctivitis. See a doctor without delay and ask for an immediate referral to a specialist eye centre if symptoms steadily worsen over days or weeks, blurred vision does not improve with blinking or covering each eye in turn, colours look less bright or differ between your eyes, you have double vision looking forward or downward, or you need to tilt your head to avoid double vision.",
+  "diagnosis": "Care should involve an ophthalmologist (eye specialist) and an endocrinologist (thyroid specialist), ideally at a specialist eye centre with regular TED experience. Early diagnosis is essential for treatment to be effective. Ask your GP to refer you if you have thyroid problems and eye symptoms.",
+  "whoAffects": "TED mainly affects people with Graves' disease, an autoimmune thyroid condition. Smoking is the most important risk you can change: smokers have roughly double the risk of developing TED, heavy smokers about eight times the risk, and smokers respond less well to treatment. Quitting helps, and there is no research yet on vaping and TED.",
+  "research": [
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Artificial Tears and Selenium",
+      "body": "Artificial tears help with mild dryness and irritation. For mild active TED, the British Thyroid Foundation says a six-month course of selenium (100mcg twice daily) may help. Ask your specialist before starting any supplement.",
+      "link": "https://www.btf-thyroid.org/thyroid-eye-disease/1000"
+    },
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Steroids, Radiotherapy and Surgery",
+      "body": "Steroids reduce inflammation, double vision, redness and swelling; given through a vein they are more effective, with fewer side effects, than tablets. Radiotherapy may be combined with steroids or immunosuppressants. Once inflammation has settled, surgery can include orbital decompression, eye muscle surgery for double vision, and eyelid surgery. Radioiodine should be avoided during active TED as it can worsen it.",
+      "link": "https://www.btf-thyroid.org/thyroid-eye-disease/1000"
+    },
+    {
+      "tag": "drug",
+      "label": "🌅 Horizon",
+      "title": "Newer Biologic Treatments",
+      "body": "Newer biologic medicines for TED exist but are costly, not widely available and carry side effects. NICE has an appraisal under way for one of them, teprotumumab, but it is not routinely available on the NHS. Ask your specialist about the current position.",
+      "link": "https://www.btf-thyroid.org/thyroid-eye-disease/1000"
+    },
+    {
+      "tag": "trial",
+      "label": "🔗 Find UK Trials",
+      "title": "NIHR Be Part of Research — Thyroid Eye Disease",
+      "body": "Search for current UK research studies on thyroid eye disease that you could take part in.",
+      "link": "https://bepartofresearch.nihr.ac.uk/results/search-results?query=thyroid+eye+disease&location="
+    }
+  ],
+  "guides": [
+    {
+      "n": 1,
+      "title": "Know the Urgent Warning Signs",
+      "body": "Steadily worsening symptoms, blurred vision that doesn't clear with blinking, duller colours, double vision looking forward or down, or needing to tilt your head all need an immediate referral to a specialist eye centre. Early treatment protects sight."
+    },
+    {
+      "n": 2,
+      "title": "Stop Smoking",
+      "body": "The British Thyroid Foundation calls this the most important step. Smoking raises the risk and reduces how well treatment works. Ask your GP or a stop-smoking service for help; the benefit seems to build after quitting."
+    },
+    {
+      "n": 3,
+      "title": "Ask for a Joint Clinic",
+      "body": "Look for a specialist eye centre that sees TED regularly and works with an endocrinologist. The British Thyroid Foundation and BOPSS list joint clinics."
+    },
+    {
+      "n": 4,
+      "title": "Keep Your Thyroid Under Control",
+      "body": "Ask your endocrinologist how your thyroid treatment affects your eyes. Avoid radioiodine during active TED unless your specialists advise otherwise."
+    },
+    {
+      "n": 5,
+      "title": "Look After Your Eyes Day to Day",
+      "body": "Artificial tears help with mild dryness and irritation. Ask your specialist about other ways to ease symptoms."
+    }
+  ],
+  "tech": [
+    {
+      "cat": "Screen Settings",
+      "title": "Dark Mode, Contrast & Zoom",
+      "body": "Larger text, high contrast, dark mode and screen zoom are built into all phones, tablets and computers and can reduce glare and strain at no cost.",
+      "price": "Free — built in"
+    },
+    {
+      "cat": "Free App",
+      "title": "Seeing AI and Be My Eyes",
+      "body": "Two free smartphone apps. Seeing AI uses the phone camera to read text aloud and describe products and scenes; Be My Eyes connects you with a sighted volunteer by video for help with a task.",
+      "price": "Free"
+    },
+    {
+      "cat": "Magnification",
+      "title": "Magnifiers (Optical, Handheld & Desktop)",
+      "body": "Optical magnifiers may be loaned free via an NHS low-vision clinic; electronic handheld magnifiers and larger desktop video magnifiers offer more power for longer reading.",
+      "price": "Optical aids often free via NHS; electronic and desktop magnifiers are usually bought privately and prices vary widely"
+    }
+  ],
+  "support": [
+    {
+      "title": "British Thyroid Foundation — Thyroid Eye Disease",
+      "body": "Patient leaflet, early warning card, webinars, FAQs, telephone contacts, and wellbeing resources. It also lists joint TED clinics.",
+      "link": "https://www.btf-thyroid.org/thyroid-eye-disease/1000"
+    },
+    {
+      "title": "RNIB (UK)",
+      "body": "Helpline 0303 123 9999, low vision aids, talking books, and benefits advice.",
+      "link": "https://www.rnib.org.uk"
+    }
+  ],
+  "benefits": [
+    {
+      "n": 1,
+      "title": "Certificate of Vision Impairment (CVI)",
+      "body": "Ask your consultant ophthalmologist about a Certificate of Vision Impairment, which is free. Registration can open access to local authority rehabilitation and support, free NHS sight tests and travel concessions. A council tax reduction is sometimes possible but is not automatic, so ask your council. Whether you qualify depends on how much sight you have, and your consultant decides. TED can cause lasting sight loss in some people; if so, ask your consultant."
+    },
+    {
+      "n": 2,
+      "title": "Personal Independence Payment (PIP)",
+      "body": "Awards depend on how your sight affects daily life, not on the diagnosis. Apply at gov.uk/pip or call 0800 917 2222. In Scotland, Adult Disability Payment replaces PIP — apply through Social Security Scotland on 0800 182 2222. RNIB can help with the form on 0303 123 9999."
+    },
+    {
+      "n": 3,
+      "title": "Access to Work",
+      "body": "A government grant towards workplace adjustments and specialist equipment. Apply at gov.uk/access-to-work. There is currently a long waiting list, so apply as early as you can."
+    }
+  ],
+  "livingWith": [
+    {
+      "title": "Changes in Appearance",
+      "body": "TED can change how your eyes look, which can affect confidence. Eyelid surgery and other treatments may help once the condition settles. The British Thyroid Foundation offers wellbeing resources and patient stories."
+    },
+    {
+      "title": "Double Vision and Driving",
+      "body": "Double vision can make driving unsafe, and the law requires you to tell the DVLA if your eyesight does not meet the standard. Do not drive with double vision. Ask your eye specialist for advice.",
+      "link": "https://www.gov.uk/eye-conditions-and-driving"
+    },
+    {
+      "title": "Work and Study",
+      "body": "Screen magnification, good non-glare lighting and adjusted monitor positioning are reasonable adjustments that employers must consider. Access to Work can help fund specialist equipment, though waits are long, so apply early."
+    }
+  ]
+},
+
 best:{
   "helpline": {
     "org": "Retina UK Helpline",
@@ -10100,6 +10977,12 @@ function labelToClass(label) {
         charlesbonnet:{t:'dark',l:'Dark',m:'A dark background may reduce triggers for Charles Bonnet hallucinations.',mcy:'Gall cefndir tywyll leihau sbardunau ar gyfer rhithwelediadau Charles Bonnet.'},
         rp:{t:'dark',l:'Dark',m:'Dark mode preserves night vision and reduces light sensitivity in RP.',mcy:'Mae\u2019r modd tywyll yn cadw golwg nos ac yn lleihau sensitifrwydd i olau mewn RP.'},
         cone:{t:'hc',l:'Hi-Con',m:'High contrast maximises the limited colour vision in cone dystrophy.',mcy:'Mae cyferbyniad uchel yn gwneud y gorau o\u2019r golwg lliw cyfyngedig mewn dystroffi c\u00f4n.'},
+        rvo:{t:'hc',l:'Hi-Con',m:'High contrast and larger text can make reading easier when one eye has blurred or distorted vision.',mcy:'Gall cyferbyniad uchel a thestun mwy wneud darllen yn haws pan fo golwg aneglur neu afluniaidd mewn un llygad.'},
+        dryeye:{t:'ll',l:'Low Light',m:'Low light mode and larger text can make screens more comfortable with dry, sore eyes.',mcy:'Gall modd golau isel a thestun mwy wneud sgriniau yn fwy cyfforddus gyda llygaid sych a dolurus.'},
+        uveitis:{t:'ll',l:'Low Light',m:'Low light mode can ease light sensitivity, which is common with uveitis.',mcy:'Gall modd golau isel leddfu sensitifrwydd i olau, sy’n gyffredin gyda uveitis.'},
+        gca:{t:'hc',l:'Hi-Con',m:'High contrast and larger text can help if giant cell arteritis has affected your sight.',mcy:'Gall cyferbyniad uchel a thestun mwy helpu os yw arteritis cell anferth wedi effeithio ar eich golwg.'},
+        amblyopia:{t:'hc',l:'Hi-Con',m:'High contrast and larger text can make reading easier for children and adults with lazy eye or squint.',mcy:'Gall cyferbyniad uchel a thestun mwy wneud darllen yn haws i blant ac oedolion â llygad diog neu lygad croes.'},
+        ted:{t:'ll',l:'Low Light',m:'Low light mode can ease light sensitivity and screen glare with thyroid eye disease.',mcy:'Gall modd golau isel leddfu sensitifrwydd i olau a llacharedd sgrin gyda chlefyd llygaid y thyroid.'},
         cataracts:{t:'ll',l:'Low Light',m:'Low light mode can reduce glare and make reading more comfortable with cataracts.',mcy:'Gall modd golau isel leihau llacharedd a gwneud darllen yn fwy cyfforddus gyda chataractau.'},
         best:{t:'hc',l:'Hi-Con',m:'High contrast and larger text can make reading easier with central vision loss.',mcy:'Gall cyferbyniad uchel a thestun mwy wneud darllen yn haws wrth golli golwg canolog.'},
         glaucoma:{t:'ll',l:'Low Light',m:'Low light mode reduces brightness discomfort with glaucoma.',mcy:'Mae\u2019r modd golau isel yn lleihau anghysur disgleirdeb gyda glawcoma.'},
@@ -11270,7 +12153,7 @@ function selectCondition(key) {
   var l = document.getElementById('cond-list');
   if (l) l.style.display = 'none';
   var h = document.getElementById('cond-hint');
-  if (h) { h.style.display = 'block'; h.innerHTML = 'Type your condition then tap <strong>Search</strong> (or press Enter). <strong>28 conditions</strong> covered.'; }
+  if (h) { h.style.display = 'block'; h.innerHTML = 'Type your condition then tap <strong>Search</strong> (or press Enter). <strong>34 conditions</strong> covered.'; }
   showCondition(key);
 }
 
@@ -11809,6 +12692,18 @@ const COND_KEYWORDS = {
 
   cone:       ['cone dystrophy','cone rod','colour vision','color vision','central vision','photophobia','light sensitive','reading','driving','rpgr','cngb3','progressive','fovea'],
 
+  rvo:        ['retinal vein occlusion','rvo','brvo','crvo','vein blockage','blocked vein','eye stroke','macular oedema','sudden sight loss','distorted vision','blurred vision in one eye'],
+
+  dryeye:     ['dry eye','dry eyes','dry eye disease','gritty eyes','sore eyes','itchy eyes','artificial tears','eye drops','tear film','screen strain','sjogren','sjögren'],
+
+  uveitis:    ['uveitis','iritis','eye inflammation','inflamed eye','painful red eye','red eye','light sensitivity','photophobia','floaters','birdshot'],
+
+  gca:        ['giant cell arteritis','gca','temporal arteritis','pmr','polymyalgia rheumatica','headache','jaw pain','scalp tenderness','sudden vision loss','steroids','prednisolone'],
+
+  amblyopia:  ['lazy eye','amblyopia','squint','strabismus','crossed eyes','eye patch','patching','double vision','child eye test','children vision','turned eye'],
+
+  ted:        ['thyroid eye disease','ted','graves','graves disease','graves orbitopathy','thyroid','bulging eyes','staring eyes','double vision','hyperthyroidism','selenium'],
+
   cataracts:  ['cataract','cataracts','cloudy lens','misty vision','blurred vision','glare','halos','lens replacement','cataract surgery','posterior capsule','pco','night vision'],
 
   best:       ['best disease','best vitelliform','vitelliform','bestrophinopathy','bestrophinopathies','best1','yolk','egg yolk','macular dystrophy','inherited macular','central vision'],
@@ -11955,7 +12850,7 @@ function filterConds(q) {
   if (!q) {
     list.style.display = 'none';
     list.innerHTML = '';
-    if (hint) { hint.style.display = 'block'; hint.innerHTML = 'Type your condition then tap <strong>Search</strong> (or press Enter). <strong>28 conditions</strong> covered.'; }
+    if (hint) { hint.style.display = 'block'; hint.innerHTML = 'Type your condition then tap <strong>Search</strong> (or press Enter). <strong>34 conditions</strong> covered.'; }
     return;
   }
 
@@ -11973,6 +12868,12 @@ function filterConds(q) {
     {key:'albinism',name:'Albinism'},
     {key:'cvi',name:'Cerebral Visual Impairment'},
     {key:'cone',name:'Cone Dystrophy'},
+    {key:'rvo',name:'Retinal Vein Occlusion'},
+    {key:'dryeye',name:'Dry Eye Disease'},
+    {key:'uveitis',name:'Uveitis'},
+    {key:'gca',name:'Giant Cell Arteritis'},
+    {key:'amblyopia',name:'Lazy Eye (Amblyopia) and Squint'},
+    {key:'ted',name:'Thyroid Eye Disease'},
     {key:'cataracts',name:'Cataracts'},
     {key:'best',name:'Best Disease'},
     {key:'dmo',name:'Diabetic Macular Oedema'},
@@ -12000,7 +12901,7 @@ function filterConds(q) {
     if (hint) {
       hint.style.display = 'block';
       var safeQ = q.replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-      hint.innerHTML = 'No eye conditions found for "' + safeQ + '". This box only searches the 28 eye conditions — for things like benefits, days out, cooking or travel, <button type="button" onclick="(function(){var t=document.getElementById(\'tsearch\');if(t){t.value=' + JSON.stringify(q) + ';filterTopics(t.value);t.scrollIntoView({behavior:\'smooth\',block:\'center\'});t.focus();}})()" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">search the rest of the site <span aria-hidden="true">→</span></button>.';
+      hint.innerHTML = 'No eye conditions found for "' + safeQ + '". This box only searches the 34 eye conditions — for things like benefits, days out, cooking or travel, <button type="button" onclick="(function(){var t=document.getElementById(\'tsearch\');if(t){t.value=' + JSON.stringify(q) + ';filterTopics(t.value);t.scrollIntoView({behavior:\'smooth\',block:\'center\'});t.focus();}})()" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">search the rest of the site <span aria-hidden="true">→</span></button>.';
     }
     return;
   }
@@ -13402,6 +14303,30 @@ var TRIALS_DATA = {
   cone:[
     {tag:'Phase 3',title:'RPGR Gene Therapy - X-Linked',body:'Bota-vec missed its endpoint; laru-zova met its own in Sept 2026. See RP page.',link:'https://retinauk.org.uk/medical-research/'},
     {tag:'Find More',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/search-results?query=cone+dystrophy&location='}
+  ],
+  rvo:[
+    {tag:'NHS Available',title:'Treatment on the NHS',body:'See the condition page for current NHS treatment options. No UK trial is listed here, so use the NIHR search below for current studies.',link:'https://bepartofresearch.nihr.ac.uk/results/search-results?query=retinal+vein+occlusion&location='},
+    {tag:'Search',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/search-results?query=retinal+vein+occlusion&location='}
+  ],
+  dryeye:[
+    {tag:'NHS Available',title:'Treatment on the NHS',body:'See the condition page for current NHS treatment options. No UK trial is listed here, so use the NIHR search below for current studies.',link:'https://bepartofresearch.nihr.ac.uk/results/search-results?query=dry+eye&location='},
+    {tag:'Search',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/search-results?query=dry+eye&location='}
+  ],
+  uveitis:[
+    {tag:'NHS Available',title:'Treatment on the NHS',body:'See the condition page for current NHS treatment options. No UK trial is listed here, so use the NIHR search below for current studies.',link:'https://bepartofresearch.nihr.ac.uk/results/search-results?query=uveitis&location='},
+    {tag:'Search',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/search-results?query=uveitis&location='}
+  ],
+  gca:[
+    {tag:'NHS Available',title:'Treatment on the NHS',body:'See the condition page for current NHS treatment options. No UK trial is listed here, so use the NIHR search below for current studies.',link:'https://bepartofresearch.nihr.ac.uk/results/search-results?query=giant+cell+arteritis&location='},
+    {tag:'Search',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/search-results?query=giant+cell+arteritis&location='}
+  ],
+  amblyopia:[
+    {tag:'NHS Available',title:'Treatment on the NHS',body:'See the condition page for current NHS treatment options. No UK trial is listed here, so use the NIHR search below for current studies.',link:'https://bepartofresearch.nihr.ac.uk/results/search-results?query=amblyopia+squint&location='},
+    {tag:'Search',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/search-results?query=amblyopia+squint&location='}
+  ],
+  ted:[
+    {tag:'NHS Available',title:'Treatment on the NHS',body:'See the condition page for current NHS treatment options. No UK trial is listed here, so use the NIHR search below for current studies.',link:'https://bepartofresearch.nihr.ac.uk/results/search-results?query=thyroid+eye+disease&location='},
+    {tag:'Search',title:'NIHR Be Part of Research',body:'',link:'https://bepartofresearch.nihr.ac.uk/results/search-results?query=thyroid+eye+disease&location='}
   ],
   cataracts:[
     {tag:'NHS Available',title:'Cataract Surgery and Laser for Cloudy Capsule',body:'Surgery is the proven treatment and is available on the NHS. No UK trial is listed here, so use the NIHR search below for current studies.',link:'https://bepartofresearch.nihr.ac.uk/results/search-results?query=cataract&location='},
