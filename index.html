@@ -54,7 +54,7 @@
     "@type": "PeopleAudience",
     "audienceType": "People living with sight loss and their families"
   },
-  "lastReviewed": "2026-10-16",
+  "lastReviewed": "2026-11-01",
   "specialty": "Ophthalmology"
 }
 </script>
@@ -1203,7 +1203,7 @@ p a, li a { text-decoration: underline; }
 
 .lw-section.vis { display: block; }
 
-@keyframes fadeSlide { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeSlide { from { opacity: 1; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 
 
 
@@ -1774,7 +1774,7 @@ body:not(.dark):not(.ll):not(.hc):not(.yb):not(.lb) .acc-num { color: #fff !impo
 /* ─── A11Y ENHANCEMENTS ─── */
 .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;scroll-behavior:auto!important}
+  *,*::before,*::after{animation:none!important;transition-duration:0.001ms!important;scroll-behavior:auto!important}
 }
 @media (prefers-contrast: more){
   :root{--border:rgba(0,0,0,0.6)!important}
@@ -2662,29 +2662,39 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
         <div class="news-box-header">
           <span class="news-box-icon" aria-hidden="true">📰</span>
           <span class="news-box-title" id="news-hd-cy">Diweddariadau Diweddar</span>
-          <span class="news-box-date">Hydref 2026</span>
+          <span class="news-box-date">Tachwedd 2026</span>
         </div>
         <div class="news-item">
-          <span class="news-tag research">Ymchwil</span>
-          <p class="news-text"><strong>Stargardt:</strong> Mae Alkeus Pharmaceuticals wedi dechrau dosio yn NORTHSTAR, treial Cam 3 byd-eang allweddol o gildeuretinol — tabled unwaith y dydd sydd wedi'i gynllunio i arafu difrod i'r retina, a ddangosodd ostyngiad o 21% mewn twf niwed mewn treialon cynharach. Ar wahân, mae therapi genyn cynnar VG801 gan VeonGen wedi dangos diogelwch calonogol a chanlyniadau cychwynnol yn ei dreial dynol cyntaf.</p>
-        </div>
-        <div class="news-item">
-          <span class="news-tag research">Ymchwil</span>
-          <p class="news-text"><strong>Retinitis Pigmentosa:</strong> Mae treial Cam 2/3 therapi genyn RPGR MeiraGTx yn adrodd cadw maes gweledol arwyddocaol mewn cleifion RP X-gysylltiedig ar ôl 12 mis.</p>
-        </div>
-        <div class="news-item">
-          <span class="news-tag research">Ymchwil</span>
-          <p class="news-text"><strong>Syndrom Usher:</strong> Ultevursen (a oedd gynt yn QR-421a, bellach yn eiddo Laboratoires Théa) — mae treial LUNA Cam 2/3 yn recriwtio ers Rhagfyr 2024, gyda chwblhau sylfaenol disgwyliedig yn Rhagfyr 2027.</p>
-        </div>
-        <div class="news-item">
-          <span class="news-tag benefits">Budd-daliadau</span>
-          <p class="news-text"><strong>Cyfraddau PIP a DLA wedi'u diweddaru Ebrill 2026 (codiad 3.8%):</strong> Cyfradd uwch Bywyd Beunyddiol £114.60/wythnos. Cyfradd uwch Symudedd £80.00/wythnos. Lwfans Presenoldeb cyfradd uwch £114.60/wythnos. Lwfans Gofalwr £86.45/wythnos.</p>
-        </div>
-        <div class="news-item">
-          <span class="news-tag tech">Technoleg</span>
-          <p class="news-text"><strong>Pob cyflwr:</strong> Mae diweddariad hygyrchedd Apple 2026 (a ragwelir Mai 2026, yn cyrraedd yn ddiweddarach eleni) yn dod â gwelliannau a yrrir gan Apple Intelligence i VoiceOver, Chwyddwydr ac Accessibility Reader — gan gynnwys disgrifiadau delwedd manwl a chwestiynau iaith naturiol am yr hyn y mae eich camera yn ei weld.</p>
-        </div>
-        <p class="news-footer">Caiff diweddariadau eu gwirio a'u hychwanegu bob mis. Mae'r wybodaeth at ddibenion canllaw yn unig — trafodwch opsiynau ymchwil a thriniaeth bob amser gyda'ch offthalmolegydd. <button onclick="showWelshPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:0.78rem;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Wedi sylwi ar rywbeth ar goll? Rhowch wybod i ni.</button></p>
+      <span class="news-tag tech">Safle</span>
+      <p class="news-text"><strong>Newydd ar Sight Atlas UK:</strong> tudalen Argyfyngau Llygaid (beth sy'n galw am 999 neu A&amp;E, beth sy'n galw am NHS 111 heddiw, a beth all aros) a deg tudalen cyflwr newydd: Cataractau, Rhwystr Gwythïen y Retina, Clefyd Llygaid Sych, Uveitis, Arteritis Cell Anferth, Llygad Diog a Llygad Croes, Clefyd Llygaid y Thyroid, Rhwystr Rhydweli'r Retina, Smotiau Arnofiol a Fflachiadau, a Retinopathi Serws Canolog.</p>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag research">Ymchwil</span>
+      <p class="news-text"><strong>Retinitis Pigmentosa:</strong> ym mis Medi 2026 adroddodd Beacon Therapeutics fod ei dreial allweddol VISTA o'r therapi genyn laru-zova wedi cyrraedd ei brif nod mewn RP X-gysylltiedig. Nid yw ar gael yn y DU, ac mae ceisiadau rheoleiddiol i ddod.</p>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag research">Ymchwil</span>
+      <p class="news-text"><strong>Stargardt:</strong> mae FDA yr UD wedi rhoi adolygiad blaenoriaeth i tinlarebant (Belite Bio), gyda dyddiad penderfynu o 12 Chwefror 2027. Ni fyddai cymeradwyaeth yn yr UD yn golygu ei fod ar gael yn y DU.</p>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag research">Ymchwil</span>
+      <p class="news-text"><strong>Golwg byr mewn plant:</strong> ym mis Awst 2026 cyhoeddodd NICE ganllawiau drafft nad ydynt yn argymell cyllid y GIG yn Lloegr ar gyfer diferion llygaid atropin dos isel. Drafft yw hwn, ac mae'r diferion ar gael yn breifat o hyd.</p>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag benefits">Budd-daliadau</span>
+      <p class="news-text"><strong>Cyfraddau PIP a DLA wedi'u diweddaru Ebrill 2026 (codiad 3.8%):</strong> Cyfradd uwch Bywyd Beunyddiol £114.60/wythnos. Cyfradd uwch Symudedd £80.00/wythnos. Lwfans Presenoldeb cyfradd uwch £114.60/wythnos. Lwfans Gofalwr £86.45/wythnos. Cyhoeddodd Adolygiad Timms o PIP adroddiad interim ym mis Gorffennaf 2026; disgwylir yr argymhellion terfynol yn hydref 2026.</p>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag research">Ymchwil</span>
+      <p class="news-text"><strong>Syndrom Usher:</strong> Ultevursen (a oedd gynt yn QR-421a, bellach yn eiddo Laboratoires Théa) — mae treial LUNA Cam 2/3 yn recriwtio ers Rhagfyr 2024, gyda chwblhau sylfaenol disgwyliedig yn Rhagfyr 2027.</p>
+    </div>
+
+    <p class="news-footer">Caiff diweddariadau eu gwirio a'u hychwanegu bob mis. Mae'r wybodaeth at ddibenion canllaw yn unig — trafodwch opsiynau ymchwil a thriniaeth bob amser gyda'ch offthalmolegydd. <button onclick="showWelshPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:0.78rem;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Wedi sylwi ar rywbeth ar goll? Rhowch wybod i ni.</button></p>
       </section>
 
       <div style="margin-top:36px;padding:24px 20px;background:var(--card);border-radius:16px;border:1px solid var(--border)" role="region" aria-label="Rhannu a chysylltu" lang="cy">
@@ -2949,7 +2959,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
       <div class="review-badge" style="display:inline-flex;align-items:center;gap:8px;background:rgba(26,122,60,0.08);border:1.5px solid rgba(26,122,60,0.25);border-radius:20px;padding:6px 14px;margin:8px 0 20px;font-size:0.75rem;max-width:100%;flex-wrap:wrap">
         <span class="review-badge-tick" style="color:#1a7a3c;font-weight:900;font-size:0.9rem;flex-shrink:0" aria-hidden="true">✓</span>
-        <span style="color:var(--text);font-weight:700">October 2026 · Reviewed monthly</span>
+        <span style="color:var(--text);font-weight:700">November 2026 · Reviewed monthly</span>
       </div>
       <p class="last-updated" style="margin-top:0">Something not quite right? <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0;font-weight:700">Let us know.</button></p>
 
@@ -3100,7 +3110,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
                 <span style="font-size:0.95rem;font-weight:800;color:var(--text)">Call RNIB</span>
 
-                <p style="font-size:0.88rem;color:var(--text2);margin-top:3px;line-height:1.7">Call <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a> and tell them your condition. They will tell you exactly what you are entitled to. Most people are surprised by how much support is available.</p>
+                <p style="font-size:0.88rem;color:var(--text2);margin-top:3px;line-height:1.7">Call <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a> and tell them your condition. They can help you find out what support you may be able to claim.</p>
 
                 <p style="font-size:0.88rem;color:var(--text2);margin-top:6px;line-height:1.7">Is this for your child? <button onclick="showPage('children')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">See our For Parents guide <span aria-hidden="true">→</span></button></p>
 
@@ -3219,51 +3229,41 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
           <span class="news-box-title" id="news-hd">Recent Updates</span>
 
-          <span class="news-box-date">October 2026</span>
+          <span class="news-box-date">November 2026</span>
 
         </div>
 
         <div class="news-item">
+      <span class="news-tag tech">Site</span>
+      <p class="news-text"><strong>New on Sight Atlas UK:</strong> an Eye Emergencies page (what needs 999 or A&amp;E, what needs NHS 111 today, and what can wait) and ten new condition pages: Cataracts, Retinal Vein Occlusion, Dry Eye Disease, Uveitis, Giant Cell Arteritis, Lazy Eye and Squint, Thyroid Eye Disease, Retinal Artery Occlusion, Floaters and Flashes, and Central Serous Retinopathy.</p>
+    </div>
 
-          <span class="news-tag research">Research</span>
+    <div class="news-item">
+      <span class="news-tag research">Research</span>
+      <p class="news-text"><strong>Retinitis Pigmentosa:</strong> in September 2026 Beacon Therapeutics reported that its pivotal VISTA trial of the gene therapy laru-zova met its main goal in X-linked RP. It is not available in the UK, and regulatory submissions are still to come.</p>
+    </div>
 
-          <p class="news-text"><strong>Stargardt:</strong> Alkeus Pharmaceuticals has begun dosing in NORTHSTAR, a pivotal global Phase 3 trial of gildeuretinol — a once-daily tablet designed to slow retinal damage, which showed a 21% reduction in lesion growth in earlier trials. Separately, VeonGen's early-stage VG801 gene therapy has shown encouraging safety and initial results in its first human trial.</p>
+    <div class="news-item">
+      <span class="news-tag research">Research</span>
+      <p class="news-text"><strong>Stargardt:</strong> the US FDA has given tinlarebant (Belite Bio) priority review, with a decision date of 12 February 2027. A US approval would not mean it is available in the UK.</p>
+    </div>
 
-        </div>
+    <div class="news-item">
+      <span class="news-tag research">Research</span>
+      <p class="news-text"><strong>Short-sightedness in children:</strong> in August 2026 NICE published draft guidance that does not recommend NHS funding in England for low-dose atropine eye drops. It is a draft, and the drops remain available privately.</p>
+    </div>
 
-        <div class="news-item">
+    <div class="news-item">
+      <span class="news-tag benefits">Benefits</span>
+      <p class="news-text"><strong>PIP &amp; DLA rates updated April 2026 (3.8% rise):</strong> Daily Living enhanced rate £114.60/week. Mobility enhanced rate £80.00/week. Attendance Allowance higher rate £114.60/week. Carer's Allowance £86.45/week. The Timms Review of PIP published an interim report in July 2026; final recommendations are due in autumn 2026.</p>
+    </div>
 
-          <span class="news-tag research">Research</span>
+    <div class="news-item">
+      <span class="news-tag research">Research</span>
+      <p class="news-text"><strong>Usher Syndrome:</strong> Ultevursen (formerly QR-421a, now owned by Laboratoires Théa) — Phase 2/3 LUNA trial recruiting since December 2024, primary completion expected December 2027.</p>
+    </div>
 
-          <p class="news-text"><strong>Retinitis Pigmentosa:</strong> MeiraGTx RPGR gene therapy Phase 2/3 trial reports significant preservation of visual field in X-linked RP patients at 12-month follow-up.</p>
-
-        </div>
-
-        <div class="news-item">
-
-          <span class="news-tag research">Research</span>
-
-          <p class="news-text"><strong>Usher Syndrome:</strong> Ultevursen (formerly QR-421a, now owned by Laboratoires Théa) — Phase 2/3 LUNA trial recruiting since December 2024, primary completion expected December 2027.</p>
-
-        </div>
-
-        <div class="news-item">
-
-          <span class="news-tag benefits">Benefits</span>
-
-          <p class="news-text"><strong>PIP &amp; DLA rates updated April 2026 (3.8% rise):</strong> Daily Living enhanced rate £114.60/week. Mobility enhanced rate £80.00/week. Attendance Allowance higher rate £114.60/week. Carer's Allowance £86.45/week.</p>
-
-        </div>
-
-        <div class="news-item">
-
-          <span class="news-tag tech">Technology</span>
-
-          <p class="news-text"><strong>All conditions:</strong> Apple's 2026 accessibility update (previewed May 2026, arriving later this year) brings Apple Intelligence-powered enhancements to VoiceOver, Magnifier and Accessibility Reader — including detailed image descriptions and natural language questions about what your camera sees.</p>
-
-        </div>
-
-        <p class="news-footer">Updates are verified and added each month. Information is for guidance only — always discuss research and treatment options with your ophthalmologist. <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:0.78rem;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Spotted something missing? Let us know.</button></p>
+    <p class="news-footer">Updates are verified and added each month. Information is for guidance only — always discuss research and treatment options with your ophthalmologist. <button onclick="showPage('contact')" style="background:none;border:none;color:var(--yellow);font-family:var(--font);font-size:0.78rem;font-weight:700;cursor:pointer;text-decoration:underline;padding:0">Spotted something missing? Let us know.</button></p>
 
       </section>
 
@@ -4229,7 +4229,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
             <ul>
 
-              <li><strong>VoiceVista</strong> — free iOS app, the open-source successor to Microsoft Soundscape (which was discontinued in 2023). Uses 3D audio to describe your surroundings, landmarks, and junctions as you walk</li>
+              <li><strong>VoiceVista</strong> — iOS app, free to download with optional paid sponsorship, the open-source successor to Microsoft Soundscape (which was discontinued in 2023). Uses 3D audio to describe your surroundings, landmarks, and junctions as you walk</li>
 
               <li><strong>Be My Eyes</strong> — free app connecting you to a sighted volunteer via video call for real-time visual assistance anywhere</li>
 
@@ -4817,7 +4817,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
     <h1>Privacy Policy</h1>
 
-    <p class="legal-updated">Last updated: <time datetime="2026-10-01">October 2026</time></p>
+    <p class="legal-updated">Last updated: <time datetime="2026-11-01">November 2026</time></p>
 
     <div class="wb"><strong>Plain English summary:</strong> Sight Atlas does not sell your data. We do not collect personal information unless you choose to contact us. We do not use advertising trackers.</div>
 
@@ -4855,7 +4855,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
     <h1>Accessibility Statement</h1>
 
-    <p class="legal-updated">Last updated: <time datetime="2026-10-01">October 2026</time></p>
+    <p class="legal-updated">Last updated: <time datetime="2026-11-01">November 2026</time></p>
 
     <div class="wb"><strong>My commitment:</strong> Sight Atlas UK exists to serve people living with sight loss. Accessibility is not an afterthought — it is the core purpose of this website.</div>
 
@@ -4961,7 +4961,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
       <p style="margin-top:10px"><strong>CVI (Cerebral Visual Impairment)</strong> — Visual impairment caused by damage to the visual processing areas of the brain rather than the eyes themselves.</p>
 
-      <p style="margin-top:10px"><strong>CVI (Certificate of Visual Impairment)</strong> — A certificate issued by a consultant ophthalmologist confirming your level of visual impairment. Enables registration with your local authority and unlocks benefits and support.</p>
+      <p style="margin-top:10px"><strong>CVI (Certificate of Visual Impairment)</strong> — A certificate issued by a consultant ophthalmologist confirming your level of visual impairment. Enables registration with your local authority and can open access to benefits and support.</p>
 
       <p style="margin-top:10px"><strong>CGM (Continuous Glucose Monitor)</strong> — A wearable device that tracks blood sugar levels continuously. Relevant to diabetic retinopathy as good blood sugar control slows disease progression.</p>
 
@@ -5993,11 +5993,11 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
         <li><strong>Get a genetic diagnosis</strong> — where relevant, knowing the specific gene mutation determines treatment eligibility. Free on the NHS — ask for a referral to a paediatric inherited retinal disease clinic.</li>
 
-        <li><strong>Ask for a CVI</strong> — the Certificate of Visual Impairment is free and issued by your consultant ophthalmologist. It unlocks local authority support, DLA, and educational provision.</li>
+        <li><strong>Ask for a CVI</strong> — the Certificate of Visual Impairment is free and issued by your consultant ophthalmologist. It can help you access local authority support and may support applications for benefits and educational provision; it does not guarantee any of them.</li>
 
         <li><strong>Contact RNIB</strong> — call 0303 123 9999. Tell them your child's diagnosis. They have specialist advisors for families of children with sight conditions.</li>
 
-        <li><strong>Request a QTVI</strong> — a Qualified Teacher of Visual Impairment is entitled to work with your child from the earliest age. Contact your local authority's sensory support service.</li>
+        <li><strong>Request a QTVI</strong> — a Qualified Teacher of Visual Impairment can work with your child from the earliest age. Ask your local authority's sensory support service whether one is available; provision varies by area.</li>
 
         <li><strong>Apply for DLA</strong> — Disability Living Allowance for children under 16 can be worth over £800 a month at the highest rates for both components (2026/27). Awards are based on the extra help your child needs compared with other children the same age, so it is not automatic. RNIB can help with the form — it is long, and support with it makes a real difference.</li>
 
@@ -6013,7 +6013,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
       <h2 id="ehc">🏫 Education</h2>
 
-      <p>An <strong>Education, Health and Care (EHC) Plan</strong> is a legally binding document that sets out the specialist support your child must receive at school. It can fund a QTVI, specialist technology, braille resources, large print materials, and a teaching assistant. Getting one is not automatic: you request an EHC needs assessment, the local authority decides whether to assess, and then whether to issue a plan. Both decisions can be refused, and you have a right of appeal to the SEND Tribunal at each stage. Many refusals are overturned on appeal, so a refusal is not the end of the road — get advice from your local SENDIASS.</p>
+      <p>An <strong>Education, Health and Care (EHC) Plan</strong> is a legally binding document that sets out the specialist support your child must receive at school. It can fund a QTVI, specialist technology, braille resources, large print materials, and a teaching assistant. Getting one is not automatic: you request an EHC needs assessment, the local authority decides whether to assess, and then whether to issue a plan. Both decisions can be refused, and you have a right of appeal to the SEND Tribunal at each stage. Many refusals are overturned on appeal, so a refusal is not the end of the road — get advice from your local SENDIASS. EHC plans apply in England; in Wales the equivalent is an Individual Development Plan under the Additional Learning Needs (ALN) system.</p>
 
       <p style="margin-top:10px">Request an EHC needs assessment from your local authority as early as possible — ideally before your child starts school. The statutory deadline is 20 weeks. In practice, only around 46% of plans are issued within this deadline (Department for Education, 2024). If your local authority misses the deadline, you have the right to challenge them and ultimately to apply for judicial review.</p>
 
@@ -6180,7 +6180,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
     <button class="back-btn" onclick="showPage('home')" aria-label="Back to home"><span aria-hidden="true">←</span> Back to home</button>
     <span class="legal-eyebrow">Practical help</span>
     <h1>Help &amp; Support</h1>
-    <p class="legal-updated">Last updated: <time datetime="2026-10-01">October 2026</time></p>
+    <p class="legal-updated">Last updated: <time datetime="2026-11-01">November 2026</time></p>
 
     <h2 id="emergency">In a crisis right now</h2>
     <ul>
@@ -6204,7 +6204,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
       <li><strong>Your council contacts you within ~28 days</strong> to add you to the Sight Impaired Register and offer a Vision Rehabilitation Assessment.</li>
     </ol>
 
-    <h3 id="registration-unlocks">What registration unlocks (2026/27 figures)</h3>
+    <h3 id="registration-unlocks">What registration can open access to (2026/27 figures)</h3>
     <ul>
       <li><strong>Blind Person's Allowance:</strong> £3,250 added to your Personal Allowance (SSI only; in Scotland and Northern Ireland the test is that you cannot do any work for which eyesight is essential). You have to claim it — it is not automatic — and it can be backdated by up to four tax years. Any allowance you cannot use can be passed to a spouse or civil partner. RNIB’s free tax advice team will check your eligibility and can call HMRC with you: ring the RNIB Helpline on <a href="tel:03031239999" style="color:var(--yellow);font-weight:700">0303 123 9999</a> and ask for the tax team.</li>
       <li><strong>50% off TV Licence</strong> (SSI only) — apply via TV Licensing with your CVI.</li>
@@ -6247,7 +6247,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
     <h2 id="pip">PIP descriptor wording for sight loss</h2>
     <p>The Personal Independence Payment form (PIP2) is famously hard. These are example phrases written from a sight-loss perspective for the most common descriptors. <strong>Use them as a starting point — be honest about your own experience.</strong></p>
-    <div class="wb" style="margin-bottom:14px"><strong>Heads-up on PIP reform:</strong> You may have read about a proposed "4-point rule" that would have required claimants to score at least 4 points in a single daily living activity. It is worth being clear: that proposal was <strong>removed from the legislation entirely in July 2025</strong> and is not in force. Any future changes to PIP eligibility will follow the Timms Review, which is due to report in November 2026, and the Government has said these will be developed with disabled people and the organisations representing them. Separately, from April 2026 most new PIP awards run for four years, with the review starting after about three years. Nothing here changes how you should fill in the form today — describe your own experience honestly. I'll update this page when the Timms Review reports.</div>
+    <div class="wb" style="margin-bottom:14px"><strong>Heads-up on PIP reform:</strong> You may have read about a proposed "4-point rule" that would have required claimants to score at least 4 points in a single daily living activity. It is worth being clear: that proposal was <strong>removed from the legislation entirely in July 2025</strong> and is not in force. Any future changes to PIP eligibility will follow the Timms Review, which published an interim report in July 2026 (findings only, no specific recommendations yet) and is due to publish its final recommendations in autumn 2026, and the Government has said these will be developed with disabled people and the organisations representing them. Separately, DWP is lengthening PIP awards so that reviews come less often, and reviews generally start some months before an award ends. Your decision letter shows how long your own award runs. Nothing here changes how you should fill in the form today — describe your own experience honestly. I'll update this page when the Timms Review reports.</div>
     <h3>Activity 1 — Preparing food</h3>
     <p>"I cannot identify use-by dates, oven dials or knife blades safely. I have burned myself on the hob twice this year. I rely on my partner to chop ingredients and to check raw chicken is cooked. On bad-light days I cannot prepare a hot meal at all."</p>
     <h3>Activity 4 — Washing and bathing</h3>
@@ -6276,7 +6276,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
       <li><strong>Seeing AI</strong> (Microsoft, iOS &amp; Android) — reads text, currency, faces, scenes.</li>
       <li><strong>Lookout by Google</strong> (Android) — reads text and identifies objects.</li>
       <li><strong>Envision AI</strong> — paid app with free tier; superb document reading.</li>
-      <li><strong>Aira</strong> — paid live visual interpreters via video call. Free at participating Access Partner locations, including a growing list of UK transport and retail partners (Surrey County Council bus stations, some airports, banks, supermarkets — full list in the app). Includes a free daily 5-minute promotional call.</li>
+      <li><strong>Aira</strong> — paid live visual interpreters via video call. Free at participating Access Partner locations, including a growing list of UK transport and retail partners (Surrey County Council bus stations, some airports, banks, supermarkets — full list in the app). Aira has changed its free offer over time, so check the app for what is currently free.</li>
       <li><strong>Voice Vista</strong> (iOS) and <strong>Soundscape</strong> alternatives — 3D audio navigation.</li>
     </ul>
 
@@ -6306,7 +6306,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
     <h1>How We Write<br>Our Content</h1>
 
-    <p class="legal-updated">Last updated: <time datetime="2026-10">October 2026</time></p>
+    <p class="legal-updated">Last updated: <time datetime="2026-11">November 2026</time></p>
 
 
 
@@ -6646,7 +6646,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
       <h2>🕶️ Wearables and specialist devices</h2>
       <p>Beyond the phone, there are dedicated and mainstream devices that help with sight loss. They cost more than free apps, so try before you buy where you can — many local sight-loss societies and RNIB have demonstration kit you can try.</p>
       <ul style="margin-top:10px;line-height:1.9">
-      <li><strong>Ray-Ban Meta smart glasses</strong> have quickly become a popular tool for blind and partially sighted people. By voice — &ldquo;Hey Meta, Be My Eyes&rdquo; — you can connect hands-free to a sighted volunteer who sees what you see, and the built-in AI can describe your surroundings and read text aloud, such as menus, post and signs. Because they are worn, they free your hands for a cane, a guide dog or your bags. Worth knowing: the glasses cost a few hundred pounds, whereas the Be My Eyes app itself is free on any phone — so the glasses add hands-free convenience rather than a different service.</li>
+      <li><strong>Ray-Ban Meta smart glasses</strong> have quickly become a popular tool for blind and partially sighted people. By voice — &ldquo;Hey Meta, Be My Eyes&rdquo; — you can connect hands-free to a sighted volunteer who sees what you see, and the built-in AI can describe your surroundings and read text aloud, such as menus, post and signs. Because they are worn, they free your hands for a cane, a guide dog or your bags. Worth knowing: the glasses cost a few hundred pounds, whereas the Be My Eyes app itself is free on any phone — so the glasses add hands-free convenience rather than a different service. A separate, much more expensive model with a small display in one lens went on sale in the UK in September 2026; we have not assessed it for blind and partially sighted use.</li>
       <li><strong>Envision Glasses</strong> and <strong>OrCam</strong> are purpose-built devices that read text aloud and describe surroundings hands-free.</li>
       <li><strong>Wearable vision-enhancement devices</strong> use a camera to capture what you are looking at and show an enhanced, magnified image on screens close to your eyes in real time. Unlike the apps above — which describe things or read them aloud — these aim to help you actually <em>see</em> more clearly: faces, the television, a book. They come in two broad styles: lightweight, spectacle-style devices that keep your peripheral vision (such as <strong>eSight Go</strong> and <strong>Eyedaptic</strong>), and fuller headsets that give a brighter, more immersive image (such as <strong>IrisVision</strong> and <strong>Acesight</strong>). Most are designed for central vision loss (macular degeneration, Stargardt disease, diabetic retinopathy), though some have modes for peripheral or field loss too — and <strong>OxSight</strong>, a UK maker, focuses specifically on field loss from conditions like retinitis pigmentosa and glaucoma.</li>
       <li><strong>Trying one of these:</strong> they are premium devices — typically a few thousand pounds — and the right choice depends entirely on your own vision, so a demonstration and assessment with a low-vision specialist is essential before buying. UK specialist suppliers offer home or clinic trials, and it is worth asking about funding such as Access to Work, charitable grants, or your local sight-loss society.</li>
@@ -6664,7 +6664,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
         <div class="lc" id="apps-quick-reference" style="border-color:var(--yellow)">
       <h2>📲 Useful apps — quick reference</h2>
       <p>A scannable list of the apps that help most, grouped by what they do. Most are free. Always check the price and reviews in your phone's app store before downloading, as apps change.</p>
-      <p style="font-size:0.85rem;color:var(--text2);margin-top:6px"><strong>Last checked: October 2026.</strong> Apps change often — if something here looks out of date, please verify in your app store.</p>
+      <p style="font-size:0.85rem;color:var(--text2);margin-top:6px"><strong>Last checked: November 2026.</strong> Apps change often — if something here looks out of date, please verify in your app store.</p>
 
       <h3 style="margin-top:18px">🗣️ Read text aloud (camera apps)</h3>
       <ul style="line-height:1.9">
@@ -6682,7 +6682,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
       <h3 style="margin-top:18px">🧭 Getting around (navigation)</h3>
       <ul style="line-height:1.9">
-      <li><strong>VoiceVista / Soundscape</strong> — uses 3D audio to build awareness of your surroundings as you move. Free versions include VoiceVista and the community Soundscape apps. <em>(iPhone; free)</em> &nbsp; <a href="https://apps.apple.com/app/voicevista/id6450388413" aria-label="App Store — VoiceVista (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">App Store <span aria-hidden="true">↗</span></a></li>
+      <li><strong>VoiceVista / Soundscape</strong> — uses 3D audio to build awareness of your surroundings as you move. Free versions include VoiceVista and the community Soundscape apps. <em>(iPhone; free to download, with optional paid sponsorship)</em> &nbsp; <a href="https://apps.apple.com/app/voicevista/id6450388413" aria-label="App Store — VoiceVista (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">App Store <span aria-hidden="true">↗</span></a></li>
       <li><strong>BlindSquare</strong> — describes points of interest and intersections as you travel, developed with blind users. <em>(iPhone; paid, one-off purchase)</em> &nbsp; <a href="https://apps.apple.com/app/blindsquare/id500557255" aria-label="App Store — BlindSquare (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">App Store <span aria-hidden="true">↗</span></a></li>
       <li><strong>Lazarillo</strong> — announces nearby places, streets and intersections as you walk. <em>(iPhone and Android; free)</em> &nbsp; <a href="https://lazarillo.app" aria-label="Download — Lazarillo (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700;white-space:nowrap">Download <span aria-hidden="true">↗</span></a></li>
       </ul>
@@ -6851,7 +6851,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
       <p>Help is built into the transport system once you know to ask for it:</p>
       <ul style="margin-top:10px;line-height:1.9">
       <li><strong>Passenger Assist</strong> lets you book free help at railway stations — someone to meet you, help you change trains and find your seat. Book ahead or ask staff on the day. <a href="https://www.nationalrail.co.uk" aria-label="National Rail Passenger Assist (opens external site)" rel="noopener noreferrer" style="color:var(--yellow);font-weight:700">National Rail — Passenger Assist <span aria-hidden="true">↗</span></a></li>
-      <li><strong>Free bus pass:</strong> sight impaired and severely sight impaired registration usually entitles you to a free or discounted bus pass — apply through your local council.</li>
+      <li><strong>Free bus pass:</strong> sight impaired and severely sight impaired registration can qualify you for a free or discounted bus pass — apply through your local council.</li>
       <li><strong>&ldquo;Please offer me a seat&rdquo;</strong> badges and cards (and the Sunflower lanyard) quietly signal that you may need a seat or a little extra patience.</li>
       <li><strong>Taxis and community transport</strong> fill the gaps; if travelling for work, the Access to Work grant can help with the cost of journeys.</li>
       </ul>
@@ -7079,7 +7079,7 @@ body.yb .tb-lang[aria-pressed=true] { background: #000 !important; color: #fcd90
 
     <div class="footer-bottom">
 
-      © 2026 Sight Atlas UK &nbsp;·&nbsp; <strong>Not a medical provider</strong> &nbsp;·&nbsp; Information is for guidance only — always consult your ophthalmologist &nbsp;·&nbsp; Content reviewed October 2026 &nbsp;·&nbsp;
+      © 2026 Sight Atlas UK &nbsp;·&nbsp; <strong>Not a medical provider</strong> &nbsp;·&nbsp; Information is for guidance only — always consult your ophthalmologist &nbsp;·&nbsp; Content reviewed November 2026 &nbsp;·&nbsp;
 
       <a onclick="showPage('livingwell')" role="button" tabindex="0">Everyday Guide</a> &nbsp;·&nbsp;
 
@@ -7121,7 +7121,7 @@ const DATA = window.DATA = {
 
 stargardts:{
 
-    helpline:{org:"Retina UK Helpline",number:"0300 111 4000",hours:"Mon–Fri 9.30am–9.30pm",link:"https://retinauk.org.uk"},
+    helpline:{org:"Retina UK Helpline",number:"0300 111 4000",hours:"Mon–Fri 9am–5pm, Tue and Thu until 8pm",link:"https://retinauk.org.uk"},
 
   name:"Stargardt's Disease",
 
@@ -7196,7 +7196,7 @@ stargardts:{
 
     {cat:"AI Wearable",title:"OrCam MyEye (reading & recognition camera)",body:"Small camera that clips to any glasses frame and reads printed and digital text aloud. Current models also recognise faces, products, banknotes and colour; ask the supplier which model suits your needs.",price:"Prices change and VAT relief applies for blind/partially sighted buyers — check the current model and price with VisionAid or RNIB"},
 
-    {cat:"Smart Glasses",title:"Ray-Ban Meta / Oakley Meta + Be My Eyes",body:"Mainstream AI smart glasses with a built-in camera that can describe surroundings, read text aloud, and connect hands-free to a Be My Eyes volunteer or trusted contact by voice. They look like ordinary glasses and cost far less than dedicated low-vision wearables. Two generations are sold: Gen 1 is the cheaper option; Gen 2 adds longer battery (about 8 hours vs 4) and sharper video, but both get the same AI and Be My Eyes features. Oakley Meta is the sportier wraparound version.",price:"Manufacturer RRP is around £299+ (Gen 1) and £379+ (Gen 2), but high-street retailers such as Currys, John Lewis and Amazon are often cheaper — shop around for the current price. Be My Eyes is free"},
+    {cat:"Smart Glasses",title:"Ray-Ban Meta / Oakley Meta + Be My Eyes",body:"Mainstream AI smart glasses with a built-in camera that can describe surroundings, read text aloud, and connect hands-free to a Be My Eyes volunteer or trusted contact by voice. They look like ordinary glasses and cost far less than dedicated low-vision wearables. Two generations are sold: Gen 1 is the cheaper option; Gen 2 adds longer battery (about 8 hours vs 4) and sharper video, but both get the same AI and Be My Eyes features. Oakley Meta is the sportier wraparound version. A separate, much more expensive model with a small display in one lens went on sale in the UK in September 2026; we have not assessed it for blind and partially sighted use.",price:"Manufacturer RRP is around £299+ (Gen 1) and £379+ (Gen 2), but high-street retailers such as Currys, John Lewis and Amazon are often cheaper — shop around for the current price. Be My Eyes is free"},
 
     {cat:"Free App",title:"Seeing AI (Microsoft)",body:"Free iOS and Android app that describes scenes, reads printed and handwritten text, and identifies people, products, barcodes, and currency through your phone camera.",price:"Free"},
 
@@ -7285,7 +7285,7 @@ amd:{
 
     whoAffects:"Mae'n effeithio'n bennaf ar bobl dros 50 oed. Mae ysmygwyr hyd at bedair gwaith yn fwy tebygol o ddatblygu AMD (Cymdeithas Macular). Mae hanes teuluol yn cynyddu'r risg yn sylweddol. Achos mwyaf cyffredin colli golwg difrifol yn y byd datblygedig.",
 
-    researchSummary:"Mae Faricimab (Vabysmo) ar gael ar y GIG ar gyfer AMD gwlyb, ac mae Lytenava (bevacizumab gamma) bellach wedi’i drwyddedu yn y DU hefyd — y pumed cyffur gwrth-VEGF sydd ar gael yma. Nid yw Pegcetacoplan (Syfovre) ar gael yn y DU — gwrthododd MHRA y cais ac mae gwerthusiad NICE wedi'i atal. Cafodd mewnblaniad PRIMA farc CE yn 2026 ac mae'n cael ei lansio yn Ewrop, ond nid yw ar gael ar y GIG. Mae therapi genynnau ar gyfer AMD Gwlyb mewn Cam 3. Ar wahân i driniaeth, mae rhai pobl yn cael budd o dechnegau golwg ecsentrig (eccentric viewing) a'r strategaeth llygad llonydd (steady eye strategy), er bod y dystiolaeth yn gymysg — ni chanfu'r treial mwyaf (EFFECT) fudd sylweddol. Mae'r Macular Society yn cynnig hyfforddiant am ddim, felly nid oes cost i roi cynnig arni."
+    researchSummary:"Mae Faricimab (Vabysmo) ar gael ar y GIG ar gyfer AMD gwlyb, ac mae Lytenava (bevacizumab gamma) bellach wedi’i drwyddedu yn y DU hefyd — y pumed cyffur gwrth-VEGF sydd ar gael yma. Nid yw Pegcetacoplan (Syfovre) ar gael yn y DU — gwrthododd MHRA y cais ac mae gwerthusiad NICE wedi'i atal. Cafodd mewnblaniad PRIMA farc CE yn 2026 ac mae'n cael ei lansio yn Ewrop, ond nid yw ar gael ar y GIG. Mae therapi genynnau ar gyfer AMD Gwlyb mewn Cam 3. Ar wahân i driniaeth, mae rhai pobl yn cael budd o dechnegau golwg ecsentrig (eccentric viewing) a'r strategaeth llygad llonydd (steady eye strategy), er bod y dystiolaeth yn gymysg — ni chanfu'r treial mwyaf (EFFECT) fudd sylweddol. Mae'r Macular Society yn cynnig hyfforddiant am ddim, felly nid oes cost i roi cynnig arni. Caiff AMD gwlyb ei drin â chwistrelliadau gwrth-VEGF i’r llygad; nid oes triniaeth ar gyfer AMD sych ar hyn o bryd, ond mae cymorth ar gael gan gynnwys help â golwg gwan."
 
   },
 
@@ -7302,10 +7302,12 @@ amd:{
     {tag:"drug",label:"🌍 Available Abroad",title:"Avacincaptad Pegol (Izervay) — Geographic Atrophy",body:"The second treatment approved in the US for geographic atrophy (FDA, August 2023). Like pegcetacoplan it is a monthly eye injection that works on the complement system, and like pegcetacoplan it slows the growth of atrophy patches without restoring vision or clearly improving how well people see. It is not available in the UK: Astellas withdrew its European application in October 2024 after discussions with regulators suggested it would not be approved, and it is not licensed here. Long-term extension data now run to four years. Mentioned here because people often come across it when reading about US treatment options.",link:"https://www.macularsociety.org/about/media/news/2025/february/syfovre-faqs-and-next-steps-for-dry-amd-and-geographic-atrophy-treatment/"},
     {tag:"drug",label:"🌍 Available Abroad",title:"Pegcetacoplan (Syfovre) — Geographic Atrophy",body:"FDA-approved in the US (Feb 2023) as the first treatment for geographic atrophy. However, the UK's MHRA rejected the application in 2024-25, and the European Medicines Agency also issued a negative opinion. The NICE appraisal was suspended. Currently not available on the NHS or privately in the UK. Decisions cited the lack of demonstrated visual benefit despite slowing lesion growth.",link:"https://www.macularsociety.org/about/media/news/2025/february/syfovre-faqs-and-next-steps-for-dry-amd-and-geographic-atrophy-treatment/"},
 
+    {tag:"drug",label:"✅ NHS Available",title:"Standard Treatment: Wet AMD Injections",body:"Wet AMD is treated with anti-VEGF injections into the eye (several licensed drugs are used; see below), and the NHS also lists light treatment aimed at the abnormal blood vessels. There is currently no treatment for dry AMD, though support is available, including help with low vision and lifestyle changes.",link:"https://www.nhs.uk/conditions/age-related-macular-degeneration-amd/treatment/"},
+
     {tag:"drug",label:"✅ NHS Available",title:"Lytenava (Bevacizumab Gamma) — Wet AMD",body:"A licensed eye formulation of bevacizumab, a drug that has been used off-label for wet AMD for years because it is much cheaper than the alternatives. Lytenava is the first version properly licensed and quality-controlled for use in the eye. It received MHRA marketing authorisation in July 2024, was recommended by NICE, and launched in the UK in June 2025 — making it the fifth licensed anti-VEGF drug for wet AMD here, alongside Eylea (aflibercept), Lucentis (ranibizumab), Beovu (brolucizumab) and Vabysmo (faricimab). NICE recommended it on the basis that it works about as well as aflibercept and ranibizumab. Which drug your clinic uses depends on local arrangements; it is worth asking what you are being given and why.",link:"https://www.macularsociety.org/about/media/news/2024/november/nice-recommends-new-treatment-for-wet-amd/"},
     {tag:"drug",label:"✅ NHS Available",title:"Faricimab (Vabysmo) — Wet AMD",body:"Dual-pathway anti-VEGF injection targeting both VEGF and Ang-2. NICE approved. Fewer injections needed than older treatments — up to every 4 months for some patients.",link:"https://www.nice.org.uk/guidance/ta800"},
 
-    {tag:"gene",label:"🔬 Pipeline",title:"4D-150 Gene Therapy — 4FRONT Phase 3 Trials",body:"Single injection delivering continuous anti-VEGF production — potentially replacing years of repeat injections. The 4FRONT-1 Phase 3 trial completed enrolment in February 2026 (~500 patients, ahead of schedule); topline data expected H1 2027. 4FRONT-2 (global) completed enrolment in July 2026, around four months ahead of schedule; topline data still expected H2 2027.",link:"https://clinicaltrials.gov/study/NCT06864676"},
+    {tag:"gene",label:"🔬 Pipeline",title:"4D-150 Gene Therapy — 4FRONT Phase 3 Trials",body:"Single injection delivering continuous anti-VEGF production — potentially replacing years of repeat injections. The 4FRONT-1 Phase 3 trial completed enrolment in February 2026 (~500 patients, ahead of schedule); topline data expected H1 2027. 4FRONT-2 (global) completed enrolment in June 2026, around four months ahead of schedule; topline data still expected H2 2027.",link:"https://clinicaltrials.gov/study/NCT06864676"},
 
     {tag:"gene",label:"🔬 Pipeline",title:"OCU410 (Ocugen) — ArMaDa Trial, Geographic Atrophy",body:"Single subretinal injection targeting multiple disease pathways via RORA gene. Full Phase 2 12-month data (March 2026) showed 31% reduction in lesion growth in the optimal dose group versus control, plus 27% slower ellipsoid zone loss. No drug-related serious adverse events to date. Ocugen received FDA Regenerative Medicine Advanced Therapy (RMAT) designation and began a Phase 3 registrational trial (OCU410-301) in August 2026, with primary completion estimated in 2028.",link:"https://ir.ocugen.com/news-releases/news-release-details/ocugen-announces-positive-preliminary-phase-2-data-ocu410"},
 
@@ -7329,7 +7331,7 @@ amd:{
 
   tech:[
 
-    {cat:"Smart Glasses",title:"Ray-Ban Meta / Oakley Meta + Be My Eyes",body:"Mainstream AI smart glasses with a built-in camera that can describe surroundings, read text aloud, and connect hands-free to a Be My Eyes volunteer or trusted contact by voice. They look like ordinary glasses and cost far less than dedicated low-vision wearables. Two generations are sold: Gen 1 is the cheaper option; Gen 2 adds longer battery (about 8 hours vs 4) and sharper video, but both get the same AI and Be My Eyes features. Oakley Meta is the sportier wraparound version.",price:"Manufacturer RRP is around £299+ (Gen 1) and £379+ (Gen 2), but high-street retailers such as Currys, John Lewis and Amazon are often cheaper — shop around for the current price. Be My Eyes is free"},
+    {cat:"Smart Glasses",title:"Ray-Ban Meta / Oakley Meta + Be My Eyes",body:"Mainstream AI smart glasses with a built-in camera that can describe surroundings, read text aloud, and connect hands-free to a Be My Eyes volunteer or trusted contact by voice. They look like ordinary glasses and cost far less than dedicated low-vision wearables. Two generations are sold: Gen 1 is the cheaper option; Gen 2 adds longer battery (about 8 hours vs 4) and sharper video, but both get the same AI and Be My Eyes features. Oakley Meta is the sportier wraparound version. A separate, much more expensive model with a small display in one lens went on sale in the UK in September 2026; we have not assessed it for blind and partially sighted use.",price:"Manufacturer RRP is around £299+ (Gen 1) and £379+ (Gen 2), but high-street retailers such as Currys, John Lewis and Amazon are often cheaper — shop around for the current price. Be My Eyes is free"},
 
     {cat:"Smart Glasses",title:"NuEyes (wearable magnifier)",body:"Lightweight voice-controlled wearable magnifier (up to 12×) with OCR text-to-speech, particularly useful when central vision is reduced. UK supplier is VisionAid Technologies, who can advise on the current NuEyes model.",price:"Models change — check the current NuEyes headset and price with VisionAid (VAT relief applies)"},
 
@@ -7361,7 +7363,7 @@ amd:{
 
     {n:2,title:"Attendance Allowance",body:"If over state pension age, Attendance Allowance pays £114.60/week (higher rate) from April 2026. In Scotland this has been replaced by Pension Age Disability Payment, which pays the same rates through Social Security Scotland (0800 182 2222). Age UK can help complete the form."},
 
-    {n:3,title:"Blue Badge",body:"People with severe visual impairment automatically qualify for a Blue Badge. Apply via your local council."}
+    {n:3,title:"Blue Badge",body:"People registered as severely sight impaired automatically qualify for a Blue Badge. Apply via your local council."}
 
   ],
 
@@ -7400,7 +7402,7 @@ glaucoma:{
 
     whoAffects:"Mae risg uwch gydag oedran, hanes teuluol o lawcoma, pwysedd uchel yn y llygad, a thras Affricanaidd neu Caribïaidd. Mae perthnasau agosaf pobl â glawcoma yn gymwys am brofion llygaid NHS am ddim.",
 
-    researchSummary:"Pwysig: ers 2022 mae NICE yn argymell cynnig laser SLT 360° fel y driniaeth GYNTAF i bobl sydd newydd gael diagnosis o glawcoma onglagored, yn hytrach na diferion. Os na chynigiwyd laser i chi, mae’n rhesymol gofyn pam. Mae mewnblaniad iDose TR wedi'i gymeradwyo yn UDA, ond nid oes cymeradwyaeth MHRA na NICE yn y DU. Mae dadansoddi sganiau OCT gyda chymorth AI yn dal yn bennaf mewn ymchwil yn hytrach na defnydd llawn ar y GIG. Mae ymchwil niwroamddiffynnol yn parhau, ond mae’n anodd: methodd un o’r prif ymgeiswyr (BL1107) ei dreial Cam 2 ym mis Gorffennaf 2026, ac nid oes triniaeth niwroamddiffynnol gymeradwy ar gyfer glawcoma yn unman eto. Daliwch ati i ddefnyddio’ch diferion gostwng pwysedd — dyna’r unig ffordd brofedig o arafu glawcoma."
+    researchSummary:"Pwysig: ers 2022 mae NICE yn argymell cynnig laser SLT 360° fel y driniaeth GYNTAF i bobl sydd newydd gael diagnosis o glawcoma onglagored, yn hytrach na diferion. Os na chynigiwyd laser i chi, mae’n rhesymol gofyn pam. Mae mewnblaniad iDose TR wedi'i gymeradwyo yn UDA, ond nid oes cymeradwyaeth MHRA na NICE yn y DU. Mae dadansoddi sganiau OCT gyda chymorth AI yn dal yn bennaf mewn ymchwil yn hytrach na defnydd llawn ar y GIG. Mae ymchwil niwroamddiffynnol yn parhau, ond mae’n anodd: methodd un o’r prif ymgeiswyr (BL1107) ei dreial Cam 2 ym mis Gorffennaf 2026, ac nid oes triniaeth niwroamddiffynnol gymeradwy ar gyfer glawcoma yn unman eto. Daliwch ati â’ch triniaeth gostwng pwysedd, boed yn ddiferion, laser neu lawdriniaeth — gostwng pwysedd y llygad yw’r unig ffordd brofedig o arafu glawcoma."
 
   },
 
@@ -7414,11 +7416,13 @@ glaucoma:{
 
   research:[
 
+    {tag:"drug",label:"✅ NHS Available",title:"Standard Treatment: Laser, Eye Drops and Surgery",body:"There is no cure for glaucoma, but treatment can slow the damage. NICE recommends offering 360-degree SLT laser as the first treatment to people newly diagnosed with open-angle glaucoma, and pressure-lowering eye drops are also widely used. If these are not enough, there are several types of operation. Treatment aims to stop things getting worse, so keep your follow-up appointments.",link:"https://www.nhs.uk/conditions/glaucoma/"},
+
     {tag:"drug",label:"🌍 Available Abroad",title:"iDose TR (Travoprost) Implant",body:"A tiny implant placed inside the eye delivers continuous pressure-lowering medication — eliminating daily eye drops. FDA approved December 2023; a January 2026 labelling update now allows the implant to be re-administered once its effect wears off, rather than being limited to a single use. No MHRA or NICE approval announced for the UK as of 2026. Speak to your ophthalmologist if you have difficulty with eye drops — alternatives like SLT laser may be available.",link:"https://glaucoma.uk/about-glaucoma/treatment/"},
 
     {tag:"tech",label:"🔬 Pipeline",title:"AI Tools for Glaucoma Diagnosis (Research)",body:"Research teams, including a Moorfields Eye Hospital project, are developing AI models that use routine clinic data to help diagnose glaucoma, alongside genetic prediction models that may help show who is at higher risk of the condition worsening. These are research projects, not routine NHS tools. Ask your eye clinic whether any research study is open to you.",link:"https://moorfieldseyecharity.org.uk/projects-we-fund/innovating-glaucoma-care"},
 
-    {tag:"gene",label:"🔬 Pipeline",title:"Neuroprotection Research",body:"Trials investigating whether drugs can protect optic nerve fibres from dying — going beyond just lowering pressure. Progress here has been genuinely difficult: promising results in small studies have repeatedly failed to hold up in larger ones, and there is still no approved neuroprotective treatment for glaucoma anywhere. In July 2026 one of the leading candidates, BL1107 (Bausch + Lomb), failed its 159-patient Phase 2 trial and the company discontinued it as a glaucoma eye drop. Work continues on NT-501 (Neurotech, an implant releasing CNTF protein — the same implant approved in 2025 as Encelto for a different condition, macular telangiectasia) and on nicotinamide (vitamin B3) supplementation, including the 660-patient Glaucoma Nicotinamide Trial due to complete around the end of 2026. Keep taking your pressure-lowering drops: that remains the only proven way to slow glaucoma.",link:"https://www.reviewofophthalmology.com/article/the-2026-glaucoma-pipeline"},
+    {tag:"gene",label:"🔬 Pipeline",title:"Neuroprotection Research",body:"Trials investigating whether drugs can protect optic nerve fibres from dying — going beyond just lowering pressure. Progress here has been genuinely difficult: promising results in small studies have repeatedly failed to hold up in larger ones, and there is still no approved neuroprotective treatment for glaucoma anywhere. In July 2026 one of the leading candidates, BL1107 (Bausch + Lomb), failed its 159-patient Phase 2 trial and the company discontinued it as a glaucoma eye drop. Work continues on NT-501 (Neurotech, an implant releasing CNTF protein — the same implant approved in 2025 as Encelto for a different condition, macular telangiectasia) and on nicotinamide (vitamin B3) supplementation, including the 660-patient Glaucoma Nicotinamide Trial due to complete around the end of 2026. Keep following your pressure-lowering treatment, whether drops, laser or surgery: lowering eye pressure remains the only proven way to slow glaucoma.",link:"https://www.reviewofophthalmology.com/article/the-2026-glaucoma-pipeline"},
 
     {tag:"gene",label:"🌅 Horizon",title:"Gene Therapy for Glaucoma",body:"Early research into gene therapy approaches targeting the trabecular meshwork (the eye's drainage system) to permanently improve fluid drainage and reduce IOP without daily medication. A first-in-human CRISPR/Cas9 trial began in 2024 for the small group of patients with myocilin (MYOC) gene mutations — about 4% of adult open-angle glaucoma. Wider gene therapies remain at preclinical stage.",link:"https://clinicaltrials.gov/study/NCT06465537"},
 
@@ -7431,7 +7435,7 @@ glaucoma:{
     {n:10,title:"Ask for a Low Vision Assessment",body:"If glasses no longer give you the vision you need, ask your ophthalmologist or optometrist to refer you to an NHS low vision service. The assessment is free. They look at what you actually struggle with — reading post, seeing the cooker dials, recognising faces — and work out which aids and lighting help. Optical magnifiers are normally loaned to you free for as long as they are useful. Be aware that electronic and desktop video magnifiers are usually not funded, though most clinics will let you try them before you buy. Waiting times and exactly what is offered vary by area. This is worth doing at any stage, not only when vision is very poor.",link:"https://www.rnib.org.uk/your-eyes/navigating-sight-loss/"},
     {n:1,title:"Laser (SLT) Is Usually Offered Before Drops",body:"Many people assume glaucoma means eye drops for life. Since 2022, NICE has recommended that people newly diagnosed with chronic open-angle glaucoma, or with ocular hypertension at a pressure of 24mmHg or more, should be offered 360° selective laser trabeculoplasty (SLT) as their FIRST treatment rather than drops. It is an outpatient procedure: a laser applied through a contact lens, taking a few minutes per eye. The evidence came from the UK LiGHT trial, led from Moorfields, which found SLT worked at least as well as drops, cost the NHS less, and left people needing fewer drops. Be realistic about what it does: it can delay the need for drops and reduce the chance you will need them, but it does not always remove that need, and the effect can wear off over years — a second SLT can then be considered. Side effects are usually short-lived (discomfort, blurring, light sensitivity). It is not recommended for glaucoma linked to pigment dispersion syndrome. If you would rather not have it, or it is not suitable, drops remain a perfectly good option. If you were put straight onto drops without SLT being discussed, it is reasonable to ask why.",link:"https://www.nice.org.uk/guidance/ng81/chapter/recommendations"},
 
-    {n:1,title:"Using Your Eye Drops Correctly",body:"Tilt your head back, pull down your lower lid, look up. Squeeze one drop in. Close your eye for two minutes and press the inner corner. Adherence is the single most important thing to protect your vision."},
+    {n:1,title:"Using Your Eye Drops Correctly",body:"Tilt your head back, pull down your lower lid, look up. Squeeze one drop in. Close your eye for two minutes and press the inner corner. Adherence is one of the most important things to protect your vision."},
 
     {n:2,title:"Getting Your Family Tested",body:"First-degree relatives of glaucoma patients are around three to four times more likely to develop glaucoma. If you are 40 or over and your parent, sibling or child has been diagnosed with glaucoma, you are entitled to a free NHS sight test in England, Wales and Northern Ireland — in Scotland NHS sight tests are free for everyone. Tell your family now — glaucoma is silent until significant damage has occurred."},
 
@@ -7441,7 +7445,7 @@ glaucoma:{
 
   tech:[
 
-    {cat:"Eye Drop Aid",title:"Eye-Drop Dispensing Aids (Autodrop, Opticare)",body:"Simple plastic aids that hold the bottle, steady your aim and squeeze for you — making daily drops easier and improving adherence, which is the single most important factor in protecting your sight. Ask your pharmacist or eye clinic; some are available on prescription.",price:"Roughly £5–£25; sometimes free on prescription or from the clinic"},
+    {cat:"Eye Drop Aid",title:"Eye-Drop Dispensing Aids (Autodrop, Opticare)",body:"Simple plastic aids that hold the bottle, steady your aim and squeeze for you — making daily drops easier and improving adherence, which is one of the most important factors in protecting your sight. Ask your pharmacist or eye clinic; some are available on prescription.",price:"Roughly £5–£25; sometimes free on prescription or from the clinic"},
 
     {cat:"Reminders",title:"Medication Reminder Apps & Alarms",body:"Glaucoma drops only work if taken consistently. A free phone reminder or a dedicated app (e.g. Medisafe) prompts you at the right time and tracks doses.",price:"Free"},
 
@@ -7491,7 +7495,7 @@ glaucoma:{
 
 rp:{
 
-    helpline:{org:"Retina UK Helpline",number:"0300 111 4000",hours:"Mon–Fri 9.30am–9.30pm",link:"https://retinauk.org.uk"},
+    helpline:{org:"Retina UK Helpline",number:"0300 111 4000",hours:"Mon–Fri 9am–5pm, Tue and Thu until 8pm",link:"https://retinauk.org.uk"},
 
   name:"Retinitis Pigmentosa",
 
@@ -7507,7 +7511,7 @@ rp:{
 
     whoAffects:"Mae RP yn effeithio ar ddynion a menywod. Gall gael ei etifeddu mewn sawl ffordd wahanol — awtosomaidd enciliol, awtosomaidd trechol, neu gysylltiedig â'r X. Mae 50 o enynnau gwahanol yn gallu achosi RP.",
 
-    researchSummary:"Mae Luxturna ar gael ar y GIG ar gyfer mwtaniadau RPE65. Ni chyrhaeddodd treial Cam 3 LUMEOS o therapi genynnau RPGR ei brif nod, ond dangosodd welliannau eraill, ac mae MeiraGTx yn bwriadu gwneud cais rheoleiddiol. Ym mis Medi 2026 cyrhaeddodd therapi genynnau RPGR arall — laru-zova gan Beacon Therapeutics, cwmni o Lundain — brif nod ei dreial VISTA, y cyntaf erioed i wneud hynny mewn RP cysylltiedig ag X. Derbyniodd yr FDA gais trwydded ar gyfer therapi optogenetig (MCO-010) ym mis Medi 2026 hefyd."
+    researchSummary:"Mae Luxturna ar gael ar y GIG ar gyfer mwtaniadau RPE65. Ni chyrhaeddodd treial Cam 3 LUMEOS o therapi genynnau RPGR ei brif nod, ond dangosodd welliannau eraill, ac mae MeiraGTx yn bwriadu gwneud cais rheoleiddiol. Ym mis Medi 2026 cyrhaeddodd therapi genynnau RPGR arall — laru-zova gan Beacon Therapeutics, cwmni o Lundain — brif nod ei dreial VISTA, y cyntaf erioed i wneud hynny mewn RP cysylltiedig ag X. Derbyniodd yr FDA gais trwydded ar gyfer therapi optogenetig (MCO-010) ym mis Medi 2026 hefyd. Gall pobl â retinitis pigmentosa ddatblygu cataractau yn iau; dywed Moorfields fod canlyniadau llawdriniaeth cataract fel arfer yn rhagorol, ond mae faint mae'n helpu yn dibynnu ar ba mor ddifrifol yw'r niwed i'r retina, ac nid yw'n trin y retinitis pigmentosa ei hun."
 
   },
 
@@ -7521,10 +7525,12 @@ rp:{
 
   research:[
 
+    {tag:"drug",label:"✅ NHS Available",title:"Cataract Surgery",body:"People with retinitis pigmentosa can develop cataracts at a younger age. Moorfields says the results of cataract surgery are usually excellent, because the cloudy natural lens is replaced with an artificial one. How much it helps depends on how severe the damage to the retina is (Retina UK). It does not treat the retinitis pigmentosa itself, but it can clear the extra blur a cataract adds. Ask your eye clinic if your vision seems cloudier than expected.",link:"https://moorfields.nhs.uk/private/eye-conditions-and-treatments/retinitis-pigmentosa"},
+
     {tag:"gene",label:"✅ NHS Available",title:"Luxturna — RPE65 Mutations",body:"First gene therapy approved on the NHS for an inherited eye condition. A single subretinal injection in each eye. Available for patients with biallelic RPE65 mutations at a small number of designated NHS centres — Moorfields in London, Manchester Royal Eye Hospital and Oxford among them — so expect to travel. Life-changing results in eligible patients, and the earlier it is given the better, because it cannot restore cells already lost.",link:"https://www.nice.org.uk/guidance/hst11"},
 
     {tag:"gene",label:"🔬 Pipeline",title:"Laru-zova (Beacon Therapeutics) — VISTA Trial Met Its Goal",body:"The most encouraging X-linked RP news in years. On 21 September 2026 Beacon Therapeutics reported that its pivotal VISTA trial met its primary endpoint with statistical significance — reported as the first time a treatment for XLRP has succeeded in a pivotal trial. The trial involved 85 males aged 12 to 48, and measured how many could read at least 15 more letters on a low-light vision chart after a year. Like bota-vec it delivers a working copy of the RPGR gene by subretinal injection. Particularly relevant here: Beacon is London-based, VISTA included UK sites, and the therapy holds MHRA ILAP designation (a UK scheme intended to speed up access) alongside EMA PRIME status. Beacon plans to begin a rolling US licence application later in 2026. Not yet approved anywhere, and a UK decision would follow separately.",link:"https://www.beacontx.com/news-and-events/beacon-therapeutics-reports-positive-topline-data-from-the-pivotal-vista-trial-of-laru-zova-for-the-treatment-of-x-linked-retinitis-pigmentosa-xlrp/"},
-    {tag:"gene",label:"🔬 Pipeline",title:"Botaretigene Sparoparvovec (bota-vec) — RPGR Gene Therapy",body:"The Phase 3 LUMEOS trial (95 patients) did not meet its primary endpoint of vision-guided mobility (May 2025), but showed meaningful improvements in visual acuity and patient-reported outcomes. Johnson & Johnson agreed to return rights to MeiraGTx in April 2026, with the deal completing in May 2026; MeiraGTx anticipates submitting regulatory filings in the US, Europe, the UK and Japan during 2026, with potential commercial launch in 2027 if approved. For males with X-linked RP caused by RPGR mutations — the most common cause of X-linked RP.",link:"https://www.fightingblindness.org/news/retinitis-pigmentosa-research-advances-899"},
+    {tag:"gene",label:"🔬 Pipeline",title:"Botaretigene Sparoparvovec (bota-vec) — RPGR Gene Therapy",body:"The Phase 3 LUMEOS trial (95 patients) did not meet its primary endpoint of vision-guided mobility (May 2025), but showed meaningful improvements in visual acuity and patient-reported outcomes. Johnson & Johnson agreed to return rights to MeiraGTx in April 2026, with the deal completing in May 2026; MeiraGTx anticipates submitting regulatory filings in the US, Europe and Japan (it has not announced a UK filing), with potential commercial launch in 2027 if approved. For males with X-linked RP caused by RPGR mutations — the most common cause of X-linked RP.",link:"https://www.fightingblindness.org/news/retinitis-pigmentosa-research-advances-899"},
 
     {tag:"trial",label:"🔬 Pipeline",title:"Optogenetics — Restoring Vision in End-Stage RP",body:"Delivers light-sensitive proteins to surviving retinal cells that have lost their natural photoreceptors. Mutation-agnostic, so could help many RP types. Nanoscope MCO-010 is the most advanced programme and has reached a significant milestone: the FDA formally accepted its licence application on 9 September 2026, meaning the application is now under review. The therapy has been given the brand name MOGENRY (sonpiretigene isteparvovec). It is a one-off injection given in clinic and does not require genetic testing, because it works regardless of which gene caused the RP. Three-year follow-up data presented at ARVO 2026 showed lasting improvements. Acceptance is not approval — the FDA has still to decide, and any UK availability would be a separate process after that. GenSight GS030, Bionic Sight BS01 and others have ongoing Phase 1/2 trials. Could help people with advanced RP who are not eligible for gene therapy.",link:"https://www.fightingblindness.org/news/retinitis-pigmentosa-research-advances-899"},
 
@@ -7538,7 +7544,7 @@ rp:{
 
     {n:1,title:"Getting a Genetic Test",body:"Ask your ophthalmologist for a referral to an Inherited Retinal Disease clinic. Genetic testing is free on the NHS. Your result determines eligibility for treatments including Luxturna."},
 
-    {n:2,title:"Long Cane Training",body:"The single most effective mobility aid for RP. Free via your local authority rehabilitation service — ask your council's sensory impairment team or ophthalmologist for a referral."},
+    {n:2,title:"Long Cane Training",body:"A very useful mobility aid for RP. Free via your local authority rehabilitation service — ask your council's sensory impairment team or ophthalmologist for a referral."},
 
     {n:3,title:"Applying for a Guide Dog",body:"Apply via guidedogs.org.uk. A guide dog is completely free — all costs including vet bills are covered. Be realistic about timescales: the assessment itself can take weeks or months, and the wait to be matched after that has commonly been quoted as 18 months to two years, sometimes longer. Matching is by suitability rather than by how long you have waited, so someone needing a low-shedding dog may wait longer. Guide Dogs has said reducing the wait is a priority. For many people it transforms independent travel, but apply early and keep using other mobility support in the meantime. Guide dog service line: 0345 143 0229."}
 
@@ -7572,7 +7578,7 @@ rp:{
 
   benefits:[
 
-    {n:1,title:"CVI Registration",body:"Peripheral field loss from RP meets criteria for partial sight or blind registration. Register early — it unlocks significant support."},
+    {n:1,title:"CVI Registration",body:"Peripheral field loss from RP meets criteria for partial sight or blind registration. Register early — it can open access to significant support."},
 
     {n:2,title:"PIP — Daily Living and Mobility",body:"RP significantly affects both daily living and mobility, especially at night. Both components of PIP often apply."},
 
@@ -7584,7 +7590,7 @@ rp:{
 
     {title:"Night Vision and Lighting",body:"Install motion-sensor night lights throughout your home — hallways, stairs, bathroom. Carry a small torch or use your phone torch when out at night. Allow extra time for your eyes to adjust when moving from bright to dark environments — this takes significantly longer with RP."},
 
-    {title:"Long Cane and Guide Dogs",body:"A long cane is the single most effective mobility aid for RP and training is free via your local authority. A guide dog transforms independent travel — guidedogs.org.uk. Neither is a sign of giving up — both are tools that restore independence and confidence."},
+    {title:"Long Cane and Guide Dogs",body:"A long cane is a very useful mobility aid for RP, and training is free via your local authority. A guide dog can make independent travel much easier — guidedogs.org.uk. Neither is a sign of giving up — both are tools that restore independence and confidence."},
 
     {title:"Tunnel Vision Strategies",body:"Scan widely and deliberately — turn your head and body to compensate for narrowing peripheral vision. Sit with your back to a wall in restaurants and public spaces to reduce the need to monitor your sides. Inform people you're with about your visual field so they can position themselves appropriately."},
 
@@ -7614,7 +7620,7 @@ diabetic:{
 
     whoAffects:"Mae'n effeithio ar unrhyw un â Diabetes Math 1 neu Math 2. Mae risg yn cynyddu gydag hyd y diabetes, rheolaeth wael ar siwgr gwaed, pwysedd gwaed uchel, a chlefyd yr arennau.",
 
-    researchSummary:"Mae sgrinio llygaid diabetig y GIG am ddim — y cam pwysicaf. Sylwer nad yw bellach bob blwyddyn i bawb: os na chanfuwyd retinopathi yn eich dau sgrinio diwethaf, cewch eich gwahodd bob dwy flynedd. Mae Faricimab wedi'i gymeradwyo gan NICE ar gyfer DMO gyda llai o bigiadau. Mae canllawiau NICE hefyd yn dweud y dylid ystyried fenofibrate — tabled rhad — i arafu retinopathi cyn-amlhaol mewn diabetes math 2; gofynnwch i'ch tîm diabetes. Mae therapi genynnau mewn datblygiad."
+    researchSummary:"Mae sgrinio llygaid diabetig y GIG am ddim — y cam pwysicaf. Sylwer nad yw bellach bob blwyddyn i bawb: os na chanfuwyd retinopathi yn eich dau sgrinio diwethaf, cewch eich gwahodd bob dwy flynedd. Mae Faricimab wedi'i gymeradwyo gan NICE ar gyfer DMO gyda llai o bigiadau. Mae canllawiau NICE hefyd yn dweud y dylid ystyried fenofibrate — tabled rhad — i arafu retinopathi cyn-amlhaol mewn diabetes math 2; gofynnwch i'ch tîm diabetes. Mae therapi genynnau mewn datblygiad. Os bydd retinopathi yn bygwth golwg, mae'r GIG yn cynnig triniaeth laser (ffotogeulad panretinol) i grebachu pibellau gwaed annormal. Gall helpu i atal colli golwg pellach, ond ni all adfer golwg a gollwyd, a gall effeithio ar olwg nos ac ochr. Rhaid i chi ddweud wrth y DVLA os ydych wedi cael triniaeth laser."
 
   },
 
@@ -7627,6 +7633,8 @@ diabetic:{
   whoAffects:"Anyone with Type 1 or Type 2 diabetes. Risk increases with longer duration, poor blood sugar control, high blood pressure, and high cholesterol.",
 
   research:[
+    {tag:"drug",label:"✅ NHS Available",title:"Laser Treatment for Advanced Retinopathy",body:"If diabetic retinopathy becomes sight-threatening, the NHS offers laser treatment (panretinal photocoagulation). It shrinks the abnormal new blood vessels that can bleed or lead to retinal detachment. Laser can help stop further vision loss, but it cannot restore sight already lost, and it can affect night vision and side vision. You must tell the DVLA if you have had laser treatment for diabetic retinopathy. Your eye clinic will explain whether laser, eye injections or surgery suit you.",link:"https://leaflets.ekhuft.nhs.uk/pan-retinal-photocoagulation-prp-for-proliferative-diabetic-retinopathy/html"},
+
     {tag:"drug",label:"✅ NHS Available",title:"Fenofibrate — A Tablet That May Slow Progression",body:"Not widely known, and worth asking about. Fenofibrate is an old, inexpensive tablet originally used to lower blood fats. NICE guidance (NG242) says clinicians should CONSIDER it to reduce the progression of diabetic retinopathy in people who have non-proliferative retinopathy and type 2 diabetes. It is not an eye treatment as such and it will not reverse damage already done — the aim is to slow things down. Whether it suits you depends on your kidney function, your other medication and your overall diabetes care, so it is a conversation for your diabetes team or ophthalmologist rather than something to request in isolation. Mentioned here because many people with early retinopathy are told there is nothing to do but wait and control blood sugar.",link:"https://www.nice.org.uk/guidance/ng242"},
 
     {tag:"drug",label:"✅ NHS Available",title:"Faricimab (Vabysmo) — Fewer Injections",body:"Dual-pathway injection approved by NICE for diabetic macular oedema. Targets both VEGF and Ang-2. Up to every 4 months for eligible patients — significantly fewer clinic visits than older treatments.",link:"https://www.nice.org.uk/guidance/ta799"},
@@ -7684,7 +7692,7 @@ diabetic:{
 
   livingWith:[
 
-    {title:"Never Miss Your Screening Appointment",body:"NHS diabetic eye screening is the single most important thing you can do. It takes about 30 minutes and detects changes before you notice symptoms. Intervals now vary with your results — two-yearly if your last two screenings were clear, more often otherwise. Missing even one year can allow significant damage to develop silently."},
+    {title:"Never Miss Your Screening Appointment",body:"NHS diabetic eye screening is one of the most important things you can do. It takes about 30 minutes and detects changes before you notice symptoms. Intervals now vary with your results — two-yearly if your last two screenings were clear, more often otherwise. Missing even one year can allow significant damage to develop silently."},
 
     {title:"Blood Sugar Monitoring",body:"A continuous glucose monitor (CGM) — FreeStyle Libre or Dexcom models are the ones usually funded — makes maintaining good blood sugar control significantly easier and reduces diabetic retinopathy risk. Ask your diabetes team whether you are eligible for NHS funding."},
 
@@ -7700,7 +7708,7 @@ diabetic:{
 
 lca:{
 
-    helpline:{org:"Retina UK Helpline",number:"0300 111 4000",hours:"Mon–Fri 9.30am–9.30pm",link:"https://retinauk.org.uk"},
+    helpline:{org:"Retina UK Helpline",number:"0300 111 4000",hours:"Mon–Fri 9am–5pm, Tue and Thu until 8pm",link:"https://retinauk.org.uk"},
 
   name:"Leber Congenital Amaurosis",
 
@@ -7846,7 +7854,7 @@ nystagmus:{
 
     whoAffects:"Mae Nystagmus yn aml yn cyd-fynd â chyflyrau eraill fel albiniaeth, achromatopsia, ac LCA. Gall hefyd ddigwydd ar ei ben ei hun. Mae rhai mathau yn etifeddol.",
 
-    researchSummary:"Mae llawdriniaeth tenotomi (Anderson) ar gael yn y DU. Mae memantine a gabapentin yn helpu nystagmws a gafwyd yn ddiweddarach mewn oedolion, ond mewn nystagmws cynhenid canfu treial mwy yn 2016 nad oedd gwelliant ystyrlon i graffter golwg. Mae ymchwil i driniaethau ar gyfer achosion sylfaenol (albiniaeth, achromatopsia) hefyd yn berthnasol."
+    researchSummary:"Mae llawdriniaeth tenotomi (Anderson) ar gael yn y DU. Mae memantine a gabapentin yn helpu nystagmws a gafwyd yn ddiweddarach mewn oedolion, ond mewn nystagmws cynhenid canfu treial mwy yn 2016 nad oedd gwelliant ystyrlon i graffter golwg. Mae ymchwil i driniaethau ar gyfer achosion sylfaenol (albiniaeth, achromatopsia) hefyd yn berthnasol. Ni ellir gwella nystagmws, ond weithiau gall sbectol neu lensys cyffwrdd helpu i wella golwg."
 
   },
 
@@ -7859,6 +7867,8 @@ nystagmus:{
   whoAffects:"Affects approximately 1 in 1,000 people. Often associated with albinism, LCA, achromatopsia, and other inherited retinal conditions. Acquired nystagmus in adults may follow neurological events such as stroke or MS.",
 
   research:[
+
+    {tag:"drug",label:"✅ NHS Available",title:"Glasses and Contact Lenses",body:"Nystagmus cannot be cured, but wearing glasses or contact lenses can sometimes help improve your vision. Ask your eye clinic or optometrist whether this could help you.",link:"https://www.moorfields.nhs.uk/mediaLocal/xfibwpml/nystagmus-8-12.pdf"},
 
     {tag:"drug",label:"✅ NHS Available",title:"Tenotomy (Anderson Procedure)",body:"A minor eye muscle surgery that shifts the null zone to a more central head position, reducing or eliminating the need for a head turn. Available at specialist centres in the UK. Ask your ophthalmologist whether you are a candidate.",link:"https://nystagmusnetwork.org"},
 
@@ -7952,7 +7962,7 @@ nystagmus:{
 
 achromatopsia:{
 
-    helpline:{org:"Retina UK Helpline",number:"0300 111 4000",hours:"Mon–Fri 9.30am–9.30pm",link:"https://retinauk.org.uk"},
+    helpline:{org:"Retina UK Helpline",number:"0300 111 4000",hours:"Mon–Fri 9am–5pm, Tue and Thu until 8pm",link:"https://retinauk.org.uk"},
 
   name:"Achromatopsia",
 
@@ -8004,7 +8014,7 @@ achromatopsia:{
 
   tech:[
 
-    {cat:"Filter Lenses",title:"Red / Dark Tinted Filter Glasses",body:"Deeply tinted absorptive lenses — often red or plum-tinted — are the single most helpful aid in achromatopsia, dramatically cutting light sensitivity and improving comfort and function outdoors. Specialist brands include NoIR, Eschenbach and Zeiss; best chosen with a low-vision optometrist.",price:"Roughly £80–£300 depending on lens"},
+    {cat:"Filter Lenses",title:"Red / Dark Tinted Filter Glasses",body:"Deeply tinted absorptive lenses — often red or plum-tinted — are among the most helpful aids in achromatopsia, often cutting light sensitivity and improving comfort and function outdoors. Specialist brands include NoIR, Eschenbach and Zeiss; best chosen with a low-vision optometrist.",price:"Roughly £80–£300 depending on lens"},
 
     {cat:"Filter Lenses",title:"Tinted Contact Lenses",body:"Some people benefit from red or amber tinted contact lenses (sometimes with a clear central pupil zone) to reduce glare while keeping a normal appearance. Fitted by a specialist contact-lens optometrist.",price:"Varies — discuss with a specialist optometrist"},
 
@@ -8303,7 +8313,7 @@ albinism:{
 
 cvi:{
 
-    helpline:{org:"RNIB Helpline",number:"0303 123 9999",hours:"Mon–Fri 9am–5pm",link:"https://www.rnib.org.uk"},
+    helpline:{org:"RNIB Helpline",number:"0303 123 9999",hours:"Mon–Fri 8am–8pm, Sat 9am–1pm",link:"https://www.rnib.org.uk"},
 
   name:"Cerebral Visual Impairment",
 
@@ -8327,7 +8337,7 @@ cvi:{
 
   howAffects:"CVI presents very differently from eye-based conditions. A child may appear to 'look through' objects, have better peripheral than central vision, or seem visually inattentive. Visual fatigue is common. Features include difficulty with visual clutter, better vision for familiar objects, light-gazing, and better responses to bright colours.",
 
-  diagnosis:"Diagnosed by a specialist paediatric ophthalmologist or neuro-ophthalmologist. Standard visual acuity tests may underestimate functional vision. Brain MRI identifies the area of brain damage. A specialist CVI assessment is the gold standard.",
+  diagnosis:"Diagnosed by a specialist paediatric ophthalmologist or neuro-ophthalmologist. Standard visual acuity tests may underestimate functional vision. Brain MRI identifies the area of brain damage. A specialist CVI assessment is usually needed to confirm it.",
 
   whoAffects:"The most common cause of childhood visual impairment in developed countries. An estimated 30–40% of children with cerebral palsy have CVI. Can affect people of any age following stroke or brain injury.",
 
@@ -8429,7 +8439,7 @@ cvi:{
 
 cone:{
 
-    helpline:{org:"Retina UK Helpline",number:"0300 111 4000",hours:"Mon–Fri 9.30am–9.30pm",link:"https://retinauk.org.uk"},
+    helpline:{org:"Retina UK Helpline",number:"0300 111 4000",hours:"Mon–Fri 9am–5pm, Tue and Thu until 8pm",link:"https://retinauk.org.uk"},
 
   name:"Cone Dystrophy",
 
@@ -8459,7 +8469,7 @@ cone:{
 
   research:[
 
-    {tag:"gene",label:"🔬 Pipeline",title:"RPGR Gene Therapy — X-Linked Disease",body:"Gene therapy targeting RPGR mutations (which can cause X-linked cone/cone-rod dystrophy as well as retinitis pigmentosa). MeiraGTx's Phase 3 LUMEOS trial of its RPGR therapy (bota-vec) did not meet its primary endpoint in 2025, though it showed improvements in visual acuity and patient-reported outcomes. Johnson & Johnson returned the programme to MeiraGTx in a deal completing May 2026, and MeiraGTx anticipates regulatory filings in the US, Europe, the UK and Japan during 2026. Separately, a second RPGR gene therapy — laru-zova, from London-based Beacon Therapeutics — met the primary endpoint of its pivotal VISTA trial in September 2026, the first RPGR programme to do so; see the Retinitis Pigmentosa page. A genetic diagnosis is needed to know if you carry an RPGR mutation.",link:"https://retinauk.org.uk/medical-research/"},
+    {tag:"gene",label:"🔬 Pipeline",title:"RPGR Gene Therapy — X-Linked Disease",body:"Gene therapy targeting RPGR mutations (which can cause X-linked cone/cone-rod dystrophy as well as retinitis pigmentosa). MeiraGTx's Phase 3 LUMEOS trial of its RPGR therapy (bota-vec) did not meet its primary endpoint in 2025, though it showed improvements in visual acuity and patient-reported outcomes. Johnson & Johnson returned the programme to MeiraGTx in a deal completing May 2026, and MeiraGTx anticipates regulatory filings in the US, Europe and Japan (it has not announced a UK filing). Separately, a second RPGR gene therapy — laru-zova, from London-based Beacon Therapeutics — met the primary endpoint of its pivotal VISTA trial in September 2026, the first RPGR programme to do so; see the Retinitis Pigmentosa page. A genetic diagnosis is needed to know if you carry an RPGR mutation.",link:"https://retinauk.org.uk/medical-research/"},
 
     {tag:"gene",label:"🔬 Pipeline",title:"CNGB3 / CNGA3 Gene Therapy",body:"Shared with achromatopsia, these mutations also cause cone dystrophy in some patients. Phase 1/2 gene therapy trials have been completed, showing acceptable safety with modest and variable improvements in vision; no trial is currently recruiting in the UK. Genetic testing determines whether you carry these mutations.",link:"https://retinauk.org.uk/medical-research/"},
 
@@ -8518,7 +8528,7 @@ cone:{
 
     {title:"Light Management",body:"Photophobia is often the most disabling aspect of cone dystrophy for daily life. Amber or plum wraparound tinted lenses are most effective outdoors. Indoors, reduce overhead lighting and use task lighting at source. All devices should be in dark mode at minimum brightness."},
 
-    {title:"Reading and Close Work",body:"Central vision loss makes reading, writing, and recognising faces increasingly difficult. A desktop video magnifier with adjustable contrast transforms reading. Eccentric viewing — looking slightly to the side — uses peripheral vision and can be trained with a vision rehabilitation specialist."},
+    {title:"Reading and Close Work",body:"Central vision loss makes reading, writing, and recognising faces increasingly difficult. A desktop video magnifier with adjustable contrast can make reading much easier. Eccentric viewing — looking slightly to the side — uses peripheral vision and can be trained with a vision rehabilitation specialist."},
 
     {title:"Driving",body:"Progressive central vision loss from cone dystrophy will eventually affect the ability to meet the legal driving standard. Plan ahead — explore Motability, Access to Work travel support, and local transport schemes before a crisis rather than after."},
 
@@ -8716,7 +8726,7 @@ rvo:{
     "howAffects": "Gall symptomau gynnwys golwg aneglur mewn un llygad, smotyn tywyll, golwg donnog neu afluniaidd, ac anhawster darllen neu weld manylion. Gallant ymddangos dros oriau neu ddyddiau. Mae BRVO fel arfer yn achosi symptomau mwynach na CRVO. Os daw symptomau'n sydyn neu os ydynt yn ddifrifol, neu os ydych yn gweld fflachiadau golau, fflotwyr newydd, neu gysgod neu len ar draws eich golwg, ewch i adran ddamweiniau llygaid neu A&E ar unwaith, gan y gallai fod yn ddatgysylltiad retinol.",
     "diagnosis": "Gwneir y diagnosis ar ôl archwiliad llygaid, sgan OCT, angiograffeg fflworesin (llifyn a chwistrellir i'r fraich) a phrofion gwaed gyda gwiriad pwysedd gwaed.",
     "whoAffects": "Mae'n effeithio'n bennaf ar bobl dros 65 oed ac mae'n gysylltiedig â phwysedd gwaed uchel. Mae ffactorau risg yn cynnwys pwysedd gwaed uchel, diabetes, colesterol uchel, problemau ceulo, BMI uchel, deiet afiach ac ysmygu. Weithiau ni cheir hyd i achos.",
-    "researchSummary": "Mae pigiadau gwrth-VEGF, laser ac mewnblaniadau steroid ar gael ar y GIG i drin chwyddo'r macwla ar ôl RVO. Mae'r rhan fwyaf o bobl yn cael golwg da ar ôl triniaeth, er efallai na fydd cystal ag o'r blaen. Mae'r Macular Society yn cynnig llinell gymorth, cwnsela a grwpiau cymorth."
+    "researchSummary": "Mae pigiadau gwrth-VEGF, laser ac mewnblaniadau steroid ar gael ar y GIG i drin chwyddo'r macwla ar ôl RVO. Mae'r rhan fwyaf o bobl yn cael golwg da ar ôl triniaeth, er efallai na fydd cystal ag o'r blaen. Mae'r Macular Society yn cynnig llinell gymorth, cwnsela a grwpiau cymorth. Os bydd pibellau gwaed newydd annormal yn tyfu, defnyddir laser (ffotogeulad panretinol) i'w hatal. Os bydd eich llygad yn goch neu'n boenus, neu os bydd eich golwg yn gwaethygu'n sydyn, ceisiwch help brys."
   },
   "what": "A retinal vein occlusion (RVO) is a blockage in a vein that drains blood from the retina, the light-sensitive tissue at the back of the eye. It usually affects one eye. When a small branch vein is blocked it is called a branch RVO (BRVO); when the main vein is blocked it is called a central RVO (CRVO). The resulting leakage and swelling can damage the macula, which handles central vision.",
   "howAffects": "Symptoms can include blurred vision in one eye, a dark spot, wavy or distorted vision, and difficulty reading or seeing detail. They can appear over hours or days. A branch RVO usually causes milder symptoms than a central RVO. If symptoms come on suddenly or are severe, or you see flashing lights, new floaters, or a shadow or curtain across your vision, go to an eye casualty or A&E straight away, because these can signal a retinal detachment, which needs urgent treatment.",
@@ -8727,14 +8737,14 @@ rvo:{
       "tag": "drug",
       "label": "✅ NHS Available",
       "title": "Anti-VEGF Injections",
-      "body": "Injections into the eye reduce leakage and swelling at the macula and slow the growth of new blood vessels. They are repeated over several months. NICE has recommended ranibizumab and aflibercept for macular oedema after RVO (NICE guidance TA283, TA305 and TA409, applying in England; other UK nations have their own approval processes). Side effects are usually temporary, such as discomfort, redness, blurred vision and floaters.",
+      "body": "Injections into the eye reduce leakage and swelling at the macula and slow the growth of new blood vessels. They are repeated over several months. NICE has recommended ranibizumab and aflibercept for macular oedema after RVO (NICE guidance TA283, TA305 and TA409), and in September 2024 recommended faricimab as an additional option (TA1004), where the manufacturer supplies it under its commercial arrangement. These apply in England; other UK nations have their own approval processes. Side effects are usually temporary, such as discomfort, redness, blurred vision and floaters.",
       "link": "https://www.macularsociety.org/macular-disease/macular-conditions/retinal-vein-occlusion/"
     },
     {
       "tag": "drug",
       "label": "✅ NHS Available",
       "title": "Laser and Steroid Implants",
-      "body": "Laser can seal leaking vessels and is usually combined with injections. A steroid implant placed in the eye can reduce swelling and may be used in some people. Your eye specialist will explain which suits you.",
+      "body": "Laser can seal leaking vessels and is usually combined with injections. A steroid implant placed in the eye can reduce swelling and may be used in some people. If abnormal new blood vessels start to grow, a different laser treatment (panretinal photocoagulation) is used to prevent them; it aims to protect the eye rather than improve vision. If your eye becomes red or painful, or your vision suddenly worsens, get urgent help from your eye clinic or A&E. Your eye specialist will explain which suits you.",
       "link": "https://www.macularsociety.org/macular-disease/macular-conditions/retinal-vein-occlusion/"
     },
     {
@@ -8859,7 +8869,7 @@ dryeye:{
     "howAffects": "Gall y symptomau gynnwys llygaid cosi, dolurus, graeanog neu goch, golwg aneglur, sensitifrwydd i olau a llygaid dyfrllyd (mwy dyfrllyd nag arfer). Ewch i adran ddamweiniau a brys ar unwaith os bydd eich golwg yn newid (megis llinellau tonnog, fflachiadau golau neu golli golwg), os yw golau'n brifo, neu os oes gennych lygad coch gyda chur pen difrifol a chyfog.",
     "diagnosis": "Gall optometrydd neu feddyg teulu ganfod yr achos a'ch cynghori. Os na cheir achos, efallai y cewch eich cyfeirio at arbenigwr llygaid (offthalmolegydd) am brofion.",
     "whoAffects": "Mae llygaid sych yn fwy tebygol os ydych dros 50 oed, yn gwisgo lensys cyffwrdd, yn edrych ar sgriniau am gyfnodau hir, yn byw neu'n gweithio mewn amgylcheddau sych, llychlyd, mwglyd neu gyda thymheru aer, yn ysmygu neu'n yfed llawer o alcohol, neu'n cymryd rhai meddyginiaethau. Mae cyflyrau fel blepharitis, syndrom Sjögren a lwpws hefyd yn gysylltiedig.",
-    "researchSummary": "Mae hunanofal (glanhau amrannau, seibiannau o sgriniau, lleithydd) a chynhyrchion fferyllfa fel diferion, geliau ac eli yn helpu llawer o bobl. Gall optometrydd neu feddyg teulu drin unrhyw achos sylfaenol. Nid yw dagrau annigonol fel arfer yn arwain at golli golwg difrifol."
+    "researchSummary": "Mae hunanofal (glanhau amrannau, seibiannau o sgriniau, lleithydd) a chynhyrchion fferyllfa fel diferion, geliau ac eli yn helpu llawer o bobl. Gall optometrydd neu feddyg teulu drin unrhyw achos sylfaenol. Nid yw dagrau annigonol fel arfer yn arwain at golli golwg difrifol. Mewn achosion difrifol lle mae wyneb y llygad wedi'i niweidio ac nad yw dagrau artiffisial wedi helpu, mae NICE yn argymell diferion ciclosporin (Ikervis) fel opsiwn i oedolion."
   },
   "what": "Dry eyes are common and usually not serious. They happen when you don't make enough tears, or your tears evaporate too quickly. This leaves the surface of the eye uncomfortable and can sometimes affect your sight. This page is about dry eye disease; blepharitis (inflamed eyelids), which often goes with it, has its own page.",
   "howAffects": "Symptoms can include itchy, sore, gritty or red eyes, blurry vision, sensitivity to light, and eyes that are more watery than normal. Get emergency help (999 or A&E) if your vision changes, such as wavy lines, flashing lights or loss of sight, if looking at light hurts, or if you have a red eye with severe headache and nausea. A painful red eye, or a red eye while wearing contact lenses, needs urgent advice from a GP or NHS 111, as it could be an infection.",
@@ -8879,6 +8889,13 @@ dryeye:{
       "title": "Pharmacy Products and Advice",
       "body": "A pharmacist can advise on eye drops, gels and ointments, and tell you whether you need to see an optician or GP.",
       "link": "https://www.nhs.uk/conditions/dry-eyes/"
+    },
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Prescription Eye Drops for Severe Dry Eye",
+      "body": "If dry eye is severe, has damaged the surface of the eye (severe keratitis) and has not improved with artificial tears, NICE recommends ciclosporin eye drops (Ikervis) as an option for adults. They are prescribed through an eye clinic, not bought over the counter.",
+      "link": "https://www.nice.org.uk/guidance/ta369"
     },
     {
       "tag": "drug",
@@ -8990,7 +9007,7 @@ uveitis:{
     "howAffects": "Gall y symptomau gynnwys poen yn y llygad (yn aml yn waeth wrth ddarllen), llygaid coch neu ddyfrllyd, golwg llai neu aneglur, sensitifrwydd i olau, a fflachiadau neu fflotwyr. Gallant ymddangos o fewn oriau neu ddyddiau, neu ddatblygu dros wythnosau neu fisoedd. Weithiau nid oes symptomau. Ceisiwch apwyntiad meddyg teulu brys neu NHS 111 os oes gennych boen, sensitifrwydd i olau neu newidiadau golwg. Ewch i A&E neu ffoniwch 999 os collwch unrhyw olwg.",
     "diagnosis": "Bydd meddyg teulu yn eich cyfeirio at offthalmolegydd, a welir fel arfer o fewn 24 awr. Bydd yr arbenigwr yn archwilio'ch llygad ac yn chwilio am achos.",
     "whoAffects": "Yn aml ni wyddys yr achos. Mae sbardunau hysbys yn cynnwys cyflyrau hunanimiwn (megis sglerosis ymledol a spondylitis ankylosing), heintiau (herpes simplex, yr eryr a thocsoplasmosis), anaf i'r llygad ac, yn anaml, tyfiant yn y llygad.",
-    "researchSummary": "Fel arfer rhoddir meddyginiaethau i glirio unrhyw haint, lleihau llid ac ymlacio'r llygad. Ar gyfer achosion difrifol neu rai sy'n dychwelyd, gellir cynnig meddyginiaethau gwrthimiwnedd neu atalyddion TNF, therapi laser, cryotherapi neu lawdriniaeth. Mae triniaeth gynnar yn anelu at atal colli golwg."
+    "researchSummary": "Fel arfer rhoddir meddyginiaethau i glirio unrhyw haint, lleihau llid ac ymlacio'r llygad. Ar gyfer achosion difrifol neu rai sy'n dychwelyd, gellir cynnig meddyginiaethau gwrthimiwnedd neu atalyddion TNF, therapi laser, cryotherapi neu lawdriniaeth. Mae triniaeth gynnar yn anelu at atal colli golwg. I oedolion ag uveitis anheintiol yng nghefn y llygad, mae NICE (Cymru a Lloegr) yn argymell adalimumab a mewnblaniad dexamethasone fel opsiynau pan fo'r llid yn weithredol a'r golwg mewn perygl, o dan amodau penodol."
   },
   "what": "Uveitis, sometimes called iritis, is inflammation inside part of the eye. It is rare. It usually affects one eye, though both can be affected. It needs prompt treatment because, if untreated, it can cause long-term sight loss and even blindness.",
   "howAffects": "Symptoms can include eye pain (often worse when reading), red or watery eyes, reduced or blurred vision, sensitivity to light, and flashes or floaters. They can appear within hours or days, or develop over weeks or months. Sometimes there are no symptoms. Get an urgent GP appointment or call NHS 111 if you have eye pain, light sensitivity, changes in vision or a very red eye. Go to A&E or call 999 if you lose any vision.",
@@ -9003,6 +9020,13 @@ uveitis:{
       "title": "Treatment to Clear Infection and Calm Inflammation",
       "body": "Treatment is usually a combination of medicines to clear any infection, reduce inflammation, and relax the eye and ease pain. The aim is to prevent long-term sight loss. Uveitis usually improves quickly with treatment but can come back, so follow-up checks matter.",
       "link": "https://www.nhs.uk/conditions/uveitis/"
+    },
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Adalimumab and Steroid Implant (NICE)",
+      "body": "For adults with non-infectious uveitis affecting the back of the eye, NICE (England and Wales) recommends adalimumab if the inflammation is active, immunosuppressants have failed or caused problems, and vision is at risk, with further conditions about the disease. A dexamethasone eye implant is also an option when the inflammation is active and vision is getting worse. Your uveitis specialist decides who is eligible.",
+      "link": "https://www.nice.org.uk/guidance/ta460"
     },
     {
       "tag": "drug",
@@ -9126,7 +9150,7 @@ gca:{
     "howAffects": "Gall y symptomau gynnwys cur pen difrifol aml, poen neu dynerwch wrth y temlau neu groen y pen, poen yn yr ên wrth fwyta neu siarad, a phroblemau golwg megis golwg dwbl neu golli golwg mewn un llygad neu'r ddau. Mae symptomau cyffredinol yn cynnwys symptomau tebyg i'r ffliw, colli pwysau anfwriadol, hwyliau isel a blinder. Os ydych yn meddwl y gallai fod gennych GCA, ceisiwch apwyntiad meddyg teulu brys neu ffoniwch NHS 111. Mae angen apwyntiad ar yr un diwrnod gydag arbenigwr llygaid ar gyfer problemau golwg.",
     "diagnosis": "Bydd meddyg teulu yn gofyn am eich symptomau, yn archwilio'r temlau ac yn trefnu profion gwaed, yna'n eich cyfeirio at arbenigwr. Gall yr arbenigwr drefnu sgan uwchsain o'r temlau a/neu fiopsi o'r rhydweli amserol dan anesthetig lleol.",
     "whoAffects": "Mae rhai pobl â GCA hefyd yn datblygu polymyalgia rheumatica (PMR), sy'n achosi poen a stiffrwydd yn y cyhyrau yn yr ysgwyddau, y gwddf a'r cluniau. Dywed y GIG y bydd hyd at 1 o bob 5 person â PMR yn datblygu GCA, ac mae PMR yn effeithio'n bennaf ar bobl dros 65 oed.",
-    "researchSummary": "Fel arfer rhoddir steroidau (prednisolone) ar unwaith, hyd yn oed cyn cadarnhau'r diagnosis, oherwydd y risg o golli golwg. Gellir defnyddio meddyginiaethau eraill i leihau'r dos steroid. Peidiwch â rhoi'r gorau i steroidau yn sydyn."
+    "researchSummary": "Fel arfer rhoddir steroidau (prednisolone) ar unwaith, hyd yn oed cyn cadarnhau'r diagnosis, oherwydd y risg o golli golwg. Gellir defnyddio meddyginiaethau eraill i leihau'r dos steroid. Peidiwch â rhoi'r gorau i steroidau yn sydyn. Os bydd GCA yn dychwelyd neu'n gwrthod ymateb i driniaeth arall, mae NICE (Cymru a Lloegr) yn argymell tocilizumab i oedolion, am hyd at flwyddyn, o dan amodau penodol."
   },
   "what": "Giant cell arteritis (GCA), also called temporal arteritis, is inflammation of the arteries, especially those at the temples. The NHS describes it as serious and in need of urgent treatment. If it is not treated quickly it can cause stroke and blindness.",
   "howAffects": "Symptoms can include frequent severe headaches, pain or tenderness at the temples or scalp, jaw pain when eating or talking, and vision problems such as double vision or loss of sight in one or both eyes. General symptoms include flu-like symptoms, unintentional weight loss, low mood and tiredness. If you think you might have GCA, get an urgent GP appointment or call NHS 111. Vision problems need a same-day appointment with an eye specialist.",
@@ -9139,6 +9163,13 @@ gca:{
       "title": "Steroid Treatment (Prednisolone)",
       "body": "Treatment is usually prednisolone, a steroid, started before the diagnosis is confirmed because of the risk of vision loss. A high dose is given for a few weeks, then reduced to a lower dose, which may continue for several years. A small number of people need steroids for life. Do not stop steroids suddenly unless a doctor advises it.",
       "link": "https://www.nhs.uk/conditions/giant-cell-arteritis/"
+    },
+    {
+      "tag": "drug",
+      "label": "✅ NHS Available",
+      "title": "Tocilizumab — If GCA Comes Back",
+      "body": "If giant cell arteritis keeps relapsing or does not respond to other treatment, NICE (England and Wales) recommends tocilizumab, given alongside a reducing course of steroids or after steroids, for up to one year. It is only for adults who have not had tocilizumab before, and only under the agreed commercial arrangement. Ask your specialist whether it could suit you; availability in Scotland and Northern Ireland follows their own processes.",
+      "link": "https://www.nice.org.uk/guidance/ta518"
     },
     {
       "tag": "drug",
@@ -9402,7 +9433,7 @@ ted:{
     "howAffects": "Gall y symptomau gynnwys llygaid yn syllu neu'n chwyddo, cochni a chwyddo'r llygaid a'r amrannau, graeaniogrwydd, sychder, llygaid dyfrllyd, sensitifrwydd i olau llachar, golwg aneglur neu ddwbl, a phoen yn neu y tu ôl i'r llygad. Gellir camgymryd y symptomau am alergedd neu gonjunctivitis. Ceisiwch gymorth meddygol ar unwaith a gofyn am atgyfeiriad ar frys i ganolfan llygaid arbenigol os yw'r symptomau'n gwaethygu dros ddyddiau neu wythnosau, os nad yw golwg aneglur yn gwella wrth amrantu, os yw lliwiau'n edrych yn llai llachar, neu os oes golwg dwbl wrth edrych ymlaen neu i lawr.",
     "diagnosis": "Dylai gofal gynnwys offthalmolegydd (arbenigwr llygaid) ac endocrinolegydd (arbenigwr thyroid), yn ddelfrydol mewn clinig arbenigol gyda phrofiad rheolaidd o TED. Mae diagnosis cynnar yn hanfodol i driniaeth fod yn effeithiol.",
     "whoAffects": "Ysmygu yw'r ffactor risg y gellir ei newid bwysicaf. Mae gan ysmygwyr tua dwywaith y risg o ddatblygu TED, ac ysmygwyr trwm tua wyth gwaith y risg, ac maent yn ymateb yn llai da i driniaeth. Mae rhoi'r gorau iddi yn helpu.",
-    "researchSummary": "Mae triniaethau'n cynnwys dagrau artiffisial, seleniwm ar gyfer TED gweithredol ysgafn, steroidau (yn well drwy wythïen), radiotherapi a llawdriniaeth ar ôl i'r llid setlo. Mae triniaethau biolegol mwy newydd yn bodoli ond yn gostus ac nid ydynt ar gael yn eang. Mae'r British Thyroid Foundation yn cynnig gwybodaeth a chymorth."
+    "researchSummary": "Mae triniaethau'n cynnwys dagrau artiffisial, seleniwm ar gyfer TED gweithredol ysgafn, steroidau (yn well drwy wythïen), radiotherapi a llawdriniaeth ar ôl i'r llid setlo. Mae triniaethau biolegol mwy newydd yn bodoli ond yn gostus ac nid ydynt ar gael yn eang. Mae'r British Thyroid Foundation yn cynnig gwybodaeth a chymorth. Os oes gennych olwg dwbl, gall orthoptydd ddefnyddio prismau i adfer golwg sengl tra bo'r clefyd yn weithredol."
   },
   "what": "Thyroid eye disease (TED), also called Graves' orbitopathy, is an autoimmune inflammatory disorder that affects the tissues around the eye. It is mainly seen in people with an overactive thyroid (hyperthyroidism) caused by Graves' disease. About one in four people with Graves' disease develop eye problems. The British Thyroid Foundation estimates that around 50,000 people in the UK are affected.",
   "howAffects": "Symptoms can include staring or bulging eyes, redness and swelling of the eyes and lids, grittiness, dryness, watery eyes, sensitivity to bright light, swollen or full-feeling eyelids, blurred or double vision, and pain in or behind the eye. Symptoms can be mistaken for allergy, hay fever or conjunctivitis. See a doctor without delay and ask for an immediate referral to a specialist eye centre if symptoms steadily worsen over days or weeks, blurred vision does not improve with blinking or covering each eye in turn, colours look less bright or differ between your eyes, you have double vision looking forward or downward, or you need to tilt your head to avoid double vision.",
@@ -9420,7 +9451,7 @@ ted:{
       "tag": "drug",
       "label": "✅ NHS Available",
       "title": "Steroids, Radiotherapy and Surgery",
-      "body": "Steroids reduce inflammation, double vision, redness and swelling; given through a vein they are more effective, with fewer side effects, than tablets. Radiotherapy may be combined with steroids or immunosuppressants. Once inflammation has settled, surgery can include orbital decompression, eye muscle surgery for double vision, and eyelid surgery. Radioiodine should be avoided during active TED as it can worsen it.",
+      "body": "Steroids reduce inflammation, double vision, redness and swelling; given through a vein they are more effective, with fewer side effects, than tablets. Radiotherapy may be combined with steroids or immunosuppressants. Once inflammation has settled, surgery can include orbital decompression, eye muscle surgery for double vision, and eyelid surgery. Radioiodine should be avoided during active TED as it can worsen it. If you have double vision, an orthoptist may be able to use prisms to restore single vision while the disease is active.",
       "link": "https://www.btf-thyroid.org/thyroid-eye-disease/1000"
     },
     {
@@ -9942,7 +9973,7 @@ best:{
   "helpline": {
     "org": "Retina UK Helpline",
     "number": "0300 111 4000",
-    "hours": "Mon–Fri 9.30am–9.30pm",
+    "hours": "Mon–Fri 9am–5pm, Tue and Thu until 8pm",
     "link": "https://retinauk.org.uk"
   },
   "name": "Best Disease",
@@ -10121,7 +10152,7 @@ dmo:{
 
     whoAffects:"Mae'n effeithio ar unrhyw un â Diabetes Math 1 neu Math 2. Mae risg yn cynyddu gyda hyd y diabetes, rheolaeth wael ar siwgr gwaed, pwysedd gwaed uchel, colesterol uchel, a chlefyd yr arennau.",
 
-    researchSummary:"Mae Faricimab (Vabysmo) ac Aflibercept HD wedi'u cymeradwyo gan NICE. Cafodd y mewnblaniad rhyddhau parhaus cyntaf (Susvimo) ei gymeradwyo yn UDA yn 2025 ar gyfer DMO, ond nid yw ar gael ar y GIG nac wedi'i drwyddedu yn y DU."
+    researchSummary:"Mae Faricimab (Vabysmo) ac Aflibercept HD wedi'u cymeradwyo gan NICE. Cafodd y mewnblaniad rhyddhau parhaus cyntaf (Susvimo) ei gymeradwyo yn UDA yn 2025 ar gyfer DMO, ond nid yw ar gael ar y GIG nac wedi'i drwyddedu yn y DU. Chwistrelliadau gwrth-VEGF (fel ranibizumab ac aflibercept) yw'r driniaeth safonol, ac mae laser yn opsiwn hefyd. Mae NICE yn argymell mewnblaniad steroid (dexamethasone neu fluocinolone) dim ond pan nad yw triniaethau eraill wedi gweithio'n ddigon da neu na ellir eu defnyddio."
 
   },
 
@@ -10135,11 +10166,13 @@ dmo:{
 
   research:[
 
+    {tag:"drug",label:"✅ NHS Available",title:"Standard Treatment: Anti-VEGF Injections, Steroid Implants and Laser",body:"Anti-VEGF eye injections (such as ranibizumab and aflibercept) are the standard NHS treatment for diabetic macular oedema, and laser is also an option. NICE recommends a steroid implant (dexamethasone, or fluocinolone for long-lasting oedema) only when other treatments have not worked well enough or cannot be used, and for the fluocinolone implant only under the agreed commercial arrangement. Your retina specialist will advise which suits you.",link:"https://www.nice.org.uk/guidance/ta824/chapter/1-Recommendations"},
+
     {tag:"drug",label:"✅ NHS Available",title:"Faricimab (Vabysmo) — Fewer Injections",body:"Dual-pathway injection. NICE approved for DMO. Up to every 4 months for some patients — far fewer clinic visits than older treatments.",link:"https://www.nice.org.uk/guidance/ta799"},
 
     {tag:"drug",label:"✅ NHS Available",title:"Aflibercept HD (Eylea HD)",body:"High-dose 8mg aflibercept formulation. NICE considered it clinically equivalent to standard-dose Eylea (TA294 and TA346) and recommended for routine commissioning without a separate appraisal. Allows extended dosing intervals — fewer injections than standard-dose Eylea for many patients.",link:"https://www.nice.org.uk/guidance/topic-selection/gid-ta11133"},
 
-    {tag:"gene",label:"🌍 Available Abroad",title:"Sustained-Release Anti-VEGF Implants",body:"A refillable implant placed in the eye during a one-time procedure delivers anti-VEGF medication continuously, with refills roughly every six months instead of frequent injections. The first such device, Susvimo (a port delivery system with ranibizumab), was approved by the US FDA for diabetic macular oedema in February 2025, based on a Phase 3 trial showing vision results comparable to monthly injections. It is not available on the NHS and is not licensed in the UK. The implant requires surgery and the device has had safety issues in the past, including an earlier recall and redesign, so it would not suit everyone. Other sustained-release approaches remain in trials.",link:"https://bepartofresearch.nihr.ac.uk/results/search-results?query=diabetic+macular&location="},
+    {tag:"gene",label:"🌍 Available Abroad",title:"Sustained-Release Anti-VEGF Implants",body:"A refillable implant placed in the eye during a one-time procedure delivers anti-VEGF medication continuously, with refills roughly every six months instead of frequent injections. The first such device, Susvimo (a port delivery system with ranibizumab), was approved by the US FDA for diabetic macular oedema in February 2025, based on a Phase 3 trial showing vision results comparable to monthly injections. It is not available on the NHS and we have found no UK licence. In Europe it was recommended by the EMA in July 2026 for wet AMD (not diabetic eye disease), with European Commission approval reported in September 2026. The implant requires surgery and the device has had safety issues in the past, including an earlier recall and redesign, so it would not suit everyone. Other sustained-release approaches remain in trials.",link:"https://bepartofresearch.nihr.ac.uk/results/search-results?query=diabetic+macular&location="},
 
     {tag:"gene",label:"🌅 Horizon",title:"Gene Therapy for DMO",body:"Single-injection gene therapy delivering continuous anti-VEGF production — potentially replacing all repeat injections permanently. Early-stage programmes building on wet AMD gene therapy research.",link:"https://www.diabetes.org.uk/research"},
 
@@ -10185,7 +10218,7 @@ dmo:{
 
   benefits:[
 
-    {n:1,title:"Free Annual NHS Eye Screening",body:"Free for all people with diabetes. The single most important thing you can do to protect your vision."},
+    {n:1,title:"Free Annual NHS Eye Screening",body:"Free for all people with diabetes. One of the most important things you can do to protect your vision."},
 
     {n:2,title:"PIP",body:"Vision loss from DMO supports a PIP claim for both Daily Living and Mobility components. RNIB can help — 0303 123 9999."},
 
@@ -10233,7 +10266,7 @@ myopic:{
 
     {tag:"trial",label:"🔬 Pipeline",title:"Posterior Scleral Reinforcement Surgery",body:"A surgical procedure physically supporting the back of the elongated eye to slow further stretching and prevent MMD progression. Being investigated in several countries. Could be the first treatment targeting the physical cause of MMD rather than its complications.",link:"https://www.macularsociety.org/research/"},
 
-    {tag:"drug",label:"🔬 Pipeline",title:"Myopia Control in Children",body:"Slowing myopia progression in childhood may reduce the risk of high myopia and later MMD. In late 2025 the MHRA licensed the first low-dose atropine eye drop in the UK (Ryjunea), which became available during 2026. It is licensed for children aged 3–14 whose myopia is between -0.50 and -6.00 dioptres and progressing by at least 0.50 dioptres a year, so not every short-sighted child is eligible. Important: it is currently a private prescription only and is not funded by the NHS. A NICE appraisal covering England, Wales and Northern Ireland is in progress but has not reported; Scotland needs a separate decision from the Scottish Medicines Consortium. Private treatment programmes typically run to around £95 a month and continue for two to four years. A UK trial published in the BMJ in 2026 found the drops were safe but the benefit was small, reducing myopia progression by about 0.38 dioptres over two years. Orthokeratology (specially shaped contact lenses worn overnight) and myopia-control spectacles are also used, again usually privately. Discuss the costs, evidence and limitations with an optometrist or paediatric ophthalmologist.",link:"https://www.college-optometrists.org/news/2025/november/mhra-licensed-low-dose-atropine-myopia"},
+    {tag:"drug",label:"🔬 Pipeline",title:"Myopia Control in Children",body:"Slowing myopia progression in childhood may reduce the risk of high myopia and later MMD. In late 2025 the MHRA licensed the first low-dose atropine eye drop in the UK (Ryjunea), which became available during 2026. It is licensed for children aged 3–14 whose myopia is between -0.50 and -6.00 dioptres and progressing by at least 0.50 dioptres a year, so not every short-sighted child is eligible. Important: it is currently a private prescription only and is not funded by the NHS. In August 2026 NICE published draft guidance for England that does not recommend NHS funding for children who meet the criteria, saying there is not enough evidence to show whether it is good value for money; this is a draft, it does not affect private use, and final guidance had not been published when this was checked. Scotland needs a separate decision from the Scottish Medicines Consortium. Private treatment programmes typically run to around £95 a month and continue for two to four years. A UK trial published in the BMJ in 2026 found the drops were safe but the benefit was small, reducing myopia progression by about 0.38 dioptres over two years. Orthokeratology (specially shaped contact lenses worn overnight) and myopia-control spectacles are also used, again usually privately. Discuss the costs, evidence and limitations with an optometrist or paediatric ophthalmologist.",link:"https://www.college-optometrists.org/news/2025/november/mhra-licensed-low-dose-atropine-myopia"},
 
     {tag:"trial",label:"🔗 Find UK Trials",title:"NIHR Be Part of Research — Myopic MD",body:"Find and register for UK research studies on myopic macular degeneration and high myopia.",link:"https://bepartofresearch.nihr.ac.uk/results/search-results?query=myopic+macular&location="}
 
@@ -10278,7 +10311,7 @@ myopic:{
 
   benefits:[
 
-    {n:1,title:"Certificate of Vision Impairment (CVI)",body:"If MMD has significantly affected your vision, ask your ophthalmologist for a CVI. Free and unlocks rehabilitation and financial support."},
+    {n:1,title:"Certificate of Vision Impairment (CVI)",body:"If MMD has significantly affected your vision, ask your ophthalmologist for a CVI. Free, and can open access to rehabilitation and financial support."},
 
     {n:2,title:"PIP",body:"Central vision loss from MMD supports a PIP claim. RNIB can help with the form — 0303 123 9999."},
 
@@ -10371,7 +10404,7 @@ charlesbonnet:{
 
     {n:1,title:"PIP for Underlying Condition",body:"CBS itself does not qualify for PIP but the underlying sight condition causing it does. Claim PIP based on your primary eye condition."},
 
-    {n:2,title:"Mental Health Support",body:"If CBS is causing significant anxiety or distress, you are entitled to mental health support via your GP. RNIB Sight Loss Counselling (0303 123 9999) also provides free sessions."},
+    {n:2,title:"Mental Health Support",body:"If CBS is causing significant anxiety or distress, you can ask your GP for mental health support. RNIB Sight Loss Counselling (0303 123 9999) also provides free sessions."},
 
     {n:3,title:"Carer Support",body:"If CBS requires significant support from a family member or carer, they may be entitled to Carer's Allowance (£86.45/week from April 2026)."}
 
@@ -10473,7 +10506,7 @@ opticneuritis:{
 
 blepharitis:{
 
-    helpline:{org:"RNIB Helpline",number:"0303 123 9999",hours:"Mon–Fri 9am–5pm",link:"https://www.rnib.org.uk"},
+    helpline:{org:"RNIB Helpline",number:"0303 123 9999",hours:"Mon–Fri 8am–8pm, Sat 9am–1pm",link:"https://www.rnib.org.uk"},
 
   name:"Blepharitis",
 
@@ -10489,7 +10522,7 @@ blepharitis:{
 
     whoAffects:"Mae Bleffaritis yn hynod gyffredin — mae'n effeithio ar filiynau o bobl yn y DU. Mae'n fwy cyffredin gydag oedran. Mae'n gysylltiedig â chyflyrau croen gan gynnwys rosasea, dermatitis seborrhoeig, ac acne.",
 
-    researchSummary:"Mae therapi IPL ar gael mewn clinigau arbenigol yn y DU ar gyfer Bleffaritis ôl. Mae Lotilaner (Xdemvy) wedi'i gymeradwyo yn yr UDA ers Gorffennaf 2023 — heb gymeradwyaeth MHRA yn y DU eto. Yr hyn sydd ar gael yma ar gyfer gwiddon Demodex yw glendid amrantau dyddiol a chadachau neu ewyn sy'n cynnwys olew coeden de (neu T4O). Defnyddiwch gynnyrch a wnaed ar gyfer amrantau yn unig — mae olew coeden de heb ei wanhau yn llidiog ac ni ddylai fynd yn agos at y llygad."
+    researchSummary:"Mae therapi IPL ar gael mewn clinigau arbenigol yn y DU ar gyfer Bleffaritis ôl. Mae Lotilaner (Xdemvy) wedi'i gymeradwyo yn yr UDA ers Gorffennaf 2023 — heb gymeradwyaeth MHRA yn y DU eto. Yr hyn sydd ar gael yma ar gyfer gwiddon Demodex yw glendid amrantau dyddiol a chadachau neu ewyn sy'n cynnwys olew coeden de (neu T4O). Defnyddiwch gynnyrch a wnaed ar gyfer amrantau yn unig — mae olew coeden de heb ei wanhau yn llidiog ac ni ddylai fynd yn agos at y llygad. Os nad yw glanhau’r amrantau yn ddigon, gall eich meddyg teulu ragnodi hufen neu eli gwrthfiotig ar gyfer yr amrant."
 
   },
 
@@ -10506,6 +10539,8 @@ blepharitis:{
     {tag:"drug",label:"🌍 Available Privately",title:"Intense Pulsed Light (IPL) Therapy",body:"IPL therapy can help posterior blepharitis caused by meibomian gland dysfunction. Evidence shows it reduces dry-eye symptoms compared with no treatment, though its added benefit on top of standard lid hygiene is less certain. Available privately at specialist UK eye clinics — typically 4 sessions over 3 months. Not NHS-funded; private cost roughly £300–600 per course.",link:"https://www.college-optometrists.org/clinical-guidance/clinical-management-guidelines/blepharitis_lidmargindisease"},
 
     {tag:"drug",label:"🌍 Available Abroad",title:"Lotilaner (Xdemvy) — Demodex Treatment",body:"FDA approved July 2023 in the US for Demodex mite-associated blepharitis. Demodex is an increasingly recognised cause — more common than previously thought, accounting for up to 45% of blepharitis cases. No MHRA approval announced for the UK as of 2026, so it cannot be prescribed here. What UK clinicians use instead: daily lid hygiene, lid wipes or foams containing tea tree oil (or the refined derivative T4O), which does target the mites, and in-clinic lid margin cleaning. Tea tree products are available over the counter from pharmacies and optician shops, but use a preparation made for eyelids — undiluted tea tree oil is an irritant and should never go near the eye. Ask your optometrist which product and strength suits you, as it can sting. IPL is also offered privately for Demodex and meibomian gland problems.",link:"https://clinicaltrials.gov/search?cond=blepharitis+lotilaner"},
+
+    {tag:"drug",label:"✅ NHS Available",title:"Antibiotics From Your GP If Cleaning Is Not Enough",body:"If lid cleaning does not clear blepharitis, a GP may prescribe an antibiotic cream or ointment for the eyelid. If complications such as an eyelid cyst develop, antibiotic eye drops or tablets may be recommended. See a GP or NHS 111 urgently if you have eye pain, changes in vision or a very red eye.",link:"https://www.nhs.uk/conditions/blepharitis/"},
 
     {tag:"drug",label:"✅ NHS Available",title:"Daily Lid Hygiene — The Most Important Treatment",body:"Warm compress + lid cleaning every day is proven to significantly reduce symptoms and is the foundation of all blepharitis management. Consistency matters more than any medication. A heated eye mask (Bruder, TheraEye) is significantly more effective than a flannel.",link:"https://www.college-optometrists.org"},
 
@@ -10735,11 +10770,11 @@ microphthalmia:{
 
     {n:1,title:"Disability Living Allowance (DLA)",body:"Children under 16 with microphthalmia may qualify for DLA, depending on the extra help they need compared with other children the same age. Call RNIB (0303 123 9999) for free help with the form. Apply early — the process takes time and backdating is not available."},
 
-    {n:2,title:"Certificate of Vision Impairment (CVI)",body:"If your child meets the criteria, ask the ophthalmologist about registering them as sight impaired or severely sight impaired. This unlocks practical support and benefits."},
+    {n:2,title:"Certificate of Vision Impairment (CVI)",body:"If your child meets the criteria, ask the ophthalmologist about registering them as sight impaired or severely sight impaired. This can open access to practical support and benefits."},
 
     {n:3,title:"Carer's Allowance",body:"If you provide significant care, you may be entitled to Carer's Allowance (£86.45/week from April 2026). Your child's DLA may also qualify the household for additional support."},
 
-    {n:4,title:"Special Educational Needs Support",body:"Your child may be entitled to an Education, Health and Care Plan (EHCP). Contact your local authority's SEND team and request a QTVI assessment."}
+    {n:4,title:"Special Educational Needs Support",body:"You can ask your local authority for an assessment for an Education, Health and Care Plan (EHCP); it is not automatic and can be refused, with a right of appeal. Contact your local authority's SEND team and request a QTVI assessment."}
 
   ]
 
@@ -10763,7 +10798,7 @@ coloboma:{
 
     whoAffects:"Mae coloboma'r llygad yn effeithio ar tua 1 ym mhob 10,000 o bobl. Mae'n gyflwr genynnol, ac weithiau mae'n rhedeg mewn teuluoedd, ond yn aml mae'n digwydd ar hap heb hanes teuluol. Gall fod yn gysylltiedig â syndromau ehangach fel syndrom CHARGE.",
 
-    researchSummary:"Mae ymchwil i gyflyrau MACS, gan gynnwys coloboma, yn canolbwyntio ar ddeall y genynnau sy'n gyfrifol. Nid oes gwellhad ar hyn o bryd, ond mae cefnogaeth golwg gwan, rheoli sensitifrwydd i olau, a monitro am gymhlethdodau i gyd yn helpu."
+    researchSummary:"Mae ymchwil i gyflyrau MACS, gan gynnwys coloboma, yn canolbwyntio ar ddeall y genynnau sy'n gyfrifol. Nid oes gwellhad ar hyn o bryd, ond mae cefnogaeth golwg gwan, rheoli sensitifrwydd i olau, a monitro am gymhlethdodau i gyd yn helpu. Ni all sbectol na lensys cyffwrdd gywiro coloboma ei hun, ond dylid cywiro unrhyw olwg byr neu hir; gall lens cyffwrdd arbennig orchuddio cannwyll llygad siâp twll clo, ac weithiau mae llawdriniaeth ar yr iris yn bosibl."
 
   },
 
@@ -10776,6 +10811,8 @@ coloboma:{
   whoAffects:"Ocular coloboma affects roughly 1 in 10,000 people. It is a genetic condition — it sometimes runs in families, but often happens by chance with no family history. Colobomas affecting both eyes are more likely to be genetic. Coloboma can occur on its own (isolated), or as part of a wider syndrome such as CHARGE syndrome. Together, the MACS conditions account for around a quarter of childhood blindness in the UK.",
 
   research:[
+
+    {tag:"drug",label:"✅ NHS Available",title:"Glasses, Special Contact Lenses and Surgery",body:"Glasses and contact lenses cannot correct a coloboma itself, but any short- or long-sightedness should still be corrected so vision can develop as fully as possible. People with an iris coloboma may be able to wear a special contact lens that covers the keyhole-shaped pupil, making it look round and reducing light sensitivity. Surgery to close the gap in the iris is sometimes possible, so ask an ophthalmologist. Related problems such as cataract, glaucoma or retinal detachment have their own treatments.",link:"https://www.sense.org.uk/information-and-advice/conditions/charge-syndrome/coloboma-treatments-management/"},
 
     {tag:"support",label:"🧭 Getting support",title:"Find UK Coloboma Support & Trials",body:"MACS is the UK charity for coloboma and related conditions. For research studies, the NIHR Be Part of Research service lists UK trials you can search by condition.",link:"https://bepartofresearch.nihr.ac.uk/results/search-results?query=coloboma&location="},
 
@@ -10847,7 +10884,7 @@ ocularmelanoma:{
 
     whoAffects:"Mae melanoma llygad yn brin, gan effeithio ar tua 750 o bobl yn y DU bob blwyddyn. Mae'n fwy cyffredin mewn pobl â chroen golau a llygaid glas neu lwyd, ac oedran cyffredin diagnosis yw 55-60 oed. Yn wahanol i felanoma'r croen, nid yw'n gysylltiedig yn glir â golau haul.",
 
-    researchSummary:"Ar gyfer melanoma’r llygad sydd wedi lledaenu, mae triniaeth gymeradwy bellach: tebentafusp (Kimmtrak), y cyntaf erioed i ymestyn goroesiad yn y cyflwr hwn. Argymhellodd NICE ef yn Rhagfyr 2024, a’i dderbyn yn yr Alban ym mis Gorffennaf 2026, felly mae ar gael ar draws y DU. Dim ond i bobl sy’n cario’r marciwr genetig HLA-A*02:01 y mae’n gweithio (tua 40-50%) — gofynnwch am brawf. Mae ymchwil yn parhau i brofion genetig (fel BAP1) i ragweld risg. Mae Ocular Melanoma UK yn cynnig cefnogaeth seicolegol wedi'i hariannu'n llawn i aelodau."
+    researchSummary:"Ar gyfer melanoma’r llygad sydd wedi lledaenu, mae triniaeth gymeradwy bellach: tebentafusp (Kimmtrak), y cyntaf erioed i ymestyn goroesiad yn y cyflwr hwn. Argymhellodd NICE ef yn Rhagfyr 2024, a’i dderbyn yn yr Alban ym mis Gorffennaf 2026, felly mae ar gael ar draws y DU. Dim ond i bobl sy’n cario’r marciwr genetig HLA-A*02:01 y mae’n gweithio (tua 40-50%) — gofynnwch am brawf. Mae ymchwil yn parhau i brofion genetig (fel BAP1) i ragweld risg. Mae Ocular Melanoma UK yn cynnig cefnogaeth seicolegol wedi'i hariannu'n llawn i aelodau. Rhoddir therapi pelydr proton yng Nghanolfan Genedlaethol y DU ar gyfer Therapi Proton y Llygad, Clatterbridge."
 
   },
 
@@ -10864,6 +10901,8 @@ ocularmelanoma:{
     {tag:"support",label:"🧭 Getting support",title:"Find UK Ocular Melanoma Support & Trials",body:"Ocular Melanoma UK is the only UK charity dedicated solely to this cancer. Their clinical trial database is curated specifically for ocular melanoma and flags which trials have UK recruitment sites.",link:"https://omuk.org/resources/clinical-trials/"},
 
     {tag:"info",label:"📋 Good to know",title:"Genetic Testing and BAP1",body:"Testing for changes in the BAP1 gene, sometimes offered on a biopsy sample, can help specialists estimate the likelihood of the cancer spreading and plan appropriate monitoring. Genetic counselling is available through your specialist centre if this is relevant to you.",link:"https://omuk.org"},
+
+    {tag:"drug",label:"✅ NHS Available",title:"Proton Beam Therapy — Clatterbridge",body:"Clatterbridge Cancer Centre in Wirral is the UK’s National Centre for Eye Proton Therapy, treating eye melanomas with a precisely aimed proton beam that helps protect nearby healthy tissue. Patients are referred from eye teams across the UK. If the tumour is inside the eye, small metal markers are first placed surgically at the referring hospital. NHS patients living more than an hour away may be offered hotel accommodation and transport.",link:"https://www.clatterbridgecc.nhs.uk/patients-and-visitors/our-services/eye-cancer"},
 
     {tag:"drug",label:"✅ NHS Available",title:"Tebentafusp (Kimmtrak) — For Advanced Disease",body:"For uveal melanoma that has spread beyond the eye, there is now an approved treatment — the first ever shown to prolong survival in this cancer. Tebentafusp is an immunotherapy given as a weekly infusion. In its pivotal trial, median survival was around 21.7 months compared with 16.0 months for the treatments previously used. Two important caveats. It only works for people who carry a genetic marker called HLA-A*02:01, which is roughly 40 to 50% of people in the UK — your medical team can test for this, and it is worth asking. And it extends life rather than curing the disease. NICE recommended it for NHS England in December 2024, and the Scottish Medicines Consortium accepted it in July 2026, so it is now available across England, Scotland, Wales and Northern Ireland. Ocular Melanoma UK campaigned for this approval and can explain what it means for you. Research continues for people who are not HLA-A*02:01 positive.",link:"https://omuk.org/tebentafusp-approved-for-eligible-patients-with-advanced-uveal-melanoma-in-scotland/"}
 
@@ -11003,7 +11042,7 @@ congenitalcataracts:{
 
     {n:1,title:"Disability Living Allowance (DLA)",body:"Children under 16 with significant vision impairment from congenital cataracts may be eligible for DLA. Call RNIB (0303 123 9999) for free help with the form. Apply early — backdating is not available."},
 
-    {n:2,title:"Certificate of Vision Impairment (CVI)",body:"If your child's vision remains impaired, ask the ophthalmologist about registration as sight impaired or severely sight impaired, which unlocks further support."},
+    {n:2,title:"Certificate of Vision Impairment (CVI)",body:"If your child's vision remains impaired, ask the ophthalmologist about registration as sight impaired or severely sight impaired, which can open access to further support."},
 
     {n:3,title:"Free NHS Eye Care and Glasses",body:"All under-16s receive free NHS sight tests and optical vouchers for glasses or contact lenses. Children who have had cataract surgery need lifelong monitoring, which is free on the NHS."},
 
@@ -11294,7 +11333,7 @@ maculahole:{
 
     {n:1,title:"Personal Independence Payment (PIP)",body:"If macular hole surgery leaves lasting central vision loss that affects daily activities or your ability to travel safely, you may be eligible for PIP. The functional impact is what matters. RNIB Benefits Helpline (0303 123 9999) can advise."},
 
-    {n:2,title:"Certificate of Visual Impairment (CVI)",body:"If vision in the affected eye is severely reduced after surgery, your consultant ophthalmologist can issue a CVI. If both eyes are significantly affected, a CVI is more likely. It unlocks local authority rehabilitation support and, for those registered as severely sight impaired, a 50% reduction on the TV licence."},
+    {n:2,title:"Certificate of Visual Impairment (CVI)",body:"If vision in the affected eye is severely reduced after surgery, your consultant ophthalmologist can issue a CVI. If both eyes are significantly affected, a CVI is more likely. It can open access to local authority rehabilitation support and, for those registered as severely sight impaired, a 50% reduction on the TV licence."},
 
     {n:3,title:"NHS Low Vision Clinic",body:"After surgery, ask your ophthalmologist for a referral to a low vision clinic. These free NHS services assess your remaining vision and prescribe magnifiers, lighting, and other aids to help you manage daily life."}
 
@@ -11392,7 +11431,7 @@ retinaldetachment:{
 
     {n:1,title:"Personal Independence Payment (PIP)",body:"If retinal detachment has caused lasting vision impairment, you may be eligible for PIP based on the functional impact on daily life and mobility. Don't wait for final visual outcomes before claiming — you can apply during recovery."},
 
-    {n:2,title:"Certificate of Visual Impairment (CVI)",body:"If surgery leaves you with significant permanent vision loss — particularly if the macula was detached — your consultant ophthalmologist can issue a CVI. This unlocks local authority rehabilitation services and, for registered severely sight impaired people, a 50% reduction on the TV licence."},
+    {n:2,title:"Certificate of Visual Impairment (CVI)",body:"If surgery leaves you with significant permanent vision loss — particularly if the macula was detached — your consultant ophthalmologist can issue a CVI. This can open access to local authority rehabilitation services and, for registered severely sight impaired people, a 50% reduction on the TV licence."},
 
     {n:3,title:"Sick Pay and Work Adjustments",body:"Recovery from retinal detachment surgery requires at least two weeks off work, and longer for physically active or visually demanding roles. If there are lasting vision changes, Access to Work can fund workplace adaptations and the Equality Act 2010 requires your employer to make reasonable adjustments."}
 
@@ -11529,7 +11568,7 @@ function labelToClass(label) {
 
     <h1>${d.name}</h1>
 
-    <p style="font-size:0.75rem;color:var(--text2);margin-bottom:16px">${_isWelsh ? 'Adolygwyd ddiwethaf' : 'Last reviewed'}: <time datetime="2026-10">${_isWelsh ? 'Hydref 2026' : 'October 2026'}</time> &nbsp;·&nbsp; <button onclick="showPage('disclaimer')" style="background:none;border:none;color:var(--text2);font-family:var(--font);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0">${_isWelsh ? 'Sut yr ydym yn ysgrifennu ein cynnwys' : 'How we write our content'}</button></p>
+    <p style="font-size:0.75rem;color:var(--text2);margin-bottom:16px">${_isWelsh ? 'Adolygwyd ddiwethaf' : 'Last reviewed'}: <time datetime="2026-11">${_isWelsh ? 'Tachwedd 2026' : 'November 2026'}</time> &nbsp;·&nbsp; <button onclick="showPage('disclaimer')" style="background:none;border:none;color:var(--text2);font-family:var(--font);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0">${_isWelsh ? 'Sut yr ydym yn ysgrifennu ein cynnwys' : 'How we write our content'}</button></p>
 
   </div>
 
@@ -11602,7 +11641,7 @@ function labelToClass(label) {
 
         ${_isWelsh ? '<p style="background:#00b140;color:#fff;padding:8px 14px;border-radius:8px;font-size:0.85rem;margin-bottom:12px">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Mae\'r manylion ymchwil isod ar gael yn Saesneg yn unig ar hyn o bryd. / The detailed research items below are currently in English only.</p>' : ''}
 
-        <div class="wb" style="border-left:4px solid #b86d00;margin-bottom:16px;background:rgba(184,109,0,0.08)"><strong>⚠️ Always check current status before acting.</strong> Research changes fast. Verify on <a href="https://www.clinicaltrials.gov" aria-label="ClinicalTrials.gov (opens external site)" rel="noopener noreferrer">ClinicalTrials.gov</a> and discuss with your ophthalmologist. <span style="opacity:0.75">Last reviewed October 2026.</span></div>
+        <div class="wb" style="border-left:4px solid #b86d00;margin-bottom:16px;background:rgba(184,109,0,0.08)"><strong>⚠️ Always check current status before acting.</strong> Research changes fast. Verify on <a href="https://www.clinicaltrials.gov" aria-label="ClinicalTrials.gov (opens external site)" rel="noopener noreferrer">ClinicalTrials.gov</a> and discuss with your ophthalmologist. <span style="opacity:0.75">Last reviewed November 2026.</span></div>
 
         ${d.research.map(r=>`
 
@@ -14720,14 +14759,14 @@ function bcShowAdultResults() {
   var impact = _bcAnswers.impact, working = _bcAnswers.working, hasCvi = _bcAnswers.cvi;
   var cards = '', headline = '';
   if (impact === 'severe') {
-    headline = 'Based on your answers, you are likely entitled to several significant benefits.';
+    headline = 'Based on your answers, you may qualify for several significant benefits.';
     cards += bcCard('PIP - Daily Living (Enhanced)', '&pound;114.60/week (2026/27)', 'For daily living difficulties caused by sight loss. RNIB will help you apply for free.', 'https://www.gov.uk/pip/how-to-claim', 'Apply at gov.uk/pip');
     cards += bcCard('PIP - Mobility (Enhanced)', '&pound;80.00/week (2026/27)', 'Enhanced rate qualifies for Motability Scheme.', 'https://www.gov.uk/pip/how-to-claim', 'Apply at gov.uk/pip');
     if (working === 'yes') cards += bcCard('Access to Work', 'Up to &pound;69,260/year', 'Grant for specialist equipment and support at work. Apply BEFORE buying anything.', 'https://www.gov.uk/access-to-work', 'Apply at gov.uk');
     if (working === 'no') cards += bcCard('Universal Credit / ESA', 'Varies', 'If you cannot work, you may qualify for Universal Credit with Limited Capability for Work.', 'https://www.gov.uk/universal-credit', 'Check at gov.uk');
     if (working === 'student') cards += bcCard("Disabled Students' Allowance (DSA)", 'Up to &pound;27,783/year (2026/27, England)', 'Non-repayable grant for specialist equipment, software, non-medical helpers, and travel. Apply via Student Finance. Not means-tested.', 'https://www.gov.uk/disabled-students-allowance-dsa', 'Apply at gov.uk');
   } else if (impact === 'moderate') {
-    headline = 'You are likely entitled to at least PIP Daily Living at standard rate.';
+    headline = 'You may qualify for PIP Daily Living; the rate depends on assessment.';
     cards += bcCard('PIP - Daily Living (Standard)', '&pound;76.70/week (2026/27)', 'Even moderate sight loss usually qualifies. Do not assume you will not qualify.', 'https://www.gov.uk/pip/how-to-claim', 'Apply at gov.uk/pip');
     if (working === 'yes') cards += bcCard('Access to Work', 'Up to &pound;69,260/year', 'Funds screen magnification, large print, and adjusted lighting at work.', 'https://www.gov.uk/access-to-work', 'Apply at gov.uk');
     if (working === 'student') cards += bcCard("Disabled Students' Allowance (DSA)", 'Up to &pound;27,783/year (2026/27, England)', 'Non-repayable grant for specialist equipment, software, and non-medical helpers. Apply via Student Finance.', 'https://www.gov.uk/disabled-students-allowance-dsa', 'Apply at gov.uk');
@@ -14741,7 +14780,7 @@ function bcShowAdultResults() {
     cards += bcCard('Council Tax — worth asking', 'Not automatic', 'A reduction is sometimes available but depends on your circumstances and your council. Ask them what applies.', '', '');
     cards += bcCard('50% TV Licence Discount', '&pound;90 saving/year (from April 2026)', 'SSI/blind registration. Apply at tvlicensing.co.uk.', 'https://www.tvlicensing.co.uk', 'Apply');
   } else {
-    cards += bcCard('Get Your CVI First', 'Unlocks major benefits', 'A CVI from your ophthalmologist is free and opens access to a bus pass, Blue Badge, travel concessions and more. Ask your council whether a council tax reduction applies to you.', '', '');
+    cards += bcCard('Get Your CVI First', 'Can open access to benefits', 'A CVI from your ophthalmologist is free and opens access to a bus pass, Blue Badge, travel concessions and more. Ask your council whether a council tax reduction applies to you.', '', '');
   }
   if (hasCvi === 'yes' && impact === 'severe') {
     cards += bcCard("Blind Person's Tax Allowance", '&pound;3,250 added to Personal Allowance', 'Registered SSI? Tell HMRC - not applied automatically.', 'https://www.gov.uk/blind-persons-allowance', 'Claim at gov.uk');
@@ -14758,7 +14797,7 @@ function bcShowPensionResults() {
   cards += bcCard('Attendance Allowance', '&pound;76.70 or &pound;114.60/week (2026/27)', 'For over state pension age with care needs.', 'https://www.gov.uk/attendance-allowance', 'Apply at gov.uk');
   cards += bcCard('Pension Credit', 'Tops up to &pound;238/week (single, 2026/27)', 'Widely unclaimed. Can open up help with NHS dental costs, rent and Council Tax. If you are also registered SSI, you may qualify for the Severe Disability Premium worth an extra &pound;86.05/week.', 'https://www.gov.uk/pension-credit', 'Check at gov.uk');
   cards += bcCard("Blind Person's Tax Allowance", '&pound;3,250 added to Personal Allowance (2026/27)', 'Registered SSI? Tell HMRC — not applied automatically. Worth checking even if you have low income — it can be transferred to a spouse.', 'https://www.gov.uk/blind-persons-allowance', 'Claim at gov.uk');
-  cards += bcCard('CVI Benefits', 'Bus pass, Blue Badge, TV licence', 'Free from your ophthalmologist. Unlocks multiple benefits.', '', '');
+  cards += bcCard('CVI Benefits', 'Bus pass, Blue Badge, TV licence', 'Free from your ophthalmologist. Can open access to several benefits.', '', '');
   cards += '<div class="wb" style="margin-top:16px"><strong>Next step:</strong> Call Age UK on <a href="tel:08006781602" style="color:var(--yellow);font-weight:700">0800 678 1602</a> for a free benefits check.</div>';
   var r = document.getElementById('bc-results');
   r.innerHTML = '<div class="lc" style="margin-bottom:16px"><h2>Your Results</h2><p>As an older person with a sight condition, you have several specific entitlements.</p></div>' + cards;
@@ -15305,7 +15344,7 @@ function showTrialsForCondition(key) {
 
         <li><strong>Cael diagnosis genetig</strong> — lle bo'n berthnasol, mae gwybod am y mwtaniad penodol yn pennu cymhwysedd triniaeth. Am ddim ar y GIG.</li>
 
-        <li><strong>Gofyn am TGW</strong> — mae'r Dystysgrif Nam Gweledol yn rhad ac am ddim ac yn cael ei rhoi gan eich offthalmolegydd. Mae'n datgloi cymorth awdurdod lleol, LDA, a darpariaeth addysgol.</li>
+        <li><strong>Gofyn am TGW</strong> — mae'r Dystysgrif Nam Gweledol yn rhad ac am ddim ac yn cael ei rhoi gan eich offthalmolegydd. Gall eich helpu i gael cymorth gan yr awdurdod lleol a gall gefnogi ceisiadau am fudd-daliadau a darpariaeth addysgol; nid yw'n gwarantu unrhyw un ohonynt.</li>
 
         <li><strong>Cysylltu ag RNIB</strong> — ffoniwch 0303 123 9999. Dywedwch wrthynt am ddiagnosis eich plentyn. Mae ganddynt gynghorwyr arbenigol ar gyfer teuluoedd plant â chyflyrau golwg.</li>
 
@@ -15323,9 +15362,9 @@ function showTrialsForCondition(key) {
 
       <h2>🏫 Addysg</h2>
 
-      <p>Mae gan eich plentyn hawl i <strong>Gynllun Addysg, Iechyd a Gofal (AIG)</strong> — dogfen gyfreithiol rwymol sy'n nodi'r cymorth arbenigol y mae'n rhaid i'ch plentyn ei gael yn yr ysgol.</p>
+      <p>Mae <strong>Cynllun Addysg, Iechyd a Gofal (AIG)</strong> yn ddogfen gyfreithiol rwymol sy'n nodi'r cymorth arbenigol y mae'n rhaid i'ch plentyn ei gael yn yr ysgol. Nid yw cael un yn awtomatig: rydych yn gofyn am asesiad, mae'r awdurdod lleol yn penderfynu a ddylid asesu ac yna a ddylid cyhoeddi cynllun, a gellir gwrthod y ddau benderfyniad, gyda hawl i apelio. Mae AIG yn perthyn i Loegr. Yng Nghymru, mae cymorth o'r fath yn dod o dan y system Anghenion Dysgu Ychwanegol (ADY), gyda Chynllun Datblygu Unigol (CDU).</p>
 
-      <p style="margin-top:10px">Yn yr ysgol, mae gan eich plentyn hawl i: ymweliadau rheolaidd gan ATHQN, deunyddiau print mawr neu Braille, eistedd yn ffafriol, tabled neu gyfrifiadur ar gyfer gwaith agos, amser ychwanegol mewn arholiadau, goleuadau addas, a darllenydd neu ysgrifennydd os oes angen.</p>
+      <p style="margin-top:10px">Cymorth y gall fod ei angen ar eich plentyn yn yr ysgol (gofynnwch i'r cydlynydd anghenion addysgol am bob un): ymweliadau rheolaidd gan ATHQN (nid oes hawl awtomatig i ATHQN a bydd y ddarpariaeth yn amrywio yn ôl ardal), deunyddiau print mawr neu Braille, eistedd yn ffafriol, tabled neu gyfrifiadur ar gyfer gwaith agos, goleuadau addas, ac amser ychwanegol mewn arholiadau neu ddarllenydd neu ysgrifennydd. Nid yw trefniadau mynediad arholiadau yn awtomatig, hyd yn oed gyda chynllun: rhaid i'r ysgol ddangos yr angen a dangos mai dyma ffordd arferol eich plentyn o weithio.</p>
 
     </div>
 
@@ -15633,9 +15672,9 @@ function showTrialsForCondition(key) {
 
       <p style="margin-top:10px"><strong>Cymdeithas y Macula:</strong> <a href="tel:03003030111" style="color:var(--yellow);font-weight:700">0300 3030 111</a> — Llun–Gwener 9am–5pm</p>
 
-      <p style="margin-top:10px"><strong>Glaucoma UK:</strong> <a href="tel:01233648170" style="color:var(--yellow);font-weight:700">01233 648 170</a> — Llun–Gwener 9am–5pm</p>
+      <p style="margin-top:10px"><strong>Glaucoma UK:</strong> <a href="tel:01233648170" style="color:var(--yellow);font-weight:700">01233 648 170</a> — Llun–Gwener 9.30am–5pm</p>
 
-      <p style="margin-top:10px"><strong>Retina UK:</strong> <a href="tel:03001114000" style="color:var(--yellow);font-weight:700">0300 111 4000</a> — Llun–Gwener 9am–5pm</p>
+      <p style="margin-top:10px"><strong>Retina UK:</strong> <a href="tel:03001114000" style="color:var(--yellow);font-weight:700">0300 111 4000</a> — Llun–Gwener 9am–5pm (dydd Mawrth a dydd Iau tan 8pm)</p>
 
       <p style="margin-top:10px"><strong>RNIB Cymru:</strong> <a href="tel:02920828500" style="color:var(--yellow);font-weight:700">029 2082 8500</a> — Cymorth penodol i Gymru</p>
 
