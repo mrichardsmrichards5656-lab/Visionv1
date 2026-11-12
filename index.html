@@ -8759,8 +8759,8 @@ if ('serviceWorker' in navigator) {
     // Split on sentence boundaries WITHOUT lookbehind (Android compatible)
     var chunks = [];
     // Insert a marker after sentence-ending punctuation before capitals
-    var marked = text.replace(/([.!?])\s+([A-ZÀ-ɏ“‘"])/g, '$1 $2');
-    var parts = marked.split(' ');
+    var marked = text.replace(/([.!?])\s+([A-ZÀ-ɏ“‘"])/g, '$1�$2');
+    var parts = marked.split('�');
     parts.forEach(function(p) {
       p = p.trim();
       if (p.length > 5) chunks.push(p);
