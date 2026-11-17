@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sightatlasuk.co.uk/</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -68,7 +68,7 @@
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/cerebral-visual-impairment.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -80,7 +80,7 @@
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/cataracts.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -92,55 +92,97 @@
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/dry-eye-disease.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/uveitis.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/giant-cell-arteritis.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/lazy-eye-amblyopia-and-squint.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/thyroid-eye-disease.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/retinal-artery-occlusion.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/floaters-and-flashes.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/central-serous-retinopathy.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/naion-non-arteritic-anterior-ischaemic-optic-neuropathy.html</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sightatlasuk.co.uk/retinopathy-of-prematurity-rop.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sightatlasuk.co.uk/optic-nerve-hypoplasia-and-optic-atrophy.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sightatlasuk.co.uk/epiretinal-membrane.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sightatlasuk.co.uk/fuchs-dystrophy.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sightatlasuk.co.uk/idiopathic-intracranial-hypertension-iih.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sightatlasuk.co.uk/leber-hereditary-optic-neuropathy-lhon.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sightatlasuk.co.uk/retinoblastoma-childhood-eye-cancer.html</loc>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -176,7 +218,7 @@
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/blepharitis.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -206,19 +248,19 @@
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/congenital-cataracts.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/keratoconus.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/hemianopia.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -230,7 +272,7 @@
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/retinal-detachment.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -284,13 +326,13 @@
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/eye-emergencies.html</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://sightatlasuk.co.uk/apps-for-blind-and-partially-sighted.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
